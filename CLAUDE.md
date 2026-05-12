@@ -357,16 +357,48 @@ spacedev-assets/
 
 ## CÓMO TRABAJAR EN EL PROYECTO
 
+### ⚠️ REGLA DE GIT — SIEMPRE USAR BRANCHES Y PRs
+
+**NUNCA commitear directo a `main`.** Todo cambio debe ir en una rama separada y mergearse vía Pull Request.
+
+```bash
+# 1. Crear rama para el trabajo (nombre descriptivo)
+git checkout -b fix/homepage-stats-section
+git checkout -b feat/blog-posts-batch-2
+git checkout -b fix/mobile-responsiveness
+
+# 2. Hacer los cambios, commitear normalmente
+git add src/pages/index.astro
+git commit -m "fix: animate counters in stats section"
+
+# 3. Pushear la rama
+git push origin fix/homepage-stats-section
+
+# 4. Crear PR en GitHub
+gh pr create --title "fix: animate counters in stats section" --body "..."
+# o abrir manualmente: https://github.com/SpaceUY/web-space-2026/compare/fix/homepage-stats-section
+```
+
+**Convención de nombres de ramas:**
+- `fix/descripcion` — correcciones visuales o bugs
+- `feat/descripcion` — nuevas secciones o funcionalidades
+- `content/descripcion` — agregar posts, case studies, copy
+- `chore/descripcion` — updates de dependencias, configs
+
+---
+
 ### Flujo recomendado para mejorar una página
 
-1. Abrir la página en el browser y en `https://spacedev.io/` simultáneamente
-2. Leer `/Users/kl/Documents/Claude/spacedev-assets/pages/[page]-text.txt` para el contenido exacto
-3. Leer `/Users/kl/Documents/Claude/spacedev-assets/pages/[page].html` para el HTML/CSS de Framer
-4. Consultar `public/images/IMAGE_MANIFEST.md` para las imágenes de esa página
-5. Editar la página Astro correspondiente
-6. Verificar con `npx astro check` (0 errores)
-7. Verificar con `npx astro build` (build limpio)
-8. Comparar visualmente con el original
+1. Crear una rama nueva (`git checkout -b fix/nombre-pagina`)
+2. Abrir la página en el browser y en `https://spacedev.io/` simultáneamente
+3. Leer `/Users/kl/Documents/Claude/spacedev-assets/pages/[page]-text.txt` para el contenido exacto
+4. Leer `/Users/kl/Documents/Claude/spacedev-assets/pages/[page].html` para el HTML/CSS de Framer
+5. Consultar `public/images/IMAGE_MANIFEST.md` para las imágenes de esa página
+6. Editar la página Astro correspondiente
+7. Verificar con `npx astro check` (0 errores)
+8. Verificar con `npx astro build` (build limpio)
+9. Comparar visualmente con el original
+10. Pushear rama y abrir PR
 
 ### Comandos útiles
 
