@@ -1,0 +1,102 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import AuthorAvatar from "../../components/ui/AuthorAvatar.astro";
+import CTA from "../../components/ui/CTA.astro";
+import Breadcrumbs from "../../components/seo/Breadcrumbs.astro";
+import { getAuthor } from "../../data/authors";
+import { SITE } from "../../lib/seo";
+import "../../styles/prose.css";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const author = getAuthor(post.data.author);
+const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric" });
+
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Blog", href: "/blog" },
+  { label: post.data.title },
+];
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.publishedAt.toISOString(),
+  dateModified: (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
+  author: { "@type": "Person", name: author?.name ?? "SpaceDev", url: `${SITE.url}/author/${post.data.author}` },
+  publisher: {
+    "@type": "Organization",
+    name: SITE.name,
+    logo: { "@type": "ImageObject", url: `${SITE.url}/images/logo/spacedev-logo.svg` },
+  },
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/${post.id}` },
+};
+---
+
+<BaseLayout
+  title={`${post.data.title} | SpaceDev Blog`}
+  description={post.data.description}
+  ogType="article"
+  jsonLd={articleJsonLd}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 70% 30%, var(--sd-cyan), transparent 50%);"></div>
+    <div class="relative mx-auto max-w-3xl px-6 md:px-10 py-20 md:py-28">
+      <a href="/blog" class="inline-flex items-center gap-1 text-sm text-sd-text-muted hover:text-white mb-8">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M11 7H3m0 0l3.5-3.5M3 7l3.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to blog
+      </a>
+      <Breadcrumbs items={breadcrumbs} />
+      <Badge tone="purple" class="mb-6">{post.data.category}</Badge>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl text-white leading-tight">{post.data.title}</h1>
+      <p class="mt-6 text-lg text-sd-text-muted leading-relaxed">{post.data.description}</p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        {author && (
+          <a href={`/author/${author.slug}`} class="inline-flex">
+            <AuthorAvatar author={author} size="md" showRole />
+          </a>
+        )}
+        <div class="flex items-center gap-2 text-sm text-sd-text-muted">
+          <span aria-hidden="true">·</span>
+          <time datetime={post.data.publishedAt.toISOString()}>{dateFmt.format(post.data.publishedAt)}</time>
+          <span aria-hidden="true">·</span>
+          <span>{post.data.readTime} min read</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <section class="bg-sd-dark py-16 md:py-24">
+    <div class="mx-auto max-w-3xl px-6 md:px-10">
+      <article class="sd-prose mx-auto">
+        <Content />
+      </article>
+
+      {post.data.tags.length > 0 && (
+        <div class="mt-12 pt-8 border-t border-white/10 flex flex-wrap gap-2">
+          {post.data.tags.map((tag) => (
+            <span class="inline-flex items-center px-3 py-1 rounded-full border border-white/15 text-xs text-sd-text-muted">#{tag}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <CTA
+    title="Want to talk about something we wrote?"
+    description="Reach out — we read every message."
+    buttons={[{ label: "Get in touch", href: "/contact" }]}
+    variant="dark"
+  />
+</BaseLayout>

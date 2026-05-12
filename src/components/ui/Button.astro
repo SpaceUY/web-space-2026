@@ -1,0 +1,56 @@
+---
+type Variant = "primary" | "secondary" | "ghost" | "outline-light";
+type Size = "sm" | "md" | "lg";
+
+interface Props {
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  type?: "button" | "submit" | "reset";
+  external?: boolean;
+  ariaLabel?: string;
+  class?: string;
+  id?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  type = "button",
+  external = false,
+  ariaLabel,
+  class: className = "",
+  id,
+} = Astro.props;
+
+const base =
+  "inline-flex items-center justify-center gap-2 font-medium rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sd-purple focus-visible:ring-offset-2 focus-visible:ring-offset-sd-dark disabled:opacity-50 disabled:cursor-not-allowed";
+
+const variants: Record<Variant, string> = {
+  primary: "bg-sd-purple text-white hover:bg-sd-purple-3 hover:-translate-y-0.5",
+  secondary: "bg-white text-sd-dark hover:bg-sd-light-2",
+  ghost: "text-white hover:bg-white/10",
+  "outline-light": "border border-white/20 text-white hover:bg-white/5",
+};
+
+const sizes: Record<Size, string> = {
+  sm: "px-4 py-2 text-sm",
+  md: "px-5 py-2.5 text-sm",
+  lg: "px-6 py-3 text-base",
+};
+
+const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`.trim();
+
+const externalAttrs = external ? { target: "_blank", rel: "noopener noreferrer" } : {};
+---
+
+{href ? (
+  <a href={href} class={classes} aria-label={ariaLabel} id={id} {...externalAttrs}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes} aria-label={ariaLabel} id={id}>
+    <slot />
+  </button>
+)}

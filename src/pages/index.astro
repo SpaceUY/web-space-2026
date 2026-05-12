@@ -1,17 +1,351 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FAQ from "../components/ui/FAQ.astro";
+import CaseStudyCard from "../components/ui/CaseStudyCard.astro";
+import { homeFaqs } from "../data/site-content";
+import { featuredCaseStudies } from "../data/case-studies";
+import { websiteJsonLd } from "../lib/seo";
 
+// Client logos — exact pixel dimensions from spacedev.io Framer CSS
+// full174: SVGs are 174×174 with FAFAFA background baked in (render as-is)
+// natural: rendered at exact pixel dimensions inside a 174px cell
+const clientLogos = [
+  { src: "/images/clients/apple.png",         alt: "Apple",        w: 62,  h: 74,  full: false },
+  { src: "/images/clients/acton_academy.png", alt: "Acton Academy",w: 118, h: 44,  full: false },
+  { src: "/images/clients/microsoft.svg",     alt: "Microsoft",    w: 174, h: 174, full: true  },
+  { src: "/images/clients/drata.svg",         alt: "Drata",        w: 174, h: 174, full: true  },
+  { src: "/images/clients/prose.svg",         alt: "prose",        w: 174, h: 174, full: true  },
+  { src: "/images/clients/ulta.svg",          alt: "ULTA Beauty",  w: 174, h: 174, full: true  },
+  { src: "/images/clients/scotia.svg",        alt: "Scotiabank",   w: 174, h: 174, full: true  },
+  { src: "/images/clients/utec.svg",          alt: "UTEC",         w: 174, h: 174, full: true  },
+  { src: "/images/clients/samsonite.svg",     alt: "Samsonite",    w: 174, h: 174, full: true  },
+  { src: "/images/clients/blockus.svg",       alt: "Blockus",      w: 174, h: 174, full: true  },
+  { src: "/images/clients/ute.png",           alt: "UTE",          w: 110, h: 50,  full: false },
+  { src: "/images/clients/orange.svg",        alt: "Orange",       w: 174, h: 174, full: true  },
+  { src: "/images/clients/d_local.svg",       alt: "dLocal",       w: 174, h: 174, full: true  },
+  { src: "/images/clients/schwarzkopf.svg",   alt: "Schwarzkopf",  w: 174, h: 174, full: true  },
+  { src: "/images/clients/rarible.svg",       alt: "Rarible",      w: 133, h: 31,  full: false },
+  { src: "/images/clients/ufc.svg",           alt: "UFC Strike",   w: 145, h: 22,  full: false },
+] as const;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="SpaceDev | Web3 Development Services & Custom Software Solutions"
+  description="SpaceDev is a blockchain development company offering web and mobile app development, and IT staff augmentation services for scalable growth."
+  jsonLd={websiteJsonLd}
+>
+  <!-- HERO (dark) -->
+  <section class="bg-sd-dark min-h-[90vh] flex items-center relative overflow-hidden">
+    <!-- Background illustration (Framer original hero asset) -->
+    <img
+      src="/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.png"
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+      fetchpriority="high"
+      width="2882"
+      height="1622"
+      class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-screen pointer-events-none"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-sd-dark via-sd-dark/80 to-transparent"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 60% 50%, rgba(103,58,228,0.15) 0%, transparent 70%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-16 py-32">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl text-white font-display leading-none tracking-tight max-w-3xl">
+        Finally:<br/>Your <span id="rotating-word" class="text-white">Flexible</span><br/>Tech Partner.
+      </h1>
+      <p class="mt-8 text-base md:text-lg text-white/60 max-w-xl leading-relaxed font-body font-light">
+        SpaceDev is a blockchain development company that transforms complex ideas into scalable digital products. We build web3, blockchain, and custom software solutions with deep engineering expertise and startup agility. Our mission: help businesses launch, scale, and innovate through technology that performs.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-sd-dark text-white text-sm font-medium border border-white/20 hover:bg-white/10 transition-colors">
+          Book a call
+        </a>
+        <a href="/our-work"
+          class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-white/70 text-sm hover:text-white transition-colors">
+          See our work →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT LOGOS MARQUEE — exact pixel sizes from spacedev.io Framer CSS -->
+  <section class="bg-sd-light overflow-hidden">
+    <div class="sd-marquee-wrapper">
+      <div class="sd-marquee flex items-center whitespace-nowrap">
+        {clientLogos.map((c) => c.full
+          ? <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="lazy" class="shrink-0 block" />
+          : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
+              <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="lazy" class="block" />
+            </div>
+        )}
+        {/* duplicate set for seamless loop — aria-hidden */}
+        {clientLogos.map((c) => c.full
+          ? <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="shrink-0 block" aria-hidden="true" />
+          : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light" aria-hidden="true">
+              <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="block" />
+            </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE SERVICES (light) -->
+  <section class="bg-sd-light py-20 md:py-32">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <div class="max-w-2xl mb-16">
+        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Core Services</h2>
+        <p class="mt-6 text-base text-sd-text-gray leading-relaxed max-w-xl">
+          We help businesses transform ideas into products through a mix of next-generation web3 engineering and traditional software development. Each service is designed to help you build smarter, move faster, and scale with confidence.
+        </p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {[
+          { title: "Blockchain Software Development", href: "/blockchain-development-services", desc: "We turn complex ideas into reliable decentralized applications. Our blockchain development services deliver scalable, transparent infrastructure built to grow with your business." },
+          { title: "Web and Mobile App Development", href: "/innovative-web-and-mobile-solutions", desc: "From web platforms to mobile apps, we build high-performance digital products that users actually enjoy. Design thinking, agile development, and scalable architecture: all under one team." },
+          { title: "IT Staff Augmentation", href: "/staff-augmentation", desc: "Connect with skilled developers, designers, and engineers who fit your workflow from day one. You get the expertise without the overhead, faster and fully managed." },
+          { title: "Product Discovery", href: "/product-discovery", desc: "We help you validate ideas, define priorities, and design a roadmap before writing a single line of code. Business goals, user needs, and technical scope, aligned from day one." },
+          { title: "BlockAudit: Blockchain Security", href: "/blockaudit-smart-contract-and-blockchain-security", desc: "We audit your smart contracts and blockchain systems to catch vulnerabilities before they become risks. Secure, compliant, and performance-optimized from the start." },
+        ].map(s => (
+          <a href={s.href} class="group block bg-sd-light-4 rounded-2xl p-7 hover:bg-sd-light-3 transition-colors border border-sd-gray-border hover:border-sd-gray-border2">
+            <h3 class="text-lg text-sd-text-dark font-display mb-3 group-hover:text-sd-purple transition-colors">{s.title}</h3>
+            <p class="text-sm text-sd-text-gray leading-relaxed">{s.desc}</p>
+          </a>
+        ))}
+      </div>
+      <div class="mt-12">
+        <p class="text-base text-sd-text-gray mb-5">Reach out and we'll find the right services, tailored just for you.</p>
+        <a href="/contact" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors">
+          Get in touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK CTA SECTION -->
+  <section class="bg-sd-dark py-32 md:py-48 text-center relative overflow-hidden">
+    <img
+      src="/images/content/1Uy3PMGUKlW32ZDPRO9od3Ww7k.png"
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      class="absolute inset-0 w-full h-full object-cover opacity-15 pointer-events-none"
+    />
+    <div class="relative mx-auto max-w-4xl px-6 md:px-16">
+      <h2 class="text-5xl md:text-7xl lg:text-8xl text-white font-display leading-tight tracking-tight">
+        Take your business to<br/>new heights quickly—let<br/>us handle the technology
+      </h2>
+    </div>
+  </section>
+
+  <!-- WHY SPACEDEV (light) -->
+  <section class="bg-sd-light py-20 md:py-32">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <div class="max-w-2xl mb-16">
+        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Why SpaceDev</h2>
+        <p class="mt-6 text-base text-sd-text-gray leading-relaxed">
+          Choosing the right technology partner can define the success of your product. SpaceDev combines the agility of a startup, the precision of an engineering powerhouse, and the reliability of a global team.
+        </p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mb-12">
+        {[
+          { n: "01", title: "Full-Cycle Product Ownership", desc: "We take ownership of your product lifecycle from ideation to scale, ensuring market readiness through transparent communication and accountability." },
+          { n: "02", title: "Web2 & Mobile Expertise", desc: "Build high-performance custom software and mobile applications using modern frameworks like React and Node.js for scalable, user-centric digital products." },
+          { n: "03", title: "Web3 & Blockchain Expertise", desc: "Leverage deep expertise in smart contracts and decentralized protocols to deploy secure solutions across major ecosystems like Ethereum, Aptos, or Solana." },
+          { n: "04", title: "Flexible Team Models", desc: "Scale your team instantly with our IT staff augmentation services or choose a dedicated team for end-to-end project execution." },
+          { n: "05", title: "Proven Track Record", desc: "Rely on a proven history of delivering high-impact Web2 and Web3 products, backed by our perfect 5-star client ratings." },
+          { n: "06", title: "Global Presence with Local Agility", desc: "Benefit from nearshore collaboration with top talent in your time zone, operating seamlessly from the U.S. and Latin America." },
+        ].map(w => (
+          <div class="rounded-2xl border border-sd-gray-border p-7" data-animate>
+            <p class="text-2xl font-display text-sd-text-dark mb-4">{w.n}</p>
+            <h3 class="text-base font-display text-sd-text-dark mb-3">{w.title}</h3>
+            <p class="text-sm text-sd-text-gray leading-relaxed">{w.desc}</p>
+          </div>
+        ))}
+      </div>
+      <a href="/contact" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors">
+        Partner with us
+      </a>
+    </div>
+  </section>
+
+  <!-- AWARDS & RECOGNITION (light) — Clutch / Forbes / Upwork / GoodFirms badges -->
+  <section class="bg-sd-light py-20 md:py-28 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <div class="text-center mb-14">
+        <p class="text-xs uppercase tracking-[0.2em] text-sd-purple font-medium mb-3">Awards & Recognition</p>
+        <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight">Recognized by the industry</h2>
+        <p class="mt-5 text-base text-sd-text-gray max-w-xl mx-auto">
+          Trusted by clients and ranked among the world's top blockchain and software development companies.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
+        {[
+          { src: "/images/content/zPERVUfXVexzfhErCDP4RSRooMk.svg", alt: "Official Member Forbes 2024" },
+          { src: "/images/content/aBdWHMkZEsQNlbGeQBO4XJATg8.svg", alt: "Top Ethereum Company Clutch 2024" },
+          { src: "/images/content/bdBmJxXbS0JbYnv70UAcRb5GrwM.svg", alt: "Top Blockchain Company Clutch 2024" },
+          { src: "/images/content/1exsYdT6xVql7iTE5bqqdWOjRI.svg", alt: "Top Blockchain Company Clutch Latin America 2024" },
+          { src: "/images/content/io1CW4NvxRfJCwsXcDcmSR9I4U.svg", alt: "Clutch 1000 2023" },
+          { src: "/images/content/uzUPR58aJMlGaMdsQDEp1vIE3Q.svg", alt: "Top Web3 Clutch 2023" },
+          { src: "/images/content/WNyphXBw9RH2QiIGe1gENvdRb3Y.svg", alt: "Upwork Expert-Vetted Leading Development Company" },
+          { src: "/images/content/4zJE6sBRdXmWJ0jpJ853uz4HF8.svg", alt: "Top Blockchain Company Clutch 2023" },
+          { src: "/images/content/9OYbtJK9SdtfcTqrTSOiKucFkFc.svg", alt: "Top Blockchain Development Company GoodFirms" },
+          { src: "/images/content/ehEE6oOVqif6LDETLECnU2DsY.svg", alt: "Most Reviewed Software Developers Miami" },
+          { src: "/images/content/nP3aIhjlgbCspDHyMD8puWCbWU.svg", alt: "Top Blockchain Company Clutch Latin America 2023" },
+          { src: "/images/content/tfNqyIxGUkSzf4hgbfIY4n2TLp4.svg", alt: "Top B2B Companies Clutch Uruguay 2022" },
+          { src: "/images/content/p5gbeY490nFrI1CctwNGY4JJA.svg", alt: "Top Blockchain Development Company GoodFirms" },
+          { src: "/images/content/fsRat8jg5KpcGRaObGavSpSs.svg", alt: "Top Blockchain Development Company GoodFirms" },
+        ].map((b) => (
+          <img src={b.src} alt={b.alt} loading="lazy" class="h-24 md:h-28 w-auto object-contain" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WE SUPPORT (light) — communities & conferences -->
+  <section class="bg-sd-light py-20 md:py-24 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <p class="text-center text-xs uppercase tracking-[0.2em] text-sd-text-gray font-medium mb-12">We support</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 opacity-90">
+        {[
+          { src: "/images/content/tEUseewFeuWDUJuJGNTkPa0amk.png", alt: "Ethereum Argentina" },
+          { src: "/images/content/j5gWTfiVgDuBsVZ2AV0EDRao8.png", alt: "DEC Institute" },
+          { src: "/images/content/MrWHz25zFuUyPR7j3zfp9W3zM.png", alt: "Ethereum Uruguay" },
+          { src: "/images/content/wdpDn751pDCKDfmyyHBXCFMqhns.svg", alt: "Cámara Blockchain del Uruguay" },
+          { src: "/images/content/kM3IjbL29OQveuvBHUmbnpSDBmE.png", alt: "IT Builders" },
+          { src: "/images/content/MYcPcE7qfLNS2A6YUn0AALlhU.png", alt: "DevFest Google" },
+          { src: "/images/content/YNeJkqrfvKqDVlMxsZydxYCPtc.svg", alt: "CUTI" },
+          { src: "/images/content/fz7h8Vi22wz1sBL99ZxGS44Kw.png", alt: "Uruguay Technology" },
+        ].map((c) => (
+          <img src={c.src} alt={c.alt} loading="lazy" class="h-12 md:h-14 w-auto object-contain" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES (light) -->
+  <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight mb-16">Industries We Serve</h2>
+      <div class="grid gap-12 md:grid-cols-2">
+        {[
+          { icon: "💰", name: "Finance and Fintech", desc: "SpaceDev helps financial institutions and fintech startups build secure, scalable products that enhance transparency and automation.\nFrom DeFi platforms and payment gateways to traditional fintech systems, tokenized assets, and digital wallets, we simplify complexity and drive financial innovation." },
+          { icon: "🎮", name: "Gaming and NFTs", desc: "Our team builds NFT ecosystems, web3 gaming platforms, and play-to-earn models that merge creativity with blockchain-backed ownership.\nWe deliver immersive experiences with secure smart contracts and scalable infrastructure." },
+          { icon: "🏥", name: "Healthcare and Life Sciences", desc: "We help healthcare providers ensure data integrity, secure patient identity management, and traceable medical supply chains.\nOur solutions prioritize compliance, security, and seamless interoperability." },
+          { icon: "🚚", name: "Supply Chain and Logistics", desc: "We build solutions that bring real-time visibility, tracking, and trust to global logistics.\nOur systems reduce fraud, enhance traceability, and simplify auditing at every stage." },
+          { icon: "🏢", name: "Real Estate and PropTech", desc: "We can create tokenized property solutions, automated contract workflows, and secure ownership records that streamline property transactions and investment management." },
+          { icon: "🎓", name: "Education and EdTech", desc: "SpaceDev supports educational platforms with digital learning systems, decentralized certification, and blockchain credentials that enhance authenticity and accessibility." },
+          { icon: "⚡", name: "Energy", desc: "We help energy companies embrace decentralized models, build transparent reporting systems, and automate operational workflows through smart contract technology." },
+          { icon: "🚀", name: "Startups and Emerging Ventures", desc: "Whether it's your first product or a new pivot, SpaceDev offers Product Discovery, MVP development, and rapid prototyping. Whether you're scaling a SaaS or launching Web3, we deliver the strategy, speed, and structure to grow." },
+        ].map(ind => (
+          <div class="flex gap-5" data-animate>
+            <div class="shrink-0 w-12 h-12 rounded-full bg-sd-purple/10 flex items-center justify-center text-xl">
+              {ind.icon}
+            </div>
+            <div>
+              <h3 class="text-base font-display text-sd-text-dark mb-2">{ind.name}</h3>
+              <p class="text-sm text-sd-text-gray leading-relaxed whitespace-pre-line">{ind.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES (light) -->
+  <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <div class="max-w-2xl mb-16">
+        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Check out some of our success stories!</h2>
+        <p class="mt-6 text-base text-sd-text-gray leading-relaxed">
+          Every product tells a story: one of collaboration, innovation, and measurable results. SpaceDev not only delivers projects; we support businesses' growth with the kind of technology that earns trust, scales with users, and stands the test of time.
+        </p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {featuredCaseStudies.map((c) => (
+          <CaseStudyCard caseStudy={c} />
+        ))}
+      </div>
+      <div class="mt-10">
+        <a href="/our-work" class="inline-flex items-center gap-2 text-sd-text-dark text-sm hover:text-sd-purple transition-colors font-medium">
+          See all work →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL (dark) -->
+  <section class="py-20 md:py-28 border-t border-sd-gray-border" style="background: var(--sd-purple-deep);">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-16">
+      <div class="grid gap-12 md:grid-cols-[auto_1fr] items-center">
+        <div class="shrink-0 mx-auto md:mx-0">
+          <img
+            src="/images/content/pdZ7BAftmrt9Nz1PfNSYoqN1PSA.png"
+            alt="Happy SpaceDev client"
+            loading="lazy"
+            width="352"
+            height="416"
+            class="rounded-2xl w-44 md:w-56 h-auto object-cover border border-white/10"
+          />
+        </div>
+        <figure data-animate>
+          <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">Loved by founders &amp; engineering leaders</p>
+          <blockquote class="text-2xl md:text-3xl text-white leading-snug font-display">
+            Over 40 perfect 5-star ratings on Clutch — from Web2 SaaS teams to Web3 protocols. Every engagement starts with a real conversation about outcomes, not headcount.
+          </blockquote>
+          <figcaption class="mt-6 flex items-center gap-4">
+            <img
+              src="/images/content/51e2zr5jsh719Xx1RFXhvU54k.png"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              width="472"
+              height="176"
+              class="h-10 w-auto opacity-80"
+            />
+            <img
+              src="/images/content/lptZn43NWX321DVGipV15ZODf1s.png"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              width="440"
+              height="200"
+              class="h-10 w-auto opacity-80"
+            />
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (light) -->
+  <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-3xl px-6 md:px-16">
+      <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight mb-12">Frequently asked questions</h2>
+      <FAQ items={homeFaqs} tone="light" />
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { initScrollAnimations } from "../lib/animations";
+  document.addEventListener("DOMContentLoaded", initScrollAnimations);
+
+  // Rotating word animation
+  const words = ["Fast", "Flexible", "Reliable"];
+  let idx = 0;
+  const el = document.getElementById("rotating-word");
+  if (el) {
+    setInterval(() => {
+      idx = (idx + 1) % words.length;
+      el.style.opacity = "0";
+      setTimeout(() => {
+        if (el) {
+          el.textContent = words[idx];
+          el.style.opacity = "1";
+        }
+      }, 200);
+    }, 2000);
+    el.style.transition = "opacity 0.2s ease";
+  }
+</script>

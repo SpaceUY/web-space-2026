@@ -1,0 +1,66 @@
+---
+interface NavItem { label: string; href: string }
+interface Props { expertise: NavItem[]; explore: NavItem[] }
+const { expertise, explore } = Astro.props;
+---
+
+<div
+  id="mobile-menu"
+  class="hidden fixed inset-0 z-40 bg-sd-dark md:hidden opacity-0 transition-opacity duration-200"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Mobile navigation"
+>
+  <div class="flex items-center justify-between h-[72px] px-6 border-b border-white/5">
+    <a href="/" class="flex items-center" aria-label="SpaceDev home">
+      <img src="/images/logo/spacedev-logo.svg" alt="SpaceDev" width="140" height="28" class="h-7 w-auto" />
+    </a>
+    <button
+      type="button"
+      class="inline-flex items-center justify-center w-10 h-10 text-white"
+      aria-label="Close menu"
+      data-mobile-menu-close
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="px-6 py-8 overflow-y-auto h-[calc(100vh-72px)]" aria-label="Mobile">
+    <details class="border-b border-white/10 py-4">
+      <summary class="flex items-center justify-between cursor-pointer text-lg text-white">
+        Our Expertise
+        <svg width="14" height="14" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <ul class="mt-4 space-y-3 pl-2">
+        {expertise.map((item) => (
+          <li><a href={item.href} class="block py-2 text-sd-text-muted hover:text-white">{item.label}</a></li>
+        ))}
+      </ul>
+    </details>
+
+    <a href="/our-work" class="block border-b border-white/10 py-5 text-lg text-white">Our Work</a>
+    <a href="/careers" class="block border-b border-white/10 py-5 text-lg text-white">Careers</a>
+    <a href="/about-us" class="block border-b border-white/10 py-5 text-lg text-white">About</a>
+
+    <details class="border-b border-white/10 py-4">
+      <summary class="flex items-center justify-between cursor-pointer text-lg text-white">
+        Explore
+        <svg width="14" height="14" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <ul class="mt-4 space-y-3 pl-2">
+        {explore.map((item) => (
+          <li><a href={item.href} class="block py-2 text-sd-text-muted hover:text-white">{item.label}</a></li>
+        ))}
+      </ul>
+    </details>
+
+    <a
+      href="/contact"
+      class="mt-8 inline-flex w-full items-center justify-center px-5 py-3.5 rounded-full bg-sd-purple text-white text-base font-medium"
+    >
+      Get in touch
+    </a>
+  </nav>
+</div>

@@ -1,0 +1,57 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FAQItem[];
+  tone?: "light" | "dark";
+  class?: string;
+  /** Render JSON-LD FAQPage schema for SEO */
+  withJsonLd?: boolean;
+}
+
+const { items, tone = "dark", class: className = "", withJsonLd = true } = Astro.props;
+
+const borderColor = tone === "dark" ? "border-white/10" : "border-sd-gray-border";
+const questionColor = tone === "dark" ? "text-white" : "text-sd-text-dark";
+const answerColor = tone === "dark" ? "text-sd-text-muted" : "text-sd-text-gray";
+const iconColor = tone === "dark" ? "text-sd-purple-3" : "text-sd-purple";
+
+const faqJsonLd = withJsonLd
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: items.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    }
+  : null;
+---
+
+<div class={`divide-y ${borderColor} ${className}`.trim()}>
+  {items.map((item) => (
+    <details class="group py-5 sd-faq-item" name="faq">
+      <summary class={`flex items-center justify-between gap-6 cursor-pointer list-none ${questionColor}`}>
+        <span class="text-base md:text-lg font-medium pr-4">{item.question}</span>
+        <span class={`shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full border ${borderColor} ${iconColor} transition-transform duration-300 group-open:rotate-45`} aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+      </summary>
+      <div class={`mt-4 text-sm md:text-base leading-relaxed ${answerColor}`}>
+        {item.answer}
+      </div>
+    </details>
+  ))}
+</div>
+
+{faqJsonLd && (
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+)}
+
+<style>
+  .sd-faq-item summary::-webkit-details-marker { display: none; }
+</style>

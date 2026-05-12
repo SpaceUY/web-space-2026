@@ -1,0 +1,186 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/ui/Badge.astro";
+import Button from "../components/ui/Button.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import CTA from "../components/ui/CTA.astro";
+import { getAuthor } from "../data/authors";
+
+const positions = [
+  { title: "Full Stack Web3 Developer", mode: "100% Remote", level: "Senior" },
+  { title: "Backend Web3 Developer", mode: "100% Remote", level: "Mid–Senior" },
+  { title: "Frontend React Web3 Developer", mode: "100% Remote", level: "Mid–Senior" },
+  { title: "React Native Developer", mode: "100% Remote", level: "Mid–Senior" },
+  { title: "Blockchain Developer", mode: "100% Remote", level: "Senior" },
+];
+
+const benefits = [
+  { image: "/images/content/49Gx91Wg2JCpyPtaV9vomtqWvCw.png", title: "Flexible vacation time", description: "You decide when it's time for a break! At Space, we offer flexible vacation scheduling to ensure a perfect work-life balance." },
+  { image: "/images/content/dUeBS8CGEQoCMGywP8ZXReamCkQ.png", title: "Monetary perks", description: "Space offers training and access to international certifications, promoting ongoing learning for our talent." },
+  { image: "/images/content/xLChrbBde2JuTczfXudMMW0O9k.png", title: "Professional mentorship", description: "At Space, new talent benefits from our mentorship program, designed to unlock their full professional potential." },
+  { image: "/images/content/eBY5lwg069W2k2QwPXEjnQzEU.png", title: "Well-being program", description: "Excellence in your job goes beyond technical expertise; it encompasses personal well-being. At Space, we provide diverse options for holistic mind-body care." },
+  { image: "/images/content/z7Knqgw7GL10eaIAxP6uTpDw.png", title: "100% Remote work", description: "Though we value face-to-face interactions to nurture healthy relationships, we embrace flexible schedules and remote work, enabling our team to achieve a healthy work-life balance." },
+  { image: "/images/content/6G0QRicYBjDBVHa40ePGoUGugk.png", title: "Team building", description: "At Space, we prioritize team well-being and positive relationships. We host after-work socials, bonding events, and annual retreats in exciting locations worldwide." },
+];
+
+const teamPhotos = [
+  "/images/content/K9DVq6Pi6ANOgwO60jV8cg44kdg.jpg",
+  "/images/content/UBM39geSOJEWaiFFFUAZwrnaZs.jpg",
+  "/images/content/jrVqUaItfaiWthkT9E9WKH8cPaQ.jpg",
+];
+
+const grecia = getAuthor("grecia-tardaguila");
+
+const jobPostingsJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": positions.map((p) => ({
+    "@type": "JobPosting",
+    title: p.title,
+    description: `${p.title} role at SpaceDev — ${p.mode}, ${p.level}.`,
+    employmentType: "FULL_TIME",
+    hiringOrganization: { "@type": "Organization", name: "SpaceDev", sameAs: "https://spacedev.io" },
+    jobLocationType: "TELECOMMUTE",
+    applicantLocationRequirements: { "@type": "Country", name: "Worldwide" },
+  })),
+};
+---
+
+<BaseLayout
+  title="Careers at SpaceDev — Join our remote engineering team"
+  description="Join SpaceDev, a top-5 Clutch blockchain company. Open remote roles in Web3, full-stack, and mobile engineering with global mentorship and benefits."
+  jsonLd={jobPostingsJsonLd}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
+    <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 80% 30%, var(--sd-cyan), transparent 50%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-32">
+      <div class="max-w-3xl" data-animate>
+        <Badge tone="green" withDot class="mb-6">We're hiring</Badge>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white">Join the SpaceDev team and be part of something special!</h1>
+        <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
+          At SpaceDev, our team culture is everything. We're proud to have a talented, multidisciplinary crew,
+          but above all, we value great people. If you're looking for a professional, fun, and dynamic place
+          to work, SpaceDev is the place for you!
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <Button href="#open-positions" variant="primary" size="lg">See open positions</Button>
+          <Button href="mailto:people@spacedev.io" variant="outline-light" size="lg">people@spacedev.io</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM PHOTOS STRIP -->
+  <section class="bg-sd-light py-12 md:py-16">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
+        {teamPhotos.map((src, i) => (
+          <img
+            src={src}
+            alt={`SpaceDev team ${i + 1}`}
+            loading="lazy"
+            width="800"
+            height="600"
+            class="w-full h-64 md:h-80 object-cover rounded-2xl"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN POSITIONS -->
+  <section id="open-positions" class="bg-sd-dark py-20 md:py-28">
+    <div class="mx-auto max-w-[1200px] px-6 md:px-10">
+      <SectionHeading
+        eyebrow="Open positions"
+        title="Find your next role"
+        description="All positions are 100% remote. Apply by sending your portfolio or résumé to people@spacedev.io."
+        class="mb-12"
+      />
+      <ul class="divide-y divide-white/10 border-y border-white/10">
+        {positions.map((p) => (
+          <li class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-6" data-animate>
+            <div>
+              <h3 class="text-lg text-white">{p.title}</h3>
+              <p class="mt-1 text-sm text-sd-text-muted">
+                <span class="inline-flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sd-green inline-block" aria-hidden="true"></span>
+                  {p.mode}
+                </span>
+                <span class="mx-3" aria-hidden="true">·</span>
+                {p.level}
+              </p>
+            </div>
+            <Button href={`mailto:people@spacedev.io?subject=Application: ${p.title}`} variant="primary">Apply</Button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CULTURE QUOTE -->
+  {grecia && (
+    <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
+      <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+        <figure class="text-center" data-animate>
+          <img
+            src="/images/content/7JdCXilWraK1hOANTbX2xgD4.png"
+            alt="Grecia Tardáguila, Head of People at SpaceDev"
+            loading="lazy"
+            width="160"
+            height="160"
+            class="mx-auto mb-8 w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-sd-purple/40"
+          />
+          <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display">
+            "As the Head of People at SpaceDev, I'm committed to maintaining a high-performance culture
+            with strong human values. Join us to be part of a top-tier team where your growth, well-being
+            and work-life balance are prioritized. Apply now!"
+          </blockquote>
+          <figcaption class="mt-10">
+            <a href={`/author/${grecia.slug}`} class="inline-flex flex-col items-center gap-1 hover:text-white">
+              <p class="text-white font-medium">{grecia.name}</p>
+              <p class="text-sm text-sd-text-muted">{grecia.role}, SpaceDev</p>
+            </a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  )}
+
+  <!-- BENEFITS -->
+  <section class="bg-sd-dark py-20 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <SectionHeading
+        eyebrow="SpaceDev Perks!"
+        title="What working at SpaceDev looks like"
+        align="center"
+        class="mb-14"
+      />
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {benefits.map((b) => (
+          <article class="bg-sd-dark-2 border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(103,58,228,0.25)]" data-animate>
+            <img
+              src={b.image}
+              alt={b.title}
+              loading="lazy"
+              width="700"
+              height="500"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6 md:p-8">
+              <h3 class="text-lg text-white mb-2">{b.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{b.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Don't see your role listed?"
+    description="We're always looking for outstanding engineers, designers, and product people. Send us your portfolio."
+    buttons={[{ label: "Email people@spacedev.io", href: "mailto:people@spacedev.io" }]}
+    variant="dark"
+  />
+</BaseLayout>

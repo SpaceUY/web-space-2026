@@ -1,0 +1,266 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+import Badge from "../components/ui/Badge.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import FAQ from "../components/ui/FAQ.astro";
+import CTA from "../components/ui/CTA.astro";
+import CaseStudyCard from "../components/ui/CaseStudyCard.astro";
+import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
+import { type ServicePageData, getCaseStudies } from "../data/services";
+import { SITE } from "../lib/seo";
+
+interface Props {
+  data: ServicePageData;
+}
+
+const { data } = Astro.props;
+const featured = data.caseStudySlugs ? getCaseStudies(data.caseStudySlugs) : [];
+
+// Build breadcrumbs from URL path: /a/b/c → Home > A > B > C
+const segments = Astro.url.pathname.split("/").filter(Boolean);
+const isSubPage = segments.length > 1;
+const crumbs = [{ label: "Home", href: "/" }];
+let acc = "";
+segments.forEach((seg) => {
+  acc += "/" + seg;
+  const label = seg
+    .split("-")
+    .map((w) => w[0].toUpperCase() + w.slice(1))
+    .join(" ");
+  crumbs.push({ label, href: acc });
+});
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: data.title,
+  description: data.description,
+  provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+  areaServed: "Worldwide",
+};
+---
+
+<BaseLayout
+  title={data.seo.title}
+  description={data.seo.description}
+  jsonLd={serviceJsonLd}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
+    <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 20% 30%, var(--sd-purple), transparent 50%), radial-gradient(circle at 80% 70%, var(--sd-cyan), transparent 40%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-32">
+      <div class={data.heroImage ? "grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center" : ""}>
+        <div class="max-w-4xl" data-animate>
+          <Breadcrumbs items={crumbs} visible={isSubPage} class="mb-6" />
+          <Badge tone="purple" withDot class="mb-6">{data.eyebrow}</Badge>
+          <h1 class="text-4xl md:text-6xl lg:text-7xl text-white">{data.title}</h1>
+          <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-3xl leading-relaxed">{data.description}</p>
+          {(data.primaryCta || data.secondaryCta) && (
+            <div class="mt-10 flex flex-wrap gap-4">
+              {data.primaryCta && (
+                <Button href={data.primaryCta.href} variant="primary" size="lg" external={data.primaryCta.external}>
+                  {data.primaryCta.label}
+                </Button>
+              )}
+              {data.secondaryCta && (
+                <Button href={data.secondaryCta.href} variant="outline-light" size="lg" external={data.secondaryCta.external}>
+                  {data.secondaryCta.label}
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
+        {data.heroImage && (
+          <div class="relative" data-animate>
+            <div class="rounded-3xl overflow-hidden border border-white/10 bg-white/5 aspect-square flex items-center justify-center p-6">
+              <img
+                src={data.heroImage.src}
+                alt={data.heroImage.alt}
+                width={data.heroImage.width ?? 800}
+                height={data.heroImage.height ?? 800}
+                loading="eager"
+                class="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS (numbered steps, horizontal flow) -->
+  {data.process && (
+    <section class="bg-sd-dark py-20 md:py-28 border-b border-white/5">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <SectionHeading
+          eyebrow={data.process.eyebrow}
+          title={data.process.title}
+          description={data.process.description}
+          align="center"
+          class="mb-14"
+        />
+        <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {data.process.items.map((step) => (
+            <li class="relative rounded-2xl border border-white/10 bg-sd-dark-2 p-6" data-animate>
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-sd-purple/15 text-sd-purple-3 font-display text-lg mb-5">
+                {step.number}
+              </span>
+              <h3 class="text-lg text-white mb-2">{step.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{step.description}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )}
+
+  <!-- OFFERS (what we build) -->
+  {data.offers && (
+    <section class="bg-sd-dark py-20 md:py-28">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <SectionHeading
+          eyebrow={data.offers.eyebrow}
+          title={data.offers.title}
+          description={data.offers.description}
+          class="mb-14"
+        />
+        {data.offersIllustration && (
+          <div class="mb-14 flex justify-center" data-animate>
+            <img
+              src={data.offersIllustration.src}
+              alt={data.offersIllustration.alt}
+              loading="lazy"
+              class="max-w-full h-auto max-h-64 object-contain opacity-90"
+            />
+          </div>
+        )}
+        <div class="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+          {data.offers.items.map((o) => (
+            <div class="group" data-animate>
+              <p class="text-xs font-medium text-sd-purple-3 mb-3 tracking-widest">{o.number}</p>
+              <h3 class="text-lg text-white mb-3 group-hover:text-sd-cyan transition-colors">{o.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{o.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CASE STUDIES -->
+  {featured.length > 0 && (
+    <section class="py-20 md:py-28 border-y border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <SectionHeading
+            eyebrow="Selected work"
+            title="Real results, shipped to production"
+            description="Take a closer look at how this service has helped teams ship at scale."
+          />
+          <Button href="/our-work" variant="outline-light">See all work</Button>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {featured.map((c) => (
+            <CaseStudyCard caseStudy={c} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- BENEFITS -->
+  {data.benefits && (
+    <section class="bg-sd-dark py-20 md:py-28">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <SectionHeading
+          eyebrow={data.benefits.eyebrow}
+          title={data.benefits.title}
+          description={data.benefits.description}
+          align="center"
+          class="mb-14"
+        />
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {data.benefits.items.map((b) => (
+            <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-6 hover:border-sd-purple/40 transition-colors" data-animate>
+              <h3 class="text-lg text-white mb-3">{b.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{b.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- QUOTE -->
+  {data.quote && (
+    <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
+      <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+        <figure class="text-center" data-animate>
+          <svg width="48" height="36" viewBox="0 0 48 36" class="mx-auto mb-8 text-sd-purple-3 opacity-50" fill="currentColor" aria-hidden="true">
+            <path d="M14 0C6.27 0 0 6.27 0 14v22h22V14H8c0-3.31 2.69-6 6-6V0zm26 0c-7.73 0-14 6.27-14 14v22h22V14H34c0-3.31 2.69-6 6-6V0z"/>
+          </svg>
+          <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display">
+            {data.quote.text}
+          </blockquote>
+          <figcaption class="mt-10">
+            <p class="text-white font-medium">{data.quote.author}</p>
+            <p class="text-sm text-sd-text-muted">{data.quote.role}, SpaceDev</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  )}
+
+  <!-- WHY US -->
+  {data.whyUs && (
+    <section class="bg-sd-dark py-20 md:py-28">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <SectionHeading
+          eyebrow="Why SpaceDev"
+          title={data.whyUs.title}
+          description={data.whyUs.description}
+          align="center"
+          class="mb-14"
+        />
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {data.whyUs.items.map((w) => (
+            <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-6" data-animate>
+              <h3 class="text-lg text-white mb-3">{w.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{w.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- FAQ -->
+  {data.faqs && data.faqs.length > 0 && (
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="mx-auto max-w-3xl px-6 md:px-10">
+        <SectionHeading
+          eyebrow="FAQ"
+          title="Frequently asked questions"
+          align="center"
+          class="mb-12"
+        />
+        <FAQ items={data.faqs} tone="dark" />
+      </div>
+    </section>
+  )}
+
+  <!-- FINAL CTA -->
+  {data.finalCta && (
+    <CTA
+      eyebrow={data.finalCta.eyebrow}
+      title={data.finalCta.title}
+      description={data.finalCta.description}
+      buttons={[
+        { label: data.finalCta.buttonLabel, href: data.finalCta.buttonHref, external: data.finalCta.external },
+      ]}
+    />
+  )}
+
+  <slot />
+</BaseLayout>

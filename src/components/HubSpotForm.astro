@@ -1,0 +1,45 @@
+---
+interface Props {
+  portalId?: string;
+  formId?: string;
+  region?: string;
+  targetId?: string;
+  class?: string;
+}
+
+const {
+  portalId = "22632737",
+  formId = "acdc5149-7c32-48f4-9137-ab4212538377",
+  region = "na1",
+  targetId = "hubspot-form-container",
+  class: className = "",
+} = Astro.props;
+---
+
+<div id={targetId} class={className} aria-label="Contact form"></div>
+
+<script is:inline define:vars={{ portalId, formId, region, targetId }}>
+  (function () {
+    function load() {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "//js.hsforms.net/forms/embed/v2.js";
+      script.onload = function () {
+        if (window.hbspt) {
+          window.hbspt.forms.create({
+            portalId: portalId,
+            formId: formId,
+            region: region,
+            target: "#" + targetId,
+          });
+        }
+      };
+      document.head.appendChild(script);
+    }
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      load();
+    } else {
+      window.addEventListener("DOMContentLoaded", load);
+    }
+  })();
+</script>

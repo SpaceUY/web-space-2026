@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/ui/Badge.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import FAQ from "../components/ui/FAQ.astro";
+import CTA from "../components/ui/CTA.astro";
+
+const faqs = [
+  {
+    question: "Do you offer free consultation?",
+    answer:
+      "Yes — every engagement starts with a free 30-minute consultation. We use it to understand your goals, scope the problem, and tell you honestly whether we're the right fit. No deck, no pitch.",
+  },
+  {
+    question: "What are your rates?",
+    answer:
+      "We offer time & materials, fixed-scope, and dedicated-team pricing. Rates vary by role and engagement — most engagements land in the $60–120/hr range for staff augmentation, and project pricing depends on scope. We share specifics on the first call.",
+  },
+  {
+    question: "What kind of services do you offer?",
+    answer:
+      "Five core services: Blockchain Development, Web & Mobile Development, IT Staff Augmentation, Product Discovery, and BlockAudit (smart contract security). All under one roof, with the same team across discovery, build, and run.",
+  },
+  {
+    question: "What technologies do you work with on the Full-Stack side?",
+    answer:
+      "TypeScript, React, Next.js, Node.js, Python, Go, React Native, Flutter, PostgreSQL, Redis, and the major cloud providers (AWS, GCP, Vercel). For mobile we ship both React Native and native iOS/Android.",
+  },
+  {
+    question: "Which Blockchain tech-stack do you use?",
+    answer:
+      "Solidity (EVM ecosystems including Ethereum, Polygon, Arbitrum, Base, Optimism), Rust (Solana, Aptos), and Move (Aptos, Sui). Tooling: Foundry, Hardhat, OpenZeppelin, The Graph, OpenZeppelin Defender for monitoring.",
+  },
+  {
+    question: "What is an MVP?",
+    answer:
+      "An MVP (Minimum Viable Product) is the smallest version of your product that delivers real value to a real user. It's not a prototype, not a demo — it's a shippable product designed to learn from market feedback as fast and cheaply as possible.",
+  },
+  {
+    question: "In simple words, what does the Discovery Sprint include?",
+    answer:
+      "A structured 1–4 week engagement where we validate the business case, define the scope, design the user experience, choose the tech stack, and produce a prioritized roadmap — before writing production code. The output is a build-ready plan.",
+  },
+  {
+    question: "What's the difference between IT Staff Augmentation and Consulting / Development Services?",
+    answer:
+      "Staff Augmentation embeds engineers into your team, processes, and codebase — you manage the work and own everything they ship. Consulting / Development Services means SpaceDev owns the project end-to-end: discovery, design, build, ship, and support. Different models for different stages of a company's needs.",
+  },
+];
+---
+
+<BaseLayout
+  title="FAQs | SpaceDev — Common questions about our services"
+  description="Free consultation, rates, services, technologies, MVP definition, Discovery Sprint, and the difference between staff augmentation and full development services."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
+    <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 30% 70%, var(--sd-purple), transparent 50%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-20 md:py-28">
+      <div class="max-w-3xl" data-animate>
+        <Badge tone="purple" withDot class="mb-6">FAQs</Badge>
+        <h1 class="text-4xl md:text-6xl text-white">Straight answers to common questions</h1>
+        <p class="mt-6 text-lg text-sd-text-muted max-w-2xl leading-relaxed">
+          Don't see your question? <a href="/contact" class="text-sd-purple-3 hover:text-sd-cyan underline">Get in touch</a> — we read every message.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-sd-dark py-20 md:py-28">
+    <div class="mx-auto max-w-3xl px-6 md:px-10">
+      <SectionHeading
+        eyebrow="Common questions"
+        title="Everything you wanted to ask"
+        align="center"
+        class="mb-12"
+      />
+      <FAQ items={faqs} tone="dark" />
+    </div>
+  </section>
+
+  <CTA
+    title="Still have questions?"
+    description="Our engineers and product team are happy to jump on a call — no slides, no pitch."
+    buttons={[
+      { label: "Schedule a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
+      { label: "Email us", href: "mailto:info@spacedev.io", variant: "outline-light" },
+    ]}
+  />
+</BaseLayout>

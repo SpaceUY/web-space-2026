@@ -1,0 +1,46 @@
+---
+import type { Author } from "../../data/authors";
+
+interface Props {
+  author: Author;
+  size?: "sm" | "md" | "lg";
+  showName?: boolean;
+  showRole?: boolean;
+  class?: string;
+}
+
+const { author, size = "md", showName = true, showRole = false, class: className = "" } = Astro.props;
+
+const sizes = {
+  sm: { wrapper: "w-8 h-8", text: "text-xs", name: "text-xs", role: "text-[10px]" },
+  md: { wrapper: "w-10 h-10", text: "text-sm", name: "text-sm", role: "text-xs" },
+  lg: { wrapper: "w-14 h-14", text: "text-lg", name: "text-base", role: "text-sm" },
+};
+const s = sizes[size];
+---
+
+<div class={`flex items-center gap-3 ${className}`.trim()}>
+  {author.avatar ? (
+    <img
+      src={author.avatar}
+      alt={`${author.name} portrait`}
+      width="96"
+      height="96"
+      loading="lazy"
+      class={`${s.wrapper} rounded-full object-cover shrink-0 border border-white/10`}
+    />
+  ) : (
+    <div
+      class={`${s.wrapper} rounded-full bg-gradient-to-br ${author.avatarGradient} flex items-center justify-center font-display font-semibold text-white shrink-0`}
+      aria-hidden="true"
+    >
+      <span class={s.text}>{author.initials}</span>
+    </div>
+  )}
+  {showName && (
+    <div class="leading-tight">
+      <p class={`${s.name} text-white`}>{author.name}</p>
+      {showRole && <p class={`${s.role} text-sd-text-muted`}>{author.role}</p>}
+    </div>
+  )}
+</div>

@@ -1,1 +1,245 @@
 @import "tailwindcss";
+
+/* ============================================================
+   FONT FACES — Geist, Open Sans, Saira (self-hosted)
+   ============================================================ */
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/geist/geist-600-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/geist/geist-600-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/open-sans/open-sans-300-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/open-sans/open-sans-300-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/open-sans/open-sans-500-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/open-sans/open-sans-500-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/open-sans/open-sans-500italic-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Saira";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/saira/saira-a169fc18.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Saira";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/saira/saira-ff503512.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Saira";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/saira/saira-585d14a7.woff2") format("woff2");
+}
+
+/* ============================================================
+   DESIGN TOKENS — exact mapping from Framer source
+   ============================================================ */
+:root {
+  /* Backgrounds */
+  --sd-dark:         #141414;
+  --sd-dark-2:       #1e1e1e;
+  --sd-navy:         #17171d;
+  --sd-purple-deep:  #191429;
+  --sd-purple-mid:   #312652;
+  --sd-light:        #fafafa;
+  --sd-light-2:      #f5f5f5;
+  --sd-light-3:      #f4f4f4;
+  --sd-light-4:      #f2f2f2;
+  --sd-gray-border:  #e8e8e8;
+  --sd-gray-border2: #e9e9e7;
+
+  /* Accents */
+  --sd-purple:       #673ae4;
+  --sd-purple-2:     #4a397c;
+  --sd-purple-3:     #8572bc;
+  --sd-cyan:         #44cdf3;
+  --sd-green:        #00ffb2;
+  --sd-black:        #000000;
+  --sd-white:        #ffffff;
+
+  /* Text */
+  --sd-text-primary:   #ffffff;
+  --sd-text-secondary: #858585;
+  --sd-text-muted:     #aaaaaa;
+  --sd-text-dark:      #141414;
+  --sd-text-gray:      #4e5052;
+  --sd-overlay:        #0d0d0d4d;
+
+  /* Gradient */
+  --sd-gradient-hero: linear-gradient(135deg, #4a397c 17%, #191429 105%);
+}
+
+/* ============================================================
+   TAILWIND v4 THEME — expose tokens, breakpoints & fonts to TW
+   ============================================================ */
+@theme {
+  /* Colors */
+  --color-sd-dark:         #141414;
+  --color-sd-dark-2:       #1e1e1e;
+  --color-sd-navy:         #17171d;
+  --color-sd-purple-deep:  #191429;
+  --color-sd-purple-mid:   #312652;
+  --color-sd-light:        #fafafa;
+  --color-sd-light-2:      #f5f5f5;
+  --color-sd-light-3:      #f4f4f4;
+  --color-sd-light-4:      #f2f2f2;
+  --color-sd-gray-border:  #e8e8e8;
+  --color-sd-gray-border2: #e9e9e7;
+  --color-sd-purple:       #673ae4;
+  --color-sd-purple-2:     #4a397c;
+  --color-sd-purple-3:     #8572bc;
+  --color-sd-cyan:         #44cdf3;
+  --color-sd-green:        #00ffb2;
+  --color-sd-text-primary:   #ffffff;
+  --color-sd-text-secondary: #858585;
+  --color-sd-text-muted:     #aaaaaa;
+  --color-sd-text-dark:      #141414;
+  --color-sd-text-gray:      #4e5052;
+
+  /* Fonts */
+  --font-display: "Geist", system-ui, -apple-system, sans-serif;
+  --font-body: "Open Sans", system-ui, -apple-system, sans-serif;
+  --font-ui: "Saira", system-ui, -apple-system, sans-serif;
+
+  /* Framer breakpoints (override TW defaults) */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 1000px;
+  --breakpoint-lg: 1440px;
+  --breakpoint-xl: 1920px;
+  --breakpoint-2xl: 2560px;
+}
+
+/* ============================================================
+   RESET + BASE — inside @layer base so Tailwind utilities win
+   ============================================================ */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--sd-text-dark);
+    background-color: var(--sd-light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  img, svg, video { max-width: 100%; display: block; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; color: inherit; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+  .focus\:not-sr-only:focus {
+    position: static; width: auto; height: auto; margin: 0;
+    overflow: visible; clip: auto; white-space: normal;
+  }
+}
+
+/* ============================================================
+   ANIMATIONS — scroll-triggered + reduced motion safe
+   ============================================================ */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+[data-animate].animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes sd-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes sd-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.sd-marquee { animation: sd-marquee 8s linear infinite; }
+.sd-marquee-wrapper {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-animate] { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   FOCUS — accessible focus ring on interactive elements
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--sd-purple);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

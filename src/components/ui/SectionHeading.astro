@@ -1,0 +1,47 @@
+---
+type Align = "left" | "center";
+type Tone = "light" | "dark";
+type Level = "h1" | "h2" | "h3";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  align?: Align;
+  tone?: Tone;
+  level?: Level;
+  class?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  align = "left",
+  tone = "light",
+  level = "h2",
+  class: className = "",
+} = Astro.props;
+
+const Heading = level;
+const alignment = align === "center" ? "text-center mx-auto" : "text-left";
+const titleColor = tone === "light" ? "text-white" : "text-sd-text-dark";
+const descColor = tone === "light" ? "text-sd-text-muted" : "text-sd-text-gray";
+const eyebrowColor = tone === "light" ? "text-sd-purple-3" : "text-sd-purple";
+---
+
+<div class={`max-w-3xl ${alignment} ${className}`.trim()} data-animate>
+  {eyebrow && (
+    <p class={`text-xs uppercase tracking-[0.2em] font-medium mb-4 ${eyebrowColor}`}>
+      {eyebrow}
+    </p>
+  )}
+  <Heading class={`text-3xl md:text-4xl lg:text-5xl ${titleColor}`}>
+    {title}
+  </Heading>
+  {description && (
+    <p class={`mt-5 text-base md:text-lg leading-relaxed ${descColor}`}>
+      {description}
+    </p>
+  )}
+</div>

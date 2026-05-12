@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/ui/Badge.astro";
+import HubSpotForm from "../components/HubSpotForm.astro";
+import { offices } from "../data/site-content";
+import { SITE } from "../lib/seo";
+
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact SpaceDev",
+  url: `${SITE.url}/contact`,
+  mainEntity: {
+    "@type": "Organization",
+    name: SITE.name,
+    email: SITE.email,
+    telephone: SITE.phone,
+  },
+};
+---
+
+<BaseLayout
+  title="Contact SpaceDev | Talk to a Web3 & software engineering partner"
+  description="Tell us about your project. Free 30-minute consultation with a SpaceDev engineer. Offices in Miami, Montevideo, Buenos Aires and Medellín."
+  jsonLd={contactJsonLd}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
+    <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 30% 70%, var(--sd-purple), transparent 50%), radial-gradient(circle at 80% 20%, var(--sd-cyan), transparent 40%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-20 md:py-28">
+      <div class="max-w-3xl" data-animate>
+        <Badge tone="cyan" withDot class="mb-6">Get in touch</Badge>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white">Ready to reach the stars?</h1>
+        <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
+          Tell us a bit about your project and we'll get back to you within one business day.
+          Or skip the form and book a 30-minute call directly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM + INFO -->
+  <section class="bg-sd-dark py-20 md:py-28">
+    <div class="mx-auto max-w-[1280px] px-6 md:px-10 grid gap-12 lg:grid-cols-5">
+      <div class="lg:col-span-3" data-animate>
+        <h2 class="text-2xl md:text-3xl text-white mb-2">Send us a message</h2>
+        <p class="text-sm text-sd-text-muted mb-8">All fields except company are required.</p>
+        <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-6 md:p-8">
+          <HubSpotForm />
+          <noscript>
+            <p class="text-sm text-sd-text-muted">
+              The contact form requires JavaScript. Please enable JS or email us at
+              <a href={`mailto:${SITE.email}`} class="text-sd-purple-3 underline">{SITE.email}</a>.
+            </p>
+          </noscript>
+        </div>
+      </div>
+
+      <aside class="lg:col-span-2 space-y-8">
+        <div data-animate>
+          <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-3">Prefer a call?</h3>
+          <p class="text-white text-lg mb-4">Book a 30-min slot directly with our team.</p>
+          <a
+            href="https://meetings.hubspot.com/federico-sendra/meet-space"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-sd-purple text-white text-sm font-medium hover:bg-sd-purple-3 transition-colors"
+          >
+            Schedule a meeting
+          </a>
+        </div>
+
+        <div class="border-t border-white/10 pt-8" data-animate>
+          <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-3">Direct contact</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <span class="text-sd-text-muted">General: </span>
+              <a href={`mailto:${SITE.email}`} class="text-white hover:text-sd-purple-3">{SITE.email}</a>
+            </li>
+            <li>
+              <span class="text-sd-text-muted">Careers: </span>
+              <a href="mailto:people@spacedev.io" class="text-white hover:text-sd-purple-3">people@spacedev.io</a>
+            </li>
+            <li>
+              <span class="text-sd-text-muted">Phone: </span>
+              <a href={`tel:${SITE.phone}`} class="text-white hover:text-sd-purple-3">{SITE.phone}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="border-t border-white/10 pt-8" data-animate>
+          <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-3">Our offices</h3>
+          <ul class="space-y-4 text-sm">
+            {offices.map((o) => (
+              <li>
+                <p class="text-white flex items-center gap-2">
+                  <span aria-hidden="true">{o.flag}</span> {o.country}
+                </p>
+                <p class="text-sd-text-muted text-xs leading-relaxed mt-1">{o.address}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

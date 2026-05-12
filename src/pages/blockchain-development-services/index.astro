@@ -1,0 +1,98 @@
+---
+import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import Button from "../../components/ui/Button.astro";
+import { blockchainData } from "../../data/services";
+---
+
+<ServicePageLayout data={blockchainData}>
+  <!-- Hero illustration strip (after main hero) -->
+  <section class="relative py-12 md:py-16 bg-sd-dark border-t border-white/5">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid gap-6 md:grid-cols-3" data-animate>
+        <figure class="rounded-2xl overflow-hidden border border-white/10 bg-sd-dark-2">
+          <img
+            src="/images/content/2wvpbg5yxRUjNpgFU57u4lCIrM.png"
+            alt="Blockchain network nodes visualization"
+            loading="lazy"
+            class="w-full h-48 object-cover"
+            width="600" height="400"
+          />
+        </figure>
+        <figure class="rounded-2xl overflow-hidden border border-white/10 bg-sd-dark-2">
+          <img
+            src="/images/content/zFnoUrxDLmxmtNrnnpiSOQg0VQ.png"
+            alt="Decentralized application architecture"
+            loading="lazy"
+            class="w-full h-48 object-cover"
+            width="600" height="400"
+          />
+        </figure>
+        <figure class="rounded-2xl overflow-hidden border border-white/10 bg-sd-dark-2">
+          <img
+            src="/images/content/CEcGYJOZAvm7PG00LilbLp5d464.png"
+            alt="Smart contract code on screen"
+            loading="lazy"
+            class="w-full h-48 object-cover"
+            width="600" height="400"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Take your business marquee-style banner with image -->
+  <section class="py-20 md:py-28 bg-sd-light-4">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid gap-12 md:grid-cols-2 items-center">
+        <div data-animate>
+          <SectionHeading
+            eyebrow="Decentralization, made tangible"
+            title="Take your business to new heights — let us handle the technology"
+            description="From research to mainnet, our blockchain engineers, designers, and consultants build systems that are transparent, efficient, secure, and built for real business outcomes."
+            tone="dark"
+          />
+          <div class="mt-8 flex flex-wrap gap-4">
+            <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+            <Button href="/our-work" variant="ghost" class="text-sd-text-dark hover:bg-black/5">See our work</Button>
+          </div>
+        </div>
+        <figure class="rounded-3xl overflow-hidden border border-sd-gray-border" data-animate>
+          <img
+            src="/images/content/dUCQRv5vlpXEtBt2z0tl5VSa3Sw.png"
+            alt="Blockchain development team working on Web3 product"
+            loading="lazy"
+            class="w-full h-auto"
+            width="900" height="600"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote backdrop image strip -->
+  <section class="bg-sd-dark py-12 border-t border-white/5">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid gap-6 md:grid-cols-2" data-animate>
+        <figure class="rounded-2xl overflow-hidden">
+          <img
+            src="/images/content/gRRrU2karx7mlNB9UxlPfJOOO0.png"
+            alt="On-chain analytics dashboard"
+            loading="lazy"
+            class="w-full h-64 object-cover"
+            width="900" height="500"
+          />
+        </figure>
+        <figure class="rounded-2xl overflow-hidden">
+          <img
+            src="/images/content/xd622AvzK23zxZOQB1ohAbt8nE.png"
+            alt="Web3 application interface mockup"
+            loading="lazy"
+            class="w-full h-64 object-cover"
+            width="900" height="500"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+</ServicePageLayout>

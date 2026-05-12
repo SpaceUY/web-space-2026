@@ -1,0 +1,129 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import AuthorAvatar from "../../components/ui/AuthorAvatar.astro";
+import { authors } from "../../data/authors";
+import { SITE } from "../../lib/seo";
+
+export async function getStaticPaths() {
+  return authors.map((author) => ({ params: { slug: author.slug }, props: { author } }));
+}
+
+const { author } = Astro.props;
+const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+const posts = allPosts
+  .filter((p) => p.data.author === author.slug)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+
+const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric" });
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: author.name,
+  jobTitle: author.role,
+  description: author.bio,
+  url: `${SITE.url}/author/${author.slug}`,
+  worksFor: { "@type": "Organization", name: SITE.name, url: SITE.url },
+  ...(author.social?.linkedin && { sameAs: [author.social.linkedin] }),
+};
+---
+
+<BaseLayout
+  title={`${author.name} — ${author.role} at SpaceDev`}
+  description={author.bio.slice(0, 155)}
+  jsonLd={personJsonLd}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
+    <div class="relative mx-auto max-w-[1100px] px-6 md:px-10 py-20 md:py-28">
+      <a href="/about-us" class="inline-flex items-center gap-1 text-sm text-sd-text-muted hover:text-white mb-8">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M11 7H3m0 0l3.5-3.5M3 7l3.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        About SpaceDev
+      </a>
+      <div class="grid gap-10 md:grid-cols-[auto_1fr] md:items-center">
+        {author.coverImage ? (
+          <img
+            src={author.coverImage}
+            alt={`${author.name}, ${author.role} at SpaceDev.`}
+            width="320"
+            height="320"
+            loading="eager"
+            class="w-40 md:w-64 h-40 md:h-64 rounded-2xl object-cover border border-white/10 shrink-0"
+          />
+        ) : (
+          <AuthorAvatar author={author} size="lg" showName={false} />
+        )}
+        <div>
+          <Badge tone="purple" class="mb-3">{author.role}</Badge>
+          <h1 class="text-4xl md:text-6xl text-white">{author.name}</h1>
+          <p class="mt-6 text-lg text-sd-text-muted max-w-2xl leading-relaxed">{author.bio}</p>
+          {author.social?.linkedin && (
+            <a
+              href={author.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center gap-2 text-sm text-sd-purple-3 hover:text-sd-cyan"
+            >
+              Connect on LinkedIn
+              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3h6m0 0v6m0-6L3 9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY (when author has photos) -->
+  {author.gallery && author.gallery.length > 0 && (
+    <section class="bg-sd-dark py-16 md:py-20 border-b border-white/5">
+      <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+        <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-8">Speaking, shipping, leading</p>
+        <div class="grid gap-4 md:gap-6 grid-cols-2 md:grid-cols-3">
+          {author.gallery.map((img) => (
+            <div class="rounded-2xl overflow-hidden bg-sd-dark-2 aspect-[4/3] border border-white/5">
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                width="600"
+                height="450"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- POSTS BY AUTHOR -->
+  <section class="bg-sd-dark py-16 md:py-24">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+      <h2 class="text-2xl md:text-3xl text-white mb-10">Posts by {author.name}</h2>
+      {posts.length === 0 ? (
+        <p class="text-sd-text-muted">No published posts yet — check back soon.</p>
+      ) : (
+        <ul class="divide-y divide-white/10">
+          {posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}`} class="group flex flex-col md:flex-row md:items-center md:justify-between gap-3 py-6">
+                <div class="md:max-w-2xl">
+                  <p class="text-xs text-sd-purple-3 uppercase tracking-wider mb-2">{post.data.category}</p>
+                  <h3 class="text-lg md:text-xl text-white group-hover:text-sd-cyan transition-colors">{post.data.title}</h3>
+                  <p class="mt-1 text-sm text-sd-text-muted line-clamp-1">{post.data.description}</p>
+                </div>
+                <p class="text-xs text-sd-text-muted shrink-0">
+                  <time datetime={post.data.publishedAt.toISOString()}>{dateFmt.format(post.data.publishedAt)}</time>
+                  <span class="mx-2" aria-hidden="true">·</span>
+                  {post.data.readTime} min
+                </p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</BaseLayout>

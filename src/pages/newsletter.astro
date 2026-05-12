@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/ui/Badge.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import Card from "../components/ui/Card.astro";
+import HubSpotForm from "../components/HubSpotForm.astro";
+
+const valueProps = [
+  { title: "Practical, not promotional", description: "We write the kind of articles we wish we'd had when we were learning. No fluff, no listicles." },
+  { title: "Engineering-first", description: "Real lessons from production systems — what worked, what broke, what we'd change." },
+  { title: "Roughly monthly", description: "We don't send unless we have something worth your time. No drip sequences, no funnels." },
+];
+---
+
+<BaseLayout
+  title="Newsletter | SpaceDev — Engineering notes from the team"
+  description="Occasional updates from the SpaceDev engineering team. Practical articles on Web3, security, and product. Roughly monthly. No spam."
+>
+  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
+    <div class="relative mx-auto max-w-[1100px] px-6 md:px-10 py-20 md:py-28">
+      <div class="max-w-2xl" data-animate>
+        <Badge tone="green" withDot class="mb-6">Newsletter</Badge>
+        <h1 class="text-4xl md:text-6xl text-white">Engineering notes, in your inbox</h1>
+        <p class="mt-6 text-lg text-sd-text-muted leading-relaxed">
+          Occasional articles from the SpaceDev engineering team — Web3 security, product discovery,
+          and the technologies we ship in production.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-sd-dark py-16 md:py-24">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10 grid gap-12 lg:grid-cols-2">
+      <div data-animate>
+        <SectionHeading eyebrow="Subscribe" title="Get the next one" class="mb-8" />
+        <Card variant="dark" hover={false}>
+          <HubSpotForm />
+        </Card>
+        <p class="mt-4 text-xs text-sd-text-muted">
+          We use HubSpot to manage subscriptions. Unsubscribe in one click anytime.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {valueProps.map((v) => (
+          <div class="flex gap-4" data-animate>
+            <div class="shrink-0 w-10 h-10 rounded-full bg-sd-purple/15 text-sd-purple-3 flex items-center justify-center" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h3 class="text-base text-white mb-1">{v.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{v.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

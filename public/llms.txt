@@ -1,0 +1,36 @@
+# SpaceDev
+
+> Blockchain development company offering Web3 engineering, traditional software development, IT staff augmentation, and blockchain security auditing. We transform complex ideas into scalable digital products combining startup agility with engineering precision.
+
+## Services
+
+- [Blockchain Development Services](https://spacedev.io/blockchain-development-services): End-to-end blockchain development including DeFi platforms, dApps, NFTs, DAOs, smart contracts, cryptocurrencies, and white-label crypto exchanges across Ethereum, Aptos, Solana and other ecosystems.
+- [Web & Mobile Solutions](https://spacedev.io/innovative-web-and-mobile-solutions): Full-stack web and mobile app development using React, Node.js, React Native and modern cloud infrastructure.
+- [IT Staff Augmentation](https://spacedev.io/staff-augmentation): Pre-vetted engineers, designers and specialists available in under 2 weeks. Scale your team without long hiring cycles.
+- [Product Discovery](https://spacedev.io/product-discovery): Strategy sprints, MVP definition, brand strategy, go-to-market planning, and continuous discovery for product-market fit.
+- [BlockAudit Security](https://spacedev.io/blockaudit-smart-contract-and-blockchain-security): Smart contract and blockchain security auditing to detect vulnerabilities before deployment.
+
+## Company
+
+- 7 years in business
+- 70+ team members across 4 countries (USA, Uruguay, Argentina, Colombia)
+- 160+ successful projects delivered
+- 40+ perfect 5-star ratings on Clutch
+- Recognized as Top 5 Blockchain Companies worldwide by Clutch
+
+## Industries served
+
+Finance & Fintech (DeFi), Gaming & NFTs, Healthcare, Supply Chain & Logistics, Real Estate, Education, Energy / Oil & Gas, Startups.
+
+## Contact
+
+- Email: info@spacedev.io
+- Careers: people@spacedev.io
+- Phone: +1 754-249-6595
+- Offices: Miami (FL, USA), Montevideo (Uruguay), Buenos Aires (Argentina), Medellín (Colombia)
+
+## Optional
+
+- [Our Work](https://spacedev.io/our-work): Portfolio of 20+ case studies including Blockchain For Energy, FightFI, ApeBond, Drata, Rarible, NDAX Canada, Blockus, Ubicuity.
+- [Blog](https://spacedev.io/blog): Articles on Web3, blockchain, AI, AR, product development and tech trends.
+- [Careers](https://spacedev.io/careers): Open remote roles across Web3, full-stack, mobile and blockchain engineering.

@@ -1,0 +1,134 @@
+---
+import { SITE } from "../../lib/seo";
+
+const hubs = [
+  { country: "United States", address: "25 SW 9th Street, 4th Floor, Miami, FL" },
+  { country: "Uruguay", address: "Cornelio Cantera 2857, Montevideo" },
+  { country: "Argentina", address: "El Salvador 5707 Palermo Hollywood, CABA" },
+  { country: "Colombia", address: "Carrera 30 # 7AA - 207 Medellín" },
+];
+
+const expertise = [
+  { label: "Blockchain Development", href: "/blockchain-development-services" },
+  { label: "Web & Mobile Solutions", href: "/innovative-web-and-mobile-solutions" },
+  { label: "IT Staff Augmentation", href: "/staff-augmentation" },
+  { label: "Product Discovery", href: "/product-discovery" },
+  { label: "BlockAudit Security", href: "/blockaudit-smart-contract-and-blockchain-security" },
+];
+
+const about = [
+  { label: "About Us", href: "/about-us" },
+  { label: "Events Calendar", href: "/events-calendar" },
+  { label: "SpaceDev in the Media", href: "/blog" },
+  { label: "FAQs", href: "/faqs" },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-sd-dark text-white border-t border-white/5">
+  <!-- Big tagline -->
+  <div class="mx-auto max-w-[1440px] px-6 md:px-10 pt-20 pb-12 border-b border-white/10">
+    <p class="text-3xl md:text-5xl lg:text-6xl font-display leading-tight tracking-tight text-white max-w-4xl">
+      We help you build, audit, and scale secure Web3 products for real-world use cases.
+    </p>
+  </div>
+
+  <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-16 md:py-20">
+    <div class="grid gap-12 md:grid-cols-12">
+      <!-- Logo + socials -->
+      <div class="md:col-span-3">
+        <a href="/" class="inline-flex items-center" aria-label="SpaceDev home">
+          <img src="/images/logo/spacedev-wordmark.png" alt="SpaceDev" width="123" height="24" class="w-[123px] h-auto" />
+        </a>
+        <p class="mt-6 text-sd-text-muted text-sm leading-relaxed max-w-xs">
+          Blockchain development company that transforms complex ideas into scalable digital products.
+          Web3, blockchain &amp; custom software with startup agility.
+        </p>
+        <ul class="mt-6 flex gap-2" aria-label="Social media">
+          <li>
+            <a href={SITE.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+              class="inline-flex w-9 h-9 items-center justify-center rounded-full bg-white text-sd-dark hover:bg-white/80 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.27 18.5V10.13H5.5V18.5h2.77zm-1.39-9.52a1.61 1.61 0 100-3.21 1.61 1.61 0 000 3.21zM18.5 18.5v-4.59c0-2.46-1.31-3.6-3.06-3.6-1.41 0-2.04.77-2.39 1.32V10.13h-2.78V18.5h2.78v-4.55c0-.25.02-.5.09-.68.2-.5.66-1.02 1.43-1.02 1 0 1.41.77 1.41 1.9V18.5h2.52z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href={SITE.social.twitter} target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
+              class="inline-flex w-9 h-9 items-center justify-center rounded-full bg-white text-sd-dark hover:bg-white/80 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+              class="inline-flex w-9 h-9 items-center justify-center rounded-full bg-white text-sd-dark hover:bg-white/80 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href={SITE.social.clutch} target="_blank" rel="noopener noreferrer" aria-label="Clutch profile"
+              class="inline-flex h-9 px-3 items-center justify-center rounded-full bg-white text-sd-dark text-xs font-medium hover:bg-white/80 transition-colors">
+              Clutch
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Our Hubs -->
+      <div class="md:col-span-3">
+        <h3 class="text-sm font-medium text-white mb-5">Our Hubs</h3>
+        <ul class="space-y-4 text-sm">
+          {hubs.map((h) => (
+            <li>
+              <p class="text-white font-medium">{h.country}</p>
+              <p class="text-sd-text-muted text-xs leading-relaxed mt-0.5">{h.address}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Our Expertise -->
+      <div class="md:col-span-2">
+        <h3 class="text-sm font-medium text-white mb-5">Our Expertise</h3>
+        <ul class="space-y-3 text-sm">
+          {expertise.map((s) => (
+            <li><a href={s.href} class="text-sd-text-muted hover:text-white transition-colors">{s.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- About -->
+      <div class="md:col-span-2">
+        <h3 class="text-sm font-medium text-white mb-5">About</h3>
+        <ul class="space-y-3 text-sm">
+          {about.map((s) => (
+            <li><a href={s.href} class="text-sd-text-muted hover:text-white transition-colors">{s.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact us -->
+      <div class="md:col-span-2">
+        <h3 class="text-sm font-medium text-white mb-5">Contact us</h3>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href={`mailto:${SITE.email}`} class="text-sd-text-muted hover:text-white transition-colors">{SITE.email}</a>
+          </li>
+          <li>
+            <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} class="text-sd-text-muted hover:text-white transition-colors">{SITE.phone}</a>
+          </li>
+          <li>
+            <a href="mailto:people@spacedev.io" class="text-sd-text-muted hover:text-white transition-colors">people@spacedev.io</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-sm text-sd-text-muted">
+      <p>© {year} SpaceDev. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="/terms-and-conditions" class="hover:text-white transition-colors">Terms &amp; Conditions</a>
+        <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,302 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import CTA from "../../components/ui/CTA.astro";
+import Breadcrumbs from "../../components/seo/Breadcrumbs.astro";
+import { SITE } from "../../lib/seo";
+import "../../styles/prose.css";
+
+export async function getStaticPaths() {
+  const studies = await getCollection("case-studies");
+  return studies.map((entry, idx) => {
+    const next = studies[(idx + 1) % studies.length];
+    return { params: { slug: entry.id }, props: { entry, next } };
+  });
+}
+
+const { entry, next } = Astro.props;
+const { Content } = await render(entry);
+
+const accentGradients: Record<string, string> = {
+  purple: "from-sd-purple to-sd-purple-2",
+  cyan: "from-sd-cyan to-sd-purple",
+  green: "from-sd-green to-sd-cyan",
+  mixed: "from-sd-purple via-sd-cyan to-sd-green",
+};
+const gradient = accentGradients[entry.data.accent];
+
+const csJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: entry.data.name,
+  description: entry.data.tagline,
+  url: `${SITE.url}/case-study/${entry.id}`,
+  about: entry.data.industry,
+  creator: { "@type": "Organization", name: SITE.name, url: SITE.url },
+  ...(entry.data.client && { author: { "@type": "Organization", name: entry.data.client } }),
+};
+
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Our Work", href: "/our-work" },
+  { label: entry.data.name },
+];
+
+const meta: { label: string; value?: string | number }[] = [
+  { label: "Client", value: entry.data.client },
+  { label: "Industry", value: entry.data.industry },
+  { label: "Year", value: entry.data.year },
+  { label: "Duration", value: entry.data.duration },
+  { label: "Team", value: entry.data.team },
+  { label: "Category", value: entry.data.category },
+].filter((m) => m.value !== undefined);
+
+const heroImage = entry.data.heroImage;
+const summary = entry.data.summary;
+const objectives = entry.data.objectives ?? [];
+const deliverables = entry.data.deliverables ?? [];
+const outcome = entry.data.outcome;
+const gallery = entry.data.gallery ?? [];
+const hasRichContent =
+  !!summary || objectives.length > 0 || deliverables.length > 0 || !!outcome || gallery.length > 0;
+---
+
+<BaseLayout
+  title={`${entry.data.name} — Case Study | SpaceDev`}
+  description={entry.data.tagline}
+  ogImage={heroImage}
+  ogType="article"
+  jsonLd={csJsonLd}
+>
+  <!-- HERO -->
+  <section class={`relative overflow-hidden bg-gradient-to-br ${gradient}`}>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+    <div class="absolute inset-0 opacity-25 mix-blend-overlay" style="background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.5), transparent 60%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-32">
+      <a href="/our-work" class="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white mb-8">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M11 7H3m0 0l3.5-3.5M3 7l3.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to our work
+      </a>
+      <Breadcrumbs items={breadcrumbs} />
+      <Badge tone="outline" class="mb-6">{entry.data.category} · Case Study</Badge>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl text-white max-w-4xl leading-tight">{entry.data.name}</h1>
+      <p class="mt-6 text-xl md:text-2xl text-white/85 max-w-2xl leading-snug">{entry.data.tagline}</p>
+    </div>
+  </section>
+
+  <!-- HERO IMAGE -->
+  {heroImage && (
+    <section class="bg-sd-dark">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10 -mt-12 md:-mt-20 relative z-10">
+        <img
+          src={heroImage}
+          alt={`${entry.data.name} — featured visual`}
+          loading="eager"
+          fetchpriority="high"
+          class="w-full rounded-2xl border border-white/10 shadow-2xl object-cover"
+        />
+      </div>
+    </section>
+  )}
+
+  <!-- META BAR -->
+  <section class="bg-sd-dark py-10 border-b border-white/5">
+    <div class="mx-auto max-w-[1200px] px-6 md:px-10">
+      <dl class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        {meta.map((m) => (
+          <div>
+            <dt class="text-[10px] uppercase tracking-[0.2em] text-sd-text-muted mb-1">{m.label}</dt>
+            <dd class="text-sm text-white">{m.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  {hasRichContent ? (
+    <>
+      <!-- SUMMARY / OVERVIEW -->
+      {summary && (
+        <section class="bg-sd-light py-16 md:py-24">
+          <div class="mx-auto max-w-[1100px] px-6 md:px-10 grid gap-10 lg:grid-cols-3">
+            <div class="lg:col-span-1">
+              <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Overview</p>
+              <h2 class="text-3xl md:text-4xl text-sd-dark leading-tight">About {entry.data.client ?? entry.data.name}</h2>
+            </div>
+            <p class="lg:col-span-2 text-lg md:text-xl text-sd-text-gray leading-relaxed">{summary}</p>
+          </div>
+        </section>
+      )}
+
+      <!-- CHALLENGE / SOLUTION (markdown body) -->
+      <section class="bg-sd-dark py-16 md:py-24">
+        <div class="mx-auto max-w-[1200px] px-6 md:px-10 grid gap-12 lg:grid-cols-3">
+          <article class="sd-prose lg:col-span-2">
+            <Content />
+          </article>
+
+          <aside class="space-y-8 lg:sticky lg:top-24 lg:self-start">
+            {entry.data.services.length > 0 && (
+              <div>
+                <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">Services</h3>
+                <ul class="space-y-2 text-sm text-white">
+                  {entry.data.services.map((s) => <li>{s}</li>)}
+                </ul>
+              </div>
+            )}
+
+            {entry.data.techStack.length > 0 && (
+              <div class="border-t border-white/10 pt-8">
+                <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">Tech Stack</h3>
+                <ul class="flex flex-wrap gap-2">
+                  {entry.data.techStack.map((t) => (
+                    <li class="inline-flex items-center px-3 py-1 rounded-full border border-white/15 text-xs text-sd-text-muted">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </aside>
+        </div>
+      </section>
+
+      <!-- OBJECTIVES -->
+      {objectives.length > 0 && (
+        <section class="bg-sd-light-2 py-16 md:py-24">
+          <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Objectives</p>
+            <h2 class="text-3xl md:text-4xl text-sd-dark mb-10 leading-tight">What we set out to do</h2>
+            <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {objectives.map((o, i) => (
+                <li class="bg-white rounded-2xl p-6 border border-sd-gray-border">
+                  <span class="block text-xs font-mono text-sd-purple mb-3">0{i + 1}</span>
+                  <p class="text-sd-text-gray leading-relaxed">{o}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      <!-- DELIVERABLES -->
+      {deliverables.length > 0 && (
+        <section class="bg-sd-dark py-16 md:py-24">
+          <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-3">What we delivered</p>
+            <h2 class="text-3xl md:text-4xl text-white mb-10 leading-tight">Solutions shipped</h2>
+            <ul class="space-y-4">
+              {deliverables.map((d) => (
+                <li class="flex gap-4 bg-white/[0.03] rounded-xl p-6 border border-white/10">
+                  <span class="shrink-0 w-2 h-2 mt-2 rounded-full bg-sd-cyan"></span>
+                  <p class="text-white/85 leading-relaxed">{d}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      <!-- TECH STACK BAND -->
+      {entry.data.techStack.length > 0 && (
+        <section class="bg-sd-light py-16 md:py-20 border-y border-sd-gray-border">
+          <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Tech Stack</p>
+            <h2 class="text-2xl md:text-3xl text-sd-dark mb-8">Built with</h2>
+            <ul class="flex flex-wrap gap-3">
+              {entry.data.techStack.map((t) => (
+                <li class="inline-flex items-center px-4 py-2 rounded-full bg-white border border-sd-gray-border text-sm text-sd-text-gray">{t}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      <!-- GALLERY -->
+      {gallery.length > 0 && (
+        <section class="bg-sd-dark py-16 md:py-24">
+          <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-3">Gallery</p>
+            <h2 class="text-3xl md:text-4xl text-white mb-10 leading-tight">A closer look</h2>
+            <div class="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {gallery.map((src, i) => (
+                <figure class={`overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] ${i % 5 === 0 ? "sm:col-span-2" : ""}`}>
+                  <img
+                    src={src}
+                    alt={`${entry.data.name} — visual ${i + 1}`}
+                    loading="lazy"
+                    class="w-full h-full object-cover"
+                  />
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <!-- OUTCOME -->
+      {outcome && (
+        <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
+          <div class="mx-auto max-w-[1000px] px-6 md:px-10 text-center">
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-cyan mb-4">Outcome</p>
+            <p class="text-2xl md:text-3xl text-white leading-snug">{outcome}</p>
+          </div>
+        </section>
+      )}
+    </>
+  ) : (
+    <!-- DEFAULT BODY (no rich content yet) -->
+    <section class="bg-sd-dark py-16 md:py-24">
+      <div class="mx-auto max-w-[1200px] px-6 md:px-10 grid gap-12 lg:grid-cols-3">
+        <article class="sd-prose lg:col-span-2">
+          <Content />
+        </article>
+
+        <aside class="space-y-8 lg:sticky lg:top-24 lg:self-start">
+          {entry.data.services.length > 0 && (
+            <div>
+              <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">Services</h3>
+              <ul class="space-y-2 text-sm text-white">
+                {entry.data.services.map((s) => <li>{s}</li>)}
+              </ul>
+            </div>
+          )}
+
+          {entry.data.techStack.length > 0 && (
+            <div class="border-t border-white/10 pt-8">
+              <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">Tech Stack</h3>
+              <ul class="flex flex-wrap gap-2">
+                {entry.data.techStack.map((t) => (
+                  <li class="inline-flex items-center px-3 py-1 rounded-full border border-white/15 text-xs text-sd-text-muted">{t}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </aside>
+      </div>
+    </section>
+  )}
+
+  <!-- UP NEXT -->
+  <section class="py-16 md:py-20 border-t border-white/5" style="background: var(--sd-purple-deep);">
+    <div class="mx-auto max-w-[1200px] px-6 md:px-10">
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-text-muted mb-3">Up next</p>
+      <a href={`/case-study/${next.id}`} class="group flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <h3 class="text-3xl md:text-5xl text-white group-hover:text-sd-cyan transition-colors">{next.data.name}</h3>
+          <p class="mt-2 text-sd-text-muted">{next.data.tagline}</p>
+        </div>
+        <span class="inline-flex items-center gap-2 text-sm text-sd-purple-3 group-hover:gap-3 transition-all">
+          Read case study
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <CTA
+    title="Have a similar project in mind?"
+    description="Tell us about your product — we'll show you the fastest path forward."
+    buttons={[{ label: "Start a project", href: "/contact" }]}
+    variant="dark"
+  />
+</BaseLayout>

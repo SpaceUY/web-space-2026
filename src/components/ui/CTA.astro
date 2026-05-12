@@ -1,0 +1,72 @@
+---
+import Button from "./Button.astro";
+
+interface CTAButton {
+  label: string;
+  href: string;
+  variant?: "primary" | "secondary" | "ghost" | "outline-light";
+  external?: boolean;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  buttons?: CTAButton[];
+  variant?: "gradient" | "dark" | "purple";
+  class?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  buttons = [],
+  variant = "gradient",
+  class: className = "",
+} = Astro.props;
+
+const backgrounds: Record<NonNullable<Props["variant"]>, string> = {
+  gradient: "",
+  dark: "bg-sd-dark-2",
+  purple: "bg-sd-purple",
+};
+
+const inlineStyle =
+  variant === "gradient" ? "background: var(--sd-gradient-hero);" : undefined;
+---
+
+<section
+  class={`relative overflow-hidden ${backgrounds[variant]} ${className}`.trim()}
+  style={inlineStyle}
+>
+  <div class="mx-auto max-w-[1200px] px-6 md:px-10 py-20 md:py-28 text-center">
+    <div data-animate>
+      {eyebrow && (
+        <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">{eyebrow}</p>
+      )}
+      <h2 class="text-3xl md:text-5xl lg:text-6xl text-white max-w-3xl mx-auto">
+        {title}
+      </h2>
+      {description && (
+        <p class="mt-6 text-base md:text-lg text-sd-text-muted max-w-2xl mx-auto leading-relaxed">
+          {description}
+        </p>
+      )}
+      {buttons.length > 0 && (
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+          {buttons.map((b) => (
+            <Button
+              href={b.href}
+              variant={b.variant ?? "primary"}
+              size="lg"
+              external={b.external}
+            >
+              {b.label}
+            </Button>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

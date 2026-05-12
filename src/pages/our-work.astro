@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/ui/Badge.astro";
+import CTA from "../components/ui/CTA.astro";
+import CaseStudyCard from "../components/ui/CaseStudyCard.astro";
+import { caseStudies } from "../data/case-studies";
+
+const filters = [
+  { label: "All", value: "all" },
+  { label: "Web2", value: "Web2" },
+  { label: "Web3", value: "Web3" },
+];
+---
+
+<BaseLayout
+  title="Our Work | SpaceDev — Selected case studies in Web3 and SaaS"
+  description="Explore 20+ case studies from SpaceDev: blockchain platforms, NFT marketplaces, fintech, gaming, and enterprise SaaS shipped with our clients."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 70% 30%, var(--sd-cyan), transparent 40%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-32">
+      <div class="max-w-4xl" data-animate>
+        <Badge tone="cyan" withDot class="mb-6">Our Work</Badge>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white">
+          Real products. <br />Real impact.
+        </h1>
+        <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
+          {caseStudies.length}+ products shipped across blockchain, fintech, gaming, healthcare and SaaS.
+          Filter by category to see how we partner with founders and enterprise teams alike.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTERS + GRID -->
+  <section class="bg-sd-dark py-16 md:py-20">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="flex flex-wrap items-center gap-3 mb-10" role="tablist" aria-label="Filter case studies">
+        {filters.map((f, i) => (
+          <button
+            type="button"
+            class={`sd-filter-btn px-5 py-2 rounded-full text-sm border transition-colors ${i === 0 ? 'bg-sd-purple border-sd-purple text-white' : 'border-white/15 text-sd-text-muted hover:text-white hover:border-white/30'}`}
+            data-filter={f.value}
+            role="tab"
+            aria-selected={i === 0}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
+      <div id="sd-case-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {caseStudies.map((c) => (
+          <CaseStudyCard caseStudy={c} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Have a project in mind?"
+    description="From a one-week discovery sprint to a multi-year partnership — let's see how we can help."
+    buttons={[
+      { label: "Start a project", href: "/contact" },
+      { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", variant: "outline-light", external: true },
+    ]}
+  />
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".sd-filter-btn");
+  const cards = document.querySelectorAll<HTMLElement>("#sd-case-grid > [data-category]");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter ?? "all";
+
+      buttons.forEach((b) => {
+        const active = b === btn;
+        b.setAttribute("aria-selected", String(active));
+        b.classList.toggle("bg-sd-purple", active);
+        b.classList.toggle("border-sd-purple", active);
+        b.classList.toggle("text-white", active);
+        b.classList.toggle("border-white/15", !active);
+        b.classList.toggle("text-sd-text-muted", !active);
+      });
+
+      cards.forEach((card) => {
+        const category = card.dataset.category;
+        const show = filter === "all" || category === filter;
+        card.style.display = show ? "" : "none";
+      });
+    });
+  });
+</script>

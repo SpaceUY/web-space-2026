@@ -1,0 +1,119 @@
+---
+import "../styles/global.css";
+import SEOHead from "../components/seo/SEOHead.astro";
+import JsonLD from "../components/seo/JsonLD.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import { organizationJsonLd, SITE } from "../lib/seo";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+}
+
+const {
+  title = SITE.defaultTitle,
+  description = SITE.defaultDescription,
+  canonical,
+  ogImage,
+  ogType = "website",
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta name="theme-color" content="#191429" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="icon" type="image/png" href="/images/logo/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/images/logo/favicon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <link rel="preload" href="/fonts/geist/geist-600-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/open-sans/open-sans-300-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/open-sans/open-sans-500-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <SEOHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      ogType={ogType}
+      noindex={noindex}
+    />
+
+    <JsonLD data={organizationJsonLd} />
+    {jsonLd && <JsonLD data={jsonLd} />}
+
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WKM5KGV');
+    </script>
+
+    <!-- Google Analytics 4 -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-J43N5T0K82"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J43N5T0K82');
+    </script>
+
+    <!-- HotJar -->
+    <script is:inline>
+      (function(c,s,q,u,a,r,e){
+        c.hj=c.hj||function(){(c.hj.q=c.hj.q||[]).push(arguments)};
+        c._hjSettings={hjid:a};
+        r=s.getElementsByTagName('head')[0];
+        e=s.createElement('script');e.async=true;
+        e.src=q+c._hjSettings.hjid+u;
+        r.appendChild(e);
+      })(window,document,'https://static.hj.contentsquare.net/c/csq-','.js',5330235);
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col bg-sd-dark text-white antialiased">
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WKM5KGV"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+        title="Google Tag Manager"
+      ></iframe>
+    </noscript>
+
+    <Header />
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      import { initScrollAnimations } from "../lib/animations";
+      initScrollAnimations();
+      document.addEventListener("astro:page-load", initScrollAnimations);
+    </script>
+  </body>
+</html>

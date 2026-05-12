@@ -1,0 +1,47 @@
+---
+import { SITE } from "../../lib/seo";
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+  /** When true, render visible breadcrumbs (in addition to JSON-LD) */
+  visible?: boolean;
+  class?: string;
+}
+
+const { items, visible = false, class: className = "" } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((c, idx) => ({
+    "@type": "ListItem",
+    position: idx + 1,
+    name: c.label,
+    ...(c.href ? { item: c.href.startsWith("http") ? c.href : `${SITE.url}${c.href}` } : {}),
+  })),
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+{visible && (
+  <nav class={`text-sm text-sd-text-muted ${className}`.trim()} aria-label="Breadcrumb">
+    <ol class="flex flex-wrap items-center gap-2">
+      {items.map((c, idx) => (
+        <li class="inline-flex items-center gap-2">
+          {idx > 0 && <span aria-hidden="true" class="text-sd-text-muted/50">/</span>}
+          {c.href && idx < items.length - 1 ? (
+            <a href={c.href} class="hover:text-white">{c.label}</a>
+          ) : (
+            <span class={idx === items.length - 1 ? "text-white" : ""}>{c.label}</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

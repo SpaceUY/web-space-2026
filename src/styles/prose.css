@@ -1,0 +1,126 @@
+/* Markdown / MDX rendered content — used by blog posts and case studies */
+.sd-prose {
+  color: var(--sd-text-muted);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 70ch;
+}
+
+.sd-prose > * + * { margin-top: 1.25em; }
+
+.sd-prose h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.875rem;
+  line-height: 1.2;
+  color: var(--sd-white);
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.sd-prose h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--sd-white);
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.sd-prose h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--sd-white);
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+}
+
+.sd-prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.sd-prose strong { color: var(--sd-white); font-weight: 500; }
+.sd-prose em { color: #d4d4d4; }
+
+.sd-prose a {
+  color: var(--sd-purple-3);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s;
+}
+.sd-prose a:hover { color: var(--sd-cyan); }
+
+.sd-prose ul, .sd-prose ol {
+  padding-left: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.sd-prose ul { list-style: disc; }
+.sd-prose ol { list-style: decimal; }
+.sd-prose li { margin-top: 0.5em; }
+.sd-prose li::marker { color: var(--sd-purple-3); }
+
+.sd-prose blockquote {
+  border-left: 3px solid var(--sd-purple);
+  padding-left: 1.25em;
+  margin: 2em 0;
+  font-style: italic;
+  color: #d4d4d4;
+}
+
+.sd-prose code {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.125em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color: var(--sd-cyan);
+}
+
+.sd-prose pre {
+  background-color: var(--sd-dark-2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.25em 1.5em;
+  overflow-x: auto;
+  font-size: 0.9em;
+  line-height: 1.6;
+  margin: 1.75em 0;
+}
+.sd-prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.sd-prose img {
+  border-radius: 12px;
+  margin: 2em 0;
+}
+
+.sd-prose hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 3em 0;
+}
+
+.sd-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  font-size: 0.95em;
+}
+.sd-prose th, .sd-prose td {
+  padding: 0.75em 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+.sd-prose th { color: var(--sd-white); font-weight: 500; }
