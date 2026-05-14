@@ -472,6 +472,17 @@ const industries = [
     </div>
   </section>
 
+  <!-- TEXT MARQUEE — Saira 150px dark, matches spacedev.io original -->
+  <div class="bg-sd-light overflow-hidden border-t border-sd-gray-border py-6 sd-marquee-wrapper">
+    <div class="sd-marquee flex items-center whitespace-nowrap gap-0">
+      {[...Array(6)].map(() => (
+        <span class="font-ui font-light text-sd-text-dark shrink-0 pr-16" style="font-size:150px;line-height:1;">
+          Product Development that Sparks Innovation
+        </span>
+      ))}
+    </div>
+  </div>
+
 </BaseLayout>
 
 <script>
