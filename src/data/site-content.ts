@@ -81,9 +81,10 @@ export const stats: Stat[] = [
 ];
 
 export const homeFaqs = [
-  { question: "Do you offer free consultation?", answer: "Yes — we offer a free initial consultation to understand your project, scope, and how SpaceDev can help you reach your goals." },
-  { question: "What kind of services do you offer?", answer: "Web2 and Web3 development, blockchain software, mobile apps, IT staff augmentation, product discovery, and smart contract audits." },
-  { question: "What technologies do you work with?", answer: "Full-stack JavaScript (React, Node.js), React Native, Python, Go, Solidity, Rust, and major blockchain ecosystems like Ethereum, Aptos, and Solana." },
-  { question: "What's the difference between Staff Augmentation and full Development Services?", answer: "Staff Augmentation gives you pre-vetted engineers who integrate into your team and processes. Development Services means SpaceDev owns the product end-to-end — discovery, design, build, ship and support." },
-  { question: "How fast can you start?", answer: "For Staff Augmentation, in under 2 weeks. For full product engagements, kickoff usually happens within 2–4 weeks of contract signing." },
+  { question: "What do your development services include?", answer: "Our development services cover everything from smart contract design and dApp development to NFT, DeFi, and DAO platforms. We believe in helping businesses create scalable, secure, and user-friendly products powered by blockchain technology." },
+  { question: "How is SpaceDev different from other software development companies?", answer: "We blend web2 expertise with deep blockchain knowledge to deliver practical, market-ready solutions. Our distributed team model and agile processes ensure faster delivery, transparency, and real collaboration." },
+  { question: "Can SpaceDev help with blockchain audits and security?", answer: "Yes. Through our BlockAudit division, we perform detailed smart contract audits, penetration testing, and blockchain vulnerability assessments to protect your systems from security risks." },
+  { question: "How does your IT staff augmentation service work?", answer: "We provide skilled engineers and developers who integrate directly with your existing teams. You maintain full control of your project while gaining the flexibility to scale quickly and efficiently." },
+  { question: "What industries do you work with?", answer: "We serve clients across fintech, gaming, healthcare, logistics, real estate, and more. Our custom software development and blockchain solutions are tailored to match each industry's unique challenges and growth goals." },
+  { question: "How do I start working with SpaceDev?", answer: "You can begin with a free consultation to discuss your project goals. Our team will assess your needs, suggest the right engagement model, and design a roadmap that fits your budget and timeline." },
 ];

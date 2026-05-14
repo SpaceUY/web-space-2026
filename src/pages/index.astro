@@ -5,6 +5,12 @@ import CaseStudyCard from "../components/ui/CaseStudyCard.astro";
 import { homeFaqs } from "../data/site-content";
 import { featuredCaseStudies } from "../data/case-studies";
 import { websiteJsonLd } from "../lib/seo";
+import { getCollection } from "astro:content";
+
+const recentPosts = (await getCollection("blog"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 4);
 
 // Client logos — exact pixel dimensions from spacedev.io Framer CSS
 // full174: SVGs are 174×174 with FAFAFA background baked in (render as-is)
@@ -27,6 +33,26 @@ const clientLogos = [
   { src: "/images/clients/rarible.svg",       alt: "Rarible",      w: 133, h: 31,  full: false },
   { src: "/images/clients/ufc.svg",           alt: "UFC Strike",   w: 145, h: 22,  full: false },
 ] as const;
+
+// Industry SVG icons — white stroke, for use on purple bg circles
+const I_BUILDING = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 9 18 L 9 0.75 C 9 0.473 8.847 0.219 8.604 0.089 C 8.36 -0.042 8.064 -0.027 7.834 0.126 L 0.334 5.126 C 0.125 5.265 0 5.5 0 5.751 L 0 18" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3.75 2.25)"/><path d="M 0 0 L 6.75 0 C 7.164 0 7.5 0.336 7.5 0.75 L 7.5 12" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(12.75 8.25)"/><path d="M 0 0 L 21 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1.5 20.25)"/><path d="M 0 0 L 0 1.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(9.75 10.5)"/><path d="M 0 0 L 0 1.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(6.75 10.5)"/><path d="M 0 0 L 0 1.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(6.75 15.75)"/><path d="M 0 0 L 0 1.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(9.75 15.75)"/></svg>`;
+const I_CHAT = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 0 L 2.25 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(14.25 9.75)"/><path d="M 0 0 L 3 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(6.75 9.75)"/><path d="M 0 0 L 0 3" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(8.25 8.25)"/><path d="M 8.429 9.75 L 4.481 14.231 C 3.671 15.041 2.429 15.232 1.413 14.703 C 0.397 14.174 -0.159 13.047 0.04 11.919 L 1.574 4.031 C 1.983 1.704 4.002 0.005 6.364 0 L 14.625 0 C 17.317 0 19.5 2.183 19.5 4.875 C 19.5 7.567 17.317 9.75 14.625 9.75 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1.5 4.5)"/><path d="M 0 5.719 L 3.948 10.2 C 4.758 11.01 6 11.201 7.016 10.672 C 8.032 10.143 8.587 9.016 8.389 7.888 L 6.855 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(14.071 8.531)"/></svg>`;
+const I_HEART = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 2.25 L 3.75 2.25 L 5.25 0 L 8.25 4.5 L 9.75 2.25 L 12 2.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3 10.5)"/><path d="M 0 5.25 C 0 5.187 0 5.125 0 5.063 C 0 2.267 2.267 0 5.063 0 C 7.18 0 8.994 1.154 9.75 3 C 10.506 1.154 12.32 0 14.438 0 C 17.233 0 19.5 2.267 19.5 5.063 C 19.5 11.25 9.75 16.5 9.75 16.5 C 9.75 16.5 5.813 14.381 2.946 11.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(2.25 4.5)"/></svg>`;
+const I_TRUCK = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 0 L 3.992 0 C 4.298 0 4.573 0.185 4.688 0.469 L 6 3.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(17.25 7.5)"/><path d="M 0 0 L 15 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(2.25 13.5)"/><path d="M 0 2.25 C 0 1.007 1.007 0 2.25 0 C 3.493 0 4.5 1.007 4.5 2.25 C 4.5 3.493 3.493 4.5 2.25 4.5 C 1.007 4.5 0 3.493 0 2.25 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(15.75 15.75)"/><path d="M 0 2.25 C 0 1.007 1.007 0 2.25 0 C 3.493 0 4.5 1.007 4.5 2.25 C 4.5 3.493 3.493 4.5 2.25 4.5 C 1.007 4.5 0 3.493 0 2.25 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(5.25 15.75)"/><path d="M 6 0 L 0 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(9.75 18)"/><path d="M 0 0 L 6 0 L 6 6 C 6 6.414 5.664 6.75 5.25 6.75 L 3 6.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(17.25 11.25)"/><path d="M 3 12 L 0.75 12 C 0.336 12 0 11.664 0 11.25 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 15 0 L 15 9.878" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(2.25 6)"/></svg>`;
+const I_GRADUATION = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 0 L 0 7.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3 6)"/><path d="M 0 3.75 C 1.472 1.493 3.854 0 6.75 0 C 9.646 0 12.028 1.493 13.5 3.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(5.25 16.5)"/><path d="M 18 3 L 9 6 L 0 3 L 9 0 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3 3)"/><path d="M 9.126 0 C 11.04 2.095 10.943 5.333 8.906 7.309 C 6.869 9.286 3.631 9.286 1.594 7.309 C -0.443 5.333 -0.54 2.095 1.374 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(6.75 7.708)"/></svg>`;
+const I_ENERGY = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 0 L 3 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(14.25 12.75)"/><path d="M 0 0 L 0 3" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(15.75 11.25)"/><path d="M 0 0 L 3 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(6.75 12.75)"/><path d="M 0.75 10.5 C 0.336 10.5 0 10.164 0 9.75 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 18.75 0 C 19.164 0 19.5 0.336 19.5 0.75 L 19.5 9.75 C 19.5 10.164 19.164 10.5 18.75 10.5 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(2.25 7.5)"/><path d="M 0 3 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 3.75 0 C 4.164 0 4.5 0.336 4.5 0.75 L 4.5 3" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(5.25 4.5)"/><path d="M 0 3 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 3.75 0 C 4.164 0 4.5 0.336 4.5 0.75 L 4.5 3" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(14.25 4.5)"/></svg>`;
+const I_ROCKET = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 10.417 6.833 C 12.667 4.583 12.807 1.907 12.737 0.713 C 12.713 0.337 12.413 0.037 12.037 0.013 C 10.843 -0.057 8.168 0.082 5.917 2.333 L 0 8.25 L 4.5 12.75 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(7.5 3.75)"/><path d="M 9.749 0 L 3.969 0 C 3.77 0 3.58 0.079 3.439 0.219 L 0.219 3.44 C 0.019 3.641 -0.051 3.938 0.039 4.207 C 0.129 4.476 0.363 4.672 0.644 4.712 L 4.499 5.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3.001 6.75)"/><path d="M 5.25 0 L 5.25 5.78 C 5.25 5.978 5.171 6.169 5.031 6.309 L 1.81 9.53 C 1.609 9.73 1.312 9.8 1.043 9.71 C 0.774 9.62 0.578 9.386 0.538 9.105 L 0 5.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(12 11.25)"/><path d="M 5.115 2.473 C 4.752 3.269 3.53 5.115 0 5.115 C 0 1.585 1.846 0.363 2.642 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3.75 15.135)"/></svg>`;
+
+const industries = [
+  { name: "Finance and Fintech", icon: I_BUILDING, desc: "SpaceDev helps financial institutions and fintech startups build secure, scalable products that enhance transparency and automation.\nFrom DeFi platforms and payment gateways to traditional fintech systems, tokenized assets, and digital wallets, we simplify complexity and drive financial innovation." },
+  { name: "Gaming and NFTs", icon: I_CHAT, desc: "Our team builds NFT ecosystems, web3 gaming platforms, and play-to-earn models that merge creativity with blockchain-backed ownership.\nWe deliver immersive experiences with secure smart contracts and scalable infrastructure." },
+  { name: "Healthcare and Life Sciences", icon: I_HEART, desc: "We help healthcare providers ensure data integrity, secure patient identity management, and traceable medical supply chains.\nOur solutions prioritize compliance, security, and seamless interoperability." },
+  { name: "Supply Chain and Logistics", icon: I_TRUCK, desc: "We build solutions that bring real-time visibility, tracking, and trust to global logistics.\nOur systems reduce fraud, enhance traceability, and simplify auditing at every stage." },
+  { name: "Real Estate and PropTech", icon: I_BUILDING, desc: "We can create tokenized property solutions, automated contract workflows, and secure ownership records that streamline property transactions and investment management." },
+  { name: "Education and EdTech", icon: I_GRADUATION, desc: "SpaceDev supports educational platforms with digital learning systems, decentralized certification, and blockchain credentials that enhance authenticity and accessibility." },
+  { name: "Energy", icon: I_ENERGY, desc: "We help leading energy companies enhance data integrity, collaboration, and operational visibility. Our solutions support exploration and production through automated reporting, streamlined joint ventures, and improved efficiency across the oil and gas value chain." },
+  { name: "Startups and Emerging Ventures", icon: I_ROCKET, desc: "We help founders turn ideas into products through Product Discovery, MVP development, and rapid prototyping.\nWhether entering Web3 or scaling a SaaS, our team delivers the strategy, speed, and structure to grow." },
+];
 ---
 
 <BaseLayout
@@ -156,7 +182,7 @@ const clientLogos = [
           { n: "05", title: "Proven Track Record", desc: "Rely on a proven history of delivering high-impact Web2 and Web3 products, backed by our perfect 5-star client ratings." },
           { n: "06", title: "Global Presence with Local Agility", desc: "Benefit from nearshore collaboration with top talent in your time zone, operating seamlessly from the U.S. and Latin America." },
         ].map(w => (
-          <div class="rounded-2xl border border-sd-gray-border p-7" data-animate>
+          <div class="why-card rounded-2xl border border-sd-gray-border p-7" style="opacity: 0.3; transition: opacity 0.6s ease;">
             <p class="text-2xl font-display text-sd-text-dark mb-4">{w.n}</p>
             <h3 class="text-base font-display text-sd-text-dark mb-3">{w.title}</h3>
             <p class="text-sm text-sd-text-gray leading-relaxed">{w.desc}</p>
@@ -169,16 +195,182 @@ const clientLogos = [
     </div>
   </section>
 
-  <!-- AWARDS & RECOGNITION (light) — Clutch / Forbes / Upwork / GoodFirms badges -->
-  <section class="bg-sd-light py-20 md:py-28 border-t border-sd-gray-border">
+  <!-- INDUSTRIES (light) -->
+  <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
     <div class="mx-auto max-w-[1440px] px-6 md:px-16">
-      <div class="text-center mb-14">
-        <p class="text-xs uppercase tracking-[0.2em] text-sd-purple font-medium mb-3">Awards & Recognition</p>
-        <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight">Recognized by the industry</h2>
-        <p class="mt-5 text-base text-sd-text-gray max-w-xl mx-auto">
-          Trusted by clients and ranked among the world's top blockchain and software development companies.
+      <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight mb-16">Industries We Serve</h2>
+      <div class="grid gap-12 md:grid-cols-2">
+        {industries.map(ind => (
+          <div class="flex gap-5" data-animate>
+            <div class="shrink-0 w-12 h-12 rounded-full bg-sd-purple flex items-center justify-center p-2.5">
+              <Fragment set:html={ind.icon} />
+            </div>
+            <div>
+              <h3 class="text-base font-display text-sd-text-dark mb-2">{ind.name}</h3>
+              <p class="text-sm text-sd-text-gray leading-relaxed whitespace-pre-line">{ind.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES (light) -->
+  <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <div class="max-w-2xl mb-16">
+        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Check out some of our success stories!</h2>
+        <p class="mt-6 text-base text-sd-text-gray leading-relaxed">
+          Every product tells a story: one of collaboration, innovation, and measurable results. SpaceDev not only delivers projects; we support businesses' growth with the kind of technology that earns trust, scales with users, and stands the test of time.
         </p>
       </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {featuredCaseStudies.map((c) => (
+          <CaseStudyCard caseStudy={c} />
+        ))}
+      </div>
+      <div class="mt-10">
+        <a href="/our-work" class="inline-flex items-center gap-2 text-sd-text-dark text-sm hover:text-sd-purple transition-colors font-medium">
+          See all work →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINI-CTA after case studies -->
+  <section class="bg-sd-light py-16 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <p class="text-2xl md:text-3xl text-sd-text-dark font-display mb-6">Eager to create your own success story?</p>
+      <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer"
+        class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors">
+        Book a call
+      </a>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENT MODELS (light) -->
+  <section class="bg-sd-light-2 py-20 md:py-32 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <div class="max-w-2xl mb-14">
+        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">
+          There are two ways to work with us —<br/>pick what suits you!
+        </h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 mb-10">
+        <!-- MVP Builder -->
+        <div class="bg-white rounded-2xl border border-sd-gray-border p-8 md:p-10">
+          <h3 class="text-2xl font-display text-sd-text-dark mb-2">MVP Builder</h3>
+          <p class="text-sm text-sd-text-gray mb-8">Build a high-tech team for a speedy, top-tier MVP</p>
+          <hr class="border-sd-gray-border mb-8" />
+          <ol class="space-y-5 mb-8">
+            {[
+              "Discovery Phase",
+              "Proposal Phase",
+              "MVP Build",
+              "Product Growth and Support",
+            ].map((step, i) => (
+              <li class="flex items-center gap-4">
+                <span class="flex-shrink-0 w-7 h-7 rounded-full bg-sd-dark text-white text-xs font-semibold flex items-center justify-center">
+                  {i + 1}
+                </span>
+                <span class="text-sm text-sd-text-dark font-medium">{step}</span>
+              </li>
+            ))}
+          </ol>
+          <hr class="border-sd-gray-border mb-6" />
+          <p class="text-sm text-sd-text-gray">Perfect for clients needing to swiftly launch a top-quality MVP.</p>
+        </div>
+        <!-- IT Staff Augmentation -->
+        <div class="bg-white rounded-2xl border border-sd-gray-border p-8 md:p-10">
+          <h3 class="text-2xl font-display text-sd-text-dark mb-2">IT Staff Augmentation</h3>
+          <p class="text-sm text-sd-text-gray mb-8">Optimize your team with flexible IT talent support without permanent commitments.</p>
+          <hr class="border-sd-gray-border mb-8" />
+          <ol class="space-y-5 mb-8">
+            {[
+              "Identify Your Needs",
+              "Candidate Screening Process",
+              "Welcome Aboard!",
+              "Management & Scaling",
+            ].map((step, i) => (
+              <li class="flex items-center gap-4">
+                <span class="flex-shrink-0 w-7 h-7 rounded-full bg-sd-dark text-white text-xs font-semibold flex items-center justify-center">
+                  {i + 1}
+                </span>
+                <span class="text-sm text-sd-text-dark font-medium">{step}</span>
+              </li>
+            ))}
+          </ol>
+          <hr class="border-sd-gray-border mb-6" />
+          <p class="text-sm text-sd-text-gray">Ideal for rapidly scaling team capacity with on-demand expert IT talent.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-sd-gray-border p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <p class="text-base font-display text-sd-text-dark mb-1">Still not sure which option you need?</p>
+          <p class="text-sm text-sd-text-gray">No worries, we're here to help you find the best fit!</p>
+        </div>
+        <a href="/contact" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors whitespace-nowrap">
+          Get in touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS — 4 Clutch review cards (light) -->
+  <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <div class="max-w-2xl mb-14">
+        <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight">
+          Over <span class="text-sd-purple">40 perfect 5-star ratings</span> from happy customers
+        </h2>
+        <p class="mt-5 text-base text-sd-text-gray leading-relaxed">
+          Clients choose SpaceDev for reliability, communication, and technical depth, and stay for the results. Every partnership reflects our belief that success is built on trust, collaboration, and a shared vision.
+        </p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {[
+          { quote: "They showed a strong commitment to resolving issues and delivering effective solutions", company: "Ubicuity", location: "San Francisco, California", period: "APR 2023 – NOV 2023" },
+          { quote: "It's a pleasure to collaborate with them", company: "Ulta Beauty", location: "Bolingbrook, Illinois", period: "APR 2023 – ONGOING" },
+          { quote: "SpaceDev meets the required deadlines", company: "Blockus", location: "San Francisco, California", period: "JAN 2023 – ONGOING" },
+          { quote: "They felt more like a partner than a service provider", company: "Boto", location: "Spain", period: "FEB 2022 – FEB 2023" },
+        ].map(t => (
+          <div class="bg-white rounded-2xl border border-sd-gray-border p-6 flex flex-col" data-animate>
+            <div class="flex items-center gap-3 mb-4 pb-4 border-b border-sd-gray-border">
+              <!-- Clutch logo mark -->
+              <div class="w-8 h-8 rounded-full bg-[#FF3D2E] flex items-center justify-center flex-shrink-0">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
+                  <path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 3a5 5 0 110 10A5 5 0 0110 5zm0 2a3 3 0 100 6 3 3 0 000-6z" fill="white"/>
+                </svg>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-sd-text-dark font-semibold text-sm">5.0</span>
+                <span class="text-[#FF3D2E] text-sm leading-none">★★★★★</span>
+              </div>
+            </div>
+            <blockquote class="text-sm text-sd-text-gray leading-relaxed italic flex-1 mb-4">
+              "{t.quote}"
+            </blockquote>
+            <div>
+              <p class="text-sm font-semibold text-sd-text-dark">{t.company}</p>
+              <p class="text-xs text-sd-text-muted mt-0.5">{t.location}</p>
+              <p class="text-xs text-sd-text-muted mt-0.5">{t.period}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8">
+        <a href="https://clutch.co/profile/spacedev" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sd-text-dark text-sm hover:text-sd-purple transition-colors font-medium">
+          View all reviews on Clutch →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS & RECOGNITION (light) -->
+  <section class="bg-sd-light py-20 md:py-28 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <h2 class="text-3xl md:text-4xl text-sd-text-dark font-display leading-tight tracking-tight mb-14">Highly reviewed by</h2>
       <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
         {[
           { src: "/images/content/zPERVUfXVexzfhErCDP4RSRooMk.svg", alt: "Official Member Forbes 2024" },
@@ -223,106 +415,95 @@ const clientLogos = [
     </div>
   </section>
 
-  <!-- INDUSTRIES (light) -->
+  <!-- FAQ (light, 2-col) -->
   <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
     <div class="mx-auto max-w-[1440px] px-6 md:px-16">
-      <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight mb-16">Industries We Serve</h2>
-      <div class="grid gap-12 md:grid-cols-2">
-        {[
-          { icon: "💰", name: "Finance and Fintech", desc: "SpaceDev helps financial institutions and fintech startups build secure, scalable products that enhance transparency and automation.\nFrom DeFi platforms and payment gateways to traditional fintech systems, tokenized assets, and digital wallets, we simplify complexity and drive financial innovation." },
-          { icon: "🎮", name: "Gaming and NFTs", desc: "Our team builds NFT ecosystems, web3 gaming platforms, and play-to-earn models that merge creativity with blockchain-backed ownership.\nWe deliver immersive experiences with secure smart contracts and scalable infrastructure." },
-          { icon: "🏥", name: "Healthcare and Life Sciences", desc: "We help healthcare providers ensure data integrity, secure patient identity management, and traceable medical supply chains.\nOur solutions prioritize compliance, security, and seamless interoperability." },
-          { icon: "🚚", name: "Supply Chain and Logistics", desc: "We build solutions that bring real-time visibility, tracking, and trust to global logistics.\nOur systems reduce fraud, enhance traceability, and simplify auditing at every stage." },
-          { icon: "🏢", name: "Real Estate and PropTech", desc: "We can create tokenized property solutions, automated contract workflows, and secure ownership records that streamline property transactions and investment management." },
-          { icon: "🎓", name: "Education and EdTech", desc: "SpaceDev supports educational platforms with digital learning systems, decentralized certification, and blockchain credentials that enhance authenticity and accessibility." },
-          { icon: "⚡", name: "Energy", desc: "We help energy companies embrace decentralized models, build transparent reporting systems, and automate operational workflows through smart contract technology." },
-          { icon: "🚀", name: "Startups and Emerging Ventures", desc: "Whether it's your first product or a new pivot, SpaceDev offers Product Discovery, MVP development, and rapid prototyping. Whether you're scaling a SaaS or launching Web3, we deliver the strategy, speed, and structure to grow." },
-        ].map(ind => (
-          <div class="flex gap-5" data-animate>
-            <div class="shrink-0 w-12 h-12 rounded-full bg-sd-purple/10 flex items-center justify-center text-xl">
-              {ind.icon}
-            </div>
-            <div>
-              <h3 class="text-base font-display text-sd-text-dark mb-2">{ind.name}</h3>
-              <p class="text-sm text-sd-text-gray leading-relaxed whitespace-pre-line">{ind.desc}</p>
-            </div>
-          </div>
-        ))}
+      <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-sd-text-dark leading-tight tracking-tight md:sticky md:top-32">
+          Frequently Asked Questions
+        </h2>
+        <div class="bg-white rounded-2xl border border-sd-gray-border overflow-hidden px-6 md:px-8">
+          <FAQ items={homeFaqs} tone="light" withJsonLd={true} />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CASE STUDIES (light) -->
+  <!-- BLOG (light) -->
   <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
     <div class="mx-auto max-w-[1440px] px-6 md:px-16">
-      <div class="max-w-2xl mb-16">
-        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Check out some of our success stories!</h2>
-        <p class="mt-6 text-base text-sd-text-gray leading-relaxed">
-          Every product tells a story: one of collaboration, innovation, and measurable results. SpaceDev not only delivers projects; we support businesses' growth with the kind of technology that earns trust, scales with users, and stands the test of time.
-        </p>
+      <div class="max-w-2xl mb-14">
+        <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight">
+          Check out some related articles from our blog!
+        </h2>
       </div>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {featuredCaseStudies.map((c) => (
-          <CaseStudyCard caseStudy={c} />
+        {recentPosts.map(post => (
+          <a href={`/blog/${post.id}`} class="group block overflow-hidden bg-white hover:shadow-md transition-shadow" data-animate>
+            {post.data.cover && (
+              <div class="aspect-[4/3] overflow-hidden bg-sd-dark">
+                <img
+                  src={post.data.cover}
+                  alt={post.data.title}
+                  loading="lazy"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            )}
+            <div class="pt-4 pb-2">
+              <div class="flex items-center justify-between text-xs text-sd-text-muted uppercase tracking-[0.1em] mb-3">
+                <span>{post.data.publishedAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase()}</span>
+                <span>READING TIME {post.data.readTime} MIN</span>
+              </div>
+              <h3 class="text-base md:text-lg font-display text-sd-text-dark leading-snug line-clamp-3 group-hover:text-sd-purple transition-colors">
+                {post.data.title}
+              </h3>
+            </div>
+          </a>
         ))}
       </div>
       <div class="mt-10">
-        <a href="/our-work" class="inline-flex items-center gap-2 text-sd-text-dark text-sm hover:text-sd-purple transition-colors font-medium">
-          See all work →
+        <a href="/blog" class="inline-flex items-center gap-2 text-sd-text-dark text-sm hover:text-sd-purple transition-colors font-medium">
+          View all posts →
         </a>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIAL (dark) -->
-  <section class="py-20 md:py-28 border-t border-sd-gray-border" style="background: var(--sd-purple-deep);">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-16">
-      <div class="grid gap-12 md:grid-cols-[auto_1fr] items-center">
-        <div class="shrink-0 mx-auto md:mx-0">
-          <img
-            src="/images/content/pdZ7BAftmrt9Nz1PfNSYoqN1PSA.png"
-            alt="Happy SpaceDev client"
-            loading="lazy"
-            width="352"
-            height="416"
-            class="rounded-2xl w-44 md:w-56 h-auto object-cover border border-white/10"
-          />
-        </div>
-        <figure data-animate>
-          <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">Loved by founders &amp; engineering leaders</p>
-          <blockquote class="text-2xl md:text-3xl text-white leading-snug font-display">
-            Over 40 perfect 5-star ratings on Clutch — from Web2 SaaS teams to Web3 protocols. Every engagement starts with a real conversation about outcomes, not headcount.
-          </blockquote>
-          <figcaption class="mt-6 flex items-center gap-4">
-            <img
-              src="/images/content/51e2zr5jsh719Xx1RFXhvU54k.png"
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-              width="472"
-              height="176"
-              class="h-10 w-auto opacity-80"
-            />
-            <img
-              src="/images/content/lptZn43NWX321DVGipV15ZODf1s.png"
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-              width="440"
-              height="200"
-              class="h-10 w-auto opacity-80"
-            />
-          </figcaption>
-        </figure>
-      </div>
+  <!-- FINAL CTA (light, left-aligned) -->
+  <section class="bg-sd-light py-24 md:py-32 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <h2 class="text-5xl md:text-7xl lg:text-8xl text-sd-text-dark font-display leading-none tracking-tight mb-8 max-w-4xl">
+        Ready to build the future with SpaceDev?
+      </h2>
+      <p class="text-base text-sd-text-gray leading-relaxed mb-2 max-w-2xl">
+        Your next big idea deserves a partner who understands both innovation and execution.
+      </p>
+      <p class="text-base text-sd-text-gray leading-relaxed mb-2 max-w-2xl">
+        SpaceDev combines web3 development services, blockchain expertise, and global engineering talent to help you move from vision to reality with speed and precision.
+      </p>
+      <p class="text-base text-sd-text-gray leading-relaxed mb-10 max-w-2xl">
+        Let's turn your concept into a product that scales, engages, and endures.
+      </p>
+      <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors">
+        Schedule a call
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </section>
 
-  <!-- FAQ (light) -->
-  <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
-    <div class="mx-auto max-w-3xl px-6 md:px-16">
-      <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight mb-12">Frequently asked questions</h2>
-      <FAQ items={homeFaqs} tone="light" />
+  <!-- TEXT MARQUEE (gradient) -->
+  <section class="bg-sd-light py-6 border-t border-sd-gray-border overflow-hidden">
+    <div class="sd-marquee-wrapper">
+      <div class="sd-marquee flex items-center whitespace-nowrap" style="animation-duration: 25s">
+        {[...Array(6)].map(() => (
+          <span class="text-5xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight mr-20 select-none"
+                style="background: linear-gradient(90deg, #673ae4 0%, #44cdf3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Product Development that Sparks Innovation &nbsp;
+          </span>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -348,4 +529,19 @@ const clientLogos = [
     }, 2000);
     el.style.transition = "opacity 0.2s ease";
   }
+
+  // Why SpaceDev cards — fade in when entering viewport
+  const whyCards = document.querySelectorAll<HTMLElement>(".why-card");
+  const whyObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).style.opacity = "1";
+          whyObs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  whyCards.forEach((card) => whyObs.observe(card));
 </script>
