@@ -61,20 +61,14 @@ const industries = [
   jsonLd={websiteJsonLd}
 >
   <!-- HERO (dark) -->
-  <section class="bg-sd-dark h-screen -mt-[72px] flex flex-col justify-end items-start relative overflow-hidden">
-    <!-- Background illustration (Framer original hero asset) -->
-    <img
-      src="/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.png"
-      alt=""
-      aria-hidden="true"
-      loading="eager"
-      fetchpriority="high"
-      width="2882"
-      height="1622"
-      class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-screen pointer-events-none"
-    />
-    <div class="absolute inset-0 bg-gradient-to-r from-sd-dark via-sd-dark/80 to-transparent"></div>
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 60% 50%, rgba(103,58,228,0.15) 0%, transparent 70%);"></div>
+  <section class="h-screen -mt-[72px] flex flex-col justify-end items-start relative overflow-hidden" style="background-color: #191429;">
+    <!-- CSS-only nebula approximation — no image needed, zero network cost -->
+    <!-- Warm pinkish/mauve glow upper-right (simulates the original nebula asset) -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 88% 25%, rgba(160,80,120,0.28) 0%, transparent 50%);"></div>
+    <!-- Purple core glow center -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.22) 0%, transparent 58%);"></div>
+    <!-- Left dark vignette (keeps text readable) -->
+    <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to right, #191429 0%, rgba(25,20,41,0.75) 35%, transparent 65%);"></div>
     <div class="relative w-full px-6 pb-10">
       <h1 class="text-5xl md:text-[80px] text-white font-display leading-none tracking-tight">
         Finally:<br/>Your <span id="rotating-word" class="text-white">Flexible</span><br/>Tech Partner.
