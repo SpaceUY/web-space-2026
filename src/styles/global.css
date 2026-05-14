@@ -148,9 +148,9 @@
   --color-sd-text-gray:      #4e5052;
 
   /* Fonts */
-  --font-display: "Saira", system-ui, -apple-system, sans-serif;
+  --font-display: "Geist", system-ui, -apple-system, sans-serif;
   --font-body: "Open Sans", system-ui, -apple-system, sans-serif;
-  --font-ui: "Geist", system-ui, -apple-system, sans-serif;
+  --font-ui: "Saira", system-ui, -apple-system, sans-serif;
 
   /* Framer breakpoints (override TW defaults) */
   --breakpoint-sm: 640px;
@@ -178,7 +178,7 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    font-weight: 300;
+    font-weight: 600;
     margin: 0;
     line-height: 1.1;
     letter-spacing: -0.02em;
