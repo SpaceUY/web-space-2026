@@ -133,9 +133,17 @@ const industries = [
   </section>
 
   <!-- DARK CTA SECTION — between Core Services and Why SpaceDev -->
-  <section class="bg-sd-dark min-h-[90vh] flex items-center justify-center text-center px-6">
-    <h2 class="scroll-text-reveal text-[40px] md:text-[56px] font-body font-semibold leading-none max-w-[860px]">
-      Take your business to<br/>new heights quickly—let<br/>us handle the technology
+  <section class="bg-sd-dark min-h-[90vh] flex items-center justify-center text-center px-6" style="view-timeline-name: --cta-section; view-timeline-axis: block;">
+    <h2 class="text-[40px] md:text-[56px] font-body font-semibold leading-[1.15] max-w-[860px]">
+      {["Take", "your", "business", "to"].map((word, i) => (
+        <span style={`color: rgba(255,255,255,0.2); animation: text-reveal linear both; animation-timeline: --cta-section; animation-range: entry ${8 + i * 9}% cover ${20 + i * 9}%;`}>{word} </span>
+      ))}<br/>
+      {["new", "heights", "quickly—let"].map((word, i) => (
+        <span style={`color: rgba(255,255,255,0.2); animation: text-reveal linear both; animation-timeline: --cta-section; animation-range: entry ${44 + i * 9}% cover ${56 + i * 9}%;`}>{word} </span>
+      ))}<br/>
+      {["us", "handle", "the", "technology"].map((word, i) => (
+        <span style={`color: rgba(255,255,255,0.2); animation: text-reveal linear both; animation-timeline: --cta-section; animation-range: entry ${71 + i * 7}% cover ${83 + i * 7}%;`}>{word}{i < 3 ? " " : ""}</span>
+      ))}
     </h2>
   </section>
 
