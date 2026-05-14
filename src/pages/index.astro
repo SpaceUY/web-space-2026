@@ -124,6 +124,12 @@ const industries = [
           { title: "BlockAudit: Blockchain Security", href: "/blockaudit-smart-contract-and-blockchain-security", desc: "We audit your smart contracts and blockchain systems to catch vulnerabilities before they become risks. Secure, compliant, and performance-optimized from the start." },
         ].map(s => (
           <a href={s.href} class="group block bg-sd-light-4 rounded-2xl p-7 hover:bg-sd-light-3 transition-colors border border-sd-gray-border hover:border-sd-gray-border2">
+            <!-- Arrow icon — matches Framer original ↓ -->
+            <div class="mb-6">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-sd-text-dark">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <h3 class="text-lg text-sd-text-dark font-display mb-3 group-hover:text-sd-purple transition-colors">{s.title}</h3>
             <p class="text-sm text-sd-text-gray leading-relaxed">{s.desc}</p>
           </a>
@@ -138,7 +144,7 @@ const industries = [
     </div>
   </section>
 
-  <!-- DARK CTA SECTION -->
+  <!-- DARK CTA SECTION — between Core Services and Why SpaceDev -->
   <section class="bg-sd-dark min-h-[90vh] flex items-center justify-center text-center px-6">
     <h2 class="scroll-text-reveal text-[40px] md:text-[56px] font-display leading-none max-w-[860px]">
       Take your business to<br/>new heights quickly—let<br/>us handle the technology
@@ -179,19 +185,19 @@ const industries = [
   <!-- INDUSTRIES (light) -->
   <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
     <div class="mx-auto max-w-[1440px] px-6 md:px-16">
-      <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight mb-16">Industries We Serve</h2>
-      <div class="grid gap-12 md:grid-cols-2">
-        {industries.map(ind => (
-          <div class="flex gap-5" data-animate>
-            <div class="shrink-0 w-12 h-12 rounded-full flex items-center justify-center p-2.5" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
-              <Fragment set:html={ind.icon} />
-            </div>
-            <div>
+      <div class="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl text-sd-text-dark font-display leading-tight tracking-tight md:sticky md:top-32">Industries We Serve</h2>
+        <div class="grid gap-10 md:grid-cols-2">
+          {industries.map(ind => (
+            <div data-animate>
+              <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5 p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={ind.icon} />
+              </div>
               <h3 class="text-base font-display text-sd-text-dark mb-2">{ind.name}</h3>
               <p class="text-sm text-sd-text-gray leading-relaxed whitespace-pre-line">{ind.desc}</p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -205,7 +211,7 @@ const industries = [
           Every product tells a story: one of collaboration, innovation, and measurable results. SpaceDev not only delivers projects; we support businesses' growth with the kind of technology that earns trust, scales with users, and stands the test of time.
         </p>
       </div>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div class="grid gap-6 md:grid-cols-2">
         {featuredCaseStudies.map((c) => (
           <CaseStudyCard caseStudy={c} />
         ))}
@@ -298,11 +304,11 @@ const industries = [
   </section>
 
   <!-- TESTIMONIALS — 4 Clutch review cards (light) -->
-  <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
+  <section class="bg-[#fafafa] py-20 md:py-32">
     <div class="mx-auto max-w-[1440px] px-6 md:px-16">
       <div class="max-w-2xl mb-14">
         <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight">
-          Over <span class="text-sd-purple">40 perfect 5-star ratings</span> from happy customers
+          Over <span style="background: linear-gradient(90deg, #44cdf3 0%, #673ae4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">40 perfect 5-star ratings</span> from happy customers
         </h2>
         <p class="mt-5 text-base text-sd-text-gray leading-relaxed">
           Clients choose SpaceDev for reliability, communication, and technical depth, and stay for the results. Every partnership reflects our belief that success is built on trust, collaboration, and a shared vision.
@@ -310,40 +316,33 @@ const industries = [
       </div>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {[
-          { quote: "They showed a strong commitment to resolving issues and delivering effective solutions", company: "Ubicuity", location: "San Francisco, California", period: "APR 2023 – NOV 2023" },
-          { quote: "It's a pleasure to collaborate with them", company: "Ulta Beauty", location: "Bolingbrook, Illinois", period: "APR 2023 – ONGOING" },
-          { quote: "SpaceDev meets the required deadlines", company: "Blockus", location: "San Francisco, California", period: "JAN 2023 – ONGOING" },
-          { quote: "They felt more like a partner than a service provider", company: "Boto", location: "Spain", period: "FEB 2022 – FEB 2023" },
+          { quote: `"They showed a strong commitment to resolving issues and delivering effective solutions"`, company: "Ubicuity", location: "San Francisco, California", period: "APR 2023 - NOV 2023" },
+          { quote: `"It's a pleasure to collaborate with them"`, company: "Ulta Beauty", location: "Bolingbrook, Illinois", period: "APR 2023 - ONGOING" },
+          { quote: `"SpaceDev meets the required deadlines"`, company: "Blockus", location: "San Francisco, California", period: "JAN 2023 - ONGOING" },
+          { quote: `"They felt more like a partner than a service provider"`, company: "Boto", location: "Spain", period: "FEB 2022 - FEB 2023" },
         ].map(t => (
-          <div class="bg-white rounded-2xl border border-sd-gray-border p-6 flex flex-col" data-animate>
-            <div class="flex items-center gap-3 mb-4 pb-4 border-b border-sd-gray-border">
-              <!-- Clutch logo mark -->
-              <div class="w-8 h-8 rounded-full bg-[#FF3D2E] flex items-center justify-center flex-shrink-0">
-                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
-                  <path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 3a5 5 0 110 10A5 5 0 0110 5zm0 2a3 3 0 100 6 3 3 0 000-6z" fill="white"/>
-                </svg>
-              </div>
+          <div class="bg-[#f2f2f2] rounded-2xl p-6 flex flex-col" data-animate>
+            <div class="flex items-center gap-3 mb-4 pb-4 border-b border-[#e0e0e0]">
+              <!-- Clutch "C" lettermark -->
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                <rect width="32" height="32" rx="4" fill="white"/>
+                <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="700" fill="#1a1a1a">C</text>
+              </svg>
               <div class="flex items-center gap-2">
                 <span class="text-sd-text-dark font-semibold text-sm">5.0</span>
                 <span class="text-[#FF3D2E] text-sm leading-none">★★★★★</span>
               </div>
             </div>
-            <blockquote class="text-sm text-sd-text-gray leading-relaxed italic flex-1 mb-4">
-              "{t.quote}"
+            <blockquote class="text-base text-sd-text-dark leading-snug font-display flex-1 mb-6">
+              {t.quote}
             </blockquote>
             <div>
-              <p class="text-sm font-semibold text-sd-text-dark">{t.company}</p>
+              <p class="text-sm text-sd-text-gray">{t.company}</p>
               <p class="text-xs text-sd-text-muted mt-0.5">{t.location}</p>
               <p class="text-xs text-sd-text-muted mt-0.5">{t.period}</p>
             </div>
           </div>
         ))}
-      </div>
-      <div class="mt-8">
-        <a href="https://clutch.co/profile/spacedev" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-sd-text-dark text-sm hover:text-sd-purple transition-colors font-medium">
-          View all reviews on Clutch →
-        </a>
       </div>
     </div>
   </section>
@@ -352,9 +351,10 @@ const industries = [
   <section class="bg-sd-light py-20 md:py-28 border-t border-sd-gray-border">
     <div class="mx-auto max-w-[1440px] px-6 md:px-16">
       <h2 class="text-3xl md:text-4xl text-sd-text-dark font-display leading-tight tracking-tight mb-14">Highly reviewed by</h2>
-      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
+      <div class="flex flex-wrap items-center gap-x-8 gap-y-8">
         {[
-          { src: "/images/content/zPERVUfXVexzfhErCDP4RSRooMk.svg", alt: "Official Member Forbes 2024" },
+          { src: "/images/content/lptZn43NWX321DVGipV15ZODf1s.png", alt: "AWS Partner" },
+          { src: "/images/content/zPERVUfXVexzfhErCDP4RSRooMk.svg", alt: "Official Member Forbes Technology Council 2024" },
           { src: "/images/content/aBdWHMkZEsQNlbGeQBO4XJATg8.svg", alt: "Top Ethereum Company Clutch 2024" },
           { src: "/images/content/bdBmJxXbS0JbYnv70UAcRb5GrwM.svg", alt: "Top Blockchain Company Clutch 2024" },
           { src: "/images/content/1exsYdT6xVql7iTE5bqqdWOjRI.svg", alt: "Top Blockchain Company Clutch Latin America 2024" },
@@ -369,7 +369,7 @@ const industries = [
           { src: "/images/content/p5gbeY490nFrI1CctwNGY4JJA.svg", alt: "Top Blockchain Development Company GoodFirms" },
           { src: "/images/content/fsRat8jg5KpcGRaObGavSpSs.svg", alt: "Top Blockchain Development Company GoodFirms" },
         ].map((b) => (
-          <img src={b.src} alt={b.alt} loading="lazy" class="h-24 md:h-28 w-auto object-contain" />
+          <img src={b.src} alt={b.alt} loading="lazy" class="h-20 md:h-24 w-auto object-contain" />
         ))}
       </div>
     </div>
@@ -378,8 +378,8 @@ const industries = [
   <!-- WE SUPPORT (light) — communities & conferences -->
   <section class="bg-sd-light py-20 md:py-24 border-t border-sd-gray-border">
     <div class="mx-auto max-w-[1440px] px-6 md:px-16">
-      <p class="text-center text-xs uppercase tracking-[0.2em] text-sd-text-gray font-medium mb-12">We support</p>
-      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 opacity-90">
+      <h3 class="text-3xl md:text-4xl text-sd-text-dark font-display leading-tight tracking-tight mb-14">We support</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-10 items-center">
         {[
           { src: "/images/content/tEUseewFeuWDUJuJGNTkPa0amk.png", alt: "Ethereum Argentina" },
           { src: "/images/content/j5gWTfiVgDuBsVZ2AV0EDRao8.png", alt: "DEC Institute" },
@@ -390,7 +390,9 @@ const industries = [
           { src: "/images/content/YNeJkqrfvKqDVlMxsZydxYCPtc.svg", alt: "CUTI" },
           { src: "/images/content/fz7h8Vi22wz1sBL99ZxGS44Kw.png", alt: "Uruguay Technology" },
         ].map((c) => (
-          <img src={c.src} alt={c.alt} loading="lazy" class="h-12 md:h-14 w-auto object-contain" />
+          <div class="flex items-center justify-center">
+            <img src={c.src} alt={c.alt} loading="lazy" class="h-14 md:h-16 w-auto object-contain" />
+          </div>
         ))}
       </div>
     </div>
@@ -403,20 +405,20 @@ const industries = [
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-sd-text-dark leading-tight tracking-tight md:sticky md:top-32">
           Frequently Asked Questions
         </h2>
-        <div class="bg-white rounded-2xl border border-sd-gray-border overflow-hidden px-6 md:px-8">
+        <div class="bg-[#f2f2f2] rounded-2xl overflow-hidden px-6 md:px-8">
           <FAQ items={homeFaqs} tone="light" withJsonLd={true} />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BLOG (light) -->
+  <!-- BLOG (light) — comes after FAQ per original site order -->
   <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
     <div class="mx-auto max-w-[1440px] px-6 md:px-16">
       <div class="max-w-2xl mb-14">
-        <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight">
+        <h3 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight">
           Check out some related articles from our blog!
-        </h2>
+        </h3>
       </div>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {recentPosts.map(post => (
@@ -451,9 +453,11 @@ const industries = [
     </div>
   </section>
 
-  <!-- FINAL CTA (light, left-aligned) -->
-  <section class="bg-sd-light py-24 md:py-32 border-t border-sd-gray-border">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+  <!-- FINAL CTA (light with subtle gradient bg) -->
+  <section class="bg-sd-light py-24 md:py-32 border-t border-sd-gray-border relative overflow-hidden">
+    <!-- Subtle purple gradient bg from original -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 0%, rgba(103,58,228,0.06) 0%, transparent 70%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-16">
       <h2 class="text-5xl md:text-7xl lg:text-8xl text-sd-text-dark font-display leading-none tracking-tight mb-8 max-w-4xl">
         Ready to build the future with SpaceDev?
       </h2>
@@ -474,19 +478,6 @@ const industries = [
     </div>
   </section>
 
-  <!-- TEXT MARQUEE (gradient) -->
-  <section class="bg-sd-light py-6 border-t border-sd-gray-border overflow-hidden">
-    <div class="sd-marquee-wrapper">
-      <div class="sd-marquee flex items-center whitespace-nowrap" style="animation-duration: 25s">
-        {[...Array(6)].map(() => (
-          <span class="text-5xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight mr-20 select-none"
-                style="background: linear-gradient(90deg, #673ae4 0%, #44cdf3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-            Product Development that Sparks Innovation &nbsp;
-          </span>
-        ))}
-      </div>
-    </div>
-  </section>
 </BaseLayout>
 
 <script>
