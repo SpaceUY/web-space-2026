@@ -415,11 +415,17 @@ const industries = [
     </div>
   </section>
 
-  <!-- FAQ (light) -->
+  <!-- FAQ (light, 2-col) -->
   <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
-    <div class="mx-auto max-w-3xl px-6 md:px-16">
-      <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight mb-12">Frequently asked questions</h2>
-      <FAQ items={homeFaqs} tone="light" />
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-sd-text-dark leading-tight tracking-tight md:sticky md:top-32">
+          Frequently Asked Questions
+        </h2>
+        <div class="bg-white rounded-2xl border border-sd-gray-border overflow-hidden px-6 md:px-8">
+          <FAQ items={homeFaqs} tone="light" withJsonLd={true} />
+        </div>
+      </div>
     </div>
   </section>
 
@@ -433,9 +439,9 @@ const industries = [
       </div>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {recentPosts.map(post => (
-          <a href={`/blog/${post.id}`} class="group block rounded-2xl overflow-hidden border border-sd-gray-border hover:border-sd-gray-border2 transition-colors bg-white" data-animate>
+          <a href={`/blog/${post.id}`} class="group block overflow-hidden bg-white hover:shadow-md transition-shadow" data-animate>
             {post.data.cover && (
-              <div class="aspect-[16/9] overflow-hidden bg-sd-dark">
+              <div class="aspect-[4/3] overflow-hidden bg-sd-dark">
                 <img
                   src={post.data.cover}
                   alt={post.data.title}
@@ -444,16 +450,14 @@ const industries = [
                 />
               </div>
             )}
-            <div class="p-5">
-              <p class="text-xs uppercase tracking-[0.15em] text-sd-purple font-medium mb-2">{post.data.category}</p>
-              <h3 class="text-sm font-display text-sd-text-dark leading-snug mb-3 line-clamp-2 group-hover:text-sd-purple transition-colors">
+            <div class="pt-4 pb-2">
+              <div class="flex items-center justify-between text-xs text-sd-text-muted uppercase tracking-[0.1em] mb-3">
+                <span>{post.data.publishedAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase()}</span>
+                <span>READING TIME {post.data.readTime} MIN</span>
+              </div>
+              <h3 class="text-base md:text-lg font-display text-sd-text-dark leading-snug line-clamp-3 group-hover:text-sd-purple transition-colors">
                 {post.data.title}
               </h3>
-              <div class="flex items-center gap-3 text-xs text-sd-text-muted">
-                <span>{post.data.publishedAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                <span>·</span>
-                <span>{post.data.readTime} min read</span>
-              </div>
             </div>
           </a>
         ))}
@@ -466,26 +470,40 @@ const industries = [
     </div>
   </section>
 
-  <!-- FINAL CTA (light with purple glow) -->
-  <section class="bg-sd-light py-24 md:py-32 border-t border-sd-gray-border relative overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 50%, rgba(103,58,228,0.12) 0%, transparent 65%);"></div>
-    <div class="relative mx-auto max-w-3xl px-6 md:px-16 text-center">
-      <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight mb-6">
+  <!-- FINAL CTA (light, left-aligned) -->
+  <section class="bg-sd-light py-24 md:py-32 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <h2 class="text-5xl md:text-7xl lg:text-8xl text-sd-text-dark font-display leading-none tracking-tight mb-8 max-w-4xl">
         Ready to build the future with SpaceDev?
       </h2>
-      <p class="text-base text-sd-text-gray leading-relaxed mb-3 max-w-xl mx-auto">
+      <p class="text-base text-sd-text-gray leading-relaxed mb-2 max-w-2xl">
         Your next big idea deserves a partner who understands both innovation and execution.
       </p>
-      <p class="text-base text-sd-text-gray leading-relaxed mb-3 max-w-xl mx-auto">
+      <p class="text-base text-sd-text-gray leading-relaxed mb-2 max-w-2xl">
         SpaceDev combines web3 development services, blockchain expertise, and global engineering talent to help you move from vision to reality with speed and precision.
       </p>
-      <p class="text-base text-sd-text-gray leading-relaxed mb-10 max-w-xl mx-auto">
+      <p class="text-base text-sd-text-gray leading-relaxed mb-10 max-w-2xl">
         Let's turn your concept into a product that scales, engages, and endures.
       </p>
       <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors">
+        class="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors">
         Schedule a call
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+    </div>
+  </section>
+
+  <!-- TEXT MARQUEE (gradient) -->
+  <section class="bg-sd-light py-6 border-t border-sd-gray-border overflow-hidden">
+    <div class="sd-marquee-wrapper">
+      <div class="sd-marquee flex items-center whitespace-nowrap" style="animation-duration: 25s">
+        {[...Array(6)].map(() => (
+          <span class="text-5xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight mr-20 select-none"
+                style="background: linear-gradient(90deg, #673ae4 0%, #44cdf3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Product Development that Sparks Innovation &nbsp;
+          </span>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>

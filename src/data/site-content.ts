@@ -81,9 +81,10 @@ export const stats: Stat[] = [
 ];
 
 export const homeFaqs = [
-  { question: "Do you offer free consultation?", answer: "Yes — we offer a free initial consultation to understand your project, scope, and how SpaceDev can help you reach your goals." },
-  { question: "What kind of services do you offer?", answer: "Web2 and Web3 development, blockchain software, mobile apps, IT staff augmentation, product discovery, and smart contract audits." },
-  { question: "What technologies do you work with?", answer: "Full-stack JavaScript (React, Node.js), React Native, Python, Go, Solidity, Rust, and major blockchain ecosystems like Ethereum, Aptos, and Solana." },
-  { question: "What's the difference between Staff Augmentation and full Development Services?", answer: "Staff Augmentation gives you pre-vetted engineers who integrate into your team and processes. Development Services means SpaceDev owns the product end-to-end — discovery, design, build, ship and support." },
-  { question: "How fast can you start?", answer: "For Staff Augmentation, in under 2 weeks. For full product engagements, kickoff usually happens within 2–4 weeks of contract signing." },
+  { question: "What do your development services include?", answer: "We offer end-to-end development services — from product discovery and UX design to full-stack web and mobile apps, blockchain development, smart contract audits, and IT staff augmentation. Whether you need a complete product or a specific layer of expertise, we deliver." },
+  { question: "How is SpaceDev different from other software development companies?", answer: "We blend web2 expertise with deep blockchain knowledge to deliver practical, market-ready solutions. Our distributed team model and agile processes ensure faster delivery, transparency, and real collaboration." },
+  { question: "Can SpaceDev help with blockchain audits and security?", answer: "Yes — we offer BlockAudit, our dedicated smart contract and blockchain security service. We analyze code for vulnerabilities, compliance risks, and attack vectors, and deliver a thorough report with recommendations before you go live." },
+  { question: "How does your IT staff augmentation service work?", answer: "We match you with pre-vetted engineers who integrate directly into your team. You get full control over priorities, sprints, and processes — SpaceDev handles talent sourcing, vetting, and HR. Onboarding typically takes under two weeks." },
+  { question: "What industries do you work with?", answer: "We've built products across fintech, gaming, NFTs, healthcare, real estate, logistics, energy, and edtech. Our engineers combine domain knowledge with deep technical expertise to deliver tailored solutions regardless of sector." },
+  { question: "How do I start working with SpaceDev?", answer: "Book a free consultation — we'll listen to your idea, scope the engagement, and put together a proposal tailored to your goals. Most projects kick off within two to four weeks of contract signing." },
 ];
