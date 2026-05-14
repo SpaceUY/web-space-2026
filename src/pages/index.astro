@@ -61,14 +61,8 @@ const industries = [
   jsonLd={websiteJsonLd}
 >
   <!-- HERO (dark) -->
-  <section class="h-screen -mt-[72px] flex flex-col justify-end items-start relative overflow-hidden" style="background-color: #191429;">
-    <!-- CSS-only nebula approximation — no image needed, zero network cost -->
-    <!-- Warm pinkish/mauve glow upper-right (simulates the original nebula asset) -->
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 88% 25%, rgba(160,80,120,0.28) 0%, transparent 50%);"></div>
-    <!-- Purple core glow center -->
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.22) 0%, transparent 58%);"></div>
-    <!-- Left dark vignette (keeps text readable) -->
-    <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to right, #191429 0%, rgba(25,20,41,0.75) 35%, transparent 65%);"></div>
+  <section class="bg-sd-dark h-screen -mt-[72px] flex flex-col justify-end items-start relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.18) 0%, transparent 65%);"></div>
     <div class="relative w-full px-6 pb-10">
       <h1 class="text-5xl md:text-[80px] text-white font-display leading-none tracking-tight">
         Finally:<br/>Your <span id="rotating-word" class="text-white">Flexible</span><br/>Tech Partner.
@@ -139,7 +133,7 @@ const industries = [
   </section>
 
   <!-- DARK CTA SECTION — between Core Services and Why SpaceDev -->
-  <section class="bg-sd-dark min-h-[90vh] flex items-center px-6 md:px-16">
+  <section class="bg-sd-dark min-h-[90vh] flex items-center justify-center text-center px-6">
     <h2 class="scroll-text-reveal text-[40px] md:text-[56px] font-body font-semibold leading-none max-w-[860px]">
       Take your business to<br/>new heights quickly—let<br/>us handle the technology
     </h2>
@@ -472,16 +466,6 @@ const industries = [
     </div>
   </section>
 
-  <!-- TEXT MARQUEE — Saira 150px dark, matches spacedev.io original -->
-  <div class="bg-sd-light overflow-hidden border-t border-sd-gray-border py-6 sd-marquee-wrapper">
-    <div class="sd-marquee flex items-center whitespace-nowrap gap-0">
-      {[...Array(6)].map(() => (
-        <span class="font-ui font-light text-sd-text-dark shrink-0 pr-16" style="font-size:150px;line-height:1;">
-          Product Development that Sparks Innovation
-        </span>
-      ))}
-    </div>
-  </div>
 
 </BaseLayout>
 
