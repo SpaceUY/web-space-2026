@@ -163,7 +163,7 @@ const industries = [
           { n: "05", title: "Proven Track Record", desc: "Rely on a proven history of delivering high-impact Web2 and Web3 products, backed by our perfect 5-star client ratings." },
           { n: "06", title: "Global Presence with Local Agility", desc: "Benefit from nearshore collaboration with top talent in your time zone, operating seamlessly from the U.S. and Latin America." },
         ].map(w => (
-          <div class="why-card rounded-2xl border border-sd-gray-border p-7" style="opacity: 0.3; transition: opacity 0.6s ease;">
+          <div class="why-card rounded-2xl p-7" style="background:#f4f4f4; opacity: 0.3; transition: opacity 0.6s ease;">
             <p class="text-2xl font-display text-sd-text-dark mb-4">{w.n}</p>
             <h3 class="text-base font-display text-sd-text-dark mb-3">{w.title}</h3>
             <p class="text-sm text-sd-text-gray leading-relaxed">{w.desc}</p>
@@ -230,7 +230,7 @@ const industries = [
   </section>
 
   <!-- ENGAGEMENT MODELS (light) -->
-  <section class="bg-sd-light-2 py-20 md:py-32 border-t border-sd-gray-border">
+  <section class="bg-[#ededed] py-20 md:py-32 border-t border-sd-gray-border">
     <div class="mx-auto max-w-[1440px] px-6 md:px-16">
       <div class="max-w-2xl mb-14">
         <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">
@@ -416,7 +416,7 @@ const industries = [
       </div>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {recentPosts.map(post => (
-          <a href={`/blog/${post.id}`} class="group block overflow-hidden bg-white hover:shadow-md transition-shadow" data-animate>
+          <a href={`/blog/${post.id}`} class="group block overflow-hidden" data-animate>
             {post.data.cover && (
               <div class="aspect-[4/3] overflow-hidden bg-sd-dark">
                 <img
