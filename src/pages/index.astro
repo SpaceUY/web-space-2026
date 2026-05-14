@@ -35,7 +35,7 @@ const clientLogos = [
 ] as const;
 
 // Industry SVG icons — white stroke, for use on purple bg circles
-const I_BUILDING = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 9 18 L 9 0.75 C 9 0.473 8.847 0.219 8.604 0.089 C 8.36 -0.042 8.064 -0.027 7.834 0.126 L 0.334 5.126 C 0.125 5.265 0 5.5 0 5.751 L 0 18" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3.75 2.25)"/><path d="M 0 0 L 6.75 0 C 7.164 0 7.5 0.336 7.5 0.75 L 7.5 12" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(12.75 8.25)"/><path d="M 0 0 L 21 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1.5 20.25)"/><path d="M 0 0 L 0 1.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(9.75 10.5)"/><path d="M 0 0 L 0 1.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(6.75 10.5)"/><path d="M 0 0 L 0 1.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(6.75 15.75)"/><path d="M 0 0 L 0 1.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(9.75 15.75)"/></svg>`;
+const I_BUILDING = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 3 C 0 1.343 1.343 0 3 0 C 4.657 0 6 1.343 6 3 C 6 4.657 4.657 6 3 6 C 1.343 6 0 4.657 0 3 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(9 9)"/><path d="M 0 12 L 0 0 L 21 0 L 21 12 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1.5 6)"/><path d="M 3.75 3.75 C 1.83 3.425 0.325 1.92 0 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(18.75 6)"/><path d="M 0 3.75 C 0.325 1.83 1.83 0.325 3.75 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(18.75 14.25)"/><path d="M 0 0 C 1.92 0.325 3.425 1.83 3.75 3.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1.5 14.25)"/><path d="M 3.75 0 C 3.425 1.92 1.92 3.425 0 3.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1.5 6)"/></svg>`;
 const I_CHAT = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 0 L 2.25 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(14.25 9.75)"/><path d="M 0 0 L 3 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(6.75 9.75)"/><path d="M 0 0 L 0 3" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(8.25 8.25)"/><path d="M 8.429 9.75 L 4.481 14.231 C 3.671 15.041 2.429 15.232 1.413 14.703 C 0.397 14.174 -0.159 13.047 0.04 11.919 L 1.574 4.031 C 1.983 1.704 4.002 0.005 6.364 0 L 14.625 0 C 17.317 0 19.5 2.183 19.5 4.875 C 19.5 7.567 17.317 9.75 14.625 9.75 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1.5 4.5)"/><path d="M 0 5.719 L 3.948 10.2 C 4.758 11.01 6 11.201 7.016 10.672 C 8.032 10.143 8.587 9.016 8.389 7.888 L 6.855 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(14.071 8.531)"/></svg>`;
 const I_HEART = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 2.25 L 3.75 2.25 L 5.25 0 L 8.25 4.5 L 9.75 2.25 L 12 2.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3 10.5)"/><path d="M 0 5.25 C 0 5.187 0 5.125 0 5.063 C 0 2.267 2.267 0 5.063 0 C 7.18 0 8.994 1.154 9.75 3 C 10.506 1.154 12.32 0 14.438 0 C 17.233 0 19.5 2.267 19.5 5.063 C 19.5 11.25 9.75 16.5 9.75 16.5 C 9.75 16.5 5.813 14.381 2.946 11.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(2.25 4.5)"/></svg>`;
 const I_TRUCK = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 0 L 3.992 0 C 4.298 0 4.573 0.185 4.688 0.469 L 6 3.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(17.25 7.5)"/><path d="M 0 0 L 15 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(2.25 13.5)"/><path d="M 0 2.25 C 0 1.007 1.007 0 2.25 0 C 3.493 0 4.5 1.007 4.5 2.25 C 4.5 3.493 3.493 4.5 2.25 4.5 C 1.007 4.5 0 3.493 0 2.25 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(15.75 15.75)"/><path d="M 0 2.25 C 0 1.007 1.007 0 2.25 0 C 3.493 0 4.5 1.007 4.5 2.25 C 4.5 3.493 3.493 4.5 2.25 4.5 C 1.007 4.5 0 3.493 0 2.25 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(5.25 15.75)"/><path d="M 6 0 L 0 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(9.75 18)"/><path d="M 0 0 L 6 0 L 6 6 C 6 6.414 5.664 6.75 5.25 6.75 L 3 6.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(17.25 11.25)"/><path d="M 3 12 L 0.75 12 C 0.336 12 0 11.664 0 11.25 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 15 0 L 15 9.878" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(2.25 6)"/></svg>`;
@@ -61,7 +61,7 @@ const industries = [
   jsonLd={websiteJsonLd}
 >
   <!-- HERO (dark) -->
-  <section class="bg-sd-dark h-screen flex flex-col justify-end relative overflow-hidden">
+  <section class="bg-sd-dark h-screen -mt-[72px] flex flex-col justify-end items-start relative overflow-hidden">
     <!-- Background illustration (Framer original hero asset) -->
     <img
       src="/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.png"
@@ -75,23 +75,13 @@ const industries = [
     />
     <div class="absolute inset-0 bg-gradient-to-r from-sd-dark via-sd-dark/80 to-transparent"></div>
     <div class="absolute inset-0" style="background: radial-gradient(ellipse at 60% 50%, rgba(103,58,228,0.15) 0%, transparent 70%);"></div>
-    <div class="relative px-6 pb-10">
+    <div class="relative w-full px-6 pb-10">
       <h1 class="text-5xl md:text-[80px] text-white font-display leading-none tracking-tight">
         Finally:<br/>Your <span id="rotating-word" class="text-white">Flexible</span><br/>Tech Partner.
       </h1>
       <p class="mt-6 text-base md:text-lg text-white/60 max-w-2xl leading-relaxed font-body font-light">
         SpaceDev is a blockchain development company that transforms complex ideas into scalable digital products. We build web3, blockchain, and custom software solutions with deep engineering expertise and startup agility. Our mission: help businesses launch, scale, and innovate through technology that performs.
       </p>
-      <div class="mt-8 flex flex-wrap gap-4">
-        <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-sd-dark text-white text-sm font-medium border border-white/20 hover:bg-white/10 transition-colors">
-          Book a call
-        </a>
-        <a href="/our-work"
-          class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-white/70 text-sm hover:text-white transition-colors">
-          See our work →
-        </a>
-      </div>
     </div>
   </section>
 
@@ -150,8 +140,8 @@ const industries = [
 
   <!-- DARK CTA SECTION -->
   <section class="bg-sd-dark min-h-[90vh] flex items-center justify-center text-center px-6">
-    <h2 class="text-[40px] md:text-[56px] text-white font-display leading-none max-w-[860px]">
-      Take your business to<br/>new heights quickly—let<br/>us handle the <span class="opacity-[0.46]">technology</span>
+    <h2 class="scroll-text-reveal text-[40px] md:text-[56px] font-display leading-none max-w-[860px]">
+      Take your business to<br/>new heights quickly—let<br/>us handle the technology
     </h2>
   </section>
 
@@ -193,7 +183,7 @@ const industries = [
       <div class="grid gap-12 md:grid-cols-2">
         {industries.map(ind => (
           <div class="flex gap-5" data-animate>
-            <div class="shrink-0 w-12 h-12 rounded-full bg-sd-purple flex items-center justify-center p-2.5">
+            <div class="shrink-0 w-12 h-12 rounded-full flex items-center justify-center p-2.5" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
               <Fragment set:html={ind.icon} />
             </div>
             <div>
