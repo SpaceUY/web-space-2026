@@ -466,6 +466,19 @@ const industries = [
     </div>
   </section>
 
+  <!-- TEXT MARQUEE (gradient) -->
+  <section class="bg-sd-light py-6 border-t border-sd-gray-border overflow-hidden">
+    <div class="sd-marquee-wrapper">
+      <div class="sd-marquee flex items-center whitespace-nowrap" style="animation-duration: 25s">
+        {[...Array(6)].map(() => (
+          <span class="text-5xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight mr-20 select-none"
+                style="background: linear-gradient(90deg, #673ae4 0%, #44cdf3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Product Development that Sparks Innovation &nbsp;
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
 
 </BaseLayout>
 
