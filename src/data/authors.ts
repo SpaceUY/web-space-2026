@@ -40,7 +40,7 @@ export const authors: Author[] = [
     role: "CEO & Co-founder",
     bio: "Federico co-founded SpaceDev to bring startup agility to enterprise-grade engineering. He's spent the last decade helping Web2 and Web3 teams ship products that perform — from MVPs to multi-year platforms.",
     initials: "FS",
-    avatarGradient: "from-sd-cyan to-sd-purple",
+    avatarGradient: "from-sd-purple-300 to-sd-purple",
     avatar: "/images/content/DOT9ldmLAaVJejBjOexpqu1bDjs.png",
     coverImage: "/images/content/omTsS6LBwAYeMPbJvn9cltlRnVs.jpeg",
     gallery: [
@@ -58,7 +58,7 @@ export const authors: Author[] = [
     role: "CTO & Co-founder",
     bio: "Juan Manuel leads the technical vision at SpaceDev with deep expertise in smart contracts, decentralized protocols, and scalable backend systems. He's a frequent speaker on blockchain at conferences across the Americas.",
     initials: "JM",
-    avatarGradient: "from-sd-green to-sd-cyan",
+    avatarGradient: "from-sd-green to-sd-purple-300",
     avatar: "/images/content/eHISRLFUhgnDA3fOxfapqrM7m0.jpg",
     coverImage: "/images/content/FCBKViQg3nV6hMSlU6WlaGTZ8yk.jpg",
     gallery: [
@@ -76,7 +76,7 @@ export const authors: Author[] = [
     role: "Head of Growth",
     bio: "Stephania runs growth at SpaceDev, connecting engineering depth with the right partners and markets. Her background in product marketing and partnerships makes complex tech land with the people who need it.",
     initials: "SA",
-    avatarGradient: "from-sd-purple-3 to-sd-cyan",
+    avatarGradient: "from-sd-purple-300 to-sd-purple-300",
     social: { linkedin: "https://www.linkedin.com/in/stephania-almansor/" },
   },
   {
@@ -85,7 +85,7 @@ export const authors: Author[] = [
     role: "Head of People",
     bio: "Grecia leads People at SpaceDev — building career paths, mentorship programs, and a culture where engineers grow alongside the products they ship. She believes great teams are made, not hired.",
     initials: "GT",
-    avatarGradient: "from-sd-purple to-sd-cyan",
+    avatarGradient: "from-sd-purple to-sd-purple-300",
     social: { linkedin: "https://www.linkedin.com/in/greciatardaguila/" },
   },
 ];

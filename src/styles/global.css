@@ -1,85 +1,32 @@
 @import "tailwindcss";
 
 /* ============================================================
-   FONT FACES — Geist, Open Sans, Saira (self-hosted)
+   FONT FACES — Open Sans (variable), Saira (self-hosted)
    ============================================================ */
-@font-face {
-  font-family: "Geist";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/fonts/geist/geist-600-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Geist";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/fonts/geist/geist-600-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
 
+/* Open Sans variable — covers weight 300–700, normal + italic */
 @font-face {
   font-family: "Open Sans";
   font-style: normal;
-  font-weight: 300;
+  font-weight: 300 700;
   font-display: swap;
-  src: url("/fonts/open-sans/open-sans-300-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("/fonts/open-sans/open-sans-300-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/open-sans/open-sans-500-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/open-sans/open-sans-500-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url("/fonts/open-sans/open-sans-variable-latin.woff2") format("woff2");
 }
 @font-face {
   font-family: "Open Sans";
   font-style: italic;
-  font-weight: 500;
+  font-weight: 300 700;
   font-display: swap;
-  src: url("/fonts/open-sans/open-sans-500italic-latin.woff2") format("woff2");
+  src: url("/fonts/open-sans/open-sans-variable-italic-latin.woff2") format("woff2");
 }
 
+/* Saira variable — covers weight 100–900 */
 @font-face {
   font-family: "Saira";
   font-style: normal;
-  font-weight: 300;
+  font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/saira/saira-a169fc18.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Saira";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/saira/saira-ff503512.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Saira";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/fonts/saira/saira-585d14a7.woff2") format("woff2");
+  src: url("/fonts/saira/saira-variable.woff2") format("woff2");
 }
 
 /* ============================================================
@@ -93,7 +40,7 @@
   --sd-purple-deep:  #191429;
   --sd-purple-mid:   #312652;
   --sd-light:        #fafafa;
-  --sd-light-2:      #f5f5f5;
+  --sd-light-2:      #f2f2f2;
   --sd-light-3:      #f4f4f4;
   --sd-light-4:      #f2f2f2;
   --sd-gray-border:  #e8e8e8;
@@ -110,14 +57,84 @@
 
   /* Text */
   --sd-text-primary:   #ffffff;
-  --sd-text-secondary: #858585;
+  --sd-text-secondary: #e8e8e8;
   --sd-text-muted:     #aaaaaa;
   --sd-text-dark:      #141414;
   --sd-text-gray:      #4e5052;
   --sd-overlay:        #0d0d0d4d;
 
-  /* Gradient */
-  --sd-gradient-hero: linear-gradient(135deg, #4a397c 17%, #191429 105%);
+  /* Gradients */
+  --sd-gradient-hero:   linear-gradient(135deg, #4a397c 17%, #191429 105%);
+  --sd-gradient-deep:   linear-gradient(135deg, #673ae4 0%, #191429 100%);
+  --sd-gradient-radial: radial-gradient(circle, #a2a6f5 11%, #4c2e92 37%, #2d292f 68%, #2d2d2d 86%);
+
+  /* ── Purple palette (brand book) ────────────────────────────── */
+  --sd-purple-100: #e4dbff;
+  --sd-purple-200: #c8b5ff;
+  --sd-purple-300: #ac93f2;
+  --sd-purple-400: #8e6eec;   /* primary */
+  --sd-purple-500: #5b37c6;
+  --sd-purple-600: #3b1b99;
+
+  /* ── Green palette (brand book) ─────────────────────────────── */
+  --sd-green-100: #b4ffd3;
+  --sd-green-200: #7dffb3;
+  --sd-green-300: #41f38a;
+  --sd-green-400: #11e167;   /* primary */
+  --sd-green-500: #05b04b;
+  --sd-green-600: #00682a;
+
+  /* ── Neutral palette (brand book) ───────────────────────────── */
+  --sd-neutral-100: #e7e1dc;
+  --sd-neutral-200: #cbc6c1;
+  --sd-neutral-300: #a5a09c;
+  --sd-neutral-400: #787472;
+  --sd-neutral-500: #484645;
+  --sd-neutral-600: #141313;
+
+  /* ── Spacing (8pt grid) ──────────────────────────────────────── */
+  --sd-space-1:  4px;
+  --sd-space-2:  8px;
+  --sd-space-3:  12px;
+  --sd-space-4:  16px;
+  --sd-space-5:  20px;
+  --sd-space-6:  24px;
+  --sd-space-8:  32px;
+  --sd-space-10: 40px;
+  --sd-space-12: 48px;
+  --sd-space-16: 64px;
+  --sd-space-20: 80px;
+  --sd-space-24: 96px;
+  /* Semantic aliases */
+  --sd-space-xs:  var(--sd-space-1);   /* 4px  */
+  --sd-space-sm:  var(--sd-space-2);   /* 8px  */
+  --sd-space-md:  var(--sd-space-4);   /* 16px */
+  --sd-space-lg:  var(--sd-space-6);   /* 24px */
+  --sd-space-xl:  var(--sd-space-8);   /* 32px */
+  --sd-space-2xl: var(--sd-space-12);  /* 48px */
+  --sd-space-3xl: var(--sd-space-16);  /* 64px */
+
+  /* ── Animation ───────────────────────────────────────────────── */
+  --sd-duration-fast:    150ms;
+  --sd-duration-base:    250ms;
+  --sd-duration-slow:    350ms;
+  --sd-duration-slower:  500ms;
+  --sd-ease-default:     ease;
+  --sd-ease-in:          ease-in;
+  --sd-ease-out:         ease-out;
+  --sd-ease-in-out:      ease-in-out;
+  --sd-ease-spring:      cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --sd-ease-smooth:      cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Shadows ─────────────────────────────────────────────────── */
+  --sd-shadow-sm:     0 1px 3px 0 rgba(0,0,0,0.25);
+  --sd-shadow-md:     0 4px 12px -2px rgba(0,0,0,0.3);
+  --sd-shadow-lg:     0 10px 30px -4px rgba(0,0,0,0.4);
+  --sd-shadow-xl:     0 20px 50px -8px rgba(0,0,0,0.5);
+  /* Purple-tinted glows for dark UI */
+  --sd-shadow-glow-sm: 0 0 12px 0   rgba(103,58,228,0.35);
+  --sd-shadow-glow-md: 0 0 24px 0   rgba(103,58,228,0.4);
+  --sd-shadow-glow-lg: 0 0 48px 0   rgba(103,58,228,0.45);
 }
 
 /* ============================================================
@@ -142,15 +159,47 @@
   --color-sd-cyan:         #44cdf3;
   --color-sd-green:        #00ffb2;
   --color-sd-text-primary:   #ffffff;
-  --color-sd-text-secondary: #858585;
+  --color-sd-text-secondary: #e8e8e8;
   --color-sd-text-muted:     #aaaaaa;
   --color-sd-text-dark:      #141414;
   --color-sd-text-gray:      #4e5052;
 
+  /* Purple palette */
+  --color-sd-purple-100: #e4dbff;
+  --color-sd-purple-200: #c8b5ff;
+  --color-sd-purple-300: #ac93f2;
+  --color-sd-purple-400: #8e6eec;
+  --color-sd-purple-500: #5b37c6;
+  --color-sd-purple-600: #3b1b99;
+  /* Green palette */
+  --color-sd-green-100: #b4ffd3;
+  --color-sd-green-200: #7dffb3;
+  --color-sd-green-300: #41f38a;
+  --color-sd-green-400: #11e167;
+  --color-sd-green-500: #05b04b;
+  --color-sd-green-600: #00682a;
+  /* Neutral palette */
+  --color-sd-neutral-100: #e7e1dc;
+  --color-sd-neutral-200: #cbc6c1;
+  --color-sd-neutral-300: #a5a09c;
+  --color-sd-neutral-400: #787472;
+  --color-sd-neutral-500: #484645;
+  --color-sd-neutral-600: #141313;
+
+  /* Shadows */
+  --shadow-sd-sm:       0 1px 3px 0 rgba(0,0,0,0.25);
+  --shadow-sd-md:       0 4px 12px -2px rgba(0,0,0,0.3);
+  --shadow-sd-lg:       0 10px 30px -4px rgba(0,0,0,0.4);
+  --shadow-sd-xl:       0 20px 50px -8px rgba(0,0,0,0.5);
+  --shadow-sd-glow-sm:  0 0 12px 0 rgba(103,58,228,0.35);
+  --shadow-sd-glow-md:  0 0 24px 0 rgba(103,58,228,0.4);
+  --shadow-sd-glow-lg:  0 0 48px 0 rgba(103,58,228,0.45);
+
   /* Fonts */
-  --font-display: "Geist", system-ui, -apple-system, sans-serif;
-  --font-body: "Open Sans", system-ui, -apple-system, sans-serif;
-  --font-ui: "Saira", system-ui, -apple-system, sans-serif;
+  --font-display: "Saira", system-ui, -apple-system, sans-serif;   /* site headings h1–h6 */
+  --font-body:    "Open Sans", system-ui, -apple-system, sans-serif; /* body copy, all sizes/weights */
+  --font-blog:    "Open Sans", system-ui, -apple-system, sans-serif; /* blog headings h1–h4 */
+  --font-ui:      "Saira", system-ui, -apple-system, sans-serif;    /* labels, badges — always uppercase */
 
   /* Framer breakpoints (override TW defaults) */
   --breakpoint-sm: 640px;
@@ -169,16 +218,23 @@
   body {
     margin: 0;
     font-family: var(--font-body);
-    font-weight: 300;
+    font-weight: 400;
     color: var(--sd-text-dark);
     background-color: var(--sd-light);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3 {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
     margin: 0;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -234,6 +290,22 @@
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+/* ============================================================
+   QUOTE REVEAL — word-by-word stagger fade on intersection
+   ============================================================ */
+.quote-word {
+  display: inline;
+  color: white;
+  opacity: 0.12;
+  transition: opacity 0.5s ease;
+}
+[data-visible="true"] .quote-word {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .quote-word { opacity: 1 !important; transition: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {

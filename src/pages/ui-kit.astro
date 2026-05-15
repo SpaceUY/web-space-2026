@@ -1,0 +1,750 @@
+---
+/**
+ * SpaceDev UI Kit — internal design system reference
+ * Route: /ui-kit  (exclude from sitemap + robots in production)
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+import Badge from "../components/ui/Badge.astro";
+import Card from "../components/ui/Card.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import FAQ from "../components/ui/FAQ.astro";
+import CTA from "../components/ui/CTA.astro";
+import StarRating from "../components/ui/StarRating.astro";
+
+const sampleFaqs = [
+  { question: "What is the design system?", answer: "A shared set of tokens, components and patterns that keep the SpaceDev site consistent across every page." },
+  { question: "Who can edit it?", answer: "Designers and developers working on the SpaceDev codebase. Changes to tokens affect the whole site." },
+];
+---
+
+<BaseLayout title="SpaceDev UI Kit" description="Internal design system reference">
+
+  <!-- HEADER -->
+  <div class="bg-sd-dark border-b border-white/10 sticky top-0 z-50 backdrop-blur-md">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-white font-display text-lg">SpaceDev</span>
+        <span class="text-sd-purple-300 font-display text-lg">/ UI Kit</span>
+      </div>
+      <span class="text-xs text-sd-text-muted bg-white/5 border border-white/10 px-3 py-1 rounded-full">Internal — do not ship</span>
+    </div>
+  </div>
+
+  <!-- SIDEBAR + CONTENT LAYOUT -->
+  <div class="bg-sd-dark flex min-h-screen">
+
+    <!-- SIDEBAR -->
+    <aside class="w-52 shrink-0 sticky top-[61px] h-[calc(100vh-61px)] overflow-y-auto border-r border-white/5 flex flex-col">
+      <nav class="flex-1 py-8 px-4">
+
+        <p class="text-xs text-sd-text-muted uppercase tracking-widest px-3 mb-3">Foundations</p>
+        <ul class="flex flex-col gap-0.5 mb-8">
+          {[
+            { id: "tokens",            label: "Color Tokens" },
+            { id: "spacing-animation", label: "Spacing & Motion" },
+            { id: "typography",        label: "Typography" },
+          ].map(item => (
+            <li>
+              <a href={`#${item.id}`} data-section={item.id}
+                class="sd-nav-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-sd-text-muted hover:text-white hover:bg-white/5 transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <p class="text-xs text-sd-text-muted uppercase tracking-widest px-3 mb-3">Components</p>
+        <ul class="flex flex-col gap-0.5">
+          {[
+            { id: "buttons",         label: "Buttons" },
+            { id: "badges",          label: "Badges" },
+            { id: "cards",           label: "Cards" },
+            { id: "section-heading", label: "Section Heading" },
+            { id: "faq",             label: "FAQ" },
+            { id: "cta",             label: "CTA" },
+            { id: "star-rating",     label: "Star Rating" },
+          ].map(item => (
+            <li>
+              <a href={`#${item.id}`} data-section={item.id}
+                class="sd-nav-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-sd-text-muted hover:text-white hover:bg-white/5 transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 min-w-0">
+
+    <!-- ═══════════════════════════════════════
+         COLORS
+    ════════════════════════════════════════ -->
+    <section id="tokens" class="border-b border-white/5">
+
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10 pt-20 pb-12">
+        <h2 class="text-2xl text-white font-display mb-2">Colors</h2>
+        <p class="text-sd-text-muted text-sm max-w-xl">All colors live in <code class="text-sd-purple-300 bg-white/5 px-1.5 py-0.5 rounded text-xs">global.css</code> as CSS variables. Never hardcode hex values — always reference the token.</p>
+      </div>
+
+      <!-- ── Brand ──────────────────────────────────────────── -->
+      <div class="border-t border-white/5">
+        <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-12">
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-8">Brand</p>
+          <div class="flex flex-wrap gap-4">
+            {[
+              { name: "--sd-purple-2", hex: "#4a397c", label: "Purple" },
+              { name: "--sd-green",    hex: "#00ffb2", label: "Green"  },
+            ].map(c => (
+              <div class="flex flex-col gap-2 w-28">
+                <div class="h-16 w-full rounded-xl border border-white/10" style={`background:${c.hex}`}></div>
+                <p class="text-xs text-white font-medium">{c.label}</p>
+                <p class="text-xs text-sd-text-muted font-mono">{c.hex}</p>
+                <p class="text-xs text-sd-text-muted font-mono opacity-50">{c.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Palettes ──────────────────────────────────────── -->
+      <div class="border-t border-white/5">
+        <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-12">
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-10">Palettes</p>
+
+          <div class="flex flex-col gap-10">
+
+            {/* Purple */}
+            <div>
+              <p class="text-xs text-sd-text-muted mb-4">Purple — <span class="font-mono">--sd-purple-100 → 600</span></p>
+              <div class="flex gap-2">
+                {[
+                  { step: "100", hex: "#e4dbff", primary: false },
+                  { step: "200", hex: "#c8b5ff", primary: false },
+                  { step: "300", hex: "#ac93f2", primary: false },
+                  { step: "400", hex: "#8e6eec", primary: false },
+                  { step: "500", hex: "#5b37c6", primary: false },
+                  { step: "600", hex: "#3b1b99", primary: true  },
+                ].map(c => (
+                  <div class="flex flex-col gap-2 flex-1">
+                    <div class={`w-full rounded-lg ${c.primary ? "h-20" : "h-14"}`} style={`background:${c.hex}`}></div>
+                    <p class="text-xs text-white font-medium">{c.step}{c.primary ? " ★" : ""}</p>
+                    <p class="text-xs text-sd-text-muted font-mono">{c.hex}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Green */}
+            <div>
+              <p class="text-xs text-sd-text-muted mb-4">Green — <span class="font-mono">--sd-green-100 → 600</span></p>
+              <div class="flex gap-2">
+                {[
+                  { step: "100", hex: "#b4ffd3", primary: false },
+                  { step: "200", hex: "#7dffb3", primary: false },
+                  { step: "300", hex: "#41f38a", primary: false },
+                  { step: "400", hex: "#11e167", primary: true  },
+                  { step: "500", hex: "#05b04b", primary: false },
+                  { step: "600", hex: "#00682a", primary: false },
+                ].map(c => (
+                  <div class="flex flex-col gap-2 flex-1">
+                    <div class={`w-full rounded-lg ${c.primary ? "h-20" : "h-14"}`} style={`background:${c.hex}`}></div>
+                    <p class="text-xs text-white font-medium">{c.step}{c.primary ? " ★" : ""}</p>
+                    <p class="text-xs text-sd-text-muted font-mono">{c.hex}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Neutral */}
+            <div>
+              <p class="text-xs text-sd-text-muted mb-4">Neutral — <span class="font-mono">--sd-neutral-100 → 600</span></p>
+              <div class="flex gap-2">
+                {[
+                  { step: "100", hex: "#e7e1dc" },
+                  { step: "200", hex: "#cbc6c1" },
+                  { step: "300", hex: "#a5a09c" },
+                  { step: "400", hex: "#787472" },
+                  { step: "500", hex: "#484645" },
+                  { step: "600", hex: "#141313" },
+                ].map(c => (
+                  <div class="flex flex-col gap-2 flex-1">
+                    <div class="h-14 w-full rounded-lg border border-white/10" style={`background:${c.hex}`}></div>
+                    <p class="text-xs text-white font-medium">{c.step}</p>
+                    <p class="text-xs text-sd-text-muted font-mono">{c.hex}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Backgrounds ───────────────────────────────────── -->
+      <div class="border-t border-white/5">
+        <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-12">
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-8">Backgrounds</p>
+          <div class="flex flex-wrap gap-4">
+            {[
+              { name: "--sd-dark",    hex: "#141414", label: "Dark"    },
+              { name: "--sd-dark-2",  hex: "#1e1e1e", label: "Dark 2"  },
+              { name: "--sd-light",   hex: "#fafafa", label: "Light"   },
+              { name: "--sd-light-2", hex: "#f2f2f2", label: "Light 2" },
+            ].map(c => (
+              <div class="flex flex-col gap-2 w-28">
+                <div class="h-16 w-full rounded-xl border border-white/10" style={`background:${c.hex}`}></div>
+                <p class="text-xs text-white font-medium">{c.label}</p>
+                <p class="text-xs text-sd-text-muted font-mono">{c.hex}</p>
+                <p class="text-xs text-sd-text-muted font-mono opacity-50">{c.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Text ──────────────────────────────────────────── -->
+      <div class="border-t border-white/5">
+        <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-12">
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-8">Text</p>
+          <div class="flex flex-col gap-4 max-w-xl">
+            {[
+              { name: "--sd-text-primary",   hex: "#ffffff", label: "Primary",   use: "Headings, bold copy" },
+              { name: "--sd-text-secondary", hex: "#e8e8e8", label: "Secondary", use: "Supporting text" },
+              { name: "--sd-text-muted",     hex: "#aaaaaa", label: "Muted",     use: "Captions, labels" },
+              { name: "--sd-text-gray",      hex: "#4e5052", label: "Gray",      use: "Body on light" },
+              { name: "--sd-text-dark",      hex: "#141414", label: "Dark",      use: "On light backgrounds" },
+            ].map(c => (
+              <div class="flex items-center gap-4">
+                <div class="h-9 w-9 rounded-lg border border-white/10 shrink-0" style={`background:${c.hex}`}></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium" style={`color:${c.hex}`}>{c.label} — {c.use}</p>
+                  <p class="text-xs text-sd-text-muted font-mono mt-0.5">{c.name}</p>
+                </div>
+                <p class="text-xs text-sd-text-muted font-mono shrink-0">{c.hex}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Gradients ─────────────────────────────────────── -->
+      <div class="border-t border-white/5">
+        <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-12">
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-8">Gradients</p>
+          <div class="flex flex-wrap gap-6">
+            {[
+              { label: "Hero",          name: "--sd-gradient-hero",   value: "linear-gradient(135deg, #4a397c 17%, #191429 105%)" },
+              { label: "Purple → Deep", name: "--sd-gradient-deep",   value: "linear-gradient(135deg, #673ae4 0%, #191429 100%)"  },
+              { label: "Radial",        name: "--sd-gradient-radial", value: "radial-gradient(circle, #a2a6f5 11%, #4c2e92 37%, #2d292f 68%, #2d2d2d 86%)" },
+            ].map(g => (
+              <div class="flex flex-col gap-3 w-52">
+                <div class="h-20 w-full rounded-xl" style={`background:${g.value}`}></div>
+                <div>
+                  <p class="text-xs text-white font-medium">{g.label}</p>
+                  <p class="text-xs text-sd-text-muted font-mono mt-1">{g.name}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SPACING + ANIMATION
+    ════════════════════════════════════════ -->
+    <section id="spacing-animation" class="mx-auto max-w-[1440px] px-6 md:px-10 py-20 border-b border-white/5">
+      <h2 class="text-2xl text-white font-display mb-2">Spacing &amp; Animation</h2>
+      <p class="text-sd-text-muted text-sm mb-12">8pt spacing grid + timing tokens. Use these variables in CSS and pass <code class="text-sd-purple-300 bg-white/5 px-1.5 py-0.5 rounded text-xs">duration</code> values to Framer Motion.</p>
+
+      <div class="grid md:grid-cols-2 gap-12">
+
+        <!-- Spacing -->
+        <div>
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-6">Spacing Scale</p>
+          <div class="flex flex-col gap-3">
+            {[
+              { name: "--sd-space-1",  px: "4px",  alias: "xs" },
+              { name: "--sd-space-2",  px: "8px",  alias: "sm" },
+              { name: "--sd-space-4",  px: "16px", alias: "md" },
+              { name: "--sd-space-6",  px: "24px", alias: "lg" },
+              { name: "--sd-space-8",  px: "32px", alias: "xl" },
+              { name: "--sd-space-10", px: "40px", alias: "" },
+              { name: "--sd-space-12", px: "48px", alias: "2xl" },
+              { name: "--sd-space-16", px: "64px", alias: "3xl" },
+              { name: "--sd-space-20", px: "80px", alias: "" },
+              { name: "--sd-space-24", px: "96px", alias: "" },
+            ].map(s => (
+              <div class="flex items-center gap-3">
+                <div class="bg-sd-purple/40 rounded" style={`height:8px; width:${s.px}`}></div>
+                <span class="text-xs text-white font-mono w-28 shrink-0">{s.px}</span>
+                <span class="text-xs text-sd-text-muted font-mono">{s.name}</span>
+                {s.alias && <span class="text-xs text-sd-purple-300 font-mono ml-auto">--sd-space-{s.alias}</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Animation -->
+        <div>
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-6">Duration</p>
+          <div class="flex flex-col gap-4 mb-10">
+            {[
+              { name: "--sd-duration-fast",   val: "150ms" },
+              { name: "--sd-duration-base",   val: "250ms" },
+              { name: "--sd-duration-slow",   val: "350ms" },
+              { name: "--sd-duration-slower", val: "500ms" },
+            ].map(d => (
+              <div class="flex items-center gap-4">
+                <div
+                  class="h-2 w-2 rounded-full bg-sd-purple sd-anim-dot"
+                  style={`--dur:${d.val}`}
+                ></div>
+                <span class="text-xs text-white font-mono w-12 shrink-0">{d.val}</span>
+                <span class="text-xs text-sd-text-muted font-mono">{d.name}</span>
+              </div>
+            ))}
+          </div>
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-6">Easing</p>
+          <div class="flex flex-col gap-3">
+            {[
+              { name: "--sd-ease-smooth",  val: "cubic-bezier(0.4,0,0.2,1)", label: "smooth (default)" },
+              { name: "--sd-ease-out",     val: "ease-out",                   label: "ease-out" },
+              { name: "--sd-ease-in-out",  val: "ease-in-out",                label: "ease-in-out" },
+              { name: "--sd-ease-spring",  val: "cubic-bezier(0.68,-0.55,0.265,1.55)", label: "spring" },
+            ].map(e => (
+              <div class="flex items-center gap-3">
+                <div class="h-8 w-24 relative overflow-hidden rounded bg-white/5 border border-white/10">
+                  <div
+                    class="absolute inset-y-0 left-0 w-2 bg-sd-purple rounded sd-ease-bar"
+                    style={`--ease:${e.val}`}
+                  ></div>
+                </div>
+                <div>
+                  <p class="text-xs text-white">{e.label}</p>
+                  <p class="text-xs text-sd-text-muted font-mono">{e.name}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         TYPOGRAPHY
+    ════════════════════════════════════════ -->
+    <section id="typography" class="border-b border-white/5">
+
+      <!-- Section header -->
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10 pt-20 pb-12">
+        <h2 class="text-2xl text-white font-display mb-2">Typography</h2>
+        <p class="text-sd-text-muted text-sm max-w-xl">Three font roles, each with a clear job. Never mix them outside their roles.</p>
+        <!-- Role overview pills -->
+        <div class="mt-8 flex flex-wrap gap-3">
+          {[
+            { font: "Saira",      role: "font-display", use: "Site headings h1–h6" },
+            { font: "Open Sans",  role: "font-body",    use: "Body copy, all sizes & weights" },
+            { font: "Open Sans",  role: "font-blog",    use: "Blog headings h1–h4" },
+            { font: "Saira",      role: "font-ui",      use: "Labels & badges — always uppercase" },
+          ].map(r => (
+            <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3">
+              <code class="text-xs text-sd-purple-300">{r.role}</code>
+              <span class="text-white/20 text-xs">·</span>
+              <span class="text-xs text-white font-medium">{r.font}</span>
+              <span class="text-white/20 text-xs">·</span>
+              <span class="text-xs text-sd-text-muted">{r.use}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- ── 1. Saira — Site headings ─────────────────────────── -->
+      <div class="border-t border-white/5">
+        <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-16">
+          <div class="flex items-baseline justify-between mb-10">
+            <p class="text-xs text-sd-text-muted uppercase tracking-widest">Saira — Site headings</p>
+            <code class="text-xs text-sd-purple-300 bg-white/5 px-2 py-1 rounded">font-display</code>
+          </div>
+          <div class="flex flex-col divide-y divide-white/5">
+            {[
+              { tag: "h1", size: "text-6xl",  weight: "font-normal",   label: "h1 · 60px · 400" },
+              { tag: "h2", size: "text-5xl",  weight: "font-normal",   label: "h2 · 48px · 400" },
+              { tag: "h3", size: "text-4xl",  weight: "font-normal",   label: "h3 · 36px · 400" },
+              { tag: "h4", size: "text-3xl",  weight: "font-medium",   label: "h4 · 30px · 500" },
+              { tag: "h5", size: "text-2xl",  weight: "font-medium",   label: "h5 · 24px · 500" },
+              { tag: "h6", size: "text-xl",   weight: "font-medium",   label: "h6 · 20px · 500" },
+            ].map(h => (
+              <div class="flex items-baseline gap-6 py-5">
+                <span class="text-xs text-sd-text-muted font-mono w-36 shrink-0">{h.label}</span>
+                <p class={`font-display text-white leading-tight ${h.size} ${h.weight}`}>
+                  Blockchain Development
+                </p>
+              </div>
+            ))}
+          </div>
+          <p class="mt-8 text-xs text-sd-text-muted font-mono opacity-50 tracking-wider">
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%&
+          </p>
+        </div>
+      </div>
+
+      <!-- ── 2. Open Sans — Body copy ─────────────────────────── -->
+      <div class="border-t border-white/5">
+        <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-16">
+          <div class="flex items-baseline justify-between mb-10">
+            <p class="text-xs text-sd-text-muted uppercase tracking-widest">Open Sans — Body copy</p>
+            <code class="text-xs text-sd-purple-300 bg-white/5 px-2 py-1 rounded">font-body</code>
+          </div>
+
+          <!-- Size scale -->
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-6">Sizes</p>
+          <div class="flex flex-col divide-y divide-white/5 mb-14">
+            {[
+              { label: "xl  · 20px", cls: "text-xl"   },
+              { label: "lg  · 18px", cls: "text-lg"   },
+              { label: "md  · 16px", cls: "text-base" },
+              { label: "sm  · 14px", cls: "text-sm"   },
+              { label: "xs  · 12px", cls: "text-xs"   },
+            ].map(s => (
+              <div class="flex items-baseline gap-6 py-4">
+                <span class="text-xs text-sd-text-muted font-mono w-36 shrink-0">{s.label}</span>
+                <p class={`font-body text-white leading-relaxed ${s.cls}`}>
+                  We build scalable blockchain solutions that create long-term value.
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <!-- Weight scale -->
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-6">Weights (at 16px)</p>
+          <div class="flex flex-col divide-y divide-white/5">
+            {[
+              { label: "300 · Light",    weight: "font-light"    },
+              { label: "400 · Regular",  weight: "font-normal"   },
+              { label: "500 · Medium",   weight: "font-medium"   },
+              { label: "600 · Semibold", weight: "font-semibold" },
+              { label: "700 · Bold",     weight: "font-bold"     },
+            ].map(w => (
+              <div class="flex items-baseline gap-6 py-4">
+                <span class="text-xs text-sd-text-muted font-mono w-36 shrink-0">{w.label}</span>
+                <p class={`font-body text-base text-white leading-relaxed ${w.weight}`}>
+                  SpaceDev partners move faster with secure, custom-built Web3 applications.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 3. Open Sans — Blog headings ────────────────────── -->
+      <div class="border-t border-white/5">
+        <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-16">
+          <div class="flex items-baseline justify-between mb-10">
+            <p class="text-xs text-sd-text-muted uppercase tracking-widest">Open Sans — Blog headings</p>
+            <code class="text-xs text-sd-purple-300 bg-white/5 px-2 py-1 rounded">font-blog</code>
+          </div>
+          <div class="flex flex-col divide-y divide-white/5">
+            {[
+              { tag: "h1", size: "text-5xl",  weight: "font-bold",     label: "h1 · 48px · 700" },
+              { tag: "h2", size: "text-4xl",  weight: "font-bold",     label: "h2 · 36px · 700" },
+              { tag: "h3", size: "text-3xl",  weight: "font-semibold", label: "h3 · 30px · 600" },
+              { tag: "h4", size: "text-2xl",  weight: "font-semibold", label: "h4 · 24px · 600" },
+              { tag: "h5", size: "text-xl",   weight: "font-medium",   label: "h5 · 20px · 500" },
+              { tag: "h6", size: "text-lg",   weight: "font-medium",   label: "h6 · 18px · 500" },
+            ].map(h => (
+              <div class="flex items-baseline gap-6 py-5">
+                <span class="text-xs text-sd-text-muted font-mono w-36 shrink-0">{h.label}</span>
+                <p class={`font-body text-white leading-tight ${h.size} ${h.weight}`}>
+                  How We Built a DeFi Protocol in 6 Weeks
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 4. Saira — Labels & badges ──────────────────────── -->
+      <div class="border-t border-white/5">
+        <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-16">
+          <div class="flex items-baseline justify-between mb-10">
+            <p class="text-xs text-sd-text-muted uppercase tracking-widest">Saira — Labels &amp; badges</p>
+            <code class="text-xs text-sd-purple-300 bg-white/5 px-2 py-1 rounded">font-ui · uppercase</code>
+          </div>
+          <div class="flex flex-col divide-y divide-white/5">
+            {[
+              { label: "12px · tracking-widest", cls: "text-xs tracking-widest",  sample: "BLOCKCHAIN DEVELOPMENT" },
+              { label: "12px · tracking-wider",  cls: "text-xs tracking-wider",   sample: "WEB3 SOLUTIONS" },
+              { label: "14px · tracking-widest", cls: "text-sm tracking-widest",  sample: "SMART CONTRACTS" },
+              { label: "14px · tracking-wider",  cls: "text-sm tracking-wider",   sample: "SECTION EYEBROW" },
+            ].map(l => (
+              <div class="flex items-center gap-6 py-4">
+                <span class="text-xs text-sd-text-muted font-mono w-36 shrink-0">{l.label}</span>
+                <p class={`font-ui text-white uppercase ${l.cls}`}>{l.sample}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         BUTTONS
+    ════════════════════════════════════════ -->
+    <section id="buttons" class="mx-auto max-w-[1440px] px-6 md:px-10 py-20 border-b border-white/5">
+      <h2 class="text-2xl text-white font-display mb-2">Buttons</h2>
+      <p class="text-sd-text-muted text-sm mb-12">4 variants × 3 sizes. Use <code class="text-sd-purple-300 bg-white/5 px-1.5 py-0.5 rounded text-xs">primary</code> for main actions, <code class="text-sd-purple-300 bg-white/5 px-1.5 py-0.5 rounded text-xs">ghost</code> for secondary, <code class="text-sd-purple-300 bg-white/5 px-1.5 py-0.5 rounded text-xs">outline-light</code> on dark backgrounds.</p>
+
+      <div class="grid gap-10">
+        {(["primary", "secondary", "ghost", "outline-light"] as const).map(variant => (
+          <div>
+            <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-4">{variant}</p>
+            <div class="flex flex-wrap items-center gap-4">
+              <Button variant={variant} size="lg">Large</Button>
+              <Button variant={variant} size="md">Medium</Button>
+              <Button variant={variant} size="sm">Small</Button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         BADGES
+    ════════════════════════════════════════ -->
+    <section id="badges" class="mx-auto max-w-[1440px] px-6 md:px-10 py-20 border-b border-white/5">
+      <h2 class="text-2xl text-white font-display mb-2">Badges</h2>
+      <p class="text-sd-text-muted text-sm mb-12">4 tones. Optional dot indicator. Saira uppercase. Used for eyebrows, status labels, and tags.</p>
+
+      <div class="flex flex-col gap-8">
+        <div>
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-4">Without dot</p>
+          <div class="flex flex-wrap gap-3">
+            <Badge tone="neutral">Neutral</Badge>
+            <Badge tone="purple">Purple</Badge>
+            <Badge tone="green">Green</Badge>
+            <Badge tone="outline">Outline</Badge>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-4">With dot</p>
+          <div class="flex flex-wrap gap-3">
+            <Badge tone="neutral" withDot>Neutral</Badge>
+            <Badge tone="purple" withDot>Advanced Blockchain Development</Badge>
+            <Badge tone="green" withDot>Active</Badge>
+            <Badge tone="outline" withDot>Outline</Badge>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CARDS
+    ════════════════════════════════════════ -->
+    <section id="cards" class="mx-auto max-w-[1440px] px-6 md:px-10 py-20 border-b border-white/5">
+      <h2 class="text-2xl text-white font-display mb-2">Cards</h2>
+      <p class="text-sd-text-muted text-sm mb-12">General-purpose card component with dark and light variants. The service cards and benefit cards are built on top of this.</p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <Card variant="dark">
+          <p class="text-xs text-sd-purple-300 mb-3 tracking-widest font-medium">DARK VARIANT</p>
+          <h3 class="text-lg text-white mb-2">Smart Contract Development</h3>
+          <p class="text-sm text-sd-text-muted leading-relaxed">Audited, gas-optimized contracts on Ethereum, Aptos, Solana and other major ecosystems.</p>
+        </Card>
+        <Card variant="light">
+          <p class="text-xs text-sd-purple mb-3 tracking-widest font-medium">LIGHT VARIANT</p>
+          <h3 class="text-lg text-sd-text-dark mb-2">Smart Contract Development</h3>
+          <p class="text-sm text-sd-text-gray leading-relaxed">Audited, gas-optimized contracts on Ethereum, Aptos, Solana and other major ecosystems.</p>
+        </Card>
+        <Card variant="dark" class="border-sd-purple/40">
+          <p class="text-xs text-sd-purple-300 mb-3 tracking-widest font-medium">HIGHLIGHTED</p>
+          <h3 class="text-lg text-white mb-2">Featured Service</h3>
+          <p class="text-sm text-sd-text-muted leading-relaxed">Same dark card with a purple border accent for featured or active states.</p>
+        </Card>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION HEADING
+    ════════════════════════════════════════ -->
+    <section id="section-heading" class="border-b border-white/5">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-20">
+        <h2 class="text-2xl text-white font-display mb-2">Section Heading</h2>
+        <p class="text-sd-text-muted text-sm mb-12">Used to open every major section. Eyebrow is optional. Align can be left (default) or center.</p>
+      </div>
+
+      <div class="bg-sd-dark py-16 px-6 md:px-10">
+        <div class="mx-auto max-w-[1440px] grid md:grid-cols-2 gap-16">
+          <div>
+            <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-6">Light tone · Left align</p>
+            <SectionHeading
+              eyebrow="Advanced Blockchain"
+              title="From research to launch — every layer of the stack"
+              description="Our engineers, designers, and consultants work together to build systems that are transparent, efficient, and secure."
+              tone="light"
+            />
+          </div>
+          <div>
+            <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-6">Light tone · Center align</p>
+            <SectionHeading
+              eyebrow="Benefits"
+              title="Why blockchain adoption matters"
+              description="Businesses across industries are turning to blockchain because it's transparent, efficient, and secure."
+              tone="light"
+              align="center"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-sd-light py-16 px-6 md:px-10">
+        <div class="mx-auto max-w-[1440px]">
+          <p class="text-xs text-sd-text-gray uppercase tracking-widest mb-6">Dark tone · Light background</p>
+          <SectionHeading
+            eyebrow="Our Work"
+            title="Real results, shipped to production"
+            description="Take a closer look at how our services have helped teams ship at scale."
+            tone="dark"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FAQ
+    ════════════════════════════════════════ -->
+    <section id="faq" class="border-b border-white/5">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-20">
+        <h2 class="text-2xl text-white font-display mb-2">FAQ</h2>
+        <p class="text-sd-text-muted text-sm mb-12">Accordion component. Two tones — dark (default) and light.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2">
+        <div class="bg-sd-dark p-10 md:p-16">
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-8">Dark tone</p>
+          <FAQ items={sampleFaqs} tone="dark" withJsonLd={false} />
+        </div>
+        <div class="bg-sd-light p-10 md:p-16">
+          <p class="text-xs text-sd-text-gray uppercase tracking-widest mb-8">Light tone</p>
+          <FAQ items={sampleFaqs} tone="light" withJsonLd={false} />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CTA
+    ════════════════════════════════════════ -->
+    <section id="cta" class="mx-auto max-w-[1440px] px-6 md:px-10 py-20 border-b border-white/5">
+      <h2 class="text-2xl text-white font-display mb-2">CTA Sections</h2>
+      <p class="text-sd-text-muted text-sm mb-12">Full-width call-to-action blocks. Three background variants.</p>
+
+      <div class="flex flex-col gap-6">
+        <div>
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-4">Gradient</p>
+          <CTA
+            variant="gradient"
+            eyebrow="Get started"
+            title="Power your growth with secure blockchain solutions"
+            description="From consultation to deployment, we guide you every step of the way."
+            buttons={[{ label: "Start your project", href: "/contact" }]}
+          />
+        </div>
+        <div>
+          <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-4">Purple</p>
+          <CTA
+            variant="purple"
+            title="Ready to build on Web3?"
+            description="Talk to our blockchain team and get a free consultation."
+            buttons={[{ label: "Book a call", href: "/contact" }]}
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         STAR RATING
+    ════════════════════════════════════════ -->
+    <section id="star-rating" class="mx-auto max-w-[1440px] px-6 md:px-10 py-20">
+      <h2 class="text-2xl text-white font-display mb-2">Star Rating</h2>
+      <p class="text-sd-text-muted text-sm mb-12">Used in testimonials and client reviews. Three sizes.</p>
+
+      <div class="flex flex-col gap-6">
+        {(["sm", "md", "lg"] as const).map(size => (
+          <div class="flex items-center gap-4">
+            <p class="text-xs text-sd-text-muted uppercase tracking-widest w-8">{size}</p>
+            <StarRating value={5} size={size} />
+            <StarRating value={4} size={size} />
+            <StarRating value={3} size={size} />
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </main>
+
+  </div>{/* end sidebar + content layout */}
+
+<style>
+  /* Active nav link */
+  .sd-nav-link.is-active {
+    color: white;
+    background: rgba(255,255,255,0.07);
+  }
+  .sd-nav-link.is-active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 1rem;
+    background: var(--sd-purple);
+    border-radius: 2px;
+  }
+  .sd-nav-link { position: relative; }
+
+  /* Pulsing dot to demo animation duration */
+  @keyframes sd-pulse { 0%,100% { transform: scale(1); opacity:1 } 50% { transform: scale(1.8); opacity:.5 } }
+  .sd-anim-dot { animation: sd-pulse var(--dur, 250ms) var(--sd-ease-smooth, ease) infinite; }
+
+  /* Sliding bar to demo easing */
+  @keyframes sd-slide { 0% { left:0 } 50% { left: calc(100% - 8px) } 100% { left:0 } }
+  .sd-ease-bar { animation: sd-slide 2s var(--ease, ease) infinite; }
+</style>
+
+<script>
+  // Scroll spy — highlights the nav link whose section is in view
+  const links = document.querySelectorAll<HTMLAnchorElement>(".sd-nav-link");
+  const sections = Array.from(
+    document.querySelectorAll<HTMLElement>("section[id]")
+  );
+
+  const activate = (id: string) => {
+    links.forEach(l => {
+      l.classList.toggle("is-active", l.dataset.section === id);
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) activate(e.target.id);
+      });
+    },
+    { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
+  );
+
+  sections.forEach(s => observer.observe(s));
+
+  // Activate first section on load
+  if (sections[0]) activate(sections[0].id);
+</script>
+
+</BaseLayout>

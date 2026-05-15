@@ -68,10 +68,10 @@ const resources = [
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {resources.map((r) => (
           <Card variant="dark" hover={false}>
-            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">{r.type}</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">{r.type}</p>
             <h3 class="text-lg text-white mb-3">{r.title}</h3>
             <p class="text-sm text-sd-text-muted leading-relaxed mb-6">{r.description}</p>
-            <a href="/contact" class="inline-flex items-center gap-1 text-sm text-sd-cyan hover:gap-2 transition-all">
+            <a href="/contact" class="inline-flex items-center gap-1 text-sm text-sd-purple-300 hover:gap-2 transition-all">
               {r.cta}
               <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>

@@ -78,13 +78,13 @@ const officePhotos: Record<string, string> = {
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 80% 30%, var(--sd-cyan), transparent 40%);"></div>
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 80% 30%, var(--sd-purple-300), transparent 40%);"></div>
     <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-32">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div data-animate>
           <Badge tone="purple" withDot class="mb-6">Who We Are</Badge>
           <h1 class="text-4xl md:text-6xl lg:text-7xl text-white leading-[1.05]">
-            We are <span class="text-sd-cyan">SpaceDev</span>.
+            We are <span class="text-sd-purple-300">SpaceDev</span>.
           </h1>
           <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-3xl leading-relaxed">
             At SpaceDev, engineering meets imagination. We're a custom software development company for businesses
@@ -121,7 +121,7 @@ const officePhotos: Record<string, string> = {
   <!-- QUICK FACTS -->
   <section class="bg-sd-dark py-16 md:py-20 border-y border-white/5">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <p class="text-center text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-12">Quick fun facts about us</p>
+      <p class="text-center text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-12">Quick fun facts about us</p>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
         {aboutFacts.map((s) => (
           <AnimatedCounter value={s.value} prefix={s.prefix} label={s.label} />
@@ -143,7 +143,7 @@ const officePhotos: Record<string, string> = {
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {values.map((v, idx) => (
           <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-8 hover:border-sd-purple/40 transition-colors" data-animate>
-            <p class="text-sm text-sd-purple-3 font-medium mb-4">0{idx + 1}</p>
+            <p class="text-sm text-sd-purple-300 font-medium mb-4">0{idx + 1}</p>
             <h3 class="text-xl text-white mb-3">{v.title}</h3>
             <p class="text-sm text-sd-text-muted leading-relaxed">{v.description}</p>
           </div>
@@ -165,7 +165,7 @@ const officePhotos: Record<string, string> = {
       />
       <div class="grid gap-4 md:gap-6 grid-cols-2 md:grid-cols-3" data-animate>
         {allHandsGallery.map((img) => (
-          <div class="rounded-2xl overflow-hidden bg-sd-light-4 aspect-[4/3]">
+          <div class="rounded-2xl overflow-hidden bg-sd-light-2 aspect-[4/3]">
             <img
               src={img.src}
               alt={img.alt}
@@ -205,7 +205,7 @@ const officePhotos: Record<string, string> = {
             </div>
             <div class="p-6">
               <h3 class="text-lg text-white font-medium">{person.name}</h3>
-              <p class="text-sm text-sd-cyan mb-3">{person.role}</p>
+              <p class="text-sm text-sd-purple-300 mb-3">{person.role}</p>
               <p class="text-sm text-sd-text-muted leading-relaxed">{person.bio}</p>
             </div>
           </article>
@@ -218,7 +218,7 @@ const officePhotos: Record<string, string> = {
   <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
     <div class="mx-auto max-w-[1100px] px-6 md:px-10">
       <figure class="text-center" data-animate>
-        <svg width="48" height="36" viewBox="0 0 48 36" class="mx-auto mb-8 text-sd-purple-3 opacity-50" fill="currentColor" aria-hidden="true">
+        <svg width="48" height="36" viewBox="0 0 48 36" class="mx-auto mb-8 text-sd-purple-300 opacity-50" fill="currentColor" aria-hidden="true">
           <path d="M14 0C6.27 0 0 6.27 0 14v22h22V14H8c0-3.31 2.69-6 6-6V0zm26 0c-7.73 0-14 6.27-14 14v22h22V14H34c0-3.31 2.69-6 6-6V0z"/>
         </svg>
         <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display">
