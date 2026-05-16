@@ -41,10 +41,10 @@ const explore = [
             <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <ul class="bg-white border border-sd-gray-border rounded-xl p-2 min-w-[260px] shadow-xl">
+            <ul class="bg-white border border-sd-gray-border rounded-xl p-2 min-w-[320px] shadow-xl">
               {expertise.map((item) => (
                 <li>
-                  <a href={item.href} class="block px-4 py-2 rounded-lg text-sd-text-dark hover:bg-sd-light-2 transition-colors text-sm">
+                  <a href={item.href} class="block px-4 py-2 rounded-lg text-sd-text-dark hover:bg-sd-light-2 transition-colors text-sm whitespace-nowrap">
                     {item.label}
                   </a>
                 </li>
