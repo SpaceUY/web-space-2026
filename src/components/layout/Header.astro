@@ -2,11 +2,11 @@
 import MobileMenu from "./MobileMenu.astro";
 
 const expertise = [
-  { label: "Blockchain Development", href: "/blockchain-development-services" },
-  { label: "Web & Mobile Solutions", href: "/innovative-web-and-mobile-solutions" },
-  { label: "IT Staff Augmentation", href: "/staff-augmentation" },
-  { label: "Product Discovery", href: "/product-discovery" },
-  { label: "BlockAudit Security", href: "/blockaudit-smart-contract-and-blockchain-security" },
+  { label: "Advanced Blockchain Development",     href: "/blockchain-development-services" },
+  { label: "Innovative Web & Mobile Development", href: "/innovative-web-and-mobile-solutions" },
+  { label: "IT Staff Augmentation",               href: "/staff-augmentation" },
+  { label: "Product Discovery",                   href: "/product-discovery" },
+  { label: "BlockAudit: Blockchain Security",     href: "/blockaudit-smart-contract-and-blockchain-security" },
 ];
 
 const explore = [
@@ -18,7 +18,7 @@ const explore = [
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-sd-dark/80 backdrop-blur-md border-b border-white/5">
+<header id="site-header" class="sticky top-0 z-50 bg-sd-dark/80 backdrop-blur-md border-b border-white/5 transition-transform duration-300">
   <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
 
   <div class="mx-auto max-w-[1440px] px-6 md:px-10 h-[72px] flex items-center justify-between gap-8">
@@ -34,17 +34,17 @@ const explore = [
     </a>
 
     <nav class="hidden md:flex items-center" aria-label="Primary">
-      <div class="rounded-full bg-white/10 border border-white/20 px-1 flex items-center gap-1" style="background: rgba(240,240,240,0.92); border-color: rgba(200,200,200,0.5);">
+      <div class="rounded-full px-2 flex items-center gap-1" style="background: rgba(240,240,240,0.92); border: 1px solid rgba(200,200,200,0.5);">
         <div class="relative group">
-          <button class="flex items-center gap-1 px-4 py-2 text-sm text-sd-text-dark hover:text-sd-purple transition-colors rounded-full" aria-haspopup="true" aria-expanded="false">
+          <button class="flex items-center gap-1.5 px-5 py-[4px] text-[20px] font-normal text-sd-text-dark group-hover:bg-sd-purple group-hover:text-white transition-colors rounded-full" aria-haspopup="true" aria-expanded="false">
             Our Expertise
             <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <ul class="bg-white border border-sd-gray-border rounded-xl p-2 min-w-[260px] shadow-xl">
+            <ul class="bg-sd-purple-mid rounded-xl p-2 min-w-[320px] shadow-xl">
               {expertise.map((item) => (
                 <li>
-                  <a href={item.href} class="block px-4 py-2 rounded-lg text-sd-text-dark hover:bg-sd-light-2 transition-colors text-sm">
+                  <a href={item.href} class="block px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors text-[16px] whitespace-nowrap py-[6px]">
                     {item.label}
                   </a>
                 </li>
@@ -53,20 +53,20 @@ const explore = [
           </div>
         </div>
 
-        <a href="/our-work" class="px-4 py-2 text-sm text-sd-text-dark hover:text-sd-purple transition-colors rounded-full">Our Work</a>
-        <a href="/careers" class="px-4 py-2 text-sm text-sd-text-dark hover:text-sd-purple transition-colors rounded-full">Careers</a>
-        <a href="/about-us" class="px-4 py-2 text-sm text-sd-text-dark hover:text-sd-purple transition-colors rounded-full">About</a>
+        <a href="/our-work" class="px-5 py-[4px] text-[20px] font-normal text-sd-text-dark hover:text-sd-purple transition-colors rounded-full">Our Work</a>
+        <a href="/careers" class="px-5 py-[4px] text-[20px] font-normal text-sd-text-dark hover:text-sd-purple transition-colors rounded-full">Careers</a>
+        <a href="/about-us" class="px-5 py-[4px] text-[20px] font-normal text-sd-text-dark hover:text-sd-purple transition-colors rounded-full">About</a>
 
         <div class="relative group">
-          <button class="flex items-center gap-1 px-4 py-2 text-sm text-sd-text-dark hover:text-sd-purple transition-colors rounded-full" aria-haspopup="true" aria-expanded="false">
+          <button class="flex items-center gap-1.5 px-5 py-[4px] text-[20px] font-normal text-sd-text-dark group-hover:bg-sd-purple group-hover:text-white transition-colors rounded-full" aria-haspopup="true" aria-expanded="false">
             Explore
             <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <ul class="bg-white border border-sd-gray-border rounded-xl p-2 min-w-[220px] shadow-xl">
+            <ul class="bg-sd-purple-mid rounded-xl p-2 min-w-[220px] shadow-xl">
               {explore.map((item) => (
                 <li>
-                  <a href={item.href} class="block px-4 py-2 rounded-lg text-sd-text-dark hover:bg-sd-light-2 transition-colors text-sm">
+                  <a href={item.href} class="block px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors text-[16px] py-[6px]">
                     {item.label}
                   </a>
                 </li>
@@ -128,4 +128,24 @@ const explore = [
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && menu && !menu.classList.contains("hidden")) closeMenu();
   });
+
+  // Hide on scroll down, show on scroll up
+  const header = document.getElementById("site-header");
+  let lastY = 0;
+  const THRESHOLD = 80; // px past the top before hide/show kicks in
+
+  window.addEventListener("scroll", () => {
+    const currentY = window.scrollY;
+    if (currentY <= THRESHOLD) {
+      // Always show at the very top
+      header?.style.setProperty("transform", "translateY(0)");
+    } else if (currentY > lastY) {
+      // Scrolling down — hide
+      header?.style.setProperty("transform", "translateY(-100%)");
+    } else {
+      // Scrolling up — show
+      header?.style.setProperty("transform", "translateY(0)");
+    }
+    lastY = currentY;
+  }, { passive: true });
 </script>
