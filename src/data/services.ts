@@ -595,20 +595,6 @@ export const productDiscoveryData: ServicePageData = {
   primaryCta: { label: "Get started", href: "/contact" },
   secondaryCta: { label: "Book a discovery call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
 
-  offers: {
-    eyebrow: "Product Discovery Suite",
-    title: "Choose the full service or any micro-package",
-    description: "Six sprints covering every stage from ideation to scaling. Pick what fits your moment.",
-    items: [
-      { number: "01", title: "Product Strategy Sprint", description: "Define the business model, develop hypotheses, test desirability, and forecast profitability. Deliverables: detailed report, validated/rejected hypotheses, business model and profitability projection." },
-      { number: "02", title: "Brand Strategy Sprint", description: "Establish a clear brand vision and create essential resources. Deliverables: refined brand materials, visual and written assets ready for marketing." },
-      { number: "03", title: "MVP Discovery Sprint", description: "Design the user experience, navigation, content architecture, and style guide. Deliverables: product definition, MVP scope & roadmap, critical app flow, solution architecture, tech stack, technical risk mitigation, wireframing." },
-      { number: "04", title: "Go-To-Market Package", description: "Prepare the product for launch in parallel to MVP development. Deliverables: launch strategy, app store and social marketing materials, community-building assets for early traction." },
-      { number: "05", title: "Continuous Discovery Sprint", description: "Assess the product's current state and propose new functionalities or optimizations. Deliverables: implementation plans, prioritized insights report, roadmap for continuous iteration." },
-      { number: "06", title: "Scale Stage", description: "Support mature products to scale and meet advanced needs. Deliverables: advanced solutions for scaling, enhanced design systems, dedicated growth resources." },
-    ],
-  },
-
   benefits: {
     eyebrow: "Key benefits",
     title: "Why discovery is non-negotiable",

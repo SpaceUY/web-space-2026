@@ -3,6 +3,15 @@ import ServicePageLayout from "../layouts/ServicePageLayout.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import Button from "../components/ui/Button.astro";
 import { productDiscoveryData } from "../data/services";
+
+const packages = [
+  { number: "01", title: "Product Strategy Sprint", description: "Define your vision, validate your assumptions, and align stakeholders on a product strategy that's both ambitious and achievable. We map competitors, clarify your unique value proposition, and create a prioritized roadmap." },
+  { number: "02", title: "Brand Strategy Sprint", description: "Craft a distinctive brand identity that resonates with your target audience. We develop your positioning, messaging framework, visual direction, and brand voice so you launch with clarity and confidence." },
+  { number: "03", title: "MVP Discovery Sprint", description: "Scope and validate your Minimum Viable Product to reduce risk and accelerate time-to-market. We define the core feature set, success metrics, and technical architecture needed to test your riskiest assumptions with real users." },
+  { number: "04", title: "Go-To-Market Package", description: "Launch with a plan that drives real traction. We build your GTM strategy covering customer segments, acquisition channels, pricing, and launch sequence — everything your team needs to execute on day one." },
+  { number: "05", title: "Continuous Discovery Sprint", description: "Keep learning as you grow. Embed discovery habits into your existing team with recurring user interviews, experiment design, and insight synthesis. Ideal for post-launch teams who want to stay close to their customers." },
+  { number: "06", title: "Scale Stage", description: "Prepare your product and organization for the next order of magnitude. We identify growth levers, platform scalability needs, team structure, and the metrics framework that will guide your next phase of expansion." },
+];
 ---
 
 <ServicePageLayout data={productDiscoveryData}>
@@ -20,7 +29,7 @@ import { productDiscoveryData } from "../data/services";
           class="mb-12"
         />
         <div class="divide-y divide-white/10 border-y border-white/10" id="packages-accordion">
-          {productDiscoveryData.offers?.items.map((pkg, i) => (
+          {packages.map((pkg, i) => (
             <div class="pkg-item" data-open={i === 0 ? "true" : "false"}>
               <button
                 class="pkg-trigger w-full flex items-center justify-between gap-4 py-5 text-left group"
