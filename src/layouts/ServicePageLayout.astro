@@ -164,6 +164,9 @@ const serviceJsonLd = {
     </div>
   </section>
 
+  <!-- Named slot: inject content between hero and process -->
+  <slot name="pre-process" />
+
   <!-- PROCESS (numbered steps, horizontal flow) -->
   {data.process && (
     <section class="bg-sd-dark py-20 md:py-28 border-b border-white/5">
@@ -324,6 +327,9 @@ const serviceJsonLd = {
       </div>
     </section>
   )}
+
+  <!-- Named slot: inject content between case studies/midCTA and benefits -->
+  <slot name="pre-benefits" />
 
   <!-- BENEFITS -->
   {data.benefits && (

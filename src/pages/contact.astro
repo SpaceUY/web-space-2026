@@ -5,6 +5,13 @@ import HubSpotForm from "../components/HubSpotForm.astro";
 import { offices } from "../data/site-content";
 import { SITE } from "../lib/seo";
 
+const officePhotos: Record<string, string> = {
+  "United States": "/images/content/3mmcSXAv2k0fk78C0Z1fgM86LQ.png",
+  "Uruguay":       "/images/content/jguQhkTbp0MoZ9wxfnMs1gKc.png",
+  "Argentina":     "/images/content/hYdfyHgO5TKgB3hgri2UDF288tA.png",
+  "Colombia":      "/images/content/ZhmOQQSS9e2RKMXaZGCU0VCxM.png",
+};
+
 const contactJsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
@@ -89,17 +96,29 @@ const contactJsonLd = {
         </div>
 
         <div class="border-t border-white/10 pt-8" data-animate>
-          <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">Our offices</h3>
-          <ul class="space-y-4 text-sm">
+          <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Our offices</h3>
+          <div class="grid grid-cols-2 gap-3">
             {offices.map((o) => (
-              <li>
-                <p class="text-white flex items-center gap-2">
-                  <span aria-hidden="true">{o.flag}</span> {o.country}
-                </p>
-                <p class="text-sd-text-muted text-xs leading-relaxed mt-1">{o.address}</p>
-              </li>
+              <div class="rounded-xl overflow-hidden border border-white/10 bg-sd-dark-2">
+                {officePhotos[o.country] && (
+                  <img
+                    src={officePhotos[o.country]}
+                    alt={`SpaceDev ${o.country} office`}
+                    loading="lazy"
+                    width="300"
+                    height="180"
+                    class="w-full h-20 object-cover"
+                  />
+                )}
+                <div class="px-3 py-2.5">
+                  <p class="text-white text-xs font-medium flex items-center gap-1.5">
+                    <span aria-hidden="true">{o.flag}</span> {o.country}
+                  </p>
+                  <p class="text-sd-text-muted text-[11px] leading-relaxed mt-0.5">{o.address}</p>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </aside>
     </div>

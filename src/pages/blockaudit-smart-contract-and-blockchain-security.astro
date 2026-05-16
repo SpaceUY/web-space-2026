@@ -3,77 +3,127 @@ import ServicePageLayout from "../layouts/ServicePageLayout.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import Button from "../components/ui/Button.astro";
 import { blockAuditData } from "../data/services";
+
+const vulnerabilityTypes = [
+  { title: "Reentrancy", description: "Malicious contracts re-enter a function before the first execution completes, draining funds." },
+  { title: "Access Control", description: "Missing or incorrect permission checks allow unauthorized parties to call privileged functions." },
+  { title: "Integer Overflow / Underflow", description: "Arithmetic operations wrap around integer bounds, producing unexpected values." },
+  { title: "Logic Errors", description: "Flawed business logic that can be exploited — often missed by automated tools alone." },
+  { title: "Oracle Manipulation", description: "Price or data feeds can be manipulated in a single transaction to extract value." },
+  { title: "Front-Running / MEV", description: "Miners or bots observe pending transactions and insert their own to profit ahead of users." },
+];
 ---
 
 <ServicePageLayout data={blockAuditData}>
-  <!-- Why a smart contract audit (image + copy) -->
-  <section class="bg-sd-light-2 py-20 md:py-28">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="grid gap-12 md:grid-cols-2 items-center">
-        <figure class="rounded-3xl overflow-hidden border border-sd-gray-border" data-animate>
-          <img
-            src="/images/content/4EnN0joO3tVJiGxfaLXZnG7Nb0.png"
-            alt="Smart contract security review on screen"
-            loading="lazy"
-            class="w-full h-auto"
-            width="900" height="650"
-          />
-        </figure>
-        <div data-animate>
-          <SectionHeading
-            eyebrow="Why choose our Smart Contract Audit"
-            title="Stay ahead of hacks — catch vulnerabilities before they catch you"
-            description="In Web3, security goes beyond protecting data — it's about safeguarding your assets and access controls. Our audits go beyond technical verification, also assessing management security (SECOPS) so every player in your system follows robust protocols."
-            tone="dark"
-          />
-          <div class="mt-8 flex flex-wrap gap-4">
-            <Button href="/contact" variant="primary">Request an audit</Button>
-            <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="ghost" external class="text-sd-text-dark hover:bg-black/5">Book a call</Button>
+  <!-- WHY CHOOSE OUR AUDIT — injects before benefits section -->
+  <div slot="pre-benefits">
+
+    <!-- Why audit: image + copy -->
+    <section class="bg-sd-light-2 py-20 md:py-28">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <div class="grid gap-12 md:grid-cols-2 items-center">
+          <figure class="rounded-3xl overflow-hidden border border-sd-gray-border" data-animate>
+            <img
+              src="/images/content/4EnN0joO3tVJiGxfaLXZnG7Nb0.png"
+              alt="Smart contract security review on screen"
+              loading="lazy"
+              class="w-full h-auto"
+              width="900" height="650"
+            />
+          </figure>
+          <div data-animate>
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-text-gray mb-4">Why choose our Smart Contract Audit</p>
+            <h2 class="font-display font-semibold text-3xl md:text-4xl text-sd-text-dark leading-[1.1] mb-6">
+              Stay ahead of hacks — catch vulnerabilities before they catch you
+            </h2>
+            <p class="font-body text-sd-text-gray leading-relaxed mb-4">
+              In Web3, security goes beyond protecting data — it's about safeguarding your assets and access controls.
+              With hackers constantly evolving their methods, smart contracts, wallets, and the players managing them
+              are increasingly at risk without proper precautions.
+            </p>
+            <p class="font-body text-sd-text-gray leading-relaxed mb-8">
+              Our audits go beyond technical verification of smart contracts' security and correctness. We also assess
+              management security (SECOPS), ensuring every player in your system follows robust protocols to mitigate
+              vulnerabilities across the board.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <Button href="/contact" variant="primary">Request an audit</Button>
+              <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="ghost" external class="text-sd-text-dark hover:bg-black/5">Book a call</Button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Visual strip: monitoring + secops -->
-  <section class="bg-sd-dark py-12 border-t border-white/5">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="grid gap-6 md:grid-cols-2" data-animate>
-        <figure class="rounded-2xl overflow-hidden border border-white/10">
-          <img
-            src="/images/content/CEcGYJOZAvm7PG00LilbLp5d464.png"
-            alt="OpenZeppelin Defender monitoring dashboard"
-            loading="lazy"
-            class="w-full h-64 object-cover"
-            width="900" height="500"
-          />
-        </figure>
-        <figure class="rounded-2xl overflow-hidden border border-white/10">
-          <img
-            src="/images/content/dUCQRv5vlpXEtBt2z0tl5VSa3Sw.png"
-            alt="Auditors performing manual code review"
-            loading="lazy"
-            class="w-full h-64 object-cover"
-            width="900" height="500"
-          />
-        </figure>
+    <!-- Vulnerability types grid -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <SectionHeading
+          eyebrow="Common vulnerabilities we catch"
+          title="Know what you're protecting against"
+          description="Our auditors are trained to identify the full spectrum of smart contract vulnerabilities — not just the most common ones."
+          align="center"
+          class="mb-14"
+        />
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {vulnerabilityTypes.map((v) => (
+            <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-6 hover:border-sd-purple/40 transition-colors" data-animate>
+              <div class="mb-4 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-sd-purple/20">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <h3 class="font-display font-semibold text-base text-white mb-2">{v.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{v.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Shift security to the forefront — banner block -->
-  <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10 text-center" data-animate>
-      <SectionHeading
-        eyebrow="Shift left"
-        title="Bring security to the forefront of your development cycle"
-        description="As smart contracts evolve into complex programs managing significant assets, developers must leverage tools that thoroughly analyze and identify vulnerabilities before deployment — safeguarding against potential exploitation."
-        align="center"
-      />
-      <div class="mt-10 flex flex-wrap gap-4 justify-center">
-        <Button href="/contact" variant="primary">Request an audit</Button>
-        <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="outline-light" external>Book a security call</Button>
+    <!-- Visual strip: monitoring + secops -->
+    <section class="bg-sd-dark py-12 border-t border-white/5">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <div class="grid gap-6 md:grid-cols-2" data-animate>
+          <figure class="rounded-2xl overflow-hidden border border-white/10">
+            <img
+              src="/images/content/CEcGYJOZAvm7PG00LilbLp5d464.png"
+              alt="OpenZeppelin Defender monitoring dashboard"
+              loading="lazy"
+              class="w-full h-64 object-cover"
+              width="900" height="500"
+            />
+          </figure>
+          <figure class="rounded-2xl overflow-hidden border border-white/10">
+            <img
+              src="/images/content/dUCQRv5vlpXEtBt2z0tl5VSa3Sw.png"
+              alt="Auditors performing manual code review"
+              loading="lazy"
+              class="w-full h-64 object-cover"
+              width="900" height="500"
+            />
+          </figure>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Shift security to the forefront — banner block -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="mx-auto max-w-[1100px] px-6 md:px-10 text-center" data-animate>
+        <p class="text-xs uppercase tracking-[0.2em] text-sd-cyan mb-4">Shift left</p>
+        <h2 class="font-display font-semibold text-3xl md:text-5xl text-white leading-[1.1] mb-6 max-w-3xl mx-auto">
+          Bring security to the forefront of your development cycle
+        </h2>
+        <p class="font-body text-sd-text-muted leading-relaxed max-w-2xl mx-auto mb-10">
+          As smart contracts evolve into complex programs managing significant assets, developers must leverage tools
+          that thoroughly analyze and identify vulnerabilities before deployment — safeguarding against potential exploitation.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <Button href="/contact" variant="primary">Request an audit</Button>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="outline-light" external>Book a security call</Button>
+        </div>
+      </div>
+    </section>
+
+  </div>
 </ServicePageLayout>

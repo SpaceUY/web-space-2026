@@ -1,36 +1,64 @@
 ---
 import ServicePageLayout from "../layouts/ServicePageLayout.astro";
-import { staffAugData } from "../data/services";
-import Card from "../components/ui/Card.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import Button from "../components/ui/Button.astro";
+import { staffAugData } from "../data/services";
 
 const industries = [
-  { title: "Fintech & Banking", description: "Strengthen digital banking and trading platforms with secure code and blockchain-powered payment systems." },
-  { title: "Healthcare & MedTech", description: "Build compliant, secure patient experiences that improve care while meeting global standards." },
-  { title: "E-commerce & Retail", description: "Create fast, intuitive shopping experiences that maximize engagement from browsing to checkout." },
-  { title: "SaaS & Startups", description: "Accelerate product launches and scale MVPs with agile teams designed for rapid growth." },
-  { title: "Gaming & Media", description: "Develop high-performance multiplayer environments and AR experiences that are interactive and immersive." },
-  { title: "Education & Enterprise IT", description: "Modernize infrastructure and automate workflows for large enterprises and educational platforms." },
-  { title: "Automotive & Mobility", description: "Build connected mobility solutions, from smart navigation to IoT fleet management systems." },
-  { title: "Energy & Utilities", description: "Implement data-driven dashboards and blockchain systems for transparent resource management." },
-  { title: "Telecommunications & Networking", description: "Improve connectivity with advanced communication frameworks and network automation tools." },
+  { icon: "💳", title: "Fintech & Banking", description: "Strengthen digital banking and trading platforms with secure, blockchain-powered payment systems." },
+  { icon: "🏥", title: "Healthcare & MedTech", description: "Build compliant, secure patient experiences that improve care while meeting global standards." },
+  { icon: "🛒", title: "E-commerce & Retail", description: "Create fast, intuitive shopping experiences that maximize engagement from browsing to checkout." },
+  { icon: "🚀", title: "SaaS & Startups", description: "Accelerate product launches and scale MVPs with agile teams designed for rapid growth." },
+  { icon: "🎮", title: "Gaming & Media", description: "Develop high-performance multiplayer environments and AR experiences that are interactive and immersive." },
+  { icon: "🏢", title: "Education & Enterprise IT", description: "Modernize infrastructure and automate workflows for large enterprises and educational platforms." },
+  { icon: "🚗", title: "Automotive & Mobility", description: "Build connected mobility solutions, from smart navigation to IoT fleet management systems." },
+  { icon: "⚡", title: "Energy & Utilities", description: "Implement data-driven dashboards and blockchain systems for transparent resource management." },
+  { icon: "📡", title: "Telecommunications", description: "Improve connectivity with advanced communication frameworks and network automation tools." },
+];
+
+const roles = [
+  { label: "Frontend Developers" },
+  { label: "Backend Developers" },
+  { label: "Full-Stack Engineers" },
+  { label: "Mobile Developers" },
+  { label: "Blockchain / Web3 Devs" },
+  { label: "DevOps & Cloud Engineers" },
+  { label: "UX/UI Designers" },
+  { label: "QA Engineers" },
+  { label: "Project Managers" },
 ];
 ---
 
 <ServicePageLayout data={staffAugData}>
-  <!-- INTRO BLOCK with image -->
-  <section class="bg-sd-light-2 py-20 md:py-28">
+  <!-- INTRO: feature block + stats — injects between hero and 4-step process -->
+  <section class="bg-sd-light-2 py-20 md:py-28" slot="pre-process">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <div class="grid gap-12 md:grid-cols-2 items-center">
         <div data-animate>
-          <SectionHeading
-            eyebrow="Top IT talent without long hiring cycles"
-            title="Pre-vetted developers and designers, ready from day one"
-            description="Finding skilled talent shouldn't slow you down. Our rigorous selection process ensures the right fit, helping you scale your MVP or enterprise platform efficiently, affordably, and without long-term commitments."
-            tone="dark"
-          />
-          <div class="mt-8 flex flex-wrap gap-4">
+          <p class="text-xs uppercase tracking-[0.2em] text-sd-text-gray mb-4">Top IT talent without long hiring cycles</p>
+          <h2 class="font-display font-semibold text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-[1.1] mb-6">
+            Pre-vetted developers and designers, ready from day one
+          </h2>
+          <p class="font-body text-sd-text-gray leading-relaxed mb-8">
+            Finding skilled talent shouldn't slow you down. Our rigorous selection process ensures the right fit,
+            helping you scale your MVP or enterprise platform efficiently, affordably, and without long-term commitments.
+          </p>
+          <!-- Stats row -->
+          <div class="grid grid-cols-3 gap-4 mb-8 border-y border-sd-gray-border py-6">
+            <div class="text-center">
+              <p class="font-display font-semibold text-3xl text-sd-text-dark">2<span class="text-sd-purple"> wks</span></p>
+              <p class="text-xs text-sd-text-gray mt-1">Average time to start</p>
+            </div>
+            <div class="text-center border-x border-sd-gray-border">
+              <p class="font-display font-semibold text-3xl text-sd-text-dark">+70</p>
+              <p class="text-xs text-sd-text-gray mt-1">Engineers available</p>
+            </div>
+            <div class="text-center">
+              <p class="font-display font-semibold text-3xl text-sd-text-dark">+160</p>
+              <p class="text-xs text-sd-text-gray mt-1">Projects delivered</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-4">
             <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
             <Button href="/our-work" variant="ghost" class="text-sd-text-dark hover:bg-black/5">See our work</Button>
           </div>
@@ -48,7 +76,30 @@ const industries = [
     </div>
   </section>
 
-  <!-- INDUSTRIES served (9 cards) -->
+  <!-- WHO WE PLACE: roles grid on dark purple bg -->
+  <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <SectionHeading
+        eyebrow="Who we place"
+        title="The talent you need, when you need it"
+        description="From blockchain engineers to product managers — every role is pre-vetted and ready to integrate from week one."
+        align="center"
+        class="mb-12"
+      />
+      <div class="flex flex-wrap justify-center gap-3" data-animate>
+        {roles.map((r) => (
+          <span class="inline-flex items-center px-5 py-2.5 rounded-full border border-sd-cyan/40 text-sd-cyan text-sm font-body">
+            {r.label}
+          </span>
+        ))}
+      </div>
+      <div class="mt-10 text-center">
+        <Button href="/contact" variant="primary" size="lg">Hire talent now</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES served: 9 cards -->
   <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <SectionHeading
@@ -58,49 +109,18 @@ const industries = [
         align="center"
         class="mb-14"
       />
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {industries.map((i) => (
-          <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-6 hover:border-sd-purple/40 transition-colors" data-animate>
-            <h3 class="text-lg text-white mb-3">{i.title}</h3>
-            <p class="text-sm text-sd-text-muted leading-relaxed">{i.description}</p>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {industries.map((ind) => (
+          <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-sd-dark-2 p-6 hover:border-sd-purple/40 transition-colors" data-animate>
+            <div class="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-xl" style="background: var(--sd-purple-mid);">
+              {ind.icon}
+            </div>
+            <div>
+              <h3 class="font-display font-semibold text-base text-white mb-2">{ind.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{ind.description}</p>
+            </div>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Targeted hire CTAs (3 paths) -->
-  <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10">
-      <SectionHeading
-        eyebrow="Targeted hiring"
-        title="What kind of talent do you need?"
-        description="The interview process takes less than 2 weeks — most teams are ready to start within one to two."
-        align="center"
-        class="mb-12"
-      />
-      <div class="grid gap-6 md:grid-cols-3">
-        <Card variant="dark">
-          <h3 class="text-xl text-white mb-3">General team scaling</h3>
-          <p class="text-sm text-sd-text-muted mb-6 leading-relaxed">
-            Tell us your stack and timeline — we'll match you with vetted engineers ready to start.
-          </p>
-          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
-        </Card>
-        <Card variant="dark">
-          <h3 class="text-xl text-white mb-3">Hire blockchain developers</h3>
-          <p class="text-sm text-sd-text-muted mb-6 leading-relaxed">
-            Solidity, Rust, Move, full-stack Web3 — engineers who have shipped to mainnet.
-          </p>
-          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
-        </Card>
-        <Card variant="dark">
-          <h3 class="text-xl text-white mb-3">UX/UI, PMs, POs or QAs</h3>
-          <p class="text-sm text-sd-text-muted mb-6 leading-relaxed">
-            Designers, project managers, product owners, and testing engineers — embedded into your team.
-          </p>
-          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="outline-light" external>Book a call</Button>
-        </Card>
       </div>
     </div>
   </section>

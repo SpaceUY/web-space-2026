@@ -31,6 +31,8 @@ const awardBadges = [
   { src: "/images/content/8x8x1nT1yym7h8hZkcOUsL0A5do.svg", title: "Top 5", caption: "Blockchain Companies worldwide by Clutch" },
   { src: "/images/content/JHogPoUM4sCPo4r816ur9EcHs.svg", title: "+40", caption: "Perfect 5-star ratings from happy clients on Clutch" },
   { src: "/images/content/NQaNeD09wdw4EsvxsJ8IOWeE.svg", title: "Global", caption: "International event speakers (not bragging)" },
+  { src: "/images/content/sujqj94Uf0BbTPbt246NbjhcOtI.svg", title: "Forbes", caption: "Featured in Forbes Blockchain coverage" },
+  { src: "/images/content/xogWSUdGpi5BEVz8K4WKA5zSI.svg", title: "Clutch", caption: "Clutch Global Leader in Blockchain Development" },
 ];
 
 const leadership = [
@@ -124,7 +126,7 @@ const officePhotos: Record<string, string> = {
       <p class="text-center text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-12">Quick fun facts about us</p>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
         {aboutFacts.map((s) => (
-          <AnimatedCounter value={s.value} prefix={s.prefix} label={s.label} />
+          <AnimatedCounter value={s.value} prefix={s.prefix ?? ""} label={s.label} />
         ))}
       </div>
     </div>
@@ -200,13 +202,12 @@ const officePhotos: Record<string, string> = {
                 loading="lazy"
                 width="600"
                 height="600"
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div class="p-6">
-              <h3 class="text-lg text-white font-medium">{person.name}</h3>
-              <p class="text-sm text-sd-purple-300 mb-3">{person.role}</p>
-              <p class="text-sm text-sd-text-muted leading-relaxed">{person.bio}</p>
+              <h3 class="font-display font-semibold text-lg text-white">{person.name}</h3>
+              <p class="text-sm text-sd-purple-300 mt-1">{person.role}</p>
             </div>
           </article>
         ))}
@@ -274,7 +275,7 @@ const officePhotos: Record<string, string> = {
   <section class="bg-sd-light py-16 md:py-20">
     <div class="mx-auto max-w-[1100px] px-6 md:px-10 text-center" data-animate>
       <p class="text-xs uppercase tracking-[0.2em] text-sd-text-gray mb-6">Recognized by</p>
-      <div class="grid gap-8 md:grid-cols-3 items-stretch">
+      <div class="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-stretch">
         {awardBadges.map((a) => (
           <div class="rounded-2xl border border-sd-gray-border bg-white p-8 flex flex-col items-center">
             <img
