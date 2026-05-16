@@ -18,7 +18,7 @@ const explore = [
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-sd-dark/80 backdrop-blur-md border-b border-white/5">
+<header id="site-header" class="sticky top-0 z-50 bg-sd-dark/80 backdrop-blur-md border-b border-white/5 transition-transform duration-300">
   <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
 
   <div class="mx-auto max-w-[1440px] px-6 md:px-10 h-[72px] flex items-center justify-between gap-8">
@@ -128,4 +128,24 @@ const explore = [
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && menu && !menu.classList.contains("hidden")) closeMenu();
   });
+
+  // Hide on scroll down, show on scroll up
+  const header = document.getElementById("site-header");
+  let lastY = 0;
+  const THRESHOLD = 80; // px past the top before hide/show kicks in
+
+  window.addEventListener("scroll", () => {
+    const currentY = window.scrollY;
+    if (currentY <= THRESHOLD) {
+      // Always show at the very top
+      header?.style.setProperty("transform", "translateY(0)");
+    } else if (currentY > lastY) {
+      // Scrolling down — hide
+      header?.style.setProperty("transform", "translateY(-100%)");
+    } else {
+      // Scrolling up — show
+      header?.style.setProperty("transform", "translateY(0)");
+    }
+    lastY = currentY;
+  }, { passive: true });
 </script>
