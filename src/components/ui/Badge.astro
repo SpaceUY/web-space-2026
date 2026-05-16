@@ -1,5 +1,5 @@
 ---
-type Tone = "neutral" | "purple" | "cyan" | "green" | "outline";
+type Tone = "neutral" | "purple" | "green" | "outline";
 
 interface Props {
   tone?: Tone;
@@ -11,24 +11,22 @@ const { tone = "neutral", withDot = false, class: className = "" } = Astro.props
 
 const tones: Record<Tone, string> = {
   neutral: "bg-white/10 text-sd-text-muted",
-  purple: "bg-sd-purple/15 text-sd-purple-3",
-  cyan: "bg-sd-cyan/15 text-sd-cyan",
-  green: "bg-sd-green/15 text-sd-green",
+  purple:  "bg-sd-purple-600/20 text-sd-purple-200",
+  green:   "bg-sd-green-400/15 text-sd-green-300",
   outline: "border border-white/20 text-white",
 };
 
 const dotColors: Record<Tone, string> = {
   neutral: "bg-sd-text-muted",
-  purple: "bg-sd-purple",
-  cyan: "bg-sd-cyan",
-  green: "bg-sd-green",
+  purple:  "bg-sd-purple-400",
+  green:   "bg-sd-green-400",
   outline: "bg-white",
 };
 ---
 
 <span
-  class={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs uppercase tracking-wider font-medium ${tones[tone]} ${className}`.trim()}
+  class={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-ui uppercase tracking-wider ${tones[tone]} ${className}`.trim()}
 >
-  {withDot && <span class={`w-1.5 h-1.5 rounded-full ${dotColors[tone]}`} />}
+  {withDot && <span class={`w-1.5 h-1.5 rounded-full shrink-0 ${dotColors[tone]}`} />}
   <slot />
 </span>

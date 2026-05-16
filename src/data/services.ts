@@ -1,10 +1,10 @@
 import type { CaseStudy } from "./case-studies";
 import { caseStudies } from "./case-studies";
 
-export interface ServiceOffer { number: string; title: string; description: string }
-export interface ServiceBenefit { title: string; description: string }
+export interface ServiceOffer { number: string; title: string; description: string; href?: string }
+export interface ServiceBenefit { title: string; description: string; icon?: string }
 export interface ServiceFaq { question: string; answer: string }
-export interface ServiceQuote { text: string; author: string; role: string }
+export interface ServiceQuote { text: string; author: string; role: string; photo?: string; linkedin?: string }
 export interface ServiceStep { number: string; title: string; description: string }
 
 export interface ServicePageData {
@@ -19,7 +19,7 @@ export interface ServicePageData {
   secondaryCta?: { label: string; href: string; external?: boolean };
 
   /** "What we build" / process / offers */
-  offers?: { eyebrow?: string; title: string; description?: string; items: ServiceOffer[] };
+  offers?: { eyebrow?: string; title: string; description?: string; items: ServiceOffer[]; style?: "list" | "cards" };
 
   /** Step-by-step process (1..N) */
   process?: { eyebrow?: string; title: string; description?: string; items: ServiceStep[] };
@@ -34,7 +34,16 @@ export interface ServicePageData {
   quote?: ServiceQuote;
 
   /** Why SpaceDev */
-  whyUs?: { title: string; description?: string; items: ServiceBenefit[] };
+  whyUs?: { title: string; description?: string; items: ServiceBenefit[]; style?: "cards" | "accordion" };
+
+  /** Mid-page CTA (between case studies and benefits) */
+  midCta?: { title: string; description?: string; buttonLabel: string; buttonHref: string; external?: boolean };
+
+  /** Marquee text banner (shown before Final CTA) */
+  marqueeText?: string;
+
+  /** Web3 tech stack floating grid (shown after offers) */
+  techStack?: { title: string; subtitle: string; tools: string[] };
 
   /** FAQ */
   faqs?: ServiceFaq[];
@@ -71,19 +80,17 @@ export const blockchainData: ServicePageData = {
 
   offers: {
     eyebrow: "What we build",
-    title: "From research to launch — every layer of the stack",
+    title: "What We Build",
     description:
-      "A memorable product starts with a vision and ends with something that creates impact. Our blockchain engineers, designers, and consultants work together to build systems that are transparent, efficient, secure, and built for real business outcomes.",
+      "A memorable product starts with a vision and ends with something that creates impact. Our blockchain engineers, designers, and consultants work together to build systems that are transparent, efficient, secure, and for real business outcomes.",
+    style: "cards",
     items: [
-      { number: "01", title: "Blockchain Technical Research", description: "Advanced technical research directly with major blockchain ecosystems, solving complex protocol challenges and defining future network standards." },
-      { number: "02", title: "Blockchain Development", description: "Fully customized, scalable networks ranging from Layer 1 protocols to private enterprise chains — secure and future-ready." },
-      { number: "03", title: "DeFi Platforms", description: "Decentralized finance platforms for trading, lending and liquidity management, built for risk reduction and smart automation." },
-      { number: "04", title: "dApps", description: "High-performance decentralized applications that combine seamless UX with robust, scalable on-chain logic." },
-      { number: "05", title: "NFTs & Play-to-Earn", description: "NFT marketplaces and play-to-earn ecosystems backed by secure, authenticated token economies that drive real engagement." },
-      { number: "06", title: "DAOs", description: "On-chain governance models for transparent decision-making, voting systems, and efficient treasury management." },
-      { number: "07", title: "Cryptocurrencies & Tokens", description: "Custom tokens with compliant governance models and stable liquidity structures for sustainable market performance." },
-      { number: "08", title: "Smart Contracts", description: "Audited, gas-optimized contracts on Ethereum, Aptos, Solana and other major ecosystems — designed for security and longevity." },
-      { number: "09", title: "White-Label Crypto Exchanges", description: "Ready-to-deploy exchange platforms featuring advanced trading tools, KYC integration and seamless liquidity management." },
+      { number: "01", title: "Smart Contract Development", description: "Audited, gas-optimized contracts on Ethereum, Aptos, Solana and other major ecosystems — designed for security and longevity.", href: "/blockchain-development-services/smart-contract-development" },
+      { number: "02", title: "dApp Development", description: "High-performance decentralized applications that combine seamless UX with robust, scalable on-chain logic.", href: "/blockchain-development-services/dapp-development" },
+      { number: "03", title: "Decentralized Identity", description: "Self-sovereign identity solutions that give users full control over their data — secure, private, and interoperable across chains.", href: "/blockchain-development-services/decentralized-identity" },
+      { number: "04", title: "Asset Tokenization", description: "Turn real-world assets into digital tokens — unlocking liquidity, fractional ownership, and new investment opportunities.", href: "/blockchain-development-services/asset-tokenization" },
+      { number: "05", title: "Layer 1 Blockchain Development", description: "Fully customized, scalable networks ranging from Layer 1 protocols to private enterprise chains — secure and future-ready.", href: "/blockchain-development-services/layer-1-blockchain-development" },
+      { number: "06", title: "DAO Development", description: "On-chain governance models for transparent decision-making, voting systems, and efficient treasury management.", href: "/blockchain-development-services/dao-development" },
     ],
   },
 
@@ -94,31 +101,47 @@ export const blockchainData: ServicePageData = {
     description:
       "Businesses across industries are turning to blockchain because it's transparent, efficient, and secure. Custom blockchain solutions redefine how transactions, data, and trust work in digital ecosystems.",
     items: [
-      { title: "Increased Security", description: "Advanced cryptographic algorithms safeguard data and transactions. Each block is encrypted, verified, and immutable — protecting against cyberattacks and fraud." },
-      { title: "Greater Transparency", description: "Every transaction is permanently recorded and easily auditable. This openness improves accountability and builds trust with users, partners, and regulators." },
-      { title: "Improved Efficiency", description: "Automate repetitive workflows and eliminate intermediaries. Smart contracts streamline operations and shorten transaction times." },
-      { title: "Higher Reliability", description: "A decentralized network distributes data across multiple nodes, removing single points of failure and ensuring continuous uptime." },
-      { title: "Cost Optimization", description: "By reducing intermediaries and automating operations, blockchain minimizes administrative costs and transaction fees." },
-      { title: "Enhanced Traceability", description: "Trace assets from origin to destination — improving supply-chain visibility, ensuring compliance, and strengthening consumer trust." },
+      { title: "Increased Security", description: "Advanced cryptographic algorithms safeguard data and transactions. Each block is encrypted, verified, and immutable — protecting against cyberattacks and fraud.", icon: "lock" },
+      { title: "Greater Transparency", description: "Every transaction is permanently recorded and easily auditable. This openness improves accountability and builds trust with users, partners, and regulators.", icon: "eye" },
+      { title: "Improved Efficiency", description: "Automate repetitive workflows and eliminate intermediaries. Smart contracts streamline operations and shorten transaction times.", icon: "bolt" },
+      { title: "Higher Reliability", description: "A decentralized network distributes data across multiple nodes, removing single points of failure and ensuring continuous uptime.", icon: "shield" },
+      { title: "Cost Optimization", description: "By reducing intermediaries and automating operations, blockchain minimizes administrative costs and transaction fees.", icon: "tag" },
+      { title: "Enhanced Traceability", description: "Trace assets from origin to destination — improving supply-chain visibility, ensuring compliance, and strengthening consumer trust.", icon: "chain" },
     ],
   },
 
   quote: {
-    text: "There's no question that blockchain will change the world; the real question is when. We can drive this change by embracing and promoting the technology. At SpaceDev, we firmly believe in its transformative power. Partner with us to unlock the full potential of blockchain.",
+    text: "There's no question that blockchain will change the world; the real question is when. We can drive this change by embracing and promoting the technology. At SpaceDev, we firmly believe in its transformative power. Partner with us to unlock the full potential of blockchain and lead the future of innovation.",
     author: "Juan Manuel Sobral",
     role: "CTO & Co-founder",
+    photo: "/images/juan-manuel-sobral.png",
+    linkedin: "https://www.linkedin.com/in/juanmanuelsobral/",
+  },
+
+  midCta: {
+    title: "Eager to create your own success story?",
+    buttonLabel: "Book a call",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
+    external: true,
   },
 
   whyUs: {
-    title: "Why choose SpaceDev as your tech partner?",
+    title: "Why Choose SpaceDev as Your Tech Partner",
+    style: "accordion",
     items: [
-      { title: "Fast MVP Development", description: "Rapid prototyping and MVP creation that helps validate ideas quickly without compromising quality. Faster go-to-market and smoother evolution." },
-      { title: "Exceptional IT Talent", description: "Experienced engineers, architects, and auditors with proven skills in blockchain — from smart contracts to multi-chain integrations." },
-      { title: "High Development Quality", description: "Clean architecture, detailed audits, and continuous testing guarantee precision and performance at every step." },
-      { title: "Real, Measurable Results", description: "Secure platforms, faster transactions, higher adoption rates, and scalable growth — clients experience measurable ROI." },
-      { title: "End-to-End Expertise", description: "From concept to deployment, in-house. Multidisciplinary team covers blockchain, UI/UX, DevOps, and post-launch support." },
-      { title: "Flexible Engagement Models", description: "Project-based execution or IT staff augmentation — we adapt to your structure, scale efficiently, and integrate as an extension of your team." },
+      { title: "Fast MVP Delivery", description: "We move ideas into action quickly. Our agile approach allows you to validate concepts, gather user feedback, and iterate — all before committing to full-scale development." },
+      { title: "Real Results, Not Buzzwords", description: "We measure success by what ships and scales. Every engagement is tied to concrete outcomes — faster transactions, higher adoption, measurable ROI." },
+      { title: "Transparent Collaboration", description: "No black boxes. You have full visibility into progress, blockers, and decisions throughout the project. We work as an extension of your team, not a vendor." },
+      { title: "Post-Launch Partnership", description: "Whether it's project-based execution or IT staff augmentation, we adapt to your structure, scale efficiently, and integrate as an extension of your existing team." },
     ],
+  },
+
+  marqueeText: "Blockchain Development. Web3 Solutions. Smart Contracts. DeFi Platforms. dApp Development. Asset Tokenization.",
+
+  techStack: {
+    title: "Our Web 3.0 tech stack",
+    subtitle: "From mobile experiences to complex decentralized software, our premium digital solutions are made with the latest tools.",
+    tools: ["ethereum", "solana", "solidity", "rust", "wagmi", "hardhat", "ethers", "openzeppelin"],
   },
 
   faqs: [

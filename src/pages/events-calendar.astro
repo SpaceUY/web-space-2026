@@ -45,11 +45,11 @@ const past = [
   <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
     <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-20 md:py-28">
       <div class="max-w-3xl" data-animate>
-        <Badge tone="cyan" withDot class="mb-6">Events</Badge>
+        <Badge tone="purple" withDot class="mb-6">Events</Badge>
         <h1 class="text-4xl md:text-6xl text-white">Where we'll be next</h1>
         <p class="mt-6 text-lg text-sd-text-muted max-w-2xl leading-relaxed">
           Conferences, meetups, and workshops across the Americas, Europe, and Asia.
-          Want to meet up? <a href="/contact" class="text-sd-purple-3 underline hover:text-sd-cyan">Drop us a line</a>.
+          Want to meet up? <a href="/contact" class="text-sd-purple-300 underline hover:text-sd-purple-300">Drop us a line</a>.
         </p>
       </div>
     </div>
@@ -63,7 +63,7 @@ const past = [
         {upcoming.map((e) => (
           <li>
             <Card variant="dark" hover={false}>
-              <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-3">{e.date}</p>
+              <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">{e.date}</p>
               <h3 class="text-xl text-white mb-2">{e.name}</h3>
               <p class="text-sm text-sd-text-muted">{e.location}</p>
               <p class="mt-4 text-sm text-white">{e.role}</p>

@@ -17,7 +17,7 @@ const { items, tone = "dark", class: className = "", withJsonLd = true } = Astro
 const borderColor = tone === "dark" ? "border-white/10" : "border-sd-gray-border";
 const questionColor = tone === "dark" ? "text-white" : "text-sd-text-dark";
 const answerColor = tone === "dark" ? "text-sd-text-muted" : "text-sd-text-gray";
-const iconColor = tone === "dark" ? "text-sd-purple-3" : "text-sd-purple";
+const iconColor = tone === "dark" ? "text-sd-purple-300" : "text-sd-purple";
 
 const faqJsonLd = withJsonLd
   ? {
@@ -36,8 +36,8 @@ const faqJsonLd = withJsonLd
   {items.map((item) => (
     <details class="group py-5 sd-faq-item" name="faq">
       <summary class={`flex items-center justify-between gap-6 cursor-pointer list-none ${questionColor}`}>
-        <span class="text-base md:text-lg font-medium pr-4">{item.question}</span>
-        <span class={`shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full border ${borderColor} ${iconColor} transition-transform duration-300 group-open:rotate-45`} aria-hidden="true">
+        <span class="text-base md:text-lg font-medium pr-4 group-open:text-sd-purple-300 transition-colors">{item.question}</span>
+        <span class={`shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full border ${borderColor} group-open:border-sd-purple-400/60 group-open:bg-sd-purple-600/20 ${iconColor} transition-all duration-200 group-open:rotate-45`} aria-hidden="true">
           <svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>
       </summary>

@@ -20,9 +20,9 @@ const { Content } = await render(entry);
 
 const accentGradients: Record<string, string> = {
   purple: "from-sd-purple to-sd-purple-2",
-  cyan: "from-sd-cyan to-sd-purple",
-  green: "from-sd-green to-sd-cyan",
-  mixed: "from-sd-purple via-sd-cyan to-sd-green",
+  cyan: "from-sd-purple-300 to-sd-purple",
+  green: "from-sd-green to-sd-purple-300",
+  mixed: "from-sd-purple via-sd-purple-400 to-sd-green",
 };
 const gradient = accentGradients[entry.data.accent];
 
@@ -139,7 +139,7 @@ const hasRichContent =
           <aside class="space-y-8 lg:sticky lg:top-24 lg:self-start">
             {entry.data.services.length > 0 && (
               <div>
-                <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">Services</h3>
+                <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Services</h3>
                 <ul class="space-y-2 text-sm text-white">
                   {entry.data.services.map((s) => <li>{s}</li>)}
                 </ul>
@@ -148,7 +148,7 @@ const hasRichContent =
 
             {entry.data.techStack.length > 0 && (
               <div class="border-t border-white/10 pt-8">
-                <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">Tech Stack</h3>
+                <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Tech Stack</h3>
                 <ul class="flex flex-wrap gap-2">
                   {entry.data.techStack.map((t) => (
                     <li class="inline-flex items-center px-3 py-1 rounded-full border border-white/15 text-xs text-sd-text-muted">{t}</li>
@@ -182,12 +182,12 @@ const hasRichContent =
       {deliverables.length > 0 && (
         <section class="bg-sd-dark py-16 md:py-24">
           <div class="mx-auto max-w-[1100px] px-6 md:px-10">
-            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-3">What we delivered</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">What we delivered</p>
             <h2 class="text-3xl md:text-4xl text-white mb-10 leading-tight">Solutions shipped</h2>
             <ul class="space-y-4">
               {deliverables.map((d) => (
                 <li class="flex gap-4 bg-white/[0.03] rounded-xl p-6 border border-white/10">
-                  <span class="shrink-0 w-2 h-2 mt-2 rounded-full bg-sd-cyan"></span>
+                  <span class="shrink-0 w-2 h-2 mt-2 rounded-full bg-sd-purple-300"></span>
                   <p class="text-white/85 leading-relaxed">{d}</p>
                 </li>
               ))}
@@ -215,7 +215,7 @@ const hasRichContent =
       {gallery.length > 0 && (
         <section class="bg-sd-dark py-16 md:py-24">
           <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-3">Gallery</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">Gallery</p>
             <h2 class="text-3xl md:text-4xl text-white mb-10 leading-tight">A closer look</h2>
             <div class="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {gallery.map((src, i) => (
@@ -237,7 +237,7 @@ const hasRichContent =
       {outcome && (
         <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
           <div class="mx-auto max-w-[1000px] px-6 md:px-10 text-center">
-            <p class="text-xs uppercase tracking-[0.2em] text-sd-cyan mb-4">Outcome</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Outcome</p>
             <p class="text-2xl md:text-3xl text-white leading-snug">{outcome}</p>
           </div>
         </section>
@@ -254,7 +254,7 @@ const hasRichContent =
         <aside class="space-y-8 lg:sticky lg:top-24 lg:self-start">
           {entry.data.services.length > 0 && (
             <div>
-              <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">Services</h3>
+              <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Services</h3>
               <ul class="space-y-2 text-sm text-white">
                 {entry.data.services.map((s) => <li>{s}</li>)}
               </ul>
@@ -263,7 +263,7 @@ const hasRichContent =
 
           {entry.data.techStack.length > 0 && (
             <div class="border-t border-white/10 pt-8">
-              <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-3 mb-4">Tech Stack</h3>
+              <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Tech Stack</h3>
               <ul class="flex flex-wrap gap-2">
                 {entry.data.techStack.map((t) => (
                   <li class="inline-flex items-center px-3 py-1 rounded-full border border-white/15 text-xs text-sd-text-muted">{t}</li>
@@ -282,10 +282,10 @@ const hasRichContent =
       <p class="text-xs uppercase tracking-[0.2em] text-sd-text-muted mb-3">Up next</p>
       <a href={`/case-study/${next.id}`} class="group flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div>
-          <h3 class="text-3xl md:text-5xl text-white group-hover:text-sd-cyan transition-colors">{next.data.name}</h3>
+          <h3 class="text-3xl md:text-5xl text-white group-hover:text-sd-purple-300 transition-colors">{next.data.name}</h3>
           <p class="mt-2 text-sd-text-muted">{next.data.tagline}</p>
         </div>
-        <span class="inline-flex items-center gap-2 text-sm text-sd-purple-3 group-hover:gap-3 transition-all">
+        <span class="inline-flex items-center gap-2 text-sm text-sd-purple-300 group-hover:gap-3 transition-all">
           Read case study
           <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>

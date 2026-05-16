@@ -1,0 +1,59 @@
+---
+interface Props {
+  text: string;
+  author: string;
+  role: string;
+  photo?: string;
+  linkedin?: string;
+}
+
+const { text, author, role, photo, linkedin } = Astro.props;
+---
+
+<section class="py-24 md:py-32 bg-sd-dark">
+  <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+    <figure>
+
+      <!-- Quote text -->
+      <blockquote
+        class="text-3xl md:text-4xl lg:text-5xl font-body font-light text-white text-center leading-snug tracking-tight"
+      >
+        "{text}"
+      </blockquote>
+
+      <!-- Author — bottom right -->
+      <figcaption class="mt-16 flex items-center justify-end gap-5">
+        {photo && (
+          <img
+            src={photo}
+            alt={author}
+            width={72}
+            height={72}
+            class="w-[72px] h-[72px] rounded-full object-cover grayscale shrink-0"
+          />
+        )}
+        <div class="text-right">
+          <p class="text-white font-medium text-base">{author}</p>
+          <p class="text-sm mt-0.5" style="color: var(--sd-text-muted)">{role}, SpaceDev</p>
+          {linkedin && (
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-widest transition-colors hover:text-white"
+              style="color: var(--sd-text-muted)"
+            >
+              Connect with me
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          )}
+        </div>
+      </figcaption>
+
+    </figure>
+  </div>
+</section>

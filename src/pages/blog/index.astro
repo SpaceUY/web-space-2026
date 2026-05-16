@@ -14,11 +14,11 @@ const allCategories = ["All", ...new Set(posts.map((p) => p.data.category))];
 const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric" });
 const accentByCategory: Record<string, string> = {
   "Blockchain Trends": "from-sd-purple to-sd-purple-2",
-  "Web2 Trends": "from-sd-cyan to-sd-purple",
-  "Product Development": "from-sd-green to-sd-cyan",
-  "AI": "from-sd-purple-3 to-sd-cyan",
-  "Augmented Reality": "from-sd-cyan to-sd-green",
-  "Techy Trends": "from-sd-purple to-sd-cyan",
+  "Web2 Trends": "from-sd-purple-300 to-sd-purple",
+  "Product Development": "from-sd-green to-sd-purple-300",
+  "AI": "from-sd-purple-300 to-sd-purple-300",
+  "Augmented Reality": "from-sd-purple-300 to-sd-green",
+  "Techy Trends": "from-sd-purple to-sd-purple-300",
 };
 ---
 
@@ -60,7 +60,7 @@ const accentByCategory: Record<string, string> = {
       <div id="sd-blog-grid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => {
           const author = getAuthor(post.data.author);
-          const gradient = accentByCategory[post.data.category] ?? "from-sd-purple to-sd-cyan";
+          const gradient = accentByCategory[post.data.category] ?? "from-sd-purple to-sd-purple-300";
           return (
             <article class="group" data-category={post.data.category} data-animate>
               <a href={`/blog/${post.id}`} class="block">
@@ -88,7 +88,7 @@ const accentByCategory: Record<string, string> = {
                     <span aria-hidden="true">·</span>
                     <span>{post.data.readTime} min read</span>
                   </div>
-                  <h2 class="text-lg md:text-xl text-white group-hover:text-sd-cyan transition-colors leading-snug">
+                  <h2 class="text-lg md:text-xl text-white group-hover:text-sd-purple-300 transition-colors leading-snug">
                     {post.data.title}
                   </h2>
                   <p class="mt-2 text-sm text-sd-text-muted leading-relaxed line-clamp-2">{post.data.description}</p>
