@@ -440,26 +440,26 @@ export const webMobileData: ServicePageData = {
   title: "Innovative Web & Mobile Development",
   description:
     "Your digital product is more than software; it represents your brand in motion. SpaceDev builds web, mobile, and software solutions that fuse together engineering precision with strong design and strategy to perform, engage, and evolve with your users.",
-  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
-  secondaryCta: { label: "Start your project", href: "/contact" },
+  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar", external: true },
+  secondaryCta: { label: "Get in touch", href: "/contact" },
 
   offers: {
     eyebrow: "What we build",
-    title: "From custom software to large enterprise systems",
+    title: "What We Build",
     description: "Our experience covers everything from custom software and mobile applications to large enterprise systems.",
     items: [
-      { number: "01", title: "Consultancy & Technical Research", description: "Analyze business models and design clear technical roadmaps based on data to eliminate bottlenecks." },
-      { number: "02", title: "Web Products", description: "Responsive, reliable dashboards, SaaS platforms, and marketplaces optimized for scalable growth." },
-      { number: "03", title: "Mobile Apps", description: "High-performance native (iOS/Android) and cross-platform (Flutter/React Native) apps designed for retention." },
-      { number: "04", title: "Custom Software", description: "Custom systems that automate workflows and integrate seamlessly into your existing infrastructure." },
-      { number: "05", title: "UX/UI Design", description: "Intuitive, strategic designs that ensure clarity and seamless user flows from the first interaction." },
+      { number: "01", title: "Consultancy and Technical Research", description: "Analyze business models and design clear technical roadmaps based on data to eliminate bottlenecks." },
+      { number: "02", title: "Web Products", description: "Build responsive, reliable dashboards, SaaS platforms, and marketplaces optimized for scalable growth." },
+      { number: "03", title: "Apps", description: "Develop high-performance native (iOS/Android) and cross-platform (Flutter/React Native) apps designed for retention." },
+      { number: "04", title: "Custom Software", description: "Design custom systems that automate workflows and integrate seamlessly into your existing infrastructure." },
+      { number: "05", title: "UX/UI Design", description: "Create intuitive, strategic designs that ensure clarity and seamless user flows from the very first interaction." },
       { number: "06", title: "Quality Assurance", description: "Validate functionality, security, and real-world performance to ensure total confidence before launch." },
-      { number: "07", title: "Front & Backend Development", description: "Speed, scalability, and reliability using modern stacks like React, Next.js, and Python." },
-      { number: "08", title: "E-commerce Platforms", description: "End-to-end shopping experiences optimized for high conversions and customer satisfaction." },
-      { number: "09", title: "Games", description: "Immersive, performant gaming experiences using modern engines and scalable architectures." },
-      { number: "10", title: "APIs", description: "Secure data exchange and system flexibility with robust, reliable API integrations." },
-      { number: "11", title: "Enterprise Applications", description: "Enterprise-grade systems that support complex workflows and ensure business continuity." },
-      { number: "12", title: "Content Management Systems", description: "Intuitive, customizable CMS solutions adaptable to any business model." },
+      { number: "07", title: "Front and Backend Development", description: "Ensure speed, scalability, and reliability using modern stacks like React, Next.js, Node.js, and Python." },
+      { number: "08", title: "E-commerce Platforms", description: "Design end-to-end shopping experiences optimized for high conversions and customer satisfaction." },
+      { number: "09", title: "Games", description: "Create immersive, performant gaming experiences using modern engines and scalable architectures." },
+      { number: "10", title: "APIs", description: "Enable secure data exchange and system flexibility with robust, reliable API integrations." },
+      { number: "11", title: "Enterprise Application", description: "Engineer enterprise-grade systems that support complex workflows and ensure business continuity." },
+      { number: "12", title: "Content Management Systems (CMS)", description: "Empower teams with intuitive, customizable CMS solutions adaptable to any business model." },
     ],
   },
 
@@ -467,7 +467,7 @@ export const webMobileData: ServicePageData = {
 
   benefits: {
     title: "Benefits of Custom Software & App Development",
-    description: "Custom software can redefine how a business operates. With the right technology, design, and strategy, brands gain speed, visibility, and customer loyalty.",
+    description: "Custom software can redefine how a business operates. With the right technology, design, and strategy, brands gain speed, visibility, and customer loyalty. Drive growth, simplify operations, and scale confidently with our software development and web and mobile app development services.",
     items: [
       { title: "Scalable Growth", description: "Every architecture is built to handle growth in users, data, and functionality." },
       { title: "Enhanced User Experience", description: "Apps focused on speed, simplicity, and flow — users find value in every interaction and return more often." },
@@ -480,14 +480,14 @@ export const webMobileData: ServicePageData = {
 
   whyUs: {
     title: "Why Choose SpaceDev as Your Tech Partner",
-    description: "Building digital products that stand out requires collaboration, understanding the business, and anticipating challenges.",
+    description: "Building digital products that stand out require collaboration, understanding business, and anticipating challenges.",
     items: [
-      { title: "Fast MVP Delivery", description: "Move ideas into action quickly. Validate concepts, attract investors, and reach users faster — without compromising quality." },
-      { title: "IT Talent That Adapts to You", description: "From UI/UX designers to backend engineers — technical depth and creative precision. Need more capacity? Scale instantly via staff augmentation." },
-      { title: "High Development Quality", description: "Clean architecture, stable frameworks, and maintainable code so your product performs flawlessly across devices and updates." },
-      { title: "Real Results, Not Buzzwords", description: "We measure success in growth metrics, not jargon. From conversion rates to retention, our solutions deliver visible outcomes." },
-      { title: "Transparent Collaboration", description: "Open and structured communication. Dedicated PMs and real-time updates — you're always in control of your project's progress." },
-      { title: "Post-Launch Partnership", description: "Our role doesn't end at deployment. We monitor, update, and refine your product so it stays secure, scalable, and ready for what's next." },
+      { title: "Fast MVP Delivery", description: "We move ideas into action quickly. Our agile approach allows you to validate concepts, attract investors, and reach users faster without compromising quality or scalability." },
+      { title: "IT Talent That Adapts to You", description: "From UI/UX designers to backend engineers, our teams bring technical depth and creative precision. Need to expand capacity? Scale instantly with our IT staff augmentation model." },
+      { title: "High Development Quality", description: "We focus on clean architecture, stable frameworks, and maintainable code so your product performs flawlessly across devices and updates." },
+      { title: "Real Results, Not Buzzwords", description: "We measure success in growth metrics, not technical jargon. From conversion rates to user retention, our solutions are built to deliver visible outcomes." },
+      { title: "Transparent Collaboration", description: "We keep communication open and structured. With dedicated project managers and real-time updates, you're always in control of your project's progress." },
+      { title: "Post-Launch Partnership", description: "Our role doesn't end at deployment. We continue to monitor, update, and refine your product, ensuring it stays secure, scalable, and ready for what's next." },
     ],
   },
 
@@ -496,6 +496,7 @@ export const webMobileData: ServicePageData = {
     { question: "How long does it take to develop an app?", answer: "An MVP typically ships in 8–14 weeks. A full production release with multiple platforms and integrations is usually 4–9 months." },
     { question: "What technologies do you use for app development?", answer: "React, Next.js, Node.js, TypeScript, React Native, Flutter, Python, Go, and PostgreSQL are our day-to-day stack — plus AWS / Vercel / GCP for infrastructure." },
     { question: "Do you offer web-based mobile app development?", answer: "Yes — we ship Progressive Web Apps when reach matters more than device integration, and React Native or native code when performance and platform features matter more." },
+    { question: "What are your web and mobile app development services?", answer: "We cover the full lifecycle — consultancy, UX/UI design, frontend and backend development, mobile (native and cross-platform) apps, QA, integrations, and post-launch support." },
     { question: "Do you provide post-launch maintenance and updates?", answer: "Always. Most clients continue with us on a monthly retainer for monitoring, updates, and ongoing iteration." },
     { question: "Can you help with scaling an existing product?", answer: "Yes. We frequently come in to refactor architecture, improve performance, ship missing features, or rebuild a product that has outgrown its original codebase." },
     { question: "Do you work with startups and enterprises alike?", answer: "Yes — from seed-stage MVPs to enterprise SaaS deployments. Our process scales to both." },
@@ -503,9 +504,10 @@ export const webMobileData: ServicePageData = {
 
   finalCta: {
     title: "Build apps that shape the future",
-    description: "Every product begins with an idea, and the right team to turn it into reality. Our developers and designers work closely with your team to build fast, secure, user-focused digital products.",
+    description: "Every product begins with an idea, and the right team to turn it into reality. Our developers and designers work closely with your team to build fast, secure, and user-focused digital products that drive growth and engagement. Let's bring your vision to life, with technology built to last.",
     buttonLabel: "Start your project",
-    buttonHref: "/contact",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
   },
 };
 
@@ -526,13 +528,13 @@ export const staffAugData: ServicePageData = {
 
   process: {
     eyebrow: "How it works",
-    title: "4 steps to build your dream team",
-    description: "Our IT staff augmentation model is designed for speed, precision, and effortless collaboration.",
+    title: "4 Steps to Build Your Dream Team",
+    description: "SpaceDev's IT staff augmentation model is designed for speed, precision, and effortless collaboration. Here's how we make it happen:",
     items: [
-      { number: "01", title: "Identify Your Needs", description: "We begin by understanding your goals, technical requirements, and timelines to match the right talent to your project." },
-      { number: "02", title: "Candidate Screening", description: "Your project is matched with experts from our in-house team. Each professional is proven, ready to integrate fast, and deliver results from day one." },
-      { number: "03", title: "Welcome Aboard", description: "Once selected, engineers integrate quickly into your environment — adapting to your tools, processes, and time zones from the first week." },
-      { number: "04", title: "Management & Scaling", description: "As your project evolves, we help you scale your team up or down easily. Flexible structure gives you agility without long-term commitments." },
+      { number: "1", title: "Identify Your Needs", description: "We begin by understanding your goals, technical requirements, and timelines to match the right talent to your project." },
+      { number: "2", title: "Candidate Screening", description: "Your project is matched with experts from our in-house team. Each professional is proven, ready to integrate fast, and deliver results from day one." },
+      { number: "3", title: "Welcome Aboard", description: "Once selected, engineers integrate quickly into your environment — adapting to your tools, processes, and time zones from the first week." },
+      { number: "4", title: "Management and Scaling", description: "As your project evolves, we help you scale your team up or down easily. Our flexible structure gives you agility without long-term commitments. Most teams are ready to start within one to two weeks." },
     ],
   },
 
@@ -590,32 +592,16 @@ export const productDiscoveryData: ServicePageData = {
   },
   eyebrow: "Product Discovery",
   title: "Product Discovery",
+  subtitle: "We transform your project ideas into tangible success!",
   description:
-    "We transform your project ideas into tangible success! It helps deeply understand customer needs and business goals to build the right product, ensuring valuable, feasible, and strategic solutions through collaboration and alignment.",
+    "It helps deeply understand customer needs and business goals to build the right product, ensuring valuable, feasible, and strategic solutions through collaboration and alignment.",
   primaryCta: { label: "Get started!", href: "/contact" },
   secondaryCta: { label: "Book a discovery call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
 
-  benefits: {
-    eyebrow: "Key benefits",
-    title: "Why discovery is non-negotiable",
-    items: [
-      { title: "Risk Reduction", description: "Validate ideas before investing in development." },
-      { title: "Informed Decisions", description: "Based on real data and metrics, not guesswork." },
-      { title: "Clear Strategy", description: "For every stage of the product lifecycle." },
-      { title: "Faster Time to Value", description: "Skip the months wasted building the wrong thing." },
-    ],
-  },
-
-  quote: {
-    text: "Our approach not only speeds up innovation but also revolutionizes work patterns, making problem solving smarter and more effective. This allows you to save time and money while empowering your team to focus on what really matters: the health and quality of your project.",
-    author: "Federico Sendra",
-    role: "CEO & Co-founder",
-  },
-
   finalCta: {
     title: "Not sure how Product Discovery fits your project?",
-    description: "Connect with us to explore your options — most engagements start with a 30-minute conversation.",
-    buttonLabel: "Get started",
+    description: "Connect with us to explore your options.",
+    buttonLabel: "Get started!",
     buttonHref: "/contact",
   },
 };
@@ -637,31 +623,30 @@ export const blockAuditData: ServicePageData = {
 
   process: {
     eyebrow: "How it works",
-    title: "Smart contract audit in three phases",
+    title: "Smart Contract Audit: How It Works",
     items: [
-      { number: "01", title: "Assessment", description: "We thoroughly evaluate your smart contract's business logic and collaborate with you to identify the key security properties that need testing." },
-      { number: "02", title: "Review", description: "Multiple advanced analysis processes run in parallel on your code, followed by an in-depth manual review to detect hidden vulnerabilities or anomalies." },
-      { number: "03", title: "Delivery", description: "A detailed report outlining identified vulnerabilities, expert mitigation recommendations, and options for ongoing security verification to keep your project safe." },
+      { number: "01", title: "Assessment", description: "We thoroughly evaluate your smart contract's business logic and collaborate with you to identify key security properties that need testing." },
+      { number: "02", title: "Review", description: "Our team runs multiple, advanced analysis processes on your code in parallel, followed by an in-depth manual review to detect any hidden vulnerabilities or anomalies." },
+      { number: "03", title: "Delivery", description: "We provide a detailed report outlining identified vulnerabilities, expert recommendations for mitigation, and options for ongoing security verification to keep your project safe." },
     ],
   },
 
   offers: {
     eyebrow: "How we ensure security",
-    title: "More than a one-off audit",
+    title: "How We Ensure Security",
     items: [
-      { number: "01", title: "Monitoring", description: "We help you set up top-notch monitoring with OpenZeppelin Defender, configuring security action triggers for unusual activity or balance changes." },
-      { number: "02", title: "SECOPS Audit", description: "More hacks happen via social engineering than smart-contract exploits. Our audits ensure technical security AND management security — every player follows strong protocols to reduce vulnerabilities." },
-      { number: "03", title: "Post-launch Verification", description: "Periodic re-audits, dependency monitoring, and threat-model updates so your contracts stay safe as they evolve." },
+      { number: "01", title: "Monitoring", description: "We help you setting up a top-notch monitoring system leveraging OpenZeppelin defender, so you can set certain security action triggers depending on strange activities or balance changes." },
+      { number: "02", title: "SEC OPS Audit", description: "More hacks occur due to social engineering than smart contract exploiting. Our audits ensure not only the technical security and correctness of smart contracts but also the management security (SECOPS), verifying that all participants follow strong protocols to reduce vulnerabilities." },
     ],
   },
 
   benefits: {
-    title: "Benefits of a smart contract audit",
+    title: "Benefits of a Smart Contract Audit and Diligence",
     items: [
-      { title: "Prevent Critical Vulnerabilities", description: "Conducting an audit early helps avoid major security flaws that could lead to costly post-launch issues." },
-      { title: "Thorough Expert Review", description: "Experienced auditors manually inspect your code, catching what static analyzers miss and ruling out false positives." },
-      { title: "Comprehensive Reports", description: "In-depth analytics with a detailed summary of vulnerabilities, risks, and clear mitigation recommendations." },
-      { title: "Ongoing Security Monitoring", description: "Regular surveillance and periodic assessments detect new vulnerabilities as threats evolve." },
+      { title: "Prevent Critical Vulnerabilities", description: "Conducting a smart contract audit early in development helps avoid major security flaws that could lead to costly issues after launch." },
+      { title: "Thorough Expert Review", description: "Experienced auditors manually inspect your code, ensuring that no vulnerabilities or false positives slip through." },
+      { title: "Comprehensive Reports", description: "Receive in-depth analytics that include a detailed summary of vulnerabilities, potential risks, and clear recommendations for mitigation." },
+      { title: "Ongoing Security Monitoring", description: "Regular surveillance and periodic assessments help detect new vulnerabilities, ensuring your smart contracts remain secure even as threats evolve." },
     ],
   },
 
@@ -676,7 +661,7 @@ export const blockAuditData: ServicePageData = {
   },
 
   finalCta: {
-    title: "Smart contract audits protect your future — stay secure",
+    title: "Smart contract audits protect your future—stay secure.",
     buttonLabel: "Get in touch",
     buttonHref: "/contact",
   },

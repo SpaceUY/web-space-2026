@@ -5,123 +5,106 @@ import Button from "../components/ui/Button.astro";
 import { staffAugData } from "../data/services";
 
 const industries = [
-  { icon: "💳", title: "Digital Banking & Trading", description: "Strengthen digital banking and trading platforms with secure, blockchain-powered payment systems." },
-  { icon: "🏥", title: "Healthcare", description: "Build compliant, secure patient experiences that improve care while meeting global standards." },
-  { icon: "🛒", title: "E-Commerce", description: "Create fast, intuitive shopping experiences that maximize engagement from browsing to checkout." },
-  { icon: "🚀", title: "Startups", description: "Accelerate product launches and scale MVPs with agile teams designed for rapid growth." },
-  { icon: "🎮", title: "Gaming & AR", description: "Develop high-performance multiplayer environments and AR experiences that are interactive and immersive." },
-  { icon: "🏢", title: "Enterprise & Education", description: "Modernize infrastructure and automate workflows for large enterprises and educational platforms." },
-  { icon: "🚗", title: "Mobility & IoT", description: "Build connected mobility solutions, from smart navigation to IoT fleet management systems." },
-  { icon: "🌾", title: "Agriculture & Supply Chain", description: "Implement traceability dashboards and blockchain systems for transparent supply management." },
-  { icon: "📡", title: "Telecommunications", description: "Improve connectivity with advanced communication frameworks and network automation tools." },
-];
-
-const roles = [
-  { label: "Frontend Developers" },
-  { label: "Backend Developers" },
-  { label: "Full-Stack Engineers" },
-  { label: "Mobile Developers" },
-  { label: "Blockchain / Web3 Devs" },
-  { label: "DevOps & Cloud Engineers" },
-  { label: "UX/UI Designers" },
-  { label: "QA Engineers" },
-  { label: "Project Managers" },
+  { icon: "💳", title: "Fintech and Banking", description: "Strengthen digital banking and trading platforms with secure code and blockchain-powered payment systems." },
+  { icon: "🏥", title: "Healthcare and MedTech", description: "Build compliant, secure patient experiences that improve care while meeting global standards." },
+  { icon: "🛒", title: "E-commerce and Retail", description: "Create fast, intuitive shopping experiences that maximize engagement from browsing to checkout." },
+  { icon: "🚀", title: "SaaS and Startups", description: "Accelerate product launches and scale MVPs with agile teams designed for rapid growth." },
+  { icon: "🎮", title: "Gaming and Media", description: "Develop high-performance multiplayer environments and AR experiences that are interactive and immersive." },
+  { icon: "🏢", title: "Education and Enterprise IT", description: "Modernize infrastructure and automate workflows for large enterprises and educational platforms." },
+  { icon: "🚗", title: "Mobility and IoT", description: "Build connected mobility solutions, from smart navigation to IoT fleet management systems." },
+  { icon: "⚡", title: "Energy and Utilities", description: "Implement data-driven dashboards and blockchain systems for transparent resource management." },
+  { icon: "📡", title: "Telecommunications and Networking", description: "Improve connectivity with advanced communication frameworks and network automation tools." },
 ];
 ---
 
 <ServicePageLayout data={staffAugData}>
-  <!-- INTRO: feature block + stats — injects between hero and 4-step process -->
-  <section class="bg-sd-light-2 py-20 md:py-28" slot="pre-process">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="grid gap-12 md:grid-cols-2 items-center">
-        <div data-animate>
-          <p class="text-xs uppercase tracking-[0.2em] text-sd-text-gray mb-4">Top IT talent without long hiring cycles</p>
-          <h2 class="font-display font-semibold text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-[1.1] mb-6">
-            Pre-vetted developers and designers, ready from day one
-          </h2>
-          <p class="font-body text-sd-text-gray leading-relaxed mb-8">
-            Finding skilled talent shouldn't slow you down. Our rigorous selection process ensures the right fit,
-            helping you scale your MVP or enterprise platform efficiently, affordably, and without long-term commitments.
-          </p>
-          <!-- Stats row -->
-          <div class="grid grid-cols-3 gap-4 mb-8 border-y border-sd-gray-border py-6">
-            <div class="text-center">
-              <p class="font-display font-semibold text-3xl text-sd-text-dark">2<span class="text-sd-purple"> wks</span></p>
-              <p class="text-xs text-sd-text-gray mt-1">Average time to start</p>
-            </div>
-            <div class="text-center border-x border-sd-gray-border">
-              <p class="font-display font-semibold text-3xl text-sd-text-dark">+70</p>
-              <p class="text-xs text-sd-text-gray mt-1">Engineers available</p>
-            </div>
-            <div class="text-center">
-              <p class="font-display font-semibold text-3xl text-sd-text-dark">+160</p>
-              <p class="text-xs text-sd-text-gray mt-1">Projects delivered</p>
-            </div>
-          </div>
-          <div class="flex flex-wrap gap-4">
+  <!-- INTRO: feature block — injects between hero and 4-step process -->
+  <div slot="pre-process">
+    <section class="bg-sd-light-2 py-20 md:py-28">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <div class="grid gap-12 md:grid-cols-2 items-center">
+          <div data-animate>
+            <h2 class="font-display font-semibold text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-[1.1] mb-6">
+              Top IT Talent Without Long Hiring Cycles
+            </h2>
+            <p class="font-body text-sd-text-gray leading-relaxed mb-4">
+              Finding skilled talent shouldn't slow you down. With SpaceDev's IT staff augmentation services,
+              you get instant access to pre-vetted developers and designers ready to contribute from day one.
+            </p>
+            <p class="font-body text-sd-text-gray leading-relaxed mb-8">
+              Our rigorous selection process ensures the right fit, helping you scale your MVP or enterprise platform
+              efficiently, affordably, and without long-term commitments.
+            </p>
             <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
-            <Button href="/our-work" variant="ghost" class="text-sd-text-dark hover:bg-black/5">See our work</Button>
+          </div>
+          <figure class="rounded-3xl overflow-hidden border border-sd-gray-border" data-animate>
+            <img
+              src="/images/content/A1l24ZnwZP0Wbpa3eFPCvO6NN1Y.png"
+              alt="Distributed engineering team collaborating remotely"
+              loading="lazy"
+              class="w-full h-auto"
+              width="900" height="600"
+            />
+          </figure>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- POST-PROCESS CTA BOXES + INDUSTRIES — injects before benefits -->
+  <div slot="pre-benefits">
+
+    <!-- Two CTA boxes -->
+    <section class="bg-sd-light py-16 md:py-20 border-t border-sd-gray-border">
+      <div class="mx-auto max-w-[1200px] px-6 md:px-10">
+        <div class="flex flex-wrap gap-3 justify-center mb-10" data-animate>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sd-light-2 border border-sd-gray-border text-sm text-sd-text-gray">
+            <span class="w-2 h-2 rounded-full bg-sd-purple inline-block"></span>
+            Ideal for rapidly boosting your existing team with top tech talent!
+          </span>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sd-light-2 border border-sd-gray-border text-sm text-sd-text-gray">
+            <span class="w-2 h-2 rounded-full bg-sd-purple inline-block"></span>
+            The interview process takes less than 2 weeks!
+          </span>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="rounded-2xl border border-sd-gray-border bg-white p-8" data-animate>
+            <p class="font-display font-semibold text-xl text-sd-text-dark mb-6">I want to hire Blockchain developers</p>
+            <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+          </div>
+          <div class="rounded-2xl border border-sd-gray-border bg-white p-8" data-animate>
+            <p class="font-display font-semibold text-xl text-sd-text-dark mb-6">I want to hire UX/UI Designers, Project Manager, Product Owner or QA (Testing Engineers).</p>
+            <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
           </div>
         </div>
-        <figure class="rounded-3xl overflow-hidden border border-sd-gray-border" data-animate>
-          <img
-            src="/images/content/A1l24ZnwZP0Wbpa3eFPCvO6NN1Y.png"
-            alt="Distributed engineering team collaborating remotely"
-            loading="lazy"
-            class="w-full h-auto"
-            width="900" height="600"
-          />
-        </figure>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHO WE PLACE: roles grid on dark purple bg -->
-  <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <SectionHeading
-        eyebrow="Who we place"
-        title="The talent you need, when you need it"
-        description="From blockchain engineers to product managers — every role is pre-vetted and ready to integrate from week one."
-        align="center"
-        class="mb-12"
-      />
-      <div class="flex flex-wrap justify-center gap-3" data-animate>
-        {roles.map((r) => (
-          <span class="inline-flex items-center px-5 py-2.5 rounded-full border border-sd-cyan/40 text-sd-cyan text-sm font-body">
-            {r.label}
-          </span>
-        ))}
+    <!-- INDUSTRIES served: 9 cards -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <SectionHeading
+          eyebrow="Industries We Serve"
+          title="Innovation looks different in every sector"
+          description="Innovation looks different in every sector, but great technology always starts with the right people. SpaceDev partners with businesses across various industries, providing the skill, speed, and technical depth they need to move ideas forward."
+          align="center"
+          class="mb-14"
+        />
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {industries.map((ind) => (
+            <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-sd-dark-2 p-6 hover:border-sd-purple/40 transition-colors" data-animate>
+              <div class="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-xl" style="background: var(--sd-purple-mid);">
+                {ind.icon}
+              </div>
+              <div>
+                <h3 class="font-display font-semibold text-base text-white mb-2">{ind.title}</h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{ind.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div class="mt-10 text-center">
-        <Button href="/contact" variant="primary" size="lg">Hire talent now</Button>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- INDUSTRIES served: 9 cards -->
-  <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <SectionHeading
-        eyebrow="Industries we serve"
-        title="Innovation looks different in every sector"
-        description="SpaceDev partners with businesses across many industries, providing the skill, speed, and technical depth needed to move ideas forward."
-        align="center"
-        class="mb-14"
-      />
-      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {industries.map((ind) => (
-          <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-sd-dark-2 p-6 hover:border-sd-purple/40 transition-colors" data-animate>
-            <div class="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-xl" style="background: var(--sd-purple-mid);">
-              {ind.icon}
-            </div>
-            <div>
-              <h3 class="font-display font-semibold text-base text-white mb-2">{ind.title}</h3>
-              <p class="text-sm text-sd-text-muted leading-relaxed">{ind.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  </div>
 </ServicePageLayout>

@@ -1,77 +1,56 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Button from "../components/ui/Button.astro";
-import Badge from "../components/ui/Badge.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import AnimatedCounter from "../components/ui/AnimatedCounter.astro";
-import { values, offices, stats, type Stat } from "../data/site-content";
+import CTA from "../components/ui/CTA.astro";
+import { getCollection } from "astro:content";
 
-const aboutFacts: Stat[] = [
-  ...stats,
-  { value: 5, label: "Countries with team presence" },
-  { value: 5, label: "Top blockchain companies (Clutch)" },
+const allPosts = await getCollection("blog");
+const latestPosts = allPosts
+  .sort((a, b) => new Date(b.data.publishedAt).valueOf() - new Date(a.data.publishedAt).valueOf())
+  .slice(0, 3);
+
+const stats = [
+  { value: 70, prefix: "+", label: "talented\nteam members" },
+  { value: 160, prefix: "+", label: "successful\nprojects delivered" },
+  { value: 5, label: "Presence in\n5 countries" },
+  { label: "International\nevent speakers\n(not bragging)", value: 0, isText: true, text: "🌍" },
+  { value: 40, prefix: "+", label: "perfect 5-star ratings\nfrom happy customers\nin Clutch" },
+  { label: "Top 5\nBlockchain Companies\nin the world by Clutch", value: 0, isText: true, text: "Top 5" },
+  { value: 7, label: "years\nhelping clients\nsucceed!" },
 ];
 
-// Real images mapped from /Users/kl/Documents/Claude/spacedev-assets/images/IMAGE_MANIFEST.md
-const heroImage = "/images/content/WB7HgzsFFgoV0rIo7ufy14HW5fM.jpg"; // SpaceDev team All Hands group photo
-const allHandsGallery = [
+const values = [
+  {
+    title: "We are here to help",
+    description: "We're not just here to press some keys — we want to be your tech partner! We'll use our years of experience to help you make a product that stands out from the crowd!",
+  },
+  {
+    title: "We are tech-savvy",
+    description: "We strive to be proficient at what we do and that means constantly expanding our horizons.",
+  },
+  {
+    title: "We are professional",
+    description: "You can count on us for transparency, honesty, respect, and unwavering commitment in all we do. We build trust through open communication and staying true to our word, ensuring every interaction reflects our dedication to doing the right thing for your business.",
+  },
+  {
+    title: "We are flexible",
+    description: "It's important for us to keep a work-life balance that's suitable for both our clients and us. Don't worry — we do whatever's necessary to meet goals in a timely manner.",
+  },
+  {
+    title: "We are human",
+    description: "No space-faring member of ours is going to be stranded! Everyone has a say and is given ample room to grow in our work environments. We're just humans navigating the stars!",
+  },
+];
+
+const galleryPhotos = [
   { src: "/images/content/9ZaBNdgUPn2Ft2zVORBykfjZRsg.jpg", alt: "SpaceDev team members posing together and enjoying mate at the All Hands event." },
   { src: "/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg", alt: "Team members sharing a candid moment and conversation during an All Hands event." },
   { src: "/images/content/QPCMxqD1lS3XmxVU348dOJ5hlo8.jpg", alt: "Team members participating in a collaborative team-building activity." },
   { src: "/images/content/lkdG8nylwlZilyk9wstv0caDb8g.jpg", alt: "SpaceDev team members enjoying a team-bonding activity at a park, engaging in outdoor fun." },
   { src: "/images/content/uhSZSE63T2i0JocraoQgcgj6So.jpg", alt: "One of our developers speaking during an All Hands company-wide event." },
   { src: "/images/content/wTwGjd148tprijNn5fRKVIjN6w.jpg", alt: "Close-up of a SpaceDev shirt featuring the company motto: We help clients navigate the future." },
-  { src: "/images/content/D06llzn3W4enrKeANJbA9EbkP0o.jpeg", alt: "SpaceDev engineers collaborating during an internal hackathon." },
-  { src: "/images/content/WNxBc0mve9sQYZRHbjayiQrfwpE.jpeg", alt: "SpaceDev team members enjoying drinks and conversation at a company social." },
-  { src: "/images/content/44cWuGIUHol9zdssx9kSFMjtBs.png", alt: "Behind-the-scenes look at a SpaceDev product strategy session." },
 ];
-
-// Award/recognition SVG badges (Framer originals)
-const awardBadges = [
-  { src: "/images/content/8x8x1nT1yym7h8hZkcOUsL0A5do.svg", title: "Top 5", caption: "Blockchain Companies worldwide by Clutch" },
-  { src: "/images/content/JHogPoUM4sCPo4r816ur9EcHs.svg", title: "+40", caption: "Perfect 5-star ratings from happy clients on Clutch" },
-  { src: "/images/content/NQaNeD09wdw4EsvxsJ8IOWeE.svg", title: "Global", caption: "International event speakers (not bragging)" },
-  { src: "/images/content/sujqj94Uf0BbTPbt246NbjhcOtI.svg", title: "Forbes", caption: "Featured in Forbes Blockchain coverage" },
-  { src: "/images/content/xogWSUdGpi5BEVz8K4WKA5zSI.svg", title: "Clutch", caption: "Clutch Global Leader in Blockchain Development" },
-];
-
-const leadership = [
-  {
-    name: "Federico Sendra",
-    role: "CEO & Co-founder",
-    image: "/images/content/DOT9ldmLAaVJejBjOexpqu1bDjs.png",
-    alt: "Federico Sendra, CEO & Co-founder, profile picture",
-    bio: "Leads SpaceDev's vision, partnerships, and long-term strategy across Web2 and Web3.",
-  },
-  {
-    name: "Juan Manuel Sobral",
-    role: "CTO & Co-founder",
-    image: "/images/content/eHISRLFUhgnDA3fOxfapqrM7m0.jpg",
-    alt: "Juan Manuel Sobral, CTO of SpaceDev, giving a presentation at Ethereum Argentina 2023.",
-    bio: "Drives our technical excellence and blockchain practice — a regular speaker at Ethereum events worldwide.",
-  },
-  {
-    name: "Diego Priliac",
-    role: "COO",
-    image: "/images/content/Qg6vUwbo5UymgibLLQpwgfAaW9Y.png",
-    alt: "Diego Priliac, COO of SpaceDev",
-    bio: "Builds the operational system that turns talented engineers into force multipliers for our clients.",
-  },
-  {
-    name: "Grecia Tardáguila",
-    role: "Head of People",
-    image: "/images/content/WSgg2vvLbwIDpUqEcgfpoHmXa4.jpg",
-    alt: "Grecia Tardáguila, Head of People, warmly embracing a teammate during an All Hands gathering.",
-    bio: "Champions the high-performance, deeply human culture that keeps SpaceDev grounded as it scales.",
-  },
-];
-
-const officePhotos: Record<string, string> = {
-  "United States": "/images/content/3mmcSXAv2k0fk78C0Z1fgM86LQ.png",
-  "Uruguay": "/images/content/jguQhkTbp0MoZ9wxfnMs1gKc.png",
-  "Argentina": "/images/content/hYdfyHgO5TKgB3hgri2UDF288tA.png",
-  "Colombia": "/images/content/ZhmOQQSS9e2RKMXaZGCU0VCxM.png",
-};
 ---
 
 <BaseLayout
@@ -80,64 +59,76 @@ const officePhotos: Record<string, string> = {
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 80% 30%, var(--sd-purple-300), transparent 40%);"></div>
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-32">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 80% 30%, var(--sd-purple-300), transparent 50%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-36">
+      <div class="max-w-5xl" data-animate>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl text-white font-display font-semibold leading-[1.0]">
+          We are SpaceDev...
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section class="bg-sd-light py-20 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid gap-12 md:grid-cols-2 items-start">
         <div data-animate>
-          <Badge tone="purple" withDot class="mb-6">Who We Are</Badge>
-          <h1 class="text-4xl md:text-6xl lg:text-7xl text-white leading-[1.05]">
-            We are <span class="text-sd-purple-300">SpaceDev</span>.
-          </h1>
-          <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-3xl leading-relaxed">
-            At SpaceDev, engineering meets imagination. We're a custom software development company for businesses
-            that move fast and think boldly. We deliver traditional software, mobile applications, and decentralized
-            blockchain ecosystems with security, scalability, and user focus.
-          </p>
-          <p class="mt-4 text-base text-sd-text-muted max-w-3xl leading-relaxed">
-            With offices across the U.S., Uruguay, Argentina, and Colombia, we work as one transparent, agile unit
-            aligned with your goals — building MVPs, full products, or providing IT staff augmentation to scale your
-            team. Whatever path fits your vision.
-          </p>
-          <div class="mt-10 flex flex-wrap gap-4">
-            <Button href="/contact" variant="primary" size="lg">Get in touch</Button>
-            <Button href="/careers" variant="outline-light" size="lg">Join the team</Button>
-          </div>
+          <p class="text-xs uppercase tracking-[0.2em] text-sd-text-gray mb-4">Who We Are</p>
+          <h2 class="font-display font-semibold text-3xl md:text-4xl text-sd-text-dark leading-[1.1] mb-6">
+            Who We Are
+          </h2>
         </div>
-        <div class="relative" data-animate>
-          <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-            <img
-              src={heroImage}
-              alt="The entire SpaceDev team gathered for a group photo at the All Hands 2024 event."
-              width="1200"
-              height="800"
-              loading="eager"
-              fetchpriority="high"
-              class="w-full h-auto object-cover"
-            />
-          </div>
+        <div data-animate>
+          <p class="font-body text-sd-text-gray leading-relaxed mb-6">
+            At SpaceDev, engineering meets imagination. We're a custom software development company for businesses that move fast and think boldly. Our team delivers traditional software, mobile applications, and decentralized blockchain ecosystems with security, scalability, and user focus.
+          </p>
+          <p class="font-body text-sd-text-gray leading-relaxed">
+            With offices across the U.S., Uruguay, Argentina, and Colombia, we work as one transparent, agile unit aligned with your goals. We build MVPs, develop full products, or provide IT staff augmentation to scale your team. Whatever path fits your vision.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUICK FACTS -->
+  <!-- STATS -->
   <section class="bg-sd-dark py-16 md:py-20 border-y border-white/5">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <p class="text-center text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-12">Quick fun facts about us</p>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
-        {aboutFacts.map((s) => (
-          <AnimatedCounter value={s.value} prefix={s.prefix ?? ""} label={s.label} />
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-8 text-center">
+        {stats.map((s) => (
+          <div class="flex flex-col items-center" data-animate>
+            {s.isText ? (
+              <p class="font-display font-semibold text-2xl md:text-3xl text-white">{s.text}</p>
+            ) : (
+              <AnimatedCounter value={s.value} prefix={s.prefix ?? ""} label="" />
+            )}
+            <p class="text-xs text-sd-text-muted mt-2 leading-snug whitespace-pre-line text-center">{s.label}</p>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- VALUES -->
+  <!-- MARQUEE -->
+  <section class="bg-sd-dark py-8 border-b border-white/5 overflow-hidden">
+    <div class="sd-marquee-wrapper">
+      <div class="sd-marquee flex items-center whitespace-nowrap">
+        {[...Array(8)].map(() => (
+          <span class="text-3xl md:text-4xl font-display font-semibold tracking-tight mr-12 select-none" style="color: rgba(255,255,255,0.12);">
+            We help clients navigate the future...&nbsp;
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE VALUES -->
   <section class="bg-sd-dark py-20 md:py-28">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <SectionHeading
         eyebrow="Our core values"
-        title="We help clients navigate the future."
+        title="Our core values"
         description="Behind every line of code, there's a team of highly motivated, skilled problem solvers using the latest tools to build memorable products."
         align="center"
         class="mb-14"
@@ -146,7 +137,7 @@ const officePhotos: Record<string, string> = {
         {values.map((v, idx) => (
           <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-8 hover:border-sd-purple/40 transition-colors" data-animate>
             <p class="text-sm text-sd-purple-300 font-medium mb-4">0{idx + 1}</p>
-            <h3 class="text-xl text-white mb-3">{v.title}</h3>
+            <h3 class="text-xl text-white mb-3 font-display font-semibold">{v.title}</h3>
             <p class="text-sm text-sd-text-muted leading-relaxed">{v.description}</p>
           </div>
         ))}
@@ -154,7 +145,57 @@ const officePhotos: Record<string, string> = {
     </div>
   </section>
 
-  <!-- ALL HANDS GALLERY -->
+  <!-- WHAT MAKES US DIFFERENT -->
+  <section class="bg-sd-light py-20 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid gap-12 md:grid-cols-2 items-center mb-14">
+        <div data-animate>
+          <h2 class="font-display font-semibold text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-[1.1] mb-6">
+            What makes<br/>us different
+          </h2>
+          <p class="font-body text-sd-text-gray leading-relaxed mb-4">
+            Behind every line of code, there's a team of highly motivated, skilled problem solvers using the latest tools to build memorable products.
+          </p>
+          <p class="font-body text-sd-text-gray leading-relaxed">
+            We strive to conduct work processes that are detail-oriented without sacrificing efficiency — knowing that quality will always be top priority for us, our partners can relax and focus on what's important.
+          </p>
+        </div>
+        <figure class="rounded-3xl overflow-hidden border border-sd-gray-border" data-animate>
+          <img
+            src="/images/content/WB7HgzsFFgoV0rIo7ufy14HW5fM.jpg"
+            alt="The SpaceDev team gathered for the All Hands event."
+            loading="lazy"
+            width="900" height="600"
+            class="w-full h-auto object-cover"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIEGO QUOTE -->
+  <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+      <figure class="text-center" data-animate>
+        <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display">
+          "SpaceDev's edge is the blend of craft and care. I've seen talented engineers become force multipliers
+          when the system around them is clear, supportive, and accountable. My job is to build that system,
+          one that keeps us human, transparent, and relentlessly focused on outcomes. That's why we can step onto
+          stages around the world, ship memorable products, and still feel like a team you'd want to build with again."
+        </blockquote>
+        <figcaption class="mt-10">
+          <p class="text-white font-medium font-display">Diego Priliac</p>
+          <p class="text-sm text-sd-text-muted mt-1">COO</p>
+          <a href="https://www.linkedin.com/in/diegopriliac/" target="_blank" rel="noopener noreferrer"
+             class="mt-3 inline-block text-xs uppercase tracking-[0.2em] text-sd-purple-300 hover:text-white transition-colors">
+            Connect with me
+          </a>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- GALLERY: Not just another coding company -->
   <section class="bg-sd-light py-20 md:py-28">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <SectionHeading
@@ -166,7 +207,7 @@ const officePhotos: Record<string, string> = {
         class="mb-14"
       />
       <div class="grid gap-4 md:gap-6 grid-cols-2 md:grid-cols-3" data-animate>
-        {allHandsGallery.map((img) => (
+        {galleryPhotos.map((img) => (
           <div class="rounded-2xl overflow-hidden bg-sd-light-2 aspect-[4/3]">
             <img
               src={img.src}
@@ -182,88 +223,38 @@ const officePhotos: Record<string, string> = {
     </div>
   </section>
 
-  <!-- LEADERSHIP -->
-  <section class="bg-sd-dark py-20 md:py-28">
+  <!-- BLOG ARTICLES -->
+  <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <SectionHeading
-        eyebrow="Leadership"
-        title="The people steering the ship"
-        description="A multidisciplinary leadership team focused on craft, care, and outcomes."
+        eyebrow="Blog"
+        title="Latest articles in our blog"
         align="center"
-        class="mb-14"
+        class="mb-12"
       />
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {leadership.map((person) => (
-          <article class="rounded-2xl border border-white/10 bg-sd-dark-2 overflow-hidden hover:border-sd-purple/40 transition-colors" data-animate>
-            <div class="aspect-square overflow-hidden bg-sd-purple-deep">
-              <img
-                src={person.image}
-                alt={person.alt}
-                loading="lazy"
-                width="600"
-                height="600"
-                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="font-display font-semibold text-lg text-white">{person.name}</h3>
-              <p class="text-sm text-sd-purple-300 mt-1">{person.role}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- LEADERSHIP QUOTE -->
-  <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10">
-      <figure class="text-center" data-animate>
-        <svg width="48" height="36" viewBox="0 0 48 36" class="mx-auto mb-8 text-sd-purple-300 opacity-50" fill="currentColor" aria-hidden="true">
-          <path d="M14 0C6.27 0 0 6.27 0 14v22h22V14H8c0-3.31 2.69-6 6-6V0zm26 0c-7.73 0-14 6.27-14 14v22h22V14H34c0-3.31 2.69-6 6-6V0z"/>
-        </svg>
-        <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display">
-          SpaceDev's edge is the blend of craft and care. I've seen talented engineers become force multipliers
-          when the system around them is clear, supportive, and accountable. My job is to build that system —
-          one that keeps us human, transparent, and relentlessly focused on outcomes. That's why we can step onto
-          stages around the world, ship memorable products, and still feel like a team you'd want to build with again.
-        </blockquote>
-        <figcaption class="mt-10">
-          <p class="text-white font-medium">Diego Priliac</p>
-          <p class="text-sm text-sd-text-muted">COO, SpaceDev</p>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- OFFICES -->
-  <section class="bg-sd-dark py-20 md:py-28">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <SectionHeading
-        eyebrow="Our hubs"
-        title="One team. Four countries. Always in your timezone."
-        align="center"
-        class="mb-14"
-      />
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {offices.map((o) => (
-          <article class="rounded-2xl border border-white/10 bg-sd-dark-2 overflow-hidden" data-animate>
-            {officePhotos[o.country] && (
-              <div class="aspect-[4/3] overflow-hidden">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {latestPosts.map((post) => (
+          <article class="rounded-2xl border border-white/10 bg-sd-dark-2 overflow-hidden hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(103,58,228,0.25)] transition-all duration-300" data-animate>
+            {post.data.cover && (
+              <div class="aspect-[16/9] overflow-hidden">
                 <img
-                  src={officePhotos[o.country]}
-                  alt={`SpaceDev office in ${o.region}`}
+                  src={post.data.cover}
+                  alt={post.data.title}
                   loading="lazy"
-                  width="600"
+                  width="800"
                   height="450"
                   class="w-full h-full object-cover"
                 />
               </div>
             )}
-            <div class="p-6 text-center">
-              <p class="text-3xl mb-3" aria-hidden="true">{o.flag}</p>
-              <h3 class="text-lg text-white mb-2">{o.country}</h3>
-              <p class="text-sm text-sd-text-muted leading-relaxed">{o.address}</p>
+            <div class="p-6">
+              <h3 class="font-display font-semibold text-base text-white mb-4 leading-snug">{post.data.title}</h3>
+              <a
+                href={`/blog/${post.id}`}
+                class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 hover:text-white transition-colors"
+              >
+                Learn more
+              </a>
             </div>
           </article>
         ))}
@@ -271,46 +262,10 @@ const officePhotos: Record<string, string> = {
     </div>
   </section>
 
-  <!-- AWARDS -->
-  <section class="bg-sd-light py-16 md:py-20">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10 text-center" data-animate>
-      <p class="text-xs uppercase tracking-[0.2em] text-sd-text-gray mb-6">Recognized by</p>
-      <div class="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-stretch">
-        {awardBadges.map((a) => (
-          <div class="rounded-2xl border border-sd-gray-border bg-white p-8 flex flex-col items-center">
-            <img
-              src={a.src}
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-              width="120"
-              height="120"
-              class="h-20 w-auto mb-4"
-            />
-            <p class="text-3xl text-sd-text-dark font-display">{a.title}</p>
-            <p class="text-sm text-sd-text-gray mt-2">{a.caption}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA: TWO PATHS -->
-  <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10 text-center">
-      <h2 class="text-3xl md:text-5xl text-white">Ready to reach the stars?</h2>
-      <div class="mt-12 grid gap-6 md:grid-cols-2">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-8" data-animate>
-          <h3 class="text-xl text-white mb-3">I want to hire you guys!</h3>
-          <p class="text-sm text-sd-text-muted mb-6">Let's talk about your product, scope and timeline.</p>
-          <Button href="/contact" variant="primary" size="lg">Get in touch</Button>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-8" data-animate>
-          <h3 class="text-xl text-white mb-3">I want to be part of the team!</h3>
-          <p class="text-sm text-sd-text-muted mb-6">Browse open roles or send us your portfolio.</p>
-          <Button href="/careers" variant="outline-light" size="lg">Open positions</Button>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- CTA -->
+  <CTA
+    title="Ready to reach the stars?"
+    buttons={[{ label: "Get in touch", href: "/contact" }]}
+    variant="gradient"
+  />
 </BaseLayout>

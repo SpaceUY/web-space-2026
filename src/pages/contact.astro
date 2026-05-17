@@ -1,16 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Badge from "../components/ui/Badge.astro";
 import HubSpotForm from "../components/HubSpotForm.astro";
-import { offices } from "../data/site-content";
 import { SITE } from "../lib/seo";
-
-const officePhotos: Record<string, string> = {
-  "United States": "/images/content/3mmcSXAv2k0fk78C0Z1fgM86LQ.png",
-  "Uruguay":       "/images/content/jguQhkTbp0MoZ9wxfnMs1gKc.png",
-  "Argentina":     "/images/content/hYdfyHgO5TKgB3hgri2UDF288tA.png",
-  "Colombia":      "/images/content/ZhmOQQSS9e2RKMXaZGCU0VCxM.png",
-};
 
 const contactJsonLd = {
   "@context": "https://schema.org",
@@ -31,28 +22,16 @@ const contactJsonLd = {
   description="Tell us about your project. Free 30-minute consultation with a SpaceDev engineer. Offices in Miami, Montevideo, Buenos Aires and Medellín."
   jsonLd={contactJsonLd}
 >
-  <!-- HERO -->
-  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 30% 70%, var(--sd-purple), transparent 50%), radial-gradient(circle at 80% 20%, var(--sd-purple-300), transparent 40%);"></div>
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-20 md:py-28">
-      <div class="max-w-3xl" data-animate>
-        <Badge tone="purple" withDot class="mb-6">Get in touch</Badge>
-        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white">Ready to reach the stars?</h1>
-        <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
-          Tell us a bit about your project and we'll get back to you within one business day.
-          Or skip the form and book a 30-minute call directly.
-        </p>
+  <section class="bg-[#141414] min-h-screen py-20 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10 grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
+      <div data-animate>
+        <h1 class="font-display font-light text-white text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight">
+          Ready to reach the stars?
+        </h1>
       </div>
-    </div>
-  </section>
 
-  <!-- FORM + INFO -->
-  <section class="bg-sd-dark py-20 md:py-28">
-    <div class="mx-auto max-w-[1280px] px-6 md:px-10 grid gap-12 lg:grid-cols-5">
-      <div class="lg:col-span-3" data-animate>
-        <h2 class="text-2xl md:text-3xl text-white mb-2">Send us a message</h2>
-        <p class="text-sm text-sd-text-muted mb-8">All fields except company are required.</p>
-        <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-6 md:p-8">
+      <div class="lg:pt-6" data-animate>
+        <div class="rounded-2xl border border-white/10 bg-[#1e1e1e] p-6 md:p-8">
           <HubSpotForm />
           <noscript>
             <p class="text-sm text-sd-text-muted">
@@ -62,65 +41,6 @@ const contactJsonLd = {
           </noscript>
         </div>
       </div>
-
-      <aside class="lg:col-span-2 space-y-8">
-        <div data-animate>
-          <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">Prefer a call?</h3>
-          <p class="text-white text-lg mb-4">Book a 30-min slot directly with our team.</p>
-          <a
-            href="https://meetings.hubspot.com/federico-sendra/meet-space"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-sd-purple text-white text-sm font-medium hover:bg-sd-purple-300 transition-colors"
-          >
-            Schedule a meeting
-          </a>
-        </div>
-
-        <div class="border-t border-white/10 pt-8" data-animate>
-          <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">Direct contact</h3>
-          <ul class="space-y-2 text-sm">
-            <li>
-              <span class="text-sd-text-muted">General: </span>
-              <a href={`mailto:${SITE.email}`} class="text-white hover:text-sd-purple-300">{SITE.email}</a>
-            </li>
-            <li>
-              <span class="text-sd-text-muted">Careers: </span>
-              <a href="mailto:people@spacedev.io" class="text-white hover:text-sd-purple-300">people@spacedev.io</a>
-            </li>
-            <li>
-              <span class="text-sd-text-muted">Phone: </span>
-              <a href={`tel:${SITE.phone}`} class="text-white hover:text-sd-purple-300">{SITE.phone}</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="border-t border-white/10 pt-8" data-animate>
-          <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Our offices</h3>
-          <div class="grid grid-cols-2 gap-3">
-            {offices.map((o) => (
-              <div class="rounded-xl overflow-hidden border border-white/10 bg-sd-dark-2">
-                {officePhotos[o.country] && (
-                  <img
-                    src={officePhotos[o.country]}
-                    alt={`SpaceDev ${o.country} office`}
-                    loading="lazy"
-                    width="300"
-                    height="180"
-                    class="w-full h-20 object-cover"
-                  />
-                )}
-                <div class="px-3 py-2.5">
-                  <p class="text-white text-xs font-medium flex items-center gap-1.5">
-                    <span aria-hidden="true">{o.flag}</span> {o.country}
-                  </p>
-                  <p class="text-sd-text-muted text-[11px] leading-relaxed mt-0.5">{o.address}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </aside>
     </div>
   </section>
 </BaseLayout>
