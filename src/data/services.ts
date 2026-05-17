@@ -629,11 +629,11 @@ export const blockAuditData: ServicePageData = {
     description: "Smart contract audits and SECOPS reviews for Web3 projects. Static + manual analysis, formal verification, and post-launch monitoring with OpenZeppelin Defender.",
   },
   eyebrow: "BlockAudit",
-  title: "Smart Contract & Blockchain Security",
+  title: "BlockAudit: Smart Contract & Blockchain Security",
   description:
-    "Security is vital. Our expert smart contract audit ensures safe deployment, monitoring, upgrade and management of blockchain applications for startups and enterprises. Stay ahead of hacks — we catch vulnerabilities before they catch you.",
-  primaryCta: { label: "Request an audit", href: "/contact" },
-  secondaryCta: { label: "Book a security call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
+    "Security is vital. Our expert smart contract audit ensures safe deployment, monitoring upgrade and management of Ethereum applications for startups and enterprises.",
+  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
+  secondaryCta: { label: "Get in touch", href: "/contact" },
 
   process: {
     eyebrow: "How it works",
@@ -666,18 +666,18 @@ export const blockAuditData: ServicePageData = {
   },
 
   whyUs: {
-    title: "Why teams trust SpaceDev with their security",
+    title: "Why choose SpaceDev to be your tech partner?",
     items: [
-      { title: "Fast turnaround", description: "Most audits scoped and started within a week. Time-sensitive launches accommodated." },
-      { title: "Battle-tested IT talent", description: "Auditors who have shipped production protocols themselves — not just academic reviewers." },
-      { title: "End-to-end coverage", description: "Code, ops, and incident response — we cover the full surface of your security posture." },
-      { title: "Real, measurable results", description: "Our clients have shipped to mainnet with real money and zero post-audit incidents." },
+      { title: "Fast MVP", description: "We stand out as an ideal technological partner for its ability to deliver rapid MVPs (Minimum Viable Products), providing swift and efficient solutions to bring your ideas to life." },
+      { title: "IT Talent", description: "Our team excels as a technological partner due to its exceptional blockchain talent, ensuring innovative solutions and expert guidance for your projects." },
+      { title: "High Development Quality", description: "We guarantee high development quality, ensuring that your projects benefit from top-notch expertise, precision, and excellence in every phase of the development process." },
+      { title: "Real Results", description: "We deliver real results, leveraging expertise and innovation to turn your technological aspirations into tangible success stories!" },
     ],
   },
 
   finalCta: {
     title: "Smart contract audits protect your future — stay secure",
-    buttonLabel: "Request an audit",
+    buttonLabel: "Get in touch",
     buttonHref: "/contact",
   },
 };
