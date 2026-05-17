@@ -128,21 +128,45 @@ const serviceJsonLd = {
     <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-32">
       <div class={data.heroImage ? "grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center" : ""}>
         <div class="max-w-4xl" data-animate>
-          <Breadcrumbs items={crumbs} visible={true} class="mb-8" />
+          <Breadcrumbs items={crumbs} visible={false} class="mb-8" />
           <h1 class="text-4xl md:text-6xl lg:text-7xl text-white">{data.title}</h1>
           <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-3xl leading-relaxed">{data.description}</p>
           {(data.primaryCta || data.secondaryCta) && (
-            <div class="mt-10 flex flex-wrap gap-4">
-              {data.primaryCta && (
-                <Button href={data.primaryCta.href} variant="primary" size="lg" external={data.primaryCta.external}>
-                  {data.primaryCta.label}
-                </Button>
-              )}
-              {data.secondaryCta && (
-                <Button href={data.secondaryCta.href} variant="outline-light" size="lg" external={data.secondaryCta.external}>
-                  {data.secondaryCta.label}
-                </Button>
-              )}
+            <div class="mt-10 space-y-4">
+              <div class="flex flex-wrap gap-4 items-center">
+                {data.primaryCta && (
+                  <Button href={data.primaryCta.href} variant="primary" size="lg" external={data.primaryCta.external}>
+                    {data.primaryCta.label}
+                  </Button>
+                )}
+                {data.secondaryCta && (
+                  <Button href={data.secondaryCta.href} variant="outline-light" size="lg" external={data.secondaryCta.external}>
+                    {data.secondaryCta.label}
+                  </Button>
+                )}
+              </div>
+              <!-- Newsletter subscribe -->
+              <p class="text-sm text-sd-text-muted">Or subscribe to our newsletter</p>
+              <form
+                action="https://api.hsforms.com/submissions/v3/integration/submit/22632737/acdc5149-7c32-48f4-9137-ab4212538377"
+                method="POST"
+                class="flex gap-3 max-w-md"
+                onsubmit="return false;"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your email"
+                  required
+                  class="flex-1 rounded-full px-5 py-3 text-sm bg-white/10 border border-white/20 text-white placeholder:text-sd-text-muted focus:outline-none focus:border-white/40 backdrop-blur-sm"
+                />
+                <button
+                  type="submit"
+                  class="rounded-full px-6 py-3 text-sm font-medium bg-white text-sd-text-dark hover:bg-white/90 transition-colors shrink-0"
+                >
+                  Sign up!
+                </button>
+              </form>
             </div>
           )}
         </div>

@@ -3,14 +3,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Badge from "../components/ui/Badge.astro";
 import Button from "../components/ui/Button.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
-import CTA from "../components/ui/CTA.astro";
 
 const positions = [
-  { title: "Full Stack Web3 Developer", mode: "100% Remote" },
-  { title: "Backend Web3 Developer", mode: "100% Remote" },
-  { title: "Frontend React Web3 Developer", mode: "100% Remote" },
-  { title: "React Native Developer", mode: "100% Remote" },
-  { title: "Blockchain Developer", mode: "100% Remote" },
+  { title: "Full Stack Web3 Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/67321-full-stack-web3-developer" },
+  { title: "Backend Web3 Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/66894-backend-web3-developer" },
+  { title: "Frontend React Web3 Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/66895-frontend-react-web3-developer" },
+  { title: "React Native Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/65975-react-native-developer" },
+  { title: "Blockchain Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/65974-blockchain-developer" },
 ];
 
 const benefits = [
@@ -23,9 +22,21 @@ const benefits = [
 ];
 
 const peopleTeam = [
-  { name: "Valentina Restrepo", role: "HR Business Partner" },
-  { name: "Victoria Perdomo", role: "Talent & People Care" },
-  { name: "Florencia Suarez", role: "People & Talent Analyst" },
+  { name: "Valentina Restrepo", role: "HR Business Partner", linkedin: "https://www.linkedin.com/in/valentina-restrepo-duque/" },
+  { name: "Victoria Perdomo", role: "Talent & People Care", linkedin: "https://www.linkedin.com/in/victoria-perdomo-curi/" },
+  { name: "Florencia Suarez", role: "People & Talent Analyst", linkedin: "https://www.linkedin.com/in/suarezflorencia/" },
+];
+
+const galleryPhotos = [
+  { src: "/images/content/K9DVq6Pi6ANOgwO60jV8cg44kdg.jpg", alt: "Team members sharing ideas during a board meeting" },
+  { src: "/images/content/9ZaBNdgUPn2Ft2zVORBykfjZRsg.jpg", alt: "Space Team at the park laughing during our All Hands" },
+  { src: "/images/content/QPCMxqD1lS3XmxVU348dOJ5hlo8.jpg", alt: "Team members writing Post Its in a bonding activity" },
+  { src: "/images/content/eHISRLFUhgnDA3fOxfapqrM7m0.jpg", alt: "Space Team at Ethereum 2023" },
+  { src: "/images/content/lkdG8nylwlZilyk9wstv0caDb8g.jpg", alt: "Juan Manuel Sobral, our CTO, presenting at Ethereum Argentina 2023" },
+  { src: "/images/content/WSgg2vvLbwIDpUqEcgfpoHmXa4.jpg", alt: "Fede Sendra, our CEO, embracing a teammate" },
+  { src: "/images/content/jrVqUaItfaiWthkT9E9WKH8cPaQ.jpg", alt: "Space Team at the park talking during our All Hands" },
+  { src: "/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg", alt: "Team member writing Post Its in a bonding activity" },
+  { src: "/images/content/uhSZSE63T2i0JocraoQgcgj6So.jpg", alt: "Two of our Developers enjoying their time together" },
 ];
 
 const jobPostingsJsonLd = {
@@ -68,6 +79,24 @@ const jobPostingsJsonLd = {
           <Button href="#open-positions" variant="primary" size="lg">See open positions</Button>
           <Button href="mailto:people@spacedev.io" variant="outline-light" size="lg">people@spacedev.io</Button>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="bg-[#f5f5f5] py-16 md:py-20">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+        {galleryPhotos.map((photo, i) => (
+          <div class={`rounded-2xl overflow-hidden${i === 3 ? " md:col-span-2" : ""}`} data-animate>
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              loading="lazy"
+              class="w-full h-48 md:h-64 object-cover"
+            />
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -115,7 +144,7 @@ const jobPostingsJsonLd = {
       </div>
       <ul class="divide-y divide-sd-gray-border border-y border-sd-gray-border">
         {positions.map((p) => (
-          <li class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-6" data-animate>
+          <a href={p.href} target="_blank" rel="noopener noreferrer" class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-6 hover:bg-sd-light-2 px-3 -mx-3 rounded-lg transition-colors" data-animate>
             <div>
               <h3 class="text-lg text-sd-text-dark font-display font-semibold">{p.title}</h3>
               <p class="mt-1 text-sm text-sd-text-gray">
@@ -125,12 +154,12 @@ const jobPostingsJsonLd = {
                 </span>
               </p>
             </div>
-            <Button href={`mailto:people@spacedev.io?subject=Application: ${p.title}`} variant="primary">Apply now</Button>
-          </li>
+            <Button href={p.href} variant="primary" external>Apply now</Button>
+          </a>
         ))}
       </ul>
       <div class="mt-12 text-center" data-animate>
-        <Button href="mailto:people@spacedev.io" variant="primary" size="lg">Explore Our Job Openings!</Button>
+        <Button href="https://spacedev.peopleforce.io/careers" variant="primary" size="lg" external>Explore Our Job Openings!</Button>
       </div>
     </div>
   </section>
@@ -150,7 +179,9 @@ const jobPostingsJsonLd = {
             <p class="text-white font-medium font-display">{p.name}</p>
             <p class="text-sm text-sd-text-muted mt-1">{p.role}</p>
             <a
-              href="mailto:people@spacedev.io"
+              href={p.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               class="mt-3 text-xs uppercase tracking-[0.2em] text-sd-purple-300 hover:text-white transition-colors"
             >
               Connect with me
@@ -161,10 +192,4 @@ const jobPostingsJsonLd = {
     </div>
   </section>
 
-  <CTA
-    title="Don't see your role listed?"
-    description="We're always looking for outstanding engineers, designers, and product people. Send us your portfolio."
-    buttons={[{ label: "Email people@spacedev.io", href: "mailto:people@spacedev.io" }]}
-    variant="gradient"
-  />
 </BaseLayout>

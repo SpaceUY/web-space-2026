@@ -465,6 +465,13 @@ export const webMobileData: ServicePageData = {
 
   caseStudySlugs: ["drata", "ubicuity", "athleteai", "twispi"],
 
+  midCta: {
+    title: "Eager to create your own success story?",
+    buttonLabel: "Book a call",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
+  },
+
   benefits: {
     title: "Benefits of Custom Software & App Development",
     description: "Custom software can redefine how a business operates. With the right technology, design, and strategy, brands gain speed, visibility, and customer loyalty. Drive growth, simplify operations, and scale confidently with our software development and web and mobile app development services.",
@@ -523,8 +530,8 @@ export const staffAugData: ServicePageData = {
   title: "IT Staff Augmentation Services",
   description:
     "Access pre-vetted engineers, designers, and specialists who integrate effortlessly with your existing setup. Scale your project without the weight of long hiring cycles or overhead costs.",
-  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
-  secondaryCta: { label: "Get in touch", href: "/contact" },
+  primaryCta: { label: "Get in touch", href: "/contact" },
+  secondaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
 
   process: {
     eyebrow: "How it works",
@@ -592,10 +599,8 @@ export const productDiscoveryData: ServicePageData = {
   },
   eyebrow: "Product Discovery",
   title: "Product Discovery",
-  subtitle: "We transform your project ideas into tangible success!",
-  description:
-    "It helps deeply understand customer needs and business goals to build the right product, ensuring valuable, feasible, and strategic solutions through collaboration and alignment.",
-  primaryCta: { label: "Get started!", href: "/contact" },
+  description: "We transform your project ideas into tangible success!",
+  primaryCta: { label: "Get in touch", href: "/contact" },
   secondaryCta: { label: "Book a discovery call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
 
   finalCta: {
@@ -618,8 +623,8 @@ export const blockAuditData: ServicePageData = {
   title: "BlockAudit: Smart Contract & Blockchain Security",
   description:
     "Security is vital. Our expert smart contract audit ensures safe deployment, monitoring upgrade and management of Ethereum applications for startups and enterprises.",
-  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
-  secondaryCta: { label: "Get in touch", href: "/contact" },
+  primaryCta: { label: "Get in touch", href: "/contact" },
+  secondaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
 
   process: {
     eyebrow: "How it works",
