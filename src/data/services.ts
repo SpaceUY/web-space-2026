@@ -439,9 +439,9 @@ export const webMobileData: ServicePageData = {
   eyebrow: "Innovative Web & Mobile Development",
   title: "Innovative Web & Mobile Development",
   description:
-    "Your digital product is more than software — it represents your brand in motion. SpaceDev builds web, mobile, and software solutions that fuse engineering precision with strong design and strategy to perform, engage, and evolve with your users.",
-  primaryCta: { label: "Get in touch", href: "/contact" },
-  secondaryCta: { label: "See our work", href: "/our-work" },
+    "Your digital product is more than software; it represents your brand in motion. SpaceDev builds web, mobile, and software solutions that fuse together engineering precision with strong design and strategy to perform, engage, and evolve with your users.",
+  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
+  secondaryCta: { label: "Start your project", href: "/contact" },
 
   offers: {
     eyebrow: "What we build",
