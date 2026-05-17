@@ -1,101 +1,49 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Badge from "../components/ui/Badge.astro";
-import SectionHeading from "../components/ui/SectionHeading.astro";
-import Card from "../components/ui/Card.astro";
-import CTA from "../components/ui/CTA.astro";
-
-const upcoming = [
-  {
-    date: "May 20–22, 2026",
-    name: "Consensus 2026",
-    location: "Miami, FL · USA",
-    role: "Speaker — Juan Manuel Sobral on smart contract security",
-    href: "#",
-  },
-  {
-    date: "Jun 14, 2026",
-    name: "Web3 Builders Summit LATAM",
-    location: "Buenos Aires, Argentina",
-    role: "Host — SpaceDev engineering team",
-    href: "#",
-  },
-  {
-    date: "Jul 9–11, 2026",
-    name: "ETH Montevideo",
-    location: "Montevideo, Uruguay",
-    role: "Sponsor & speaker",
-    href: "#",
-  },
-];
-
-const past = [
-  { date: "Mar 2026", name: "Token2049", location: "Dubai", role: "Speaker on tokenization" },
-  { date: "Feb 2026", name: "Devconnect", location: "Bangkok", role: "Workshop on smart contract auditing" },
-  { date: "Nov 2025", name: "ETHDenver", location: "Denver, CO", role: "Sponsor & panelist" },
-  { date: "Oct 2025", name: "Solana Breakpoint", location: "Singapore", role: "Speaker on Move and Solana program design" },
-];
+import Button from "../components/ui/Button.astro";
 ---
 
 <BaseLayout
-  title="Events Calendar | SpaceDev — Where we'll be next"
-  description="Conferences and meetups where the SpaceDev team is speaking, sponsoring, or hosting. Catch up with us in person."
+  title="Events Calendar | SpaceDev"
+  description="Explore the international events shaping the tech, finance, innovation, blockchain, and AI industries every month."
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-20 md:py-28">
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-36">
       <div class="max-w-3xl" data-animate>
-        <Badge tone="purple" withDot class="mb-6">Events</Badge>
-        <h1 class="text-4xl md:text-6xl text-white">Where we'll be next</h1>
-        <p class="mt-6 text-lg text-sd-text-muted max-w-2xl leading-relaxed">
-          Conferences, meetups, and workshops across the Americas, Europe, and Asia.
-          Want to meet up? <a href="/contact" class="text-sd-purple-300 underline hover:text-sd-purple-300">Drop us a line</a>.
+        <h1 class="font-display font-semibold text-5xl md:text-7xl text-white leading-[1.0]">
+          Events Calendar
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-xl leading-relaxed">
+          Explore the international events shaping the tech, finance, innovation, blockchain, and AI industries every month.
         </p>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <Button href="/contact" variant="primary">Get in touch</Button>
+          <span class="text-sd-text-muted text-sm">Or subscribe to our newsletter</span>
+        </div>
+        <form class="mt-4 flex gap-3 max-w-md" onsubmit="return false;">
+          <input
+            type="email"
+            placeholder="Your email"
+            class="flex-1 rounded-full px-5 py-3 bg-transparent border border-white/20 text-white placeholder:text-sd-text-muted text-sm focus:outline-none focus:border-white/50"
+          />
+          <button
+            type="submit"
+            class="rounded-full px-6 py-3 bg-white text-sd-text-dark font-semibold text-sm hover:bg-sd-light-2 transition-colors"
+          >
+            Sign up!
+          </button>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- UPCOMING -->
-  <section class="bg-sd-dark py-16 md:py-24">
-    <div class="mx-auto max-w-[1200px] px-6 md:px-10">
-      <SectionHeading eyebrow="Upcoming" title="Where to find us in 2026" class="mb-12" />
-      <ul class="grid gap-6 md:grid-cols-3">
-        {upcoming.map((e) => (
-          <li>
-            <Card variant="dark" hover={false}>
-              <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">{e.date}</p>
-              <h3 class="text-xl text-white mb-2">{e.name}</h3>
-              <p class="text-sm text-sd-text-muted">{e.location}</p>
-              <p class="mt-4 text-sm text-white">{e.role}</p>
-            </Card>
-          </li>
-        ))}
-      </ul>
+  <!-- YEAR SECTION -->
+  <section class="bg-sd-light py-16 md:py-24">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <p class="font-display font-semibold text-[clamp(6rem,15vw,16rem)] text-sd-text-dark leading-none select-none">
+        2025
+      </p>
     </div>
   </section>
-
-  <!-- PAST -->
-  <section class="bg-sd-dark py-16 border-t border-white/5">
-    <div class="mx-auto max-w-[1200px] px-6 md:px-10">
-      <h2 class="text-xs uppercase tracking-[0.2em] text-sd-text-muted mb-8">Recent appearances</h2>
-      <ul class="divide-y divide-white/10">
-        {past.map((e) => (
-          <li class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 py-5">
-            <div>
-              <p class="text-white">{e.name} <span class="text-sd-text-muted">· {e.location}</span></p>
-              <p class="text-sm text-sd-text-muted">{e.role}</p>
-            </div>
-            <p class="text-xs text-sd-text-muted">{e.date}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <CTA
-    title="Want to see us at your event?"
-    description="We speak, sponsor, and host. Reach out and we'll find a way to participate."
-    buttons={[{ label: "Get in touch", href: "/contact" }]}
-    variant="dark"
-  />
 </BaseLayout>

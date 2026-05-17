@@ -1,125 +1,43 @@
 ---
 import ServicePageLayout from "../layouts/ServicePageLayout.astro";
-import SectionHeading from "../components/ui/SectionHeading.astro";
 import Button from "../components/ui/Button.astro";
 import { webMobileData } from "../data/services";
 ---
 
 <ServicePageLayout data={webMobileData}>
-  <!-- Hero illustration mosaic -->
-  <section class="bg-sd-dark py-12 md:py-16 border-t border-white/5">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="grid gap-6 md:grid-cols-4" data-animate>
-        <figure class="rounded-2xl overflow-hidden border border-white/10 bg-sd-dark-2 col-span-2 md:row-span-2">
-          <img
-            src="/images/content/A1l24ZnwZP0Wbpa3eFPCvO6NN1Y.png"
-            alt="Modern web application user interface"
-            loading="lazy"
-            class="w-full h-full object-cover"
-            width="800" height="600"
-          />
-        </figure>
-        <figure class="rounded-2xl overflow-hidden border border-white/10 bg-sd-dark-2">
-          <img
-            src="/images/content/KgpZo0xVILSytqQ7nNhWb4sYZ1s.png"
-            alt="Mobile app screen"
-            loading="lazy"
-            class="w-full h-44 object-cover"
-            width="500" height="400"
-          />
-        </figure>
-        <figure class="rounded-2xl overflow-hidden border border-white/10 bg-sd-dark-2">
-          <img
-            src="/images/content/RhflhpcYJug3S03ooYwuJsUfhE.png"
-            alt="SaaS dashboard"
-            loading="lazy"
-            class="w-full h-44 object-cover"
-            width="500" height="400"
-          />
-        </figure>
-        <figure class="rounded-2xl overflow-hidden border border-white/10 bg-sd-dark-2">
-          <img
-            src="/images/content/OzX1kDoqbgfvB65kBK0AZ6Lgs.png"
-            alt="Cross-platform native application"
-            loading="lazy"
-            class="w-full h-44 object-cover"
-            width="500" height="400"
-          />
-        </figure>
-        <figure class="rounded-2xl overflow-hidden border border-white/10 bg-sd-dark-2">
-          <img
-            src="/images/content/nEIOysKhuR0AhFSs64tcybvHDFc.png"
-            alt="E-commerce platform interface"
-            loading="lazy"
-            class="w-full h-44 object-cover"
-            width="500" height="400"
-          />
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- Engineering what users love (light section) -->
-  <section class="bg-sd-light-2 py-20 md:py-28">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="grid gap-12 md:grid-cols-2 items-center">
-        <figure class="rounded-3xl overflow-hidden border border-sd-gray-border order-2 md:order-1" data-animate>
-          <img
-            src="/images/content/fto8WcwcEznwEtIVEfV9bemNkFY.png"
-            alt="Engineers collaborating on a product design"
-            loading="lazy"
-            class="w-full h-auto"
-            width="900" height="650"
-          />
-        </figure>
-        <div class="order-1 md:order-2" data-animate>
-          <SectionHeading
-            eyebrow="Engineering what users love"
-            title="You handle the business — we handle the nerdy tech stuff"
-            description="Building a great product is about understanding users, solving real problems, and creating intuitive experiences. We connect design, strategy, and engineering to drive measurable business results — agile processes, modern frameworks, and teams that work as an extension of yours."
-            tone="dark"
-          />
-          <div class="mt-8 flex flex-wrap gap-4">
-            <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
-            <Button href="/contact" variant="ghost" class="text-sd-text-dark hover:bg-black/5">Get in touch</Button>
+  <!-- ENGINEERING WHAT USERS LOVE — injects before benefits -->
+  <div slot="pre-benefits">
+    <section class="bg-sd-light-2 py-20 md:py-28">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <div class="grid gap-12 md:grid-cols-2 items-center">
+          <figure class="rounded-3xl overflow-hidden border border-sd-gray-border order-2 md:order-1" data-animate>
+            <img
+              src="/images/content/fto8WcwcEznwEtIVEfV9bemNkFY.png"
+              alt="Engineers collaborating on a product design"
+              loading="lazy"
+              class="w-full h-auto"
+              width="900" height="650"
+            />
+          </figure>
+          <div class="order-1 md:order-2" data-animate>
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-text-gray mb-4">Engineering What Users Love</p>
+            <h2 class="font-display font-semibold text-3xl md:text-4xl text-sd-text-dark leading-[1.1] mb-6">
+              Engineering What Users Love
+            </h2>
+            <p class="font-body text-sd-text-gray leading-relaxed mb-4">
+              Building a great product is about understanding users, solving real problems, and creating intuitive
+              experiences. At SpaceDev, we connect design, strategy, and engineering to drive measurable business results.
+            </p>
+            <p class="font-body text-sd-text-gray leading-relaxed mb-8">
+              Each project is designed around your goals. Scalability, security, and performance are ensured through
+              agile processes and modern frameworks. Our teams work as an extension of yours, focusing on long-term value.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <Button href="https://meetings.hubspot.com/federico-sendra/web-meetings-calendar" variant="primary" external>Book a call</Button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Visual triplet between offers and case studies -->
-  <section class="bg-sd-dark py-12 border-t border-white/5">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="grid gap-6 md:grid-cols-3" data-animate>
-        <figure class="rounded-2xl overflow-hidden">
-          <img
-            src="/images/content/MjN8JV42Jr7sHrm1ESoTERxz0.png"
-            alt="Product UX flow"
-            loading="lazy"
-            class="w-full h-56 object-cover"
-            width="700" height="480"
-          />
-        </figure>
-        <figure class="rounded-2xl overflow-hidden">
-          <img
-            src="/images/content/FMSsP29uobYk712yruMcfRMFA.png"
-            alt="Mobile sports application"
-            loading="lazy"
-            class="w-full h-56 object-cover"
-            width="700" height="480"
-          />
-        </figure>
-        <figure class="rounded-2xl overflow-hidden">
-          <img
-            src="/images/content/0eRmoiCOfxKFSThIqhzoUQhRUAA.png"
-            alt="Interactive digital experience"
-            loading="lazy"
-            class="w-full h-56 object-cover"
-            width="700" height="480"
-          />
-        </figure>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </ServicePageLayout>

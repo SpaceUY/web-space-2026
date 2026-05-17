@@ -3,15 +3,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Badge from "../components/ui/Badge.astro";
 import Button from "../components/ui/Button.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
-import CTA from "../components/ui/CTA.astro";
-import { getAuthor } from "../data/authors";
 
 const positions = [
-  { title: "Full Stack Web3 Developer", mode: "100% Remote", level: "Senior" },
-  { title: "Backend Web3 Developer", mode: "100% Remote", level: "Mid–Senior" },
-  { title: "Frontend React Web3 Developer", mode: "100% Remote", level: "Mid–Senior" },
-  { title: "React Native Developer", mode: "100% Remote", level: "Mid–Senior" },
-  { title: "Blockchain Developer", mode: "100% Remote", level: "Senior" },
+  { title: "Full Stack Web3 Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/67321-full-stack-web3-developer" },
+  { title: "Backend Web3 Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/66894-backend-web3-developer" },
+  { title: "Frontend React Web3 Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/66895-frontend-react-web3-developer" },
+  { title: "React Native Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/65975-react-native-developer" },
+  { title: "Blockchain Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/65974-blockchain-developer" },
 ];
 
 const benefits = [
@@ -23,20 +21,30 @@ const benefits = [
   { image: "/images/content/6G0QRicYBjDBVHa40ePGoUGugk.png", title: "Team building", description: "At Space, we prioritize team well-being and positive relationships. We host after-work socials, bonding events, and annual retreats in exciting locations worldwide." },
 ];
 
-const teamPhotos = [
-  "/images/content/K9DVq6Pi6ANOgwO60jV8cg44kdg.jpg",
-  "/images/content/UBM39geSOJEWaiFFFUAZwrnaZs.jpg",
-  "/images/content/jrVqUaItfaiWthkT9E9WKH8cPaQ.jpg",
+const peopleTeam = [
+  { name: "Valentina Restrepo", role: "HR Business Partner", linkedin: "https://www.linkedin.com/in/valentina-restrepo-duque/" },
+  { name: "Victoria Perdomo", role: "Talent & People Care", linkedin: "https://www.linkedin.com/in/victoria-perdomo-curi/" },
+  { name: "Florencia Suarez", role: "People & Talent Analyst", linkedin: "https://www.linkedin.com/in/suarezflorencia/" },
 ];
 
-const grecia = getAuthor("grecia-tardaguila");
+const galleryPhotos = [
+  { src: "/images/content/K9DVq6Pi6ANOgwO60jV8cg44kdg.jpg", alt: "Team members sharing ideas during a board meeting" },
+  { src: "/images/content/9ZaBNdgUPn2Ft2zVORBykfjZRsg.jpg", alt: "Space Team at the park laughing during our All Hands" },
+  { src: "/images/content/QPCMxqD1lS3XmxVU348dOJ5hlo8.jpg", alt: "Team members writing Post Its in a bonding activity" },
+  { src: "/images/content/eHISRLFUhgnDA3fOxfapqrM7m0.jpg", alt: "Space Team at Ethereum 2023" },
+  { src: "/images/content/lkdG8nylwlZilyk9wstv0caDb8g.jpg", alt: "Juan Manuel Sobral, our CTO, presenting at Ethereum Argentina 2023" },
+  { src: "/images/content/WSgg2vvLbwIDpUqEcgfpoHmXa4.jpg", alt: "Fede Sendra, our CEO, embracing a teammate" },
+  { src: "/images/content/jrVqUaItfaiWthkT9E9WKH8cPaQ.jpg", alt: "Space Team at the park talking during our All Hands" },
+  { src: "/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg", alt: "Team member writing Post Its in a bonding activity" },
+  { src: "/images/content/uhSZSE63T2i0JocraoQgcgj6So.jpg", alt: "Two of our Developers enjoying their time together" },
+];
 
 const jobPostingsJsonLd = {
   "@context": "https://schema.org",
   "@graph": positions.map((p) => ({
     "@type": "JobPosting",
     title: p.title,
-    description: `${p.title} role at SpaceDev — ${p.mode}, ${p.level}.`,
+    description: `${p.title} role at SpaceDev — ${p.mode}.`,
     employmentType: "FULL_TIME",
     hiringOrganization: { "@type": "Organization", name: "SpaceDev", sameAs: "https://spacedev.io" },
     jobLocationType: "TELECOMMUTE",
@@ -56,8 +64,13 @@ const jobPostingsJsonLd = {
     <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-32">
       <div class="max-w-3xl" data-animate>
         <Badge tone="green" withDot class="mb-6">We're hiring</Badge>
-        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white">Join the SpaceDev team and be part of something special!</h1>
-        <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-display font-semibold">
+          Check out our latest IT Job Openings
+        </h1>
+        <p class="mt-6 text-xl md:text-2xl text-white max-w-2xl leading-snug font-display">
+          Join the SpaceDev team and be part of something special!
+        </p>
+        <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
           At SpaceDev, our team culture is everything. We're proud to have a talented, multidisciplinary crew,
           but above all, we value great people. If you're looking for a professional, fun, and dynamic place
           to work, SpaceDev is the place for you!
@@ -70,84 +83,25 @@ const jobPostingsJsonLd = {
     </div>
   </section>
 
-  <!-- TEAM PHOTOS STRIP -->
-  <section class="bg-sd-light py-12 md:py-16">
+  <!-- GALLERY -->
+  <section class="bg-[#f5f5f5] py-16 md:py-20">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
-        {teamPhotos.map((src, i) => (
-          <img
-            src={src}
-            alt={`SpaceDev team ${i + 1}`}
-            loading="lazy"
-            width="800"
-            height="600"
-            class="w-full h-64 md:h-80 object-cover rounded-2xl"
-          />
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+        {galleryPhotos.map((photo, i) => (
+          <div class={`rounded-2xl overflow-hidden${i === 3 ? " md:col-span-2" : ""}`} data-animate>
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              loading="lazy"
+              class="w-full h-48 md:h-64 object-cover"
+            />
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- OPEN POSITIONS -->
-  <section id="open-positions" class="bg-sd-dark py-20 md:py-28">
-    <div class="mx-auto max-w-[1200px] px-6 md:px-10">
-      <SectionHeading
-        eyebrow="Open positions"
-        title="Find your next role"
-        description="All positions are 100% remote. Apply by sending your portfolio or résumé to people@spacedev.io."
-        class="mb-12"
-      />
-      <ul class="divide-y divide-white/10 border-y border-white/10">
-        {positions.map((p) => (
-          <li class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-6" data-animate>
-            <div>
-              <h3 class="text-lg text-white">{p.title}</h3>
-              <p class="mt-1 text-sm text-sd-text-muted">
-                <span class="inline-flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-sd-green inline-block" aria-hidden="true"></span>
-                  {p.mode}
-                </span>
-                <span class="mx-3" aria-hidden="true">·</span>
-                {p.level}
-              </p>
-            </div>
-            <Button href={`mailto:people@spacedev.io?subject=Application: ${p.title}`} variant="primary">Apply</Button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <!-- CULTURE QUOTE -->
-  {grecia && (
-    <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
-      <div class="mx-auto max-w-[1100px] px-6 md:px-10">
-        <figure class="text-center" data-animate>
-          <img
-            src="/images/content/7JdCXilWraK1hOANTbX2xgD4.png"
-            alt="Grecia Tardáguila, Head of People at SpaceDev"
-            loading="lazy"
-            width="160"
-            height="160"
-            class="mx-auto mb-8 w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-sd-purple/40"
-          />
-          <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display">
-            "As the Head of People at SpaceDev, I'm committed to maintaining a high-performance culture
-            with strong human values. Join us to be part of a top-tier team where your growth, well-being
-            and work-life balance are prioritized. Apply now!"
-          </blockquote>
-          <figcaption class="mt-10">
-            <a href={`/author/${grecia.slug}`} class="inline-flex flex-col items-center gap-1 hover:text-white">
-              <p class="text-white font-medium">{grecia.name}</p>
-              <p class="text-sm text-sd-text-muted">{grecia.role}, SpaceDev</p>
-            </a>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-  )}
-
-  <!-- BENEFITS -->
+  <!-- BENEFITS / PERKS -->
   <section class="bg-sd-dark py-20 md:py-28">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <SectionHeading
@@ -168,7 +122,7 @@ const jobPostingsJsonLd = {
               class="w-full h-48 object-cover"
             />
             <div class="p-6 md:p-8">
-              <h3 class="text-lg text-white mb-2">{b.title}</h3>
+              <h3 class="text-lg text-white mb-2 font-display font-semibold">{b.title}</h3>
               <p class="text-sm text-sd-text-muted leading-relaxed">{b.description}</p>
             </div>
           </article>
@@ -177,10 +131,65 @@ const jobPostingsJsonLd = {
     </div>
   </section>
 
-  <CTA
-    title="Don't see your role listed?"
-    description="We're always looking for outstanding engineers, designers, and product people. Send us your portfolio."
-    buttons={[{ label: "Email people@spacedev.io", href: "mailto:people@spacedev.io" }]}
-    variant="dark"
-  />
+  <!-- OPEN POSITIONS -->
+  <section id="open-positions" class="bg-sd-light py-20 md:py-28">
+    <div class="mx-auto max-w-[1200px] px-6 md:px-10">
+      <div class="mb-12 max-w-3xl" data-animate>
+        <h2 class="text-3xl md:text-5xl text-sd-text-dark font-display font-semibold">
+          Seeking a new opportunity to advance your career?
+        </h2>
+        <p class="mt-4 text-lg md:text-xl text-sd-text-gray">
+          Look no further! Explore our open positions and join us on this exciting journey.
+        </p>
+      </div>
+      <ul class="divide-y divide-sd-gray-border border-y border-sd-gray-border">
+        {positions.map((p) => (
+          <a href={p.href} target="_blank" rel="noopener noreferrer" class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-6 hover:bg-sd-light-2 px-3 -mx-3 rounded-lg transition-colors" data-animate>
+            <div>
+              <h3 class="text-lg text-sd-text-dark font-display font-semibold">{p.title}</h3>
+              <p class="mt-1 text-sm text-sd-text-gray">
+                <span class="inline-flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sd-purple inline-block" aria-hidden="true"></span>
+                  {p.mode}
+                </span>
+              </p>
+            </div>
+            <Button href={p.href} variant="primary" external>Apply now</Button>
+          </a>
+        ))}
+      </ul>
+      <div class="mt-12 text-center" data-animate>
+        <Button href="https://spacedev.peopleforce.io/careers" variant="primary" size="lg" external>Explore Our Job Openings!</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEOPLE TEAM QUOTE -->
+  <section class="py-20 md:py-28 bg-sd-dark">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10 text-center" data-animate>
+      <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display max-w-4xl mx-auto">
+        "As the People Team at SpaceDev, we're dedicated to building a culture where high performance
+        and genuine human care go hand in hand. Join us and grow alongside a team that puts your
+        development, well-being, and work-life balance first."
+      </blockquote>
+
+      <div class="mt-14 grid gap-8 md:grid-cols-3">
+        {peopleTeam.map((p) => (
+          <div class="flex flex-col items-center">
+            <p class="text-white font-medium font-display">{p.name}</p>
+            <p class="text-sm text-sd-text-muted mt-1">{p.role}</p>
+            <a
+              href={p.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-3 text-xs uppercase tracking-[0.2em] text-sd-purple-300 hover:text-white transition-colors"
+            >
+              Connect with me
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>

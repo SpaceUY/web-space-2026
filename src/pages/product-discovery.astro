@@ -3,103 +3,287 @@ import ServicePageLayout from "../layouts/ServicePageLayout.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import Button from "../components/ui/Button.astro";
 import { productDiscoveryData } from "../data/services";
+
+const packages = [
+  {
+    number: "01",
+    title: "Product Strategy Sprint",
+    objective: "Define the business model, develop hypotheses, test desirability, and forecast profitability.",
+    deliverables: [
+      "Detailed report with findings and recommendations",
+      "Hypotheses validated or rejected based on data",
+      "Business model and profitability projection",
+    ],
+  },
+  {
+    number: "02",
+    title: "Brand Strategy Sprint",
+    objective: "Establish a clear vision for the product's brand and create essential resources.",
+    deliverables: [
+      "Refined brand materials aligned with product vision",
+      "Visual and written assets ready for marketing and next steps",
+    ],
+  },
+  {
+    number: "03",
+    title: "MVP Discovery Sprint",
+    objective: "Design the user experience (UX), navigation, content architecture, and style guide (UI).",
+    deliverables: [
+      "Product definition",
+      "MVP Scope & Roadmap",
+      "Critical App Flow",
+      "Solution Architecture",
+      "Tech Stack",
+      "Technical Risk Mitigation",
+      "Wireframing",
+    ],
+  },
+  {
+    number: "04",
+    title: "Go-To-Market Package",
+    objective: "Prepare the product for launch while the MVP is being developed.",
+    deliverables: [
+      "Clear launch strategy",
+      "Marketing materials for app stores and social media",
+      "Community-building assets to foster early traction",
+    ],
+  },
+  {
+    number: "05",
+    title: "Continuous Discovery Sprint",
+    objective: "Assess the product's current state and propose new functionalities or optimizations.",
+    deliverables: [
+      "Implementation plans for improvements",
+      "Insights report with prioritized recommendations",
+      "Roadmap for continuous iteration and growth",
+    ],
+  },
+  {
+    number: "06",
+    title: "Scale Stage",
+    objective: "Support mature products to scale and meet advanced needs.",
+    deliverables: [
+      "Advanced solutions for scaling",
+      "Enhanced design systems to streamline development",
+      "Dedicated resources for product growth and optimization",
+    ],
+  },
+];
 ---
 
 <ServicePageLayout data={productDiscoveryData}>
-  <!-- "What is Product Discovery?" feature block (light) -->
-  <section class="bg-sd-light-2 py-20 md:py-28">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="grid gap-12 md:grid-cols-2 items-center">
-        <figure class="rounded-3xl overflow-hidden border border-sd-gray-border" data-animate>
-          <img
-            src="/images/content/uPH5998oYdW1lvvvcYZNNwQMj7w.png"
-            alt="Product strategy whiteboard session"
-            loading="lazy"
-            class="w-full h-auto"
-            width="900" height="650"
-          />
-        </figure>
-        <div data-animate>
-          <SectionHeading
-            eyebrow="What is Product Discovery?"
-            title="Quickly separate the good ideas from the bad ones"
-            description="Product Discovery helps you deeply understand customer needs and business goals to build the right product, ensuring valuable, feasible, and strategic solutions through collaboration and alignment."
-            tone="dark"
-          />
-          <div class="mt-8 grid gap-4">
-            <div class="flex items-start gap-3">
-              <span class="mt-1 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-sd-purple text-white text-xs">!</span>
-              <p class="text-sd-text-gray text-base leading-relaxed">
-                <strong class="text-sd-text-dark">Over 60% of projects fail due to poor planning.</strong> Discovery ensures better alignment, the right products, and real market impact.
-              </p>
+  <!-- INTRO: What is Product Discovery (BEFORE packages) -->
+  <div slot="pre-process">
+    <!-- What is + Why does it matter: dark bg, 2 stacked rows with image -->
+    <section style="background: var(--sd-purple-deep);" class="py-20 md:py-28">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10 space-y-24">
+        <!-- Row 1: What is -->
+        <div class="grid gap-12 md:grid-cols-2 items-center">
+          <figure class="rounded-3xl overflow-hidden" data-animate>
+            <img
+              src="/images/content/uPH5998oYdW1lvvvcYZNNwQMj7w.png"
+              alt="Product strategy whiteboard session"
+              loading="lazy"
+              class="w-full h-auto"
+              width="900" height="650"
+            />
+          </figure>
+          <div data-animate>
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-ui uppercase tracking-[0.2em] text-white mb-6" style="background: var(--sd-purple);">
+              What is a Product Discovery?
+            </span>
+            <p class="font-body text-white text-xl md:text-2xl leading-relaxed">
+              It helps deeply understand customer needs and business goals to build the right product, ensuring valuable,
+              feasible, and strategic solutions through collaboration and alignment.
+            </p>
+          </div>
+        </div>
+        <!-- Row 2: Why does it matter -->
+        <div class="grid gap-12 md:grid-cols-2 items-center">
+          <figure class="rounded-3xl overflow-hidden" data-animate>
+            <img
+              src="/images/content/UkMPsipq5LUHrxToyzgDVfzgwc.png"
+              alt="Product discovery validation — choosing the right idea"
+              loading="lazy"
+              class="w-full h-auto"
+              width="900" height="650"
+            />
+          </figure>
+          <div data-animate>
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-ui uppercase tracking-[0.2em] text-white mb-6" style="background: var(--sd-purple);">
+              Why does it matter?
+            </span>
+            <p class="font-body text-white text-xl md:text-2xl leading-relaxed">
+              Over 60% of projects fail due to poor planning. Product Discovery ensures better alignment, the right products,
+              and real market impact.
+            </p>
+          </div>
+        </div>
+
+        <!-- Row 3: Simply put -->
+        <div class="grid gap-12 md:grid-cols-2 items-center">
+          <figure class="rounded-3xl overflow-hidden" data-animate>
+            <img
+              src="/images/content/ytc9watZeKxb8fyoBqpKVL2bkc.png"
+              alt="Product launch illustration"
+              loading="lazy"
+              class="w-full h-auto"
+              width="900" height="650"
+            />
+          </figure>
+          <div data-animate>
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-ui uppercase tracking-[0.2em] text-white mb-6" style="background: var(--sd-purple);">
+              Simply put…
+            </span>
+            <p class="font-body text-white text-xl md:text-2xl leading-relaxed">
+              'It's about quickly separating the good ideas from the bad ones.'
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Discovery Suite intro + KEY BENEFITS -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="mx-auto max-w-[1100px] px-6 md:px-10" data-animate>
+        <p class="font-body text-sd-text-muted leading-relaxed mb-6">
+          The Product Discovery Suite offers a flexible approach to transform your ideas into successful products.
+        </p>
+        <h2 class="font-display font-semibold text-2xl md:text-3xl text-white mb-4">Product Discovery Suite</h2>
+        <p class="font-body text-sd-text-muted leading-relaxed mb-8">
+          You can choose the full service or tailored micro-packages:<br/>
+          Product Strategy Sprint, Brand Strategy Sprint, MVP Discovery Sprint, Go-To-Market Package, Continuous Discovery Sprint, and Scale Stage, covering every stage from ideation to scaling.
+        </p>
+        <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">KEY BENEFITS</p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3 text-sd-text-muted">
+            <span class="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-sd-purple-300 shrink-0"></span>
+            <span><strong class="text-white">Risk Reduction:</strong> Validate ideas before investing in development.</span>
+          </li>
+          <li class="flex items-start gap-3 text-sd-text-muted">
+            <span class="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-sd-purple-300 shrink-0"></span>
+            <span><strong class="text-white">Informed Decisions:</strong> Based on real data and metrics.</span>
+          </li>
+          <li class="flex items-start gap-3 text-sd-text-muted">
+            <span class="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-sd-purple-300 shrink-0"></span>
+            <span><strong class="text-white">Clear Strategy:</strong> For every stage of the product lifecycle.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- PACKAGES ACCORDION + QUOTE — injects before benefits -->
+  <div slot="pre-benefits">
+
+    <!-- 6 expandable packages -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+        <SectionHeading
+          eyebrow="Product Discovery Suite"
+          title="Choose the full service or any micro-package"
+          description="Six sprints covering every stage from ideation to scaling. Pick what fits your moment."
+          align="center"
+          class="mb-12"
+        />
+        <div class="divide-y divide-white/10 border-y border-white/10" id="packages-accordion">
+          {packages.map((pkg, i) => (
+            <div class="pkg-item" data-open={i === 0 ? "true" : "false"}>
+              <button
+                class="pkg-trigger w-full flex items-center justify-between gap-4 py-5 text-left group"
+                aria-expanded={i === 0 ? "true" : "false"}
+              >
+                <div class="flex items-center gap-5">
+                  <span class="shrink-0 font-ui text-xs text-sd-purple-300 tracking-widest">{pkg.number}</span>
+                  <span class="font-display font-semibold text-lg md:text-xl text-white group-hover:text-sd-purple-300 transition-colors">
+                    {pkg.title}
+                  </span>
+                </div>
+                <svg class="pkg-icon shrink-0 w-5 h-5 text-sd-text-muted transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="pkg-body overflow-hidden">
+                <div class="pb-6 pl-10 space-y-4">
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.15em] text-sd-purple-300 mb-1">Objective</p>
+                    <p class="text-sd-text-muted leading-relaxed">{pkg.objective}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.15em] text-sd-purple-300 mb-2">Deliverables</p>
+                    <ul class="space-y-1.5">
+                      {pkg.deliverables.map((d) => (
+                        <li class="flex items-start gap-2 text-sd-text-muted leading-relaxed">
+                          <span class="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-sd-purple-300 shrink-0"></span>
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="mt-8 flex flex-wrap gap-4">
-            <Button href="/contact" variant="primary">Get started</Button>
-          </div>
+          ))}
+        </div>
+        <div class="mt-10 flex flex-wrap gap-4 justify-center">
+          <Button href="/contact" variant="primary" size="lg">Get started!</Button>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="outline-light" size="lg" external>Book a discovery call</Button>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Visual triplet: discovery work in motion -->
-  <section class="bg-sd-light py-12">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="grid gap-6 md:grid-cols-3" data-animate>
-        <figure class="rounded-2xl overflow-hidden border border-sd-gray-border">
-          <img
-            src="/images/content/7aoMqJNgdronOCaAbHBE1eHs4.png"
-            alt="User research interview notes"
-            loading="lazy"
-            class="w-full h-56 object-cover"
-            width="600" height="400"
-          />
-        </figure>
-        <figure class="rounded-2xl overflow-hidden border border-sd-gray-border">
-          <img
-            src="/images/content/R9MELislrGXHGw0lHS85a6QZWa8.png"
-            alt="Wireframes and MVP scope"
-            loading="lazy"
-            class="w-full h-56 object-cover"
-            width="600" height="400"
-          />
-        </figure>
-        <figure class="rounded-2xl overflow-hidden border border-sd-gray-border">
-          <img
-            src="/images/content/UkMPsipq5LUHrxToyzgDVfzgwc.png"
-            alt="Go-to-market roadmap planning"
-            loading="lazy"
-            class="w-full h-56 object-cover"
-            width="600" height="400"
-          />
-        </figure>
+    <!-- Federico Sendra quote -->
+    <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
+      <div class="mx-auto max-w-[1100px] px-6 md:px-10 text-center" data-animate>
+        <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display max-w-4xl mx-auto">
+          "Our approach not only speeds up innovation but also revolutionizes work patterns, making problem solving
+          smarter and more effective. This allows you to save time and money while empowering your team to focus on
+          what really matters: the health and quality of your project."
+        </blockquote>
+        <p class="mt-10 text-white font-medium font-display">Federico Sendra</p>
+        <p class="text-sm text-sd-text-muted mt-1">CEO & Co-founder</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Outcomes split / Source PMI band -->
-  <section class="bg-sd-light-2 py-16 md:py-20 border-t border-sd-gray-border">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10">
-      <SectionHeading
-        eyebrow="Data backs Product Discovery"
-        title="See how outcomes change with discovery"
-        description="Source: Project Management Institute (PMI). Teams that invest in discovery save time, money, and ship products customers actually use."
-        align="center"
-        tone="dark"
-        class="mb-10"
-      />
-      <div class="grid gap-6 md:grid-cols-2" data-animate>
-        <div class="rounded-2xl bg-white border border-sd-gray-border p-8">
-          <p class="text-xs uppercase tracking-[0.2em] text-sd-text-gray mb-3">Without discovery</p>
-          <p class="text-3xl font-display text-sd-text-dark mb-2">60% of projects fail</p>
-          <p class="text-sd-text-gray text-sm leading-relaxed">Wasted budget, missed timelines, and products that miss the market.</p>
-        </div>
-        <div class="rounded-2xl bg-sd-purple p-8 text-white">
-          <p class="text-xs uppercase tracking-[0.2em] text-white/70 mb-3">With discovery</p>
-          <p class="text-3xl font-display text-white mb-2">Validated, on-budget delivery</p>
-          <p class="text-white/80 text-sm leading-relaxed">Aligned teams, validated bets, and roadmaps that ship.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </ServicePageLayout>
+
+<script>
+  const items = document.querySelectorAll<HTMLElement>(".pkg-item");
+  items.forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>(".pkg-trigger");
+    const body    = item.querySelector<HTMLElement>(".pkg-body");
+    const icon    = item.querySelector<SVGElement>(".pkg-icon");
+
+    const isOpen = item.dataset.open === "true";
+    if (body) body.style.maxHeight = isOpen ? body.scrollHeight + "px" : "0px";
+    if (icon) icon.style.transform  = isOpen ? "rotate(180deg)" : "";
+
+    trigger?.addEventListener("click", () => {
+      const open = item.dataset.open === "true";
+      items.forEach((it) => {
+        it.dataset.open = "false";
+        const b = it.querySelector<HTMLElement>(".pkg-body");
+        const ic = it.querySelector<SVGElement>(".pkg-icon");
+        if (b) b.style.maxHeight = "0px";
+        if (ic) ic.style.transform = "";
+        it.querySelector<HTMLButtonElement>(".pkg-trigger")?.setAttribute("aria-expanded", "false");
+      });
+      if (!open) {
+        item.dataset.open = "true";
+        if (body) body.style.maxHeight = body.scrollHeight + "px";
+        if (icon) icon.style.transform = "rotate(180deg)";
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+</script>
+
+<style>
+  .pkg-body {
+    max-height: 0;
+    transition: max-height 0.3s ease;
+  }
+  .pkg-icon {
+    transition: transform 0.3s ease;
+  }
+</style>

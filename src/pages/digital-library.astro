@@ -1,90 +1,84 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Badge from "../components/ui/Badge.astro";
-import SectionHeading from "../components/ui/SectionHeading.astro";
-import Card from "../components/ui/Card.astro";
-import CTA from "../components/ui/CTA.astro";
+import Button from "../components/ui/Button.astro";
 
-const resources = [
+const contributions = [
   {
-    type: "Whitepaper",
-    title: "The State of Smart Contract Security in 2026",
-    description: "60+ pages on the most common vulnerabilities, audit patterns, and operational practices that separate breached protocols from secure ones.",
-    cta: "Download PDF",
-  },
-  {
-    type: "Playbook",
-    title: "Web2 → Web3 Migration Playbook for Fintech",
-    description: "A practical, regulator-friendly migration path. Phase-by-phase planning, compliance design, parallel deployment, and operating models.",
-    cta: "Download PDF",
-  },
-  {
-    type: "Guide",
-    title: "Asset Tokenization: Architecture Patterns",
-    description: "Reference architectures for tokenizing real estate, fixed income, and commodities — including custody, secondary markets, and compliance.",
-    cta: "Download PDF",
-  },
-  {
-    type: "Checklist",
-    title: "Pre-Audit Checklist for Smart Contracts",
-    description: "The same checklist we use at BlockAudit to cut audit time by 30–50%. Print it, run through it, ship cleaner code.",
-    cta: "Get the checklist",
-  },
-  {
-    type: "Template",
-    title: "Discovery Sprint Brief Template",
-    description: "The exact one-page brief we ask new clients to fill out before kicking off a Product Discovery Sprint.",
-    cta: "Download template",
-  },
-  {
-    type: "Report",
-    title: "Annual Web3 Engineering Trends — 2026 Edition",
-    description: "Stack choices, gas optimization patterns, monitoring practices, and team structures across 50+ Web3 teams we've worked with.",
-    cta: "Download report",
+    title: "Why We Should Care About LATAM",
+    image: "/images/content/uPH5998oYdW1lvvvcYZNNwQMj7w.png",
+    href: "/contact",
   },
 ];
 ---
 
 <BaseLayout
-  title="Digital Library | SpaceDev — Whitepapers, guides and playbooks"
-  description="Free engineering and strategy resources from the SpaceDev team — whitepapers, playbooks, checklists, and reference architectures for Web2 and Web3."
+  title="Resources | SpaceDev — Deep-Dive Insights"
+  description="Explore SpaceDev's deep-dive insights: guides, whitepapers, and featured contributions on blockchain, fintech, and product strategy."
 >
+  <!-- HERO: dark purple gradient -->
   <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-20 md:py-28">
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-36">
       <div class="max-w-3xl" data-animate>
-        <Badge tone="purple" withDot class="mb-6">Digital Library</Badge>
-        <h1 class="text-4xl md:text-6xl text-white">Free resources from our engineers</h1>
-        <p class="mt-6 text-lg text-sd-text-muted max-w-2xl leading-relaxed">
-          Whitepapers, playbooks, and checklists distilled from the projects we've shipped.
-          Free to download, no email gate (yes, really).
-        </p>
+        <h1 class="font-display font-semibold text-5xl md:text-7xl text-white leading-[1.0]">
+          Explore Our<br />Deep-Dive Insights
+        </h1>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <Button href="/contact" variant="primary">Get in touch</Button>
+          <span class="text-sd-text-muted text-sm">Or subscribe to our newsletter</span>
+        </div>
+        <form class="mt-4 flex gap-3 max-w-md" onsubmit="return false;">
+          <input
+            type="email"
+            placeholder="Your email"
+            class="flex-1 rounded-full px-5 py-3 bg-transparent border border-white/20 text-white placeholder:text-sd-text-muted text-sm focus:outline-none focus:border-white/50"
+          />
+          <button
+            type="submit"
+            class="rounded-full px-6 py-3 bg-white text-sd-text-dark font-semibold text-sm hover:bg-sd-light-2 transition-colors"
+          >
+            Sign up!
+          </button>
+        </form>
       </div>
     </div>
   </section>
 
-  <section class="bg-sd-dark py-16 md:py-24">
+  <!-- MISSION STATEMENT -->
+  <section class="bg-[#141414] py-20 md:py-28">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10" data-animate>
+      <p class="font-display font-semibold text-2xl md:text-3xl lg:text-4xl text-white leading-snug">
+        We believe that sharing plants seeds of innovation and connects curious minds everywhere. Together, we transform ideas into breakthroughs and build a future shaped by collaboration and creativity.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURED CONTRIBUTIONS -->
+  <section class="bg-[#0d0d0d] py-16 md:py-20">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <SectionHeading eyebrow="Resources" title="What's available right now" class="mb-12" />
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {resources.map((r) => (
-          <Card variant="dark" hover={false}>
-            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">{r.type}</p>
-            <h3 class="text-lg text-white mb-3">{r.title}</h3>
-            <p class="text-sm text-sd-text-muted leading-relaxed mb-6">{r.description}</p>
-            <a href="/contact" class="inline-flex items-center gap-1 text-sm text-sd-purple-300 hover:gap-2 transition-all">
-              {r.cta}
-              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h2 class="font-display font-semibold text-3xl md:text-4xl text-white mb-8">
+        Featured Contributions!
+      </h2>
+      <div class="divide-y divide-white/10 border-t border-white/10">
+        {contributions.map((item) => (
+          <div class="flex items-center gap-6 py-5">
+            <div class="shrink-0 w-24 h-16 rounded-xl overflow-hidden bg-sd-purple-mid">
+              <img
+                src={item.image}
+                alt={item.title}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <p class="flex-1 font-display font-semibold text-lg text-white">{item.title}</p>
+            <a
+              href={item.href}
+              class="shrink-0 text-sm font-ui uppercase tracking-widest text-sd-text-muted hover:text-white transition-colors"
+            >
+              GET ACCESS
             </a>
-          </Card>
+          </div>
         ))}
       </div>
     </div>
   </section>
-
-  <CTA
-    title="Want a resource we haven't published yet?"
-    description="Tell us what you're working on — if we have something useful, we'll send it over."
-    buttons={[{ label: "Email us", href: "mailto:info@spacedev.io" }]}
-    variant="dark"
-  />
 </BaseLayout>
