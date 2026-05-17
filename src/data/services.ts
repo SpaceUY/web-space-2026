@@ -589,10 +589,10 @@ export const productDiscoveryData: ServicePageData = {
     description: "Validate ideas, define MVPs, and design roadmaps before writing a single line of code. Six discovery sprints tailored to your stage.",
   },
   eyebrow: "Product Discovery",
-  title: "We transform your project ideas into tangible success",
+  title: "Product Discovery",
   description:
-    "Product Discovery helps you deeply understand customer needs and business goals to build the right product — ensuring valuable, feasible, and strategic solutions through collaboration and alignment. Over 60% of projects fail due to poor planning. Discovery makes sure yours isn't one of them.",
-  primaryCta: { label: "Get started", href: "/contact" },
+    "We transform your project ideas into tangible success! It helps deeply understand customer needs and business goals to build the right product, ensuring valuable, feasible, and strategic solutions through collaboration and alignment.",
+  primaryCta: { label: "Get started!", href: "/contact" },
   secondaryCta: { label: "Book a discovery call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
 
   benefits: {

@@ -5,12 +5,69 @@ import Button from "../components/ui/Button.astro";
 import { productDiscoveryData } from "../data/services";
 
 const packages = [
-  { number: "01", title: "Product Strategy Sprint", description: "Define your vision, validate your assumptions, and align stakeholders on a product strategy that's both ambitious and achievable. We map competitors, clarify your unique value proposition, and create a prioritized roadmap." },
-  { number: "02", title: "Brand Strategy Sprint", description: "Craft a distinctive brand identity that resonates with your target audience. We develop your positioning, messaging framework, visual direction, and brand voice so you launch with clarity and confidence." },
-  { number: "03", title: "MVP Discovery Sprint", description: "Scope and validate your Minimum Viable Product to reduce risk and accelerate time-to-market. We define the core feature set, success metrics, and technical architecture needed to test your riskiest assumptions with real users." },
-  { number: "04", title: "Go-To-Market Package", description: "Launch with a plan that drives real traction. We build your GTM strategy covering customer segments, acquisition channels, pricing, and launch sequence — everything your team needs to execute on day one." },
-  { number: "05", title: "Continuous Discovery Sprint", description: "Keep learning as you grow. Embed discovery habits into your existing team with recurring user interviews, experiment design, and insight synthesis. Ideal for post-launch teams who want to stay close to their customers." },
-  { number: "06", title: "Scale Stage", description: "Prepare your product and organization for the next order of magnitude. We identify growth levers, platform scalability needs, team structure, and the metrics framework that will guide your next phase of expansion." },
+  {
+    number: "01",
+    title: "Product Strategy Sprint",
+    objective: "Define the business model, develop hypotheses, test desirability, and forecast profitability.",
+    deliverables: [
+      "Detailed report with findings and recommendations",
+      "Hypotheses validated or rejected based on data",
+      "Business model and profitability projection",
+    ],
+  },
+  {
+    number: "02",
+    title: "Brand Strategy Sprint",
+    objective: "Establish a clear vision for the product's brand and create essential resources.",
+    deliverables: [
+      "Refined brand materials aligned with product vision",
+      "Visual and written assets ready for marketing and next steps",
+    ],
+  },
+  {
+    number: "03",
+    title: "MVP Discovery Sprint",
+    objective: "Design the user experience (UX), navigation, content architecture, and style guide (UI).",
+    deliverables: [
+      "Product definition",
+      "MVP Scope & Roadmap",
+      "Critical App Flow",
+      "Solution Architecture",
+      "Tech Stack",
+      "Technical Risk Mitigation",
+      "Wireframing",
+    ],
+  },
+  {
+    number: "04",
+    title: "Go-To-Market Package",
+    objective: "Prepare the product for launch while the MVP is being developed.",
+    deliverables: [
+      "Clear launch strategy",
+      "Marketing materials for app stores and social media",
+      "Community-building assets to foster early traction",
+    ],
+  },
+  {
+    number: "05",
+    title: "Continuous Discovery Sprint",
+    objective: "Assess the product's current state and propose new functionalities or optimizations.",
+    deliverables: [
+      "Implementation plans for improvements",
+      "Insights report with prioritized recommendations",
+      "Roadmap for continuous iteration and growth",
+    ],
+  },
+  {
+    number: "06",
+    title: "Scale Stage",
+    objective: "Support mature products to scale and meet advanced needs.",
+    deliverables: [
+      "Advanced solutions for scaling",
+      "Enhanced design systems to streamline development",
+      "Dedicated resources for product growth and optimization",
+    ],
+  },
 ];
 ---
 
@@ -46,8 +103,22 @@ const packages = [
                 </svg>
               </button>
               <div class="pkg-body overflow-hidden">
-                <div class="pb-6 pl-10">
-                  <p class="text-sd-text-muted leading-relaxed">{pkg.description}</p>
+                <div class="pb-6 pl-10 space-y-4">
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.15em] text-sd-purple-300 mb-1">Objective</p>
+                    <p class="text-sd-text-muted leading-relaxed">{pkg.objective}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.15em] text-sd-purple-300 mb-2">Deliverables</p>
+                    <ul class="space-y-1.5">
+                      {pkg.deliverables.map((d) => (
+                        <li class="flex items-start gap-2 text-sd-text-muted leading-relaxed">
+                          <span class="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-sd-purple-300 shrink-0"></span>
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
