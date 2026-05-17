@@ -1,91 +1,205 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Badge from "../components/ui/Badge.astro";
-import SectionHeading from "../components/ui/SectionHeading.astro";
-import FAQ from "../components/ui/FAQ.astro";
 import CTA from "../components/ui/CTA.astro";
 
 const faqs = [
   {
+    number: "01",
     question: "Do you offer free consultation?",
     answer:
-      "Yes — every engagement starts with a free 30-minute consultation. We use it to understand your goals, scope the problem, and tell you honestly whether we're the right fit. No deck, no pitch.",
+      "Yes, we offer a free 45-minute consultation to understand your needs and how we can support your project. Just click the Get in Touch button to book your call.",
   },
   {
+    number: "02",
     question: "What are your rates?",
     answer:
       "We offer time & materials, fixed-scope, and dedicated-team pricing. Rates vary by role and engagement — most engagements land in the $60–120/hr range for staff augmentation, and project pricing depends on scope. We share specifics on the first call.",
   },
   {
+    number: "03",
     question: "What kind of services do you offer?",
     answer:
       "Five core services: Blockchain Development, Web & Mobile Development, IT Staff Augmentation, Product Discovery, and BlockAudit (smart contract security). All under one roof, with the same team across discovery, build, and run.",
   },
   {
-    question: "What technologies do you work with on the Full-Stack side?",
+    number: "04",
+    question: "What technologies do you work with? (Techs for Full-Stack Development)",
     answer:
       "TypeScript, React, Next.js, Node.js, Python, Go, React Native, Flutter, PostgreSQL, Redis, and the major cloud providers (AWS, GCP, Vercel). For mobile we ship both React Native and native iOS/Android.",
   },
   {
-    question: "Which Blockchain tech-stack do you use?",
+    number: "05",
+    question: "Which Blockchain Tech-Stack do we use?",
     answer:
       "Solidity (EVM ecosystems including Ethereum, Polygon, Arbitrum, Base, Optimism), Rust (Solana, Aptos), and Move (Aptos, Sui). Tooling: Foundry, Hardhat, OpenZeppelin, The Graph, OpenZeppelin Defender for monitoring.",
   },
   {
+    number: "06",
     question: "What is an MVP?",
     answer:
       "An MVP (Minimum Viable Product) is the smallest version of your product that delivers real value to a real user. It's not a prototype, not a demo — it's a shippable product designed to learn from market feedback as fast and cheaply as possible.",
   },
   {
+    number: "07",
     question: "In simple words, what does the Discovery Sprint include?",
     answer:
       "A structured 1–4 week engagement where we validate the business case, define the scope, design the user experience, choose the tech stack, and produce a prioritized roadmap — before writing production code. The output is a build-ready plan.",
   },
   {
-    question: "What's the difference between IT Staff Augmentation and Consulting / Development Services?",
+    number: "08",
+    question: "In simple words, what's the difference between IT Staff Augmentation vs. Consulting and Development Services.",
     answer:
       "Staff Augmentation embeds engineers into your team, processes, and codebase — you manage the work and own everything they ship. Consulting / Development Services means SpaceDev owns the project end-to-end: discovery, design, build, ship, and support. Different models for different stages of a company's needs.",
+  },
+];
+
+const engagementModels = [
+  {
+    title: "MVP Builder",
+    steps: [
+      { number: "01", label: "Discovery" },
+      { number: "02", label: "Proposal" },
+      { number: "03", label: "MVP Build" },
+      { number: "04", label: "Growth & Support" },
+    ],
+  },
+  {
+    title: "IT Staff Augmentation",
+    steps: [
+      { number: "01", label: "Identify Needs" },
+      { number: "02", label: "Candidate Screening" },
+      { number: "03", label: "Welcome Aboard!" },
+      { number: "04", label: "Management & Scaling" },
+    ],
   },
 ];
 ---
 
 <BaseLayout
-  title="FAQs | SpaceDev — Common questions about our services"
-  description="Free consultation, rates, services, technologies, MVP definition, Discovery Sprint, and the difference between staff augmentation and full development services."
+  title="FAQs | SpaceDev — Frequently Asked Questions"
+  description="To simplify your life, we've crafted this straightforward FAQ page to address some of the questions you might be wondering about SpaceDev's services, rates, and processes."
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 30% 70%, var(--sd-purple), transparent 50%);"></div>
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-20 md:py-28">
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-36">
       <div class="max-w-3xl" data-animate>
-        <Badge tone="purple" withDot class="mb-6">FAQs</Badge>
-        <h1 class="text-4xl md:text-6xl text-white">Straight answers to common questions</h1>
-        <p class="mt-6 text-lg text-sd-text-muted max-w-2xl leading-relaxed">
-          Don't see your question? <a href="/contact" class="text-sd-purple-300 hover:text-sd-purple-300 underline">Get in touch</a> — we read every message.
+        <h1 class="font-display font-semibold text-5xl md:text-7xl text-white leading-[1.0]">
+          Frequently Asked Questions!
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
+          To simplify your life, we've crafted this straightforward FAQ page to address some of the questions you might be wondering about...
         </p>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="bg-sd-dark py-20 md:py-28">
-    <div class="mx-auto max-w-3xl px-6 md:px-10">
-      <SectionHeading
-        eyebrow="Common questions"
-        title="Everything you wanted to ask"
-        align="center"
-        class="mb-12"
-      />
-      <FAQ items={faqs} tone="dark" />
+  <!-- FAQ ACCORDION -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="divide-y divide-sd-gray-border border-t border-sd-gray-border" id="faq-list">
+        {faqs.map((item) => (
+          <div class="sd-faq-item" data-open="false">
+            <button
+              type="button"
+              class="w-full flex items-start gap-6 py-8 text-left group"
+              aria-expanded="false"
+            >
+              <span class="shrink-0 font-display font-semibold text-4xl md:text-5xl text-sd-text-dark leading-none w-16">
+                {item.number}
+              </span>
+              <span class="flex-1 font-display font-semibold text-xl md:text-2xl text-sd-text-dark leading-snug pt-1">
+                {item.question}
+              </span>
+              <span class="shrink-0 w-10 h-10 flex items-center justify-center rounded-full border border-sd-gray-border text-sd-text-dark group-hover:border-sd-text-dark transition-colors mt-1 sd-faq-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 5L8 11L14 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="sd-faq-answer overflow-hidden max-h-0 transition-all duration-300">
+              <p class="pb-8 pl-22 text-base md:text-lg text-sd-text-gray leading-relaxed max-w-[800px]" style="padding-left: 5.5rem;">
+                {item.answer}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
+  <!-- ENGAGEMENT MODELS -->
+  <section class="bg-sd-light py-16 md:py-24">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid md:grid-cols-2 gap-6">
+        {engagementModels.map((model) => (
+          <div class="bg-white rounded-2xl p-8 md:p-10">
+            <h3 class="font-display font-semibold text-2xl md:text-3xl text-sd-text-dark mb-8">
+              {model.title}
+            </h3>
+            <div class="space-y-0">
+              {model.steps.map((step) => (
+                <div class="flex items-center gap-5 py-5 border-b border-sd-gray-border last:border-b-0">
+                  <span class="font-display font-semibold text-3xl md:text-4xl text-sd-text-dark leading-none w-12 shrink-0">
+                    {step.number}
+                  </span>
+                  <span class="font-display font-semibold text-lg md:text-xl text-sd-text-dark">
+                    {step.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- STILL NOT SURE CTA -->
   <CTA
-    title="Still have questions?"
-    description="Our engineers and product team are happy to jump on a call — no slides, no pitch."
+    title="Still not sure which option you need?"
+    description=""
     buttons={[
-      { label: "Schedule a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
-      { label: "Email us", href: "mailto:info@spacedev.io", variant: "outline-light" },
+      { label: "Get in touch", href: "/contact" },
     ]}
   />
 </BaseLayout>
+
+<script>
+  const items = document.querySelectorAll<HTMLElement>(".sd-faq-item");
+
+  items.forEach((item) => {
+    const btn = item.querySelector("button")!;
+    const answer = item.querySelector<HTMLElement>(".sd-faq-answer")!;
+    const icon = item.querySelector<HTMLElement>(".sd-faq-icon svg path")!;
+
+    btn.addEventListener("click", () => {
+      const isOpen = item.dataset.open === "true";
+
+      // Close all others
+      items.forEach((other) => {
+        if (other !== item) {
+          other.dataset.open = "false";
+          const otherAnswer = other.querySelector<HTMLElement>(".sd-faq-answer")!;
+          const otherBtn = other.querySelector("button")!;
+          const otherIcon = other.querySelector<HTMLElement>(".sd-faq-icon svg path")!;
+          otherAnswer.style.maxHeight = "0";
+          otherBtn.setAttribute("aria-expanded", "false");
+          if (otherIcon) otherIcon.setAttribute("d", "M2 5L8 11L14 5");
+        }
+      });
+
+      // Toggle this one
+      if (isOpen) {
+        item.dataset.open = "false";
+        answer.style.maxHeight = "0";
+        btn.setAttribute("aria-expanded", "false");
+        if (icon) icon.setAttribute("d", "M2 5L8 11L14 5");
+      } else {
+        item.dataset.open = "true";
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        btn.setAttribute("aria-expanded", "true");
+        if (icon) icon.setAttribute("d", "M2 11L8 5L14 11");
+      }
+    });
+  });
+</script>
