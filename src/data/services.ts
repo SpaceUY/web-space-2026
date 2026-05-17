@@ -518,11 +518,11 @@ export const staffAugData: ServicePageData = {
     description: "Pre-vetted developers, designers, and specialists ready in under 2 weeks. Scale your team without long hiring cycles or overhead costs.",
   },
   eyebrow: "IT Staff Augmentation Services",
-  title: "Access pre-vetted engineers, ready in under 2 weeks",
+  title: "IT Staff Augmentation Services",
   description:
     "Access pre-vetted engineers, designers, and specialists who integrate effortlessly with your existing setup. Scale your project without the weight of long hiring cycles or overhead costs.",
-  primaryCta: { label: "Get in touch", href: "/contact" },
-  secondaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
+  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
+  secondaryCta: { label: "Get in touch", href: "/contact" },
 
   process: {
     eyebrow: "How it works",
