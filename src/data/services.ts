@@ -17,6 +17,8 @@ export interface ServicePageData {
   description: string;
   primaryCta?: { label: string; href: string; external?: boolean };
   secondaryCta?: { label: string; href: string; external?: boolean };
+  /** Hero color scheme — "dark" (default) = purple gradient; "light" = white bg with dark text */
+  heroVariant?: "dark" | "light";
 
   /** "What we build" / process / offers */
   offers?: { eyebrow?: string; title: string; description?: string; items: ServiceOffer[]; style?: "list" | "cards" };
@@ -440,8 +442,9 @@ export const webMobileData: ServicePageData = {
   title: "Innovative Web & Mobile Development",
   description:
     "Your digital product is more than software; it represents your brand in motion. SpaceDev builds web, mobile, and software solutions that fuse together engineering precision with strong design and strategy to perform, engage, and evolve with your users.",
-  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar", external: true },
-  secondaryCta: { label: "Get in touch", href: "/contact" },
+  heroVariant: "light",
+  primaryCta: { label: "Get in touch", href: "/contact" },
+  secondaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar", external: true },
 
   offers: {
     eyebrow: "What we build",
