@@ -1,0 +1,113 @@
+---
+interface Author {
+  name: string;
+  role: string;
+  photo?: string;
+  linkedin?: string;
+}
+
+interface Props {
+  text: string;
+  authors: Author | Author[];
+  tone?: "dark" | "light";
+}
+
+const { text, authors, tone = "dark" } = Astro.props;
+const authorList = Array.isArray(authors) ? authors : [authors];
+const words = text.split(" ").map((w, i, arr) => i < arr.length - 1 ? w + " " : w);
+const id = "qr-" + Math.random().toString(36).slice(2, 7);
+
+const bg        = tone === "dark" ? "bg-sd-dark"  : "bg-white";
+const dimColor  = tone === "dark" ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.15)";
+const fullColor = tone === "dark" ? "rgba(255,255,255,1)"    : "rgba(0,0,0,1)";
+const metaColor = tone === "dark" ? "var(--sd-text-muted)"   : "var(--sd-text-gray)";
+const nameColor = tone === "dark" ? "text-white"             : "text-sd-text-dark";
+---
+
+<div id={id} class={`py-24 md:py-32 ${bg}`}>
+  <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+    <figure>
+
+      <blockquote
+        class="text-3xl md:text-4xl lg:text-5xl font-body font-light text-center leading-snug tracking-tight"
+        style="word-break: normal; overflow-wrap: break-word;"
+      >
+        {words.map((word, i) => (
+          <span
+            class="qr-word"
+            data-i={i}
+            data-total={words.length}
+            style={`color: ${dimColor}; transition: color 0.05s linear;`}
+          >{word}</span>
+        ))}
+      </blockquote>
+
+      <figcaption class={`mt-16 flex items-center justify-end gap-8 ${authorList.length > 1 ? "flex-wrap" : ""}`}>
+        {authorList.map((a) => (
+          <div class="flex items-center gap-4">
+            {a.photo && (
+              <img
+                src={a.photo}
+                alt={a.name}
+                width={56}
+                height={56}
+                class="w-14 h-14 rounded-full object-cover grayscale shrink-0"
+              />
+            )}
+            <div class={authorList.length > 1 ? "" : "text-right"}>
+              <p class={`font-medium text-base ${nameColor}`}>{a.name}</p>
+              <p class="text-sm mt-0.5" style={`color: ${metaColor}`}>{a.role}, SpaceDev</p>
+              {a.linkedin && (
+                <a
+                  href={a.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-1.5 inline-flex items-center gap-1.5 text-xs uppercase tracking-widest transition-colors hover:opacity-100 opacity-60"
+                  style={`color: ${metaColor}`}
+                >
+                  Connect
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect x="2" y="9" width="4" height="12"/>
+                    <circle cx="4" cy="4" r="2"/>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </figcaption>
+
+    </figure>
+  </div>
+</div>
+
+<script define:vars={{ id, dimColor, fullColor }}>
+  const section = document.getElementById(id);
+  if (section) {
+    const wordEls = section.querySelectorAll(".qr-word");
+
+    const update = () => {
+      const rect     = section.getBoundingClientRect();
+      const winH     = window.innerHeight;
+      const progress = Math.max(0, Math.min(1, (winH - rect.top) / (winH + rect.height)));
+
+      wordEls.forEach((word, i) => {
+        const total = wordEls.length;
+        const start = (i / total) * 0.55;
+        const end   = ((i + 1) / total) * 0.55;
+        const t     = Math.max(0, Math.min(1, (progress - start) / Math.max(end - start, 0.001)));
+        // Interpolate between dim and full color
+        const alpha = 0.15 + t * 0.85;
+        if (fullColor.includes("255,255,255")) {
+          word.style.color = `rgba(255,255,255,${alpha.toFixed(3)})`;
+        } else {
+          word.style.color = `rgba(0,0,0,${alpha.toFixed(3)})`;
+        }
+      });
+    };
+
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  }
+</script>
