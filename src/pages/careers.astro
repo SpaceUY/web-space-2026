@@ -1,8 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Badge from "../components/ui/Badge.astro";
 import Button from "../components/ui/Button.astro";
-import SectionHeading from "../components/ui/SectionHeading.astro";
 
 const positions = [
   { title: "Full Stack Web3 Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/67321-full-stack-web3-developer" },
@@ -13,12 +11,12 @@ const positions = [
 ];
 
 const benefits = [
-  { image: "/images/content/49Gx91Wg2JCpyPtaV9vomtqWvCw.png", title: "Flexible vacation time", description: "You decide when it's time for a break! At Space, we offer flexible vacation scheduling to ensure a perfect work-life balance." },
-  { image: "/images/content/dUeBS8CGEQoCMGywP8ZXReamCkQ.png", title: "Monetary perks", description: "Space offers training and access to international certifications, promoting ongoing learning for our talent." },
-  { image: "/images/content/xLChrbBde2JuTczfXudMMW0O9k.png", title: "Professional mentorship", description: "At Space, new talent benefits from our mentorship program, designed to unlock their full professional potential." },
-  { image: "/images/content/eBY5lwg069W2k2QwPXEjnQzEU.png", title: "Well-being program", description: "Excellence in your job goes beyond technical expertise; it encompasses personal well-being. At Space, we provide diverse options for holistic mind-body care." },
-  { image: "/images/content/z7Knqgw7GL10eaIAxP6uTpDw.png", title: "100% Remote work", description: "Though we value face-to-face interactions to nurture healthy relationships, we embrace flexible schedules and remote work, enabling our team to achieve a healthy work-life balance." },
-  { image: "/images/content/6G0QRicYBjDBVHa40ePGoUGugk.png", title: "Team building", description: "At Space, we prioritize team well-being and positive relationships. We host after-work socials, bonding events, and annual retreats in exciting locations worldwide." },
+  { title: "Flexible vacation time", description: "You decide when it's time for a break! At Space, we offer flexible vacation scheduling to ensure a perfect work-life balance." },
+  { title: "Monetary perks", description: "Space offers training and access to international certifications, promoting ongoing learning for our talent." },
+  { title: "Professional mentorship", description: "At Space, new talent benefits from our mentorship program, designed to unlock their full professional potential." },
+  { title: "Well-being program", description: "Excellence in your job goes beyond technical expertise; it encompasses personal well-being. At Space, we provide diverse options for holistic mind-body care." },
+  { title: "100% Remote work", description: "Though we value face-to-face interactions to nurture healthy relationships, we embrace flexible schedules and remote work, enabling our team to achieve a healthy work-life balance." },
+  { title: "Team building", description: "At Space, we prioritize team well-being and positive relationships. We host after-work socials, bonding events, and annual retreats in exciting locations worldwide." },
 ];
 
 const peopleTeam = [
@@ -36,7 +34,6 @@ const galleryPhotos = [
   { src: "/images/content/WSgg2vvLbwIDpUqEcgfpoHmXa4.jpg", alt: "Fede Sendra, our CEO, embracing a teammate" },
   { src: "/images/content/jrVqUaItfaiWthkT9E9WKH8cPaQ.jpg", alt: "Space Team at the park talking during our All Hands" },
   { src: "/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg", alt: "Team member writing Post Its in a bonding activity" },
-  { src: "/images/content/uhSZSE63T2i0JocraoQgcgj6So.jpg", alt: "Two of our Developers enjoying their time together" },
 ];
 
 const jobPostingsJsonLd = {
@@ -58,50 +55,44 @@ const jobPostingsJsonLd = {
   description="Join SpaceDev, a top-5 Clutch blockchain company. Open remote roles in Web3, full-stack, and mobile engineering with global mentorship and benefits."
   jsonLd={jobPostingsJsonLd}
 >
-  <!-- HERO -->
-  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 80% 30%, var(--sd-purple-300), transparent 50%);"></div>
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-24 md:pt-32 pb-12 md:pb-16">
+  <!-- HERO: team photo as full-height bg with dark overlay, text at bottom-left -->
+  <section class="relative overflow-hidden min-h-[80vh] flex flex-col justify-center" style="background-color: #0d0a18;">
+    <img
+      src="/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.png"
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(10,6,20,0.88) 25%, rgba(50,30,90,0.45) 65%, rgba(10,6,20,0.75) 100%), linear-gradient(to bottom, rgba(10,6,20,0.2) 0%, rgba(10,6,20,0.85) 100%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-28 md:pt-36 pb-16 md:pb-20 w-full">
       <div class="max-w-3xl" data-animate>
-        <Badge tone="green" withDot class="mb-6">We're hiring</Badge>
-        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-display font-semibold">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-display leading-[1.05]">
           Check out our latest IT Job Openings
         </h1>
-        <p class="mt-6 text-xl md:text-2xl text-white max-w-2xl leading-snug font-display">
+        <p class="mt-6 text-xl md:text-2xl text-white/80 max-w-2xl leading-snug font-display font-light">
           Join the SpaceDev team and be part of something special!
         </p>
-        <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
-          At SpaceDev, our team culture is everything. We're proud to have a talented, multidisciplinary crew,
-          but above all, we value great people. If you're looking for a professional, fun, and dynamic place
-          to work, SpaceDev is the place for you!
-        </p>
-        <div class="mt-10 flex flex-wrap gap-4">
-          <Button href="#open-positions" variant="primary" size="lg">See open positions</Button>
-          <Button href="mailto:people@spacedev.io" variant="outline-light" size="lg">people@spacedev.io</Button>
-        </div>
       </div>
-    </div>
-    <div class="w-full overflow-hidden" data-animate>
-      <img
-        src="/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.png"
-        alt="SpaceDev team at an All Hands event"
-        loading="eager"
-        class="w-full h-auto object-cover"
-      />
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section class="bg-[#f5f5f5] py-16 md:py-20">
+  <!-- CULTURE TEXT + GALLERY -->
+  <section class="bg-white py-16 md:py-20">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <p class="font-body text-sd-text-dark text-2xl md:text-3xl lg:text-4xl leading-relaxed mb-14 text-center max-w-4xl mx-auto" data-animate>
+        At SpaceDev, our team culture is everything. We're proud to have a talented, multidisciplinary crew,
+        but above all, we value great people. If you're looking for a professional, fun, and dynamic place
+        to work, SpaceDev is the place for you!
+      </p>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
         {galleryPhotos.map((photo, i) => (
-          <div class={`rounded-2xl overflow-hidden${i === 3 ? " md:col-span-2" : ""}`} data-animate>
+          <div class={`rounded-2xl overflow-hidden${i === 1 ? " row-span-2" : ""}`} data-animate>
             <img
               src={photo.src}
               alt={photo.alt}
               loading="lazy"
-              class="w-full h-48 md:h-64 object-cover"
+              class={`w-full object-cover${i === 1 ? " h-full" : " h-48 md:h-64"}`}
             />
           </div>
         ))}
@@ -110,102 +101,84 @@ const jobPostingsJsonLd = {
   </section>
 
   <!-- BENEFITS / PERKS -->
-  <section class="bg-sd-dark py-20 md:py-28">
+  <section class="bg-[#f5f5f5] py-20 md:py-28">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <SectionHeading
-        eyebrow="SpaceDev Perks!"
-        title="What working at SpaceDev looks like"
-        align="center"
-        class="mb-14"
-      />
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <h2 class="font-body font-normal text-4xl md:text-5xl text-sd-text-dark mb-14" data-animate>
+        SpaceDev Perks!
+      </h2>
+      <div class="grid gap-x-12 gap-y-12 md:grid-cols-3">
         {benefits.map((b) => (
-          <article class="bg-sd-dark-2 border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(103,58,228,0.25)]" data-animate>
-            <img
-              src={b.image}
-              alt={b.title}
-              loading="lazy"
-              width="700"
-              height="500"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-6 md:p-8">
-              <h3 class="text-lg text-white mb-2 font-display font-semibold">{b.title}</h3>
-              <p class="text-sm text-sd-text-muted leading-relaxed">{b.description}</p>
+          <div data-animate>
+            <div class="flex items-baseline gap-3 mb-3">
+              <span class="text-sd-text-gray text-lg leading-none shrink-0" aria-hidden="true">→</span>
+              <h3 class="font-body font-normal text-2xl md:text-3xl text-sd-text-dark leading-snug">{b.title}</h3>
             </div>
-          </article>
+            <p class="font-body text-sd-text-gray text-sm leading-relaxed">{b.description}</p>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- OPEN POSITIONS -->
-  <section id="open-positions" class="bg-sd-light py-20 md:py-28">
-    <div class="mx-auto max-w-[1200px] px-6 md:px-10">
+  <!-- OPEN POSITIONS: grid of cards, no nested anchors -->
+  <section id="open-positions" class="bg-white py-20 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <div class="mb-12 max-w-3xl" data-animate>
-        <h2 class="text-3xl md:text-5xl text-sd-text-dark font-display font-semibold">
+        <h2 class="text-3xl md:text-5xl text-sd-text-dark font-display">
           Seeking a new opportunity to advance your career?
         </h2>
         <p class="mt-4 text-lg md:text-xl text-sd-text-gray">
           Look no further! Explore our open positions and join us on this exciting journey.
         </p>
       </div>
-      <ul class="divide-y divide-sd-gray-border border-y border-sd-gray-border">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {positions.map((p) => (
-          <a href={p.href} target="_blank" rel="noopener noreferrer" class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-6 hover:bg-sd-light-2 px-3 -mx-3 rounded-lg transition-colors" data-animate>
+          <article
+            class="flex flex-col justify-between gap-6 bg-[#f5f5f5] rounded-2xl p-6 md:p-8"
+            data-animate
+          >
             <div>
-              <h3 class="text-lg text-sd-text-dark font-display font-semibold">{p.title}</h3>
-              <p class="mt-1 text-sm text-sd-text-gray">
-                <span class="inline-flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-sd-purple inline-block" aria-hidden="true"></span>
+              <h3 class="text-lg text-sd-text-dark font-display font-semibold leading-snug mb-2">{p.title}</h3>
+              <p class="text-sm text-sd-text-gray">
+                <span class="inline-flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sd-purple inline-block shrink-0" aria-hidden="true"></span>
                   {p.mode}
                 </span>
               </p>
             </div>
-            <Button href={p.href} variant="primary" external>Apply now</Button>
-          </a>
+            <div>
+              <Button href={p.href} variant="dark" external>Apply now</Button>
+            </div>
+          </article>
         ))}
-      </ul>
+      </div>
       <div class="mt-12 text-center" data-animate>
         <Button href="https://spacedev.peopleforce.io/careers" variant="primary" size="lg" external>Explore Our Job Openings!</Button>
       </div>
     </div>
   </section>
 
-  <!-- GRECIA QUOTE -->
-  <section class="py-20 md:py-28 bg-sd-dark">
+  <!-- PEOPLE TEAM -->
+  <section class="py-20 md:py-28 bg-white border-t border-sd-gray-border">
     <div class="mx-auto max-w-[1100px] px-6 md:px-10">
       <figure data-animate>
-        <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display text-center max-w-4xl mx-auto mb-14">
+        <blockquote class="text-2xl md:text-3xl lg:text-4xl text-sd-text-dark leading-relaxed font-body text-center max-w-4xl mx-auto mb-14">
           "As the Head of People at SpaceDev, I'm committed to maintaining a high-performance culture
           with strong human values. Join us to be part of a top-tier team where your growth,
           well-being and work-life balance are prioritized. Apply now!"
         </blockquote>
-        <figcaption class="flex items-center justify-end gap-4">
-          <div class="w-16 h-16 rounded-full overflow-hidden shrink-0">
-            <img
-              src="/images/content/7JdCXilWraK1hOANTbX2xgD4.png"
-              alt="Grecia Tardáguila, Head of People at SpaceDev"
-              width="64"
-              height="64"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div>
-            <p class="text-white font-display font-medium">Grecia Tardáguila</p>
-            <p class="text-sd-text-muted text-sm mt-0.5">Head of People</p>
+        <figcaption class="flex flex-wrap justify-center gap-8">
+          {peopleTeam.map((person) => (
             <a
-              href="https://www.linkedin.com/in/greciatardaguila-people-it/"
+              href={person.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-1 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-sd-text-muted hover:text-white transition-colors"
+              class="text-center hover:opacity-70 transition-opacity"
             >
-              CONNECT WITH ME
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="shrink-0">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
+              <p class="text-sd-text-dark font-display font-medium text-sm">{person.name}</p>
+              <p class="text-sd-text-muted text-xs mt-0.5">{person.role}</p>
             </a>
-          </div>
+          ))}
         </figcaption>
       </figure>
     </div>

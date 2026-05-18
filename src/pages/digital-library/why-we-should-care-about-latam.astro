@@ -1,0 +1,141 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/ui/Button.astro";
+---
+
+<BaseLayout
+  title="Why We Should Care About LATAM | SpaceDev Digital Library"
+  description="An in-depth look at why Latin America is one of the most exciting emerging tech markets — and what it means for global software development."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden min-h-[60vh] flex flex-col justify-center" style="background-color: #0d0a18;">
+    <img
+      src="/images/content/uPH5998oYdW1lvvvcYZNNwQMj7w.png"
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(10,6,20,0.92) 30%, rgba(50,30,90,0.5) 70%, rgba(10,6,20,0.8) 100%), linear-gradient(to bottom, rgba(10,6,20,0.3) 0%, rgba(10,6,20,0.9) 100%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-28 md:pt-36 pb-16 w-full">
+      <nav class="mb-6 text-sm text-sd-text-muted font-body" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/digital-library" class="hover:text-white transition-colors">Resources</a>
+        <span class="mx-2">/</span>
+        <span class="text-white">Why We Should Care About LATAM</span>
+      </nav>
+      <div class="max-w-3xl" data-animate>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-display leading-[1.05]">
+          Why We Should Care About LATAM
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed font-body">
+          Latin America is one of the fastest-growing tech markets in the world — and the opportunity is still largely untapped.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESS FORM -->
+  <section class="bg-[#f5f5f5] py-16 md:py-20 border-b border-sd-gray-border">
+    <div class="mx-auto max-w-[760px] px-6 md:px-10" data-animate>
+      <h2 class="font-display text-2xl md:text-3xl text-sd-text-dark mb-3">
+        Get the full report
+      </h2>
+      <p class="font-body text-sd-text-gray text-base mb-8 leading-relaxed">
+        Fill in your details to access the complete deep-dive on LATAM's tech ecosystem.
+      </p>
+      <form class="grid gap-4 md:grid-cols-2" onsubmit="return false;">
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs uppercase tracking-widest text-sd-text-gray font-ui">First name</label>
+          <input
+            type="text"
+            placeholder="Your first name"
+            class="rounded-xl px-4 py-3 bg-white border border-sd-gray-border text-sd-text-dark placeholder:text-sd-text-muted text-sm focus:outline-none focus:border-sd-purple transition-colors"
+          />
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs uppercase tracking-widest text-sd-text-gray font-ui">Last name</label>
+          <input
+            type="text"
+            placeholder="Your last name"
+            class="rounded-xl px-4 py-3 bg-white border border-sd-gray-border text-sd-text-dark placeholder:text-sd-text-muted text-sm focus:outline-none focus:border-sd-purple transition-colors"
+          />
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs uppercase tracking-widest text-sd-text-gray font-ui">Work email</label>
+          <input
+            type="email"
+            placeholder="you@company.com"
+            class="rounded-xl px-4 py-3 bg-white border border-sd-gray-border text-sd-text-dark placeholder:text-sd-text-muted text-sm focus:outline-none focus:border-sd-purple transition-colors"
+          />
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs uppercase tracking-widest text-sd-text-gray font-ui">Company</label>
+          <input
+            type="text"
+            placeholder="Your company"
+            class="rounded-xl px-4 py-3 bg-white border border-sd-gray-border text-sd-text-dark placeholder:text-sd-text-muted text-sm focus:outline-none focus:border-sd-purple transition-colors"
+          />
+        </div>
+        <div class="md:col-span-2 mt-2">
+          <Button type="submit" variant="dark" size="lg">Get access</Button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="mx-auto max-w-[760px] px-6 md:px-10 font-body text-sd-text-dark">
+      <div class="prose-content space-y-6 text-lg leading-relaxed text-sd-text-gray" data-animate>
+        <p>
+          Latin America is home to over 650 million people across 33 countries, with a young, tech-savvy population driving unprecedented digital adoption. The region's tech sector has been growing at nearly three times the global average — and the momentum shows no signs of slowing down.
+        </p>
+        <h2 class="font-display text-2xl md:text-3xl text-sd-text-dark mt-10 mb-4">
+          A market that can no longer be ignored
+        </h2>
+        <p>
+          From São Paulo to Buenos Aires, Bogotá to Mexico City, a new generation of engineers, founders, and operators is building world-class software. Venture capital investments in LATAM startups have surpassed $15B in recent years, and the talent pool is expanding rapidly with some of the strongest engineering universities in the Americas.
+        </p>
+        <p>
+          For companies looking to scale efficiently without compromising quality, LATAM offers a compelling combination: highly skilled engineers, time-zone alignment with the U.S., cultural affinity with North American business practices, and rates that unlock significantly higher ROI than comparable markets.
+        </p>
+        <h2 class="font-display text-2xl md:text-3xl text-sd-text-dark mt-10 mb-4">
+          Why nearshoring to LATAM works
+        </h2>
+        <p>
+          Unlike offshore teams in Asia, LATAM engineers work in U.S. time zones (UTC-3 to UTC-8), enabling real-time collaboration without the async overhead that erodes speed and cohesion. Standup meetings happen in the morning — not at midnight.
+        </p>
+        <p>
+          The cultural overlap matters too. Communication styles, professional norms, and product sensibilities in LATAM align closely with U.S. and European expectations. This reduces the friction that often makes offshore engagements costly and slow.
+        </p>
+        <h2 class="font-display text-2xl md:text-3xl text-sd-text-dark mt-10 mb-4">
+          SpaceDev's role in the ecosystem
+        </h2>
+        <p>
+          SpaceDev was founded in Montevideo, Uruguay — a small country that has quietly become one of Latin America's most respected software exporters. With offices now in Miami, Buenos Aires, and Medellín, we've built our company on the belief that world-class engineering talent exists throughout the region.
+        </p>
+        <p>
+          We're not just beneficiaries of the LATAM opportunity — we're active contributors to it. We mentor junior engineers, partner with local universities, and invest in the communities that make this ecosystem thrive.
+        </p>
+        <h2 class="font-display text-2xl md:text-3xl text-sd-text-dark mt-10 mb-4">
+          The window is open — but not forever
+        </h2>
+        <p>
+          As awareness grows, competition for top LATAM talent is intensifying. The companies that build relationships with the region's best engineers today will have a structural advantage tomorrow. This is not a trend to observe from the sidelines.
+        </p>
+        <p>
+          Whether you're exploring IT staff augmentation, building a product team from scratch, or evaluating nearshore partners — LATAM deserves a serious look. The depth of talent, the quality of output, and the efficiency of collaboration make a compelling case.
+        </p>
+      </div>
+
+      <div class="mt-14 pt-10 border-t border-sd-gray-border flex flex-wrap items-center gap-4" data-animate>
+        <Button href="/contact" variant="dark">Talk to us about LATAM talent</Button>
+        <a href="/digital-library" class="text-sm font-ui uppercase tracking-widest text-sd-text-gray hover:text-sd-text-dark transition-colors">
+          ← Back to resources
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
