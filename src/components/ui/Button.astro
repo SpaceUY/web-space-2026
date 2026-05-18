@@ -1,5 +1,5 @@
 ---
-type Variant = "primary" | "secondary" | "ghost" | "outline-light";
+type Variant = "primary" | "secondary" | "ghost" | "outline-light" | "outline-dark";
 type Size = "sm" | "md" | "lg";
 
 interface Props {
@@ -32,6 +32,7 @@ const variants: Record<Variant, string> = {
   secondary: "bg-white text-sd-dark hover:bg-sd-light-2",
   ghost: "text-white hover:bg-white/10",
   "outline-light": "border border-white/20 text-white hover:bg-white/5",
+  "outline-dark":  "border border-sd-text-dark/20 text-sd-text-dark hover:bg-sd-text-dark/5",
 };
 
 const sizes: Record<Size, string> = {

@@ -12,6 +12,7 @@ import QuoteReveal from "../components/ui/QuoteReveal.astro";
 import FeatureCard from "../components/ui/FeatureCard.astro";
 
 const techIconMap: Record<string, { label: string; img: string }> = {
+  // Web3
   ethereum:     { label: "Ethereum / EVM", img: "/images/icons/icon-ethEVM.svg" },
   solana:       { label: "Solana",         img: "/images/icons/icon-solana.svg" },
   solidity:     { label: "Solidity",       img: "/images/icons/icon-solidity.svg" },
@@ -20,6 +21,16 @@ const techIconMap: Record<string, { label: string; img: string }> = {
   hardhat:      { label: "Hardhat",        img: "/images/icons/icon-hardhat.svg" },
   ethers:       { label: "Ethers.js",      img: "/images/icons/icon-ethersjs.svg" },
   openzeppelin: { label: "OpenZeppelin",   img: "/images/icons/icon-openzeppelin.svg" },
+  // Web2
+  react:        { label: "React",          img: "/images/icons/icon-react.svg" },
+  nodejs:       { label: "Node.js",        img: "/images/icons/icon-nodejs.svg" },
+  reactnative:  { label: "React Native",   img: "/images/icons/icon-reactnative.svg" },
+  aws:          { label: "AWS",            img: "/images/icons/icon-aws.svg" },
+  python:       { label: "Python",         img: "/images/icons/icon-python.svg" },
+  typescript:   { label: "TypeScript",     img: "/images/icons/icon-typescript.svg" },
+  nestjs:       { label: "NestJS",         img: "/images/icons/icon-nestjs.svg" },
+  golang:       { label: "Go",             img: "/images/icons/icon-golang.svg" },
+  nextjs:       { label: "Next.js",        img: "/images/icons/icon-nextjs.svg" },
 };
 import { SITE } from "../lib/seo";
 
@@ -72,12 +83,12 @@ const serviceJsonLd = {
               <div class="mt-10 space-y-4">
                 <div class="flex flex-wrap gap-4 items-center">
                   {data.primaryCta && (
-                    <Button href={data.primaryCta.href} variant="secondary" size="lg" external={data.primaryCta.external}>
+                    <Button href={data.primaryCta.href} variant="primary" size="lg" external={data.primaryCta.external}>
                       {data.primaryCta.label}
                     </Button>
                   )}
                   {data.secondaryCta && (
-                    <Button href={data.secondaryCta.href} variant="ghost" size="lg" external={data.secondaryCta.external}>
+                    <Button href={data.secondaryCta.href} variant="outline-dark" size="lg" external={data.secondaryCta.external}>
                       {data.secondaryCta.label}
                     </Button>
                   )}
@@ -213,11 +224,12 @@ const serviceJsonLd = {
 
   <!-- OFFERS (what we build) -->
   {data.offers && (
-    <section class="bg-sd-dark py-20 md:py-28">
+    <section class={`py-20 md:py-28 ${data.offers.style === "light-cards" ? "bg-sd-light border-b border-sd-gray-border" : "bg-sd-dark"}`}>
       <div class="mx-auto max-w-[1440px] px-6 md:px-10">
         <SectionHeading
           title={data.offers.title}
           description={data.offers.description}
+          tone={data.offers.style === "light-cards" ? "dark" : "light"}
           class="mb-14"
         />
         {data.offersIllustration && (
@@ -255,6 +267,18 @@ const serviceJsonLd = {
               </a>
             ))}
           </div>
+        ) : data.offers.style === "light-cards" ? (
+          <div id="cards-cursor-zone" class="relative grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Custom cursor (same violet circle as blockchain What We Build) -->
+            <div id="cards-cursor" class="pointer-events-none fixed z-50 w-16 h-16 rounded-full opacity-0 transition-opacity duration-200" style="background: var(--sd-purple); transform: translate(-50%, -50%); will-change: transform;" />
+            {data.offers.items.map((o) => (
+              <div class="group rounded-2xl p-7 bg-sd-light-2 transition-colors duration-300 hover:bg-sd-purple/15" data-animate>
+                <p class="text-2xl font-display text-sd-text-dark mb-4 group-hover:text-sd-purple transition-colors duration-300">{o.number}</p>
+                <h3 class="text-base font-display font-semibold text-sd-text-dark mb-3">{o.title}</h3>
+                <p class="text-sm text-sd-text-gray leading-relaxed">{o.description}</p>
+              </div>
+            ))}
+          </div>
         ) : (
           <div class="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
             {data.offers.items.map((o) => (
@@ -270,14 +294,14 @@ const serviceJsonLd = {
     </section>
   )}
 
-  <!-- WEB3 TECH STACK -->
+  <!-- TECH STACK -->
   {data.techStack && (
-    <section class="relative bg-sd-dark py-20 md:py-28 border-t border-white/5 overflow-hidden">
-      <div class="absolute inset-0 sd-dot-grid"></div>
+    <section class={`relative py-20 md:py-28 overflow-hidden ${data.techStack.tone === "light" ? "bg-sd-light border-t border-sd-gray-border" : "bg-sd-dark border-t border-white/5"}`}>
+      <div class={`absolute inset-0 ${data.techStack.tone === "light" ? "sd-dot-grid-light" : "sd-dot-grid"}`}></div>
       <div class="relative mx-auto max-w-[1440px] px-6 md:px-10">
         <div class="text-center max-w-2xl mx-auto mb-16" data-animate>
-          <h2 class="text-3xl md:text-5xl text-white font-display mb-5">{data.techStack.title}</h2>
-          <p class="text-sd-text-muted text-base md:text-lg leading-relaxed">{data.techStack.subtitle}</p>
+          <h2 class={`text-3xl md:text-5xl font-display mb-5 ${data.techStack.tone === "light" ? "text-sd-text-dark" : "text-white"}`}>{data.techStack.title}</h2>
+          <p class={`text-base md:text-lg leading-relaxed ${data.techStack.tone === "light" ? "text-sd-text-gray" : "text-sd-text-muted"}`}>{data.techStack.subtitle}</p>
         </div>
         <div class="flex flex-col items-center gap-8 md:gap-10">
           {[data.techStack.tools.slice(0, 5), data.techStack.tools.slice(5)].map((row) => (
@@ -295,7 +319,7 @@ const serviceJsonLd = {
                       height={80}
                       class="w-16 h-16 md:w-20 md:h-20"
                     />
-                    <span class="text-xs font-ui uppercase tracking-widest text-sd-text-muted text-center leading-tight">{item.label}</span>
+                    <span class={`text-xs font-ui uppercase tracking-widest text-center leading-tight ${data.techStack!.tone === "light" ? "text-sd-text-gray" : "text-sd-text-muted"}`}>{item.label}</span>
                   </div>
                 );
               })}
@@ -308,14 +332,15 @@ const serviceJsonLd = {
 
   <!-- CASE STUDIES -->
   {featured.length > 0 && (
-    <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
+    <section class={`py-20 md:py-28 ${data.caseStudiesTone === "light" ? "border-t border-sd-gray-border" : ""}`} style={data.caseStudiesTone === "light" ? "background: #EDEDED;" : "background: var(--sd-purple-deep);"}>
       <div class="mx-auto max-w-[1440px] px-6 md:px-10">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <SectionHeading
-            title="Get to know real Blockchain success stories"
-            description="We craft decentralized products that deliver measurable impact. Take a closer look at how this service has helped teams ship at scale."
+            title={data.caseStudiesTitle ?? "Our Work in Action"}
+            description={data.caseStudiesDescription ?? "Take a closer look at how our services have helped teams ship at scale."}
+            tone={data.caseStudiesTone === "light" ? "dark" : "light"}
           />
-          <Button href="/our-work" variant="outline-light">See all work</Button>
+          <Button href="/our-work" variant={data.caseStudiesTone === "light" ? "outline-dark" : "outline-light"}>See all work</Button>
         </div>
         <div id="case-studies-zone" class="relative grid gap-6 md:grid-cols-2">
           <!-- Custom cursor: rotating text ring -->
@@ -340,7 +365,7 @@ const serviceJsonLd = {
 
   <!-- MID CTA (between case studies and benefits) -->
   {data.midCta && (
-    <section class="bg-sd-dark py-14 md:py-20 border-t border-white/5">
+    <section class={`pb-14 md:pb-20 ${data.caseStudiesTone === "light" ? "" : "bg-sd-dark"}`} style={data.caseStudiesTone === "light" ? "background: #EDEDED;" : ""}>
       <div class="mx-auto max-w-[1440px] px-6 md:px-10">
         <div class="relative overflow-hidden rounded-3xl px-10 py-12 md:px-16 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-8"
              style="background: linear-gradient(135deg, #3b2080 0%, #1e1040 60%, #0f0820 100%);">
@@ -364,11 +389,12 @@ const serviceJsonLd = {
 
   <!-- BENEFITS -->
   {data.benefits && (
-    <section class="bg-sd-dark py-20 md:py-28">
+    <section class={`py-20 md:py-28 ${data.caseStudiesTone === "light" ? "bg-sd-light border-t border-sd-gray-border" : "bg-sd-dark"}`}>
       <div class="mx-auto max-w-[1440px] px-6 md:px-10">
         <SectionHeading
           title={data.benefits.title}
           description={data.benefits.description}
+          tone={data.caseStudiesTone === "light" ? "dark" : "light"}
           align="center"
           class="mb-14"
         />
@@ -378,7 +404,7 @@ const serviceJsonLd = {
               title={b.title}
               description={b.description}
               icon={b.icon}
-              tone="dark"
+              tone={data.caseStudiesTone === "light" ? "light" : "dark"}
             />
           ))}
         </div>
@@ -398,14 +424,17 @@ const serviceJsonLd = {
 
   <!-- WHY US -->
   {data.whyUs && (
-    <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
+    <section
+      class={`py-20 md:py-28 ${data.caseStudiesTone === "light" ? "border-t border-sd-gray-border" : ""}`}
+      style={data.caseStudiesTone === "light" ? "background: #EDEDED;" : "background: var(--sd-purple-deep);"}
+    >
       <div class="mx-auto max-w-[1440px] px-6 md:px-10">
         {data.whyUs.style === "accordion" ? (
           <>
             <SectionHeading
               title={data.whyUs.title}
               description={data.whyUs.description}
-              tone="light"
+              tone={data.caseStudiesTone === "light" ? "dark" : "light"}
               class="mb-14"
             />
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -414,7 +443,7 @@ const serviceJsonLd = {
                   title={w.title}
                   description={w.description}
                   icon={w.icon}
-                  tone="dark"
+                  tone={data.caseStudiesTone === "light" ? "light" : "dark"}
                 />
               ))}
             </div>
@@ -424,6 +453,7 @@ const serviceJsonLd = {
             <SectionHeading
               title={data.whyUs.title}
               description={data.whyUs.description}
+              tone={data.caseStudiesTone === "light" ? "dark" : "light"}
               align="center"
               class="mb-14"
             />
@@ -433,7 +463,7 @@ const serviceJsonLd = {
                   title={w.title}
                   description={w.description}
                   icon={w.icon}
-                  tone="dark"
+                  tone={data.caseStudiesTone === "light" ? "light" : "dark"}
                 />
               ))}
             </div>
@@ -445,14 +475,16 @@ const serviceJsonLd = {
 
   <!-- FAQ -->
   {data.faqs && data.faqs.length > 0 && (
-    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
-      <div class="mx-auto max-w-3xl px-6 md:px-10">
-        <SectionHeading
-          title="Frequently asked questions"
-          align="center"
-          class="mb-12"
-        />
-        <FAQ items={data.faqs} tone="dark" />
+    <section class={`py-20 md:py-32 ${data.caseStudiesTone === "light" ? "bg-sd-light border-t border-sd-gray-border" : "bg-sd-dark border-t border-white/5"}`}>
+      <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <h2 class={`text-4xl md:text-5xl font-display leading-tight tracking-tight md:sticky md:top-32 ${data.caseStudiesTone === "light" ? "text-sd-text-dark" : "text-white"}`}>
+            Frequently Asked Questions
+          </h2>
+          <div class={`rounded-2xl overflow-hidden px-6 md:px-8 ${data.caseStudiesTone === "light" ? "bg-[#f2f2f2]" : "bg-white/5"}`}>
+            <FAQ items={data.faqs} tone={data.caseStudiesTone === "light" ? "light" : "dark"} />
+          </div>
+        </div>
       </div>
     </section>
   )}
@@ -493,6 +525,10 @@ const serviceJsonLd = {
 <style>
   .sd-dot-grid {
     background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .sd-dot-grid-light {
+    background-image: radial-gradient(circle, rgba(0,0,0,0.18) 1px, transparent 1px);
     background-size: 28px 28px;
   }
   @keyframes sd-float-a {

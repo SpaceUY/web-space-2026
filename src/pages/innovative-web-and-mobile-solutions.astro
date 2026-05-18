@@ -5,37 +5,23 @@ import { webMobileData } from "../data/services";
 ---
 
 <ServicePageLayout data={webMobileData}>
-  <!-- ENGINEERING WHAT USERS LOVE — injects before benefits -->
-  <div slot="pre-benefits">
-    <section class="bg-sd-light-2 py-20 md:py-28">
+  <!-- ENGINEERING WHAT USERS LOVE — right after hero -->
+  <div slot="pre-process">
+    <section class="bg-sd-light-2 py-20 md:py-28 border-b border-sd-gray-border">
       <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-        <div class="grid gap-12 md:grid-cols-2 items-center">
-          <figure class="rounded-3xl overflow-hidden border border-sd-gray-border order-2 md:order-1" data-animate>
-            <img
-              src="/images/content/fto8WcwcEznwEtIVEfV9bemNkFY.png"
-              alt="Engineers collaborating on a product design"
-              loading="lazy"
-              class="w-full h-auto"
-              width="900" height="650"
-            />
-          </figure>
-          <div class="order-1 md:order-2" data-animate>
-            <p class="text-xs uppercase tracking-[0.2em] text-sd-text-gray mb-4">Engineering What Users Love</p>
-            <h2 class="font-display font-semibold text-3xl md:text-4xl text-sd-text-dark leading-[1.1] mb-6">
-              Engineering What Users Love
-            </h2>
-            <p class="font-body text-sd-text-gray leading-relaxed mb-4">
-              Building a great product is about understanding users, solving real problems, and creating intuitive
-              experiences. At SpaceDev, we connect design, strategy, and engineering to drive measurable business results.
-            </p>
-            <p class="font-body text-sd-text-gray leading-relaxed mb-8">
-              Each project is designed around your goals. Scalability, security, and performance are ensured through
-              agile processes and modern frameworks. Our teams work as an extension of yours, focusing on long-term value.
-            </p>
-            <div class="flex flex-wrap gap-4">
-              <Button href="https://meetings.hubspot.com/federico-sendra/web-meetings-calendar" variant="primary" external>Book a call</Button>
-            </div>
-          </div>
+        <div class="max-w-3xl mx-auto" data-animate>
+          <h2 class="font-display text-3xl md:text-4xl text-sd-text-dark leading-snug mb-6">
+            Engineering What Users Love
+          </h2>
+          <p class="text-sd-text-gray leading-relaxed mb-4">
+            Building a great product is about understanding users, solving real problems, and creating intuitive
+            experiences. At SpaceDev, we connect design, strategy, and engineering to drive measurable business results.
+          </p>
+          <p class="text-sd-text-gray leading-relaxed mb-8">
+            Each project is designed around your goals. Scalability, security, and performance are ensured through
+            agile processes and modern frameworks. Our teams work as an extension of yours, focusing on long-term value.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/web-meetings-calendar" variant="primary" external>Book a call</Button>
         </div>
       </div>
     </section>
