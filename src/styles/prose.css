@@ -103,7 +103,18 @@
 
 .sd-prose img {
   border-radius: 12px;
-  margin: 2em 0;
+  margin: 1em 0 0;
+  display: block;
+}
+
+/* Gray separator line below standalone images */
+.sd-prose p:has(> img:only-child) {
+  margin: 1em 0;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #e8e8e8;
+}
+.sd-prose p:has(> img:only-child) img {
+  margin: 0;
 }
 
 .sd-prose hr {
