@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import CTA from "../components/ui/CTA.astro";
+import Button from "../components/ui/Button.astro";
 
 const faqs = [
   {
@@ -56,20 +56,24 @@ const faqs = [
 const engagementModels = [
   {
     title: "MVP Builder",
+    subtitle: "Build a high-tech team for a speedy, top-tier MVP",
+    tagline: "Perfect for clients needing to swiftly launch a top-quality MVP.",
     steps: [
-      { number: "01", label: "Discovery" },
-      { number: "02", label: "Proposal" },
-      { number: "03", label: "MVP Build" },
-      { number: "04", label: "Growth & Support" },
+      { number: "1", label: "Discovery Phase" },
+      { number: "2", label: "Proposal Phase" },
+      { number: "3", label: "MVP Build" },
+      { number: "4", label: "Product Growth and Support" },
     ],
   },
   {
     title: "IT Staff Augmentation",
+    subtitle: "Optimize your team with flexible IT talent support without permanent commitments.",
+    tagline: "Perfect for clients needing to swiftly launch a top-quality MVP.",
     steps: [
-      { number: "01", label: "Identify Needs" },
-      { number: "02", label: "Candidate Screening" },
-      { number: "03", label: "Welcome Aboard!" },
-      { number: "04", label: "Management & Scaling" },
+      { number: "1", label: "Identify Your Needs" },
+      { number: "2", label: "Candidate Screening Process" },
+      { number: "3", label: "Welcome Aboard!" },
+      { number: "4", label: "Management & Scaling" },
     ],
   },
 ];
@@ -80,13 +84,21 @@ const engagementModels = [
   description="To simplify your life, we've crafted this straightforward FAQ page to address some of the questions you might be wondering about SpaceDev's services, rates, and processes."
 >
   <!-- HERO -->
-  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-36">
+  <section class="relative overflow-hidden min-h-[80vh] flex flex-col justify-center" style="background-color: #0d0a18;">
+    <img
+      src="/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.png"
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(10,6,20,0.88) 25%, rgba(50,30,90,0.45) 65%, rgba(10,6,20,0.75) 100%), linear-gradient(to bottom, rgba(10,6,20,0.2) 0%, rgba(10,6,20,0.85) 100%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-28 md:pt-36 pb-16 md:pb-20 w-full">
       <div class="max-w-3xl" data-animate>
-        <h1 class="font-display font-semibold text-5xl md:text-7xl text-white leading-[1.0]">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-display leading-[1.05]">
           Frequently Asked Questions!
         </h1>
-        <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
+        <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
           To simplify your life, we've crafted this straightforward FAQ page to address some of the questions you might be wondering about...
         </p>
       </div>
@@ -104,10 +116,10 @@ const engagementModels = [
               class="w-full flex items-start gap-6 py-8 text-left group"
               aria-expanded="false"
             >
-              <span class="shrink-0 font-display font-semibold text-4xl md:text-5xl text-sd-text-dark leading-none w-16">
+              <span class="shrink-0 font-display text-4xl md:text-5xl text-sd-text-dark leading-none w-16">
                 {item.number}
               </span>
-              <span class="flex-1 font-display font-semibold text-xl md:text-2xl text-sd-text-dark leading-snug pt-1">
+              <span class="flex-1 font-display text-xl md:text-2xl text-sd-text-dark leading-snug pt-1">
                 {item.question}
               </span>
               <span class="shrink-0 w-10 h-10 flex items-center justify-center rounded-full border border-sd-gray-border text-sd-text-dark group-hover:border-sd-text-dark transition-colors mt-1 sd-faq-icon">
@@ -130,24 +142,29 @@ const engagementModels = [
   <!-- ENGAGEMENT MODELS -->
   <section class="bg-sd-light py-16 md:py-24">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <h2 class="font-display text-3xl md:text-4xl text-sd-text-dark mb-8 text-center" data-animate>
+        There are two ways to work with us — pick what suits you!
+      </h2>
       <div class="grid md:grid-cols-2 gap-6">
         {engagementModels.map((model) => (
           <div class="bg-white rounded-2xl p-8 md:p-10">
-            <h3 class="font-display font-semibold text-2xl md:text-3xl text-sd-text-dark mb-8">
+            <h3 class="font-display text-2xl md:text-3xl text-sd-text-dark mb-2">
               {model.title}
             </h3>
+            <p class="font-body text-sd-text-gray text-sm mb-8 leading-relaxed">{model.subtitle}</p>
             <div class="space-y-0">
               {model.steps.map((step) => (
                 <div class="flex items-center gap-5 py-5 border-b border-sd-gray-border last:border-b-0">
-                  <span class="font-display font-semibold text-3xl md:text-4xl text-sd-text-dark leading-none w-12 shrink-0">
+                  <span class="font-display text-3xl md:text-4xl text-sd-text-dark leading-none w-12 shrink-0">
                     {step.number}
                   </span>
-                  <span class="font-display font-semibold text-lg md:text-xl text-sd-text-dark">
+                  <span class="font-display text-lg md:text-xl text-sd-text-dark">
                     {step.label}
                   </span>
                 </div>
               ))}
             </div>
+            <p class="font-body text-sd-text-gray text-sm mt-6 italic">{model.tagline}</p>
           </div>
         ))}
       </div>
@@ -155,13 +172,21 @@ const engagementModels = [
   </section>
 
   <!-- STILL NOT SURE CTA -->
-  <CTA
-    title="Still not sure which option you need?"
-    description=""
-    buttons={[
-      { label: "Get in touch", href: "/contact" },
-    ]}
-  />
+  <section class="relative overflow-hidden bg-[#f5f5f5]">
+    <div class="mx-auto max-w-[1200px] px-6 md:px-10 py-20 md:py-28 text-center">
+      <div data-animate>
+        <h2 class="text-3xl md:text-5xl lg:text-6xl text-sd-text-dark max-w-3xl mx-auto font-display">
+          Still not sure which option you need?
+        </h2>
+        <p class="mt-6 text-base md:text-lg text-sd-text-gray max-w-2xl mx-auto leading-relaxed">
+          No worries! We're here to help you find the best fit!
+        </p>
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Button href="/contact" variant="dark" size="lg">Get in touch</Button>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <script>

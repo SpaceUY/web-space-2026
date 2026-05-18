@@ -59,6 +59,14 @@ const galleryPhotos = [
   { src: "/images/content/WSgg2vvLbwIDpUqEcgfpoHmXa4.jpg", alt: "Grecia Tardaguila, Head of People, warmly embracing a teammate during an All Hands gathering." },
   { src: "/images/content/jrVqUaItfaiWthkT9E9WKH8cPaQ.jpg", alt: "SpaceDev team members enjoying a team-bonding activity at a park, engaging in outdoor fun." },
 ];
+
+// 4 orbiting portraits (jguQhkTbp0MoZ9wxfnMs1gKc.png removed per design)
+const orbitPortraits = [
+  { src: "/images/content/3mmcSXAv2k0fk78C0Z1fgM86LQ.png", alt: "SpaceDev team member" },
+  { src: "/images/content/Qg6vUwbo5UymgibLLQpwgfAaW9Y.png", alt: "SpaceDev team member" },
+  { src: "/images/content/hYdfyHgO5TKgB3hgri2UDF288tA.png", alt: "SpaceDev team member" },
+  { src: "/images/content/ZhmOQQSS9e2RKMXaZGCU0VCxM.png", alt: "SpaceDev team member" },
+];
 ---
 
 <BaseLayout
@@ -67,20 +75,21 @@ const galleryPhotos = [
 >
   <!-- HERO -->
   <section class="bg-black">
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-20 pb-10 md:pt-28 md:pb-14">
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-20 pb-10 md:pt-28 md:pb-14 text-center">
       <h1 class="text-5xl md:text-7xl lg:text-[80px] text-white font-display font-light leading-[1.0]">
         We are SpaceDev...
       </h1>
     </div>
-    <div class="w-full overflow-hidden" data-animate>
-      <img
-        src="/images/content/UBM39geSOJEWaiFFFUAZwrnaZs.jpg"
-        alt="SpaceDev team gathered for the All Hands event."
-        loading="eager"
-        width="1440"
-        height="600"
-        class="w-full h-auto object-cover"
-      />
+    <div class="hero-video-wrapper">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        class="w-full h-auto block"
+      >
+        <source src="/videos/hero-about.mp4" type="video/mp4" />
+      </video>
     </div>
   </section>
 
@@ -90,20 +99,20 @@ const galleryPhotos = [
       <h2 class="font-display font-light text-5xl md:text-6xl lg:text-7xl text-sd-text-dark leading-[1.05] mb-10">
         Who We Are
       </h2>
-      <p class="font-body text-sd-text-dark text-lg leading-relaxed mb-6">
+      <p class="font-body text-sd-text-dark text-xl md:text-2xl leading-relaxed mb-6">
         At SpaceDev, engineering meets imagination.
       </p>
-      <p class="font-body text-sd-text-gray leading-relaxed mb-4">
+      <p class="font-body text-sd-text-gray text-xl md:text-2xl leading-relaxed mb-6">
         We're a custom software development company for businesses that move fast and think boldly. Our team delivers traditional software, mobile applications, and decentralized blockchain ecosystems with security, scalability, and user focus.
       </p>
-      <p class="font-body text-sd-text-gray leading-relaxed">
+      <p class="font-body text-sd-text-gray text-xl md:text-2xl leading-relaxed">
         With offices across the U.S., Uruguay, Argentina, and Colombia, we work as one transparent, agile unit aligned with your goals. We build MVPs, develop full products, or provide IT staff augmentation to scale your team. Whatever path fits your vision.
       </p>
     </div>
   </section>
 
   <!-- QUICK FUN FACTS (STATS) -->
-  <section class="bg-[#f5f5f5] pb-20 md:pb-28">
+  <section class="bg-[#f5f5f5] py-20 md:py-28">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <h2 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.05] mb-12" data-animate>
         Quick fun facts about us
@@ -146,11 +155,11 @@ const galleryPhotos = [
 
   <!-- WE HELP CLIENTS NAVIGATE THE FUTURE -->
   <section class="bg-black py-24 md:py-36">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10" data-animate>
-      <p class="font-display font-light text-5xl md:text-6xl lg:text-7xl text-white leading-[1.1]">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <p class="navigate-bright font-display font-light text-5xl md:text-6xl lg:text-7xl leading-[1.1]">
         We help clients navigate
       </p>
-      <p class="font-display font-light text-5xl md:text-6xl lg:text-7xl text-[#555] leading-[1.1]">
+      <p class="navigate-bright font-display font-light text-5xl md:text-6xl lg:text-7xl leading-[1.1]">
         the future...
       </p>
     </div>
@@ -196,20 +205,57 @@ const galleryPhotos = [
     </div>
   </section>
 
-  <!-- WHAT MAKES US DIFFERENT -->
-  <section class="bg-[#f5f5f5] pb-20 md:pb-28 border-t border-sd-gray-border">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-20 md:py-28">
-      <div class="max-w-2xl mx-auto text-center" data-animate>
-        <h2 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.05] mb-8">
-          What makes<br />us different
-        </h2>
-        <p class="font-body text-sd-text-gray leading-relaxed mb-4">
-          Behind every line of code, there's a team of highly motivated, skilled <strong class="text-sd-text-dark font-semibold">problem solvers</strong> using the latest tools to build memorable products.
-        </p>
-        <p class="font-body text-sd-text-gray leading-relaxed">
-          We strive to conduct work processes that are detail-oriented without sacrificing efficiency — knowing that quality will always be top priority for us, our partners can relax and focus on what's important.
-        </p>
+  <!-- WHAT MAKES US DIFFERENT — orbit section -->
+  <section class="bg-[#f5f5f5] py-10 md:py-16 overflow-x-hidden">
+    <div
+      class="orbit-section relative mx-auto"
+      style="width: min(860px, 92vw); height: min(860px, 92vw);"
+    >
+      <!-- Decorative concentric arcs -->
+      <svg
+        class="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 860 860"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <circle cx="430" cy="430" r="255" stroke="#d4d4d4" stroke-width="1"/>
+        <circle cx="430" cy="430" r="355" stroke="#d4d4d4" stroke-width="1"/>
+      </svg>
+
+      <!-- Center content -->
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center px-6 md:px-10" style="max-width: 380px;" data-animate>
+          <h2 class="font-display font-light text-4xl md:text-5xl text-sd-text-dark leading-[1.05] mb-6">
+            What makes<br />us different
+          </h2>
+          <p class="font-body text-sd-text-gray leading-relaxed text-sm mb-3">
+            Behind every line of code, there's a team of highly motivated, skilled
+            <strong class="text-sd-text-dark font-semibold">problem solvers</strong>
+            using the latest tools to build memorable products.
+          </p>
+          <p class="font-body text-sd-text-gray leading-relaxed text-sm">
+            We strive to conduct work processes that are detail-oriented without
+            sacrificing efficiency — knowing that quality will always be top priority.
+          </p>
+        </div>
       </div>
+
+      <!-- 4 orbiting portraits — spaced 90° apart, starting at -45° -->
+      {orbitPortraits.map((p, i) => (
+        <div class="orbit-arm" style={`--a: ${i * 90 - 45}deg`}>
+          <div class="orbit-face">
+            <div class="w-[76px] h-[76px] md:w-[96px] md:h-[96px] rounded-full overflow-hidden ring-[3px] ring-white shadow-xl">
+              <img
+                src={p.src}
+                alt={p.alt}
+                loading="lazy"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 
@@ -294,3 +340,86 @@ const galleryPhotos = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* ── Hero video: scroll-driven expand (pill → full-bleed) ── */
+  /* Fallback for browsers without scroll-driven animations: show fully expanded */
+  .hero-video-wrapper {
+    clip-path: none;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .hero-video-wrapper {
+      clip-path: inset(0 12% round 16px);
+      animation: hero-expand linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0px 420px;
+    }
+  }
+
+  @keyframes hero-expand {
+    from { clip-path: inset(0 12% round 16px); }
+    to   { clip-path: inset(0 0% round 0px); }
+  }
+
+  /* ── "We help clients navigate" scroll-driven illumination ── */
+  .navigate-bright { color: #fff; }
+  .navigate-dim    { color: #555; }
+
+  @supports (animation-timeline: view()) {
+    .navigate-bright {
+      color: #2a2a2a;
+      animation: illuminate linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+    .navigate-dim {
+      color: #1a1a1a;
+      animation: illuminate-dim linear both;
+      animation-timeline: view();
+      animation-range: entry 15% cover 55%;
+    }
+  }
+
+  @keyframes illuminate     { to { color: #ffffff; } }
+  @keyframes illuminate-dim { to { color: #555555; } }
+
+  /* ── Orbit portraits ── */
+  .orbit-arm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 41%;
+    height: 0;
+    transform-origin: 0 0;
+    animation: orbit-spin 28s linear infinite;
+  }
+
+  .orbit-face {
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* counter-rotation starts at -var(--a) so portrait is always upright */
+    animation: orbit-counter 28s linear infinite;
+  }
+
+  @keyframes orbit-spin {
+    from { transform: rotate(var(--a, 0deg)); }
+    to   { transform: rotate(calc(var(--a, 0deg) + 360deg)); }
+  }
+
+  /* The counter-rotation must negate both the initial --a AND the ongoing spin.
+     Net viewport rotation = arm + face = (--a + t*360) + (-–a - t*360) = 0° → always upright. */
+  @keyframes orbit-counter {
+    from { transform: translateX(50%) translateY(-50%) rotate(calc(-1 * var(--a, 0deg))); }
+    to   { transform: translateX(50%) translateY(-50%) rotate(calc(-1 * var(--a, 0deg) - 360deg)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video-wrapper { animation: none; clip-path: none; }
+    .navigate-bright    { animation: none; color: #fff; }
+    .navigate-dim       { animation: none; color: #555; }
+    .orbit-arm  { animation: none; transform: rotate(var(--a, 0deg)); }
+    .orbit-face { animation: none; transform: translateX(50%) translateY(-50%) rotate(calc(-1 * var(--a, 0deg))); }
+  }
+</style>

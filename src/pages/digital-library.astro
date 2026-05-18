@@ -6,7 +6,7 @@ const contributions = [
   {
     title: "Why We Should Care About LATAM",
     image: "/images/content/uPH5998oYdW1lvvvcYZNNwQMj7w.png",
-    href: "/contact",
+    href: "/digital-library/why-we-should-care-about-latam",
   },
 ];
 ---
@@ -15,26 +15,40 @@ const contributions = [
   title="Resources | SpaceDev — Deep-Dive Insights"
   description="Explore SpaceDev's deep-dive insights: guides, whitepapers, and featured contributions on blockchain, fintech, and product strategy."
 >
-  <!-- HERO: dark purple gradient -->
-  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-36">
+  <!-- HERO -->
+  <section class="relative overflow-hidden min-h-[80vh] flex flex-col justify-center" style="background-color: #0d0a18;">
+    <img
+      src="/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.png"
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(10,6,20,0.88) 25%, rgba(50,30,90,0.45) 65%, rgba(10,6,20,0.75) 100%), linear-gradient(to bottom, rgba(10,6,20,0.2) 0%, rgba(10,6,20,0.85) 100%);"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-28 md:pt-36 pb-16 md:pb-20 w-full">
+      <nav class="mb-6 text-sm text-white/50 font-body" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors uppercase tracking-widest text-xs">Home</a>
+        <span class="mx-2">/</span>
+        <span class="text-white uppercase tracking-widest text-xs">Resources</span>
+      </nav>
       <div class="max-w-3xl" data-animate>
-        <h1 class="font-display font-semibold text-5xl md:text-7xl text-white leading-[1.0]">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-display leading-[1.05]">
           Explore Our<br />Deep-Dive Insights
         </h1>
-        <div class="mt-10 flex flex-wrap items-center gap-4">
-          <Button href="/contact" variant="primary">Get in touch</Button>
-          <span class="text-sd-text-muted text-sm">Or subscribe to our newsletter</span>
+        <p class="mt-4 text-white/60 text-base font-body">Curious about the events we've been part of?</p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <Button href="/contact" variant="dark">Get in touch</Button>
+          <span class="text-white/60 text-sm font-body">Or subscribe to our newsletter</span>
         </div>
         <form class="mt-4 flex gap-3 max-w-md" onsubmit="return false;">
           <input
             type="email"
             placeholder="Your email"
-            class="flex-1 rounded-full px-5 py-3 bg-transparent border border-white/20 text-white placeholder:text-sd-text-muted text-sm focus:outline-none focus:border-white/50"
+            class="flex-1 rounded-full px-5 py-3 bg-transparent border border-white/20 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-white/50"
           />
           <button
             type="submit"
-            class="rounded-full px-6 py-3 bg-white text-sd-text-dark font-semibold text-sm hover:bg-sd-light-2 transition-colors"
+            class="rounded-full px-6 py-3 bg-white text-sd-text-dark font-body font-medium text-sm hover:bg-sd-light-2 transition-colors"
           >
             Sign up!
           </button>
@@ -46,37 +60,43 @@ const contributions = [
   <!-- MISSION STATEMENT -->
   <section class="bg-[#141414] py-20 md:py-28">
     <div class="mx-auto max-w-[1100px] px-6 md:px-10" data-animate>
-      <p class="font-display font-semibold text-2xl md:text-3xl lg:text-4xl text-white leading-snug">
+      <p class="font-display text-2xl md:text-3xl lg:text-4xl text-white leading-snug">
         We believe that sharing plants seeds of innovation and connects curious minds everywhere. Together, we transform ideas into breakthroughs and build a future shaped by collaboration and creativity.
       </p>
     </div>
   </section>
 
   <!-- FEATURED CONTRIBUTIONS -->
-  <section class="bg-[#0d0d0d] py-16 md:py-20">
+  <section class="bg-[#0d0d0d] py-16 md:py-24">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <h2 class="font-display font-semibold text-3xl md:text-4xl text-white mb-8">
+      <h2 class="font-display text-3xl md:text-4xl text-white mb-10">
         Featured Contributions!
       </h2>
-      <div class="divide-y divide-white/10 border-t border-white/10">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {contributions.map((item) => (
-          <div class="flex items-center gap-6 py-5">
-            <div class="shrink-0 w-24 h-16 rounded-xl overflow-hidden bg-sd-purple-mid">
+          <article class="group relative rounded-2xl overflow-hidden bg-[#1a1a1a] border border-white/8 hover:border-sd-purple/40 transition-all duration-300 hover:-translate-y-1" data-animate>
+            <div class="relative h-52 overflow-hidden">
               <img
                 src={item.image}
                 alt={item.title}
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 text-xs font-ui uppercase tracking-widest bg-sd-purple/80 text-white px-3 py-1 rounded-full">
+                Deep Dive
+              </span>
             </div>
-            <p class="flex-1 font-display font-semibold text-lg text-white">{item.title}</p>
-            <a
-              href={item.href}
-              class="shrink-0 text-sm font-ui uppercase tracking-widest text-sd-text-muted hover:text-white transition-colors"
-            >
-              GET ACCESS
-            </a>
-          </div>
+            <div class="p-6 md:p-8">
+              <h3 class="font-display text-xl md:text-2xl text-white leading-snug mb-3">
+                {item.title}
+              </h3>
+              <p class="font-body text-sm text-white/60 leading-relaxed mb-6">
+                An in-depth look at why Latin America is one of the most exciting emerging tech markets — and what it means for global software development.
+              </p>
+              <Button href={item.href} variant="dark">Get access →</Button>
+            </div>
+          </article>
         ))}
       </div>
     </div>
