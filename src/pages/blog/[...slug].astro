@@ -46,6 +46,10 @@ const articleJsonLd = {
   title={`${post.data.title} | SpaceDev Blog`}
   description={post.data.description}
   ogType="article"
+  ogImage={post.data.cover}
+  publishedTime={post.data.publishedAt.toISOString()}
+  authorName={author?.name}
+  articleSection={post.data.category}
   jsonLd={articleJsonLd}
 >
   <!-- HERO -->
