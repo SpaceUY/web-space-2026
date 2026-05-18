@@ -12,7 +12,7 @@
 
 .sd-prose h2 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.875rem;
   line-height: 1.2;
   color: var(--sd-white);
@@ -22,7 +22,7 @@
 
 .sd-prose h3 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.5rem;
   color: var(--sd-white);
   margin-top: 2em;
@@ -31,7 +31,7 @@
 
 .sd-prose h4 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.125rem;
   color: var(--sd-white);
   margin-top: 1.75em;
