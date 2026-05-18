@@ -67,30 +67,36 @@ const contributions = [
   </section>
 
   <!-- FEATURED CONTRIBUTIONS -->
-  <section class="bg-[#0d0d0d] py-16 md:py-20">
+  <section class="bg-[#0d0d0d] py-16 md:py-24">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <h2 class="font-display text-3xl md:text-4xl text-white mb-8">
+      <h2 class="font-display text-3xl md:text-4xl text-white mb-10">
         Featured Contributions!
       </h2>
-      <div class="divide-y divide-white/10 border-t border-white/10">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {contributions.map((item) => (
-          <div class="flex items-center gap-6 py-5" data-animate>
-            <div class="shrink-0 w-24 h-16 rounded-xl overflow-hidden bg-sd-purple-mid">
+          <article class="group relative rounded-2xl overflow-hidden bg-[#1a1a1a] border border-white/8 hover:border-sd-purple/40 transition-all duration-300 hover:-translate-y-1" data-animate>
+            <div class="relative h-52 overflow-hidden">
               <img
                 src={item.image}
                 alt={item.title}
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 text-xs font-ui uppercase tracking-widest bg-sd-purple/80 text-white px-3 py-1 rounded-full">
+                Deep Dive
+              </span>
             </div>
-            <p class="flex-1 font-display text-lg text-white">{item.title}</p>
-            <a
-              href={item.href}
-              class="shrink-0 text-sm font-ui uppercase tracking-widest text-sd-text-muted hover:text-white transition-colors"
-            >
-              GET ACCESS
-            </a>
-          </div>
+            <div class="p-6 md:p-8">
+              <h3 class="font-display text-xl md:text-2xl text-white leading-snug mb-3">
+                {item.title}
+              </h3>
+              <p class="font-body text-sm text-white/60 leading-relaxed mb-6">
+                An in-depth look at why Latin America is one of the most exciting emerging tech markets — and what it means for global software development.
+              </p>
+              <Button href={item.href} variant="dark">Get access →</Button>
+            </div>
+          </article>
         ))}
       </div>
     </div>
