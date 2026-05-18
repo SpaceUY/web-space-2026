@@ -6,10 +6,11 @@ interface Props {
   size?: "sm" | "md" | "lg";
   showName?: boolean;
   showRole?: boolean;
+  tone?: "dark" | "light";
   class?: string;
 }
 
-const { author, size = "md", showName = true, showRole = false, class: className = "" } = Astro.props;
+const { author, size = "md", showName = true, showRole = false, tone = "dark", class: className = "" } = Astro.props;
 
 const sizes = {
   sm: { wrapper: "w-8 h-8", text: "text-xs", name: "text-xs", role: "text-[10px]" },
@@ -39,8 +40,8 @@ const s = sizes[size];
   )}
   {showName && (
     <div class="leading-tight">
-      <p class={`${s.name} text-white`}>{author.name}</p>
-      {showRole && <p class={`${s.role} text-sd-text-muted`}>{author.role}</p>}
+      <p class={`${s.name} ${tone === "light" ? "text-sd-text-dark" : "text-white"}`}>{author.name}</p>
+      {showRole && <p class={`${s.role} ${tone === "light" ? "text-sd-text-gray" : "text-sd-text-muted"}`}>{author.role}</p>}
     </div>
   )}
 </div>
