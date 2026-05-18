@@ -1,8 +1,8 @@
 /* Markdown / MDX rendered content — blog post body (light background) */
 .sd-prose {
-  color: #3a3a3a;
+  color: #1d1d1d;
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.05rem;
   line-height: 1.8;
   max-width: 70ch;
