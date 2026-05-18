@@ -56,20 +56,24 @@ const faqs = [
 const engagementModels = [
   {
     title: "MVP Builder",
+    subtitle: "Build a high-tech team for a speedy, top-tier MVP",
+    tagline: "Perfect for clients needing to swiftly launch a top-quality MVP.",
     steps: [
-      { number: "01", label: "Discovery" },
-      { number: "02", label: "Proposal" },
-      { number: "03", label: "MVP Build" },
-      { number: "04", label: "Growth & Support" },
+      { number: "1", label: "Discovery Phase" },
+      { number: "2", label: "Proposal Phase" },
+      { number: "3", label: "MVP Build" },
+      { number: "4", label: "Product Growth and Support" },
     ],
   },
   {
     title: "IT Staff Augmentation",
+    subtitle: "Optimize your team with flexible IT talent support without permanent commitments.",
+    tagline: "Perfect for clients needing to swiftly launch a top-quality MVP.",
     steps: [
-      { number: "01", label: "Identify Needs" },
-      { number: "02", label: "Candidate Screening" },
-      { number: "03", label: "Welcome Aboard!" },
-      { number: "04", label: "Management & Scaling" },
+      { number: "1", label: "Identify Your Needs" },
+      { number: "2", label: "Candidate Screening Process" },
+      { number: "3", label: "Welcome Aboard!" },
+      { number: "4", label: "Management & Scaling" },
     ],
   },
 ];
@@ -81,7 +85,7 @@ const engagementModels = [
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-36">
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-24 md:pt-36 pb-12 md:pb-16">
       <div class="max-w-3xl" data-animate>
         <h1 class="font-display font-semibold text-5xl md:text-7xl text-white leading-[1.0]">
           Frequently Asked Questions!
@@ -90,6 +94,14 @@ const engagementModels = [
           To simplify your life, we've crafted this straightforward FAQ page to address some of the questions you might be wondering about...
         </p>
       </div>
+    </div>
+    <div class="w-full overflow-hidden" data-animate>
+      <img
+        src="/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.png"
+        alt="SpaceDev team"
+        loading="eager"
+        class="w-full h-auto object-cover"
+      />
     </div>
   </section>
 
@@ -130,12 +142,16 @@ const engagementModels = [
   <!-- ENGAGEMENT MODELS -->
   <section class="bg-sd-light py-16 md:py-24">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <h2 class="font-display font-semibold text-3xl md:text-4xl text-sd-text-dark mb-8 text-center" data-animate>
+        There are two ways to work with us — pick what suits you!
+      </h2>
       <div class="grid md:grid-cols-2 gap-6">
         {engagementModels.map((model) => (
           <div class="bg-white rounded-2xl p-8 md:p-10">
-            <h3 class="font-display font-semibold text-2xl md:text-3xl text-sd-text-dark mb-8">
+            <h3 class="font-display font-semibold text-2xl md:text-3xl text-sd-text-dark mb-2">
               {model.title}
             </h3>
+            <p class="font-body text-sd-text-gray text-sm mb-8 leading-relaxed">{model.subtitle}</p>
             <div class="space-y-0">
               {model.steps.map((step) => (
                 <div class="flex items-center gap-5 py-5 border-b border-sd-gray-border last:border-b-0">
@@ -148,6 +164,7 @@ const engagementModels = [
                 </div>
               ))}
             </div>
+            <p class="font-body text-sd-text-gray text-sm mt-6 italic">{model.tagline}</p>
           </div>
         ))}
       </div>
@@ -157,7 +174,7 @@ const engagementModels = [
   <!-- STILL NOT SURE CTA -->
   <CTA
     title="Still not sure which option you need?"
-    description=""
+    description="No worries! We're here to help you find the best fit!"
     buttons={[
       { label: "Get in touch", href: "/contact" },
     ]}

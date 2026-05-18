@@ -6,7 +6,7 @@ const contributions = [
   {
     title: "Why We Should Care About LATAM",
     image: "/images/content/uPH5998oYdW1lvvvcYZNNwQMj7w.png",
-    href: "/contact",
+    href: "/digital-library/why-we-should-care-about-latam",
   },
 ];
 ---
@@ -17,12 +17,19 @@ const contributions = [
 >
   <!-- HERO: dark purple gradient -->
   <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-36">
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-24 md:pt-36 pb-12 md:pb-16">
+      <!-- Breadcrumb -->
+      <nav class="mb-6 text-sm text-sd-text-muted font-body" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">home</a>
+        <span class="mx-2">/</span>
+        <span class="text-white">resources</span>
+      </nav>
       <div class="max-w-3xl" data-animate>
         <h1 class="font-display font-semibold text-5xl md:text-7xl text-white leading-[1.0]">
           Explore Our<br />Deep-Dive Insights
         </h1>
-        <div class="mt-10 flex flex-wrap items-center gap-4">
+        <p class="mt-4 text-sd-text-muted text-base font-body">Curious about the events we've been part of?</p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
           <Button href="/contact" variant="primary">Get in touch</Button>
           <span class="text-sd-text-muted text-sm">Or subscribe to our newsletter</span>
         </div>
@@ -40,6 +47,14 @@ const contributions = [
           </button>
         </form>
       </div>
+    </div>
+    <div class="w-full overflow-hidden" data-animate>
+      <img
+        src="/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.png"
+        alt="SpaceDev team"
+        loading="eager"
+        class="w-full h-auto object-cover"
+      />
     </div>
   </section>
 
