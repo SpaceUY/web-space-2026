@@ -100,10 +100,10 @@ const filters = [
         </span>
       </div>
 
-      <!-- Flat grid — all case studies -->
-      <div id="sd-case-grid" class="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
-        {caseStudies.map((c) => (
-          <CaseStudyCard caseStudy={c} />
+      <!-- Mixed rhythm grid: every 4th card is full-width (1 big + 3 small) -->
+      <div id="sd-case-grid" class="grid gap-5 sm:grid-cols-3">
+        {caseStudies.map((c, idx) => (
+          <CaseStudyCard caseStudy={c} featured={idx % 4 === 0} />
         ))}
       </div>
 

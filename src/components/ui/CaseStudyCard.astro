@@ -3,10 +3,12 @@ import type { CaseStudy } from "../../data/case-studies";
 
 interface Props {
   caseStudy: CaseStudy;
+  /** When true renders the full-width editorial card (1 big + 3 small rhythm) */
+  featured?: boolean;
   class?: string;
 }
 
-const { caseStudy, class: className = "" } = Astro.props;
+const { caseStudy, featured = false, class: className = "" } = Astro.props;
 
 const accentGradients: Record<NonNullable<CaseStudy["accent"]>, string> = {
   purple: "from-sd-purple to-sd-purple-2",
@@ -18,60 +20,109 @@ const accentGradients: Record<NonNullable<CaseStudy["accent"]>, string> = {
 const gradient = accentGradients[caseStudy.accent ?? "purple"];
 ---
 
-<a
-  href={`/case-study/${caseStudy.slug}`}
-  class={`group relative flex flex-col rounded-2xl overflow-hidden bg-white border border-sd-gray-border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${className}`.trim()}
-  data-category={caseStudy.category}
-  data-animate
->
-  <!-- Image -->
-  <div class={`relative aspect-[16/10] ${caseStudy.image ? '' : `bg-gradient-to-br ${gradient}`} overflow-hidden`}>
-    {caseStudy.image && (
-      <img
-        src={caseStudy.image}
-        alt={caseStudy.name}
-        loading="lazy"
-        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-      />
-    )}
-    {!caseStudy.image && (
-      <div class="absolute inset-0 opacity-30 mix-blend-overlay" style="background-image: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);"></div>
-    )}
-    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+{featured ? (
+  <!-- ── FEATURED (full-width, image left + dark content right) ── -->
+  <a
+    href={`/case-study/${caseStudy.slug}`}
+    class={`group sm:col-span-3 grid grid-cols-1 sm:grid-cols-[3fr_2fr] overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-xl ${className}`.trim()}
+    data-category={caseStudy.category}
+    data-animate
+  >
+    <!-- Image (fills left column; fixed aspect on mobile) -->
+    <div class="relative aspect-[4/3] sm:aspect-auto overflow-hidden">
+      {caseStudy.image ? (
+        <img
+          src={caseStudy.image}
+          alt={caseStudy.name}
+          loading="lazy"
+          class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+      ) : (
+        <div class={`absolute inset-0 bg-gradient-to-br ${gradient}`}></div>
+      )}
+    </div>
 
-    <!-- Outcome highlight — bottom left of image -->
-    {caseStudy.highlight && (
-      <span class="absolute bottom-3 left-3 inline-flex items-center px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] font-medium tracking-wide text-white border border-white/20">
-        {caseStudy.highlight}
-      </span>
-    )}
-
-    <!-- Category badge — top right -->
-    <span class="absolute top-3 right-3 inline-flex items-center px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md text-[10px] uppercase tracking-wider text-white/80 border border-white/15">
-      {caseStudy.category}
-    </span>
-  </div>
-
-  <!-- Content -->
-  <div class="flex flex-col flex-1 p-5">
-    <h3 class="text-lg font-display font-semibold text-sd-text-dark leading-snug">{caseStudy.name}</h3>
-    <p class="mt-1.5 text-sm text-sd-text-gray leading-relaxed flex-1">{caseStudy.tagline}</p>
-
-    <!-- Service tags -->
-    {caseStudy.services && caseStudy.services.length > 0 && (
-      <ul class="mt-4 flex flex-wrap gap-1.5">
-        {caseStudy.services.map((s) => (
-          <li class="inline-flex items-center px-2.5 py-1 rounded-full bg-sd-light-2 text-[11px] text-sd-text-gray border border-sd-gray-border">
+    <!-- Dark content panel -->
+    <div class="bg-[#141414] p-8 sm:p-10 flex flex-col justify-between min-h-[280px] sm:min-h-[380px]">
+      <!-- Tags at top -->
+      <div class="flex flex-wrap gap-2">
+        <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-white/10 text-[10px] uppercase tracking-wider text-white/60 border border-white/10">
+          {caseStudy.category}
+        </span>
+        {caseStudy.services?.map((s) => (
+          <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-white/[0.06] text-[10px] text-white/55 border border-white/10">
             {s}
-          </li>
+          </span>
         ))}
-      </ul>
-    )}
+      </div>
 
-    <!-- CTA -->
-    <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sd-purple group-hover:gap-2.5 transition-all">
-      Read case study
-      <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </span>
-  </div>
-</a>
+      <!-- Name + tagline + CTA at bottom -->
+      <div>
+        {caseStudy.highlight && (
+          <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-sd-purple/20 text-[10px] text-sd-purple-300 border border-sd-purple/30 mb-4 block w-fit">
+            {caseStudy.highlight}
+          </span>
+        )}
+        <h3 class="text-2xl sm:text-3xl text-white font-display font-semibold mb-3 leading-tight group-hover:text-sd-purple-300 transition-colors">
+          {caseStudy.name}
+        </h3>
+        <p class="text-sm text-white/55 leading-relaxed mb-6">{caseStudy.tagline}</p>
+        <span class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white/10 text-sm text-white border border-white/15 group-hover:bg-white/15 transition-colors">
+          Read case study
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+            <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </a>
+) : (
+  <!-- ── REGULAR card ── -->
+  <a
+    href={`/case-study/${caseStudy.slug}`}
+    class={`group flex flex-col overflow-hidden rounded-2xl bg-white border border-sd-gray-border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${className}`.trim()}
+    data-category={caseStudy.category}
+    data-animate
+  >
+    <!-- Image -->
+    <div class={`relative aspect-[4/3] ${caseStudy.image ? "" : `bg-gradient-to-br ${gradient}`} overflow-hidden`}>
+      {caseStudy.image && (
+        <img
+          src={caseStudy.image}
+          alt={caseStudy.name}
+          loading="lazy"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      )}
+      <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+      {caseStudy.highlight && (
+        <span class="absolute bottom-3 left-3 inline-flex items-center px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] font-medium tracking-wide text-white border border-white/20">
+          {caseStudy.highlight}
+        </span>
+      )}
+    </div>
+
+    <!-- Content -->
+    <div class="flex flex-col flex-1 p-5">
+      <h3 class="text-lg font-display font-semibold text-sd-text-dark leading-snug">{caseStudy.name}</h3>
+      <p class="mt-1.5 text-sm text-sd-text-gray leading-relaxed flex-1">{caseStudy.tagline}</p>
+
+      {caseStudy.services && caseStudy.services.length > 0 && (
+        <ul class="mt-4 flex flex-wrap gap-1.5">
+          {caseStudy.services.map((s) => (
+            <li class="inline-flex items-center px-2.5 py-1 rounded-full bg-sd-light-2 text-[11px] text-sd-text-gray border border-sd-gray-border">
+              {s}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sd-purple group-hover:gap-2.5 transition-all">
+        Read case study
+        <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+  </a>
+)}
