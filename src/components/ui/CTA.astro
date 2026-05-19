@@ -49,9 +49,11 @@ const inlineStyle =
         {title}
       </h2>
       {description && (
-        <p class="mt-6 text-base md:text-lg text-sd-text-muted max-w-2xl mx-auto leading-relaxed">
-          {description}
-        </p>
+        <div class="mt-6 max-w-2xl mx-auto space-y-4">
+          {description.split("\n\n").map((para) => (
+            <p class="text-base md:text-lg text-sd-text-muted leading-relaxed">{para}</p>
+          ))}
+        </div>
       )}
       {buttons.length > 0 && (
         <div class="mt-10 flex flex-wrap items-center justify-center gap-4">

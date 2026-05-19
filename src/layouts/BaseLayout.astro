@@ -17,6 +17,7 @@ interface Props {
   publishedTime?: string;
   authorName?: string;
   articleSection?: string;
+  footerMarquee?: string;
 }
 
 const {
@@ -30,6 +31,7 @@ const {
   publishedTime,
   authorName,
   articleSection,
+  footerMarquee,
 } = Astro.props;
 ---
 
@@ -118,7 +120,7 @@ const {
       <slot />
     </main>
 
-    <Footer />
+    <Footer marqueeText={footerMarquee} />
 
     <script>
       import { initScrollAnimations } from "../lib/animations";

@@ -24,7 +24,7 @@ export interface ServicePageData {
   offers?: { eyebrow?: string; title: string; description?: string; items: ServiceOffer[]; style?: "list" | "cards" | "light-cards" };
 
   /** Step-by-step process (1..N) */
-  process?: { eyebrow?: string; title: string; description?: string; items: ServiceStep[] };
+  process?: { eyebrow?: string; title: string; description?: string; items: ServiceStep[]; variant?: "default" | "sticky-light" };
 
   /** Featured case studies (slugs from data/case-studies) */
   caseStudySlugs?: string[];
@@ -35,7 +35,7 @@ export interface ServicePageData {
   caseStudiesTone?: "dark" | "light";
 
   /** Benefits grid */
-  benefits?: { eyebrow?: string; title: string; description?: string; items: ServiceBenefit[] };
+  benefits?: { eyebrow?: string; title: string; description?: string; items: ServiceBenefit[]; layout?: "3col" | "4-3" };
 
   /** Pull quote */
   quote?: ServiceQuote;
@@ -48,6 +48,7 @@ export interface ServicePageData {
 
   /** Marquee text banner (shown before Final CTA) */
   marqueeText?: string;
+  footerMarquee?: string;
 
   /** Tech stack floating grid (shown after offers) */
   techStack?: { title: string; subtitle: string; tools: string[]; tone?: "dark" | "light" };
@@ -564,21 +565,24 @@ export const staffAugData: ServicePageData = {
       { number: "3", title: "Welcome Aboard", description: "Once selected, engineers integrate quickly into your environment — adapting to your tools, processes, and time zones from the first week." },
       { number: "4", title: "Management and Scaling", description: "As your project evolves, we help you scale your team up or down easily. Our flexible structure gives you agility without long-term commitments. Most teams are ready to start within one to two weeks." },
     ],
+    variant: "sticky-light",
   },
 
   benefits: {
     title: "Benefits of IT Staff Augmentation",
-    description: "IT staff augmentation gives your business the flexibility and skill depth it needs to stay ahead — without the cost and complexity of permanent hiring.",
+    description: "IT staff augmentation gives your business the flexibility and skill depth it needs to stay ahead, without the cost and complexity of permanent hiring.",
+    layout: "4-3",
     items: [
-      { title: "Cost Efficiency", description: "Skip recruitment, training, and benefits costs. Access top-tier talent without heavy financial commitments." },
-      { title: "Flexibility to Scale", description: "Add or reduce resources at any stage to keep your workforce perfectly aligned with project needs." },
-      { title: "Assured Quality", description: "Every developer and designer passes through multiple evaluation layers for technical and communication skills." },
-      { title: "Access to Global Expertise", description: "Tap into an international pool of specialists across blockchain, cloud, AI, and full-stack development." },
-      { title: "Enhanced Productivity", description: "Fill skill gaps quickly, eliminate delays, and bring fresh perspectives that accelerate delivery." },
-      { title: "Risk Reduction", description: "Structured hiring and monitoring ensures minimal onboarding risk and better resource utilization." },
-      { title: "Focus on Core Business", description: "With the right experts handling development, your internal team focuses on strategy, growth, and innovation." },
+      { title: "Cost Efficiency", description: "Skip recruitment, training, and benefits costs. Access top-tier talent without heavy financial commitments.", icon: "tag" },
+      { title: "Flexibility to Scale", description: "Add or reduce resources at any stage to keep your workforce perfectly aligned with project needs.", icon: "bolt" },
+      { title: "Assured Quality", description: "Every developer and designer passes through multiple evaluation layers for technical and communication skills.", icon: "check" },
+      { title: "Access to Global Expertise", description: "Tap into an international pool of specialists across blockchain, cloud, AI, and full-stack development.", icon: "globe" },
+      { title: "Enhanced Productivity", description: "Fill skill gaps quickly, eliminate delays, and bring fresh perspectives that accelerate delivery.", icon: "rocket" },
+      { title: "Risk Reduction", description: "Structured hiring and monitoring ensures minimal onboarding risk and better resource utilization.", icon: "shield" },
+      { title: "Focus on Core Business", description: "With the right experts handling development, your internal team focuses on strategy, growth, and innovation.", icon: "chart" },
     ],
   },
+  caseStudiesTone: "light",
 
   whyUs: {
     title: "Why companies choose SpaceDev",
@@ -594,17 +598,19 @@ export const staffAugData: ServicePageData = {
   },
 
   faqs: [
-    { question: "How is staff augmentation different from outsourcing?", answer: "Staff augmentation embeds engineers into your team and processes — you manage the work and own the codebase. Outsourcing hands an entire scope of work to a vendor who manages it independently. Staff aug gives you control; outsourcing gives you a turnkey deliverable." },
-    { question: "How quickly can I hire through SpaceDev?", answer: "Most teams are ready to start within 1–2 weeks. The interview process itself is typically less than 2 weeks." },
-    { question: "What kind of skills and roles can I hire for?", answer: "Frontend, backend, full-stack, mobile, blockchain, smart contract, DevOps, cloud, QA, UI/UX, product owners and project managers." },
-    { question: "Can I scale my team as the project grows?", answer: "Yes — add or reduce people quarter by quarter. There are no long-term lock-ins." },
-    { question: "How do you ensure quality and accountability?", answer: "Every engineer goes through multi-stage technical screening, and SpaceDev provides delivery management oversight even when the engineer is embedded in your team." },
-    { question: "Do you work with both startups and enterprises?", answer: "Yes — from seed-stage startups needing one senior engineer to enterprises spinning up dedicated 10+ person cells." },
+    { question: "How is staff augmentation different from outsourcing?", answer: "Staff augmentation gives you full control over your project and extended access to skilled professionals who work directly with your internal team. Outsourcing, on the other hand, hands over project ownership to an external vendor." },
+    { question: "How quickly can I hire through SpaceDev?", answer: "Most clients onboard their first developer within a week. Our process is streamlined to match the right talent to your requirements in the shortest time possible." },
+    { question: "What kind of skills and roles can I hire for?", answer: "You can hire frontend and backend developers, mobile app engineers, DevOps experts, blockchain developers, QA testers, UI/UX designers, and project managers; across a variety of technologies and frameworks." },
+    { question: "Can I scale my team as the project grows?", answer: "Yes. You can increase or reduce your team size anytime. Our affordable IT staff augmentation services are designed to adjust quickly to your evolving project needs." },
+    { question: "How do you ensure quality and accountability?", answer: "All professionals go through technical and cultural assessments. We also provide continuous monitoring, transparent reporting, and regular feedback sessions to maintain consistent quality." },
+    { question: "Do you work with both startups and enterprises?", answer: "Absolutely. Our top IT staff augmentation services cater to businesses of every size, from startups testing new ideas to large enterprises building complex digital ecosystems." },
   ],
+
+  footerMarquee: "IT Staff Augmentation tailored to your needs.",
 
   finalCta: {
     title: "Build your dream tech team with SpaceDev",
-    description: "Finding the right people shouldn't slow your business down. The talent you need is ready — hire, build, and grow with SpaceDev.",
+    description: "Finding the right people shouldn't slow your business down. Get access to pre-vetted developers and specialists who integrate into your projects effortlessly. Scale your workforce, meet deadlines, and maintain quality without the overhead of traditional hiring.\n\nThe talent you need is ready. Hire, build, and grow with us.",
     buttonLabel: "Hire talent now",
     buttonHref: "/contact",
   },
