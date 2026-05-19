@@ -21,10 +21,10 @@ export interface ServicePageData {
   heroVariant?: "dark" | "light";
 
   /** "What we build" / process / offers */
-  offers?: { eyebrow?: string; title: string; description?: string; items: ServiceOffer[]; style?: "list" | "cards" | "light-cards" };
+  offers?: { eyebrow?: string; title: string; description?: string; items: ServiceOffer[]; style?: "list" | "cards" | "light-cards" | "dark-cards"; ctaButton?: { label: string; href: string; external?: boolean } };
 
   /** Step-by-step process (1..N) */
-  process?: { eyebrow?: string; title: string; description?: string; items: ServiceStep[]; variant?: "default" | "sticky-light" };
+  process?: { eyebrow?: string; title: string; description?: string; items: ServiceStep[]; variant?: "default" | "sticky-light" | "sticky-dark" };
 
   /** Featured case studies (slugs from data/case-studies) */
   caseStudySlugs?: string[];
@@ -35,7 +35,7 @@ export interface ServicePageData {
   caseStudiesTone?: "dark" | "light";
 
   /** Benefits grid */
-  benefits?: { eyebrow?: string; title: string; description?: string; items: ServiceBenefit[]; layout?: "3col" | "4-3" };
+  benefits?: { eyebrow?: string; title: string; description?: string; items: ServiceBenefit[]; layout?: "3col" | "4col" | "4-3"; titleAlign?: "left" | "center" };
 
   /** Pull quote */
   quote?: ServiceQuote;
@@ -49,9 +49,10 @@ export interface ServicePageData {
   /** Marquee text banner (shown before Final CTA) */
   marqueeText?: string;
   footerMarquee?: string;
+  footerMarqueeTheme?: "light" | "dark";
 
   /** Tech stack floating grid (shown after offers) */
-  techStack?: { title: string; subtitle: string; tools: string[]; tone?: "dark" | "light" };
+  techStack?: { title: string; subtitle: string; tools: string[]; tone?: "dark" | "light"; ctaButton?: { label: string; href: string; external?: boolean } };
 
   /** FAQ */
   faqs?: ServiceFaq[];
@@ -146,8 +147,6 @@ export const blockchainData: ServicePageData = {
     ],
   },
 
-  marqueeText: "Blockchain Development. Web3 Solutions. Smart Contracts. DeFi Platforms. dApp Development. Asset Tokenization.",
-
   techStack: {
     title: "Our Web 3.0 tech stack",
     subtitle: "From mobile experiences to complex decentralized software, our premium digital solutions are made with the latest tools.",
@@ -170,6 +169,9 @@ export const blockchainData: ServicePageData = {
     buttonLabel: "Start your project",
     buttonHref: "/contact",
   },
+
+  footerMarquee: "Blockchain Development. Web3 Solutions. Smart Contracts. DeFi Platforms. dApp Development. Asset Tokenization.",
+  footerMarqueeTheme: "dark",
 };
 
 /* ============================================================
@@ -656,6 +658,7 @@ export const blockAuditData: ServicePageData = {
   process: {
     eyebrow: "How it works",
     title: "Smart Contract Audit: How It Works",
+    variant: "sticky-dark",
     items: [
       { number: "01", title: "Assessment", description: "We thoroughly evaluate your smart contract's business logic and collaborate with you to identify key security properties that need testing." },
       { number: "02", title: "Review", description: "Our team runs multiple, advanced analysis processes on your code in parallel, followed by an in-depth manual review to detect any hidden vulnerabilities or anomalies." },
@@ -666,6 +669,8 @@ export const blockAuditData: ServicePageData = {
   offers: {
     eyebrow: "How we ensure security",
     title: "How We Ensure Security",
+    style: "dark-cards",
+    ctaButton: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
     items: [
       { number: "01", title: "Monitoring", description: "We help you setting up a top-notch monitoring system leveraging OpenZeppelin defender, so you can set certain security action triggers depending on strange activities or balance changes." },
       { number: "02", title: "SEC OPS Audit", description: "More hacks occur due to social engineering than smart contract exploiting. Our audits ensure not only the technical security and correctness of smart contracts but also the management security (SECOPS), verifying that all participants follow strong protocols to reduce vulnerabilities." },
@@ -674,22 +679,31 @@ export const blockAuditData: ServicePageData = {
 
   benefits: {
     title: "Benefits of a Smart Contract Audit and Diligence",
+    layout: "4col",
     items: [
-      { title: "Prevent Critical Vulnerabilities", description: "Conducting a smart contract audit early in development helps avoid major security flaws that could lead to costly issues after launch." },
-      { title: "Thorough Expert Review", description: "Experienced auditors manually inspect your code, ensuring that no vulnerabilities or false positives slip through." },
-      { title: "Comprehensive Reports", description: "Receive in-depth analytics that include a detailed summary of vulnerabilities, potential risks, and clear recommendations for mitigation." },
-      { title: "Ongoing Security Monitoring", description: "Regular surveillance and periodic assessments help detect new vulnerabilities, ensuring your smart contracts remain secure even as threats evolve." },
+      { icon: "lock",  title: "Prevent Critical Vulnerabilities", description: "Conducting a smart contract audit early in development helps avoid major security flaws that could lead to costly issues after launch." },
+      { icon: "eye",   title: "Thorough Expert Review", description: "Experienced auditors manually inspect your code, ensuring that no vulnerabilities or false positives slip through." },
+      { icon: "chart", title: "Comprehensive Reports", description: "Receive in-depth analytics that include a detailed summary of vulnerabilities, potential risks, and clear recommendations for mitigation." },
+      { icon: "shield", title: "Ongoing Security Monitoring", description: "Regular surveillance and periodic assessments help detect new vulnerabilities, ensuring your smart contracts remain secure even as threats evolve." },
     ],
   },
 
   whyUs: {
     title: "Why choose SpaceDev to be your tech partner?",
+    style: "accordion",
     items: [
       { title: "Fast MVP", description: "We stand out as an ideal technological partner for its ability to deliver rapid MVPs (Minimum Viable Products), providing swift and efficient solutions to bring your ideas to life." },
       { title: "IT Talent", description: "Our team excels as a technological partner due to its exceptional blockchain talent, ensuring innovative solutions and expert guidance for your projects." },
       { title: "High Development Quality", description: "We guarantee high development quality, ensuring that your projects benefit from top-notch expertise, precision, and excellence in every phase of the development process." },
-      { title: "Real Results", description: "We deliver real results, leveraging expertise and innovation to turn your technological aspirations into tangible success stories!" },
+      { title: "Real Results", description: "We deliver real results, leveraging expertise and innovation to turn your technological aspirations into tangible success stories." },
     ],
+  },
+
+  techStack: {
+    title: "Trusted across every chain",
+    subtitle: "We audit smart contracts across the most used networks and frameworks.",
+    tone: "dark",
+    tools: ["ethereum", "solana", "solidity", "rust", "wagmi", "hardhat", "ethers", "openzeppelin"],
   },
 
   finalCta: {
@@ -697,4 +711,7 @@ export const blockAuditData: ServicePageData = {
     buttonLabel: "Get in touch",
     buttonHref: "/contact",
   },
+
+  footerMarquee: "Smart contract audits that protect your future.",
+  footerMarqueeTheme: "dark",
 };

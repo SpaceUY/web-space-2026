@@ -3,9 +3,10 @@ import { SITE } from "../../lib/seo";
 
 interface Props {
   marqueeText?: string;
+  marqueeTheme?: "light" | "dark";
 }
 
-const { marqueeText = "Product Development that Sparks Innovation" } = Astro.props;
+const { marqueeText = "Product Development that Sparks Innovation", marqueeTheme = "light" } = Astro.props;
 
 const hubs = [
   { country: "United States", address: "25 SW 9th Street, 4th Floor, Miami, FL" },
@@ -30,7 +31,7 @@ const about = [
 ];
 ---
 
-<div class="bg-sd-light py-6 border-t border-sd-gray-border overflow-hidden" aria-label={marqueeText}>
+<div class={`py-6 overflow-hidden ${marqueeTheme === "dark" ? "bg-sd-dark border-t border-white/10" : "bg-sd-light border-t border-sd-gray-border"}`} aria-label={marqueeText}>
   <div class="sd-marquee-wrapper">
     <div class="sd-marquee flex items-center whitespace-nowrap" style="animation-duration: 25s">
       {/* First item: real HTML text, indexable and readable */}
