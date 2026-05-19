@@ -16,9 +16,19 @@ const filters = [
   })),
 ];
 
-const logoStrip = [
-  "Rarible", "Drata", "NDAX", "Blockus", "FightFI",
-  "ApeBond", "Mostaza", "AthleteAI", "Bondi Finance", "Gallery",
+// Logos with local file — add more as files land in public/images/clients-logos/
+// Pending (user to upload): blockus, fightfi, apebond, mostaza, athleteai, bondi, gallery
+const clientLogos = [
+  { name: "Rarible",  file: "rarible.svg"  },
+  { name: "Drata",    file: "drata.svg"    },
+  { name: "NDAX",     file: "ndax.svg"     },
+  // { name: "Blockus",      file: "blockus.svg"      },
+  // { name: "FightFI",      file: "fightfi.svg"      },
+  // { name: "ApeBond",      file: "apebond.svg"      },
+  // { name: "Mostaza",      file: "mostaza.svg"      },
+  // { name: "AthleteAI",    file: "athleteai.svg"    },
+  // { name: "Bondi Finance",file: "bondi.svg"        },
+  // { name: "Gallery",      file: "gallery.svg"      },
 ];
 ---
 
@@ -150,12 +160,16 @@ const logoStrip = [
       </div>
 
       <!-- Client logo strip -->
-      <div class="flex flex-wrap items-center gap-x-8 gap-y-3 mb-12 pb-12 border-b border-sd-gray-border" data-animate>
-        <span class="text-xs uppercase tracking-[0.18em] text-sd-text-gray shrink-0">Featured clients</span>
-        {logoStrip.map((name) => (
-          <span class="text-sm font-semibold text-sd-text-gray/60 hover:text-sd-text-dark transition-colors cursor-default">
-            {name}
-          </span>
+      <div class="flex flex-wrap items-center gap-x-10 gap-y-6 mb-12 pb-12 border-b border-sd-gray-border" data-animate>
+        <span class="text-xs uppercase tracking-[0.18em] text-sd-text-gray shrink-0 mr-2">Featured clients</span>
+        {clientLogos.map((logo) => (
+          <img
+            src={`/images/clients-logos/${logo.file}`}
+            alt={logo.name}
+            height="28"
+            class="h-7 w-auto object-contain opacity-40 grayscale hover:opacity-75 hover:grayscale-0 transition-all duration-300"
+            loading="lazy"
+          />
         ))}
       </div>
 
