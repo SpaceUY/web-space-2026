@@ -28,8 +28,8 @@ const gradient = accentGradients[caseStudy.accent ?? "purple"];
   <!-- group on the <a> so child group-hover: classes react to card hover -->
   <a
     href={`/case-study/${caseStudy.slug}`}
-    class={`group sm:col-span-2 md:col-span-3 grid grid-cols-1 sm:grid-cols-[3fr_2fr] overflow-hidden rounded-2xl ${className}`.trim()}
-    data-category={caseStudy.category}
+    class={`group sm:col-span-2 md:col-span-3 grid grid-cols-1 sm:grid-cols-[3fr_2fr] overflow-hidden rounded-xl ${className}`.trim()}
+    data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
     <!-- Image -->
@@ -90,11 +90,11 @@ const gradient = accentGradients[caseStudy.accent ?? "purple"];
   <a
     href={`/case-study/${caseStudy.slug}`}
     class={`group block cursor-pointer ${className}`.trim()}
-    data-category={caseStudy.category}
+    data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
     <!-- Image — rounded, zooms on card hover -->
-    <div class="overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
+    <div class="overflow-hidden rounded-xl mb-6 aspect-[4/3]">
       {caseStudy.image ? (
         <img
           src={caseStudy.image}
