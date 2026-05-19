@@ -11,6 +11,8 @@ import SectionHeading from "../components/ui/SectionHeading.astro";
 import FAQ from "../components/ui/FAQ.astro";
 import CTA from "../components/ui/CTA.astro";
 import StarRating from "../components/ui/StarRating.astro";
+import QuoteReveal from "../components/ui/QuoteReveal.astro";
+import FeatureCard from "../components/ui/FeatureCard.astro";
 
 const sampleFaqs = [
   { question: "What is the design system?", answer: "A shared set of tokens, components and patterns that keep the SpaceDev site consistent across every page." },
@@ -64,6 +66,7 @@ const sampleFaqs = [
             { id: "faq",             label: "FAQ" },
             { id: "cta",             label: "CTA" },
             { id: "star-rating",     label: "Star Rating" },
+            { id: "quote-reveal",    label: "Quote Reveal" },
           ].map(item => (
             <li>
               <a href={`#${item.id}`} data-section={item.id}
@@ -552,7 +555,7 @@ const sampleFaqs = [
       <h2 class="text-2xl text-white font-display mb-2">Cards</h2>
       <p class="text-sd-text-muted text-sm mb-12">General-purpose card component with dark and light variants. The service cards and benefit cards are built on top of this.</p>
 
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
         <Card variant="dark">
           <p class="text-xs text-sd-purple-300 mb-3 tracking-widest font-medium">DARK VARIANT</p>
           <h3 class="text-lg text-white mb-2">Smart Contract Development</h3>
@@ -568,6 +571,60 @@ const sampleFaqs = [
           <h3 class="text-lg text-white mb-2">Featured Service</h3>
           <p class="text-sm text-sd-text-muted leading-relaxed">Same dark card with a purple border accent for featured or active states.</p>
         </Card>
+      </div>
+
+      <!-- ── Feature Card ─────────────────────────────────── -->
+      <div class="border-t border-white/5 pt-14">
+        <h3 class="text-lg text-white font-display mb-1">Feature Card</h3>
+        <p class="text-sd-text-muted text-sm max-w-xl mb-10">
+          Used in Benefits and Why Us sections. Pass an <code class="text-sd-purple-300 bg-white/5 px-1.5 py-0.5 rounded text-xs">icon</code> prop to show the purple bubble variant, or omit it for the compact title-only card.
+        </p>
+
+        <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-5">With icon — 3-col grid</p>
+        <div class="grid gap-6 md:grid-cols-3 mb-12">
+          <FeatureCard
+            title="Increased Security"
+            description="Advanced cryptographic algorithms safeguard data and transactions. Each block is encrypted, verified, and immutable — protecting against cyberattacks and fraud."
+            icon="lock"
+            tone="dark"
+          />
+          <FeatureCard
+            title="Greater Transparency"
+            description="Every transaction is permanently recorded and easily auditable. This openness improves accountability and builds trust with users, partners, and regulators."
+            icon="eye"
+            tone="dark"
+          />
+          <FeatureCard
+            title="Improved Efficiency"
+            description="Automate repetitive workflows and eliminate intermediaries. Smart contracts streamline operations and shorten transaction times."
+            icon="bolt"
+            tone="dark"
+          />
+        </div>
+
+        <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-5">Without icon — 4-col grid</p>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <FeatureCard
+            title="Fast MVP Delivery"
+            description="We move ideas into action quickly. Our agile approach lets you validate concepts and iterate before committing to full-scale development."
+            tone="dark"
+          />
+          <FeatureCard
+            title="Real Results, Not Buzzwords"
+            description="We measure success by what ships and scales. Every engagement is tied to concrete outcomes — faster transactions, higher adoption, measurable ROI."
+            tone="dark"
+          />
+          <FeatureCard
+            title="Transparent Collaboration"
+            description="No black boxes. You have full visibility into progress, blockers, and decisions. We work as an extension of your team, not a vendor."
+            tone="dark"
+          />
+          <FeatureCard
+            title="Post-Launch Partnership"
+            description="Whether it's project-based execution or IT staff augmentation, we adapt to your structure and integrate as an extension of your existing team."
+            tone="dark"
+          />
+        </div>
       </div>
     </section>
 
@@ -685,6 +742,44 @@ const sampleFaqs = [
           </div>
         ))}
       </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         QUOTE REVEAL
+    ════════════════════════════════════════ -->
+    <section id="quote-reveal" class="border-t border-white/5">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-20">
+        <h2 class="text-2xl text-white font-display mb-2">Quote Reveal</h2>
+        <p class="text-sd-text-muted text-sm mb-4">Scroll-driven word-by-word reveal. Supports 1 or multiple authors, and dark/light tone.</p>
+        <div class="flex flex-wrap gap-3 mb-2 text-xs text-sd-text-muted font-ui uppercase tracking-widest">
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full">tone="dark" | tone="light"</span>
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full">authors: Author | Author[]</span>
+        </div>
+      </div>
+
+      <!-- Dark variant -->
+      <div class="mb-2">
+        <p class="mx-auto max-w-[1440px] px-6 md:px-10 text-xs font-ui uppercase tracking-widest text-sd-text-muted mb-4">Dark (default)</p>
+        <QuoteReveal
+          tone="dark"
+          text="There's no question that blockchain will change the world; the real question is when. At SpaceDev, we firmly believe in its transformative power."
+          authors={{ name: "Juan Manuel Sobral", role: "CTO & Co-founder", photo: "/images/juan-manuel-sobral.png", linkedin: "https://www.linkedin.com/in/juanmanuelsobral/" }}
+        />
+      </div>
+
+      <!-- Light variant -->
+      <div class="mb-2">
+        <p class="mx-auto max-w-[1440px] px-6 md:px-10 text-xs font-ui uppercase tracking-widest text-sd-text-muted mb-4">Light</p>
+        <QuoteReveal
+          tone="light"
+          text="Great products aren't built in isolation. They come from close collaboration, honest feedback, and a team that genuinely cares about the outcome."
+          authors={[
+            { name: "Juan Manuel Sobral", role: "CTO & Co-founder", photo: "/images/juan-manuel-sobral.png", linkedin: "https://www.linkedin.com/in/juanmanuelsobral/" },
+            { name: "Federico Sendra", role: "CEO & Co-founder", linkedin: "https://www.linkedin.com/in/federicosendra/" },
+          ]}
+        />
+      </div>
+
     </section>
 
   </main>

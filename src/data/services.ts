@@ -21,13 +21,18 @@ export interface ServicePageData {
   heroVariant?: "dark" | "light";
 
   /** "What we build" / process / offers */
-  offers?: { eyebrow?: string; title: string; description?: string; items: ServiceOffer[]; style?: "list" | "cards" };
+  offers?: { eyebrow?: string; title: string; description?: string; items: ServiceOffer[]; style?: "list" | "cards" | "light-cards" };
 
   /** Step-by-step process (1..N) */
   process?: { eyebrow?: string; title: string; description?: string; items: ServiceStep[] };
 
   /** Featured case studies (slugs from data/case-studies) */
   caseStudySlugs?: string[];
+  /** Case studies section heading — defaults to a generic title if omitted */
+  caseStudiesTitle?: string;
+  caseStudiesDescription?: string;
+  /** Case studies section background tone — defaults to "dark" (purple-deep) */
+  caseStudiesTone?: "dark" | "light";
 
   /** Benefits grid */
   benefits?: { eyebrow?: string; title: string; description?: string; items: ServiceBenefit[] };
@@ -44,8 +49,8 @@ export interface ServicePageData {
   /** Marquee text banner (shown before Final CTA) */
   marqueeText?: string;
 
-  /** Web3 tech stack floating grid (shown after offers) */
-  techStack?: { title: string; subtitle: string; tools: string[] };
+  /** Tech stack floating grid (shown after offers) */
+  techStack?: { title: string; subtitle: string; tools: string[]; tone?: "dark" | "light" };
 
   /** FAQ */
   faqs?: ServiceFaq[];
@@ -97,6 +102,8 @@ export const blockchainData: ServicePageData = {
   },
 
   caseStudySlugs: ["blockchain-for-energy", "fightfi", "apebond", "rarible"],
+  caseStudiesTitle: "Get to know real Blockchain success stories",
+  caseStudiesDescription: "We craft decentralized products that deliver measurable impact. Take a closer look at how this service has helped teams ship at scale.",
 
   benefits: {
     title: "Benefits of Blockchain Adoption",
@@ -444,12 +451,13 @@ export const webMobileData: ServicePageData = {
     "Your digital product is more than software; it represents your brand in motion. SpaceDev builds web, mobile, and software solutions that fuse together engineering precision with strong design and strategy to perform, engage, and evolve with your users.",
   heroVariant: "light",
   primaryCta: { label: "Get in touch", href: "/contact" },
-  secondaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar", external: true },
+  secondaryCta: { label: "See case studies", href: "/our-work" },
 
   offers: {
     eyebrow: "What we build",
     title: "What We Build",
     description: "Our experience covers everything from custom software and mobile applications to large enterprise systems.",
+    style: "light-cards",
     items: [
       { number: "01", title: "Consultancy and Technical Research", description: "Analyze business models and design clear technical roadmaps based on data to eliminate bottlenecks." },
       { number: "02", title: "Web Products", description: "Build responsive, reliable dashboards, SaaS platforms, and marketplaces optimized for scalable growth." },
@@ -466,7 +474,17 @@ export const webMobileData: ServicePageData = {
     ],
   },
 
+  techStack: {
+    title: "Our Web 2.0 tech stack",
+    subtitle: "From mobile experiences to complex enterprise software, our solutions are built with the latest and most reliable tools.",
+    tone: "light",
+    tools: ["react", "nodejs", "reactnative", "aws", "python", "typescript", "nestjs", "nextjs"],
+  },
+
   caseStudySlugs: ["drata", "ubicuity", "athleteai", "twispi"],
+  caseStudiesTitle: "Where Ideas Turn Into Measurable Impact",
+  caseStudiesDescription: "From startups to enterprises, we turn complex challenges into products that perform. Take a closer look at how we've helped teams ship at scale.",
+  caseStudiesTone: "light",
 
   midCta: {
     title: "Eager to create your own success story?",
@@ -479,12 +497,12 @@ export const webMobileData: ServicePageData = {
     title: "Benefits of Custom Software & App Development",
     description: "Custom software can redefine how a business operates. With the right technology, design, and strategy, brands gain speed, visibility, and customer loyalty. Drive growth, simplify operations, and scale confidently with our software development and web and mobile app development services.",
     items: [
-      { title: "Scalable Growth", description: "Every architecture is built to handle growth in users, data, and functionality." },
-      { title: "Enhanced User Experience", description: "Apps focused on speed, simplicity, and flow — users find value in every interaction and return more often." },
-      { title: "Broader Reach", description: "Through mobile and web app development, brands connect with audiences across platforms and devices." },
-      { title: "Faster Go-to-Market", description: "Agile development moves your app from idea to release quickly — without losing quality or stability." },
-      { title: "Improved Efficiency", description: "Web and mobile solutions automate workflows and improve collaboration, freeing teams to focus on strategy." },
-      { title: "Cost-Effective Development", description: "Modern frameworks and cross-platform builds reduce maintenance costs over the long run." },
+      { icon: "chart",   title: "Scalable Growth", description: "Every architecture is built to handle growth in users, data, and functionality." },
+      { icon: "heart",   title: "Enhanced User Experience", description: "Apps focused on speed, simplicity, and flow — users find value in every interaction and return more often." },
+      { icon: "globe",   title: "Broader Reach", description: "Through mobile and web app development, brands connect with audiences across platforms and devices." },
+      { icon: "rocket",  title: "Faster Go-to-Market", description: "Agile development moves your app from idea to release quickly — without losing quality or stability." },
+      { icon: "bolt",    title: "Improved Efficiency", description: "Web and mobile solutions automate workflows and improve collaboration, freeing teams to focus on strategy." },
+      { icon: "tag",     title: "Cost-Effective Development", description: "Modern frameworks and cross-platform builds reduce maintenance costs over the long run." },
     ],
   },
 
