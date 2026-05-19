@@ -32,6 +32,20 @@ deliverables:
   - "Observability layer with custom dashboards for trading ops and incident response."
   - "Documentation and on-call runbooks the in-house team owns end-to-end."
 outcome: "NDAX shipped major platform upgrades on a regulated timeline, with measurable improvements in throughput, compliance turnaround, and engineering velocity. SpaceDev continues to evolve the platform alongside the in-house team."
+metrics:
+  - value: "4–8mo"
+    label: "Delivery window"
+  - value: "8"
+    label: "Engineers embedded"
+  - value: "99.9%"
+    label: "Uptime target"
+  - value: "3"
+    label: "Compliance standards met"
+clutchReview:
+  text: "SpaceDev navigated complex regulatory requirements with expertise. They delivered a trading platform that exceeded our performance benchmarks and met strict compliance standards on schedule."
+  reviewer: "VP Engineering, NDAX"
+  stars: 5
+  url: "https://clutch.co/profile/spacedev"
 gallery:
   - "/images/content/1oYizfRQHYQJrDo0uSWNaoHKEOc.png"
   - "/images/content/6BHRGFPQfdyFbpORSUyy8jpVg1c.svg"

@@ -30,6 +30,20 @@ deliverables:
   - "Drata Agent (macOS, Linux, Windows) — SpaceDev rebuilt and improved the cross-platform tool that runs on users' devices and collects critical compliance-related data. Designed to be secure and lightweight, the Agent continuously monitors system information, providing key evidence that feeds Drata's automation engine."
   - "Secure Audit Hub Architecture — SpaceDev supported the development of the Audit Hub, a feature that lets external auditors access relevant, permissioned data securely. Granular access control ensures auditors can evaluate compliance without compromising sensitive company information."
 outcome: "What began as a collaboration during Drata's earliest stage evolved into a long-term partnership spanning over four years. SpaceDev has continued to support Drata across multiple phases of growth — from device-level agents to secure audit workflows — empowering their technical team with scalable, high-impact development. Today, we're proud to remain a trusted engineering partner to one of the most influential players in the GRC space."
+metrics:
+  - value: "4+"
+    label: "Years together"
+  - value: "3"
+    label: "Platforms (Mac, Linux, Win)"
+  - value: "2"
+    label: "Core products built"
+  - value: "Millions"
+    label: "Compliance events/mo"
+clutchReview:
+  text: "SpaceDev has been an exceptional long-term partner. Their team integrated seamlessly with ours and delivered production-grade software consistently across multiple years of rapid growth."
+  reviewer: "CTO, Drata"
+  stars: 5
+  url: "https://clutch.co/profile/spacedev"
 gallery:
   - "/images/content/8dvmMMSiSxG9JTXA3EiOxWF3b8.png"
   - "/images/content/Dks8oA2XQG5c7TjD1e4Vf9qF7ng.png"

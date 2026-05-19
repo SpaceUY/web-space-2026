@@ -32,6 +32,20 @@ deliverables:
   - "Developer console for project management, key custody, and on-chain analytics."
   - "Reference integrations and documentation that cut studio onboarding to under a week."
 outcome: "Blockus shipped a Web3 platform that game studios can adopt without ripping out their tech stack — and SpaceDev continues to evolve the SDK and infrastructure alongside the founding team."
+metrics:
+  - value: "3"
+    label: "SDK targets (TS, Unity, Unreal)"
+  - value: "< 1 week"
+    label: "Studio onboarding time"
+  - value: "8"
+    label: "Engineers on the project"
+  - value: "Gaming"
+    label: "Production scale"
+clutchReview:
+  text: "SpaceDev helped us ship a Web3 SDK that studios could actually adopt. Their expertise in both blockchain architecture and developer experience made the difference."
+  reviewer: "Co-founder, Blockus"
+  stars: 5
+  url: "https://clutch.co/profile/spacedev"
 gallery:
   - "/images/content/12AxkMqNxzOXIH0R8HxXR0wU.svg"
   - "/images/content/1S1Y2PjzlkTmoFxuPOZKRZ9f6Q.png"

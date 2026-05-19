@@ -36,6 +36,20 @@ deliverables:
   - "Improved core Solidity contracts with advanced upgradeability patterns and deterministic deployment strategies."
   - "Built CLI tools and SDKs in Rust and TypeScript to streamline marketplace and collection management."
 outcome: "SpaceDev played a key role in Rarible's multi-chain expansion by migrating and optimizing smart contracts across new blockchain architectures. Our contributions enabled seamless NFT interoperability, enhanced scalability, and unlocked new revenue streams — powering high-value collections, cross-chain NFT migrations, and innovative on-chain mechanics."
+metrics:
+  - value: "5+"
+    label: "Chains deployed"
+  - value: "Multi-year"
+    label: "Partnership"
+  - value: "4"
+    label: "VM architectures"
+  - value: "12+"
+    label: "Contracts shipped"
+clutchReview:
+  text: "SpaceDev delivered exceptional smart contract work that enabled us to expand to multiple chains. Their deep Web3 expertise and rapid iteration made them an indispensable partner."
+  reviewer: "Engineering Lead, Rarible"
+  stars: 5
+  url: "https://clutch.co/profile/spacedev"
 gallery:
   - "/images/content/AXmHZlKaMIGHXcZ0sROEO0Vufy4.png"
   - "/images/content/CogAqVk5s5qNKyZEaNtRCzRc5Aw.png"
