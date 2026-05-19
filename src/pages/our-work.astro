@@ -60,10 +60,9 @@ const logoStrip = [
   <section class="bg-sd-dark">
 
     <!-- Big quote -->
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10 py-20 md:py-28" data-animate>
-      <p class="font-display font-semibold text-2xl md:text-3xl lg:text-4xl text-white leading-snug">
-        We are here to support you every step of the way, whether you are seeking to disrupt your industry or stay ahead of the competition. By leveraging our up-to-date expertise,
-        <span class="text-sd-text-muted"> you can turn your vision into a reality and reach new heights.</span>
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10 py-20 md:py-28">
+      <p id="sd-illuminate-quote" class="font-body font-semibold text-2xl md:text-3xl lg:text-4xl leading-snug">
+        We are here to support you every step of the way, whether you are seeking to disrupt your industry or stay ahead of the competition. By leveraging our up-to-date expertise, you can turn your vision into a reality and reach new heights.
       </p>
     </div>
 
@@ -286,4 +285,36 @@ const logoStrip = [
       updateCount(filter);
     });
   });
+
+  // ── ILLUMINATE QUOTE — words light up gray → white on scroll ──
+  const quoteEl = document.getElementById("sd-illuminate-quote");
+  if (quoteEl) {
+    const rawText = quoteEl.textContent?.trim() ?? "";
+    quoteEl.innerHTML = rawText
+      .split(/\s+/)
+      .map((w) => `<span class="sd-word">${w}</span>`)
+      .join(" ");
+
+    const wordEls = [...quoteEl.querySelectorAll<HTMLElement>(".sd-word")];
+
+    // Set initial dim color on all words
+    wordEls.forEach((w) => {
+      w.style.color = "rgba(255,255,255,0.18)";
+      w.style.transition = "color 0.45s ease";
+    });
+
+    function illuminate() {
+      const rect = quoteEl!.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // Progress: 0 when element top hits bottom of viewport, 1 when element top is 15% from top
+      const progress = Math.max(0, Math.min(1, (vh * 0.88 - rect.top) / (vh * 0.72)));
+      const litCount = Math.round(progress * wordEls.length);
+      wordEls.forEach((w, i) => {
+        w.style.color = i < litCount ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.18)";
+      });
+    }
+
+    window.addEventListener("scroll", illuminate, { passive: true });
+    illuminate(); // run once on load in case already in view
+  }
 </script>
