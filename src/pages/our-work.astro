@@ -116,14 +116,14 @@ const filters = [
 
   </section>
 
-  <!-- ── CASE STUDIES (light, cards breathe) ── -->
-  <section class="bg-sd-light-2 py-20 md:py-28">
+  <!-- ── CASE STUDIES (dark, cohesive) ── -->
+  <section class="bg-sd-dark py-20 md:py-28">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
 
       <!-- Heading -->
       <div class="mb-10" data-animate>
         <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Case Studies</p>
-        <h2 class="font-display font-semibold text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.1]">
+        <h2 class="font-display font-semibold text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1]">
           Our work
         </h2>
       </div>
@@ -135,8 +135,8 @@ const filters = [
             type="button"
             class={`sd-filter-btn inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border transition-all ${
               i === 0
-                ? "bg-sd-text-dark border-sd-text-dark text-white"
-                : "border-sd-gray-border text-sd-text-gray hover:text-sd-text-dark hover:border-sd-text-dark bg-white"
+                ? "bg-white border-white text-sd-text-dark"
+                : "border-white/20 text-white/60 hover:text-white hover:border-white/50"
             }`}
             data-filter={f.value}
             role="tab"
@@ -144,14 +144,14 @@ const filters = [
           >
             {f.label}
             <span class={`text-[11px] px-1.5 py-0.5 rounded-full ${
-              i === 0 ? "bg-white/20 text-white" : "bg-sd-light-2 text-sd-text-gray"
+              i === 0 ? "bg-sd-text-dark/15 text-sd-text-dark" : "bg-white/10 text-white/50"
             }`}>
               {f.count}
             </span>
           </button>
         ))}
 
-        <span id="sd-count" class="ml-auto text-sm text-sd-text-gray hidden sm:block">
+        <span id="sd-count" class="ml-auto text-sm text-white/40 hidden sm:block">
           {caseStudies.length} projects
         </span>
       </div>
@@ -192,7 +192,7 @@ const filters = [
                 </div>
               </div>
             )}
-            <CaseStudyCard caseStudy={c} featured={idx % 4 === 0} />
+            <CaseStudyCard caseStudy={c} featured={idx % 4 === 0} dark={true} />
           </>
         ))}
       </div>
@@ -231,18 +231,19 @@ const filters = [
       buttons.forEach((b) => {
         const active = b === btn;
         b.setAttribute("aria-selected", String(active));
-        b.classList.toggle("bg-sd-text-dark",       active);
-        b.classList.toggle("border-sd-text-dark",   active);
-        b.classList.toggle("text-white",            active);
-        b.classList.toggle("bg-white",             !active);
-        b.classList.toggle("border-sd-gray-border",!active);
-        b.classList.toggle("text-sd-text-gray",    !active);
+        // Active: white pill with dark text
+        b.classList.toggle("bg-white",         active);
+        b.classList.toggle("border-white",     active);
+        b.classList.toggle("text-sd-text-dark",active);
+        // Inactive: transparent with muted white text
+        b.classList.toggle("border-white/20",  !active);
+        b.classList.toggle("text-white/60",    !active);
         // Update the count badge inside each button
         const badge = b.querySelector("span");
         if (badge) {
           badge.className = active
-            ? "text-[11px] px-1.5 py-0.5 rounded-full bg-white/20 text-white"
-            : "text-[11px] px-1.5 py-0.5 rounded-full bg-sd-light-2 text-sd-text-gray";
+            ? "text-[11px] px-1.5 py-0.5 rounded-full bg-sd-text-dark/15 text-sd-text-dark"
+            : "text-[11px] px-1.5 py-0.5 rounded-full bg-white/10 text-white/50";
         }
       });
 

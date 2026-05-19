@@ -5,10 +5,12 @@ interface Props {
   caseStudy: CaseStudy;
   /** Full-width editorial card (every 4th in the rhythm) */
   featured?: boolean;
+  /** Dark page background — adjusts text and button colors */
+  dark?: boolean;
   class?: string;
 }
 
-const { caseStudy, featured = false, class: className = "" } = Astro.props;
+const { caseStudy, featured = false, dark = false, class: className = "" } = Astro.props;
 
 const accentGradients: Record<NonNullable<CaseStudy["accent"]>, string> = {
   purple: "from-sd-purple to-sd-purple-2",
@@ -106,15 +108,19 @@ const gradient = accentGradients[caseStudy.accent ?? "purple"];
     </div>
 
     <!-- Content below image — always visible -->
-    <h3 class="text-xl font-display font-semibold text-sd-text-dark leading-snug mb-4">
+    <h3 class={`text-xl font-display font-semibold leading-snug mb-4 ${dark ? "text-white" : "text-sd-text-dark"}`}>
       {caseStudy.name}
     </h3>
-    <p class="text-sm text-sd-text-gray leading-relaxed mb-5 line-clamp-2">
+    <p class={`text-sm leading-relaxed mb-5 line-clamp-2 ${dark ? "text-white/55" : "text-sd-text-gray"}`}>
       {caseStudy.tagline}
     </p>
 
     <!-- Button — color changes on whole-card hover (group-hover:) -->
-    <span class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-sd-text-dark text-white text-sm font-medium group-hover:bg-sd-purple transition-colors duration-200">
+    <span class={`inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium group-hover:bg-sd-purple transition-colors duration-200 ${
+      dark
+        ? "bg-white/10 border border-white/15 text-white group-hover:border-sd-purple"
+        : "bg-sd-text-dark text-white"
+    }`}>
       View case study
       <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
         <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
