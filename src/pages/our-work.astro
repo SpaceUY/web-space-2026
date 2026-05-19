@@ -157,12 +157,12 @@ const filters = [
       </div>
 
       <!-- Mixed rhythm grid — 1 featured (full-width) + 3 small, repeating -->
-      <div id="sd-case-grid" class="grid gap-7 sm:grid-cols-3">
+      <div id="sd-case-grid" class="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {caseStudies.map((c, idx) => (
           <>
             {/* Mid-page CTA — injected before the 4th group (index 12) */}
             {idx === 12 && (
-              <div class="sm:col-span-3 rounded-2xl overflow-hidden" style="background: var(--sd-purple-deep);">
+              <div class="sm:col-span-2 md:col-span-3 rounded-2xl overflow-hidden" style="background: var(--sd-purple-deep);">
                 <div class="px-8 py-12 md:px-14 md:py-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
                   <div class="max-w-xl">
                     <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">Ready to be next?</p>
