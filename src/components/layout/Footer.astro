@@ -1,6 +1,12 @@
 ---
 import { SITE } from "../../lib/seo";
 
+interface Props {
+  marqueeText?: string;
+}
+
+const { marqueeText = "Product Development that Sparks Innovation" } = Astro.props;
+
 const hubs = [
   { country: "United States", address: "25 SW 9th Street, 4th Floor, Miami, FL" },
   { country: "Uruguay",       address: "Cornelio Cantera 2857, Montevideo" },
@@ -24,13 +30,20 @@ const about = [
 ];
 ---
 
-<div class="bg-sd-light py-6 border-t border-sd-gray-border overflow-hidden">
+<div class="bg-sd-light py-6 border-t border-sd-gray-border overflow-hidden" aria-label={marqueeText}>
   <div class="sd-marquee-wrapper">
     <div class="sd-marquee flex items-center whitespace-nowrap" style="animation-duration: 25s">
-      {[...Array(6)].map(() => (
-        <span class="text-5xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight mr-20 select-none"
+      {/* First item: real HTML text, indexable and readable */}
+      <span class="text-5xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight mr-20"
+            style="background: linear-gradient(90deg, #673ae4 0%, #44cdf3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        {marqueeText} &nbsp;
+      </span>
+      {/* Visual duplicates for the scroll loop — hidden from assistive tech */}
+      {[...Array(5)].map(() => (
+        <span class="text-5xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight mr-20"
+              aria-hidden="true"
               style="background: linear-gradient(90deg, #673ae4 0%, #44cdf3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-          Product Development that Sparks Innovation &nbsp;
+          {marqueeText} &nbsp;
         </span>
       ))}
     </div>
