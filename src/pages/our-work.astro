@@ -1,32 +1,14 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CaseStudyCard from "../components/ui/CaseStudyCard.astro";
 import CTA from "../components/ui/CTA.astro";
 import { caseStudies } from "../data/case-studies";
-
-// Pull featured case studies from content collection (rich data: metrics, clutch, hero)
-const allEntries = await getCollection("case-studies");
-const featuredSlugs = ["rarible", "drata", "ndax-canada", "blockus"];
-const featuredEntries = featuredSlugs
-  .map((slug) => allEntries.find((e) => e.id === slug))
-  .filter((e): e is NonNullable<typeof e> => !!e);
-
-// Grid: the 16 remaining entries from the static data list
-const gridStudies = caseStudies.filter((c) => !featuredSlugs.includes(c.slug));
 
 const filters = [
   { label: "All", value: "all" },
   { label: "Web2", value: "Web2" },
   { label: "Web3", value: "Web3" },
 ];
-
-const accentGradients: Record<string, string> = {
-  purple: "from-sd-purple to-sd-purple-2",
-  cyan:   "from-sd-purple-300 to-sd-purple",
-  green:  "from-sd-green to-sd-purple-300",
-  mixed:  "from-sd-purple via-sd-purple-400 to-sd-green",
-};
 ---
 
 <BaseLayout
@@ -57,165 +39,53 @@ const accentGradients: Record<string, string> = {
     </div>
   </section>
 
-  <!-- ─── FEATURED CASE STUDIES ─── -->
-  <section class="bg-sd-dark py-20 md:py-32 border-t border-white/5">
+  <!-- ── CASE STUDIES ── -->
+  <section class="bg-white py-16 md:py-24">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
 
-      <!-- Section heading -->
-      <div class="mb-16 md:mb-24" data-animate>
-        <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Selected Work</p>
-        <h2 class="text-4xl md:text-5xl lg:text-6xl text-white font-display font-semibold leading-tight max-w-xl">
-          Our most impactful partnerships
-        </h2>
-      </div>
-
-      <!-- Editorial rows -->
-      <div class="space-y-28 md:space-y-36">
-        {featuredEntries.map((entry, idx) => {
-          const gradient = accentGradients[entry.data.accent ?? "purple"];
-          const isReversed = idx % 2 === 1;
-          return (
-            <article class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-16 items-center" data-animate>
-
-              <!-- Image -->
-              <div class={`relative rounded-2xl overflow-hidden${isReversed ? " sm:order-2" : ""}`}>
-                {entry.data.heroImage ? (
-                  <img
-                    src={entry.data.heroImage}
-                    alt={`${entry.data.name} — featured visual`}
-                    loading="lazy"
-                    class="w-full aspect-[16/10] object-cover block"
-                  />
-                ) : (
-                  <div class={`w-full aspect-[16/10] bg-gradient-to-br ${gradient}`}></div>
-                )}
-                {/* Category badge */}
-                <span class="absolute top-4 left-4 inline-flex items-center px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] uppercase tracking-wider text-white border border-white/20">
-                  {entry.data.category}
-                </span>
-              </div>
-
-              <!-- Content -->
-              <div class={isReversed ? "sm:order-1" : ""}>
-                {entry.data.industry && (
-                  <p class="text-xs uppercase tracking-[0.15em] text-sd-text-muted mb-4">{entry.data.industry}</p>
-                )}
-                <h3 class="text-3xl md:text-4xl lg:text-5xl text-white font-display font-semibold leading-tight mb-4">
-                  {entry.data.name}
-                </h3>
-                <p class="text-lg text-sd-text-muted leading-relaxed mb-6">
-                  {entry.data.tagline}
-                </p>
-                {entry.data.summary && (
-                  <p class="text-sm text-white/55 leading-relaxed mb-8 line-clamp-3">
-                    {entry.data.summary}
-                  </p>
-                )}
-
-                {/* Metrics mini-band */}
-                {entry.data.metrics && entry.data.metrics.length > 0 && (
-                  <div class="grid grid-cols-2 gap-x-6 gap-y-4 py-6 border-t border-white/10 mb-8">
-                    {entry.data.metrics.slice(0, 4).map((m) => (
-                      <div>
-                        <p class="text-xl md:text-2xl font-display font-semibold text-white">{m.value}</p>
-                        <p class="text-xs text-sd-text-muted mt-0.5">{m.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <a
-                  href={`/case-study/${entry.id}`}
-                  class="inline-flex items-center gap-2 text-sm font-semibold text-sd-purple hover:text-sd-purple-300 transition-colors group"
-                >
-                  Read case study
-                  <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" class="group-hover:translate-x-1 transition-transform">
-                    <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </a>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── CLUTCH SOCIAL PROOF ─── -->
-  <section class="bg-[#0d0d10] border-t border-white/5 py-16 md:py-20">
-    <div class="mx-auto max-w-[1200px] px-6 md:px-10">
-      <!-- Header row -->
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-10" data-animate>
-        <div class="flex items-center gap-3">
-          <div class="flex gap-0.5">
-            {[1,2,3,4,5].map(() => (
-              <svg width="18" height="18" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-            ))}
-          </div>
-          <p class="text-white font-semibold">40+ five-star reviews</p>
+      <!-- Section heading + Clutch inline badge -->
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10" data-animate>
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Case Studies</p>
+          <h2 class="font-display font-semibold text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.1]">
+            Our work
+          </h2>
         </div>
+
+        <!-- Compact Clutch badge -->
         <a
           href="https://clutch.co/profile/spacedev"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-sm text-sd-purple hover:text-sd-purple-300 font-semibold transition-colors"
+          class="inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-sd-light-2 border border-sd-gray-border hover:border-sd-purple/40 transition-colors group self-start sm:self-auto"
+          aria-label="SpaceDev on Clutch — 40+ five-star reviews"
         >
-          See all reviews on Clutch
-          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+          <div class="flex gap-0.5">
+            {[1,2,3,4,5].map(() => (
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <span class="text-xs text-sd-text-gray group-hover:text-sd-text-dark transition-colors">
+            40+ reviews on <strong class="text-sd-text-dark">Clutch</strong>
+          </span>
+          <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true" class="text-sd-text-gray group-hover:text-sd-purple transition-colors">
             <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
       </div>
 
-      <!-- Two quotes -->
-      <div class="grid sm:grid-cols-2 gap-5" data-animate>
-        <blockquote class="bg-white/[0.03] rounded-2xl p-7 border border-white/10">
-          <div class="flex gap-0.5 mb-5">
-            {[1,2,3,4,5].map(() => (
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-            ))}
-          </div>
-          <p class="text-sm text-white/75 leading-relaxed italic mb-5">
-            "SpaceDev delivered exceptional work consistently. Their deep technical expertise and communication made them feel like a true extension of our team."
-          </p>
-          <footer class="text-xs text-sd-text-muted">— Verified Clutch Review</footer>
-        </blockquote>
-        <blockquote class="bg-white/[0.03] rounded-2xl p-7 border border-white/10">
-          <div class="flex gap-0.5 mb-5">
-            {[1,2,3,4,5].map(() => (
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-            ))}
-          </div>
-          <p class="text-sm text-white/75 leading-relaxed italic mb-5">
-            "From discovery to delivery, SpaceDev brought structure and senior talent to every stage. We launched on time, within scope, and the code quality was exceptional."
-          </p>
-          <footer class="text-xs text-sd-text-muted">— Verified Clutch Review</footer>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── MORE CASE STUDIES (filtered grid) ─── -->
-  <section class="bg-white py-16 md:py-24">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="mb-10" data-animate>
-        <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">All Projects</p>
-        <h2 class="font-display font-semibold text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-tight">
-          More success stories
-        </h2>
-      </div>
-
-      <div class="flex flex-wrap items-center gap-3 mb-10" role="tablist" aria-label="Filter case studies">
+      <!-- Filter bar -->
+      <div class="flex flex-wrap items-center gap-2 mb-10" role="tablist" aria-label="Filter case studies">
         {filters.map((f, i) => (
           <button
             type="button"
-            class={`sd-filter-btn px-5 py-2 rounded-full text-sm border transition-colors ${i === 0 ? "bg-sd-text-dark border-sd-text-dark text-white" : "border-sd-gray-border text-sd-text-gray hover:text-sd-text-dark hover:border-sd-text-dark"}`}
+            class={`sd-filter-btn inline-flex items-center px-4 py-2 rounded-full text-sm border transition-colors ${
+              i === 0
+                ? "bg-sd-text-dark border-sd-text-dark text-white"
+                : "border-sd-gray-border text-sd-text-gray hover:text-sd-text-dark hover:border-sd-text-dark bg-white"
+            }`}
             data-filter={f.value}
             role="tab"
             aria-selected={i === 0}
@@ -223,13 +93,20 @@ const accentGradients: Record<string, string> = {
             {f.label}
           </button>
         ))}
+
+        <!-- Count indicator -->
+        <span id="sd-count" class="ml-auto text-sm text-sd-text-gray">
+          {caseStudies.length} projects
+        </span>
       </div>
 
-      <div id="sd-case-grid" class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-        {gridStudies.map((c) => (
+      <!-- Flat grid — all case studies -->
+      <div id="sd-case-grid" class="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+        {caseStudies.map((c) => (
           <CaseStudyCard caseStudy={c} />
         ))}
       </div>
+
     </div>
   </section>
 
@@ -244,8 +121,17 @@ const accentGradients: Record<string, string> = {
 </BaseLayout>
 
 <script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>(".sd-filter-btn");
-  const cards = document.querySelectorAll<HTMLElement>("#sd-case-grid > [data-category]");
+  const buttons  = document.querySelectorAll<HTMLButtonElement>(".sd-filter-btn");
+  const cards    = document.querySelectorAll<HTMLElement>("#sd-case-grid > [data-category]");
+  const countEl  = document.getElementById("sd-count");
+
+  function updateCount(filter: string) {
+    if (!countEl) return;
+    const visible = filter === "all"
+      ? cards.length
+      : [...cards].filter((c) => c.dataset.category === filter).length;
+    countEl.textContent = `${visible} project${visible !== 1 ? "s" : ""}`;
+  }
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -254,18 +140,20 @@ const accentGradients: Record<string, string> = {
       buttons.forEach((b) => {
         const active = b === btn;
         b.setAttribute("aria-selected", String(active));
-        b.classList.toggle("bg-sd-text-dark", active);
-        b.classList.toggle("border-sd-text-dark", active);
-        b.classList.toggle("text-white", active);
+        b.classList.toggle("bg-sd-text-dark",       active);
+        b.classList.toggle("border-sd-text-dark",   active);
+        b.classList.toggle("text-white",            active);
+        b.classList.toggle("bg-white",              !active);
         b.classList.toggle("border-sd-gray-border", !active);
-        b.classList.toggle("text-sd-text-gray", !active);
+        b.classList.toggle("text-sd-text-gray",     !active);
       });
 
       cards.forEach((card) => {
-        const category = card.dataset.category;
-        const show = filter === "all" || category === filter;
+        const show = filter === "all" || card.dataset.category === filter;
         card.style.display = show ? "" : "none";
       });
+
+      updateCount(filter);
     });
   });
 </script>
