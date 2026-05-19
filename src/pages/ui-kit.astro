@@ -3,7 +3,7 @@
  * SpaceDev UI Kit — internal design system reference
  * Route: /ui-kit  (exclude from sitemap + robots in production)
  */
-import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
 import Button from "../components/ui/Button.astro";
 import Badge from "../components/ui/Badge.astro";
 import Card from "../components/ui/Card.astro";
@@ -20,7 +20,16 @@ const sampleFaqs = [
 ];
 ---
 
-<BaseLayout title="SpaceDev UI Kit" description="Internal design system reference">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>SpaceDev UI Kit</title>
+  <link rel="icon" type="image/png" href="/images/logo/favicon.png" />
+</head>
+<body class="min-h-screen bg-sd-dark text-white antialiased">
 
   <!-- HEADER -->
   <div class="bg-sd-dark border-b border-white/10 sticky top-0 z-50 backdrop-blur-md">
@@ -45,6 +54,7 @@ const sampleFaqs = [
           {[
             { id: "tokens",            label: "Color Tokens" },
             { id: "spacing-animation", label: "Spacing & Motion" },
+            { id: "layout-utilities",  label: "Layout Utilities" },
             { id: "typography",        label: "Typography" },
           ].map(item => (
             <li>
@@ -67,6 +77,7 @@ const sampleFaqs = [
             { id: "cta",             label: "CTA" },
             { id: "star-rating",     label: "Star Rating" },
             { id: "quote-reveal",    label: "Quote Reveal" },
+            { id: "marquee",         label: "Marquee" },
           ].map(item => (
             <li>
               <a href={`#${item.id}`} data-section={item.id}
@@ -341,6 +352,59 @@ const sampleFaqs = [
     </section>
 
     <!-- ═══════════════════════════════════════
+         LAYOUT UTILITIES
+    ════════════════════════════════════════ -->
+    <section id="layout-utilities" class="mx-auto max-w-[1440px] px-6 md:px-10 py-20 border-b border-white/5">
+      <h2 class="text-2xl text-white font-display mb-2">Layout Utilities</h2>
+      <p class="text-sd-text-muted text-sm mb-12">Shared CSS classes for consistent page structure. Always prefer these over hardcoded <code class="text-sd-purple-300 bg-white/5 px-1.5 py-0.5 rounded text-xs">max-w / px</code> values.</p>
+
+      <!-- sd-container -->
+      <div class="mb-12">
+        <div class="flex items-baseline gap-4 mb-4">
+          <code class="text-sd-purple-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-sm font-mono">.sd-container</code>
+          <span class="text-xs text-sd-text-muted">Full-width wrapper with max-width + responsive padding</span>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-6 font-mono text-sm text-sd-text-muted mb-6">
+          <span class="text-sd-purple-300">width:</span> 100%;<br/>
+          <span class="text-sd-purple-300">max-width:</span> 1440px;<br/>
+          <span class="text-sd-purple-300">margin:</span> 0 auto;<br/>
+          <span class="text-sd-purple-300">padding-inline:</span> 1.5rem; <span class="text-white/30">/* mobile */</span><br/>
+          <span class="text-sd-purple-300">padding-inline:</span> 2.5rem; <span class="text-white/30">/* md+ */</span>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-start gap-3">
+            <span class="text-sd-purple-300 mt-0.5">✓</span>
+            <p class="text-sm text-sd-text-muted">Use on every <code class="text-white/70 bg-white/5 px-1 rounded text-xs">{"<section>"}</code> inner wrapper instead of <code class="text-white/70 bg-white/5 px-1 rounded text-xs">mx-auto max-w-[1440px] px-6 md:px-10</code></p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-sd-purple-300 mt-0.5">✓</span>
+            <p class="text-sm text-sd-text-muted">Keeps all sections at the same width — never mix with hardcoded <code class="text-white/70 bg-white/5 px-1 rounded text-xs">px-16</code> or custom max-widths at the container level</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-white/30 mt-0.5">✗</span>
+            <p class="text-sm text-sd-text-muted">Don't apply to elements that need to bleed full-width (marquees, full-bleed backgrounds)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual demo -->
+      <div class="border border-white/10 rounded-2xl overflow-hidden">
+        <div class="bg-white/5 px-4 py-2 border-b border-white/10">
+          <p class="text-xs text-sd-text-muted font-mono">Visual: nested .sd-container inside a full-bleed section</p>
+        </div>
+        <div class="bg-[#1a1a2e] py-8 relative">
+          <div class="absolute inset-0 border-x-2 border-dashed border-sd-purple/20 pointer-events-none" style="left:calc(50% - 720px);right:calc(50% - 720px);"></div>
+          <div class="sd-container">
+            <div class="bg-sd-purple/20 border border-sd-purple/40 rounded-xl py-6 text-center">
+              <p class="text-sm text-sd-purple-300 font-mono">.sd-container content area</p>
+              <p class="text-xs text-sd-text-muted mt-1">max-w 1440px · auto margins · responsive padding</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
          TYPOGRAPHY
     ════════════════════════════════════════ -->
     <section id="typography" class="border-b border-white/5">
@@ -602,6 +666,14 @@ const sampleFaqs = [
           />
         </div>
 
+        <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-5">With icon — 4-col grid</p>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-12">
+          <FeatureCard title="Increased Security"    description="Advanced cryptographic algorithms safeguard data and transactions against cyberattacks and fraud." icon="lock"   tone="dark" />
+          <FeatureCard title="Full Transparency"     description="Every transaction is permanently recorded and easily auditable, improving accountability and trust." icon="eye"    tone="dark" />
+          <FeatureCard title="Improved Efficiency"   description="Automate repetitive workflows and eliminate intermediaries with smart contracts." icon="bolt"   tone="dark" />
+          <FeatureCard title="Proven Track Record"   description="Battle-tested audits across DeFi, NFT, and DAO protocols — with zero post-audit exploits on reviewed code." icon="shield" tone="dark" />
+        </div>
+
         <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-5">Without icon — 4-col grid</p>
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <FeatureCard
@@ -750,16 +822,29 @@ const sampleFaqs = [
     <section id="quote-reveal" class="border-t border-white/5">
       <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-20">
         <h2 class="text-2xl text-white font-display mb-2">Quote Reveal</h2>
-        <p class="text-sd-text-muted text-sm mb-4">Scroll-driven word-by-word reveal. Supports 1 or multiple authors, and dark/light tone.</p>
+        <p class="text-sd-text-muted text-sm mb-4">Scroll-driven word-by-word reveal. Supports 1 or multiple authors (both optional), dark/light tone, and custom width + padding overrides.</p>
         <div class="flex flex-wrap gap-3 mb-2 text-xs text-sd-text-muted font-ui uppercase tracking-widest">
           <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full">tone="dark" | tone="light"</span>
-          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full">authors: Author | Author[]</span>
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full">authors?: Author | Author[]</span>
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full">maxWidth?: string — default "max-w-[1100px]"</span>
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full">padding?: string — default "py-24 md:py-32"</span>
         </div>
+      </div>
+
+      <!-- No authors — compact tagline -->
+      <div class="mb-2">
+        <p class="mx-auto max-w-[1440px] px-6 md:px-10 text-xs font-ui uppercase tracking-widest text-sd-text-muted mb-4">Dark · No authors · Custom maxWidth + padding</p>
+        <QuoteReveal
+          tone="dark"
+          text="Stay ahead of hacks. Our security audits catch vulnerabilities before they catch you."
+          maxWidth="max-w-3xl"
+          padding="py-16 md:py-24"
+        />
       </div>
 
       <!-- Dark variant -->
       <div class="mb-2">
-        <p class="mx-auto max-w-[1440px] px-6 md:px-10 text-xs font-ui uppercase tracking-widest text-sd-text-muted mb-4">Dark (default)</p>
+        <p class="mx-auto max-w-[1440px] px-6 md:px-10 text-xs font-ui uppercase tracking-widest text-sd-text-muted mb-4">Dark · With author</p>
         <QuoteReveal
           tone="dark"
           text="There's no question that blockchain will change the world; the real question is when. At SpaceDev, we firmly believe in its transformative power."
@@ -769,7 +854,7 @@ const sampleFaqs = [
 
       <!-- Light variant -->
       <div class="mb-2">
-        <p class="mx-auto max-w-[1440px] px-6 md:px-10 text-xs font-ui uppercase tracking-widest text-sd-text-muted mb-4">Light</p>
+        <p class="mx-auto max-w-[1440px] px-6 md:px-10 text-xs font-ui uppercase tracking-widest text-sd-text-muted mb-4">Light · Multiple authors</p>
         <QuoteReveal
           tone="light"
           text="Great products aren't built in isolation. They come from close collaboration, honest feedback, and a team that genuinely cares about the outcome."
@@ -780,6 +865,83 @@ const sampleFaqs = [
         />
       </div>
 
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         MARQUEE
+    ════════════════════════════════════════ -->
+    <section id="marquee" class="border-t border-white/5">
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10 py-20">
+        <h2 class="text-2xl text-white font-display mb-2">Marquee</h2>
+        <p class="text-sd-text-muted text-sm mb-4">Horizontally scrolling text banner. Two contexts: <strong class="text-white">footer marquee</strong> (always present, themed per page) and <strong class="text-white">in-page marquee</strong> (optional, sits between the final CTA and footer).</p>
+        <div class="flex flex-wrap gap-3 mb-12 text-xs text-sd-text-muted font-ui uppercase tracking-widest">
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full">Footer: footerMarquee + footerMarqueeTheme on ServicePageData</span>
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-full">In-page: marqueeText on ServicePageData</span>
+        </div>
+      </div>
+
+      <!-- Light theme (default) -->
+      <div class="mb-2">
+        <p class="mx-auto max-w-[1440px] px-6 md:px-10 text-xs font-ui uppercase tracking-widest text-sd-text-muted mb-4">Light theme — default for all pages</p>
+        <div class="py-6 overflow-hidden bg-sd-light border-t border-sd-gray-border">
+          <div class="sd-marquee-wrapper">
+            <div class="sd-marquee flex items-center whitespace-nowrap" style="animation-duration: 25s">
+              {[...Array(6)].map(() => (
+                <span
+                  class="text-5xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight mr-20"
+                  style="background: linear-gradient(90deg, #673ae4 0%, #44cdf3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+                >
+                  Product Development that Sparks Innovation &nbsp;
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dark theme -->
+      <div class="mb-12">
+        <p class="mx-auto max-w-[1440px] px-6 md:px-10 text-xs font-ui uppercase tracking-widest text-sd-text-muted mb-4">Dark theme — opt-in via <code class="text-sd-purple-300 bg-white/5 px-1 rounded">footerMarqueeTheme: "dark"</code> on ServicePageData</p>
+        <div class="py-6 overflow-hidden bg-sd-dark border-t border-white/10">
+          <div class="sd-marquee-wrapper">
+            <div class="sd-marquee flex items-center whitespace-nowrap" style="animation-duration: 25s">
+              {[...Array(6)].map(() => (
+                <span
+                  class="text-5xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight mr-20"
+                  style="background: linear-gradient(90deg, #673ae4 0%, #44cdf3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+                >
+                  Smart contract audits that protect your future. &nbsp;
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Usage notes -->
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10 pb-20">
+        <p class="text-xs text-sd-text-muted uppercase tracking-widest mb-5">Usage</p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+            <p class="text-xs text-sd-purple-300 font-mono mb-3">Footer marquee (per-page theming)</p>
+            <pre class="text-xs text-sd-text-muted leading-relaxed overflow-x-auto">{`// services.ts
+export const blockAuditData: ServicePageData = {
+  footerMarquee: "Smart contract audits...",
+  footerMarqueeTheme: "dark",  // omit = "light"
+  ...
+}`}</pre>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+            <p class="text-xs text-sd-purple-300 font-mono mb-3">In-page marquee (optional mid-page band)</p>
+            <pre class="text-xs text-sd-text-muted leading-relaxed overflow-x-auto">{`// services.ts — renders between finalCta
+// and the footer; always dark bg + gradient text
+export const someData: ServicePageData = {
+  marqueeText: "Blockchain. Web3. DeFi.",
+  ...
+}`}</pre>
+          </div>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -842,4 +1004,5 @@ const sampleFaqs = [
   if (sections[0]) activate(sections[0].id);
 </script>
 
-</BaseLayout>
+</body>
+</html>

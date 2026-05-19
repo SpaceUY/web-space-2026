@@ -1,73 +1,97 @@
 ---
 import ServicePageLayout from "../layouts/ServicePageLayout.astro";
 import Button from "../components/ui/Button.astro";
+import QuoteReveal from "../components/ui/QuoteReveal.astro";
 import { blockAuditData } from "../data/services";
+
 ---
 
 <ServicePageLayout data={blockAuditData}>
-  <!-- TAGLINE + WHY CHOOSE OUR SMART CONTRACT AUDIT — injects between hero and process -->
+
+  <!-- TAGLINE + WHY CHOOSE — injects between hero and process -->
   <div slot="pre-process">
 
-    <!-- Tagline -->
-    <section class="bg-[#141414] py-20 md:py-28">
-      <div class="mx-auto max-w-[1440px] px-6 md:px-10" data-animate>
-        <p class="font-display font-semibold text-4xl md:text-6xl lg:text-7xl text-white leading-[1.1]">
-          Stay ahead of hacks! Our security audits catch vulnerabilities before they catch you.
-        </p>
-      </div>
-    </section>
+    <!-- Tagline scroll-reveal -->
+    <QuoteReveal
+      text="Stay ahead of hacks. Our security audits catch vulnerabilities before they catch you."
+      tone="dark"
+      maxWidth="max-w-3xl"
+      padding="py-32 md:py-48"
+    />
 
-
-
-    <!-- Why choose our Smart Contract Audit -->
-    <section class="bg-sd-light-2 py-20 md:py-28">
-      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-        <div class="grid gap-12 md:grid-cols-2 items-center">
-          <figure class="rounded-3xl overflow-hidden border border-sd-gray-border" data-animate>
-            <img
-              src="/images/content/4EnN0joO3tVJiGxfaLXZnG7Nb0.png"
-              alt="Smart contract security review on screen"
-              loading="lazy"
-              class="w-full h-auto"
-              width="900" height="650"
-            />
-          </figure>
+    <!-- Why choose our Smart Contract Audit — dark, text left / image right -->
+    <section class="bg-[#141414] py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="grid gap-8 md:grid-cols-[1fr_1.6fr] items-center">
+          <!-- Text LEFT -->
           <div data-animate>
-            <h2 class="font-display font-semibold text-3xl md:text-4xl text-sd-text-dark leading-[1.1] mb-6">
+            <h2 class="section-title text-white mb-6">
               Why choose our Smart Contract Audit?
             </h2>
-            <p class="font-body text-sd-text-gray leading-relaxed mb-4">
-              In the world of blockchain, security goes beyond just protecting data—it's about safeguarding your assets
+            <p class="text-sd-text-muted leading-relaxed mb-4">
+              In the world of blockchain, security goes beyond just protecting data — it's about safeguarding your assets
               and access controls. With hackers constantly evolving their methods, smart contracts, wallets, and the
               players managing them are increasingly at risk without proper precautions.
             </p>
-            <p class="font-body text-sd-text-gray leading-relaxed mb-8">
+            <p class="text-sd-text-muted leading-relaxed">
               Our audits go beyond technical verification of smart contracts' security and correctness. We also assess
               management security (SECOPS), ensuring every player in your system follows robust protocols to mitigate
               vulnerabilities across the board.
             </p>
-            <div class="flex flex-wrap gap-4">
-              <Button href="/contact" variant="primary">Get in touch</Button>
-            </div>
           </div>
+          <!-- Lottie animation RIGHT -->
+          <figure class="rounded-3xl overflow-hidden" data-animate>
+            <div id="lottie-why-choose" class="w-full aspect-video"></div>
+          </figure>
         </div>
       </div>
     </section>
 
   </div>
 
-  <!-- SECURE YOUR BUSINESS CTA — injects before benefits section -->
-  <div slot="pre-benefits">
-    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
-      <div class="mx-auto max-w-[1100px] px-6 md:px-10 text-center" data-animate>
-        <h2 class="font-display font-semibold text-3xl md:text-5xl text-white leading-[1.1] mb-4 max-w-3xl mx-auto">
-          Secure your business now
-        </h2>
-        <p class="font-body text-sd-text-muted leading-relaxed max-w-2xl mx-auto mb-10">
-          Contact us for a Smart Contract Audit Quote!
-        </p>
-        <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+  <!-- SHIFT SECURITY — 6 audit techniques, injects after process and before offers -->
+  <div slot="post-process">
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto text-center mb-16" data-animate>
+          <h2 class="section-title text-white mb-6">
+            Shift security to the forefront of your development cycle
+          </h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            As smart contracts evolve into more complex programs managing significant assets, it's crucial for
+            developers to leverage tools that thoroughly analyze and identify vulnerabilities before deployment,
+            safeguarding against potential exploitation.
+          </p>
+        </div>
+        <!-- Desktop timeline -->
+        <img
+          src="/images/content/timelineAudit.svg"
+          alt="Smart contract audit timeline: Manual Code Review, Static Analysis, Advanced Fuzzing, Dynamic Integration Testing, Gas Optimizations, Formal Verification"
+          class="hidden md:block w-4/5 h-auto mx-auto"
+          loading="lazy"
+        />
+        <!-- Mobile timeline -->
+        <img
+          src="/images/content/timelineAuditMOB.svg"
+          alt="Smart contract audit timeline"
+          class="block md:hidden w-full h-auto"
+          loading="lazy"
+        />
       </div>
     </section>
   </div>
+
+
 </ServicePageLayout>
+
+<script>
+  import lottie from "lottie-web";
+  const anim = lottie.loadAnimation({
+    container: document.getElementById("lottie-why-choose")!,
+    renderer: "svg",
+    loop: true,
+    autoplay: true,
+    path: "/images/content/blockaudit-why-choose.json",
+  });
+  anim.setSpeed(0.3);
+</script>
