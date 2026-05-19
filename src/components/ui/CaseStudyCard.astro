@@ -39,7 +39,7 @@ const gradient = accentGradients[caseStudy.accent ?? "purple"];
           src={caseStudy.image}
           alt={caseStudy.name}
           loading="lazy"
-          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
         />
       ) : (
         <div class={`absolute inset-0 bg-gradient-to-br ${gradient}`}></div>
@@ -100,7 +100,7 @@ const gradient = accentGradients[caseStudy.accent ?? "purple"];
           src={caseStudy.image}
           alt={caseStudy.name}
           loading="lazy"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
         />
       ) : (
         <div class={`w-full h-full bg-gradient-to-br ${gradient}`}></div>
