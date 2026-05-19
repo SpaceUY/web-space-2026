@@ -10,8 +10,12 @@ import "../../styles/prose.css";
 export async function getStaticPaths() {
   const studies = await getCollection("case-studies");
   return studies.map((entry, idx) => {
-    const next = studies[(idx + 1) % studies.length];
-    const nextNext = studies[(idx + 2) % studies.length];
+    // Prefer same-category studies for "Continue Reading"
+    const sameCategory = studies.filter(
+      (s) => s.id !== entry.id && s.data.category === entry.data.category
+    );
+    const next     = sameCategory[idx % sameCategory.length] ?? studies[(idx + 1) % studies.length];
+    const nextNext = sameCategory[(idx + 1) % sameCategory.length] ?? studies[(idx + 2) % studies.length];
     return { params: { slug: entry.id }, props: { entry, next, nextNext } };
   });
 }
@@ -86,6 +90,15 @@ const hasRichContent =
       <Badge tone="outline" class="mb-6">{entry.data.category} · Case Study</Badge>
       <h1 class="text-4xl md:text-6xl lg:text-7xl text-white max-w-4xl leading-tight">{entry.data.name}</h1>
       <p class="mt-6 text-xl md:text-2xl text-white/85 max-w-2xl leading-snug">{entry.data.tagline}</p>
+      {entry.data.services.length > 0 && (
+        <ul class="mt-8 flex flex-wrap gap-2">
+          {entry.data.services.map((s) => (
+            <li class="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs text-white/80 border border-white/20">
+              {s}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   </section>
 
