@@ -361,11 +361,29 @@ spacedev-assets/
 
 **NUNCA commitear directo a `main`.** Todo cambio debe ir en una rama separada y mergearse vía Pull Request.
 
+#### Arrancar siempre desde main actualizado
+
+**Antes de crear cualquier branch**, sincronizar main. Saltear este paso es la causa principal de conflictos:
+
+```bash
+git checkout main && git pull origin main
+git checkout -b fix/mi-fix
+```
+
+#### Flujo de PR — Federico es el único que mergea
+
+1. Hacer el cambio en el branch
+2. El dev prueba localmente con `npx astro dev`
+3. El dev confirma que todo está bien
+4. El dev dice explícitamente **"mandá el PR"**
+5. Recién entonces se crea el PR
+
+**⚠️ Nunca crear un PR sin que el dev lo pida.** Federico Sendra es el único que aprueba y mergea PRs. No abrir PRs "por las dudas" ni como paso automático del workflow.
+
 ```bash
 # 1. Crear rama para el trabajo (nombre descriptivo)
+git checkout main && git pull origin main
 git checkout -b fix/homepage-stats-section
-git checkout -b feat/blog-posts-batch-2
-git checkout -b fix/mobile-responsiveness
 
 # 2. Hacer los cambios, commitear normalmente
 git add src/pages/index.astro
@@ -374,9 +392,8 @@ git commit -m "fix: animate counters in stats section"
 # 3. Pushear la rama
 git push origin fix/homepage-stats-section
 
-# 4. Crear PR en GitHub
+# 4. Esperar confirmación del dev → recién entonces:
 gh pr create --title "fix: animate counters in stats section" --body "..."
-# o abrir manualmente: https://github.com/SpaceUY/web-space-2026/compare/fix/homepage-stats-section
 ```
 
 **Convención de nombres de ramas:**
@@ -443,6 +460,40 @@ El marquee está en `src/pages/index.astro` y usa `clientLogos` definido en el f
 
 ---
 
+### sd-prose en fondos oscuros
+
+`sd-prose` tiene texto oscuro (`#1a1a1a`) — en secciones con fondo `bg-sd-dark` o similar hay que combinar con `.sd-prose-dark`:
+
+```astro
+<!-- ✅ correcto — texto visible en fondo oscuro -->
+<article class="sd-prose sd-prose-dark">
+
+<!-- ❌ incorrecto — texto invisible sobre fondo oscuro -->
+<article class="sd-prose">
+```
+
+`.sd-prose-dark` está definido en `src/styles/prose.css` y sobreescribe colores de texto, headings, links, blockquotes, code y tables para fondos oscuros.
+
+---
+
+### Assets de video y archivos pesados — NO van en git
+
+**Videos y archivos >1MB no se commitean al repo.** La carpeta `public/videos/` existe localmente pero no está trackeada en git — si un video está ahí, Vercel no lo va a ver y no se va a deployar.
+
+**Regla:** todo video o asset pesado va en **Vercel Blob Storage** (o CDN externo) y se referencia por URL:
+
+```astro
+<!-- ✅ correcto -->
+<source src="https://xxxx.public.blob.vercel-storage.com/video.mp4" type="video/mp4" />
+
+<!-- ❌ incorrecto — no se deploya -->
+<source src="/videos/video.mp4" type="video/mp4" />
+```
+
+Para subir a Vercel Blob: dashboard de Vercel → Storage → Blob → Upload.
+
+---
+
 ## ESTADO DE BUILD
 
 - ✅ `npx astro check` — 0 errores, 0 warnings (solo ts(6133) ignorados)
@@ -451,6 +502,6 @@ El marquee está en `src/pages/index.astro` y usa `clientLogos` definido en el f
 
 ---
 
-*CLAUDE.md actualizado el 2026-05-12*  
+*CLAUDE.md actualizado el 2026-05-20*  
 *Stack: Astro 5 + Tailwind CSS v4 + TypeScript + Vercel*  
 *Sitio de referencia: https://spacedev.io/*
