@@ -48,6 +48,19 @@ const caseStudies = defineCollection({
     deliverables: z.array(z.string()).default([]),
     outcome: z.string().optional(),
     gallery: z.array(z.string()).default([]),
+    /** KPI highlights shown in the metrics band */
+    metrics: z
+      .array(z.object({ value: z.string(), label: z.string() }))
+      .optional(),
+    /** Verified Clutch review for social proof */
+    clutchReview: z
+      .object({
+        text: z.string(),
+        reviewer: z.string(),
+        stars: z.number().min(1).max(5).default(5),
+        url: z.string().default("https://clutch.co/profile/spacedev"),
+      })
+      .optional(),
   }),
 });
 
