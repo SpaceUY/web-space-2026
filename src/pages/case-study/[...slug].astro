@@ -61,11 +61,10 @@ const heroImage   = entry.data.heroImage;
 const summary     = entry.data.summary;
 const objectives  = entry.data.objectives ?? [];
 const deliverables = entry.data.deliverables ?? [];
-const outcome     = entry.data.outcome;
-const gallery     = entry.data.gallery ?? [];
-const metrics     = entry.data.metrics;
+const outcome      = entry.data.outcome;
+const gallery      = (entry.data.gallery ?? []).slice(0, 5);
+const metrics      = entry.data.metrics;
 const clutchReview = entry.data.clutchReview;
-
 const hasRichContent =
   !!summary || objectives.length > 0 || deliverables.length > 0 || !!outcome || gallery.length > 0;
 ---
@@ -165,7 +164,7 @@ const hasRichContent =
       <!-- CHALLENGE / SOLUTION (markdown body) -->
       <section class="bg-sd-dark py-16 md:py-24">
         <div class="mx-auto max-w-[1200px] px-6 md:px-10 grid gap-12 lg:grid-cols-3">
-          <article class="sd-prose lg:col-span-2">
+          <article class="sd-prose sd-prose-dark lg:col-span-2">
             <Content />
           </article>
 
@@ -317,7 +316,7 @@ const hasRichContent =
     <!-- DEFAULT BODY (no rich content yet) -->
     <section class="bg-sd-dark py-16 md:py-24">
       <div class="mx-auto max-w-[1200px] px-6 md:px-10 grid gap-12 lg:grid-cols-3">
-        <article class="sd-prose lg:col-span-2">
+        <article class="sd-prose sd-prose-dark lg:col-span-2">
           <Content />
         </article>
 
