@@ -59,8 +59,8 @@ const svgContent = icon ? (ICONS[icon] ?? "") : "";
   data-animate
 >
   {number ? (
-    <div class="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-full bg-sd-purple/20 shrink-0">
-      <span class="font-display text-lg text-sd-purple" aria-hidden="true">{number}</span>
+    <div class={`mb-5 inline-flex items-center justify-center w-12 h-12 rounded-full shrink-0 ${isDark ? "bg-sd-purple/40" : "bg-sd-purple/20"}`}>
+      <span class={`font-display text-lg ${isDark ? "text-sd-purple-300" : "text-sd-purple"}`} aria-hidden="true">{number}</span>
     </div>
   ) : icon && svgContent ? (
     <div class="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-full bg-sd-purple/20 shrink-0">

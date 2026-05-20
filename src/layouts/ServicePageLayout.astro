@@ -70,11 +70,12 @@ const serviceJsonLd = {
   description={data.seo.description}
   jsonLd={serviceJsonLd}
   footerMarquee={data.footerMarquee}
+  footerMarqueeTheme={data.footerMarqueeTheme}
 >
   <!-- HERO -->
   {data.heroVariant === "light" ? (
     <section class="relative overflow-hidden" style="background: var(--sd-light); background-image: radial-gradient(ellipse at 80% 50%, rgba(103,58,228,0.08) 0%, transparent 60%);">
-      <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-32">
+      <div class="relative sd-container py-24 md:py-32">
         <div class={data.heroImage ? "grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center" : ""}>
           <div class="max-w-4xl" data-animate>
             <Breadcrumbs items={crumbs} visible={false} class="mb-8" />
@@ -131,7 +132,7 @@ const serviceJsonLd = {
   ) : (
   <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
     <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 20% 30%, var(--sd-purple), transparent 50%), radial-gradient(circle at 80% 70%, var(--sd-purple-300), transparent 40%);"></div>
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-32">
+    <div class="relative sd-container py-24 md:py-32">
       <div class={data.heroImage ? "grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center" : ""}>
         <div class="max-w-4xl" data-animate>
           <Breadcrumbs items={crumbs} visible={false} class="mb-8" />
@@ -199,10 +200,11 @@ const serviceJsonLd = {
   <slot name="pre-process" />
 
   <!-- PROCESS (numbered steps) -->
+
   {data.process && (
     data.process.variant === "sticky-light" ? (
       <section class="bg-white py-20 md:py-32 border-b border-sd-gray-border">
-        <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+        <div class="sd-container">
           <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
             <div class="md:sticky md:top-32" data-animate>
               <h2 class="section-title text-sd-text-dark mb-6">
@@ -227,9 +229,36 @@ const serviceJsonLd = {
           </div>
         </div>
       </section>
+    ) : data.process.variant === "sticky-dark" ? (
+      <section class="py-20 md:py-32 border-b border-white/5" style="background: var(--sd-purple-deep);">
+        <div class="sd-container">
+          <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+            <div class="md:sticky md:top-32" data-animate>
+              <h2 class="section-title text-white mb-6">
+                {data.process.title}
+              </h2>
+              {data.process.description && (
+                <p class="text-sd-text-muted leading-relaxed">{data.process.description}</p>
+              )}
+            </div>
+            <ol class="flex flex-col gap-6">
+              {data.process.items.map((step) => (
+                <li>
+                  <FeatureCard
+                    number={step.number}
+                    title={step.title}
+                    description={step.description}
+                    tone="dark"
+                  />
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
     ) : (
       <section class="bg-sd-dark py-20 md:py-28 border-b border-white/5">
-        <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <div class="sd-container">
           <SectionHeading
             title={data.process.title}
             description={data.process.description}
@@ -252,10 +281,13 @@ const serviceJsonLd = {
     )
   )}
 
+  <!-- Named slot: inject content between process and offers -->
+  <slot name="post-process" />
+
   <!-- OFFERS (what we build) -->
   {data.offers && (
-    <section class={`py-20 md:py-28 ${data.offers.style === "light-cards" ? "bg-sd-light border-b border-sd-gray-border" : "bg-sd-dark"}`}>
-      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+    <section class={`py-20 md:py-28 ${data.offers.style === "light-cards" ? "bg-sd-light border-b border-sd-gray-border" : data.offers.style === "dark-cards" ? "bg-sd-dark border-t border-white/10" : "bg-sd-dark"}`}>
+      <div class="sd-container">
         <SectionHeading
           title={data.offers.title}
           description={data.offers.description}
@@ -309,6 +341,17 @@ const serviceJsonLd = {
               </div>
             ))}
           </div>
+        ) : data.offers.style === "dark-cards" ? (
+          <div id="cards-cursor-zone" class="relative grid gap-4 md:grid-cols-2">
+            <div id="cards-cursor" class="pointer-events-none fixed z-50 w-16 h-16 rounded-full opacity-0 transition-opacity duration-200" style="background: var(--sd-purple); transform: translate(-50%, -50%); will-change: transform;" />
+            {data.offers.items.map((o) => (
+              <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+                <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{o.number}</p>
+                <h3 class="text-base font-display font-semibold text-white mb-3">{o.title}</h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{o.description}</p>
+              </div>
+            ))}
+          </div>
         ) : (
           <div class="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
             {data.offers.items.map((o) => (
@@ -320,20 +363,27 @@ const serviceJsonLd = {
             ))}
           </div>
         )}
+        {data.offers.ctaButton && (
+          <div class="flex justify-start mt-10" data-animate>
+            <Button href={data.offers.ctaButton.href} variant="primary" external={data.offers.ctaButton.external}>
+              {data.offers.ctaButton.label}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   )}
 
   <!-- TECH STACK -->
   {data.techStack && (
-    <section class={`relative py-20 md:py-28 overflow-hidden ${data.techStack.tone === "light" ? "bg-sd-light border-t border-sd-gray-border" : "bg-sd-dark border-t border-white/5"}`}>
+    <section class={`relative py-20 md:py-28 overflow-hidden ${data.techStack.tone === "light" ? "bg-sd-light border-t border-b border-sd-gray-border" : "bg-sd-dark border-t border-b border-white/5"}`}>
       <div class={`absolute inset-0 ${data.techStack.tone === "light" ? "sd-dot-grid-light" : "sd-dot-grid"}`}></div>
-      <div class="relative mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="relative sd-container">
         <div class="text-center max-w-2xl mx-auto mb-16" data-animate>
           <h2 class={`section-title mb-5 ${data.techStack.tone === "light" ? "text-sd-text-dark" : "text-white"}`}>{data.techStack.title}</h2>
           <p class={`text-base md:text-lg leading-relaxed ${data.techStack.tone === "light" ? "text-sd-text-gray" : "text-sd-text-muted"}`}>{data.techStack.subtitle}</p>
         </div>
-        <div class="flex flex-col items-center gap-8 md:gap-10">
+        <div class="flex flex-col items-center gap-8 md:gap-10 mb-14">
           {[data.techStack.tools.slice(0, 5), data.techStack.tools.slice(5)].map((row) => (
             <div class="flex flex-wrap justify-center gap-6 md:gap-10">
               {row.map((tool, i) => {
@@ -356,6 +406,17 @@ const serviceJsonLd = {
             </div>
           ))}
         </div>
+        {data.techStack.ctaButton && (
+          <div class="flex justify-center mt-4" data-animate>
+            <Button
+              href={data.techStack.ctaButton.href}
+              variant="primary"
+              external={data.techStack.ctaButton.external}
+            >
+              {data.techStack.ctaButton.label}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   )}
@@ -363,7 +424,7 @@ const serviceJsonLd = {
   <!-- CASE STUDIES -->
   {featured.length > 0 && (
     <section class={`py-20 md:py-28 ${data.caseStudiesTone === "light" ? "border-t border-sd-gray-border" : ""}`} style={data.caseStudiesTone === "light" ? "background: #EDEDED;" : "background: var(--sd-purple-deep);"}>
-      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="sd-container">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <SectionHeading
             title={data.caseStudiesTitle ?? "Our Work in Action"}
@@ -396,7 +457,7 @@ const serviceJsonLd = {
   <!-- MID CTA (between case studies and benefits) -->
   {data.midCta && (
     <section class={`pb-14 md:pb-20 ${data.caseStudiesTone === "light" ? "" : "bg-sd-dark"}`} style={data.caseStudiesTone === "light" ? "background: #EDEDED;" : ""}>
-      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="sd-container">
         <div class="relative overflow-hidden rounded-3xl px-10 py-12 md:px-16 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-8"
              style="background: linear-gradient(135deg, #3b2080 0%, #1e1040 60%, #0f0820 100%);">
           <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 70% 50%, #7c3aed, transparent 60%);"></div>
@@ -420,15 +481,21 @@ const serviceJsonLd = {
   <!-- BENEFITS -->
   {data.benefits && (
     <section class={`py-20 md:py-28 ${data.caseStudiesTone === "light" ? "bg-sd-light border-t border-sd-gray-border" : "bg-sd-dark"}`}>
-      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="sd-container">
         <SectionHeading
           title={data.benefits.title}
           description={data.benefits.description}
           tone={data.caseStudiesTone === "light" ? "dark" : "light"}
-          align="center"
+          align={data.benefits.titleAlign ?? "left"}
           class="mb-14"
         />
-        {data.benefits.layout === "4-3" ? (
+        {data.benefits.layout === "4col" ? (
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {data.benefits.items.map((b) => (
+              <FeatureCard title={b.title} description={b.description} icon={b.icon} tone={data.caseStudiesTone === "light" ? "light" : "dark"} />
+            ))}
+          </div>
+        ) : data.benefits.layout === "4-3" ? (
           <>
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-6">
               {data.benefits.items.slice(0, 4).map((b) => (
@@ -468,7 +535,7 @@ const serviceJsonLd = {
       class={`py-20 md:py-28 ${data.caseStudiesTone === "light" ? "border-t border-sd-gray-border" : ""}`}
       style={data.caseStudiesTone === "light" ? "background: #EDEDED;" : "background: var(--sd-purple-deep);"}
     >
-      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="sd-container">
         {data.whyUs.style === "accordion" ? (
           <>
             <SectionHeading
@@ -494,7 +561,6 @@ const serviceJsonLd = {
               title={data.whyUs.title}
               description={data.whyUs.description}
               tone={data.caseStudiesTone === "light" ? "dark" : "light"}
-              align="center"
               class="mb-14"
             />
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -516,7 +582,7 @@ const serviceJsonLd = {
   <!-- FAQ -->
   {data.faqs && data.faqs.length > 0 && (
     <section class={`py-20 md:py-32 ${data.caseStudiesTone === "light" ? "bg-sd-light border-t border-sd-gray-border" : "bg-sd-dark border-t border-white/5"}`}>
-      <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+      <div class="sd-container">
         <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
           <h2 class={`section-title md:sticky md:top-32 ${data.caseStudiesTone === "light" ? "text-sd-text-dark" : "text-white"}`}>
             Frequently Asked Questions
