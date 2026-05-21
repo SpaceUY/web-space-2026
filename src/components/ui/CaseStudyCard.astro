@@ -19,7 +19,7 @@ const accentGradients: Record<NonNullable<CaseStudy["accent"]>, string> = {
 
 const gradient = accentGradients[caseStudy.accent ?? "purple"];
 
-// Pills — static, no hover
+// Pills — static
 const tagBase     = "inline-flex items-center px-2.5 py-1 rounded-md text-[10px] border";
 const tagCategory = dark
   ? `${tagBase} bg-white/10 text-white/60 border-white/10`
@@ -28,7 +28,7 @@ const tagService = dark
   ? `${tagBase} bg-white/[0.05] text-white/50 border-white/10`
   : `${tagBase} bg-sd-light-2 text-sd-text-gray border-sd-gray-border`;
 
-// Card shell — group so the bar reacts to card hover
+// group on <a> so bar + image react to card hover
 const cardShell = dark
   ? "group bg-white/[0.04] border border-white/10"
   : "group bg-sd-light-2 border border-sd-gray-border";
@@ -46,11 +46,15 @@ const textLink  = dark ? "text-sd-purple-300" : "text-sd-purple";
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
-    <!-- LEFT: image -->
-    <div class="w-[52%] shrink-0">
+    <!-- LEFT: image — zoom on card hover -->
+    <div class="w-[52%] shrink-0 overflow-hidden">
       {caseStudy.image ? (
-        <img src={caseStudy.image} alt={caseStudy.name} loading="lazy"
-          class="w-full h-full object-cover" />
+        <img
+          src={caseStudy.image}
+          alt={caseStudy.name}
+          loading="lazy"
+          class="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+        />
       ) : (
         <div class={`w-full h-full bg-gradient-to-br ${gradient}`}></div>
       )}
@@ -81,8 +85,12 @@ const textLink  = dark ? "text-sd-purple-300" : "text-sd-purple";
       </span>
     </div>
 
-    <!-- Progress bar: fills on card hover via CSS transition -->
-    <div class="sd-bar" aria-hidden="true"></div>
+    <!-- Progress bar: scaleX 0→1 on group hover, origin-left -->
+    <div
+      class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[1800ms] ease-linear"
+      style="background: linear-gradient(to right, #673ae4, #44cdf3);"
+      aria-hidden="true"
+    ></div>
   </a>
 
 ) : (
@@ -93,11 +101,15 @@ const textLink  = dark ? "text-sd-purple-300" : "text-sd-purple";
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
-    <!-- Image -->
-    <div class="shrink-0 h-[224px]">
+    <!-- Image — zoom on card hover -->
+    <div class="shrink-0 h-[224px] overflow-hidden">
       {caseStudy.image ? (
-        <img src={caseStudy.image} alt={caseStudy.name} loading="lazy"
-          class="w-full h-full object-cover" />
+        <img
+          src={caseStudy.image}
+          alt={caseStudy.name}
+          loading="lazy"
+          class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+        />
       ) : (
         <div class={`w-full h-full bg-gradient-to-br ${gradient}`}></div>
       )}
@@ -128,25 +140,12 @@ const textLink  = dark ? "text-sd-purple-300" : "text-sd-purple";
       </span>
     </div>
 
-    <!-- Progress bar: fills on card hover via CSS transition -->
-    <div class="sd-bar" aria-hidden="true"></div>
+    <!-- Progress bar: scaleX 0→1 on group hover, origin-left -->
+    <div
+      class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[1800ms] ease-linear"
+      style="background: linear-gradient(to right, #673ae4, #44cdf3);"
+      aria-hidden="true"
+    ></div>
   </a>
 
 )}
-
-<style>
-  /* Bar: sits at the bottom, starts at width 0, transitions to 100% on card hover */
-  .sd-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: linear-gradient(to right, #673ae4, #44cdf3);
-    transition: width 1.8s linear;
-  }
-  /* The <a> has class "group" — standard CSS sibling/descendant hover works fine */
-  a:hover .sd-bar {
-    width: 100%;
-  }
-</style>
