@@ -3,9 +3,7 @@ import type { CaseStudy } from "../../data/case-studies";
 
 interface Props {
   caseStudy: CaseStudy;
-  /** Full-width editorial card (every 4th in the rhythm) */
   featured?: boolean;
-  /** Dark page background — adjusts text and button colors */
   dark?: boolean;
   class?: string;
 }
@@ -20,81 +18,94 @@ const accentGradients: Record<NonNullable<CaseStudy["accent"]>, string> = {
 };
 
 const gradient = accentGradients[caseStudy.accent ?? "purple"];
+
+// Pills — static
+const tagBase     = "inline-flex items-center px-2.5 py-1 rounded-md text-[10px] border";
+const tagCategory = dark
+  ? `${tagBase} bg-white/10 text-white/60 border-white/10`
+  : `${tagBase} bg-sd-light-2 text-sd-text-gray border-sd-gray-border`;
+const tagService = dark
+  ? `${tagBase} bg-white/[0.05] text-white/50 border-white/10`
+  : `${tagBase} bg-sd-light-2 text-sd-text-gray border-sd-gray-border`;
+
+// group on <a> so bar + image react to card hover
+const cardShell = dark
+  ? "group bg-white/[0.04]"
+  : "group bg-sd-light-2";
+
+const textTitle = dark ? "text-white"    : "text-sd-text-dark";
+const textBody  = dark ? "text-white/55" : "text-sd-text-gray";
+// same color as description by default, turns purple on card hover
+const textLink  = dark
+  ? "text-white/55 group-hover:text-sd-purple-300"
+  : "text-sd-text-gray group-hover:text-sd-purple";
 ---
 
 {featured ? (
 
-  <!-- ── FEATURED — horizontal, image left + dark panel right ── -->
-  <!-- group on the <a> so child group-hover: classes react to card hover -->
   <a
     href={`/case-study/${caseStudy.slug}`}
-    class={`group sm:col-span-2 md:col-span-3 grid grid-cols-1 sm:grid-cols-[3fr_2fr] overflow-hidden rounded-xl ${className}`.trim()}
+    class={`relative col-span-2 flex items-stretch h-full rounded-xl overflow-hidden ${cardShell} ${className}`.trim()}
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
-    <!-- Image -->
-    <div class="relative aspect-[4/3] sm:aspect-auto overflow-hidden">
+    <!-- LEFT: image — zoom on card hover -->
+    <div class="w-[52%] shrink-0 overflow-hidden">
       {caseStudy.image ? (
         <img
           src={caseStudy.image}
           alt={caseStudy.name}
           loading="lazy"
-          class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+          class="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
         />
       ) : (
-        <div class={`absolute inset-0 bg-gradient-to-br ${gradient}`}></div>
+        <div class={`w-full h-full bg-gradient-to-br ${gradient}`}></div>
       )}
     </div>
 
-    <!-- Dark content panel -->
-    <div class="bg-[#141414] p-8 sm:p-10 flex flex-col justify-between min-h-[280px] sm:min-h-[380px]">
-      <!-- Category + service tags -->
-      <div class="flex flex-wrap gap-2">
-        <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-white/10 text-[10px] uppercase tracking-wider text-white/60 border border-white/10">
-          {caseStudy.category}
-        </span>
-        {caseStudy.services?.slice(0, 2).map((s) => (
-          <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-white/[0.05] text-[10px] text-white/50 border border-white/10">
-            {s}
-          </span>
+    <!-- RIGHT: content — relative so the bar anchors here (starts at image boundary) -->
+    <div class="relative flex flex-col flex-1 p-7">
+      <div class="flex flex-wrap gap-2 mb-2.5">
+        <span class={`${tagCategory} uppercase tracking-wider`}>{caseStudy.category}</span>
+        {caseStudy.services?.slice(0, 3).map((s) => (
+          <span class={tagService}>{s}</span>
         ))}
       </div>
 
-      <!-- Name + tagline + button -->
-      <div>
-        {caseStudy.highlight && (
-          <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-sd-purple/20 text-[10px] text-sd-purple-300 border border-sd-purple/30 mb-4 w-fit block">
-            {caseStudy.highlight}
-          </span>
-        )}
-        <h3 class="text-2xl sm:text-3xl text-white font-display font-semibold leading-tight mb-3">
-          {caseStudy.name}
-        </h3>
-        <p class="text-sm text-white/50 leading-relaxed mb-6">{caseStudy.tagline}</p>
+      <h3 class={`text-xl font-display font-semibold leading-snug mb-3 ${textTitle}`}>
+        {caseStudy.name}
+      </h3>
 
-        <!-- Button reacts to the whole card hover via group-hover: -->
-        <span class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white/10 text-sm text-white border border-white/15 group-hover:bg-sd-purple group-hover:border-sd-purple transition-all duration-200">
-          View case study
-          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
-            <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-      </div>
+      <p class={`flex-1 text-sm leading-relaxed line-clamp-3 ${textBody}`}>
+        {caseStudy.tagline}
+      </p>
+
+      <span class={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 ${textLink}`}>
+        View case study
+        <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+
+      <!-- Bar anchored inside content panel — starts at image boundary -->
+      <div
+        class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-linear"
+        style="background: #673ae4;"
+        aria-hidden="true"
+      ></div>
     </div>
   </a>
 
 ) : (
 
-  <!-- ── REGULAR card — Articulate style: no box, content below image ── -->
-  <!-- group on <a> so button reacts to hovering anywhere on the card -->
   <a
     href={`/case-study/${caseStudy.slug}`}
-    class={`group block cursor-pointer ${className}`.trim()}
+    class={`relative flex flex-col h-full rounded-xl overflow-hidden ${cardShell} ${className}`.trim()}
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
-    <!-- Image — rounded, zooms on card hover -->
-    <div class="overflow-hidden rounded-xl mb-6 aspect-[4/3]">
+    <!-- Image — zoom on card hover -->
+    <div class="shrink-0 h-[224px] overflow-hidden">
       {caseStudy.image ? (
         <img
           src={caseStudy.image}
@@ -107,25 +118,37 @@ const gradient = accentGradients[caseStudy.accent ?? "purple"];
       )}
     </div>
 
-    <!-- Content below image — always visible -->
-    <h3 class={`text-xl font-display font-semibold leading-snug mb-4 ${dark ? "text-white" : "text-sd-text-dark"}`}>
-      {caseStudy.name}
-    </h3>
-    <p class={`text-sm leading-relaxed mb-5 line-clamp-2 ${dark ? "text-white/55" : "text-sd-text-gray"}`}>
-      {caseStudy.tagline}
-    </p>
+    <!-- Content -->
+    <div class="flex flex-col flex-1 p-5">
+      <div class="flex flex-wrap gap-2 mb-2.5">
+        <span class={`${tagCategory} uppercase tracking-wider`}>{caseStudy.category}</span>
+        {caseStudy.services?.slice(0, 2).map((s) => (
+          <span class={tagService}>{s}</span>
+        ))}
+      </div>
 
-    <!-- Button — color changes on whole-card hover (group-hover:) -->
-    <span class={`inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium group-hover:bg-sd-purple transition-colors duration-200 ${
-      dark
-        ? "bg-white/10 border border-white/15 text-white group-hover:border-sd-purple"
-        : "bg-sd-text-dark text-white"
-    }`}>
-      View case study
-      <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
-        <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </span>
+      <h3 class={`text-xl font-display font-semibold leading-snug mb-3 ${textTitle}`}>
+        {caseStudy.name}
+      </h3>
+
+      <p class={`flex-1 text-sm leading-relaxed line-clamp-2 ${textBody}`}>
+        {caseStudy.tagline}
+      </p>
+
+      <span class={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 ${textLink}`}>
+        View case study
+        <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+
+    <!-- Progress bar: scaleX 0→1 on group hover, origin-left -->
+    <div
+      class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-linear"
+      style="background: #673ae4;"
+      aria-hidden="true"
+    ></div>
   </a>
 
 )}
