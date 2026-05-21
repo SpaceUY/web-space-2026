@@ -460,22 +460,6 @@ El marquee está en `src/pages/index.astro` y usa `clientLogos` definido en el f
 
 ---
 
-### sd-prose en fondos oscuros
-
-`sd-prose` tiene texto oscuro (`#1a1a1a`) — en secciones con fondo `bg-sd-dark` o similar hay que combinar con `.sd-prose-dark`:
-
-```astro
-<!-- ✅ correcto — texto visible en fondo oscuro -->
-<article class="sd-prose sd-prose-dark">
-
-<!-- ❌ incorrecto — texto invisible sobre fondo oscuro -->
-<article class="sd-prose">
-```
-
-`.sd-prose-dark` está definido en `src/styles/prose.css` y sobreescribe colores de texto, headings, links, blockquotes, code y tables para fondos oscuros.
-
----
-
 ### Assets de video y archivos pesados — NO van en git
 
 **Videos y archivos >1MB no se commitean al repo.** La carpeta `public/videos/` existe localmente pero no está trackeada en git — si un video está ahí, Vercel no lo va a ver y no se va a deployar.
