@@ -5,6 +5,7 @@ interface Props {
   suffix?: string;
   label: string;
   duration?: number;
+  size?: "sm" | "lg";
   class?: string;
 }
 
@@ -14,19 +15,27 @@ const {
   suffix = "",
   label,
   duration = 2000,
+  size = "lg",
   class: className = "",
 } = Astro.props;
+
+const numSize = size === "sm"
+  ? "text-3xl md:text-4xl"
+  : "text-5xl md:text-6xl lg:text-7xl";
+const labelSize = size === "sm"
+  ? "text-[10px] tracking-[0.18em]"
+  : "text-sm md:text-base tracking-wider";
 ---
 
 <div class={`text-center ${className}`.trim()} data-animate>
-  <p class="text-5xl md:text-6xl lg:text-7xl font-display text-white leading-none">
+  <p class={`${numSize} font-display text-white leading-none`}>
     {prefix}<span
       class="sd-counter inline-block tabular-nums"
       data-target={value}
       data-duration={duration}
     >0</span>{suffix}
   </p>
-  <p class="mt-3 text-sd-text-muted text-sm md:text-base uppercase tracking-wider">{label}</p>
+  <p class={`mt-3 text-sd-text-muted uppercase ${labelSize}`}>{label}</p>
 </div>
 
 <script>
