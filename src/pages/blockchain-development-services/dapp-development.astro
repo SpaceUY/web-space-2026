@@ -1,26 +1,158 @@
 ---
 import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
+import Button from "../../components/ui/Button.astro";
 import { dappData } from "../../data/services";
+
+const services = [
+  { number: "01", title: "Custom DApp Development",             description: "We build custom dApps from scratch, designed around your business model, tokenomics, and user flows — never one-size-fits-all solutions." },
+  { number: "02", title: "Smart Contract Development",          description: "Secure, efficient smart contracts built with best practices, gas optimization, and extensive testing for production deployments." },
+  { number: "03", title: "Blockchain Architecture & Scalability", description: "We design robust dApp architectures that support growth, handle high traffic, and evolve as your product and ecosystem mature." },
+  { number: "04", title: "Web3 Frontend & Backend Development", description: "User-friendly Web3 interfaces integrated with wallets, APIs, and decentralized storage — without compromising UX." },
+  { number: "05", title: "Blockchain Integration",              description: "Seamless integration with existing systems, third-party protocols, or legacy Web2 platforms." },
+  { number: "06", title: "Security & Smart Contract Audits",    description: "Through our security expertise, we identify vulnerabilities early and reduce risks before your dApp reaches production." },
+];
+
+const networks = [
+  { label: "Ethereum",  img: "/images/networks/ethereum-dark.svg" },
+  { label: "Solana",    img: "/images/networks/solana-dark.svg" },
+  { label: "Polygon",   img: "/images/networks/polygon-dark.svg" },
+  { label: "Layer 2",   img: "/images/networks/layer2-dark.svg" },
+  { label: "BNB Chain", img: "/images/networks/BNB-dark.svg" },
+];
+
+const I_FINTECH   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="5" width="20" height="14" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 10h20" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M6 15h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_GAMING    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="6" width="20" height="12" rx="4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12h4M8 10v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="15" cy="11" r="1" fill="white"/><circle cx="17" cy="13" r="1" fill="white"/></svg>`;
+const I_SUPPLY    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M1 3h15v13H1z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8h4l3 3v5h-7V8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5.5" cy="18.5" r="2.5" stroke="white" stroke-width="1.5"/><circle cx="18.5" cy="18.5" r="2.5" stroke="white" stroke-width="1.5"/></svg>`;
+const I_HEALTH    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 9v6M9 12h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_PROPTECH  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21V12h6v9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_EDTECH    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c3.33 2 8.67 2 12 0v-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const industries = [
+  { icon: I_FINTECH,  title: "Fintech & DeFi",                  description: "Decentralized exchanges, lending protocols, and payment rails built with security and compliance in mind." },
+  { icon: I_GAMING,   title: "Gaming, NFTs & Digital Assets",   description: "On-chain game economies, NFT marketplaces, and digital asset platforms that scale with your user base." },
+  { icon: I_SUPPLY,   title: "Supply Chain & Logistics",        description: "Transparent, tamper-proof tracking systems that bring accountability to every step of the supply chain." },
+  { icon: I_HEALTH,   title: "Healthcare & Data Privacy",       description: "Patient data ownership and interoperability solutions built on privacy-first blockchain architectures." },
+  { icon: I_PROPTECH, title: "PropTech & Real Estate",          description: "Tokenized property assets, fractional ownership platforms, and smart contract-driven transactions." },
+  { icon: I_EDTECH,   title: "EdTech & Digital Identity",       description: "Verifiable credentials, decentralized identity, and on-chain certification for education and professional records." },
+];
 ---
+
+<style is:global>
+  #cards-cursor-zone,
+  #cards-cursor-zone * { cursor: none; }
+</style>
+
 <ServicePageLayout data={dappData}>
-  <!-- Stack & ecosystem visual -->
-  <section class="bg-sd-dark py-16 border-t border-white/5">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10 grid gap-10 md:grid-cols-2 items-center">
-      <img
-        src="/images/content/jVjpSMjZrf5oElDSftRW9skwpaw.svg"
-        alt="Multi-chain dApp architecture, illustrating EVM and non-EVM networks."
-        loading="lazy"
-        class="w-full h-auto max-h-72 object-contain"
-      />
-      <div>
-        <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Multi-chain by default</p>
-        <h2 class="text-2xl md:text-3xl text-white font-display leading-tight">
-          Built on the chains your users are already on.
-        </h2>
-        <p class="mt-4 text-sm text-sd-text-muted leading-relaxed">
-          Ethereum, Aptos, Solana, Polygon, Arbitrum, Optimism, Base — and bridges between them where it makes sense. We pick the stack that fits the product, not the other way around.
+  <div slot="pre-process">
+
+    <!-- Overview CTA -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <h2 class="section-title text-white mb-6">
+            Custom Decentralized Application Development for Web3 Products
+          </h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            At SpaceDev, we help startups and enterprises design, build, and scale decentralized applications
+            that are secure, production-ready, and aligned with real business goals.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            More than a blockchain vendor, we act as a long-term technical partner that combines solid web2
+            engineering with advanced web3 and blockchain expertise. The result? Reliable dApp development
+            services from idea to launch, and beyond.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-8">
+            Our decentralized application development services focus on building products that are
+            usable, scalable, and secure in real-world environments.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services grid -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Our decentralized application development services</h2>
+          <p class="text-sd-text-muted text-lg leading-relaxed max-w-2xl">
+            As a specialized dApps development company, we provide full-cycle services tailored to your product and industry.
+          </p>
+        </div>
+        <div id="cards-cursor-zone" class="relative grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div id="cards-cursor" class="pointer-events-none fixed z-50 w-16 h-16 rounded-full opacity-0 transition-opacity duration-200" style="background: var(--sd-purple); transform: translate(-50%, -50%); will-change: transform;" />
+          {services.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Blockchain Networks -->
+    <section class="relative bg-sd-dark py-20 md:py-28 border-t border-white/5 overflow-hidden">
+      <div class="absolute inset-0 sd-dot-grid"></div>
+      <div class="relative sd-container">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-animate>
+          <h2 class="section-title text-white mb-5">Blockchain Networks we work with</h2>
+          <p class="text-base md:text-lg text-sd-text-muted leading-relaxed">
+            Our blockchain dApp development services support multiple ecosystems, allowing us to choose the right stack for your product.
+          </p>
+        </div>
+        <div class="flex flex-col items-center gap-10 mb-10">
+          <div class="flex justify-center gap-12 md:gap-16">
+            {networks.slice(0, 3).map((n, i) => {
+              const floatClass = ["sd-float-1","sd-float-2","sd-float-3"][i];
+              return (
+                <div class={`flex flex-col items-center gap-3 ${floatClass}`}>
+                  <img src={n.img} alt={n.label} width={80} height={80} class="w-16 h-16 md:w-20 md:h-20" />
+                  <span class="text-xs font-ui uppercase tracking-widest text-sd-text-muted text-center leading-tight">{n.label}</span>
+                </div>
+              );
+            })}
+          </div>
+          <div class="flex justify-center gap-12 md:gap-16">
+            {networks.slice(3).map((n, i) => {
+              const floatClass = ["sd-float-4","sd-float-2"][i];
+              return (
+                <div class={`flex flex-col items-center gap-3 ${floatClass}`}>
+                  <img src={n.img} alt={n.label} width={80} height={80} class="w-16 h-16 md:w-20 md:h-20" />
+                  <span class="text-xs font-ui uppercase tracking-widest text-sd-text-muted text-center leading-tight">{n.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <p class="text-center text-base md:text-lg text-sd-text-muted leading-relaxed" data-animate>
+          We evaluate performance, fees, ecosystem maturity, and security to ensure long-term viability.
         </p>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Industries -->
+    <section class="bg-sd-dark py-20 md:py-32 border-t border-white/5">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <h2 class="section-title text-white mb-4">Industries using our DApp development services</h2>
+            <p class="text-sd-text-muted leading-relaxed">We build decentralized applications across multiple industries where trust, automation, and transparency matter.</p>
+          </div>
+          <div class="grid gap-y-10 gap-x-6 md:grid-cols-2">
+            {industries.map((ind) => (
+              <div data-animate>
+                <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5 p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                  <Fragment set:html={ind.icon} />
+                </div>
+                <h3 class="text-base font-display text-white">{ind.title}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
 </ServicePageLayout>

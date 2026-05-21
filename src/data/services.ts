@@ -41,7 +41,7 @@ export interface ServicePageData {
   quote?: ServiceQuote;
 
   /** Why SpaceDev */
-  whyUs?: { title: string; description?: string; items: ServiceBenefit[]; style?: "cards" | "accordion" };
+  whyUs?: { title: string; description?: string; items: ServiceBenefit[]; style?: "cards" | "4col"; tone?: "dark" | "purple" };
 
   /** Mid-page CTA (between case studies and benefits) */
   midCta?: { title: string; description?: string; buttonLabel: string; buttonHref: string; external?: boolean };
@@ -138,7 +138,7 @@ export const blockchainData: ServicePageData = {
 
   whyUs: {
     title: "Why Choose SpaceDev as Your Tech Partner",
-    style: "accordion",
+    style: "4col",
     items: [
       { title: "Fast MVP Delivery", description: "We move ideas into action quickly. Our agile approach allows you to validate concepts, gather user feedback, and iterate — all before committing to full-scale development." },
       { title: "Real Results, Not Buzzwords", description: "We measure success by what ships and scales. Every engagement is tied to concrete outcomes — faster transactions, higher adoption, measurable ROI." },
@@ -179,53 +179,50 @@ export const blockchainData: ServicePageData = {
    ============================================================ */
 export const dappData: ServicePageData = {
   seo: {
-    title: "dApp Development Services | SpaceDev",
-    description: "Custom dApp development with seamless UX and robust on-chain logic. From concept to mainnet across Ethereum, Aptos, Solana and more.",
+    title: "DApp Development Services | SpaceDev",
+    description: "Custom decentralized application development for Web3 products. We design, build, and scale dApps that are secure, production-ready, and aligned with real business goals.",
   },
   eyebrow: "Sub-service · Blockchain",
-  title: "dApp Development",
-  description: "Decentralized applications that feel like the products users already love — fast, intuitive, secure. We build the frontend, the smart contracts, and everything in between.",
-  primaryCta: { label: "Start a project", href: "/contact" },
-  secondaryCta: { label: "View dApp case studies", href: "/our-work" },
+  title: "DApp Development Services",
+  description: "",
+  primaryCta: { label: "Get in touch", href: "/contact" },
 
-  offers: {
-    eyebrow: "What we build",
-    title: "From wallet integration to on-chain governance",
+  process: {
+    title: "Our DApp development process",
+    description: "We follow a structured, execution-focused process designed to reduce risk and accelerate delivery.",
     items: [
-      { number: "01", title: "UX/UI for Web3", description: "Interfaces that abstract away complexity — onboarding, wallets, gas, signatures — without hiding what users need to control." },
-      { number: "02", title: "Smart Contract Engineering", description: "Audited Solidity, Move, or Rust contracts engineered for gas efficiency and upgrade safety." },
-      { number: "03", title: "Multi-chain Integrations", description: "Deploy and orchestrate across EVM and non-EVM chains, with bridges and cross-chain messaging where it makes sense." },
-      { number: "04", title: "Indexing & APIs", description: "Subgraphs, custom indexers, and read APIs that make your on-chain data fast and queryable." },
-      { number: "05", title: "Wallets & Identity", description: "Custodial, MPC, and self-custody integrations — plus account abstraction for friction-free user flows." },
-      { number: "06", title: "Monitoring & Ops", description: "OpenZeppelin Defender, on-call playbooks, and dashboards so you sleep at night." },
+      { number: "1", title: "Product Discovery & Strategy", description: "We align your business goals, users, and blockchain strategy before writing a single line of code." },
+      { number: "2", title: "Architecture & Technical Design", description: "Network selection, smart contract structure, scalability planning, and security considerations." },
+      { number: "3", title: "Development & Quality Assurance", description: "Iterative development with continuous testing to ensure performance and reliability." },
+      { number: "4", title: "Security Review & Hardening", description: "Deep security analysis to minimize vulnerabilities and protect users and assets." },
+      { number: "5", title: "Launch & Post-Production Support", description: "Ongoing monitoring, upgrades, and support as your dApp grows." },
     ],
+    variant: "sticky-dark",
   },
-
-  caseStudySlugs: ["blockchain-for-energy", "apebond", "rarible", "blockus"],
 
   whyUs: {
-    title: "Why teams ship dApps with SpaceDev",
+    title: "Why choose SpaceDev as your DApp development company?",
+    description: "We don't just deliver code — we help you build production-grade decentralized products.",
     items: [
-      { title: "Real-world Web3 UX", description: "We've shipped products to NFT collectors, traders, and enterprise users — and we know what makes them drop off." },
-      { title: "Security-first by default", description: "Every contract goes through static analysis, peer review, and (if you want it) a full BlockAudit before mainnet." },
-      { title: "Full-stack ownership", description: "Same team handles smart contracts, indexing, frontend and devops — no handoffs lost between vendors." },
+      { title: "Web2 + Web3 expertise", description: "Proven expertise combining solid web2 engineering with advanced web3 and blockchain capabilities." },
+      { title: "End-to-end delivery", description: "Strategy, development, security, and scaling — all under one roof." },
+      { title: "Flexible engagement", description: "Project-based or staff augmentation models to fit your team and timeline." },
+      { title: "US market experience", description: "Extensive experience working with startups and enterprises in the US market." },
+      { title: "Built to last", description: "Strong focus on scalability, security, and long-term success from day one." },
     ],
+    tone: "dark",
   },
+
+  footerMarqueeTheme: "dark",
 
   finalCta: {
-    title: "Ready to build a dApp users actually love?",
-    buttonLabel: "Talk to a Web3 engineer",
-    buttonHref: "/contact",
+    title: "Let's Build Your Decentralized Application",
+    description: "If you're looking for a reliable partner for dApp development services, custom decentralized application development, or blockchain dApp development, SpaceDev is ready to help.",
+    buttonLabel: "Talk to our Web3 experts",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
+    external: true,
   },
 
-  heroImage: {
-    src: "/images/content/jSVFf6Zw6V3KiXLgG9hznARyXbo.svg",
-    alt: "Stylised illustration of a decentralized application with connected on-chain components.",
-  },
-  offersIllustration: {
-    src: "/images/content/8UnMZbotyNqtBxF3ssUBAoU5I.svg",
-    alt: "Diagram showing the layers of a typical dApp stack from frontend to smart contracts.",
-  },
 };
 
 export const banksData: ServicePageData = {
@@ -289,43 +286,17 @@ export const smartContractData: ServicePageData = {
   eyebrow: "Sub-service · Blockchain",
   title: "Smart Contract Development",
   description: "Secure, gas-efficient smart contracts engineered to scale. We design, build, test, and audit production contracts for token issuers, DeFi protocols, marketplaces, and DAOs.",
-  primaryCta: { label: "Start a project", href: "/contact" },
-  secondaryCta: { label: "Browse our smart contract work", href: "/our-work" },
-
-  offers: {
-    eyebrow: "What we build",
-    title: "Every flavor of contract you'll need",
-    items: [
-      { number: "01", title: "Token Standards", description: "ERC-20, ERC-721, ERC-1155, ERC-4626 — and custom standards designed for your tokenomics." },
-      { number: "02", title: "DeFi Protocols", description: "AMMs, lending markets, staking and yield strategies, oracles, and liquidations." },
-      { number: "03", title: "Marketplaces", description: "On-chain order books, Dutch auctions, and royalty-aware secondary markets." },
-      { number: "04", title: "Governance & DAOs", description: "Voting modules, treasury management, and timelocks with battle-tested patterns." },
-      { number: "05", title: "Account Abstraction", description: "ERC-4337 smart accounts, paymasters, session keys, and gasless UX." },
-      { number: "06", title: "Upgradeability & Ops", description: "Diamond/UUPS proxies, migrations, multi-sig procedures, and on-chain monitoring." },
-    ],
-  },
-
-  caseStudySlugs: ["apebond", "rarible", "bondi-finance", "blockchain-for-energy"],
-
-  whyUs: {
-    title: "How we keep contracts secure",
-    items: [
-      { title: "Multi-layered review", description: "Static analysis (Slither), fuzzing (Echidna/Foundry), formal verification when warranted, plus peer review." },
-      { title: "BlockAudit integration", description: "Optional in-house audits before mainnet — same team that built it, scrutinized by an independent SpaceDev cell." },
-      { title: "Production runbooks", description: "Pause switches, on-chain monitoring, and incident-response playbooks delivered with every contract." },
-    ],
-  },
+  primaryCta: { label: "Get in touch", href: "/contact" },
 
   finalCta: {
-    title: "Need a smart contract you can trust?",
-    buttonLabel: "Talk to a contract engineer",
+    title: "Let's Build Secure Smart Contracts",
+    description: "Talk to our Blockchain experts.",
+    buttonLabel: "Get in touch",
     buttonHref: "/contact",
   },
 
-  heroImage: {
-    src: "/images/content/zdvOu1yiYoAGPA8a8Dfsrc1SQRI.svg",
-    alt: "Illustration of a smart contract being audited and deployed to the blockchain.",
-  },
+  footerMarqueeTheme: "dark",
+
   offersIllustration: {
     src: "/images/content/8UnMZbotyNqtBxF3ssUBAoU5I.svg",
     alt: "Smart contract development lifecycle, from design to formal verification.",
@@ -385,57 +356,22 @@ export const partnerData: ServicePageData = {
 
 export const tokenizationData: ServicePageData = {
   seo: {
-    title: "Asset Tokenization Services | SpaceDev",
-    description: "Tokenize real-world assets: real estate, commodities, securities, and fixed income. Issuance, custody, secondary markets, and compliance — end-to-end.",
+    title: "Asset Tokenization Development Services | SpaceDev",
+    description: "Tokenize real-world assets: real estate, commodities, securities, and fixed income. Issuance, lifecycle, custody, and secondary markets — end to end.",
   },
   eyebrow: "Sub-service · Blockchain",
-  title: "Asset Tokenization",
-  description: "Bring real-world assets on-chain — real estate, commodities, securities, fixed income, carbon credits. We handle issuance, lifecycle, custody, and secondary markets.",
-  primaryCta: { label: "Tokenize an asset", href: "/contact" },
-  secondaryCta: { label: "See RWA case studies", href: "/our-work" },
+  title: "Asset Tokenization Development Services",
+  description: "",
+  primaryCta: { label: "Get in touch", href: "/contact" },
 
-  offers: {
-    eyebrow: "End-to-end tokenization stack",
-    title: "From legal wrapper to liquid secondary market",
-    items: [
-      { number: "01", title: "Issuance Platform", description: "Configurable issuance flows for accredited and retail investors, with integrated KYC and accreditation checks." },
-      { number: "02", title: "Token Lifecycle", description: "Coupons, dividends, redemptions, corporate actions — automated on-chain with compliant guardrails." },
-      { number: "03", title: "Custody & Wallets", description: "MPC custody, qualified custodian integrations, and self-custody options for sophisticated investors." },
-      { number: "04", title: "Secondary Markets", description: "Permissioned trading venues with whitelisting, jurisdiction-aware transfer restrictions, and instant settlement." },
-      { number: "05", title: "Compliance Engine", description: "Travel rule, sanctions screening, transfer agents, and on-chain attestations." },
-      { number: "06", title: "Investor Portal", description: "Branded UX for investors to subscribe, hold, vote, and redeem — fully whitelabeled to your brand." },
-    ],
-  },
-
-  caseStudySlugs: ["bondi-finance", "blockchain-for-energy", "ubicuity"],
-
-  benefits: {
-    title: "Why tokenize?",
-    items: [
-      { title: "Fractional ownership", description: "Open access to assets that were previously out of reach for most investors." },
-      { title: "24/7 liquidity", description: "Trade and settle around the clock — no T+2 cycles." },
-      { title: "Programmable compliance", description: "Embed transfer restrictions and reporting logic directly into the asset itself." },
-      { title: "Lower issuance cost", description: "Cut intermediaries from the issuance and lifecycle process." },
-    ],
-  },
+  footerMarqueeTheme: "dark",
 
   finalCta: {
-    title: "Got an asset to tokenize?",
-    description: "From a single building to a full bond program — we've shipped both. Tell us what you're working on.",
-    buttonLabel: "Schedule a call",
+    title: "Build a tokenization platform designed for real operations.",
+    description: "Talk to SpaceDev about asset tokenization development.",
+    buttonLabel: "Book a call",
     buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
     external: true,
-  },
-
-  heroImage: {
-    src: "/images/content/4EnN0joO3tVJiGxfaLXZnG7Nb0.png",
-    alt: "Real-world assets being tokenized and represented on the blockchain.",
-    width: 800,
-    height: 800,
-  },
-  offersIllustration: {
-    src: "/images/content/zdvOu1yiYoAGPA8a8Dfsrc1SQRI.svg",
-    alt: "End-to-end tokenization stack: issuance, lifecycle, custody, secondary markets.",
   },
 };
 
@@ -690,7 +626,7 @@ export const blockAuditData: ServicePageData = {
 
   whyUs: {
     title: "Why choose SpaceDev to be your tech partner?",
-    style: "accordion",
+    style: "4col",
     items: [
       { title: "Fast MVP", description: "We stand out as an ideal technological partner for its ability to deliver rapid MVPs (Minimum Viable Products), providing swift and efficient solutions to bring your ideas to life." },
       { title: "IT Talent", description: "Our team excels as a technological partner due to its exceptional blockchain talent, ensuring innovative solutions and expert guidance for your projects." },
