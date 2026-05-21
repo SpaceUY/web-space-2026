@@ -63,8 +63,8 @@ const textLink  = dark
       )}
     </div>
 
-    <!-- RIGHT: content -->
-    <div class="flex flex-col flex-1 p-7">
+    <!-- RIGHT: content — relative so the bar anchors here (starts at image boundary) -->
+    <div class="relative flex flex-col flex-1 p-7">
       <div class="flex flex-wrap gap-2 mb-2.5">
         <span class={`${tagCategory} uppercase tracking-wider`}>{caseStudy.category}</span>
         {caseStudy.services?.slice(0, 3).map((s) => (
@@ -86,14 +86,14 @@ const textLink  = dark
           <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </span>
-    </div>
 
-    <!-- Progress bar: scaleX 0→1 on group hover, origin-left -->
-    <div
-      class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-linear"
-      style="background: linear-gradient(to right, #673ae4, #44cdf3);"
-      aria-hidden="true"
-    ></div>
+      <!-- Bar anchored inside content panel — starts at image boundary -->
+      <div
+        class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-linear"
+        style="background: #673ae4;"
+        aria-hidden="true"
+      ></div>
+    </div>
   </a>
 
 ) : (
@@ -146,7 +146,7 @@ const textLink  = dark
     <!-- Progress bar: scaleX 0→1 on group hover, origin-left -->
     <div
       class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-linear"
-      style="background: linear-gradient(to right, #673ae4, #44cdf3);"
+      style="background: #673ae4;"
       aria-hidden="true"
     ></div>
   </a>
