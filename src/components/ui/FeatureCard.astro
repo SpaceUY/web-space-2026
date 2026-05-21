@@ -7,6 +7,9 @@
  *   title        — card heading
  *   description  — body text
  *   icon?        — icon name (see ICONS map below). Omit for icon-less variant.
+ *   rawIcon?     — inline SVG string rendered directly inside the icon bubble.
+ *                  Use when a named icon isn't available (e.g. custom brand icons).
+ *   number?      — step number rendered in the bubble instead of an icon
  *   tone?        — "dark" (default) | "light"
  *   class?       — extra classes forwarded to the root element
  */
@@ -16,13 +19,15 @@ interface Props {
   description: string;
   /** Icon name: lock | eye | bolt | shield | tag | chain | check | star | rocket | code | globe | users | settings | heart | clock | chart */
   icon?: string;
+  /** Inline SVG string rendered inside the icon bubble. Takes precedence over `icon` if both are passed. */
+  rawIcon?: string;
   /** Step number to render in the bubble instead of an icon */
   number?: string;
   tone?: "dark" | "light";
   class?: string;
 }
 
-const { title, description, icon, number, tone = "dark", class: className = "" } = Astro.props;
+const { title, description, icon, rawIcon, number, tone = "dark", class: className = "" } = Astro.props;
 
 const isDark = tone === "dark";
 const cardCls = isDark
@@ -52,6 +57,7 @@ const ICONS: Record<string, string> = {
 };
 
 const svgContent = icon ? (ICONS[icon] ?? "") : "";
+const hasBubble = !!(number || rawIcon || (icon && svgContent));
 ---
 
 <div
@@ -62,6 +68,8 @@ const svgContent = icon ? (ICONS[icon] ?? "") : "";
     <div class={`mb-5 inline-flex items-center justify-center w-12 h-12 rounded-full shrink-0 ${isDark ? "bg-sd-purple/40" : "bg-sd-purple/20"}`}>
       <span class={`font-display text-lg ${isDark ? "text-sd-purple-300" : "text-sd-purple"}`} aria-hidden="true">{number}</span>
     </div>
+  ) : rawIcon ? (
+    <div class="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-full bg-sd-purple/20 shrink-0" aria-hidden="true" set:html={rawIcon} />
   ) : icon && svgContent ? (
     <div class="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-full bg-sd-purple/20 shrink-0">
       <svg
@@ -78,6 +86,6 @@ const svgContent = icon ? (ICONS[icon] ?? "") : "";
       />
     </div>
   ) : null}
-  <h3 class={`${(number || icon) ? "text-lg" : "text-base font-medium"} ${titleCls} mb-3`}>{title}</h3>
+  <h3 class={`${hasBubble ? "text-lg" : "text-base font-medium"} ${titleCls} mb-3`}>{title}</h3>
   <p class={`text-sm ${descCls} leading-relaxed`}>{description}</p>
 </div>

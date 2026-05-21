@@ -1,5 +1,5 @@
 ---
-type Tone = "neutral" | "purple" | "green" | "outline";
+type Tone = "neutral" | "purple" | "purple-dark" | "green" | "outline";
 
 interface Props {
   tone?: Tone;
@@ -10,17 +10,19 @@ interface Props {
 const { tone = "neutral", withDot = false, class: className = "" } = Astro.props;
 
 const tones: Record<Tone, string> = {
-  neutral: "bg-white/10 text-sd-text-muted",
-  purple:  "bg-sd-purple-600/20 text-sd-purple-200",
-  green:   "bg-sd-green-400/15 text-sd-green-300",
-  outline: "border border-white/20 text-white",
+  neutral:      "bg-white/10 text-sd-text-muted",
+  purple:       "bg-sd-purple-600/20 text-sd-purple-200",
+  "purple-dark": "bg-sd-purple/10 text-sd-purple",
+  green:        "bg-sd-green-400/15 text-sd-green-300",
+  outline:      "border border-white/20 text-white",
 };
 
 const dotColors: Record<Tone, string> = {
-  neutral: "bg-sd-text-muted",
-  purple:  "bg-sd-purple-400",
-  green:   "bg-sd-green-400",
-  outline: "bg-white",
+  neutral:      "bg-sd-text-muted",
+  purple:       "bg-sd-purple-400",
+  "purple-dark": "bg-sd-purple",
+  green:        "bg-sd-green-400",
+  outline:      "bg-white",
 };
 ---
 
