@@ -37,6 +37,7 @@
   --sd-dark:         #141414;
   --sd-dark-2:       #1e1e1e;
   --sd-navy:         #17171d;
+  --sd-dark-hero:    #0d0a18;
   --sd-purple-deep:  #191429;
   --sd-purple-mid:   #312652;
   --sd-light:        #fafafa;
@@ -64,9 +65,10 @@
   --sd-overlay:        #0d0d0d4d;
 
   /* Gradients */
-  --sd-gradient-hero:   linear-gradient(135deg, #4a397c 17%, #191429 105%);
-  --sd-gradient-deep:   linear-gradient(135deg, #673ae4 0%, #191429 100%);
-  --sd-gradient-radial: radial-gradient(circle, #a2a6f5 11%, #4c2e92 37%, #2d292f 68%, #2d2d2d 86%);
+  --sd-gradient-hero:         linear-gradient(135deg, #4a397c 17%, #191429 105%);
+  --sd-gradient-deep:         linear-gradient(135deg, #673ae4 0%, #191429 100%);
+  --sd-gradient-radial:       radial-gradient(circle, #a2a6f5 11%, #4c2e92 37%, #2d292f 68%, #2d2d2d 86%);
+  --sd-gradient-purple-dark:  linear-gradient(135deg, #3b2080 0%, #1e1040 60%, #0f0820 100%);
 
   /* ── Purple palette (brand book) ────────────────────────────── */
   --sd-purple-100: #e4dbff;
@@ -148,7 +150,7 @@
   --color-sd-purple-deep:  #191429;
   --color-sd-purple-mid:   #312652;
   --color-sd-light:        #fafafa;
-  --color-sd-light-2:      #f5f5f5;
+  --color-sd-light-2:      #f2f2f2;
   --color-sd-light-3:      #f4f4f4;
   --color-sd-light-4:      #f2f2f2;
   --color-sd-gray-border:  #e8e8e8;
@@ -339,6 +341,42 @@
     scroll-behavior: auto !important;
   }
   [data-animate] { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   FLOATING ANIMATIONS — used by tech stack icon grids
+   ============================================================ */
+@keyframes sd-float-a {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes sd-float-b {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes sd-float-c {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+@keyframes sd-float-d {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.sd-float-1 { animation: sd-float-a 3.5s ease-in-out infinite; }
+.sd-float-2 { animation: sd-float-b 4.2s ease-in-out infinite 0.6s; }
+.sd-float-3 { animation: sd-float-c 3.8s ease-in-out infinite 1.2s; }
+.sd-float-4 { animation: sd-float-d 4.6s ease-in-out infinite 0.3s; }
+
+/* ============================================================
+   DOT GRID — reusable background patterns
+   ============================================================ */
+.sd-dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.sd-dot-grid-light {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 /* ============================================================

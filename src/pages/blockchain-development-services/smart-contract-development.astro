@@ -1,26 +1,225 @@
 ---
 import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
+import Button from "../../components/ui/Button.astro";
+import FeatureCard from "../../components/ui/FeatureCard.astro";
 import { smartContractData } from "../../data/services";
+
+const services = [
+  { number: "01", title: "Custom Smart Contract Development",    description: "We build contracts tailored to your tokenomics, business logic, and deployment requirements — never copy-paste templates." },
+  { number: "02", title: "Solidity & Web3 Development",         description: "Deep expertise in Solidity, Vyper, and Web3 tooling. We write clean, well-documented code optimized for gas and readability." },
+  { number: "03", title: "Smart Contract Architecture & Design", description: "We design contract systems that are modular, upgradeable where needed, and aligned with long-term product goals." },
+  { number: "04", title: "Smart Contract Testing & QA",         description: "Unit tests, integration tests, fuzz testing, and invariant checks — every contract is validated before it touches mainnet." },
+  { number: "05", title: "Security Reviews & Audits",           description: "End-to-end security reviews using static analysis, manual inspection, and formal verification where warranted." },
+];
+
+
+const I_DEFI     = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 9h.01M15 9h.01" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_NFT      = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="3" y="3" width="18" height="18" rx="3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9h18M9 21V9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_GAMING   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="6" width="20" height="12" rx="4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12h4M8 10v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="15" cy="11" r="1" fill="white"/><circle cx="17" cy="13" r="1" fill="white"/></svg>`;
+const I_DAO      = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M3 21h18M9 21V7l3-4 3 4v14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_SUPPLY2  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M1 3h15v13H1z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8h4l3 3v5h-7V8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5.5" cy="18.5" r="2.5" stroke="white" stroke-width="1.5"/><circle cx="18.5" cy="18.5" r="2.5" stroke="white" stroke-width="1.5"/></svg>`;
+const I_IDENTITY = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 21v-1a6 6 0 0 1 12 0v1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const useCases = [
+  { icon: I_DEFI,     title: "DeFi protocols" },
+  { icon: I_NFT,      title: "NFT marketplaces" },
+  { icon: I_GAMING,   title: "Gaming & tokenized assets" },
+  { icon: I_DAO,      title: "DAOs & governance systems" },
+  { icon: I_SUPPLY2,  title: "Supply chain automation" },
+  { icon: I_IDENTITY, title: "Digital identity solutions" },
+];
+
+const I_DISCOVERY = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="11" cy="11" r="8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21l-4.35-4.35" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_DESIGN    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_DEV       = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><polyline points="16 18 22 12 16 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_SECURITY  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_DEPLOY    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M22 2L11 13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 2L15 22l-4-9-9-4 20-7z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const processSteps = [
+  { icon: I_DISCOVERY, title: "Discovery",          description: "We map your contract requirements, business logic, token flows, and edge cases before writing a single line of code." },
+  { icon: I_DESIGN,    title: "Design",             description: "Architecture decisions, interface definitions, upgrade strategy, and a full specification reviewed with your team." },
+  { icon: I_DEV,       title: "Development",        description: "Iterative implementation with test coverage at every layer — unit, integration, invariant, and fuzz testing." },
+  { icon: I_SECURITY,  title: "Security Hardening", description: "Static analysis, manual review, and optional independent BlockAudit before any deployment to mainnet." },
+  { icon: I_DEPLOY,    title: "Deployment",         description: "Staged rollout, multi-sig deployment procedures, monitoring setup, and incident-response runbooks." },
+];
+
 ---
+
+<style is:global>
+  #cards-cursor-zone,
+  #cards-cursor-zone * { cursor: none; }
+</style>
+
 <ServicePageLayout data={smartContractData}>
-  <!-- Audit pipeline visual -->
-  <section class="bg-sd-dark py-16 border-t border-white/5">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10 grid gap-10 md:grid-cols-2 items-center">
-      <img
-        src="/images/content/L5mZDwRMP1XtyYGb0P8kuICAtEs.svg"
-        alt="Smart contract review pipeline: static analysis, fuzzing, formal verification, manual review."
-        loading="lazy"
-        class="w-full h-auto max-h-72 object-contain"
-      />
-      <div>
-        <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Audit-grade pipeline</p>
-        <h2 class="text-2xl md:text-3xl text-white font-display leading-tight">
-          Every contract goes through the same gauntlet.
-        </h2>
-        <p class="mt-4 text-sm text-sd-text-muted leading-relaxed">
-          Slither, Echidna, Foundry-based fuzzing, and (where it makes sense) formal verification — followed by peer review and an optional independent BlockAudit before mainnet.
+  <div slot="pre-process">
+
+    <!-- Overview CTA -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <h2 class="section-title text-white mb-6">
+            Secure & Scalable Smart Contract Development Services
+          </h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            At SpaceDev, we design, build, test, and audit smart contracts for token issuers, DeFi protocols, NFT platforms, and DAOs. Every contract we ship is production-grade — engineered for correctness, gas efficiency, and long-term maintainability.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-8">
+            We combine rigorous engineering practices with deep protocol knowledge to deliver smart contracts you can trust — from initial architecture through deployment and beyond.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Our Smart Contract Development Services</h2>
+          <p class="text-sd-text-muted text-lg leading-relaxed max-w-2xl">
+            As a specialized smart contract development company, we provide full-cycle services tailored to your product and industry.
+          </p>
+        </div>
+        <div id="cards-cursor-zone" class="relative grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div id="cards-cursor" class="pointer-events-none fixed z-50 w-16 h-16 rounded-full opacity-0 transition-opacity duration-200" style="background: var(--sd-purple); transform: translate(-50%, -50%); will-change: transform;" />
+          {services.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Blockchain Platforms -->
+    <section class="relative bg-sd-dark py-20 md:py-28 border-t border-white/5 overflow-hidden">
+      <div class="absolute inset-0 sd-dot-grid"></div>
+      <div class="relative sd-container">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-animate>
+          <h2 class="section-title text-white mb-5">Blockchain Platforms We Support</h2>
+          <p class="text-base md:text-lg text-sd-text-muted leading-relaxed">
+            Our <strong class="text-white font-semibold">smart contract development services</strong> cover multiple ecosystems:
+          </p>
+        </div>
+        <div class="flex flex-col items-center gap-10 mb-10">
+          <div class="flex justify-center gap-12 md:gap-16">
+            {[
+              { label: "Ethereum",             img: "/images/networks/ethereum-dark.svg" },
+              { label: "EVM-compatible chains",img: "/images/networks/ethereum-dark.svg" },
+              { label: "Polygon",              img: "/images/networks/polygon-dark.svg"  },
+            ].map((n, i) => {
+              const floatClass = ["sd-float-1","sd-float-2","sd-float-3"][i];
+              return (
+                <div class={`flex flex-col items-center gap-3 ${floatClass}`}>
+                  <img src={n.img} alt={n.label} width={80} height={80} class="w-16 h-16 md:w-20 md:h-20" />
+                  <span class="text-xs font-ui uppercase tracking-widest text-sd-text-muted text-center leading-tight">{n.label}</span>
+                </div>
+              );
+            })}
+          </div>
+          <div class="flex justify-center gap-12 md:gap-16">
+            {[
+              { label: "Layer 2", img: "/images/networks/layer2-dark.svg" },
+              { label: "BNB Chain",                            img: "/images/networks/BNB-dark.svg"    },
+            ].map((n, i) => {
+              const floatClass = ["sd-float-4","sd-float-2"][i];
+              return (
+                <div class={`flex flex-col items-center gap-3 ${floatClass}`}>
+                  <img src={n.img} alt={n.label} width={80} height={80} class="w-16 h-16 md:w-20 md:h-20" />
+                  <span class="text-xs font-ui uppercase tracking-widest text-sd-text-muted text-center leading-tight max-w-[120px]">{n.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <p class="text-center text-base md:text-lg text-sd-text-muted leading-relaxed" data-animate>
+          We help you choose the right blockchain based on <strong class="text-white font-semibold">security, fees, performance, and ecosystem maturity</strong>.
         </p>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Use Cases for Smart Contracts</h2>
+          <p class="text-sd-text-muted text-lg leading-relaxed max-w-2xl">
+            We develop smart contracts for a wide range of Web3 products:
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-10">
+          {useCases.map((uc) => (
+            <div class="flex items-center gap-4 rounded-2xl p-5 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3 shrink-0" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={uc.icon} />
+              </div>
+              <h3 class="text-base font-display font-semibold text-white leading-snug">{uc.title}</h3>
+            </div>
+          ))}
+        </div>
+        <p class="text-sd-text-muted leading-relaxed" data-animate>
+          Each use case requires different trade-offs — and we design accordingly.
+        </p>
+      </div>
+    </section>
+
+    <!-- Development Process -->
+    <section class="py-20 md:py-32 border-b border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <div class="md:sticky md:top-32" data-animate>
+            <h2 class="section-title text-white mb-6">Our Smart Contract Development Process</h2>
+            <p class="text-sd-text-muted leading-relaxed">We follow a structured, execution-focused process designed to reduce risk and accelerate delivery.</p>
+          </div>
+          <ol class="flex flex-col gap-6">
+            {[
+              { number: "01", title: "Discovery & Technical Strategy", description: "We analyze your product, risks, and requirements before defining the contract architecture." },
+              { number: "02", title: "Design & Specification",          description: "Clear technical specs, contract flows, and upgrade strategies." },
+              { number: "03", title: "Development & Testing",           description: "Clean, readable code with strong test coverage." },
+              { number: "04", title: "Security Hardening",              description: "Vulnerability detection, optimization, and final validation." },
+              { number: "05", title: "Deployment & Support",            description: "Mainnet deployment, monitoring, and long-term maintenance." },
+            ].map((step) => (
+              <li>
+                <FeatureCard number={step.number} title={step.title} description={step.description} tone="dark" />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Hire SpaceDev -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Hire Smart Contract Developers from SpaceDev</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            When you <strong class="text-white font-semibold">hire smart contract developers</strong> from SpaceDev, you get:
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-10">
+          {[
+            { icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`, title: "Deep blockchain & Web3 expertise" },
+            { icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="11" cy="11" r="8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21l-4.35-4.35" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`, title: "Flexible engagement models (project or staff augmentation)" },
+            { icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`, title: "Security-focused engineering" },
+            { icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="12 6 12 12 16 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`, title: "Long-term technical partnership" },
+            { icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="3" width="20" height="14" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 21h8M12 17v4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`, title: "Experience with real production systems" },
+          ].map((item) => (
+            <div class="flex items-center gap-4 rounded-2xl p-5 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3 shrink-0" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <h3 class="text-base font-display font-semibold text-white leading-snug">{item.title}</h3>
+            </div>
+          ))}
+        </div>
+        <p class="text-sd-text-muted leading-relaxed" data-animate>
+          We don't just deliver code — we help you build <strong class="text-white font-semibold">production-grade decentralized products</strong>.
+        </p>
+      </div>
+    </section>
+
+  </div>
 </ServicePageLayout>

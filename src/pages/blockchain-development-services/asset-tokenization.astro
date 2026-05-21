@@ -1,5 +1,367 @@
 ---
 import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
+import Button from "../../components/ui/Button.astro";
 import { tokenizationData } from "../../data/services";
+
+const assets = [
+  "Real Estate",
+  "Stocks",
+  "Gold",
+  "Bonds",
+  "Digital Securities",
+  "Commodities",
+  "Carbon Credits",
+];
+
+const whatYouGet = [
+  "Production-grade tokenization platform engineering",
+  "Issuer and investor user experiences that reduce friction",
+  "Operational controls, permissions, and audit trails",
+  "Integrations for identity, payments, and enterprise systems",
+  "Security-first delivery, testing, and release readiness",
+];
+
+const I_PACKAGE     = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="22.08" x2="12" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_AUTO        = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><polyline points="23 4 23 10 17 10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="1 20 1 14 7 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_TRANSPARENT = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.5"/></svg>`;
+const I_UX          = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="3" width="20" height="14" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 21h8M12 17v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+
+const canEnable = [
+  { icon: I_PACKAGE,     title: "New Ways to Package and Distribute Assets", description: "Fractional access, programmable entitlements, and broader participation where appropriate." },
+  { icon: I_AUTO,        title: "Automation Across the Asset Lifecycle",      description: "Issuance, approvals, transfers, redemptions, and events managed through defined workflows." },
+  { icon: I_TRANSPARENT, title: "Greater Transparency for Stakeholders",      description: "Clear ownership history, verifiable events, and consistent records." },
+  { icon: I_UX,          title: "Modern User Experiences",                    description: "Digital onboarding, dashboards, and self-service access to asset information." },
+];
+
+const useCases = [
+  "Real estate and revenue participation models",
+  "Private credit, receivables, and invoice-based structures",
+  "Funds and portfolio style products",
+  "Commodities, provenance-linked assets, and similar instruments",
+  "Digital rights, licensing, memberships, and loyalty assets",
+];
+
+/* ── Editorial sections ───────────────────────────────────────── */
+const I_TOKEN    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/><path d="M12 7v10M9 9.5h4.5a1.5 1.5 0 0 1 0 3H9m0 0h4.5a1.5 1.5 0 0 1 0 3H9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_WORKFLOW = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="3" y="3" width="5" height="5" rx="1" stroke="white" stroke-width="1.5"/><rect x="16" y="3" width="5" height="5" rx="1" stroke="white" stroke-width="1.5"/><rect x="9.5" y="16" width="5" height="5" rx="1" stroke="white" stroke-width="1.5"/><path d="M8 5.5h8M18.5 8v4a1 1 0 0 1-1 1H12m-4.5 0H6.5a1 1 0 0 1-1-1V8M12 13v3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_SHIELD   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2l7 3v5c0 5-3.5 9-7 10C8.5 19 5 15 5 10V5l7-3z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_TRACE    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M3 3v16a2 2 0 0 0 2 2h16" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M7 14l4-4 4 4 4-7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_CUSTODY  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="7" width="20" height="14" rx="2" stroke="white" stroke-width="1.5"/><path d="M16 7V5a4 4 0 0 0-8 0v2" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="14" r="2" stroke="white" stroke-width="1.5"/></svg>`;
+const I_KEY      = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="7.5" cy="15.5" r="4.5" stroke="white" stroke-width="1.5"/><path d="M10.5 12.5L20 3M17 6l2 2M14 3l2 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const editorialSections = [
+  {
+    eyebrow: "Product Design",
+    heading: "Tokenization Product Design, from asset model to user flows",
+    intro: "Tokenization is a product decision as much as a technical one. We help you translate your asset into a system that people can operate confidently.",
+    items: [
+      { icon: I_TOKEN,    title: "Token Model and Lifecycle Mapping",  body: "We define how the asset behaves across issuance, ownership updates, transfers, distributions, and redemption, aligning the model with your operational reality." },
+      { icon: I_WORKFLOW, title: "Workflows Stakeholders Can Follow",  body: "We design and implement flows for issuers, admins, partners, and end users, including approvals, notifications, and exception handling." },
+    ],
+  },
+  {
+    eyebrow: "Compliance",
+    heading: "Compliance-aware controls and operational governance",
+    intro: "Tokenized assets often come with rules that must be enforced consistently.",
+    items: [
+      { icon: I_SHIELD, title: "Permissions, Allowlists, and Transfer Policies", body: "We implement role-based access and policy controls that can support restrictions defined by your legal and compliance advisors. We aren't a law firm, but we build the technical mechanisms that help enforce your rules." },
+      { icon: I_TRACE,  title: "Traceability and Reporting Readiness",           body: "We design audit trails across platform actions and asset events, so compliance and operations teams can answer questions without manual reconstruction." },
+    ],
+  },
+  {
+    eyebrow: "Wallet & Custody",
+    heading: "Wallet and custody experiences that match your audience",
+    intro: "Adoption depends on how easy and safe it is for users to participate.",
+    items: [
+      { icon: I_CUSTODY, title: "Custodial vs. Non-Custodial Options",      body: "We design custody and access models based on your risk tolerance, user profile, and operational needs — balancing onboarding simplicity with control and security." },
+      { icon: I_KEY,     title: "Account Security and Recovery Patterns",    body: "We implement secure access flows, recovery approaches, and operational safeguards to reduce lockouts and support user success." },
+    ],
+  },
+];
+
+const I_PORTAL   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="3" y="3" width="7" height="7" rx="1" stroke="white" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="white" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="white" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="white" stroke-width="1.5"/></svg>`;
+const I_INDEX    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_ADMIN    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_EXPORT   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_API      = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><polyline points="16 18 22 12 16 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const portalComponents = [
+  { icon: I_PORTAL, text: "Issuer and investor portals with asset dashboards" },
+  { icon: I_INDEX,  text: "Indexing and data access patterns for fast apps and analytics" },
+  { icon: I_ADMIN,  text: "Admin consoles for issuance, approvals, and transfer workflows" },
+  { icon: I_EXPORT, text: "Exports and operational tooling for finance and compliance teams" },
+  { icon: I_API,    text: "Backend services and APIs for partners and internal systems" },
+];
+
+const I_KYC        = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_PAYMENTS   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="5" width="20" height="14" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 10h20" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M6 15h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_WALLET_INT = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M20 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 3l-4 4-4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="13" r="1.5" fill="white"/></svg>`;
+const I_ENTERPRISE = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><ellipse cx="12" cy="5" rx="9" ry="3" stroke="white" stroke-width="1.5"/><path d="M3 5v6c0 1.66 4.03 3 9 3s9-1.34 9-3V5" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M3 11v6c0 1.66 4.03 3 9 3s9-1.34 9-3v-6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+
+const integrations = [
+  { icon: I_KYC,        title: "Identity verification and onboarding providers", description: "KYC/AML integrations where needed, built to your compliance requirements." },
+  { icon: I_PAYMENTS,   title: "Payments and settlement rails",                   description: "Connect fiat and on-chain payment flows to support issuance and redemption." },
+  { icon: I_WALLET_INT, title: "Custody and wallet providers",                    description: "Custodial and non-custodial integrations matched to your user profile and risk model." },
+  { icon: I_ENTERPRISE, title: "Enterprise systems for records and operations",   description: "Connect to existing reporting, finance, and compliance infrastructure." },
+];
+
+const I_DISCOVERY = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="11" cy="11" r="8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21l-4.35-4.35" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_BUILD     = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const deliverySteps = [
+  {
+    icon: I_DISCOVERY,
+    title: "Discovery Sprint",
+    description: "Define the tokenization model, platform scope, constraints, architecture direction, and a roadmap stakeholders can approve. You get a blueprint you can execute against.",
+  },
+  {
+    icon: I_BUILD,
+    title: "Build, Launch, and Iterate",
+    description: "Milestone-based delivery with demos, QA gates, release readiness, and post-launch support to keep the product evolving safely.",
+  },
+];
+
+const engagementModels = [
+  "End-to-end tokenization product delivery",
+  "Team augmentation with blockchain specialists",
+  "Advisory, architecture, and platform reviews for in-house teams",
+];
 ---
-<ServicePageLayout data={tokenizationData} />
+
+<style is:global>
+  #cards-cursor-zone,
+  #cards-cursor-zone * { cursor: none; }
+</style>
+
+<ServicePageLayout data={tokenizationData}>
+  <div slot="pre-process">
+
+    <!-- ① Overview CTA -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            Asset tokenization converts ownership, access, or cash flow rights into digital tokens, enabling
+            <strong class="text-white font-semibold">new distribution models, faster settlement, improved traceability, and more efficient administration</strong>
+            for real world and digital assets.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-8">
+            SpaceDev helps teams design and build tokenization products that work beyond pilots. We deliver the platform, the operational workflows, and the infrastructure required to launch, run, and scale tokenized asset programs.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② Any asset, fully tokenized -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Any asset, fully tokenized</h2>
+          <p class="text-sd-text-muted text-base md:text-lg">Tokenize traditional and alternative assets with enterprise-grade blockchain solutions.</p>
+        </div>
+        <div id="cards-cursor-zone" class="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div id="cards-cursor" class="pointer-events-none fixed z-50 w-16 h-16 rounded-full opacity-0 transition-opacity duration-200" style="background: var(--sd-purple); transform: translate(-50%, -50%); will-change: transform;" />
+          {assets.map((asset, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white">{asset}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ Platform built for real operations -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Asset tokenization platform development built for real operations</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            Most tokenization initiatives succeed or fail based on the surrounding product, not the token itself. We build systems designed for day-to-day execution, stakeholders, approvals, and reporting.
+          </p>
+        </div>
+        <h3 class="text-xl text-white mb-6" data-animate>What you get with SpaceDev</h3>
+        <ul class="flex flex-col gap-3">
+          {whatYouGet.map((item) => (
+            <li class="flex items-start gap-3" data-animate>
+              <svg viewBox="0 0 16 16" fill="none" class="w-5 h-5 mt-0.5 shrink-0"><circle cx="8" cy="8" r="7" stroke="rgba(167,139,250,0.5)" stroke-width="1"/><path d="M5 8l2 2 4-4" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-sd-text-muted text-sm leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ③b What tokenization can enable -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <h2 class="section-title text-white mb-14" data-animate>What tokenization can enable</h2>
+        <div class="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+          {canEnable.map((item) => (
+            <div class="flex flex-col gap-4" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <h3 class="text-lg font-display font-semibold text-white leading-snug">{item.title}</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ Tokenization use cases -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="mb-10" data-animate>
+          <h2 class="section-title text-white">Tokenization use cases we support</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {useCases.map((uc) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white leading-snug">{uc}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ Editorial sections (Product Design, Compliance, Wallet) -->
+    {editorialSections.map((sec) => (
+      <section class="bg-sd-dark py-20 md:py-32 border-t border-white/5">
+        <div class="sd-container">
+          <div class="grid md:grid-cols-2 gap-16 items-start">
+            <!-- Left: sticky label + heading + intro -->
+            <div class="md:sticky md:top-32">
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3" data-animate>{sec.eyebrow}</p>
+              <h2 class="section-title text-white mb-4" data-animate>{sec.heading}</h2>
+              <p class="text-sd-text-muted leading-relaxed" data-animate>{sec.intro}</p>
+            </div>
+            <!-- Right: sub-items -->
+            <div class="flex flex-col gap-10">
+              {sec.items.map((item) => (
+                <div class="flex flex-col gap-4" data-animate>
+                  <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                    <Fragment set:html={item.icon} />
+                  </div>
+                  <h3 class="text-base font-display font-semibold text-white">{item.title}</h3>
+                  <p class="text-sd-text-muted text-sm leading-relaxed">{item.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- ⑥ Portals, Admin Tooling, and APIs -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Portals, Admin Tooling, and APIs</h2>
+          <p class="text-sd-text-muted leading-relaxed">SpaceDev builds the product layer required to run tokenization programs efficiently.</p>
+        </div>
+        <h3 class="text-xl text-white mb-6" data-animate>Common Platform Components</h3>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {portalComponents.map((item) => (
+            <div class="flex items-center gap-4 rounded-2xl p-5 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3 shrink-0" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <p class="text-white font-display font-semibold text-sm leading-snug">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ Integrations -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Integrations that make tokenization usable in the real world</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            Tokenization platforms often depend on other systems to function smoothly. We plan integrations early, so the product is deployable in real environments — not only in isolated demos.
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {integrations.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3 mb-5" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑧ Security First Delivery -->
+    <section class="bg-sd-dark py-20 md:py-32 border-t border-white/5">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3" data-animate>Security</p>
+            <h2 class="section-title text-white mb-4" data-animate>Security-First Delivery and BlockAudit Support</h2>
+            <p class="text-sd-text-muted leading-relaxed" data-animate>Tokenization platforms are high-trust systems. Reliability and safety matter from day one.</p>
+          </div>
+          <div class="flex flex-col gap-10">
+            <div class="flex flex-col gap-4" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2l7 3v5c0 5-3.5 9-7 10C8.5 19 5 15 5 10V5l7-3z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h3 class="text-base font-display font-semibold text-white">Secure Engineering Practices</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">We apply structured reviews, testing, and secure development practices across the platform — including backend, frontend, and on-chain components — with a focus on minimizing production risk.</p>
+            </div>
+            <div class="flex flex-col gap-4" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M10 20l4-16M6.343 17.657l-2.828-2.829a4 4 0 0 1 0-5.656l2.828-2.829M17.657 17.657l2.828-2.829a4 4 0 0 0 0-5.656l-2.828-2.829" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h3 class="text-base font-display font-semibold text-white">Smart Contract Security When Required</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">While tokenization is broader than contracts, the underlying logic still needs strong assurance. When the project calls for deeper validation, BlockAudit supports security reviews and remediation before launch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑨ Delivery Approach -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <h2 class="section-title text-white mb-14" data-animate>Delivery Approach</h2>
+        <div class="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+          {deliverySteps.map((step) => (
+            <div class="flex flex-col gap-4" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={step.icon} />
+              </div>
+              <h3 class="text-lg font-display font-semibold text-white leading-snug">{step.title}</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑩ Engagement Models -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="mb-10" data-animate>
+          <h2 class="section-title text-white">Engagement Models</h2>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {engagementModels.map((model, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white leading-snug">{model}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

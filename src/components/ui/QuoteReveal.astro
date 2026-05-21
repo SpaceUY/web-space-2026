@@ -12,9 +12,10 @@ interface Props {
   tone?: "dark" | "light";
   maxWidth?: string;
   padding?: string;
+  startOffset?: number;
 }
 
-const { text, authors, tone = "dark", maxWidth = "max-w-[1100px]", padding = "py-24 md:py-32" } = Astro.props;
+const { text, authors, tone = "dark", maxWidth = "max-w-[1100px]", padding = "py-24 md:py-32", startOffset = 0 } = Astro.props;
 const authorList = authors ? (Array.isArray(authors) ? authors : [authors]) : [];
 const words = text.split(" ").map((w, i, arr) => i < arr.length - 1 ? w + " " : w);
 const id = "qr-" + Math.random().toString(36).slice(2, 7);
@@ -84,7 +85,7 @@ const nameColor = tone === "dark" ? "text-white"             : "text-sd-text-dar
   </div>
 </div>
 
-<script define:vars={{ id, dimColor, fullColor }}>
+<script define:vars={{ id, dimColor, fullColor, startOffset }}>
   const section = document.getElementById(id);
   if (section) {
     const wordEls = section.querySelectorAll(".qr-word");
@@ -96,8 +97,8 @@ const nameColor = tone === "dark" ? "text-white"             : "text-sd-text-dar
 
       wordEls.forEach((word, i) => {
         const total = wordEls.length;
-        const start = (i / total) * 0.55;
-        const end   = ((i + 1) / total) * 0.55;
+        const start = startOffset + (i / total) * (0.55 - startOffset);
+        const end   = startOffset + ((i + 1) / total) * (0.55 - startOffset);
         const t     = Math.max(0, Math.min(1, (progress - start) / Math.max(end - start, 0.001)));
         // Interpolate between dim and full color
         const alpha = 0.15 + t * 0.85;

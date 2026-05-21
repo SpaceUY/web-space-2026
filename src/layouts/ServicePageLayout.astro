@@ -78,7 +78,7 @@ const serviceJsonLd = {
       <div class="relative sd-container py-24 md:py-32">
         <div class={data.heroImage ? "grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center" : ""}>
           <div class="max-w-4xl" data-animate>
-            <Breadcrumbs items={crumbs} visible={false} class="mb-8" />
+            <Breadcrumbs items={crumbs} visible={true} class="mb-8" />
             <h1 class="text-4xl md:text-6xl lg:text-7xl text-sd-text-dark">{data.title}</h1>
             <p class="mt-8 text-lg md:text-xl text-sd-text-gray max-w-3xl leading-relaxed">{data.description}</p>
             {(data.primaryCta || data.secondaryCta) && (
@@ -135,7 +135,7 @@ const serviceJsonLd = {
     <div class="relative sd-container py-24 md:py-32">
       <div class={data.heroImage ? "grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center" : ""}>
         <div class="max-w-4xl" data-animate>
-          <Breadcrumbs items={crumbs} visible={false} class="mb-8" />
+          <Breadcrumbs items={crumbs} visible={true} class="mb-8" />
           <h1 class="text-4xl md:text-6xl lg:text-7xl text-white">{data.title}</h1>
           <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-3xl leading-relaxed">{data.description}</p>
           {(data.primaryCta || data.secondaryCta) && (
@@ -342,7 +342,7 @@ const serviceJsonLd = {
             ))}
           </div>
         ) : data.offers.style === "dark-cards" ? (
-          <div id="cards-cursor-zone" class="relative grid gap-4 md:grid-cols-2">
+          <div id="cards-cursor-zone" class="relative grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <div id="cards-cursor" class="pointer-events-none fixed z-50 w-16 h-16 rounded-full opacity-0 transition-opacity duration-200" style="background: var(--sd-purple); transform: translate(-50%, -50%); will-change: transform;" />
             {data.offers.items.map((o) => (
               <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
@@ -459,7 +459,7 @@ const serviceJsonLd = {
     <section class={`pb-14 md:pb-20 ${data.caseStudiesTone === "light" ? "" : "bg-sd-dark"}`} style={data.caseStudiesTone === "light" ? "background: #EDEDED;" : ""}>
       <div class="sd-container">
         <div class="relative overflow-hidden rounded-3xl px-10 py-12 md:px-16 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-8"
-             style="background: linear-gradient(135deg, #3b2080 0%, #1e1040 60%, #0f0820 100%);">
+             style="background: var(--sd-gradient-purple-dark);">
           <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 70% 50%, #7c3aed, transparent 60%);"></div>
           <p class="relative text-2xl md:text-3xl lg:text-4xl text-white font-display leading-snug max-w-xl">{data.midCta.title}</p>
           <a
@@ -532,11 +532,11 @@ const serviceJsonLd = {
   <!-- WHY US -->
   {data.whyUs && (
     <section
-      class={`py-20 md:py-28 ${data.caseStudiesTone === "light" ? "border-t border-sd-gray-border" : ""}`}
-      style={data.caseStudiesTone === "light" ? "background: #EDEDED;" : "background: var(--sd-purple-deep);"}
+      class={`py-20 md:py-28 ${data.caseStudiesTone === "light" ? "border-t border-sd-gray-border" : "border-t border-white/5"}`}
+      style={data.whyUs?.tone === "dark" ? "background: var(--sd-dark);" : data.caseStudiesTone === "light" ? "background: #EDEDED;" : "background: var(--sd-purple-deep);"}
     >
       <div class="sd-container">
-        {data.whyUs.style === "accordion" ? (
+        {data.whyUs.style === "4col" ? (
           <>
             <SectionHeading
               title={data.whyUs.title}
@@ -629,34 +629,8 @@ const serviceJsonLd = {
 </BaseLayout>
 
 <style>
-  .sd-dot-grid {
-    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-    background-size: 28px 28px;
-  }
-  .sd-dot-grid-light {
-    background-image: radial-gradient(circle, rgba(0,0,0,0.18) 1px, transparent 1px);
-    background-size: 28px 28px;
-  }
-  @keyframes sd-float-a {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-10px); }
-  }
-  @keyframes sd-float-b {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-7px); }
-  }
-  @keyframes sd-float-c {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-12px); }
-  }
-  @keyframes sd-float-d {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-8px); }
-  }
-  .sd-float-1 { animation: sd-float-a 3.5s ease-in-out infinite; }
-  .sd-float-2 { animation: sd-float-b 4.2s ease-in-out infinite 0.6s; }
-  .sd-float-3 { animation: sd-float-c 3.8s ease-in-out infinite 1.2s; }
-  .sd-float-4 { animation: sd-float-d 4.6s ease-in-out infinite 0.3s; }
+  /* sd-dot-grid and sd-dot-grid-light are defined in global.css */
+  /* sd-float-* keyframes and classes are defined in global.css */
 
   #cards-cursor-zone,
   #cards-cursor-zone * { cursor: none; }
