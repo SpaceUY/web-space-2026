@@ -2,7 +2,7 @@
 title: "Web3 Marketing: Strategies That Actually Drive Sustainable Growth"
 description: "Most Web3 marketing playbooks chase hype. Here's what actually compounds — community, narrative, distribution, and product-led loops that don't depend on a bull market."
 publishedAt: 2026-03-10
-author: stephania-almansor
+author: federico-sendra
 category: Blockchain Trends
 tags: ["web3", "marketing", "growth", "community"]
 readTime: 6
