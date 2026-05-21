@@ -246,7 +246,7 @@ const clientLogos = [
                 </div>
               </div>
             )}
-            <CaseStudyCard caseStudy={c} featured={idx % 5 === 0} index={idx} />
+            <CaseStudyCard caseStudy={c} featured={idx % 5 === 0} />
           </>
         ))}
       </div>
@@ -297,20 +297,6 @@ const clientLogos = [
       });
     });
   });
-
-  // ── PROGRESS BARS — start when the card grid enters viewport ──
-  const progressBars = document.querySelectorAll<HTMLElement>(".sd-progress-bar");
-  const gridEl = document.getElementById("sd-case-grid");
-
-  if (gridEl && progressBars.length) {
-    const barObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        progressBars.forEach((bar) => { bar.style.animationPlayState = "running"; });
-        barObserver.disconnect();
-      }
-    }, { threshold: 0.1 });
-    barObserver.observe(gridEl);
-  }
 
   // ── ILLUMINATE QUOTE — words light up gray → white on scroll ──
   const quoteEl = document.getElementById("sd-illuminate-quote");
