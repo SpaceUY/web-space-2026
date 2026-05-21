@@ -62,31 +62,38 @@ const articleJsonLd = {
 
   <!-- ─── ARTICLE LAYOUT ───────────────────────────────────────────────────
        Normal page scroll — title starts from the top.
+       Sticky breadcrumb bar: back + category pill.
        Left column: header + article body (full page scroll).
        Right column: sticky sidebar (TOC + CTA).
   ─────────────────────────────────────────────────────────────────────── -->
+
+  <!-- ── STICKY BREADCRUMB BAR ─── -->
+  <div
+    class="sticky top-[68px] z-20 bg-white/90 backdrop-blur-md border-b border-sd-gray-border"
+  >
+    <div class="flex items-center gap-3 px-10 md:px-16 py-3">
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-1.5 text-sm text-sd-text-gray hover:text-sd-text-dark transition-colors"
+      >
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M11 7H3m0 0l3.5-3.5M3 7l3.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to blog
+      </a>
+      <span class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] uppercase tracking-wider font-ui border border-sd-purple/30 text-sd-purple">
+        {post.data.category}
+      </span>
+    </div>
+  </div>
+
   <div class="flex bg-white min-h-screen">
 
     <!-- ── LEFT COLUMN: scrolls with the page ─── -->
     <div class="flex-1 min-w-0 px-10 md:px-16 pt-10 pb-20">
 
-      <!-- Header: back · category · title · meta -->
+      <!-- Header: title · meta -->
       <div class="mb-7">
-        <div class="flex flex-wrap items-center gap-3 mb-5">
-          <a
-            href="/blog"
-            class="inline-flex items-center gap-1.5 text-sm text-sd-text-gray hover:text-sd-text-dark transition-colors"
-          >
-            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-              <path d="M11 7H3m0 0l3.5-3.5M3 7l3.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Back to blog
-          </a>
-          <span class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] uppercase tracking-wider font-ui border border-sd-purple/30 text-sd-purple">
-            {post.data.category}
-          </span>
-        </div>
-
         <h1 class="font-display text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-tight" style="font-weight: 400; letter-spacing: -0.02em;">
           {post.data.title}
         </h1>
