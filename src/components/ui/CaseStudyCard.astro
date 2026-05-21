@@ -28,10 +28,10 @@ const tagService = dark
   ? `${tagBase} bg-white/[0.05] text-white/50 border-white/10 group-hover:border-sd-purple group-hover:text-sd-purple-300 group-hover:font-semibold`
   : `${tagBase} bg-sd-light-2 text-sd-text-gray border-sd-gray-border group-hover:border-sd-purple group-hover:text-sd-purple group-hover:font-semibold`;
 
-// Card shell — subtle white bg with border, slightly off the page bg
+// Card shell — same bg as page, border turns purple on hover
 const cardShell = dark
-  ? "bg-white/[0.04] border border-white/10"
-  : "bg-white border border-sd-gray-border";
+  ? "bg-white/[0.04] border border-white/10 hover:border-sd-purple"
+  : "bg-sd-light-2 border border-sd-gray-border hover:border-sd-purple";
 
 const textTitle = dark ? "text-white"    : "text-sd-text-dark";
 const textBody  = dark ? "text-white/55" : "text-sd-text-gray";
@@ -48,7 +48,7 @@ const textLink  = dark
   -->
   <a
     href={`/case-study/${caseStudy.slug}`}
-    class={`group col-span-2 flex items-stretch h-full rounded-xl overflow-hidden cursor-pointer ${cardShell} ${className}`.trim()}
+    class={`group col-span-2 flex items-stretch h-full rounded-xl overflow-hidden cursor-pointer transition-colors duration-200 ${cardShell} ${className}`.trim()}
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
@@ -106,7 +106,7 @@ const textLink  = dark
   -->
   <a
     href={`/case-study/${caseStudy.slug}`}
-    class={`group flex flex-col h-full rounded-xl overflow-hidden cursor-pointer ${cardShell} ${className}`.trim()}
+    class={`group flex flex-col h-full rounded-xl overflow-hidden cursor-pointer transition-colors duration-200 ${cardShell} ${className}`.trim()}
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
