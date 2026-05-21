@@ -45,10 +45,10 @@ const breadcrumbs = [
 ];
 
 const meta: { label: string; value?: string | number }[] = [
-  { label: "Industry", value: entry.data.industry },
-  { label: "Year", value: entry.data.year },
-  { label: "Duration", value: entry.data.duration },
-  { label: "Category", value: entry.data.category },
+  { label: "Industry",  value: entry.data.industry  },
+  { label: "Category",  value: entry.data.category  },
+  { label: "Duration",  value: entry.data.duration  },
+  { label: "Year",      value: entry.data.year      },
 ].filter((m) => m.value !== undefined);
 
 const heroImage   = entry.data.heroImage;

@@ -3,9 +3,9 @@ import type { CaseStudy } from "../../data/case-studies";
 
 interface Props {
   caseStudy: CaseStudy;
-  /** Full-width editorial card (every 4th in the rhythm) */
+  /** Wide card spanning 2 columns */
   featured?: boolean;
-  /** Dark page background — adjusts text and button colors */
+  /** Dark page background — adjusts text colors */
   dark?: boolean;
   class?: string;
 }
@@ -20,79 +20,84 @@ const accentGradients: Record<NonNullable<CaseStudy["accent"]>, string> = {
 };
 
 const gradient = accentGradients[caseStudy.accent ?? "purple"];
+
+// Shared tag classes
+const tagCategory = dark
+  ? "bg-white/10 text-white/60 border-white/10"
+  : "bg-sd-light-3 text-sd-text-gray border-sd-gray-border";
+const tagService = dark
+  ? "bg-white/[0.05] text-white/50 border-white/10"
+  : "bg-white text-sd-text-gray border-sd-gray-border";
+const textTitle  = dark ? "text-white"      : "text-sd-text-dark";
+const textBody   = dark ? "text-white/55"   : "text-sd-text-gray";
+const textLink   = dark
+  ? "text-white/60 group-hover:text-sd-purple-300"
+  : "text-sd-text-gray group-hover:text-sd-purple";
 ---
 
 {featured ? (
 
-  <!-- ── FEATURED — horizontal, image left + dark panel right ── -->
-  <!-- group on the <a> so child group-hover: classes react to card hover -->
+  <!-- ── FEATURED — 2-col wide, same visual language as regular but bigger ── -->
   <a
     href={`/case-study/${caseStudy.slug}`}
-    class={`group col-span-2 grid grid-cols-1 sm:grid-cols-[3fr_2fr] overflow-hidden rounded-xl ${className}`.trim()}
+    class={`group col-span-2 block cursor-pointer ${className}`.trim()}
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
-    <!-- Image -->
-    <div class="relative aspect-[4/3] sm:aspect-auto overflow-hidden">
+    <!-- Wide image -->
+    <div class="overflow-hidden rounded-xl mb-5 aspect-[16/9]">
       {caseStudy.image ? (
         <img
           src={caseStudy.image}
           alt={caseStudy.name}
           loading="lazy"
-          class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+          class="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
         />
       ) : (
-        <div class={`absolute inset-0 bg-gradient-to-br ${gradient}`}></div>
+        <div class={`w-full h-full bg-gradient-to-br ${gradient}`}></div>
       )}
     </div>
 
-    <!-- Dark content panel -->
-    <div class="bg-[#191429] p-8 sm:p-10 flex flex-col justify-between min-h-[280px] sm:min-h-[380px]">
-      <!-- Category + service tags -->
-      <div class="flex flex-wrap gap-2">
-        <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-white/10 text-[10px] uppercase tracking-wider text-white/60 border border-white/10">
-          {caseStudy.category}
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-2 mb-4">
+      <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] uppercase tracking-wider border ${tagCategory}`}>
+        {caseStudy.category}
+      </span>
+      {caseStudy.services?.slice(0, 3).map((s) => (
+        <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] border ${tagService}`}>
+          {s}
         </span>
-        {caseStudy.services?.slice(0, 2).map((s) => (
-          <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-white/[0.05] text-[10px] text-white/50 border border-white/10">
-            {s}
-          </span>
-        ))}
-      </div>
-
-      <!-- Name + tagline + button -->
-      <div>
-        {caseStudy.highlight && (
-          <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-sd-purple/20 text-[10px] text-sd-purple-300 border border-sd-purple/30 mb-4 w-fit block">
-            {caseStudy.highlight}
-          </span>
-        )}
-        <h3 class="text-2xl sm:text-3xl text-white font-display font-semibold leading-tight mb-3">
-          {caseStudy.name}
-        </h3>
-        <p class="text-sm text-white/50 leading-relaxed mb-6">{caseStudy.tagline}</p>
-
-        <!-- Text link — bold + purple on hover -->
-        <span class="inline-flex items-center gap-1.5 text-sm text-white/60 group-hover:text-sd-purple-300 group-hover:font-semibold transition-all duration-200">
-          View case study
-          <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true" class="opacity-0 group-hover:opacity-100 transition-opacity duration-200"><path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-      </div>
+      ))}
     </div>
+
+    <!-- Name + tagline -->
+    <h3 class={`text-2xl sm:text-3xl font-display font-semibold leading-tight mb-3 ${textTitle}`}>
+      {caseStudy.name}
+    </h3>
+    <p class={`text-sm leading-relaxed mb-5 line-clamp-2 ${textBody}`}>
+      {caseStudy.tagline}
+    </p>
+
+    <!-- Hover text link -->
+    <span class={`inline-flex items-center gap-1.5 text-sm transition-all duration-200 group-hover:font-semibold ${textLink}`}>
+      View case study
+      <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true" class="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
   </a>
 
 ) : (
 
-  <!-- ── REGULAR card — Articulate style: no box, content below image ── -->
-  <!-- group on <a> so button reacts to hovering anywhere on the card -->
+  <!-- ── REGULAR card — image + content below ── -->
   <a
     href={`/case-study/${caseStudy.slug}`}
     class={`group block cursor-pointer ${className}`.trim()}
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
-    <!-- Image — rounded, zooms on card hover -->
-    <div class="overflow-hidden rounded-xl mb-6 aspect-[4/3]">
+    <!-- Image — zooms on card hover -->
+    <div class="overflow-hidden rounded-xl mb-5 aspect-[4/3]">
       {caseStudy.image ? (
         <img
           src={caseStudy.image}
@@ -105,22 +110,32 @@ const gradient = accentGradients[caseStudy.accent ?? "purple"];
       )}
     </div>
 
-    <!-- Content below image — always visible -->
-    <h3 class={`text-xl font-display font-semibold leading-snug mb-4 ${dark ? "text-white" : "text-sd-text-dark"}`}>
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-2 mb-3">
+      <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] uppercase tracking-wider border ${tagCategory}`}>
+        {caseStudy.category}
+      </span>
+      {caseStudy.services?.slice(0, 2).map((s) => (
+        <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] border ${tagService}`}>
+          {s}
+        </span>
+      ))}
+    </div>
+
+    <!-- Name + tagline -->
+    <h3 class={`text-xl font-display font-semibold leading-snug mb-3 ${textTitle}`}>
       {caseStudy.name}
     </h3>
-    <p class={`text-sm leading-relaxed mb-5 line-clamp-2 ${dark ? "text-white/55" : "text-sd-text-gray"}`}>
+    <p class={`text-sm leading-relaxed mb-4 line-clamp-2 ${textBody}`}>
       {caseStudy.tagline}
     </p>
 
-    <!-- Text link — bold + purple on hover -->
-    <span class={`inline-flex items-center gap-1.5 text-sm transition-all duration-200 group-hover:font-semibold ${
-      dark
-        ? "text-white/60 group-hover:text-sd-purple-300"
-        : "text-sd-text-gray group-hover:text-sd-purple"
-    }`}>
+    <!-- Hover text link -->
+    <span class={`inline-flex items-center gap-1.5 text-sm transition-all duration-200 group-hover:font-semibold ${textLink}`}>
       View case study
-      <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true" class="opacity-0 group-hover:opacity-100 transition-opacity duration-200"><path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true" class="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </span>
   </a>
 

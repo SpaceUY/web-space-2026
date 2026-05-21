@@ -164,22 +164,22 @@ const clientLogos = [
         </h2>
       </div>
 
-      <!-- Client logo strip — same logos as homepage -->
-      <div class="flex flex-wrap items-center gap-x-8 gap-y-5 mb-12 pb-12 border-b border-sd-gray-border" data-animate>
-        <span class="text-xs uppercase tracking-[0.18em] text-sd-text-gray shrink-0 mr-2">Featured clients</span>
+      <!-- Client logo strip — all logos on a single line, smaller -->
+      <div class="flex items-center gap-x-6 mb-12 pb-12 border-b border-sd-gray-border overflow-x-auto" data-animate>
+        <span class="text-[10px] uppercase tracking-[0.18em] text-sd-text-gray shrink-0 whitespace-nowrap mr-1">Featured clients</span>
         {clientLogos.map((logo) => (
           logo.full ? (
-            <div class="w-[52px] h-[52px] shrink-0 overflow-hidden opacity-40 grayscale hover:opacity-75 hover:grayscale-0 transition-all duration-300">
-              <img src={logo.src} alt={logo.alt} width="52" height="52" loading="lazy" class="w-full h-full object-contain" />
+            <div class="w-[36px] h-[36px] shrink-0 opacity-35 grayscale hover:opacity-65 hover:grayscale-0 transition-all duration-300">
+              <img src={logo.src} alt={logo.alt} width="36" height="36" loading="lazy" class="w-full h-full object-contain" />
             </div>
           ) : (
             <img
               src={logo.src}
               alt={logo.alt}
-              width={Math.round(logo.w * (30 / logo.h))}
-              height="30"
+              width={Math.round(logo.w * (20 / logo.h))}
+              height="20"
               loading="lazy"
-              class="h-[30px] w-auto object-contain opacity-40 grayscale hover:opacity-75 hover:grayscale-0 transition-all duration-300"
+              class="h-[20px] w-auto shrink-0 object-contain opacity-35 grayscale hover:opacity-65 hover:grayscale-0 transition-all duration-300"
             />
           )
         ))}
@@ -246,7 +246,7 @@ const clientLogos = [
                 </div>
               </div>
             )}
-            <CaseStudyCard caseStudy={c} featured={idx % 2 === 0} />
+            <CaseStudyCard caseStudy={c} featured={idx % 5 === 0} />
           </>
         ))}
       </div>
