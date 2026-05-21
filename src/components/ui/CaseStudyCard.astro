@@ -35,7 +35,10 @@ const cardShell = dark
 
 const textTitle = dark ? "text-white"    : "text-sd-text-dark";
 const textBody  = dark ? "text-white/55" : "text-sd-text-gray";
-const textLink  = dark ? "text-sd-purple-300" : "text-sd-purple";
+// same color as description by default, turns purple on card hover
+const textLink  = dark
+  ? "text-white/55 group-hover:text-sd-purple-300"
+  : "text-sd-text-gray group-hover:text-sd-purple";
 ---
 
 {featured ? (
@@ -77,7 +80,7 @@ const textLink  = dark ? "text-sd-purple-300" : "text-sd-purple";
         {caseStudy.tagline}
       </p>
 
-      <span class={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium ${textLink}`}>
+      <span class={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 ${textLink}`}>
         View case study
         <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true">
           <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -132,7 +135,7 @@ const textLink  = dark ? "text-sd-purple-300" : "text-sd-purple";
         {caseStudy.tagline}
       </p>
 
-      <span class={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium ${textLink}`}>
+      <span class={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 ${textLink}`}>
         View case study
         <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true">
           <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
