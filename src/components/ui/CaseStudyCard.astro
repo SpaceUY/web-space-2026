@@ -21,13 +21,13 @@ const accentGradients: Record<NonNullable<CaseStudy["accent"]>, string> = {
 
 const gradient = accentGradients[caseStudy.accent ?? "purple"];
 
-// Tag pill base — hover:border-sd-purple and hover:text-sd-purple added per element
+// Pills — hover turns text bold + purple (same feel as "View case study")
 const tagCategory = dark
-  ? "bg-white/10 text-white/60 border-white/10 hover:border-sd-purple hover:text-sd-purple-300"
-  : "bg-sd-light-3 text-sd-text-gray border-sd-gray-border hover:border-sd-purple hover:text-sd-purple";
+  ? "bg-white/10 text-white/60 border-white/10 hover:border-sd-purple hover:text-sd-purple-300 hover:font-semibold"
+  : "bg-sd-light-3 text-sd-text-gray border-sd-gray-border hover:border-sd-purple hover:text-sd-purple hover:font-semibold";
 const tagService = dark
-  ? "bg-white/[0.05] text-white/50 border-white/10 hover:border-sd-purple hover:text-sd-purple-300"
-  : "bg-white text-sd-text-gray border-sd-gray-border hover:border-sd-purple hover:text-sd-purple";
+  ? "bg-white/[0.05] text-white/50 border-white/10 hover:border-sd-purple hover:text-sd-purple-300 hover:font-semibold"
+  : "bg-white text-sd-text-gray border-sd-gray-border hover:border-sd-purple hover:text-sd-purple hover:font-semibold";
 
 const textTitle = dark ? "text-white"    : "text-sd-text-dark";
 const textBody  = dark ? "text-white/55" : "text-sd-text-gray";
@@ -40,8 +40,8 @@ const textLink  = dark
 
   <!--
     ── FEATURED — 2-col wide card
-       h-full + flex col so the content fills the grid cell height,
-       flex-1 on tagline pushes "View case study" to the bottom.
+       Image uses a fixed pixel height (same as regular) so both card types
+       occupy the same vertical space in the row.
   -->
   <a
     href={`/case-study/${caseStudy.slug}`}
@@ -49,8 +49,8 @@ const textLink  = dark
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
-    <!-- Wide image — shrink-0 keeps it at intrinsic aspect-ratio -->
-    <div class="shrink-0 overflow-hidden rounded-xl mb-5 aspect-[16/9]">
+    <!-- Fixed-height image — same h-[224px] as regular card -->
+    <div class="shrink-0 overflow-hidden rounded-xl mb-5 h-[224px]">
       {caseStudy.image ? (
         <img
           src={caseStudy.image}
@@ -63,31 +63,31 @@ const textLink  = dark
       )}
     </div>
 
-    <!-- Content — grows to fill remaining height -->
+    <!-- Content grows to fill remaining cell height -->
     <div class="flex flex-col flex-1">
       <!-- Tags -->
       <div class="flex flex-wrap gap-2 mb-4">
-        <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] uppercase tracking-wider border transition-colors duration-150 ${tagCategory}`}>
+        <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] uppercase tracking-wider border transition-all duration-150 cursor-default ${tagCategory}`}>
           {caseStudy.category}
         </span>
         {caseStudy.services?.slice(0, 3).map((s) => (
-          <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] border transition-colors duration-150 ${tagService}`}>
+          <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] border transition-all duration-150 cursor-default ${tagService}`}>
             {s}
           </span>
         ))}
       </div>
 
-      <!-- Name -->
-      <h3 class={`text-2xl sm:text-3xl font-display font-semibold leading-tight mb-3 ${textTitle}`}>
+      <!-- Name — same size as regular to keep row heights equal -->
+      <h3 class={`text-xl font-display font-semibold leading-snug mb-3 ${textTitle}`}>
         {caseStudy.name}
       </h3>
 
-      <!-- Tagline — flex-1 pushes the link to the bottom -->
+      <!-- Tagline — flex-1 pushes link to bottom -->
       <p class={`flex-1 text-sm leading-relaxed mb-5 line-clamp-2 ${textBody}`}>
         {caseStudy.tagline}
       </p>
 
-      <!-- Hover text link — always at the bottom -->
+      <!-- Link — always at the bottom -->
       <span class={`inline-flex items-center gap-1.5 text-sm transition-all duration-200 group-hover:font-semibold ${textLink}`}>
         View case study
         <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true" class="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -100,8 +100,7 @@ const textLink  = dark
 ) : (
 
   <!--
-    ── REGULAR card — image + content below
-       Same flex-col / h-full / flex-1 pattern for equal heights.
+    ── REGULAR card — same fixed image height as featured.
   -->
   <a
     href={`/case-study/${caseStudy.slug}`}
@@ -109,8 +108,8 @@ const textLink  = dark
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
-    <!-- Image — shrink-0 keeps aspect ratio -->
-    <div class="shrink-0 overflow-hidden rounded-xl mb-5 aspect-[4/3]">
+    <!-- Fixed-height image -->
+    <div class="shrink-0 overflow-hidden rounded-xl mb-5 h-[224px]">
       {caseStudy.image ? (
         <img
           src={caseStudy.image}
@@ -123,15 +122,15 @@ const textLink  = dark
       )}
     </div>
 
-    <!-- Content — grows to fill remaining height -->
+    <!-- Content grows to fill remaining cell height -->
     <div class="flex flex-col flex-1">
       <!-- Tags -->
       <div class="flex flex-wrap gap-2 mb-3">
-        <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] uppercase tracking-wider border transition-colors duration-150 ${tagCategory}`}>
+        <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] uppercase tracking-wider border transition-all duration-150 cursor-default ${tagCategory}`}>
           {caseStudy.category}
         </span>
         {caseStudy.services?.slice(0, 2).map((s) => (
-          <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] border transition-colors duration-150 ${tagService}`}>
+          <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] border transition-all duration-150 cursor-default ${tagService}`}>
             {s}
           </span>
         ))}
@@ -142,12 +141,12 @@ const textLink  = dark
         {caseStudy.name}
       </h3>
 
-      <!-- Tagline — flex-1 pushes the link to the bottom -->
+      <!-- Tagline — flex-1 pushes link to bottom -->
       <p class={`flex-1 text-sm leading-relaxed mb-4 line-clamp-2 ${textBody}`}>
         {caseStudy.tagline}
       </p>
 
-      <!-- Hover text link — always at the bottom -->
+      <!-- Link — always at the bottom -->
       <span class={`inline-flex items-center gap-1.5 text-sm transition-all duration-200 group-hover:font-semibold ${textLink}`}>
         View case study
         <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true" class="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
