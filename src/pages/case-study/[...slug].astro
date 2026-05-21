@@ -45,11 +45,9 @@ const breadcrumbs = [
 ];
 
 const meta: { label: string; value?: string | number }[] = [
-  { label: "Client", value: entry.data.client },
   { label: "Industry", value: entry.data.industry },
   { label: "Year", value: entry.data.year },
   { label: "Duration", value: entry.data.duration },
-  { label: "Team", value: entry.data.team },
   { label: "Category", value: entry.data.category },
 ].filter((m) => m.value !== undefined);
 
@@ -144,7 +142,7 @@ const hasRichContent =
   <!-- META BAR -->
   <section class="bg-sd-dark py-10 border-b border-white/5">
     <div class="mx-auto max-w-[1200px] px-6 md:px-10">
-      <dl class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+      <dl class="grid grid-cols-2 md:grid-cols-4 gap-8">
         {meta.map((m) => (
           <div>
             <dt class="text-[10px] uppercase tracking-[0.2em] text-sd-text-muted mb-1">{m.label}</dt>
@@ -231,21 +229,6 @@ const hasRichContent =
                   <span class="shrink-0 w-2 h-2 mt-2 rounded-full bg-sd-purple-300"></span>
                   <p class="text-white/85 leading-relaxed">{d}</p>
                 </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
-
-      <!-- TECH STACK BAND -->
-      {entry.data.techStack.length > 0 && (
-        <section class="bg-sd-light py-16 md:py-20 border-y border-sd-gray-border">
-          <div class="mx-auto max-w-[1100px] px-6 md:px-10">
-            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Tech Stack</p>
-            <h2 class="text-2xl md:text-3xl text-sd-dark mb-8">Built with</h2>
-            <ul class="flex flex-wrap gap-3">
-              {entry.data.techStack.map((t) => (
-                <li class="inline-flex items-center px-4 py-2 rounded-full bg-white border border-sd-gray-border text-sm text-sd-text-gray">{t}</li>
               ))}
             </ul>
           </div>

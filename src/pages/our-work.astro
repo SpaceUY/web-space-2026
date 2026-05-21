@@ -16,19 +16,24 @@ const filters = [
   })),
 ];
 
-// Logos with local file — add more as files land in public/images/clients-logos/
-// Pending (user to upload): blockus, fightfi, apebond, mostaza, athleteai, bondi, gallery
+// Same logos as homepage marquee — exact pixel dimensions from spacedev.io Framer CSS
 const clientLogos = [
-  { name: "Rarible",  file: "rarible.svg"  },
-  { name: "Drata",    file: "drata.svg"    },
-  { name: "NDAX",     file: "ndax.svg"     },
-  // { name: "Blockus",      file: "blockus.svg"      },
-  // { name: "FightFI",      file: "fightfi.svg"      },
-  // { name: "ApeBond",      file: "apebond.svg"      },
-  // { name: "Mostaza",      file: "mostaza.svg"      },
-  // { name: "AthleteAI",    file: "athleteai.svg"    },
-  // { name: "Bondi Finance",file: "bondi.svg"        },
-  // { name: "Gallery",      file: "gallery.svg"      },
+  { src: "/images/clients/apple.png",         alt: "Apple",        w: 62,  h: 74,  full: false },
+  { src: "/images/clients/acton_academy.png", alt: "Acton Academy",w: 118, h: 44,  full: false },
+  { src: "/images/clients/microsoft.svg",     alt: "Microsoft",    w: 174, h: 174, full: true  },
+  { src: "/images/clients/drata.svg",         alt: "Drata",        w: 174, h: 174, full: true  },
+  { src: "/images/clients/prose.svg",         alt: "prose",        w: 174, h: 174, full: true  },
+  { src: "/images/clients/ulta.svg",          alt: "ULTA Beauty",  w: 174, h: 174, full: true  },
+  { src: "/images/clients/scotia.svg",        alt: "Scotiabank",   w: 174, h: 174, full: true  },
+  { src: "/images/clients/utec.svg",          alt: "UTEC",         w: 174, h: 174, full: true  },
+  { src: "/images/clients/samsonite.svg",     alt: "Samsonite",    w: 174, h: 174, full: true  },
+  { src: "/images/clients/blockus.svg",       alt: "Blockus",      w: 174, h: 174, full: true  },
+  { src: "/images/clients/ute.png",           alt: "UTE",          w: 110, h: 50,  full: false },
+  { src: "/images/clients/orange.svg",        alt: "Orange",       w: 174, h: 174, full: true  },
+  { src: "/images/clients/d_local.svg",       alt: "dLocal",       w: 174, h: 174, full: true  },
+  { src: "/images/clients/schwarzkopf.svg",   alt: "Schwarzkopf",  w: 174, h: 174, full: true  },
+  { src: "/images/clients/rarible.svg",       alt: "Rarible",      w: 133, h: 31,  full: false },
+  { src: "/images/clients/ufc.svg",           alt: "UFC Strike",   w: 145, h: 22,  full: false },
 ];
 ---
 
@@ -159,17 +164,24 @@ const clientLogos = [
         </h2>
       </div>
 
-      <!-- Client logo strip -->
-      <div class="flex flex-wrap items-center gap-x-10 gap-y-6 mb-12 pb-12 border-b border-sd-gray-border" data-animate>
+      <!-- Client logo strip — same logos as homepage -->
+      <div class="flex flex-wrap items-center gap-x-8 gap-y-5 mb-12 pb-12 border-b border-sd-gray-border" data-animate>
         <span class="text-xs uppercase tracking-[0.18em] text-sd-text-gray shrink-0 mr-2">Featured clients</span>
         {clientLogos.map((logo) => (
-          <img
-            src={`/images/clients-logos/${logo.file}`}
-            alt={logo.name}
-            height="28"
-            class="h-7 w-auto object-contain opacity-40 grayscale hover:opacity-75 hover:grayscale-0 transition-all duration-300"
-            loading="lazy"
-          />
+          logo.full ? (
+            <div class="w-[52px] h-[52px] shrink-0 overflow-hidden opacity-40 grayscale hover:opacity-75 hover:grayscale-0 transition-all duration-300">
+              <img src={logo.src} alt={logo.alt} width="52" height="52" loading="lazy" class="w-full h-full object-contain" />
+            </div>
+          ) : (
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              width={Math.round(logo.w * (30 / logo.h))}
+              height="30"
+              loading="lazy"
+              class="h-[30px] w-auto object-contain opacity-40 grayscale hover:opacity-75 hover:grayscale-0 transition-all duration-300"
+            />
+          )
         ))}
       </div>
 
@@ -196,9 +208,6 @@ const clientLogos = [
           </button>
         ))}
 
-        <span id="sd-count" class="ml-auto text-sm text-sd-text-gray hidden sm:block">
-          {caseStudies.length} projects
-        </span>
       </div>
 
       <!-- Mixed rhythm grid — 1 featured (full-width) + 3 small, repeating -->
@@ -237,7 +246,7 @@ const clientLogos = [
                 </div>
               </div>
             )}
-            <CaseStudyCard caseStudy={c} featured={idx % 4 === 0} />
+            <CaseStudyCard caseStudy={c} featured={idx % 2 === 0} />
           </>
         ))}
       </div>
@@ -259,15 +268,6 @@ const clientLogos = [
 <script>
   const buttons = document.querySelectorAll<HTMLButtonElement>(".sd-filter-btn");
   const cards   = document.querySelectorAll<HTMLElement>("#sd-case-grid > [data-category]");
-  const countEl = document.getElementById("sd-count");
-
-  function updateCount(filter: string) {
-    if (!countEl) return;
-    const n = filter === "all"
-      ? cards.length
-      : [...cards].filter((c) => c.dataset.category === filter).length;
-    countEl.textContent = `${n} project${n !== 1 ? "s" : ""}`;
-  }
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -295,8 +295,6 @@ const clientLogos = [
         const show = filter === "all" || card.dataset.category === filter;
         card.style.display = show ? "" : "none";
       });
-
-      updateCount(filter);
     });
   });
 
