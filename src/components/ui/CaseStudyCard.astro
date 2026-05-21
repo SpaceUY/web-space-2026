@@ -30,8 +30,8 @@ const tagService = dark
 
 // group on <a> so bar + image react to card hover
 const cardShell = dark
-  ? "group bg-white/[0.04] border border-white/10"
-  : "group bg-sd-light-2 border border-sd-gray-border";
+  ? "group bg-white/[0.04]"
+  : "group bg-sd-light-2";
 
 const textTitle = dark ? "text-white"    : "text-sd-text-dark";
 const textBody  = dark ? "text-white/55" : "text-sd-text-gray";
@@ -87,7 +87,7 @@ const textLink  = dark ? "text-sd-purple-300" : "text-sd-purple";
 
     <!-- Progress bar: scaleX 0→1 on group hover, origin-left -->
     <div
-      class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[1800ms] ease-linear"
+      class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-linear"
       style="background: linear-gradient(to right, #673ae4, #44cdf3);"
       aria-hidden="true"
     ></div>
@@ -142,7 +142,7 @@ const textLink  = dark ? "text-sd-purple-300" : "text-sd-purple";
 
     <!-- Progress bar: scaleX 0→1 on group hover, origin-left -->
     <div
-      class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[1800ms] ease-linear"
+      class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-linear"
       style="background: linear-gradient(to right, #673ae4, #44cdf3);"
       aria-hidden="true"
     ></div>
