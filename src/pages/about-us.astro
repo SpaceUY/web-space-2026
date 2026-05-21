@@ -73,25 +73,33 @@ const orbitPortraits = [
   title="About Us | SpaceDev — Meet the team behind the technology"
   description="SpaceDev is a blockchain and software development partner with 70+ engineers across the U.S. and Latin America. Top 5 blockchain company by Clutch."
 >
-  <!-- HERO -->
-  <section class="bg-black">
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-20 pb-10 md:pt-28 md:pb-14 text-center">
-      <h1 class="text-5xl md:text-7xl lg:text-[80px] text-white font-display font-light leading-[1.0]">
-        We are SpaceDev...
-      </h1>
-    </div>
-    <div class="hero-video-wrapper">
+  <!-- HERO: scroll-driven expand
+       Track is 300vh tall so there's room to scroll through the animation.
+       Inner sticky pane fills the viewport and stays pinned while the track scrolls.
+       Title overlays the video and fades out as the video clip expands. -->
+  <div class="hero-scroll-track">
+    <div class="hero-sticky">
+
+      <!-- Video fills the entire pane; clip-path shrinks it to a pill on load -->
       <video
         autoplay
         muted
         loop
         playsinline
-        class="w-full h-auto block"
+        class="hero-video"
       >
         <source src="https://wbufyhm7al1rxqad.public.blob.vercel-storage.com/we_are_space.mp4" type="video/mp4" />
       </video>
+
+      <!-- Title: massive text that dwarfs the pill, fades on scroll -->
+      <div class="hero-title-overlay">
+        <h1 class="hero-title text-white font-display font-light text-center whitespace-nowrap" style="font-size: clamp(48px, 9.5vw, 130px);">
+          We are SpaceDev
+        </h1>
+      </div>
+
     </div>
-  </section>
+  </div>
 
   <!-- WHO WE ARE -->
   <section class="bg-[#f5f5f5] py-20 md:py-28">
@@ -342,24 +350,74 @@ const orbitPortraits = [
 </BaseLayout>
 
 <style>
-  /* ── Hero video: scroll-driven expand (pill → full-bleed) ── */
-  /* Fallback for browsers without scroll-driven animations: show fully expanded */
-  .hero-video-wrapper {
-    clip-path: none;
+  /* ── Hero: sticky scroll-driven expand ── */
+
+  /* Track: gives enough height to scroll through the full animation */
+  .hero-scroll-track {
+    height: 300vh;
+    background: #000;
+  }
+
+  /* Sticky pane: fills the viewport, stays pinned while the track scrolls */
+  .hero-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+  }
+
+  /* Video covers the full pane */
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Fallback: fully expanded */
+    clip-path: inset(0% 0% round 0px);
+  }
+
+  /* Title: fills the viewport, text dwarfs the pill underneath.
+     Centered so the huge letters overflow the pill on all sides. */
+  .hero-title-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
   }
 
   @supports (animation-timeline: scroll()) {
-    .hero-video-wrapper {
-      clip-path: inset(0 12% round 16px);
+    /* Video: starts very small (pill), expands to full-bleed while text fades */
+    .hero-video {
+      clip-path: inset(35% 35% round 16px);
       animation: hero-expand linear both;
       animation-timeline: scroll(root);
-      animation-range: 0px 420px;
+      animation-range: 0vh 80vh;
+    }
+
+    /* Title: fully visible at start, fades out early as video begins expanding */
+    .hero-title-overlay {
+      opacity: 1;
+      animation: hero-title-fade linear both;
+      animation-timeline: scroll(root);
+      animation-range: 5vh 35vh;
     }
   }
 
   @keyframes hero-expand {
-    from { clip-path: inset(0 12% round 16px); }
-    to   { clip-path: inset(0 0% round 0px); }
+    from { clip-path: inset(35% 35% round 16px); }
+    to   { clip-path: inset(0% 0% round 0px); }
+  }
+
+  @keyframes hero-title-fade {
+    from { opacity: 1; }
+    to   { opacity: 0; }
   }
 
   /* ── "We help clients navigate" scroll-driven illumination ── */
@@ -416,7 +474,8 @@ const orbitPortraits = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-video-wrapper { animation: none; clip-path: none; }
+    .hero-video         { animation: none; clip-path: inset(0% 0% round 0px); }
+    .hero-title-overlay { animation: none; opacity: 0; }
     .navigate-bright    { animation: none; color: #fff; }
     .navigate-dim       { animation: none; color: #555; }
     .orbit-arm  { animation: none; transform: rotate(var(--a, 0deg)); }
