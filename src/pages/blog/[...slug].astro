@@ -60,20 +60,15 @@ const articleJsonLd = {
   jsonLd={articleJsonLd}
 >
 
-  <!-- ─── ARTICLE LAYOUT ───────────────────────────────────────────────────
-       Normal page scroll — title starts from the top.
-       Back+pill row is sticky inside the left column (sticks at nav bottom).
-       Title, description, author scroll away normally behind it.
-       Right column: sticky sidebar (TOC + CTA) — unchanged.
-  ─────────────────────────────────────────────────────────────────────── -->
+  <!-- ─── ARTICLE LAYOUT ─────────────────────────────────────────────── -->
   <div class="flex bg-white min-h-screen">
 
-    <!-- ── LEFT COLUMN ─── -->
-    <div class="flex-1 min-w-0 flex flex-col">
+    <!-- ── LEFT COLUMN: scrolls with the page ─── -->
+    <div class="flex-1 min-w-0 px-10 md:px-16 pt-10 pb-20">
 
-      <!-- Sticky back + pill — sticks at top of viewport (below nav) -->
-      <div class="sticky top-[68px] z-10 bg-white border-b border-sd-gray-border">
-        <div class="flex items-center gap-3 px-10 md:px-16 py-3">
+      <!-- Header: back · category · title · meta -->
+      <div class="mb-7">
+        <div class="flex flex-wrap items-center gap-3 mb-5">
           <a
             href="/blog"
             class="inline-flex items-center gap-1.5 text-sm text-sd-text-gray hover:text-sd-text-dark transition-colors"
@@ -87,13 +82,7 @@ const articleJsonLd = {
             {post.data.category}
           </span>
         </div>
-      </div>
 
-      <!-- Scrollable content -->
-      <div class="px-10 md:px-16 pt-10 pb-20">
-
-      <!-- Header: title · meta -->
-      <div class="mb-7">
         <h1 class="font-display text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-tight" style="font-weight: 400; letter-spacing: -0.02em;">
           {post.data.title}
         </h1>
@@ -150,8 +139,7 @@ const articleJsonLd = {
           ))}
         </div>
       )}
-      </div>{/* end scrollable content */}
-    </div>{/* end left column */}
+    </div>
 
     <!-- ── RIGHT COLUMN: sticky sidebar ─── -->
     <aside
