@@ -144,62 +144,57 @@ const articleJsonLd = {
           ))}
         </div>
       )}
+
+      <!-- CTA — at the end of the article, always reachable on scroll -->
+      <div
+        class="mt-12 rounded-2xl p-7 text-center"
+        style="background: var(--sd-gradient-hero);"
+      >
+        <p class="font-display font-semibold text-white text-lg leading-snug mb-2">
+          Ready to build something?
+        </p>
+        <p class="text-sm text-white/70 leading-relaxed mb-5">
+          SpaceDev helps companies build Web3 and Web2 products from idea to launch.
+        </p>
+        <a
+          href="/contact"
+          class="inline-block px-7 py-2.5 rounded-full bg-white text-sd-text-dark text-sm font-ui font-medium hover:bg-sd-purple hover:text-white transition-colors"
+        >
+          Get in touch
+        </a>
+      </div>
     </div>
 
-    <!-- ── RIGHT COLUMN: sticky sidebar ──────────────────────────────── -->
-    <aside
-      class="hidden md:flex flex-col w-[300px] flex-shrink-0"
-      style="position: sticky; top: 68px; height: calc(100vh - 68px);"
-      aria-label="Article sidebar"
-    >
-      <!-- Inner wrapper: full height flex column so CTA is always pinned at bottom -->
-      <div class="flex flex-col h-full px-7 py-7 gap-4 min-h-0">
-
-        {tocHeadings.length > 0 && (
-          <div class="flex flex-col flex-1 min-h-0 rounded-2xl bg-[#f7f7f8] p-5">
-            <p class="text-[10px] uppercase tracking-[0.2em] font-ui text-sd-text-gray mb-4 flex-shrink-0">
-              In this article
-            </p>
-            <nav aria-label="Table of contents" class="flex-1 overflow-y-auto min-h-0">
-              <ul id="sd-toc" class="space-y-0.5">
-                {tocHeadings.map((h) => (
-                  <li style={`padding-left: ${(h.depth - 2) * 12}px`}>
-                    <a
-                      href={`#${h.slug}`}
-                      class="sd-toc-link group flex items-start gap-2.5 py-1.5 text-[13px] leading-snug text-[#555] hover:text-sd-purple transition-colors duration-150"
-                      data-heading={h.slug}
-                    >
-                      <span class="sd-toc-dot mt-1.5 shrink-0 w-1 h-1 rounded-full bg-[#bbb] group-hover:bg-sd-purple transition-colors duration-150"></span>
-                      {h.text}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        )}
-
-        <!-- CTA: flex-shrink-0 so it's always fully visible -->
-        <div
-          class="flex-shrink-0 rounded-2xl p-5 text-center"
-          style="background: var(--sd-gradient-hero);"
-        >
-          <p class="font-display font-semibold text-white text-base leading-snug mb-2">
-            Ready to build something?
+    <!-- ── RIGHT COLUMN: sticky TOC only ────────────────────────────── -->
+    {tocHeadings.length > 0 && (
+      <aside
+        class="hidden md:flex flex-col w-[280px] flex-shrink-0"
+        style="position: sticky; top: 68px; height: calc(100vh - 68px); overflow-y: auto;"
+        aria-label="Article sidebar"
+      >
+        <div class="p-7">
+          <p class="text-[10px] uppercase tracking-[0.2em] font-ui text-sd-text-gray mb-4">
+            In this article
           </p>
-          <p class="text-sm text-white/70 leading-relaxed mb-5">
-            SpaceDev helps companies build Web3 and Web2 products from idea to launch.
-          </p>
-          <a
-            href="/contact"
-            class="block w-full py-2.5 rounded-full bg-white text-sd-text-dark text-sm font-ui font-medium hover:bg-sd-purple hover:text-white transition-colors"
-          >
-            Get in touch
-          </a>
+          <nav aria-label="Table of contents">
+            <ul id="sd-toc" class="space-y-0.5">
+              {tocHeadings.map((h) => (
+                <li style={`padding-left: ${(h.depth - 2) * 12}px`}>
+                  <a
+                    href={`#${h.slug}`}
+                    class="sd-toc-link group flex items-start gap-2.5 py-1.5 text-[13px] leading-snug text-[#555] hover:text-sd-purple transition-colors duration-150"
+                    data-heading={h.slug}
+                  >
+                    <span class="sd-toc-dot mt-1.5 shrink-0 w-1 h-1 rounded-full bg-[#bbb] group-hover:bg-sd-purple transition-colors duration-150"></span>
+                    {h.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
-
-      </div>
-    </aside>
+      </aside>
+    )}
 
   </div>
 
