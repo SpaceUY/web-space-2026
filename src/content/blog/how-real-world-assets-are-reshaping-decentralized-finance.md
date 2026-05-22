@@ -6,6 +6,7 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["defi", "rwa", "tokenization", "blockchain"]
 readTime: 6
+metatitle: "RWA in DeFi Explained: Real World Assets on Blockchain"
 takeaways:
   - RWAs bring traditional financial instruments including government bonds, private loans, and property into blockchain systems.
   - When DeFi connects with real economic activity, it provides more predictable cash flows and longer-term capital behavior.

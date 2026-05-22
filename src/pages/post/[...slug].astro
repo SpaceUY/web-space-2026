@@ -49,6 +49,12 @@ const articleJsonLd = {
     logo: { "@type": "ImageObject", url: `${SITE.url}/images/logo/spacedev-logo.svg` },
   },
   mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/post/${post.id}` },
+  ...(post.data.cover && {
+    image: {
+      "@type": "ImageObject",
+      url: post.data.cover.startsWith("http") ? post.data.cover : `${SITE.url}${post.data.cover}`,
+    },
+  }),
 };
 ---
 
