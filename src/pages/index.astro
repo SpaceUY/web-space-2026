@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FAQ from "../components/ui/FAQ.astro";
+import QuoteReveal from "../components/ui/QuoteReveal.astro";
 import CaseStudyCard from "../components/ui/CaseStudyCard.astro";
 import { homeFaqs } from "../data/site-content";
 import { featuredCaseStudies } from "../data/case-studies";
@@ -42,16 +43,17 @@ const I_TRUCK = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fil
 const I_GRADUATION = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 0 L 0 7.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3 6)"/><path d="M 0 3.75 C 1.472 1.493 3.854 0 6.75 0 C 9.646 0 12.028 1.493 13.5 3.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(5.25 16.5)"/><path d="M 18 3 L 9 6 L 0 3 L 9 0 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3 3)"/><path d="M 9.126 0 C 11.04 2.095 10.943 5.333 8.906 7.309 C 6.869 9.286 3.631 9.286 1.594 7.309 C -0.443 5.333 -0.54 2.095 1.374 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(6.75 7.708)"/></svg>`;
 const I_ENERGY = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 0 L 3 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(14.25 12.75)"/><path d="M 0 0 L 0 3" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(15.75 11.25)"/><path d="M 0 0 L 3 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(6.75 12.75)"/><path d="M 0.75 10.5 C 0.336 10.5 0 10.164 0 9.75 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 18.75 0 C 19.164 0 19.5 0.336 19.5 0.75 L 19.5 9.75 C 19.5 10.164 19.164 10.5 18.75 10.5 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(2.25 7.5)"/><path d="M 0 3 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 3.75 0 C 4.164 0 4.5 0.336 4.5 0.75 L 4.5 3" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(5.25 4.5)"/><path d="M 0 3 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 3.75 0 C 4.164 0 4.5 0.336 4.5 0.75 L 4.5 3" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(14.25 4.5)"/></svg>`;
 const I_ROCKET = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 10.417 6.833 C 12.667 4.583 12.807 1.907 12.737 0.713 C 12.713 0.337 12.413 0.037 12.037 0.013 C 10.843 -0.057 8.168 0.082 5.917 2.333 L 0 8.25 L 4.5 12.75 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(7.5 3.75)"/><path d="M 9.749 0 L 3.969 0 C 3.77 0 3.58 0.079 3.439 0.219 L 0.219 3.44 C 0.019 3.641 -0.051 3.938 0.039 4.207 C 0.129 4.476 0.363 4.672 0.644 4.712 L 4.499 5.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3.001 6.75)"/><path d="M 5.25 0 L 5.25 5.78 C 5.25 5.978 5.171 6.169 5.031 6.309 L 1.81 9.53 C 1.609 9.73 1.312 9.8 1.043 9.71 C 0.774 9.62 0.578 9.386 0.538 9.105 L 0 5.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(12 11.25)"/><path d="M 5.115 2.473 C 4.752 3.269 3.53 5.115 0 5.115 C 0 1.585 1.846 0.363 2.642 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3.75 15.135)"/></svg>`;
+const I_HOUSE = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 2.25 11.25 L 12 3 L 21.75 11.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M 4.5 9.75 L 4.5 21 L 19.5 21 L 19.5 9.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M 9.75 21 L 9.75 15.75 L 14.25 15.75 L 14.25 21" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>`;
 
 const industries = [
-  { name: "Finance and Fintech", icon: I_BUILDING, desc: "SpaceDev helps financial institutions and fintech startups build secure, scalable products that enhance transparency and automation.\nFrom DeFi platforms and payment gateways to traditional fintech systems, tokenized assets, and digital wallets, we simplify complexity and drive financial innovation." },
-  { name: "Gaming and NFTs", icon: I_CHAT, desc: "Our team builds NFT ecosystems, web3 gaming platforms, and play-to-earn models that merge creativity with blockchain-backed ownership.\nWe deliver immersive experiences with secure smart contracts and scalable infrastructure." },
-  { name: "Healthcare and Life Sciences", icon: I_HEART, desc: "We help healthcare providers ensure data integrity, secure patient identity management, and traceable medical supply chains.\nOur solutions prioritize compliance, security, and seamless interoperability." },
-  { name: "Supply Chain and Logistics", icon: I_TRUCK, desc: "We build solutions that bring real-time visibility, tracking, and trust to global logistics.\nOur systems reduce fraud, enhance traceability, and simplify auditing at every stage." },
-  { name: "Real Estate and PropTech", icon: I_BUILDING, desc: "We can create tokenized property solutions, automated contract workflows, and secure ownership records that streamline property transactions and investment management." },
-  { name: "Education and EdTech", icon: I_GRADUATION, desc: "SpaceDev supports educational platforms with digital learning systems, decentralized certification, and blockchain credentials that enhance authenticity and accessibility." },
-  { name: "Energy", icon: I_ENERGY, desc: "We help leading energy companies enhance data integrity, collaboration, and operational visibility. Our solutions support exploration and production through automated reporting, streamlined joint ventures, and improved efficiency across the oil and gas value chain." },
-  { name: "Startups and Emerging Ventures", icon: I_ROCKET, desc: "We help founders turn ideas into products through Product Discovery, MVP development, and rapid prototyping.\nWhether entering Web3 or scaling a SaaS, our team delivers the strategy, speed, and structure to grow." },
+  { name: "Finance and Fintech", slug: "finance-and-fintech", icon: I_BUILDING, desc: "SpaceDev helps financial institutions and fintech startups build secure, scalable products that enhance transparency and automation.\nFrom DeFi platforms and payment gateways to traditional fintech systems, tokenized assets, and digital wallets, we simplify complexity and drive financial innovation." },
+  { name: "Gaming and NFTs", slug: "gaming-and-nfts", icon: I_CHAT, desc: "Our team builds NFT ecosystems, web3 gaming platforms, and play-to-earn models that merge creativity with blockchain-backed ownership.\nWe deliver immersive experiences with secure smart contracts and scalable infrastructure." },
+  { name: "Healthcare and Life Sciences", slug: "healthcare-and-life-sciences", icon: I_HEART, desc: "We help healthcare providers ensure data integrity, secure patient identity management, and traceable medical supply chains.\nOur solutions prioritize compliance, security, and seamless interoperability." },
+  { name: "Supply Chain and Logistics", slug: "supply-chain-and-logistics", icon: I_TRUCK, desc: "We build solutions that bring real-time visibility, tracking, and trust to global logistics.\nOur systems reduce fraud, enhance traceability, and simplify auditing at every stage." },
+  { name: "Real Estate and PropTech", slug: "real-estate-and-proptech", icon: I_HOUSE, desc: "We can create tokenized property solutions, automated contract workflows, and secure ownership records that streamline property transactions and investment management." },
+  { name: "Education and EdTech", slug: "education-and-edtech", icon: I_GRADUATION, desc: "SpaceDev supports educational platforms with digital learning systems, decentralized certification, and blockchain credentials that enhance authenticity and accessibility." },
+  { name: "Energy", slug: "energy", icon: I_ENERGY, desc: "We help leading energy companies enhance data integrity, collaboration, and operational visibility. Our solutions support exploration and production through automated reporting, streamlined joint ventures, and improved efficiency across the oil and gas value chain." },
+  { name: "Startups and Emerging Ventures", slug: "startups-and-emerging-ventures", icon: I_ROCKET, desc: "We help founders turn ideas into products through Product Discovery, MVP development, and rapid prototyping.\nWhether entering Web3 or scaling a SaaS, our team delivers the strategy, speed, and structure to grow." },
 ];
 ---
 
@@ -64,11 +66,17 @@ const industries = [
   <section class="bg-sd-dark h-screen -mt-[72px] flex flex-col justify-end items-start relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.18) 0%, transparent 65%);"></div>
     <div class="relative w-full px-6 pb-10">
-      <h1 class="text-5xl md:text-[80px] text-white font-display leading-none tracking-tight">
-        Finally:<br/>Your <span id="rotating-word" class="text-white">Flexible</span><br/>Tech Partner.
+      <p class="text-5xl md:text-[80px] text-white font-display leading-none tracking-tight">
+        Finally: Your <span id="rotating-word" class="text-white">Flexible</span><br/>Tech Partner.
+      </p>
+      <h1 class="mt-16 text-lg md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
+        Blockchain Development Company & Web3 Software Partner
       </h1>
-      <p class="mt-6 text-[18px] md:text-[22px] text-white max-w-2xl leading-relaxed font-body font-light">
-        SpaceDev is a blockchain development company that transforms complex ideas into scalable digital products. We build web3, blockchain, and custom software solutions with deep engineering expertise and startup agility. Our mission: help businesses launch, scale, and innovate through technology that performs.
+      <p class="mt-6 text-sm md:text-base text-white max-w-2xl leading-relaxed font-body font-light">
+        SpaceDev is a <strong class="font-semibold">blockchain development company</strong> specializing in custom Web3 solutions, decentralized application development, and smart contract engineering. We work with startups, fintechs, and growth-stage companies that need a technical partner with both the depth to build and the speed to ship.
+      </p>
+      <p class="mt-4 text-sm md:text-base text-white max-w-2xl leading-relaxed font-body font-light">
+        From <strong class="font-semibold">dApp architecture</strong> to token infrastructure and <strong class="font-semibold">smart contract auditing</strong>, our engineering teams cover the full product lifecycle — from initial scoping to production and scale.
       </p>
     </div>
   </section>
@@ -76,20 +84,25 @@ const industries = [
   <!-- CLIENT LOGOS MARQUEE — exact pixel sizes from spacedev.io Framer CSS -->
   <section class="bg-sd-light overflow-hidden">
     <div class="sd-marquee-wrapper">
-      <div class="sd-marquee flex items-center whitespace-nowrap">
-        {clientLogos.map((c) => c.full
-          ? <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="lazy" class="shrink-0 block" />
-          : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
-              <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="lazy" class="block" />
-            </div>
-        )}
-        {/* duplicate set for seamless loop — aria-hidden */}
-        {clientLogos.map((c) => c.full
-          ? <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="shrink-0 block" aria-hidden="true" />
-          : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light" aria-hidden="true">
-              <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="block" />
-            </div>
-        )}
+      <div class="sd-marquee">
+        <!-- Set 1 — eager so dimensions are known before animation starts -->
+        <div class="sd-marquee-set">
+          {clientLogos.map((c) => c.full
+            ? <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="eager" class="shrink-0 block" />
+            : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
+                <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="eager" class="block" />
+              </div>
+          )}
+        </div>
+        <!-- Set 2 — duplicate for seamless loop -->
+        <div class="sd-marquee-set" aria-hidden="true">
+          {clientLogos.map((c) => c.full
+            ? <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="shrink-0 block" />
+            : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
+                <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="block" />
+              </div>
+          )}
+        </div>
       </div>
     </div>
   </section>
@@ -132,42 +145,34 @@ const industries = [
     </div>
   </section>
 
-  <!-- DARK CTA SECTION — between Core Services and Why SpaceDev -->
-  <section class="bg-sd-dark min-h-[90vh] flex items-center justify-center text-center px-6" style="view-timeline-name: --cta-section; view-timeline-axis: block;">
-    <h2 class="text-[40px] md:text-[56px] font-body font-semibold leading-[1.15] max-w-[860px]">
-      {["Take", "your", "business", "to"].map((word, i) => (
-        <span style={`color: rgba(255,255,255,0.2); animation: text-reveal linear both; animation-timeline: --cta-section; animation-range: entry ${8 + i * 9}% cover ${20 + i * 9}%;`}>{word} </span>
-      ))}<br/>
-      {["new", "heights", "quickly—let"].map((word, i) => (
-        <span style={`color: rgba(255,255,255,0.2); animation: text-reveal linear both; animation-timeline: --cta-section; animation-range: entry ${44 + i * 9}% cover ${56 + i * 9}%;`}>{word} </span>
-      ))}<br/>
-      {["us", "handle", "the", "technology"].map((word, i) => (
-        <span style={`color: rgba(255,255,255,0.2); animation: text-reveal linear both; animation-timeline: --cta-section; animation-range: entry ${71 + i * 7}% cover ${83 + i * 7}%;`}>{word}{i < 3 ? " " : ""}</span>
-      ))}
-    </h2>
-  </section>
+  <!-- QUOTE REVEAL — between Core Services and Why SpaceDev -->
+  <QuoteReveal
+    text="Take your business to new heights quickly—let us handle the technology"
+    tone="dark"
+    maxWidth="max-w-[720px]"
+  />
 
   <!-- WHY SPACEDEV (light) -->
   <section class="bg-sd-light py-20 md:py-32">
     <div class="sd-container">
       <div class="max-w-2xl mb-16">
-        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Why SpaceDev</h2>
+        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Why Partner with a Blockchain Development Company Like SpaceDev</h2>
         <p class="mt-6 text-base text-sd-text-gray leading-relaxed">
-          Choosing the right technology partner can define the success of your product. SpaceDev combines the agility of a startup, the precision of an engineering powerhouse, and the reliability of a global team.
+          There are many development agencies. Fewer have deep blockchain engineering depth. Even fewer combine that with Web2 product experience, a security practice, and a track record across 40+ projects in DeFi, NFT infrastructure, fintech, and enterprise blockchain.
         </p>
       </div>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mb-12">
         {[
-          { n: "01", title: "Full-Cycle Product Ownership", desc: "We take ownership of your product lifecycle from ideation to scale, ensuring market readiness through transparent communication and accountability." },
-          { n: "02", title: "Web2 & Mobile Expertise", desc: "Build high-performance custom software and mobile applications using modern frameworks like React and Node.js for scalable, user-centric digital products." },
-          { n: "03", title: "Web3 & Blockchain Expertise", desc: "Leverage deep expertise in smart contracts and decentralized protocols to deploy secure solutions across major ecosystems like Ethereum, Aptos, or Solana." },
-          { n: "04", title: "Flexible Team Models", desc: "Scale your team instantly with our IT staff augmentation services or choose a dedicated team for end-to-end project execution." },
-          { n: "05", title: "Proven Track Record", desc: "Rely on a proven history of delivering high-impact Web2 and Web3 products, backed by our perfect 5-star client ratings." },
-          { n: "06", title: "Global Presence with Local Agility", desc: "Benefit from nearshore collaboration with top talent in your time zone, operating seamlessly from the U.S. and Latin America." },
+          { n: "01", title: "Full-cycle product ownership", desc: "One partner from discovery to post-launch — no handoff gaps." },
+          { n: "02", title: "Web3 + Web2 under one team", desc: "Blockchain infrastructure and the product layer built together." },
+          { n: "03", title: "BlockAudit security practice", desc: "Smart contract auditing built into development, not bolted on." },
+          { n: "04", title: "Flexible engagement models", desc: "Staff aug, fixed-scope, or full MVP builds — structured around your need." },
+          { n: "05", title: "40+ five-star client reviews", desc: "Verified on Clutch and GoodFirms — across DeFi, fintech, and gaming." },
+          { n: "06", title: "AWS Partner", desc: "Cloud infrastructure support alongside blockchain development." },
         ].map(w => (
-          <div class="why-card rounded-2xl p-7" style="background:#f4f4f4; opacity: 0.3; transition: opacity 0.6s ease;">
-            <p class="text-2xl font-display text-sd-text-dark mb-4">{w.n}</p>
-            <h3 class="text-base font-display text-sd-text-dark mb-3">{w.title}</h3>
+          <div class="group rounded-2xl p-7 bg-sd-light-2 transition-colors duration-300 hover:bg-sd-purple/15" data-animate>
+            <p class="text-2xl font-display text-sd-text-dark mb-4 group-hover:text-sd-purple transition-colors duration-300">{w.n}</p>
+            <h3 class="text-base font-display font-semibold text-sd-text-dark mb-3">{w.title}</h3>
             <p class="text-sm text-sd-text-gray leading-relaxed">{w.desc}</p>
           </div>
         ))}
@@ -181,19 +186,19 @@ const industries = [
   <!-- INDUSTRIES (light) -->
   <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
     <div class="sd-container">
-      <div class="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start">
-        <h2 class="text-4xl md:text-5xl lg:text-6xl text-sd-text-dark font-display leading-tight tracking-tight md:sticky md:top-32">Industries We Serve</h2>
-        <div class="grid gap-10 md:grid-cols-2">
-          {industries.map(ind => (
-            <div data-animate>
-              <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5 p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
-                <Fragment set:html={ind.icon} />
-              </div>
-              <h3 class="text-base font-display text-sd-text-dark mb-2">{ind.name}</h3>
-              <p class="text-sm text-sd-text-gray leading-relaxed whitespace-pre-line">{ind.desc}</p>
+      <div class="max-w-2xl mb-16">
+        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Blockchain Development for Fintech, DeFi & Web3 Startups</h2>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {industries.map(ind => (
+          <a href={`/blockchain-development-services/industry/${ind.slug}`} class="group block bg-sd-light-2 rounded-2xl p-7 border border-sd-gray-border hover:border-sd-purple/30 hover:bg-sd-purple/5 transition-colors duration-300" data-animate>
+            <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+              <Fragment set:html={ind.icon} />
             </div>
-          ))}
-        </div>
+            <h3 class="text-base font-display text-sd-text-dark mb-2 group-hover:text-sd-purple transition-colors">{ind.name}</h3>
+            <p class="text-sm text-sd-text-gray leading-relaxed whitespace-pre-line">{ind.desc}</p>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -207,7 +212,19 @@ const industries = [
           Every product tells a story: one of collaboration, innovation, and measurable results. SpaceDev not only delivers projects; we support businesses' growth with the kind of technology that earns trust, scales with users, and stands the test of time.
         </p>
       </div>
-      <div class="grid gap-6 md:grid-cols-2">
+      <div id="home-cs-zone" class="relative grid gap-6 md:grid-cols-2">
+        <!-- Custom cursor: rotating text ring -->
+        <div id="home-cs-cursor" class="pointer-events-none fixed z-50 opacity-0 transition-opacity duration-200" style="transform: translate(-50%, -50%); will-change: transform; width: 120px; height: 120px;">
+          <svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
+            <circle cx="60" cy="60" r="58" fill="white"/>
+            <defs>
+              <path id="home-cs-text-path" d="M60,60 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1-84,0"/>
+            </defs>
+            <text class="cs-spin-text" font-size="14" letter-spacing="0.8" fill="black" font-family="Saira, sans-serif">
+              <textPath href="#home-cs-text-path" textLength="264" lengthAdjust="spacing">VIEW PROJECT &#x2009;&#x2009;•&#x2009;&#x2009; VIEW PROJECT &#x2009;&#x2009;•&#x2009;&#x2009;</textPath>
+            </text>
+          </svg>
+        </div>
         {featuredCaseStudies.map((c) => (
           <CaseStudyCard caseStudy={c} />
         ))}
@@ -473,6 +490,7 @@ const industries = [
 
 </BaseLayout>
 
+
 <script>
   import { initScrollAnimations } from "../lib/animations";
   document.addEventListener("DOMContentLoaded", initScrollAnimations);
@@ -495,18 +513,39 @@ const industries = [
     el.style.transition = "opacity 0.2s ease";
   }
 
-  // Why SpaceDev cards — fade in when entering viewport
-  const whyCards = document.querySelectorAll<HTMLElement>(".why-card");
-  const whyObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          (entry.target as HTMLElement).style.opacity = "1";
-          whyObs.unobserve(entry.target);
-        }
+  // Case studies — spinning VIEW PROJECT cursor
+  const csZone   = document.getElementById("home-cs-zone");
+  const csCursor = document.getElementById("home-cs-cursor");
+  if (csZone && csCursor) {
+    let csRaf: number;
+    window.addEventListener("mousemove", (e: MouseEvent) => {
+      cancelAnimationFrame(csRaf);
+      csRaf = requestAnimationFrame(() => {
+        csCursor.style.left = e.clientX + "px";
+        csCursor.style.top  = e.clientY + "px";
+        const rect   = csZone.getBoundingClientRect();
+        const inside = e.clientX >= rect.left && e.clientX <= rect.right &&
+                       e.clientY >= rect.top  && e.clientY <= rect.bottom;
+        csCursor.style.opacity     = inside ? "1" : "0";
+        document.body.style.cursor = inside ? "none" : "";
       });
-    },
-    { threshold: 0.15 }
-  );
-  whyCards.forEach((card) => whyObs.observe(card));
+    });
+  }
+
 </script>
+
+<style>
+  #home-cs-zone,
+  #home-cs-zone *,
+  #home-cs-zone a,
+  #home-cs-zone a:hover { cursor: none !important; }
+
+  .cs-spin-text {
+    animation: cs-spin 9s linear infinite;
+    transform-origin: 60px 60px;
+  }
+  @keyframes cs-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+</style>
