@@ -255,16 +255,19 @@ const articleJsonLd = {
 
 <script>
   // ── Align TOC box with the article title ─────────────────────────────
-  const titleEl  = document.getElementById("article-title");
+  const titleEl    = document.getElementById("article-title");
   const tocWrapper = document.getElementById("toc-wrapper");
   if (titleEl && tocWrapper) {
     const sync = () => {
-      // Distance from viewport top to title, minus the sticky nav (68px)
-      const offset = titleEl.getBoundingClientRect().top - 68;
-      tocWrapper.style.paddingTop = `${Math.max(offset, 16)}px`;
+      // Absolute position from document top (scroll-invariant)
+      const titleAbsTop = window.scrollY + titleEl.getBoundingClientRect().top;
+      // Sidebar is sticky at top: 68px, so subtract nav height
+      tocWrapper.style.paddingTop = `${Math.max(titleAbsTop - 68, 16)}px`;
     };
     sync();
     window.addEventListener("resize", sync);
+    // Run once after fonts/images settle
+    window.addEventListener("load", sync, { once: true });
   }
 
   // ── TOC active heading tracking (window scroll) ───────────────────────
