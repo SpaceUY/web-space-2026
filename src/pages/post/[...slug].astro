@@ -168,12 +168,11 @@ const articleJsonLd = {
     <!-- ── RIGHT COLUMN: sticky TOC only ────────────────────────────── -->
     {tocHeadings.length > 0 && (
       <aside
-        id="toc-sidebar"
         class="hidden md:flex flex-col w-[280px] flex-shrink-0"
-        style="position: sticky; top: 68px; height: calc(100vh - 68px); overflow-y: auto;"
+        style="position: sticky; top: 68px; height: calc(100vh - 68px);"
         aria-label="Article sidebar"
       >
-        <div id="toc-wrapper" class="px-6 pt-10">
+        <div class="px-6 pt-10">
           <div class="rounded-2xl bg-[#f7f7f8] p-5">
             <p class="text-[10px] uppercase tracking-[0.2em] font-ui text-sd-text-gray mb-4">
               In this article
@@ -254,30 +253,6 @@ const articleJsonLd = {
 </BaseLayout>
 
 <script>
-  // ── Align TOC box with title + cap height so nothing is cut off ──────
-  const titleEl    = document.getElementById("article-title");
-  const tocWrapper = document.getElementById("toc-wrapper");
-  const tocNav     = document.getElementById("sd-toc");
-  if (titleEl && tocWrapper && tocNav) {
-    const sync = () => {
-      const titleAbsTop  = window.scrollY + titleEl.getBoundingClientRect().top;
-      const paddingTop   = Math.max(titleAbsTop - 68, 16);
-      tocWrapper.style.paddingTop = `${paddingTop}px`;
-
-      // Max height available for the nav list inside the box:
-      // sidebar height - padding-top - box top padding - label row - box bottom padding
-      const sidebarH   = window.innerHeight - 68;
-      const boxPad     = 40; // p-5 top + label row (~40px)
-      const bottomGap  = 32; // breathing room at bottom
-      const maxH       = Math.max(sidebarH - paddingTop - boxPad - bottomGap, 80);
-      (tocNav as HTMLElement).style.maxHeight = `${maxH}px`;
-      (tocNav as HTMLElement).style.overflowY = "auto";
-    };
-    sync();
-    window.addEventListener("resize", sync);
-    window.addEventListener("load", sync, { once: true });
-  }
-
   // ── TOC active heading tracking (window scroll) ───────────────────────
   const tocLinks = document.querySelectorAll<HTMLAnchorElement>("#sd-toc .sd-toc-link");
   const articleHeadings = Array.from(
