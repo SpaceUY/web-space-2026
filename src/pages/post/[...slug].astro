@@ -254,19 +254,27 @@ const articleJsonLd = {
 </BaseLayout>
 
 <script>
-  // ── Align TOC box with the article title ─────────────────────────────
+  // ── Align TOC box with title + cap height so nothing is cut off ──────
   const titleEl    = document.getElementById("article-title");
   const tocWrapper = document.getElementById("toc-wrapper");
-  if (titleEl && tocWrapper) {
+  const tocNav     = document.getElementById("sd-toc");
+  if (titleEl && tocWrapper && tocNav) {
     const sync = () => {
-      // Absolute position from document top (scroll-invariant)
-      const titleAbsTop = window.scrollY + titleEl.getBoundingClientRect().top;
-      // Sidebar is sticky at top: 68px, so subtract nav height
-      tocWrapper.style.paddingTop = `${Math.max(titleAbsTop - 68, 16)}px`;
+      const titleAbsTop  = window.scrollY + titleEl.getBoundingClientRect().top;
+      const paddingTop   = Math.max(titleAbsTop - 68, 16);
+      tocWrapper.style.paddingTop = `${paddingTop}px`;
+
+      // Max height available for the nav list inside the box:
+      // sidebar height - padding-top - box top padding - label row - box bottom padding
+      const sidebarH   = window.innerHeight - 68;
+      const boxPad     = 40; // p-5 top + label row (~40px)
+      const bottomGap  = 32; // breathing room at bottom
+      const maxH       = Math.max(sidebarH - paddingTop - boxPad - bottomGap, 80);
+      (tocNav as HTMLElement).style.maxHeight = `${maxH}px`;
+      (tocNav as HTMLElement).style.overflowY = "auto";
     };
     sync();
     window.addEventListener("resize", sync);
-    // Run once after fonts/images settle
     window.addEventListener("load", sync, { once: true });
   }
 
