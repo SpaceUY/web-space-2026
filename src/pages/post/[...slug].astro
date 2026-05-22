@@ -28,6 +28,9 @@ const relatedPosts = allPosts
 
 const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 4);
 
+// metatitle: use custom field if set, otherwise fall back to "title | SpaceDev Blog"
+const pageTitle = post.data.metatitle ?? `${post.data.title} | SpaceDev Blog`;
+
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -45,12 +48,12 @@ const articleJsonLd = {
     name: SITE.name,
     logo: { "@type": "ImageObject", url: `${SITE.url}/images/logo/spacedev-logo.svg` },
   },
-  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/${post.id}` },
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/post/${post.id}` },
 };
 ---
 
 <BaseLayout
-  title={`${post.data.title} | SpaceDev Blog`}
+  title={pageTitle}
   description={post.data.description}
   ogType="article"
   ogImage={post.data.cover}
@@ -219,7 +222,7 @@ const articleJsonLd = {
             const relatedAuthor = getAuthor(related.data.author);
             return (
               <a
-                href={`/blog/${related.id}`}
+                href={`/post/${related.id}`}
                 class="group flex flex-col rounded-2xl overflow-hidden bg-white border border-sd-gray-border shadow-sm hover:shadow-[0_8px_32px_rgba(103,58,228,0.12)] hover:border-sd-purple/30 hover:-translate-y-1 transition-all duration-300"
               >
                 {related.data.cover && (

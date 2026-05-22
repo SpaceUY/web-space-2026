@@ -23,6 +23,8 @@ const blog = defineCollection({
     cover: z.string().optional(),
     takeaways: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    /** Override the <title> tag shown in Google search results (≤ 60 chars recommended) */
+    metatitle: z.string().optional(),
   }),
 });
 

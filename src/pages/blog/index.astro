@@ -55,7 +55,7 @@ const featuredAuthor = getAuthor(featured.data.author);
   <section class="bg-white py-16 md:py-20">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <p class="text-xs uppercase tracking-[0.2em] text-sd-text-gray font-ui mb-6" data-animate>Latest post</p>
-      <a href={`/blog/${featured.id}`} class="group block" data-animate>
+      <a href={`/post/${featured.id}`} class="group block" data-animate>
         <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div class={`relative aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br ${accentByCategory[featured.data.category] ?? "from-sd-purple to-sd-purple-300"}`}>
             {featured.data.cover && (
@@ -86,7 +86,7 @@ const featuredAuthor = getAuthor(featured.data.author);
             {featuredAuthor && (
               <div class="flex items-center justify-between flex-wrap gap-4">
                 <AuthorAvatar author={featuredAuthor} size="sm" showRole tone="light" />
-                <Button href={`/blog/${featured.id}`} variant="dark">Read article →</Button>
+                <Button href={`/post/${featured.id}`} variant="dark">Read article →</Button>
               </div>
             )}
           </div>
@@ -127,7 +127,7 @@ const featuredAuthor = getAuthor(featured.data.author);
               data-category={post.data.category}
               data-animate
             >
-              <a href={`/blog/${post.id}`} class="block overflow-hidden">
+              <a href={`/post/${post.id}`} class="block overflow-hidden">
                 <div class={`relative aspect-[16/10] bg-gradient-to-br ${gradient}`}>
                   {post.data.cover && (
                     <img
@@ -144,7 +144,7 @@ const featuredAuthor = getAuthor(featured.data.author);
                 </div>
               </a>
               <div class="flex flex-col flex-1 p-5">
-                <a href={`/blog/${post.id}`} class="flex flex-col flex-1">
+                <a href={`/post/${post.id}`} class="flex flex-col flex-1">
                   <div class="flex items-center gap-2 text-xs text-sd-text-gray mb-3 font-body">
                     <time datetime={post.data.publishedAt.toISOString()}>{dateFmt.format(post.data.publishedAt)}</time>
                     <span aria-hidden="true">·</span>
