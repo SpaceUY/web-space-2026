@@ -285,7 +285,6 @@ const articleJsonLd = {
       tocLinks.forEach((link) => {
         const active = link.dataset.heading === id;
         link.classList.toggle("!text-sd-purple", active);
-        link.classList.toggle("font-semibold", active);
         link.classList.toggle("!bg-sd-purple/5", active);
       });
     };
