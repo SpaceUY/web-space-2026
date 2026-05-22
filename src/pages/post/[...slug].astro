@@ -168,31 +168,28 @@ const articleJsonLd = {
     <!-- ── RIGHT COLUMN: sticky TOC only ────────────────────────────── -->
     {tocHeadings.length > 0 && (
       <aside
-        class="hidden md:flex flex-col w-[280px] flex-shrink-0"
+        class="hidden md:flex flex-col w-[260px] flex-shrink-0 border-l border-sd-gray-border"
         style="position: sticky; top: 68px; height: calc(100vh - 68px); overflow-y: auto;"
         aria-label="Article sidebar"
       >
-        <div class="p-7">
-          <p class="text-[10px] uppercase tracking-[0.2em] font-ui text-sd-text-gray mb-4">
+        <nav class="py-8 px-5" aria-label="Table of contents">
+          <p class="text-[10px] uppercase tracking-widest font-ui text-sd-text-gray mb-4 px-3">
             In this article
           </p>
-          <nav aria-label="Table of contents">
-            <ul id="sd-toc" class="space-y-0.5">
-              {tocHeadings.map((h) => (
-                <li style={`padding-left: ${(h.depth - 2) * 12}px`}>
-                  <a
-                    href={`#${h.slug}`}
-                    class="sd-toc-link group flex items-start gap-2.5 py-1.5 text-[13px] leading-snug text-[#555] hover:text-sd-purple transition-colors duration-150"
-                    data-heading={h.slug}
-                  >
-                    <span class="sd-toc-dot mt-1.5 shrink-0 w-1 h-1 rounded-full bg-[#bbb] group-hover:bg-sd-purple transition-colors duration-150"></span>
-                    {h.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
+          <ul id="sd-toc" class="flex flex-col gap-0.5">
+            {tocHeadings.map((h) => (
+              <li style={`padding-left: ${(h.depth - 2) * 10}px`}>
+                <a
+                  href={`#${h.slug}`}
+                  class="sd-toc-link flex items-center px-3 py-1.5 rounded-lg text-[13px] leading-snug text-sd-text-gray hover:text-sd-purple hover:bg-sd-purple/5 transition-colors duration-150"
+                  data-heading={h.slug}
+                >
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </aside>
     )}
 
@@ -268,11 +265,7 @@ const articleJsonLd = {
         const active = link.dataset.heading === id;
         link.classList.toggle("!text-sd-purple", active);
         link.classList.toggle("font-semibold", active);
-        const dot = link.querySelector(".sd-toc-dot");
-        if (dot) {
-          dot.classList.toggle("!bg-sd-purple", active);
-          dot.classList.toggle("scale-125", active);
-        }
+        link.classList.toggle("!bg-sd-purple/5", active);
       });
     };
 
