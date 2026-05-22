@@ -6,6 +6,7 @@ author: stephania-almansor
 category: Blockchain Trends
 tags: ["web3", "marketing", "growth", "community"]
 readTime: 6
+metatitle: "Web3 Marketing Strategies: From Basic to Advanced"
 cover: "/images/content/omTsS6LBwAYeMPbJvn9cltlRnVs.jpeg"
 ---
 

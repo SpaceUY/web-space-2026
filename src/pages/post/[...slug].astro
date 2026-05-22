@@ -28,6 +28,9 @@ const relatedPosts = allPosts
 
 const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 4);
 
+// metatitle: use custom field if set, otherwise fall back to "title | SpaceDev Blog"
+const pageTitle = post.data.metatitle ?? `${post.data.title} | SpaceDev Blog`;
+
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -45,12 +48,18 @@ const articleJsonLd = {
     name: SITE.name,
     logo: { "@type": "ImageObject", url: `${SITE.url}/images/logo/spacedev-logo.svg` },
   },
-  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/${post.id}` },
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/post/${post.id}` },
+  ...(post.data.cover && {
+    image: {
+      "@type": "ImageObject",
+      url: post.data.cover.startsWith("http") ? post.data.cover : `${SITE.url}${post.data.cover}`,
+    },
+  }),
 };
 ---
 
 <BaseLayout
-  title={`${post.data.title} | SpaceDev Blog`}
+  title={pageTitle}
   description={post.data.description}
   ogType="article"
   ogImage={post.data.cover}
@@ -60,22 +69,18 @@ const articleJsonLd = {
   jsonLd={articleJsonLd}
 >
 
-  <!-- ─── ARTICLE SHELL ──────────────────────────────────────────────────
-       Fills the viewport below the nav. Two columns:
-       LEFT  → fixed title/meta + scrollable article body
-       RIGHT → sticky TOC + CTA, never moves
+  <!-- ─── ARTICLE LAYOUT ──────────────────────────────────────────────────
+       Normal page scroll — title visible from the top.
+       LEFT  → scrolls with page (back, title, meta, body)
+       RIGHT → sticky sidebar (TOC + CTA)
   ────────────────────────────────────────────────────────────────────── -->
-  <div
-    id="article-shell"
-    class="flex bg-white overflow-hidden"
-    style="height: calc(100dvh - 68px);"
-  >
+  <div class="flex bg-white min-h-screen">
 
-    <!-- ── LEFT COLUMN ─────────────────────────────────────────────────── -->
-    <div class="flex flex-col flex-1 min-w-0 overflow-hidden">
+    <!-- ── LEFT COLUMN: normal page scroll ───────────────────────────── -->
+    <div class="flex-1 min-w-0 px-10 md:px-16 pt-10 pb-20">
 
-      <!-- Fixed header: back link · category · title · meta -->
-      <div id="article-header" class="flex-shrink-0 px-10 md:px-16 pt-10 pb-7">
+      <!-- Header: back · category · title · meta -->
+      <div class="mb-7">
         <div class="flex flex-wrap items-center gap-3 mb-5">
           <a
             href="/blog"
@@ -115,68 +120,78 @@ const articleJsonLd = {
         </div>
       </div>
 
-      <!-- Separator line -->
-      <div class="flex-shrink-0 mx-10 md:mx-16 h-px bg-sd-gray-border"></div>
+      <!-- Separator -->
+      <div class="h-px bg-sd-gray-border mb-10"></div>
 
-      <!-- ── Scrollable article body — ONLY this moves ── -->
-      <div
-        id="article-scroll"
-        class="flex-1 overflow-y-auto px-10 md:px-16 py-10 sd-article-scroll"
-      >
-        {(post.data.takeaways?.length ?? 0) > 0 && (
-          <aside class="mb-10 rounded-2xl border border-sd-purple/20 bg-sd-purple/[0.04] px-7 py-6">
-            <p class="text-xs uppercase tracking-[0.18em] text-sd-purple font-ui mb-4">Key takeaways</p>
-            <ul class="space-y-2.5">
-              {post.data.takeaways!.map((point) => (
-                <li class="flex items-start gap-3 text-sm text-sd-text-gray font-body leading-relaxed">
-                  <span class="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-sd-purple"></span>
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </aside>
-        )}
-
-        <article class="sd-prose">
-          <Content />
-        </article>
-
-        {(post.data.tags?.length ?? 0) > 0 && (
-          <div class="mt-12 pt-8 border-t border-sd-gray-border flex flex-wrap gap-2">
-            {post.data.tags!.map((tag) => (
-              <span class="inline-flex items-center px-3 py-1 rounded-full border border-sd-gray-border text-xs text-sd-text-gray">
-                #{tag}
-              </span>
+      {(post.data.takeaways?.length ?? 0) > 0 && (
+        <aside class="mb-10 rounded-2xl border border-sd-purple/20 bg-sd-purple/[0.04] px-7 py-6">
+          <p class="text-xs uppercase tracking-[0.18em] text-sd-purple font-ui mb-4">Key takeaways</p>
+          <ul class="space-y-2.5">
+            {post.data.takeaways!.map((point) => (
+              <li class="flex items-start gap-3 text-sm text-sd-text-gray font-body leading-relaxed">
+                <span class="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-sd-purple"></span>
+                {point}
+              </li>
             ))}
-          </div>
-        )}
+          </ul>
+        </aside>
+      )}
 
-        <div class="h-12"></div>
+      <article class="sd-prose">
+        <Content />
+      </article>
+
+      {(post.data.tags?.length ?? 0) > 0 && (
+        <div class="mt-12 pt-8 border-t border-sd-gray-border flex flex-wrap gap-2">
+          {post.data.tags!.map((tag) => (
+            <span class="inline-flex items-center px-3 py-1 rounded-full border border-sd-gray-border text-xs text-sd-text-gray">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <!-- CTA — at the end of the article, always reachable on scroll -->
+      <div
+        class="mt-12 rounded-2xl p-7 text-center"
+        style="background: var(--sd-gradient-hero);"
+      >
+        <p class="font-display font-semibold text-white text-lg leading-snug mb-2">
+          Ready to build something?
+        </p>
+        <p class="text-sm text-white/70 leading-relaxed mb-5">
+          SpaceDev helps companies build Web3 and Web2 products from idea to launch.
+        </p>
+        <a
+          href="/contact"
+          class="inline-block px-7 py-2.5 rounded-full bg-white text-sd-text-dark text-sm font-ui font-medium hover:bg-sd-purple hover:text-white transition-colors"
+        >
+          Get in touch
+        </a>
       </div>
     </div>
 
-    <!-- ── RIGHT COLUMN: TOC + CTA — never scrolls ─────────────────────── -->
-    <aside
-      class="hidden md:flex flex-col w-[300px] flex-shrink-0 overflow-y-auto"
-      aria-label="Article sidebar"
-    >
-      <div id="sidebar-content" class="p-7 flex flex-col gap-6">
-
-        {tocHeadings.length > 0 && (
+    <!-- ── RIGHT COLUMN: sticky TOC only ────────────────────────────── -->
+    {tocHeadings.length > 0 && (
+      <aside
+        class="hidden md:flex flex-col w-[280px] flex-shrink-0"
+        style="position: sticky; top: 68px; height: calc(100vh - 68px);"
+        aria-label="Article sidebar"
+      >
+        <div class="px-6 pt-10">
           <div class="rounded-2xl bg-[#f7f7f8] p-5">
             <p class="text-[10px] uppercase tracking-[0.2em] font-ui text-sd-text-gray mb-4">
               In this article
             </p>
             <nav aria-label="Table of contents">
-              <ul id="sd-toc" class="space-y-0.5">
+              <ul id="sd-toc" class="flex flex-col gap-0.5">
                 {tocHeadings.map((h) => (
-                  <li style={`padding-left: ${(h.depth - 2) * 12}px`}>
+                  <li style={`padding-left: ${(h.depth - 2) * 10}px`}>
                     <a
                       href={`#${h.slug}`}
-                      class="sd-toc-link group flex items-start gap-2.5 py-1.5 text-[13px] leading-snug text-[#555] hover:text-sd-purple transition-colors duration-150"
+                      class="sd-toc-link flex items-center px-3 py-1.5 rounded-lg text-[13px] leading-snug text-sd-text-gray hover:text-sd-purple hover:bg-sd-purple/5 transition-colors duration-150"
                       data-heading={h.slug}
                     >
-                      <span class="sd-toc-dot mt-1.5 shrink-0 w-1 h-1 rounded-full bg-[#bbb] group-hover:bg-sd-purple transition-colors duration-150"></span>
                       {h.text}
                     </a>
                   </li>
@@ -184,32 +199,13 @@ const articleJsonLd = {
               </ul>
             </nav>
           </div>
-        )}
-
-        <div
-          class="rounded-2xl p-5 text-center"
-          style="background: var(--sd-gradient-hero);"
-        >
-          <p class="font-display font-semibold text-white text-base leading-snug mb-2">
-            Ready to build something?
-          </p>
-          <p class="text-sm text-white/70 leading-relaxed mb-5">
-            SpaceDev helps companies build Web3 and Web2 products from idea to launch.
-          </p>
-          <a
-            href="/contact"
-            class="block w-full py-2.5 rounded-full bg-white text-sd-text-dark text-sm font-ui font-medium hover:bg-sd-purple hover:text-white transition-colors"
-          >
-            Get in touch
-          </a>
         </div>
-
-      </div>
-    </aside>
+      </aside>
+    )}
 
   </div>
 
-  <!-- ─── RELATED POSTS — outside the shell, normal page flow ─────────── -->
+  <!-- ─── RELATED POSTS ────────────────────────────────────────────────── -->
   {relatedPosts.length > 0 && (
     <section class="bg-sd-light py-16 md:py-20">
       <div class="mx-auto max-w-[1440px] px-6 md:px-10">
@@ -219,7 +215,7 @@ const articleJsonLd = {
             const relatedAuthor = getAuthor(related.data.author);
             return (
               <a
-                href={`/blog/${related.id}`}
+                href={`/post/${related.id}`}
                 class="group flex flex-col rounded-2xl overflow-hidden bg-white border border-sd-gray-border shadow-sm hover:shadow-[0_8px_32px_rgba(103,58,228,0.12)] hover:border-sd-purple/30 hover:-translate-y-1 transition-all duration-300"
               >
                 {related.data.cover && (
@@ -262,74 +258,14 @@ const articleJsonLd = {
 
 </BaseLayout>
 
-<style>
-  .sd-article-scroll {
-    scroll-behavior: auto;
-  }
-  .sd-article-scroll::-webkit-scrollbar { width: 5px; }
-  .sd-article-scroll::-webkit-scrollbar-track { background: transparent; }
-  .sd-article-scroll::-webkit-scrollbar-thumb {
-    background: #d4d4d4;
-    border-radius: 999px;
-  }
-  .sd-article-scroll::-webkit-scrollbar-thumb:hover { background: #b0b0b0; }
-  .sd-article-scroll {
-    scrollbar-width: thin;
-    scrollbar-color: #d4d4d4 transparent;
-  }
-</style>
-
 <script>
-  // ── Adjust shell height to actual header height ──────────────────────
-  const shell = document.getElementById("article-shell");
-  const header = document.querySelector("header");
-  if (shell && header) {
-    const adjust = () => {
-      shell.style.height = `calc(100dvh - ${header.offsetHeight}px)`;
-    };
-    adjust();
-    window.addEventListener("resize", adjust);
-  }
-
-  // ── Align TOC with the article title ─────────────────────────────────
-  const titleEl = document.getElementById("article-title");
-  const sidebarContent = document.getElementById("sidebar-content");
-  if (titleEl && sidebarContent) {
-    const syncTocTop = () => {
-      const titleTop = titleEl.getBoundingClientRect().top
-        - (document.getElementById("article-shell")?.getBoundingClientRect().top ?? 0);
-      sidebarContent.style.paddingTop = `${titleTop}px`;
-    };
-    syncTocTop();
-    window.addEventListener("resize", syncTocTop);
-  }
-
-  // ── Scroll hijacking ──────────────────────────────────────────────────
-  const scroller = document.getElementById("article-scroll");
-  if (shell && scroller) {
-    shell.addEventListener("wheel", (e) => {
-      e.preventDefault();
-      const { scrollTop, scrollHeight, clientHeight } = scroller;
-      const atTop    = scrollTop <= 1;
-      const atBottom = scrollTop + clientHeight >= scrollHeight - 2;
-      if (e.deltaY < 0 && atTop) {
-        document.documentElement.scrollTop += e.deltaY;
-      } else if (e.deltaY > 0 && atBottom) {
-        document.documentElement.scrollTop += e.deltaY;
-      } else {
-        scroller.scrollBy({ top: e.deltaY });
-      }
-    }, { passive: false });
-  }
-
-  // ── TOC active heading tracking (scroll + rAF) ────────────────────────
+  // ── TOC active heading tracking (window scroll) ───────────────────────
   const tocLinks = document.querySelectorAll<HTMLAnchorElement>("#sd-toc .sd-toc-link");
-  const articleScroll = document.getElementById("article-scroll");
   const articleHeadings = Array.from(
     document.querySelectorAll<HTMLElement>(".sd-prose h2, .sd-prose h3, .sd-prose h4")
   );
 
-  if (tocLinks.length && articleHeadings.length && articleScroll) {
+  if (tocLinks.length && articleHeadings.length) {
     let activeId = "";
 
     const activate = (id: string) => {
@@ -338,51 +274,39 @@ const articleJsonLd = {
       tocLinks.forEach((link) => {
         const active = link.dataset.heading === id;
         link.classList.toggle("!text-sd-purple", active);
-        link.classList.toggle("font-semibold", active);
-        const dot = link.querySelector(".sd-toc-dot");
-        if (dot) {
-          dot.classList.toggle("!bg-sd-purple", active);
-          dot.classList.toggle("scale-125", active);
-        }
+        link.classList.toggle("!bg-sd-purple/5", active);
       });
     };
 
     const getActiveId = (): string => {
-      const threshold = articleScroll.getBoundingClientRect().top + 80;
+      const threshold = 120;
       let active = articleHeadings[0]?.id ?? "";
       for (const h of articleHeadings) {
-        if (h.getBoundingClientRect().top <= threshold) {
-          active = h.id;
-        } else {
-          break;
-        }
+        if (h.getBoundingClientRect().top <= threshold) active = h.id;
+        else break;
       }
       return active;
     };
 
     let rafPending = false;
-    articleScroll.addEventListener("scroll", () => {
+    window.addEventListener("scroll", () => {
       if (rafPending) return;
       rafPending = true;
-      requestAnimationFrame(() => {
-        activate(getActiveId());
-        rafPending = false;
-      });
+      requestAnimationFrame(() => { activate(getActiveId()); rafPending = false; });
     }, { passive: true });
 
     activate(getActiveId());
 
+    // Smooth scroll to heading on TOC click
     tocLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
         const id = link.dataset.heading;
         if (!id) return;
         const target = document.getElementById(id);
-        if (target && articleScroll) {
-          const scrollerRect = articleScroll.getBoundingClientRect();
-          const targetRect = target.getBoundingClientRect();
-          const targetOffset = targetRect.top - scrollerRect.top + articleScroll.scrollTop - 32;
-          articleScroll.scrollTo({ top: targetOffset, behavior: "smooth" });
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - 96;
+          window.scrollTo({ top, behavior: "smooth" });
           history.pushState(null, "", `#${id}`);
         }
       });
