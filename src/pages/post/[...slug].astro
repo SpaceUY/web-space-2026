@@ -149,17 +149,18 @@ const articleJsonLd = {
     <!-- ── RIGHT COLUMN: sticky sidebar ──────────────────────────────── -->
     <aside
       class="hidden md:flex flex-col w-[300px] flex-shrink-0"
-      style="position: sticky; top: 68px; height: calc(100vh - 68px); overflow-y: auto;"
+      style="position: sticky; top: 68px; height: calc(100vh - 68px);"
       aria-label="Article sidebar"
     >
-      <div class="p-7 flex flex-col gap-6">
+      <!-- Inner wrapper: full height flex column so CTA is always pinned at bottom -->
+      <div class="flex flex-col h-full px-7 py-7 gap-4 min-h-0">
 
         {tocHeadings.length > 0 && (
-          <div class="rounded-2xl bg-[#f7f7f8] p-5">
-            <p class="text-[10px] uppercase tracking-[0.2em] font-ui text-sd-text-gray mb-4">
+          <div class="flex flex-col flex-1 min-h-0 rounded-2xl bg-[#f7f7f8] p-5">
+            <p class="text-[10px] uppercase tracking-[0.2em] font-ui text-sd-text-gray mb-4 flex-shrink-0">
               In this article
             </p>
-            <nav aria-label="Table of contents">
+            <nav aria-label="Table of contents" class="flex-1 overflow-y-auto min-h-0">
               <ul id="sd-toc" class="space-y-0.5">
                 {tocHeadings.map((h) => (
                   <li style={`padding-left: ${(h.depth - 2) * 12}px`}>
@@ -178,8 +179,9 @@ const articleJsonLd = {
           </div>
         )}
 
+        <!-- CTA: flex-shrink-0 so it's always fully visible -->
         <div
-          class="rounded-2xl p-5 text-center"
+          class="flex-shrink-0 rounded-2xl p-5 text-center"
           style="background: var(--sd-gradient-hero);"
         >
           <p class="font-display font-semibold text-white text-base leading-snug mb-2">
