@@ -1,5 +1,224 @@
 ---
 import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
+import Button from "../../components/ui/Button.astro";
 import { partnerData } from "../../data/services";
+
+const agencyTypes = [
+  {
+    number: "01",
+    title: "Marketing and Growth Agencies",
+    description: "Add blockchain to campaigns and platforms without changing your delivery model. We support token-enabled loyalty, wallet-based activations, gated experiences, referral mechanics, and analytics-ready implementations.",
+  },
+  {
+    number: "02",
+    title: "Brand and Creative Agencies",
+    description: "When the concept requires real engineering, we make sure the experience works end to end. From NFT utility and access to interactive web3 storytelling, we translate creative intent into secure, scalable builds.",
+  },
+  {
+    number: "03",
+    title: "Product and UX Agencies",
+    description: "We help you deliver complex products that include smart contracts, wallet flows, and backend systems. You keep product leadership and UX ownership — we provide architecture, development, QA, and release readiness.",
+  },
+  {
+    number: "04",
+    title: "Design Studios Building Platforms",
+    description: "If your studio designs full digital ecosystems, we can deliver the technical foundation — including dApps, dashboards, admin panels, integrations, and performance-focused frontends.",
+  },
+  {
+    number: "05",
+    title: "Web and Mobile Development Agencies",
+    description: "When your team needs senior blockchain specialists to extend existing apps, we embed engineers, review architecture, and ship features alongside your team.",
+  },
+  {
+    number: "06",
+    title: "Boutique Studios and Fractional Teams",
+    description: "If the work is scoped but you need dependable execution capacity, we scale from a discovery sprint to a full squad — without overhead.",
+  },
+];
+
+const unlocks = [
+  {
+    title: "Sell Bigger, Higher Margin Engagements",
+    description: "Offer blockchain features as an add-on to websites, apps, and platforms — without increasing your permanent headcount.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M3 3v16a2 2 0 0 0 2 2h16" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M7 16l4-6 4 3 4-8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: "Move Faster in Proposals and RFPs",
+    description: "We support scoping, feasibility, and technical narratives so you can commit to timelines with confidence.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: "Reduce Delivery Risk",
+    description: "Blockchain projects have unique failure modes. We bake in security practices and can bring BlockAudit support when smart contracts are involved.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2l7 3v5c0 5-3.5 9-7 10C8.5 19 5 15 5 10V5l7-3z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    title: "Keep the Relationship and the Spotlight",
+    description: "You stay client-facing and own the account. We operate as your delivery engine.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.5"/></svg>`,
+  },
+];
+
+const strategicItems = [
+  { title: "Discovery and Validation", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="11" cy="11" r="8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21l-4.35-4.35" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 8v6M8 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>` },
+  { title: "Architecture and Tech Selection", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="3" width="7" height="7" rx="1" stroke="white" stroke-width="1.5"/><rect x="15" y="3" width="7" height="7" rx="1" stroke="white" stroke-width="1.5"/><rect x="8.5" y="14" width="7" height="7" rx="1" stroke="white" stroke-width="1.5"/><path d="M5.5 10v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2M12 13v1" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>` },
+  { title: "Roadmap and Scope", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M3 7l6-4 6 4 6-4v14l-6 4-6-4-6 4V7z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 3v14M15 7v14" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>` },
+  { title: "Pitch Support", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="3" width="20" height="14" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 21h8M12 17v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M7 8h10M7 11h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>` },
+];
+
+const developmentItems = [
+  { title: "Smart Contract Development", description: "Tokens, marketplaces, vesting, staking, and governance." },
+  { title: "dApps and User Experiences", description: "Wallet connect, signing, and secure onboarding flows." },
+  { title: "Backend, APIs, and Integrations", description: "Data pipelines, admin tooling, and analytics." },
+  { title: "Infrastructure and Operations", description: "Environments, CI/CD, monitoring, and incident readiness." },
+  { title: "Security Support", description: "Reviews, testing, audit readiness, and remediation." },
+];
+
+const infrastructureItems = [
+  "Indexing and data access patterns for fast apps and dashboards",
+  "Wallet and identity flows that reduce onboarding friction",
+  "Key management and custody considerations aligned with risk tolerance",
+  "Performance, monitoring, and reliability practices that keep systems healthy after launch",
+];
+
+const engagementModels = [
+  { title: "White Label Partnership", description: "We deliver under your brand, with agency-friendly documentation and a predictable process." },
+  { title: "Co-delivery", description: "We join as your technical counterpart, aligned on milestones and responsibilities." },
+  { title: "Specialist Augmentation", description: "Embedded engineers and technical leadership inside your existing team." },
+  { title: "Discovery Sprint", description: "Fast path to a sellable roadmap, estimates, and architecture." },
+];
+
+const I_CHECK = `<svg viewBox="0 0 16 16" fill="none" class="w-5 h-5 mt-0.5 shrink-0"><circle cx="8" cy="8" r="7" stroke="rgba(167,139,250,0.5)" stroke-width="1"/><path d="M5 8l2 2 4-4" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 ---
-<ServicePageLayout data={partnerData} />
+
+<ServicePageLayout data={partnerData}>
+  <div slot="pre-process">
+
+    <!-- ① Overview continuation -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            We fit as a <strong class="text-white font-semibold">blockchain strategic partner</strong> when you need help shaping the technical approach, and as a <strong class="text-white font-semibold">blockchain development partner</strong> when it's time to build. If your client's ask is deeper, we also offer blockchain infrastructure — covering the backbone required to run in production.
+          </p>
+          <p class="text-white font-display font-semibold text-lg mb-8">
+            White label or client-facing, it's your choice.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>
+            Book a call
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ What Partnering Unlocks -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <h2 class="section-title text-white mb-14" data-animate>What Partnering Unlocks for Your Agency</h2>
+        <div class="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+          {unlocks.map((item) => (
+            <div class="flex flex-col gap-4" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <h3 class="text-lg font-display font-semibold text-white leading-snug">{item.title}</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ Strategic Partner -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-10" data-animate>
+          <h2 class="section-title text-white mb-4">How We Support You As a Blockchain Strategic Partner</h2>
+          <p class="text-sd-text-muted">When you work with SpaceDev as a blockchain strategic partner, you get:</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-8">
+          {strategicItems.map((item) => (
+            <div class="flex items-center gap-4 rounded-2xl p-5 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3 shrink-0" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <p class="text-white font-display font-semibold text-sm leading-snug">{item.title}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-sm text-sd-text-muted" data-animate>
+          <strong class="text-white">Outcome:</strong> a plan you can sell, built on realistic constraints and production-grade assumptions.
+        </p>
+      </div>
+    </section>
+
+    <!-- ⑤ Development Partner -->
+    <section class="py-20 md:py-32 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3" data-animate>Development Partner</p>
+            <h2 class="section-title text-white mb-4" data-animate>How We Deliver As a Blockchain Development Partner</h2>
+          </div>
+          <div class="flex flex-col gap-6">
+            {developmentItems.map((item) => (
+              <div class="flex gap-4" data-animate>
+                <Fragment set:html={I_CHECK} />
+                <div>
+                  <h3 class="text-base font-display font-semibold text-white mb-1">{item.title}</h3>
+                  <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            ))}
+            <p class="text-sm text-sd-text-muted border-l-2 border-sd-purple/50 pl-4 mt-2" data-animate>
+              If your client needs it, we also build the web2 layers around the web3 components — so you have one accountable partner.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ Infrastructure Partner -->
+    <section class="bg-sd-dark py-20 md:py-32 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-10" data-animate>
+          <h2 class="section-title text-white mb-4">A Partner to Offer Blockchain Infrastructure</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            Some agency projects need a reliable backbone more than feature delivery. We help you offer blockchain infrastructure to clients who require production stability and scale, including:
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          {infrastructureItems.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300 flex items-start" data-animate>
+              <p class="text-base font-display font-semibold text-white leading-snug">{item}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-sd-text-muted leading-relaxed" data-animate>
+          This is how you move from "web3 campaign" to "platform your client can run long term."
+        </p>
+      </div>
+    </section>
+
+    <!-- ⑦ Engagement Models -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-10" data-animate>
+          <h2 class="section-title text-white">Engagement Models That Fit Agency Workflows</h2>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {engagementModels.map((model, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 class="text-base font-display font-semibold text-white mb-2 leading-snug">{model.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{model.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>
