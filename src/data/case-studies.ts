@@ -27,6 +27,7 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "rarible", name: "Rarible",
+    featured: true,
     tagline: "Community-owned NFT marketplace at scale.",
     category: "Web3", industry: "NFT & Gaming", accent: "purple",
     image: "/images/content/ARj6QnZDQWmG0kFMu7g1VooFoY.png",
@@ -35,6 +36,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "drata", name: "Drata",
+    featured: true,
     tagline: "On a mission to build trust across the cloud.",
     category: "Web2", industry: "SaaS & Products", accent: "mixed",
     image: "/images/content/MjN8JV42Jr7sHrm1ESoTERxz0.png",
@@ -59,6 +61,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "blockchain-for-energy", name: "Blockchain For Energy (B4E)",
+    featured: true,
     tagline: "Decentralized energy data trust layer.",
     category: "Web3", industry: "Enterprise", accent: "green",
     image: "/images/content/zFnoUrxDLmxmtNrnnpiSOQg0VQ.png",
@@ -67,6 +70,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "fightfi", name: "FightFI",
+    featured: true,
     tagline: "The ultimate fight-fan experience.",
     category: "Web3", industry: "NFT & Gaming", accent: "cyan",
     image: "/images/content/Ot2G31pfkONVdn2AZOpauSzjaM.png",
