@@ -60,6 +60,9 @@ export interface ServicePageData {
   /** Final CTA */
   finalCta?: { eyebrow?: string; title: string; description?: string; buttonLabel: string; buttonHref: string; external?: boolean };
 
+  /** Use a smaller font size for the H1 when the title is very long */
+  compactHeroTitle?: boolean;
+
   /** Optional hero illustration shown to the right of the hero copy */
   heroImage?: { src: string; alt: string; width?: number; height?: number };
 
@@ -76,20 +79,20 @@ export function getCaseStudies(slugs: string[]): CaseStudy[] {
    ============================================================ */
 export const blockchainData: ServicePageData = {
   seo: {
-    title: "Blockchain Development Services for Scalable Solutions | SpaceDev",
+    title: "Blockchain Development Services Built for Real Business Outcomes | SpaceDev",
     description:
-      "End-to-end blockchain development: DeFi platforms, dApps, NFTs, DAOs, smart contracts, tokenization and white-label exchanges. Top 5 blockchain company by Clutch.",
+      "SpaceDev is a custom blockchain development company that takes products from concept to mainnet. Web3 engineering, product strategy, and embedded security — all under one roof.",
   },
   eyebrow: "Advanced Blockchain Development",
-  title: "Blockchain Development Services for Scalable Solutions",
+  title: "Blockchain Development Services Built for Real Business Outcomes",
   description:
-    "SpaceDev's partners move faster with secure, custom-built blockchain and Web3 applications that create trust, transparency, and long-term value. We combine strong engineering with real product experience to build, audit, and launch blockchain solutions that work flawlessly across multiple networks.",
+    "SpaceDev is a custom blockchain development company that takes products from concept to mainnet. We combine web3 engineering, product strategy, and embedded security so your blockchain investment actually delivers.",
   primaryCta: { label: "Get in touch", href: "/contact" },
   secondaryCta: { label: "See case studies", href: "/our-work" },
 
   offers: {
     eyebrow: "What we build",
-    title: "What We Build",
+    title: "Our Blockchain Development Solutions",
     description:
       "A memorable product starts with a vision and ends with something that creates impact. Our blockchain engineers, designers, and consultants work together to build systems that are transparent, efficient, secure, and for real business outcomes.",
     style: "cards",
@@ -104,8 +107,8 @@ export const blockchainData: ServicePageData = {
   },
 
   caseStudySlugs: ["blockchain-for-energy", "fightfi", "apebond", "rarible"],
-  caseStudiesTitle: "Get to know real Blockchain success stories",
-  caseStudiesDescription: "We craft decentralized products that deliver measurable impact. Take a closer look at how this service has helped teams ship at scale.",
+  caseStudiesTitle: "Blockchain Development Projects We Are Proud Of",
+  caseStudiesDescription: "SpaceDev has shipped production-grade blockchain applications for clients across energy, DeFi, gaming, and NFT infrastructure. Explore our work.",
 
   benefits: {
     title: "Benefits of Blockchain Adoption",
@@ -154,19 +157,17 @@ export const blockchainData: ServicePageData = {
   },
 
   faqs: [
-    { question: "What do your blockchain development services include?", answer: "End-to-end services: technical research, smart contract development, dApp engineering, DeFi platforms, NFT marketplaces, DAO infrastructure, token design, and white-label exchanges — plus security audits and post-launch support." },
-    { question: "Do you offer blockchain consulting before starting a project?", answer: "Yes — every engagement starts with a free consultation and (optionally) a paid Discovery Sprint where we validate the technical and business case before writing production code." },
-    { question: "How long does it take to build a blockchain application?", answer: "An MVP typically takes 8–14 weeks, while a production-ready protocol or marketplace can take 4–9 months depending on scope, audits, and integrations." },
-    { question: "Which industries can benefit from blockchain development?", answer: "Finance, gaming, healthcare, supply chain, real estate, energy, and education are common fits — anywhere transparency, traceability, or programmable assets create value." },
-    { question: "How secure are your blockchain solutions?", answer: "We follow strict secure-coding standards, run automated and manual reviews, and offer formal smart-contract audits via our BlockAudit service before mainnet deployment." },
-    { question: "What makes SpaceDev's blockchain development services unique?", answer: "Real product experience across both Web2 and Web3, a top-5 Clutch ranking among blockchain companies, and a multidisciplinary team that owns the entire lifecycle." },
-    { question: "Do you provide post-launch support and maintenance?", answer: "Yes — we offer monitoring (OpenZeppelin Defender), incident response, upgrades, and long-term retainer engagements." },
+    { question: "What does a blockchain development service include?", answer: "Full lifecycle coverage: blockchain consulting, architecture design, smart contract development, front-end and back-end integration, security auditing, and post-launch support." },
+    { question: "How long does custom blockchain development take?", answer: "Most MVPs are production-ready in 8 to 12 weeks. More complex platforms like DeFi protocols require a scoping phase first. Our Product Discovery process gives you accurate timelines before any budget commitment." },
+    { question: "Which blockchain networks do you build on?", answer: "Ethereum, Solana, Polygon, BNB Chain, Avalanche, and other major Layer 1 and Layer 2 networks. Network selection is always driven by your performance, cost, and ecosystem requirements." },
+    { question: "Do you offer smart contract security audits?", answer: "Yes. Independent smart contract audits are handled by BlockAudit, our dedicated blockchain security division." },
+    { question: "Can you work alongside our existing development team?", answer: "Yes. Our IT Staff Augmentation model lets you embed experienced blockchain engineers into your team without a full outsourced engagement." },
   ],
 
   finalCta: {
-    title: "Power your growth with secure blockchain solutions",
-    description: "Take your product from idea to impact with SpaceDev's blockchain development services. From consultation to deployment, we guide you every step.",
-    buttonLabel: "Start your project",
+    title: "Start Your Blockchain Development Project Today",
+    description: "From your first technical question to your public launch, SpaceDev is with you at every step. Let's talk about what you want to build.",
+    buttonLabel: "Get in touch",
     buttonHref: "/contact",
   },
 
@@ -305,52 +306,62 @@ export const smartContractData: ServicePageData = {
 
 export const partnerData: ServicePageData = {
   seo: {
-    title: "Become a Blockchain Development Partner | SpaceDev",
-    description: "Long-term blockchain engineering partnership: dedicated teams, shared roadmaps, and a single partner across product, engineering, and security.",
+    title: "Blockchain Partner for Agencies: Strategy, Infrastructure and Support | SpaceDev",
+    description: "SpaceDev works with agencies as a blockchain partner — expand what you sell, protect your margins, and ship blockchain projects with confidence. White label or client-facing.",
   },
   eyebrow: "Sub-service · Blockchain",
-  title: "Your Long-Term Blockchain Partner",
-  description: "Beyond projects — we partner with founders and protocol teams as their long-term engineering counterpart. Same team, same roadmap, year after year.",
-  primaryCta: { label: "Start a partnership", href: "/contact" },
-  secondaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
-
-  offers: {
-    eyebrow: "How partnerships work",
-    title: "More than a vendor — your engineering bench",
-    items: [
-      { number: "01", title: "Dedicated Engineering Cell", description: "A pod of senior engineers, designers, and ops specialists assigned exclusively to your roadmap." },
-      { number: "02", title: "Shared Roadmap", description: "We participate in planning, write specs, run discovery — not just execute tickets." },
-      { number: "03", title: "Single Accountability", description: "One partner across product, engineering, and security — no finger-pointing between vendors." },
-      { number: "04", title: "Flexible Capacity", description: "Scale the team up or down quarter by quarter as your roadmap evolves." },
-    ],
-  },
-
-  caseStudySlugs: ["blockchain-for-energy", "fightfi", "ubicuity"],
-
-  whyUs: {
-    title: "Why protocols partner with SpaceDev",
-    items: [
-      { title: "Continuity", description: "The team that builds your v1 is the team that's still there at v3 — no rebuilds, no re-onboarding." },
-      { title: "Skin in the game", description: "We treat your roadmap like our own product, raising risks and pushing back on bad ideas." },
-      { title: "Multidisciplinary depth", description: "Smart contracts, frontend, infra, design, and audits under one roof." },
-    ],
-  },
+  title: "A Blockchain Partner for Agencies",
+  description: "Your clients want Web3 experiences, tokenized loyalty, on-chain verification, and wallet-based onboarding — but building those capabilities in-house is expensive and risky. SpaceDev works with agencies as a blockchain partner so you can expand what you sell, protect your margins, and ship with confidence.",
+  primaryCta: { label: "Get in touch", href: "/contact" },
 
   finalCta: {
-    title: "Looking for your long-term blockchain partner?",
-    buttonLabel: "Let's talk",
-    buttonHref: "/contact",
+    title: "Bring us in as your blockchain development partner for your next client build.",
+    buttonLabel: "Book a call",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
+    external: true,
   },
 
-  heroImage: {
-    src: "/images/content/4EnN0joO3tVJiGxfaLXZnG7Nb0.png",
-    alt: "Long-term blockchain engineering partnership illustrated as connected nodes.",
-    width: 800,
-    height: 800,
+  footerMarqueeTheme: "dark",
+};
+
+export const decentralizedIdentityData: ServicePageData = {
+  seo: {
+    title: "Decentralized Identity Development Services | SpaceDev",
+    description: "SpaceDev designs and builds decentralized identity (DID) solutions — verifiable credentials, wallet-based onboarding, and identity infrastructure for production-grade platforms.",
   },
-  offersIllustration: {
-    src: "/images/content/jSVFf6Zw6V3KiXLgG9hznARyXbo.svg",
-    alt: "Dedicated engineering pod working as an extension of your team.",
+  eyebrow: "Sub-service · Blockchain",
+  title: "Decentralized Identity Development Services",
+  description: "Decentralized identity (DID) helps organizations verify people, accounts, and credentials without forcing users to hand over more data than necessary. SpaceDev designs and builds DID solutions that work in the real world — scalable identity experiences, secure integrations, and production-ready operations.",
+  primaryCta: { label: "Get in touch", href: "/contact" },
+
+  footerMarqueeTheme: "dark",
+
+  finalCta: {
+    title: "Build decentralized identity experiences that improve onboarding, privacy, and trust — without sacrificing usability.",
+    buttonLabel: "Talk to our blockchain team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
+    external: true,
+  },
+};
+
+export const realEstateTokData: ServicePageData = {
+  seo: {
+    title: "Real Estate Tokenization Development Services | SpaceDev",
+    description: "End-to-end development of real estate tokenization platforms — fractional ownership, compliant issuance, investor and issuer portals, and secondary market infrastructure built for production.",
+  },
+  eyebrow: "Sub-service · Asset Tokenization",
+  title: "Real Estate Tokenization Development Services",
+  description: "SpaceDev helps real estate companies, proptech platforms, and investment firms design, build, and launch tokenized property platforms built for real operations, not proof-of-concept demos.",
+  primaryCta: { label: "Get in touch", href: "/contact" },
+
+  footerMarqueeTheme: "dark",
+
+  finalCta: {
+    title: "Build your real estate tokenization platform with SpaceDev.",
+    description: "If you're evaluating partners for real estate tokenization development, fractional property investment platforms, or security token infrastructure for real estate, SpaceDev has the technical depth and operational experience to take your project from architecture to production.",
+    buttonLabel: "Talk to our blockchain team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
+    external: true,
   },
 };
 
@@ -372,6 +383,39 @@ export const tokenizationData: ServicePageData = {
     buttonLabel: "Book a call",
     buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
     external: true,
+  },
+};
+
+/* ============================================================
+   INDUSTRY PAGES
+   ============================================================ */
+export const defiFinanceData: ServicePageData = {
+  seo: {
+    title: "DeFi Development Services for Decentralized Finance | SpaceDev",
+    description: "SpaceDev builds production-grade DeFi applications, smart contract systems, and tokenized financial infrastructure. Full DeFi development lifecycle from protocol architecture to post-launch security.",
+  },
+  eyebrow: "Industry · Finance and Fintech",
+  title: "DeFi Development Services for the Next Generation of Decentralized Finance",
+  description: "SpaceDev builds production-grade DeFi applications, smart contract systems, and tokenized financial infrastructure for startups and enterprises ready to operate at the frontier of web3 finance. From protocol architecture to post-launch security, we cover the full DeFi development lifecycle.",
+  primaryCta: { label: "Start Your DeFi Project", href: "/contact" },
+  secondaryCta: { label: "Talk to a DeFi Engineer", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
+  compactHeroTitle: true,
+
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "How long does it take to build a DeFi application?", answer: "It depends heavily on protocol complexity. A focused single-purpose DeFi dApp — such as a staking platform or a basic lending pool — can be designed, built, audited, and deployed in 10 to 16 weeks. Multi-protocol systems with custom tokenomics and front-end interfaces typically run 20 to 32 weeks. We scope every project individually after a discovery phase." },
+    { question: "What blockchains do you build DeFi protocols on?", answer: "We work across EVM-compatible chains (Ethereum, Polygon, Arbitrum, Base, BNB Chain, Avalanche) and non-EVM chains including Solana. The right chain depends on your target user base, transaction cost tolerance, and ecosystem integrations." },
+    { question: "Do you offer smart contract audits for protocols built by other teams?", answer: "Yes. Our BlockAudit division operates as a standalone service. If your protocol was built externally and you need an independent security review before launch or before a funding event, we can scope an audit independently of any development engagement." },
+    { question: "What is the difference between a DeFi development company and a general blockchain agency?", answer: "A decentralized finance development company should demonstrate prior work specifically in financial protocol architecture, not just token minting or NFT marketplaces. DeFi involves economic design decisions, attack surface modeling, and liquidity engineering that require domain-specific experience. Before engaging any team, ask to see prior DeFi-specific work and their audit methodology." },
+    { question: "Can you help with DeFi token development and the tokenomics design?", answer: "Yes. Token engineering at SpaceDev includes both the technical contract development and the economic design layer: supply schedules, emission curves, incentive alignment, and governance mechanics. We treat tokenomics as a product discipline, not a whitepaper exercise." },
+  ],
+
+  finalCta: {
+    title: "Ready to Build Your DeFi Protocol?",
+    description: "Whether you are designing a DeFi lending platform, launching a tokenized asset product, or auditing an existing smart contract system before going live, SpaceDev has the engineering depth to do it correctly.",
+    buttonLabel: "Start a DeFi Project",
+    buttonHref: "/contact",
   },
 };
 

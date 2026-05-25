@@ -79,7 +79,7 @@ const serviceJsonLd = {
         <div class={data.heroImage ? "grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center" : ""}>
           <div class="max-w-4xl" data-animate>
             <Breadcrumbs items={crumbs} visible={true} class="mb-8" />
-            <h1 class="text-4xl md:text-6xl lg:text-7xl text-sd-text-dark">{data.title}</h1>
+            <h1 class={data.compactHeroTitle ? "text-3xl md:text-4xl lg:text-5xl text-sd-text-dark" : "text-4xl md:text-6xl lg:text-7xl text-sd-text-dark"}>{data.title}</h1>
             <p class="mt-8 text-lg md:text-xl text-sd-text-gray max-w-3xl leading-relaxed">{data.description}</p>
             {(data.primaryCta || data.secondaryCta) && (
               <div class="mt-10 space-y-4">
@@ -136,7 +136,7 @@ const serviceJsonLd = {
       <div class={data.heroImage ? "grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center" : ""}>
         <div class="max-w-4xl" data-animate>
           <Breadcrumbs items={crumbs} visible={true} class="mb-8" />
-          <h1 class="text-4xl md:text-6xl lg:text-7xl text-white">{data.title}</h1>
+          <h1 class={data.compactHeroTitle ? "text-3xl md:text-4xl lg:text-5xl text-white" : "text-4xl md:text-6xl lg:text-7xl text-white"}>{data.title}</h1>
           <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-3xl leading-relaxed">{data.description}</p>
           {(data.primaryCta || data.secondaryCta) && (
             <div class="mt-10 space-y-4">
@@ -374,6 +374,9 @@ const serviceJsonLd = {
     </section>
   )}
 
+  <!-- Named slot: inject content after offers section -->
+  <slot name="post-offers" />
+
   <!-- TECH STACK -->
   {data.techStack && (
     <section class={`relative py-20 md:py-28 overflow-hidden ${data.techStack.tone === "light" ? "bg-sd-light border-t border-b border-sd-gray-border" : "bg-sd-dark border-t border-b border-white/5"}`}>
@@ -420,6 +423,9 @@ const serviceJsonLd = {
       </div>
     </section>
   )}
+
+  <!-- Named slot: inject content after tech stack, before case studies -->
+  <slot name="post-techstack" />
 
   <!-- CASE STUDIES -->
   {featured.length > 0 && (
