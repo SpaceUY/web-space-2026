@@ -4,13 +4,13 @@ import Button from "../../components/ui/Button.astro";
 import { tokenizationData } from "../../data/services";
 
 const assets = [
-  "Real Estate",
-  "Stocks",
-  "Gold",
-  "Bonds",
-  "Digital Securities",
-  "Commodities",
-  "Carbon Credits",
+  { label: "Real Estate", href: "/blockchain-development-services/asset-tokenization/real-estate" },
+  { label: "Stocks" },
+  { label: "Gold" },
+  { label: "Bonds" },
+  { label: "Digital Securities" },
+  { label: "Commodities" },
+  { label: "Carbon Credits" },
 ];
 
 const whatYouGet = [
@@ -163,10 +163,24 @@ const engagementModels = [
         <div id="cards-cursor-zone" class="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           <div id="cards-cursor" class="pointer-events-none fixed z-50 w-16 h-16 rounded-full opacity-0 transition-opacity duration-200" style="background: var(--sd-purple); transform: translate(-50%, -50%); will-change: transform;" />
           {assets.map((asset, i) => (
-            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
-              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
-              <h3 class="text-base font-display font-semibold text-white">{asset}</h3>
-            </div>
+            asset.href ? (
+              <a href={asset.href} class="group relative flex flex-col justify-between rounded-2xl p-7 bg-white/5 transition-all duration-300 hover:bg-sd-purple/25 overflow-hidden" data-animate>
+                <div class="flex items-start justify-between mb-4">
+                  <p class="text-2xl font-display text-sd-purple-300 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+                  <div class="inline-flex items-center justify-center w-8 h-8 rounded-md border border-white/20 group-hover:border-white/50 transition-colors shrink-0">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-white">
+                      <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="text-base font-display font-semibold text-white group-hover:underline underline-offset-4">{asset.label}</h3>
+              </a>
+            ) : (
+              <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+                <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+                <h3 class="text-base font-display font-semibold text-white">{asset.label}</h3>
+              </div>
+            )
           ))}
         </div>
       </div>
