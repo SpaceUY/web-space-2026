@@ -4,7 +4,7 @@ description: "Navigate the rapidly evolving landscape of cryptocurrency with ins
 publishedAt: 2024-01-29
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["crypto", "exchanges", "trading", "bitcoin"]
+tags: ["fintech", "blockchain-basics"]
 readTime: 3
 ---
 

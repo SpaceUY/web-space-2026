@@ -4,7 +4,7 @@ description: "With the constant evolution and growing acceptance of blockchain-r
 publishedAt: 2023-04-29
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["crypto-exchange", "white-label", "blockchain", "fintech"]
+tags: ["fintech", "web3-infrastructure"]
 readTime: 4
 takeaways:
   - White label solutions enable rapid market entry by eliminating developmental complexity and costs

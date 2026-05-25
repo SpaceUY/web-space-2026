@@ -4,7 +4,7 @@ description: "Decentralized Pictures is a nonprofit redefining film financing th
 publishedAt: 2024-02-15
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["blockchain", "film", "decentralization", "web3"]
+tags: ["nft-gaming", "web3-infrastructure"]
 readTime: 3
 ---
 

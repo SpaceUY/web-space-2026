@@ -4,7 +4,7 @@ description: "The intersection between art and the digital world has been irrevo
 publishedAt: 2024-04-18
 author: diego-priliac
 category: "AI"
-tags: ["nft", "ai", "digital-art", "blockchain"]
+tags: ["nft-gaming", "ai"]
 readTime: 4
 takeaways:
   - AI democratizes NFT creation by making sophisticated art generation tools accessible to aspiring artists

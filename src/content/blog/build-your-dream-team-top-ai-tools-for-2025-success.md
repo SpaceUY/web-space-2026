@@ -4,7 +4,7 @@ description: "Forget bloated org charts and endless hiring cycles. Today, you ca
 publishedAt: 2025-09-03
 author: diego-priliac
 category: "AI"
-tags: ["ai-tools", "productivity", "startups", "automation"]
+tags: ["ai", "product-growth"]
 readTime: 5
 takeaways:
   - AI tools function as virtual team members across marketing, product development, sales, and operations.

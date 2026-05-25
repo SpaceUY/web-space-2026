@@ -4,7 +4,7 @@ description: "The SpaceDev team explores blockchain technology and the real chal
 publishedAt: 2023-03-02
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["blockchain", "decentralization", "consensus", "web3"]
+tags: ["web3-infrastructure", "blockchain-basics"]
 readTime: 4
 takeaways:
   - True decentralization in blockchain remains elusive due to design and behavioral factors

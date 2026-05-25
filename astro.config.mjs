@@ -15,7 +15,8 @@ export default defineConfig({
     filter: (page) =>
       !page.endsWith('/404') &&
       !page.endsWith('/terms-and-conditions/') &&
-      !page.endsWith('/privacy-policy/'),
+      !page.endsWith('/privacy-policy/') &&
+      !page.includes('/post/'),
     serialize(item) {
       const url = item.url;
       // Home gets the highest priority and weekly updates

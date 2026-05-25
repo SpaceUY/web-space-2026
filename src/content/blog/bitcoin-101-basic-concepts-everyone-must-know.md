@@ -4,7 +4,7 @@ description: "Bitcoin, the world's first and most prominent cryptocurrency, has 
 publishedAt: 2024-04-02
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["bitcoin", "cryptocurrency", "blockchain", "mining"]
+tags: ["blockchain-basics", "fintech"]
 readTime: 4
 ---
 

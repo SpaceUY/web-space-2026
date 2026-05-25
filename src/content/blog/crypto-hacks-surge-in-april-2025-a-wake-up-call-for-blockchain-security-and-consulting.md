@@ -4,7 +4,7 @@ description: "April 2025 marked a significant escalation in crypto-related cyber
 publishedAt: 2025-05-15
 author: federico-sendra
 category: Blockchain Trends
-tags: ["blockchain", "security", "crypto", "fintech"]
+tags: ["smart-contracts", "fintech"]
 readTime: 3
 takeaways:
   - $357 million in losses across 18 crypto incidents in April 2025 (990% increase from March)

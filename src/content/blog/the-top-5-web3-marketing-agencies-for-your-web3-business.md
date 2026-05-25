@@ -4,7 +4,7 @@ description: "Web3 is reshaping how businesses connect with audiences. If you're
 publishedAt: 2024-01-03
 author: federico-sendra
 category: "Web2 Trends"
-tags: ["web3", "marketing", "agencies", "blockchain"]
+tags: ["product-growth", "web3-infrastructure"]
 readTime: 3
 ---
 

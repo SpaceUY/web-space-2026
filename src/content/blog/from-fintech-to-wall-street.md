@@ -4,7 +4,7 @@ description: "When a blockchain-native lender makes headlines on Wall Street, fo
 publishedAt: 2025-08-22
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["blockchain", "fintech", "ipo", "tokenization"]
+tags: ["fintech", "defi"]
 readTime: 4
 takeaways:
   - Figure Technology Solutions demonstrated a 22% revenue surge with $191 million in revenue and $29 million profit for H1 2025.

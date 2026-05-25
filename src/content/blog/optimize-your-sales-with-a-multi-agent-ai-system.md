@@ -4,7 +4,7 @@ description: "Nowadays, the success of a business depends on immediacy and effic
 publishedAt: 2025-05-15
 author: juan-manuel-sobral
 category: AI
-tags: ["ai-agents", "ai", "sales", "automation"]
+tags: ["ai", "product-growth"]
 readTime: 6
 ---
 

@@ -4,7 +4,7 @@ description: "Blockchain technology has the potential to address the many issues
 publishedAt: 2024-08-14
 author: juan-manuel-sobral
 category: Blockchain Trends
-tags: ["blockchain", "music", "web3", "decentralization"]
+tags: ["nft-gaming", "web3-infrastructure"]
 readTime: 4
 ---
 

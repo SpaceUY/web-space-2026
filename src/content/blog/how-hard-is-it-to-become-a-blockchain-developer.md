@@ -4,7 +4,7 @@ description: "One of the rarest events in tech is finding yourself in a static p
 publishedAt: 2024-04-11
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["blockchain", "developer", "career", "web3"]
+tags: ["product-growth", "blockchain-basics"]
 readTime: 4
 ---
 

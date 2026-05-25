@@ -4,7 +4,7 @@ description: "A very easy and effective tool to take your company's customer ser
 publishedAt: 2025-05-15
 author: juan-manuel-sobral
 category: AI
-tags: ["ai", "whatsapp", "customer-service", "automation"]
+tags: ["ai", "product-growth"]
 readTime: 4
 takeaways:
   - AI-powered WhatsApp bots can automate up to 70% of customer inquiries

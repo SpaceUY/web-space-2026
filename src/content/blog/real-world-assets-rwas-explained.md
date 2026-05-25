@@ -4,7 +4,7 @@ description: "Real World Assets are physical or traditional financial assets tha
 publishedAt: 2025-03-04
 author: juan-manuel-sobral
 category: Blockchain Trends
-tags: ["blockchain", "tokenization", "real-world-assets", "fintech"]
+tags: ["defi", "fintech"]
 readTime: 5
 ---
 

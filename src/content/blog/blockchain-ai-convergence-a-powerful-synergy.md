@@ -4,7 +4,7 @@ description: "The fusion of blockchain and artificial intelligence is an emergin
 publishedAt: 2025-06-11
 author: federico-sendra
 category: Blockchain Trends
-tags: ["blockchain", "ai", "web3", "enterprise"]
+tags: ["ai", "web3-infrastructure"]
 readTime: 5
 takeaways:
   - AI deal value surged 52% in 2024 to $131.5 billion; blockchain market projected to reach $306 billion by 2030

@@ -4,7 +4,7 @@ description: "The Ethereum community continues to expand as exciting new events 
 publishedAt: 2024-08-08
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["ethereum", "hackathon", "conferences", "events"]
+tags: ["web3-infrastructure", "blockchain-basics"]
 readTime: 5
 ---
 

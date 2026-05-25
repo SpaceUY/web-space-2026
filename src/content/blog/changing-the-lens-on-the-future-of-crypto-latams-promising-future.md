@@ -4,7 +4,7 @@ description: "Latin America is emerging as a key player in the crypto and blockc
 publishedAt: 2024-07-03
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["crypto", "latam", "blockchain", "web3"]
+tags: ["fintech", "blockchain-basics"]
 readTime: 4
 takeaways:
   - Latin America is emerging as a significant hub for cryptocurrency and blockchain innovation

@@ -4,7 +4,7 @@ description: "Frowning upon the mention of 'blockchain' might be a thing of the 
 publishedAt: 2023-05-02
 author: juan-manuel-sobral
 category: "Product Development"
-tags: ["crypto-exchange", "blockchain", "case-study", "ndax"]
+tags: ["fintech", "smart-contracts"]
 readTime: 3
 ---
 

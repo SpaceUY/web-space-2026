@@ -4,7 +4,7 @@ description: "The blockchain and Web3 space is evolving at rocket speed. As 2025
 publishedAt: 2025-06-19
 author: federico-sendra
 category: Blockchain Trends
-tags: ["blockchain", "web3", "ai", "zero-knowledge-proofs"]
+tags: ["web3-infrastructure", "ai"]
 readTime: 9
 cover: ""
 takeaways:

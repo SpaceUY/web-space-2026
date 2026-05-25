@@ -4,7 +4,7 @@ description: "Web3 isn't just a trend, it's a shift. But building a product in t
 publishedAt: 2025-09-03
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["web3", "product-development", "blockchain", "dapp"]
+tags: ["product-growth", "web3-infrastructure"]
 readTime: 4
 takeaways:
   - User experience transcends Web3 — abstract complexity using familiar design patterns.

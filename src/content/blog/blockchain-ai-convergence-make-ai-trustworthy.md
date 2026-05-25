@@ -4,7 +4,7 @@ description: "A practical breakdown of how blockchain and AI work together in 20
 publishedAt: 2026-05-15
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["blockchain", "artificial-intelligence", "ai-agents", "web3"]
+tags: ["ai", "smart-contracts"]
 readTime: 5
 takeaways:
   - AI systems depend on reliable training and operational data. Blockchain's immutability directly tackles data provenance challenges limiting enterprise AI adoption.

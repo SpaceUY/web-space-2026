@@ -4,7 +4,7 @@ description: "Blockchain continues to mature, turning experimentation into expec
 publishedAt: 2026-05-15
 author: federico-sendra
 category: Blockchain Trends
-tags: ["blockchain", "web3", "protocols", "infrastructure"]
+tags: ["web3-infrastructure"]
 readTime: 11
 takeaways:
   - Web3 protocols now require decentralized yet reliable infrastructure with 99.9% uptime guarantees

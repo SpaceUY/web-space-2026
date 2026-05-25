@@ -4,7 +4,7 @@ description: "Making an impactful product out of an idea takes several stages of
 publishedAt: 2024-10-11
 author: diego-priliac
 category: Product Development
-tags: ["product-discovery", "design-sprint", "product-development", "strategy"]
+tags: ["product-growth"]
 readTime: 6
 takeaways:
   - Product Discovery suits early-stage products requiring market validation

@@ -4,7 +4,7 @@ description: "Tokenized real-world assets (RWAs) are no longer fringe crypto con
 publishedAt: 2025-10-07
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["zk-rollups", "real-world-assets", "web3", "blockchain"]
+tags: ["web3-infrastructure", "defi"]
 readTime: 10
 takeaways:
   - ZK rollups enable faster finality without challenge periods, making them suitable for regulated RWA workflows that require predictable settlement timelines.

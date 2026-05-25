@@ -4,7 +4,7 @@ description: "Whether you were aware of it or not, chances are that you've inter
 publishedAt: 2025-04-17
 author: federico-sendra
 category: AI
-tags: ["ai-agents", "ai", "blockchain", "web3"]
+tags: ["ai", "web3-infrastructure"]
 readTime: 8
 ---
 

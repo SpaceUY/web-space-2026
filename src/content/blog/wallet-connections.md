@@ -4,7 +4,7 @@ description: "As web3 ecosystems continue to grow and evolve, digital wallets ha
 publishedAt: 2023-06-06
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["web3", "wallets", "dapps", "blockchain"]
+tags: ["blockchain-basics", "web3-infrastructure"]
 readTime: 3
 takeaways:
   - Digital wallets are essential infrastructure for web3 ecosystems, enabling secure asset management and dApp interaction
