@@ -4,7 +4,7 @@ description: "A clear-eyed look at memecoins: what they are, why they keep worki
 publishedAt: 2026-01-11
 author: juan-manuel-sobral
 category: Blockchain Trends
-tags: ["crypto", "memecoins", "tokenomics"]
+tags: ["blockchain-basics", "defi"]
 readTime: 8
 cover: "/images/content/d3Ddsv9Vko4Mgi0ion6d7POiVc.png"
 takeaways:

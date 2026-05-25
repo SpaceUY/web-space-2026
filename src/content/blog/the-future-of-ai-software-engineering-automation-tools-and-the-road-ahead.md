@@ -4,7 +4,7 @@ description: "Every week, we explore what's new because in this fast-paced AI re
 publishedAt: 2025-05-20
 author: federico-sendra
 category: AI
-tags: ["ai", "software-engineering", "automation", "tools"]
+tags: ["ai"]
 readTime: 3
 ---
 

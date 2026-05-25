@@ -4,7 +4,7 @@ description: "The cryptoverse is surfing the ripples of Ethereum's latest upgrad
 publishedAt: 2024-03-20
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["ethereum", "dencun", "scalability", "upgrade"]
+tags: ["web3-infrastructure"]
 readTime: 4
 ---
 

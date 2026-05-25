@@ -4,7 +4,7 @@ description: "A practical pre-audit checklist that we use at SpaceDev's BlockAud
 publishedAt: 2025-10-20
 author: juan-manuel-sobral
 category: Blockchain Trends
-tags: ["security", "audits", "smart-contracts"]
+tags: ["smart-contracts"]
 readTime: 8
 cover: "/images/content/FCBKViQg3nV6hMSlU6WlaGTZ8yk.jpg"
 ---

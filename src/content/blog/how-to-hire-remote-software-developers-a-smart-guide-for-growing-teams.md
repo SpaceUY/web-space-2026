@@ -4,7 +4,7 @@ description: "Hiring remote software developers gives you access to top global t
 publishedAt: 2025-05-16
 author: federico-sendra
 category: Web2 Trends
-tags: ["hiring", "remote-work", "staff-augmentation", "software-development"]
+tags: ["product-growth"]
 readTime: 5
 takeaways:
   - Remote work has become standard, with over 80% of developers working remotely or hybrid

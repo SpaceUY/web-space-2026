@@ -4,7 +4,7 @@ description: "The business landscape in 2025 looks very different from even a co
 publishedAt: 2025-01-01
 author: federico-sendra
 category: "AI"
-tags: ["ai", "startups", "automation", "strategy"]
+tags: ["ai", "product-growth"]
 readTime: 10
 takeaways:
   - AI adoption has shifted from competitive advantage to fundamental business necessity for startups in 2025.

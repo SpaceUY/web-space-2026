@@ -4,7 +4,7 @@ description: "Staking is all about leveraging blockchain technology to offer inv
 publishedAt: 2024-03-06
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["staking", "defi", "crypto", "passive-income"]
+tags: ["defi", "fintech"]
 readTime: 3
 takeaways:
   - Staking enables earning rewards by locking cryptocurrencies for set periods

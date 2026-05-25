@@ -4,7 +4,7 @@ description: "Although people often associate it with bitcoin and cryptocurrency
 publishedAt: 2023-03-20
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["blockchain", "cryptocurrency", "decentralization", "smart-contracts"]
+tags: ["blockchain-basics"]
 readTime: 3
 ---
 

@@ -4,7 +4,7 @@ description: "When Web3 started facing criticism for not being truly decentraliz
 publishedAt: 2023-04-07
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["web3", "web5", "decentralization", "blockchain"]
+tags: ["web3-infrastructure", "blockchain-basics"]
 readTime: 5
 takeaways:
   - Web5 combines Web2 and Web3 principles, prioritizing full decentralization with user data control

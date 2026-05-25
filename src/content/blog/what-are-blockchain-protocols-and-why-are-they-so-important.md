@@ -4,7 +4,7 @@ description: "Whether public or private, well established or brand new, every bl
 publishedAt: 2025-03-19
 author: federico-sendra
 category: Blockchain Trends
-tags: ["blockchain", "protocols", "web3", "fintech"]
+tags: ["web3-infrastructure", "blockchain-basics"]
 readTime: 4
 ---
 

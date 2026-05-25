@@ -4,7 +4,7 @@ description: "At SpaceDev, we spend our days helping teams bring ambitious Web3 
 publishedAt: 2025-07-04
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["metamask", "web3", "onboarding", "wallets"]
+tags: ["fintech", "blockchain-basics"]
 readTime: 7
 takeaways:
   - MetaMask Embedded Wallets eliminate traditional onboarding friction through social login integration.

@@ -4,7 +4,7 @@ description: "Most Web3 marketing playbooks chase hype. Here's what actually com
 publishedAt: 2026-03-10
 author: stephania-almansor
 category: Blockchain Trends
-tags: ["web3", "marketing", "growth", "community"]
+tags: ["product-growth", "web3-infrastructure"]
 readTime: 6
 metatitle: "Web3 Marketing Strategies: From Basic to Advanced"
 cover: "/images/content/omTsS6LBwAYeMPbJvn9cltlRnVs.jpeg"

@@ -4,7 +4,7 @@ description: "A new buzzword is spreading across engineering teams, hackathons, 
 publishedAt: 2025-05-15
 author: juan-manuel-sobral
 category: AI
-tags: ["ai", "vibe-coding", "software-development", "future-of-work"]
+tags: ["ai", "product-growth"]
 readTime: 6
 ---
 

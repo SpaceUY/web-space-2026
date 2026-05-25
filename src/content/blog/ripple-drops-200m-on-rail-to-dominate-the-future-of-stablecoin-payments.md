@@ -4,7 +4,7 @@ description: "Ripple has acquired Canadian payment infrastructure firm Rail for 
 publishedAt: 2025-08-13
 author: diego-priliac
 category: "Blockchain Trends"
-tags: ["ripple", "stablecoins", "payments", "blockchain"]
+tags: ["fintech", "defi"]
 readTime: 4
 takeaways:
   - Ripple acquired Canadian payment firm Rail for $200 million to accelerate stablecoin adoption.

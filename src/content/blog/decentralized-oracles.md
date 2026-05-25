@@ -4,7 +4,7 @@ description: "Decentralized oracles are an essential part of trustworthy transac
 publishedAt: 2026-05-08
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["oracles", "smart-contracts", "defi", "blockchain"]
+tags: ["web3-infrastructure", "smart-contracts"]
 readTime: 4
 ---
 

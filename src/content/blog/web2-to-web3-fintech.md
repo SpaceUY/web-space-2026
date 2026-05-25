@@ -4,7 +4,7 @@ description: "A practical migration path for fintechs that want to bring blockch
 publishedAt: 2025-10-20
 author: federico-sendra
 category: Blockchain Trends
-tags: ["fintech", "migration", "web3"]
+tags: ["fintech", "web3-infrastructure"]
 readTime: 12
 cover: "/images/content/Uq2tE6OoZv8AxWxDvroCH8r0.jpg"
 ---

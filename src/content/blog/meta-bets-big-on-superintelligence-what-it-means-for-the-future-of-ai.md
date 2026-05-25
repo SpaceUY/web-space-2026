@@ -4,7 +4,7 @@ description: "Mark Zuckerberg just erased any doubt that AI is the battleground 
 publishedAt: 2025-07-17
 author: juan-manuel-sobral
 category: "AI"
-tags: ["meta", "ai", "superintelligence", "strategy"]
+tags: ["ai"]
 readTime: 4
 ---
 

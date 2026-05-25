@@ -4,7 +4,7 @@ description: "For crypto and fintech exchanges, milliseconds impact fill rates, 
 publishedAt: 2025-10-02
 author: federico-sendra
 category: "Product Development"
-tags: ["performance", "fintech", "exchange", "latency"]
+tags: ["fintech", "product-growth"]
 readTime: 11
 takeaways:
   - A 100ms delay can reduce order fill probability by up to 20% in electronic trading.

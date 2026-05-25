@@ -4,7 +4,7 @@ description: "Artificial intelligence is quickly becoming the new lab assistant 
 publishedAt: 2025-09-03
 author: federico-sendra
 category: "AI"
-tags: ["ai", "drug-discovery", "fda", "biotech"]
+tags: ["ai"]
 readTime: 5
 ---
 

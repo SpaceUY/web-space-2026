@@ -4,7 +4,7 @@ description: "On June 23, 2025, Goldman Sachs launched its GS AI Assistant firmw
 publishedAt: 2025-06-26
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["goldman-sachs", "ai", "blockchain", "digital-assets"]
+tags: ["ai", "fintech"]
 readTime: 7
 takeaways:
   - Goldman Sachs launched GS AI Assistant firmwide on June 23, 2025, with plans to reach all 46,000 employees by year-end.

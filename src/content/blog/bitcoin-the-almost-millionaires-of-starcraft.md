@@ -4,7 +4,7 @@ description: "Imagine becoming a millionaire after NOT winning a tournament. A b
 publishedAt: 2025-02-04
 author: federico-sendra
 category: Blockchain Trends
-tags: ["bitcoin", "crypto", "gaming", "esports"]
+tags: ["blockchain-basics", "nft-gaming"]
 readTime: 3
 ---
 

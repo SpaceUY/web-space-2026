@@ -4,7 +4,7 @@ description: "The future of traditional banking is becoming increasingly intertw
 publishedAt: 2025-05-14
 author: federico-sendra
 category: Blockchain Trends
-tags: ["blockchain", "fintech", "banking", "regulation"]
+tags: ["fintech", "smart-contracts"]
 readTime: 4
 takeaways:
   - The OCC authorized U.S. national banks to offer crypto custody and trading services with third-party provider partnerships

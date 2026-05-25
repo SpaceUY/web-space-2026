@@ -4,7 +4,7 @@ description: "SpaceDev has joined the AWS Partner Network as a Select Partner. H
 publishedAt: 2026-01-14
 author: federico-sendra
 category: Techy Trends
-tags: ["aws", "partnerships", "infrastructure"]
+tags: ["product-growth", "web3-infrastructure"]
 readTime: 4
 cover: "/images/content/9feDkXRGNd52EakG0mP2Umo.png"
 ---
