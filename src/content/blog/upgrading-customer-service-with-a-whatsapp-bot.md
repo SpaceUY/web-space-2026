@@ -6,6 +6,7 @@ author: juan-manuel-sobral
 category: AI
 tags: ["ai", "product-growth"]
 readTime: 4
+cover: "/images/content/50nXesZNFn34Yd4LegrcrmDpVic.png"
 takeaways:
   - AI-powered WhatsApp bots can automate up to 70% of customer inquiries
   - The solution provides 24/7 support while reducing workload on human agents

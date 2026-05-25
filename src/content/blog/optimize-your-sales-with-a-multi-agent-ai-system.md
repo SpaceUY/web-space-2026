@@ -5,6 +5,7 @@ publishedAt: 2025-05-15
 author: juan-manuel-sobral
 category: AI
 tags: ["ai", "product-growth"]
+cover: "/images/content/3mGvxkRKscJFyBNytRzWDrsyg.png"
 readTime: 6
 ---
 

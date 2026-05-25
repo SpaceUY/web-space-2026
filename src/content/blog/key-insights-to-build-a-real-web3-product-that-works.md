@@ -5,6 +5,7 @@ publishedAt: 2025-09-03
 author: federico-sendra
 category: "Blockchain Trends"
 tags: ["product-growth", "web3-infrastructure"]
+cover: "/images/content/VUCXsmRvqZrSwTQ8z4LOaKzFRo.png"
 readTime: 4
 takeaways:
   - User experience transcends Web3 — abstract complexity using familiar design patterns.

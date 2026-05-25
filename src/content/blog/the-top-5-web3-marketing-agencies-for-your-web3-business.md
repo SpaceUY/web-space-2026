@@ -6,6 +6,7 @@ author: federico-sendra
 category: "Web2 Trends"
 tags: ["product-growth", "web3-infrastructure"]
 readTime: 3
+cover: "/images/content/hxho9VrUWQGx6HtGs0MBU04Ln1M.png"
 ---
 
 Web3, the decentralized web, is reshaping the way businesses connect with their audiences, leveraging blockchain, decentralized finance (DeFi), non-fungible tokens (NFTs) and other technologies to create a more transparent, secure, and engaging online experience.

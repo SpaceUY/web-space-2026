@@ -5,6 +5,7 @@ publishedAt: 2025-02-04
 author: federico-sendra
 category: Blockchain Trends
 tags: ["blockchain-basics", "nft-gaming"]
+cover: "/images/content/3fuM3Z1MSowq1AA5jeBRovzFEFk.png"
 readTime: 3
 ---
 

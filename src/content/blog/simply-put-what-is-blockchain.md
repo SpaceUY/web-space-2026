@@ -5,6 +5,7 @@ publishedAt: 2023-03-20
 author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["blockchain-basics"]
+cover: "/images/content/JeQLv4bNGrE9UXUBQ7qTuS80hV4.png"
 readTime: 3
 ---
 

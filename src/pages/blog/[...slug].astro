@@ -90,22 +90,24 @@ const breadcrumbJsonLd = {
     <!-- ── LEFT COLUMN: normal page scroll ───────────────────────────── -->
     <div class="flex-1 min-w-0 px-10 md:px-16 pt-10 pb-20">
 
-      <!-- Header: back · category · title · meta -->
+      <!-- Header: breadcrumb · title · meta -->
       <div class="mb-7">
-        <div class="flex flex-wrap items-center gap-3 mb-5">
-          <a
-            href="/blog"
-            class="inline-flex items-center gap-1.5 text-sm text-sd-text-gray hover:text-sd-text-dark transition-colors"
-          >
-            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-              <path d="M11 7H3m0 0l3.5-3.5M3 7l3.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Back to blog
-          </a>
-          <span class="inline-flex items-center px-3 py-0.5 rounded-full text-[11px] uppercase tracking-wider font-ui border border-sd-purple/30 text-sd-purple">
-            {post.data.category}
-          </span>
-        </div>
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="mb-5">
+          <ol class="flex flex-wrap items-center gap-1.5 text-xs text-sd-text-gray font-ui uppercase tracking-wider">
+            <li>
+              <a href="/" class="hover:text-sd-purple transition-colors">Home</a>
+            </li>
+            <li aria-hidden="true" class="text-sd-gray-border">/</li>
+            <li>
+              <a href="/blog" class="hover:text-sd-purple transition-colors">Blog</a>
+            </li>
+            <li aria-hidden="true" class="text-sd-gray-border">/</li>
+            <li class="text-sd-text-dark truncate max-w-[420px]" aria-current="page">
+              {post.data.title}
+            </li>
+          </ol>
+        </nav>
 
         <h1 id="article-title" class="font-display text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-tight" style="font-weight: 400; letter-spacing: -0.02em;">
           {post.data.title}

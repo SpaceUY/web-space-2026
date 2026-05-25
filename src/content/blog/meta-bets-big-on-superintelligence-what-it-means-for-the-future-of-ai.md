@@ -6,6 +6,7 @@ author: juan-manuel-sobral
 category: "AI"
 tags: ["ai"]
 readTime: 4
+cover: "/images/content/YsbdX3EJ9VDlsYSu4d9uLfVvKy4.png"
 ---
 
 If there was ever any doubt that AI is the battleground of the future, Mark Zuckerberg just erased it.

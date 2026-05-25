@@ -5,6 +5,7 @@ publishedAt: 2024-08-08
 author: federico-sendra
 category: "Blockchain Trends"
 tags: ["web3-infrastructure", "blockchain-basics"]
+cover: "/images/content/VBWL0xqiCNsme8WFULlHgc2YMhs.png"
 readTime: 5
 ---
 

@@ -5,6 +5,7 @@ publishedAt: 2024-07-03
 author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["fintech", "blockchain-basics"]
+cover: "/images/content/qFJKTDemuBdfzAflDu2hTIy3mw.png"
 readTime: 4
 takeaways:
   - Latin America is emerging as a significant hub for cryptocurrency and blockchain innovation
