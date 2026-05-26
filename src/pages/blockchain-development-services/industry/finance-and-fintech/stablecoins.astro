@@ -1,0 +1,312 @@
+---
+import ServicePageLayout from "../../../../layouts/ServicePageLayout.astro";
+import Button from "../../../../components/ui/Button.astro";
+import FeatureCard from "../../../../components/ui/FeatureCard.astro";
+import { stablecoinData } from "../../../../data/services";
+
+const models = [
+  { model: "Fiat-Backed Stablecoin",          peg: "1:1 reserve in USD, EUR, or other fiat currency",               bestFor: "Payments, remittances, enterprise settlement" },
+  { model: "Crypto-Collateralized Stablecoin", peg: "Over-collateralized crypto reserves with liquidation logic",    bestFor: "DeFi protocols, lending platforms, DAOs" },
+  { model: "Commodity-Backed Stablecoin",      peg: "Reserve in gold, oil, or tokenized real-world assets",         bestFor: "Asset digitization, commodity trading platforms" },
+  { model: "Algorithmic Stablecoin",           peg: "Supply/demand adjustment via smart contract mechanisms",        bestFor: "Protocol-native currencies, advanced DeFi ecosystems" },
+  { model: "Hybrid Stablecoin",                peg: "Combined collateral and algorithmic stabilization",             bestFor: "Platforms requiring flexibility across market conditions" },
+];
+
+const services = [
+  { number: "01", title: "Stablecoin Token Architecture and Economic Model Design", description: "Before writing a single contract, we define the peg mechanism, collateral structure, reserve ratios, and monetary policy that will govern your stablecoin. This includes stability modeling, liquidation thresholds for over-collateralized models, and supply control logic for algorithmic designs. The architecture phase determines whether your stablecoin holds its peg under real market stress." },
+  { number: "02", title: "Smart Contract Development for Minting, Burning, and Redemption", description: "We implement the on-chain logic that governs your stablecoin lifecycle: issuance against verified reserves, minting and burning mechanics, redemption workflows, transfer restrictions, and pause/upgrade functionality for emergency scenarios. Built on audited standards including ERC-20 with compliance extensions, ERC-1400 for regulated stablecoins, and custom implementations where the use case requires it." },
+  { number: "03", title: "Reserve Management and Proof-of-Reserve Systems", description: "For fiat-backed and asset-backed stablecoins, reserve transparency is a trust requirement, not an optional feature. We build reserve management systems with on-chain proof-of-reserve mechanisms, automated collateral monitoring, and audit-ready reporting infrastructure so issuers and holders can verify backing at any time." },
+  { number: "04", title: "Stablecoin Compliance Controls and Regulatory Integration", description: "Regulated stablecoin issuance requires KYC/AML integration, transaction monitoring, blacklisting capabilities, and jurisdictional transfer restrictions enforced at the contract level. We implement compliance frameworks aligned with requirements under MiCA in Europe, and work alongside your legal advisors to enforce the rules they define at the technical layer." },
+  { number: "05", title: "DeFi Protocol Integration for Stablecoin Liquidity and Yield", description: "A stablecoin without liquidity is not usable. We build the DeFi integrations that make your stablecoin functional inside the broader ecosystem: liquidity pool deployment on AMMs like Uniswap or Curve, lending market integrations for collateral use, and yield-bearing mechanisms that drive adoption and deepen on-chain liquidity." },
+  { number: "06", title: "Cross-Chain Stablecoin Deployment and Bridge Architecture", description: "For stablecoins that need to operate across multiple networks, we design and build cross-chain deployment infrastructure using bridge protocols and canonical token standards. This covers multi-chain minting coordination, bridge security architecture, and liquidity management across chains to prevent fragmentation." },
+  { number: "07", title: "Stablecoin Wallet and Payment Integration", description: "We build the wallet infrastructure and payment integrations that make your stablecoin usable for end users: custodial and non-custodial wallet support, on-ramp and off-ramp integrations with fiat payment providers, merchant payment SDKs, and API layers for embedding stablecoin payments into existing fintech platforms." },
+];
+
+const I_UC_PAYMENTS  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="1" y="4" width="22" height="16" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="1" y1="10" x2="23" y2="10" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_UC_LENDING   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><line x1="12" y1="1" x2="12" y2="23" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_UC_TREASURY  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_UC_TOKENIZED = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_UC_LOYALTY   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const useCases = [
+  { icon: I_UC_PAYMENTS,  title: "Fintech and Payments",                 description: "Stablecoins as settlement rails for cross-border payments, remittances, and B2B transactions — replacing correspondent banking with programmable, instant finality." },
+  { icon: I_UC_LENDING,   title: "DeFi Lending and Borrowing Protocols", description: "Protocol-native or integrated stablecoins used as collateral, borrow assets, or liquidity targets inside decentralized lending markets." },
+  { icon: I_UC_TREASURY,  title: "Enterprise Treasury and Settlement",   description: "Corporate stablecoins for internal settlement between subsidiaries, supply chain payment automation, and treasury operations without exposure to crypto volatility." },
+  { icon: I_UC_TOKENIZED, title: "Tokenized Asset Ecosystems",           description: "Stablecoins as the settlement currency for tokenized real estate, securities, and other real-world assets — enabling seamless on-chain exchange between tokenized assets and stable value." },
+  { icon: I_UC_LOYALTY,   title: "Loyalty and Reward Programs",          description: "Branded stablecoins for consumer loyalty ecosystems, enabling programmable rewards, redemption mechanics, and closed-loop payment systems with price stability." },
+];
+
+const networks = [
+  { network: "Ethereum",                    why: "Deepest DeFi ecosystem, maximum institutional credibility and liquidity" },
+  { network: "Polygon",                     why: "Low-cost transactions for payment-focused stablecoins with high volume" },
+  { network: "Solana",                      why: "High throughput and low fees for consumer payment applications" },
+  { network: "Avalanche",                   why: "Subnet architecture for regulated, permissioned stablecoin issuance" },
+  { network: "BNB Chain",                   why: "Large retail user base for consumer-facing stablecoin applications" },
+  { network: "Private / permissioned chains", why: "Enterprise stablecoins requiring controlled participant access" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Discovery Sprint", description: "We define the stablecoin model, economic design, compliance requirements, network selection, and integration scope. You get a validated architecture and roadmap before development begins." },
+  { number: "02", title: "Build and QA", description: "Iterative development with smart contract testing under stress scenarios, integration QA, and security review at each milestone. Stablecoin stability mechanisms are validated against simulated market conditions before launch." },
+  { number: "03", title: "Launch and Post-Production Support", description: "Reserve monitoring, contract upgrades, liquidity management support, and iterative feature development as your stablecoin gains adoption and regulatory requirements evolve." },
+];
+
+const engagementModels = [
+  { title: "End-to-End Stablecoin Build", description: "SpaceDev owns architecture, development, compliance integration, security review, and launch — delivering a production-ready stablecoin from first principles." },
+  { title: "Team Augmentation", description: "Stablecoin and DeFi specialists embedded in your engineering team to accelerate development and fill capability gaps." },
+  { title: "Technical Advisory", description: "For in-house teams designing stablecoin economics or evaluating peg mechanisms before committing to a build." },
+];
+
+const relatedServices = [
+  { title: "Smart Contract Development",      description: "The on-chain layer governing minting, burning, and stablecoin lifecycle.", href: "/blockchain-development-services/smart-contract-development" },
+  { title: "dApp Development",                description: "Frontend and backend interfaces for stablecoin platforms and DeFi products.", href: "/blockchain-development-services/dapp-development" },
+  { title: "Asset Tokenization",              description: "Real-world assets that use stablecoins as their settlement currency.", href: "/blockchain-development-services/asset-tokenization" },
+  { title: "BlockAudit: Blockchain Security", description: "Smart contract auditing before stablecoin production launch.", href: "/blockaudit-smart-contract-and-blockchain-security" },
+];
+---
+
+<ServicePageLayout data={stablecoinData}>
+  <div slot="pre-process">
+
+    <!-- ① Overview -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <h2 class="section-title text-white mb-6">The System Around the Token Is What Makes It Work</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            A stablecoin is only as good as the system built around it. The token mechanics are the starting point. What determines whether a stablecoin works in production is the reserve architecture, the minting and redemption logic, the compliance controls, and the integrations that make it usable inside a real financial or DeFi ecosystem.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-8">
+            SpaceDev builds custom stablecoin solutions for fintech companies, DeFi protocols, payment platforms, and enterprises that need programmable, stable digital currency infrastructure — from initial architecture through production launch and post-deployment support.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② Stablecoin Models -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Stablecoin Models and Peg Mechanisms We Build</h2>
+          <p class="text-sd-text-muted leading-relaxed">Choosing the wrong collateral model creates stability, liquidity, and regulatory problems that are expensive to fix after launch. We define the right architecture for your use case before any development starts.</p>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Stablecoin Model</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Peg Mechanism</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/3">Best Suited For</th>
+              </tr>
+            </thead>
+            <tbody>
+              {models.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.model}</td>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.peg}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.bestFor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="flex flex-col gap-4 md:hidden">
+          {models.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.model}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Peg mechanism:</span> {row.peg}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Best suited for:</span> {row.bestFor}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Stablecoin Development Services We Deliver</h2>
+          <p class="text-sd-text-muted leading-relaxed">Full-cycle stablecoin engineering — from economic model design to cross-chain deployment and payment integration.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ Use Cases -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Stablecoin Use Cases We Build For</h2>
+          <p class="text-sd-text-muted leading-relaxed">Stablecoins solve different problems depending on the ecosystem they operate in. These are the use cases we build most often.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+          {useCases.map((item) => (
+            <div class="flex flex-col gap-4" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <h3 class="text-lg font-display font-semibold text-white leading-snug">{item.title}</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ Networks -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Blockchain Networks for Stablecoin Development</h2>
+          <p class="text-sd-text-muted leading-relaxed">Network selection is part of the architecture phase, not an afterthought. Multi-chain deployment is available for stablecoins that need to operate across ecosystems.</p>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Network</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-2/3">Why It's Used for Stablecoins</th>
+              </tr>
+            </thead>
+            <tbody>
+              {networks.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.network}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.why}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="flex flex-col gap-4 md:hidden">
+          {networks.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-2">{row.network}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{row.why}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ Security & Audit -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-3xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-6">Security and Audit for Stablecoin Smart Contracts</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            Stablecoin contracts control real financial value. A vulnerability in the minting logic, the reserve mechanism, or the access control layer has direct financial consequences for holders and issuers.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed">
+            Every stablecoin we build goes through structured security review across contract logic, reserve integration, and admin controls before any code reaches a live network.
+          </p>
+        </div>
+        <div
+          class="relative overflow-hidden rounded-3xl px-10 py-12 md:px-16 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-8"
+          style="background: var(--sd-gradient-purple-dark);"
+          data-animate
+        >
+          <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 70% 50%, #7c3aed, transparent 60%);"></div>
+          <div class="relative max-w-xl">
+            <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">Independent Security Review</p>
+            <p class="text-2xl md:text-3xl lg:text-4xl text-white font-display leading-snug">BlockAudit: Blockchain Security</p>
+            <p class="text-sd-text-muted mt-3 leading-relaxed">When the project requires independent assurance, BlockAudit — SpaceDev's dedicated security division — provides full smart contract audits and pre-launch hardening before any stablecoin reaches production.</p>
+          </div>
+          <a
+            href="/blockaudit-smart-contract-and-blockchain-security"
+            class="relative shrink-0 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3 text-sm text-white font-medium hover:bg-white/20 transition-colors backdrop-blur-sm"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ Delivery Process -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <h2 class="section-title text-white mb-4" data-animate>Delivery Process for Stablecoin Projects</h2>
+            <p class="text-sd-text-muted leading-relaxed" data-animate>
+              Stablecoin development requires more upfront design than most blockchain projects — the economic model, collateral architecture, and compliance rules must be locked before a single contract is written.
+            </p>
+          </div>
+          <div class="flex flex-col gap-4">
+            {deliverySteps.map((s) => (
+              <FeatureCard number={s.number} title={s.title} description={s.description} tone="dark" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑧ Engagement Models -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Engagement Models for Stablecoin Development</h2>
+          <p class="text-sd-text-muted leading-relaxed">We adapt to where you are in your build — whether you need a full-cycle partner, embedded specialists, or technical advisory before committing to development.</p>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {engagementModels.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑨ Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Stablecoin and DeFi Projects</h2>
+          <p class="text-sd-text-muted leading-relaxed">Every stablecoin platform draws on multiple capabilities. Depending on your scope, these services are likely part of your build.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((item) => (
+            <a
+              href={item.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

@@ -1,0 +1,143 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import Button from "../../../components/ui/Button.astro";
+import { energyData } from "../../../data/services";
+
+const services = [
+  { number: "01", title: "Blockchain Energy Trading Platform Development", description: "Custom trading platform architecture with smart contract-based settlement logic, oracle integration for real-time price feeds, permissioned access layers for regulatory compliance, and wallet infrastructure for asset custody — reducing settlement times from days to minutes." },
+  { number: "02", title: "Peer-to-Peer Energy Trading Applications", description: "P2P energy trading dApps that integrate with smart meters, manage automated micropayments via smart contracts, and provide transparent transaction records for both participants and regulators — making direct consumer-to-consumer energy exchange economically viable." },
+  { number: "03", title: "Renewable Energy Certificate (REC) Tokenization", description: "Smart contract infrastructure to mint, transfer, and audit tokenized RECs across private and public blockchain networks. Each certificate becomes a unique, verifiable digital asset — eliminating double-counting and improving market liquidity." },
+  { number: "04", title: "Carbon Credit Tracking and Settlement", description: "Carbon credit management systems that connect measurement and verification data from physical sources to on-chain records, creating an auditable trail from emission event to offset — for companies that need to demonstrate compliance to investors, regulators, and enterprise clients." },
+  { number: "05", title: "Energy Supply Chain and Grid Data Management", description: "Shared, immutable record layers for utilities and grid operators to track chain of custody for grid materials, record energy provenance from generation to consumption, and share operational data across a consortium of stakeholders without sacrificing data privacy." },
+  { number: "06", title: "Smart Contract Automation for Energy Agreements", description: "Self-executing smart contracts for energy sector agreements — from bilateral PPA automation to multi-party consortium contracts with embedded regulatory compliance hooks — replacing manual processes and legal intermediaries with auditable on-chain logic." },
+];
+
+const valueChain = [
+  { segment: "Renewable Energy",     problem: "Double-counting, slow certificate settlement",  application: "Tokenized RECs, P2P trading platforms" },
+  { segment: "Wholesale Electricity", problem: "Settlement delays, reconciliation costs",       application: "Smart contract trading infrastructure" },
+  { segment: "Oil and Gas",           problem: "Multi-party coordination, data silos",          application: "Supply chain tracking, joint venture data sharing" },
+  { segment: "Utilities",             problem: "Grid data integrity, metering accuracy",        application: "Immutable data management, IoT + blockchain integration" },
+  { segment: "Carbon Markets",        problem: "Lack of transparency, fraud risk",              application: "On-chain credit issuance and retirement tracking" },
+  { segment: "Energy Retail",         problem: "High intermediary costs",                       application: "Blockchain-based billing and direct grid access" },
+];
+
+const I_BOLT    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_GLOBE   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5"/><line x1="2" y1="12" x2="22" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_LAYERS  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_SHIELD  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2l7 3v5c0 5-3.5 9-7 10C8.5 19 5 15 5 10V5l7-3z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const whyUs = [
+  { icon: I_BOLT,   title: "Energy sector expertise, not a generic vertical", description: "Most blockchain agencies approach energy like any other domain. The energy sector has regulatory constraints, multi-party data governance requirements, and legacy system integration challenges that require a team with both blockchain depth and enterprise architecture experience." },
+  { icon: I_GLOBE,  title: "Cross-industry track record", description: "Our team has shipped blockchain infrastructure across industries where data integrity, auditability, and multi-stakeholder coordination are non-negotiable — including fintech, supply chain, and energy." },
+  { icon: I_LAYERS, title: "Enterprise architecture depth", description: "We do not adapt generic solutions to fit. We design protocol architectures that match the specific operational model of each client from the ground up — whether that is a permissioned consortium network or a public-chain REC marketplace." },
+  { icon: I_SHIELD, title: "Full-cycle delivery", description: "From initial discovery and protocol design through smart contract development, security audit, and production deployment — we cover the complete lifecycle without handoffs to third-party teams." },
+];
+---
+
+<ServicePageLayout data={energyData}>
+  <div slot="pre-process">
+
+    <!-- ① Overview -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <h2 class="section-title text-white mb-6">Why Blockchain Makes Sense for the Energy Sector</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            The energy sector runs on trust between parties that do not fully trust each other: generators, grid operators, retailers, regulators, and end consumers all participate in markets where data integrity and settlement finality matter enormously — and where legacy infrastructure consistently falls short.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            Blockchain in energy is not about replacing physical infrastructure. It is about providing the data integrity and financial settlement layer that sits on top of it — making peer-to-peer trading economically viable, certificate markets fraud-proof, and multi-party data governance technically enforceable.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-8">
+            SpaceDev builds these systems for energy companies that are past the pilot stage and need production-grade infrastructure that can operate under real regulatory and operational conditions.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② Services -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Blockchain Development Services for Energy Companies</h2>
+          <p class="text-sd-text-muted leading-relaxed">Full-cycle blockchain engineering across the energy value chain — from trading infrastructure to tokenized certificates.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ Value Chain table -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Where Blockchain Creates the Most Value Across the Energy Value Chain</h2>
+          <p class="text-sd-text-muted leading-relaxed">Blockchain in the energy market is an active deployment environment. Companies building infrastructure now are establishing durable competitive advantages.</p>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Energy Segment</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Core Problem Blockchain Solves</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/3">Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              {valueChain.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.segment}</td>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.problem}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.application}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="flex flex-col gap-4 md:hidden">
+          {valueChain.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.segment}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Problem solved:</span> {row.problem}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Application:</span> {row.application}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ Why SpaceDev -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Why SpaceDev for Blockchain in the Energy Sector</h2>
+          <p class="text-sd-text-muted leading-relaxed">Most blockchain development agencies approach the energy sector as they would any other vertical. SpaceDev is different.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {whyUs.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3 mb-5" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

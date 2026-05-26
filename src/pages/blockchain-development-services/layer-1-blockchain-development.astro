@@ -1,0 +1,301 @@
+---
+import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
+import Button from "../../components/ui/Button.astro";
+import FeatureCard from "../../components/ui/FeatureCard.astro";
+import { layer1Data } from "../../data/services";
+
+const decisionTable = [
+  { requirement: "Full control over consensus and block production",  approach: "Custom Layer 1" },
+  { requirement: "Application-specific throughput and fee model",     approach: "App-chain or custom L1" },
+  { requirement: "Sovereign on-chain governance",                     approach: "Custom Layer 1" },
+  { requirement: "Scalability for existing dApp",                     approach: "Layer 2 or rollup" },
+  { requirement: "Permissioned enterprise network",                   approach: "Private L1 or Hyperledger" },
+  { requirement: "Custom VM or execution environment",                approach: "Custom Layer 1" },
+];
+
+const services = [
+  { number: "01", title: "Blockchain Protocol Design and Consensus Mechanism Engineering", description: "We design consensus algorithms, block production rules, finality models, and validator infrastructure — including staking logic, slashing conditions, and delegation mechanics. Whether Proof of Stake, Delegated PoS, Proof of Authority, or hybrid models, the choice is driven by your security model and validator economics, not by defaults." },
+  { number: "02", title: "EVM-Compatible Blockchain and Custom Execution Environment Development", description: "For projects needing Ethereum tooling compatibility, we build EVM-compatible L1 chains supporting existing Solidity contracts under custom consensus and economic rules. For more specific requirements, we develop custom virtual machines tailored to the application domain." },
+  { number: "03", title: "Cosmos SDK App-Chain Development with IBC Interoperability", description: "We design and build Cosmos SDK-based Layer 1 networks with native IBC interoperability, custom module development, and integration into the Cosmos ecosystem for cross-chain asset transfers and messaging." },
+  { number: "04", title: "Substrate-Based Blockchain Development for Polkadot and Standalone Chains", description: "For projects requiring modular runtime flexibility, we build Substrate-based blockchains with custom runtime modules, parachain-ready architecture, and the upgrade mechanisms that make networks maintainable long-term." },
+  { number: "05", title: "Avalanche Subnet and Custom VM Development", description: "Avalanche subnets deliver dedicated throughput with application-specific validator sets and custom VMs — suited for gaming, DeFi, and enterprise use cases that need isolated performance without the overhead of a fully sovereign chain." },
+  { number: "06", title: "Native Token Design, Tokenomics, and Monetary Policy", description: "A network's native token governs fee payment, validator incentives, governance participation, and long-term economic security. We design supply schedules, inflation and burn mechanics, staking reward models, and vesting structures that align incentives across validators, developers, and users." },
+  { number: "07", title: "On-Chain Governance and Protocol Upgrade Framework", description: "We build on-chain governance systems with proposal submission, voting mechanics, quorum parameters, timelock controls, and upgrade execution paths that allow the protocol to evolve without centralized control." },
+  { number: "08", title: "Cross-Chain Bridge and Interoperability Architecture", description: "We design bridge infrastructure for asset transfers and message passing between your L1 and major networks including Ethereum, BNB Chain, Cosmos, and Polkadot. Bridge security is a primary design constraint, not an afterthought." },
+  { number: "09", title: "Blockchain Explorer, Wallet SDK, and Developer Tooling", description: "We deliver the developer infrastructure that makes your L1 usable from launch: block explorers, RPC endpoints, wallet SDKs, testnet faucets, and API documentation that reduces friction for builders on your chain." },
+];
+
+const frameworks = [
+  { framework: "Cosmos SDK",        bestFor: "Sovereign app-chains with IBC interoperability",           consideration: "Most mature ecosystem for app-chains" },
+  { framework: "Substrate",         bestFor: "Modular chains, Polkadot parachains",                      consideration: "Strong upgradeability, steeper initial complexity" },
+  { framework: "EVM fork",          bestFor: "EVM-compatible chains reusing Ethereum tooling",           consideration: "Faster developer adoption, less protocol differentiation" },
+  { framework: "Avalanche Subnet",  bestFor: "Dedicated throughput without full L1 overhead",            consideration: "Depends on Avalanche validator set" },
+  { framework: "Custom from scratch", bestFor: "Unique execution environments, maximum sovereignty",    consideration: "Highest cost and timeline" },
+];
+
+const I_UC_DEFI      = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6v6l4 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_UC_GAMING    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="6" width="20" height="12" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12h4M8 10v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="15" cy="12" r="1" fill="white"/><circle cx="18" cy="12" r="1" fill="white"/></svg>`;
+const I_UC_ENTERPRISE= `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_UC_RWA       = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_UC_STABLE    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><line x1="12" y1="1" x2="12" y2="23" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const useCases = [
+  { icon: I_UC_DEFI,       title: "DeFi-Native L1 Networks",                    description: "Purpose-built for decentralized finance with application-specific throughput, native DEX infrastructure, and protocol-level stablecoin capabilities." },
+  { icon: I_UC_GAMING,     title: "Gaming and NFT App-Chains",                  description: "High-throughput dedicated networks with low predictable fees, custom asset standards, and VM optimizations that general-purpose chains can't provide." },
+  { icon: I_UC_ENTERPRISE, title: "Enterprise and Permissioned Networks",        description: "Private or consortium chains with controlled validator sets, access-permissioned transaction processing, and enterprise system integrations." },
+  { icon: I_UC_RWA,        title: "RWA and Tokenization Infrastructure",         description: "Sovereign chains with compliance controls at the protocol level for regulated asset tokenization platforms." },
+  { icon: I_UC_STABLE,     title: "Protocol-Native Stablecoin Ecosystems",       description: "Layer 1 networks with reserve management and monetary policy built into the chain rather than enforced through application-layer contracts." },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Discovery and Architecture Sprint", description: "Protocol evaluation, framework selection, tokenomics design, and full technical specification before development starts." },
+  { number: "02", title: "Testnet Build and Validation", description: "Consensus engine, validator infrastructure, and execution environment deployed on testnet with load testing and economic simulation." },
+  { number: "03", title: "Security Review and Mainnet Preparation", description: "Protocol security analysis, bridge review, validator onboarding, and BlockAudit hardening before production." },
+  { number: "04", title: "Mainnet Launch and Ecosystem Support", description: "Deployment with explorer, developer tooling, and post-launch support for upgrades, governance, and ecosystem growth." },
+];
+
+const engagementModels = [
+  { title: "End-to-End Delivery", description: "SpaceDev owns architecture, development, security, and mainnet launch — delivering production-ready Layer 1 infrastructure from first principles." },
+  { title: "Team Augmentation", description: "L1 protocol engineers embedded in your team to accelerate development and fill capability gaps across consensus, tokenomics, or bridge architecture." },
+  { title: "Architecture Advisory", description: "For teams evaluating whether a custom L1 fits their requirements before committing to a build — framework selection, tokenomics review, and technical scoping." },
+];
+
+const relatedServices = [
+  { title: "Smart Contract Development",      description: "Application-layer contracts deployed on your L1 network.", href: "/blockchain-development-services/smart-contract-development" },
+  { title: "dApp Development",                description: "Frontend and backend interfaces for applications on your chain.", href: "/blockchain-development-services/dapp-development" },
+  { title: "Asset Tokenization",              description: "Real-world asset tokenization platforms built on L1 infrastructure.", href: "/blockchain-development-services/asset-tokenization" },
+  { title: "Stablecoin Development",          description: "Protocol-native or application-layer stablecoins for your network.", href: "/blockchain-development-services/industry/finance-and-fintech/stablecoins" },
+  { title: "BlockAudit: Blockchain Security", description: "Protocol-level security analysis and adversarial testing before mainnet.", href: "/blockaudit-smart-contract-and-blockchain-security" },
+];
+---
+
+<ServicePageLayout data={layer1Data}>
+  <div slot="pre-process">
+
+    <!-- ① Overview -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <h2 class="section-title text-white mb-6">Do You Actually Need a Layer 1 Blockchain?</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            Most projects that ask about Layer 1 development don't need one. A custom L1 is justified when your use case has requirements existing networks can't meet: custom consensus rules, application-specific throughput, sovereign governance, or regulatory requirements that demand full infrastructure control.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            For everything else, a Layer 2, app-chain, or permissioned deployment is faster and operationally simpler.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-8">
+            Our <a href="/product-discovery" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Product Discovery</a> process answers this question before any architecture is defined. If an existing network fits your requirements, we'll say so.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② Decision Table -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">When a Custom L1 Is the Right Answer</h2>
+          <p class="text-sd-text-muted leading-relaxed">Match your requirement to the right architectural approach before committing to a build.</p>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/2">Requirement</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/2">Right Approach</th>
+              </tr>
+            </thead>
+            <tbody>
+              {decisionTable.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.requirement}</td>
+                  <td class="py-5 font-display font-semibold text-white text-sm leading-snug align-top">{row.approach}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="flex flex-col gap-4 md:hidden">
+          {decisionTable.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-sm text-sd-text-muted mb-2">{row.requirement}</p>
+              <p class="text-base font-display font-semibold text-white">{row.approach}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Layer 1 Blockchain Development Services We Deliver</h2>
+          <p class="text-sd-text-muted leading-relaxed">Full-cycle Layer 1 engineering — from consensus design and tokenomics to bridge architecture and ecosystem tooling.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ Frameworks Compared -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Layer 1 Development Frameworks Compared</h2>
+          <p class="text-sd-text-muted leading-relaxed">Framework selection drives timeline, cost, and ecosystem fit. We evaluate tradeoffs per project during the architecture phase.</p>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/4">Framework</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-5/12">Best For</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/3">Key Consideration</th>
+              </tr>
+            </thead>
+            <tbody>
+              {frameworks.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.framework}</td>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.bestFor}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.consideration}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="flex flex-col gap-4 md:hidden">
+          {frameworks.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.framework}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Best for:</span> {row.bestFor}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Key consideration:</span> {row.consideration}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ Security -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl" data-animate>
+          <h2 class="section-title text-white mb-6">Security at the Protocol Level</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            Protocol-level vulnerabilities in a Layer 1 are categorically more severe than application bugs. A flaw in the consensus logic, validator economics, or bridge architecture can compromise the entire network.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed">
+            SpaceDev applies structured security review across consensus logic, smart contract environments, and bridge architecture at every build phase. Before mainnet, <a href="/blockaudit-smart-contract-and-blockchain-security" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">BlockAudit</a> provides protocol-level security analysis and adversarial testing against economic attacks, consensus manipulation, and bridge exploits.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ Use Cases -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Layer 1 Use Cases We Build For</h2>
+          <p class="text-sd-text-muted leading-relaxed">Custom Layer 1 infrastructure serves use cases where existing networks impose performance, governance, or compliance constraints that can't be worked around at the application layer.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+          {useCases.map((item) => (
+            <div class="flex flex-col gap-4" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <h3 class="text-lg font-display font-semibold text-white leading-snug">{item.title}</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ Delivery Process -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <h2 class="section-title text-white mb-4" data-animate>Delivery Process</h2>
+            <p class="text-sd-text-muted leading-relaxed" data-animate>
+              Layer 1 development requires more upfront architecture than any other blockchain project type. Framework selection, tokenomics design, and security architecture must be locked before a single line of protocol code is written.
+            </p>
+          </div>
+          <div class="flex flex-col gap-4">
+            {deliverySteps.map((s) => (
+              <FeatureCard number={s.number} title={s.title} description={s.description} tone="dark" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑧ Engagement Models -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Engagement Models</h2>
+          <p class="text-sd-text-muted leading-relaxed">We adapt to where you are in your build — whether you need a full-cycle partner, embedded protocol engineers, or architectural guidance before committing to development.</p>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {engagementModels.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑨ Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services</h2>
+          <p class="text-sd-text-muted leading-relaxed">Every Layer 1 platform draws on multiple capabilities. Depending on your scope, these services are likely part of your build.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {relatedServices.map((item) => (
+            <a
+              href={item.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>
