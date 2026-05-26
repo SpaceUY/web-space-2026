@@ -1,0 +1,373 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import Button from "../../../components/ui/Button.astro";
+import FeatureCard from "../../../components/ui/FeatureCard.astro";
+import { realEstateTokData } from "../../../data/services";
+
+const tokenStructures = [
+  {
+    type: "Fractional Equity Tokens",
+    represents: "Co-ownership of a property or SPV",
+    useCase: "Residential and commercial fractional investment",
+  },
+  {
+    type: "Revenue Participation Tokens",
+    represents: "Share of rental income or net cash flows",
+    useCase: "Short-term rental platforms, commercial leases",
+  },
+  {
+    type: "Tokenized Debt / Mortgage Positions",
+    represents: "Loan secured by real property",
+    useCase: "Private credit, bridge financing",
+  },
+  {
+    type: "Tokenized Private REIT",
+    represents: "Exposure to a property portfolio",
+    useCase: "Diversified real estate vehicles",
+  },
+  {
+    type: "Development Finance Tokens",
+    represents: "Capital contribution to a construction project",
+    useCase: "Real estate development funding rounds",
+  },
+];
+
+const platformComponents = [
+  {
+    number: "01",
+    title: "Smart Contract Development for Property Tokens",
+    description:
+      "We implement ERC-1400 and ERC-3643 (T-REX) security token standards with on-chain transfer restrictions, whitelist enforcement, automated distributions, lockup periods, and redemption logic. Gas-efficient, audited, and built for production environments.",
+  },
+  {
+    number: "02",
+    title: "Investor Portal with Fractional Ownership Dashboard",
+    description:
+      "A web-based investor portal with digital onboarding, KYC/AML integration, asset dashboards, investment tracking, and distribution history. Designed to reduce friction for first-time participants without sacrificing security or compliance.",
+  },
+  {
+    number: "03",
+    title: "Issuer and Admin Console for Property Managers",
+    description:
+      "We build issuer consoles for cap table management, transfer approvals, distribution triggers, investor exception handling, and compliance reporting — without requiring blockchain expertise to operate.",
+  },
+  {
+    number: "04",
+    title: "On-Chain Compliance Controls and Transfer Restriction Engine",
+    description:
+      "Transfer restrictions, accreditation checks, and investor allowlists enforced at the smart contract level, not as a front-end suggestion. We build the technical mechanisms your legal advisors define, so compliance holds under every scenario.",
+  },
+  {
+    number: "05",
+    title: "Payment Rails, Stablecoin Settlement, and Custody Integrations",
+    description:
+      "We integrate with payment providers, stablecoin settlement rails, and custody solutions suited to your investor base — from custodial wallets for retail participants to direct wallet access for institutional buyers.",
+  },
+  {
+    number: "06",
+    title: "APIs and Property Management System Integrations",
+    description:
+      "For platforms that connect to fund administrators, property management systems, or reporting tools, we build the API and integration layer that keeps data consistent across systems without manual reconciliation.",
+  },
+];
+
+const networks = [
+  {
+    name: "Ethereum / EVM chains",
+    reason: "Maximum institutional credibility and ecosystem maturity",
+  },
+  {
+    name: "Polygon",
+    reason: "Low transaction costs, strong DeFi and enterprise integrations",
+  },
+  {
+    name: "Avalanche",
+    reason: "High throughput, subnet architecture for regulated environments",
+  },
+  {
+    name: "Private / permissioned chains",
+    reason: "Controlled access for platforms requiring auditability and restricted participation",
+  },
+];
+
+const deliverySteps = [
+  {
+    number: "1",
+    title: "Discovery Sprint",
+    description:
+      "We define the token model, platform scope, compliance requirements, and architecture before development begins. You get a blueprint your legal, operations, and investment teams can approve. See how we run Product Discovery.",
+  },
+  {
+    number: "2",
+    title: "Build and QA",
+    description:
+      "Milestone-based delivery with working demos, QA gates, and security reviews at each stage. No monolith delivered at the end.",
+  },
+  {
+    number: "3",
+    title: "Launch and Post-Production Support",
+    description:
+      "Ongoing engineering, monitoring, and iteration as your tokenization program grows and compliance requirements evolve.",
+  },
+];
+
+const engagementModels = [
+  "Full platform delivery — SpaceDev owns the build from architecture to launch",
+  "Team augmentation with blockchain and Web3 specialists embedded in your team",
+  "Architecture and advisory for in-house teams building tokenization infrastructure",
+];
+
+const relatedServices = [
+  {
+    title: "Smart Contract Development",
+    href: "/blockchain-development-services/smart-contract-development",
+    description: "The on-chain layer that governs token behavior",
+  },
+  {
+    title: "dApp Development",
+    href: "/blockchain-development-services/dapp-development",
+    description: "Frontend and backend integration for Web3 platforms",
+  },
+  {
+    title: "BlockAudit: Blockchain Security",
+    href: "/blockaudit-smart-contract-and-blockchain-security",
+    description: "Security review before production",
+  },
+  {
+    title: "Asset Tokenization Services",
+    href: "/blockchain-development-services/asset-tokenization",
+    description: "The broader tokenization practice beyond real estate",
+  },
+];
+---
+
+<ServicePageLayout data={realEstateTokData}>
+  <div slot="pre-process">
+
+    <!-- ① Overview -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            We cover the full stack: token architecture, smart contract development, investor and issuer portals, compliance controls, KYC/AML integrations, and payment rails —
+            <strong class="text-white font-semibold">with a delivery model built around your business constraints, not a generic blockchain template.</strong>
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-8">
+            Every engagement starts from the asset model. We define how the token behaves, what constraints apply, and what the platform needs to do before a single line of code is written.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>
+            Book a call
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② Token Structures We Build -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Real Estate Token Structures We Build</h2>
+          <p class="text-sd-text-muted text-base md:text-lg">
+            Different property strategies require different token models. We define the right structure for your asset before any development starts.
+          </p>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Token Structure</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">What It Represents</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/3">Typical Use Case</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tokenStructures.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.type}</td>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.represents}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.useCase}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="flex flex-col gap-4 md:hidden">
+          {tokenStructures.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{row.type}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Represents:</span> {row.represents}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Use case:</span> {row.useCase}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-8 text-sm text-sd-text-muted border-l-2 border-sd-purple/50 pl-4" data-animate>
+          Choosing the wrong structure creates compliance, UX, and operational problems that are expensive to fix after launch.
+          Our <a href="/product-discovery" class="text-sd-purple-300 hover:text-white transition-colors">Product Discovery</a> process
+          locks in the right model before a line of code is written.
+        </p>
+      </div>
+    </section>
+
+    <!-- ③ Platform Components -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">What we build</p>
+          <h2 class="section-title text-white">Real Estate Tokenization Platform Components</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {platformComponents.map((item) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{item.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ Blockchain Networks -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Blockchain Networks for Real Estate Token Platforms</h2>
+          <p class="text-sd-text-muted text-base">
+            We evaluate tradeoffs per project rather than defaulting to a single chain. The right network depends on your investor profile, jurisdiction, and cost structure.
+          </p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {networks.map((n) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/40 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{n.name}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{n.reason}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ Security -->
+    <section class="bg-sd-dark py-20 md:py-32 border-t border-white/5">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3" data-animate>Security</p>
+            <h2 class="section-title text-white mb-4" data-animate>Security Review Before Every Real Estate Token Launch</h2>
+            <p class="text-sd-text-muted leading-relaxed" data-animate>
+              Tokenized real estate platforms are high-trust systems. A vulnerability in the transfer logic or distribution contract affects real investor positions.
+            </p>
+          </div>
+          <div class="flex flex-col gap-10">
+            <div class="flex flex-col gap-4" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%">
+                  <path d="M12 2l7 3v5c0 5-3.5 9-7 10C8.5 19 5 15 5 10V5l7-3z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="text-base font-display font-semibold text-white">Structured Security Review Across the Platform</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">
+                Before any platform goes live, we apply structured security review across smart contracts, backend services, and platform infrastructure — with a focus on minimizing production risk.
+              </p>
+            </div>
+            <div class="flex flex-col gap-4" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%">
+                  <path d="M10 20l4-16M6.343 17.657l-2.828-2.829a4 4 0 0 1 0-5.656l2.828-2.829M17.657 17.657l2.828-2.829a4 4 0 0 0 0-5.656l-2.828-2.829" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="text-base font-display font-semibold text-white">BlockAudit Support for Deeper Assurance</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">
+                When the project requires deeper validation,
+                <a href="/blockaudit-smart-contract-and-blockchain-security" class="text-sd-purple-300 hover:text-white transition-colors">BlockAudit</a>
+                — SpaceDev's dedicated security division — provides smart contract audits and pre-launch hardening.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ Delivery Process -->
+    <section class="py-20 md:py-32 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <div class="md:sticky md:top-32" data-animate>
+            <h2 class="section-title text-white mb-6">Delivery Process for Real Estate Tokenization Projects</h2>
+          </div>
+          <ol class="flex flex-col gap-6">
+            {deliverySteps.map((step) => (
+              <li>
+                <FeatureCard
+                  number={step.number}
+                  title={step.title}
+                  description={step.description}
+                  tone="dark"
+                />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ Engagement Models -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-10" data-animate>
+          <h2 class="section-title text-white">Engagement Models</h2>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {engagementModels.map((model, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 class="text-base font-display font-semibold text-white leading-snug">{model}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑧ Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services</h2>
+          <p class="text-sd-text-muted">
+            If you're building a real estate tokenization platform, these capabilities are likely part of your scope.
+          </p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((service) => (
+            <a
+              href={service.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">
+                  {service.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{service.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

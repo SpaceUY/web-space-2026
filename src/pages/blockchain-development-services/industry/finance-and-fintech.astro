@@ -1,0 +1,177 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import Button from "../../../components/ui/Button.astro";
+import { defiFinanceData } from "../../../data/services";
+
+const services = [
+  { number: "01", title: "DeFi Smart Contract Development", description: "Custom smart contracts for lending protocols, automated market makers, staking systems, and governance mechanisms — written in Solidity or Rust, with every deployment going through our internal audit pipeline before mainnet." },
+  { number: "02", title: "DeFi Token Development", description: "Full-stack token engineering: tokenomics modeling, ERC-20/ERC-721/ERC-1155 contract development, vesting logic, and integration with your broader DeFi protocol — utility, governance, or RWA-backed." },
+  { number: "03", title: "DeFi Lending and Borrowing Platforms", description: "Collateralization ratios, liquidation mechanics, interest rate curves, and oracle integration — covering the full spectrum from simple P2P lending dApps to multi-asset money markets." },
+  { number: "04", title: "Decentralized Exchange (DEX) Development", description: "AMM-based and order-book DEX platforms with custom liquidity pool logic, price oracle integrations, and fee structures — front-end interface, smart contract backend, and wallet connection layer as a unified product." },
+  { number: "05", title: "DeFi Application Development", description: "Complete DeFi dApp development: yield aggregators, DeFi dashboards, cross-protocol integrations, and custom financial instruments built on top of existing DeFi primitives." },
+  { number: "06", title: "Asset Tokenization", description: "End-to-end tokenization services — from legal and technical structure definition to token contract deployment and secondary market trading infrastructure. Real estate, fund shares, invoice financing, and commodity-backed instruments." },
+  { number: "07", title: "DeFi Security Audit (BlockAudit)", description: "Automated static analysis and manual code review covering reentrancy vulnerabilities, access control flaws, oracle manipulation vectors, and logic errors specific to DeFi cash flow systems — at any stage of your protocol's lifecycle." },
+];
+
+const protocolTypes = [
+  { type: "Lending & Borrowing",    does: "P2P and pooled collateralized lending",         complexity: "Liquidation logic, oracle feeds, interest rate models" },
+  { type: "Decentralized Exchange", does: "Token swaps via AMM or order book",             complexity: "Liquidity pool math, slippage protection, MEV resistance" },
+  { type: "Yield Aggregator",       does: "Optimizes returns across protocols",            complexity: "Cross-protocol composability, gas optimization" },
+  { type: "Staking Platform",       does: "Lock assets, earn rewards",                    complexity: "Reward distribution curves, lock schedules" },
+  { type: "DeFi Launchpad",         does: "Token sales with vesting",                     complexity: "Whitelist management, vesting contracts" },
+  { type: "Tokenization Platform",  does: "On-chain representation of real assets",       complexity: "Legal-tech bridge, compliance hooks" },
+  { type: "Prediction / Betting",   does: "Decentralized outcome markets",                complexity: "Oracle dependency, settlement logic" },
+];
+
+const I_FINTECH = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="5" width="20" height="14" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 10h20" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M6 15h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_ROCKET  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_CHART   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><line x1="18" y1="20" x2="18" y2="10" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="20" x2="12" y2="4" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="20" x2="6" y2="14" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="20" x2="22" y2="20" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_STAR    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const whoWeServe = [
+  { icon: I_FINTECH, title: "Fintech companies",                 description: "Exploring decentralized rails for payments, lending, or treasury management as an extension of their existing product." },
+  { icon: I_ROCKET,  title: "Web3 startups",                    description: "Launching new DeFi protocols who need a full-stack team that understands both the technical and go-to-market dimensions of a DeFi product launch." },
+  { icon: I_CHART,   title: "Institutional investors and funds", description: "Looking to build or integrate tokenized asset infrastructure for on-chain capital allocation." },
+  { icon: I_STAR,    title: "Gaming and NFT platforms",          description: "Requiring DeFi mechanics — in-game token economies, staking, or yield-bearing assets integrated directly into gameplay." },
+];
+
+const whyUs = [
+  { title: "DeFi-first, not a department", description: "Our blockchain practice is not one capability among twenty — it is the core of what we do. Every engineer and every process is built around on-chain product delivery." },
+  { title: "Multi-chain track record", description: "We've shipped DeFi infrastructure across Ethereum, Polygon, BNB Chain, Solana, and Avalanche — from seed-stage protocols to integrations managing significant on-chain TVL." },
+  { title: "Long-term tech partner", description: "We don't build what you ask for and disappear. Our incentive is aligned with your protocol's success, not just the completion of a sprint." },
+  { title: "40+ five-star ratings", description: "Reflected in 40+ five-star client ratings on Clutch and GoodFirms. Our CTO is recognized as one of Uruguay's most influential voices in technology.", link: { text: "View our Clutch profile →", href: "https://clutch.co/profile/spacedev" } },
+];
+
+---
+
+<ServicePageLayout data={defiFinanceData}>
+  <div slot="pre-process">
+
+    <!-- ① Overview -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <h2 class="section-title text-white mb-6">What DeFi Development Actually Involves (and Why Most Teams Get It Wrong)</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            Decentralized finance development is not a feature you bolt onto a product. It is a fundamental architectural decision that determines how liquidity flows, how users interact with financial primitives, and how your protocol handles risk at scale.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            The most common mistake teams make is treating DeFi as a faster version of traditional fintech. It is not. Smart contracts in DeFi replace the legal and operational infrastructure of conventional financial systems — which means bugs are not just product issues, they are financial liabilities.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-8">
+            SpaceDev approaches every DeFi project with this in mind. Our engineering teams combine protocol-level expertise with business logic modeling so that what gets built is not just technically correct — it is economically sound.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② DeFi Services -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">DeFi Development Services We Deliver</h2>
+          <p class="text-sd-text-muted leading-relaxed">Full-cycle DeFi engineering — from protocol design to post-launch security.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ Protocol Types table -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">DeFi Protocol Types We Build</h2>
+          <p class="text-sd-text-muted leading-relaxed">Each protocol type carries its own set of engineering and economic trade-offs. We've built across all of them.</p>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Protocol Type</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">What It Does</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/3">Key Technical Complexity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {protocolTypes.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.type}</td>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.does}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.complexity}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="flex flex-col gap-4 md:hidden">
+          {protocolTypes.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.type}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">What it does:</span> {row.does}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Key complexity:</span> {row.complexity}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ Who We Build For -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Who We Build DeFi Solutions For</h2>
+          <p class="text-sd-text-muted leading-relaxed">SpaceDev works with teams that have a clear financial use case and need a technical partner who can translate it into a deployable protocol.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-10">
+          {whoWeServe.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3 mb-5" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-sm text-sd-text-muted leading-relaxed" data-animate>
+          If you are at the idea stage, we offer a structured <a href="/product-discovery" class="text-sd-purple-300 hover:text-white transition-colors">Product Discovery</a> engagement to validate your protocol design and define the minimum viable on-chain architecture before development begins.
+        </p>
+      </div>
+    </section>
+
+    <!-- ⑤ Why SpaceDev -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Why SpaceDev as Your DeFi Development Company</h2>
+          <p class="text-sd-text-muted leading-relaxed max-w-2xl">We don't just deliver smart contracts — we help you build economically sound, production-grade DeFi protocols.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {whyUs.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              {item.link && (
+                <a href={item.link.href} target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-xs text-sd-purple-300 hover:text-white transition-colors">{item.link.text}</a>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>
