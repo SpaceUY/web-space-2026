@@ -20,7 +20,7 @@ techStack:
   - Electron
   - MySQL
 publishedAt: 2025-02-15
-heroImage: "/images/content/MjN8JV42Jr7sHrm1ESoTERxz0.png"
+heroImage: "/images/content/drata_upwrok.png"
 summary: "When Drata was in its earliest days, led by the founding team, SpaceDev joined as a strategic development partner to accelerate feature delivery and strengthen the platform's core capabilities. With the product foundation already in place, our team integrated seamlessly to co-develop key features like the compliance agent and secure audit workflows."
 objectives:
   - "Automate compliance: build the foundation for continuous, automated validation of compliance across multiple standards."

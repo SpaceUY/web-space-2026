@@ -18,7 +18,7 @@ techStack:
   - Node.js
   - MQTT
 publishedAt: 2025-02-15
-heroImage: "/images/content/sa1bThmpTeuI2fiQYszTfaRXttI.png"
+heroImage: "/images/content/ubicuity_upwrok.png"
 summary: "Ubicuity is reinventing how physical assets — buildings, fleets, equipment — are tracked, monetized, and exchanged. SpaceDev built the IoT-to-blockchain pipeline that turns real-world telemetry into verifiable, tradable on-chain assets."
 objectives:
   - Bridge IoT telemetry into smart contracts with verifiable, tamper-resistant data flows.

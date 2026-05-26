@@ -18,7 +18,7 @@ techStack:
   - Foundry
   - TypeScript
 publishedAt: 2025-02-15
-heroImage: "/images/content/W9r4YBMqOXXjArRKKfSr1pPaN9k.png"
+heroImage: "/images/content/Bondi_upwrok.png"
 summary: "Bondi Finance brings emerging-market fixed-income to DeFi — tokenizing real-world bonds so global investors can access yields that were previously locked behind brokerage and jurisdiction barriers. SpaceDev built the smart contracts, compliance layer, and frontend that make it possible."
 objectives:
   - Tokenize emerging-market bonds with verifiable on-chain provenance.

@@ -23,15 +23,15 @@ const gradient = accentGradients[caseStudy.accent ?? "purple"];
 const tagBase     = "inline-flex items-center px-2.5 py-1 rounded-md text-[10px] border";
 const tagCategory = dark
   ? `${tagBase} bg-white/10 text-white/60 border-white/10`
-  : `${tagBase} bg-sd-light-2 text-sd-text-gray border-sd-gray-border`;
+  : `${tagBase} bg-white/70 text-sd-text-gray border-sd-gray-border`;
 const tagService = dark
   ? `${tagBase} bg-white/[0.05] text-white/50 border-white/10`
-  : `${tagBase} bg-sd-light-2 text-sd-text-gray border-sd-gray-border`;
+  : `${tagBase} bg-white/70 text-sd-text-gray border-sd-gray-border`;
 
 // group on <a> so bar + image react to card hover
 const cardShell = dark
   ? "group bg-white/[0.04]"
-  : "group bg-sd-light-2";
+  : "group";
 
 const textTitle = dark ? "text-white"    : "text-sd-text-dark";
 const textBody  = dark ? "text-white/55" : "text-sd-text-gray";
@@ -46,20 +46,21 @@ const textLink  = dark
   <a
     href={`/case-study/${caseStudy.slug}`}
     class={`relative col-span-2 flex items-stretch h-full rounded-xl overflow-hidden ${cardShell} ${className}`.trim()}
+    style={!dark ? "background-color:#ffffff;" : undefined}
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
     <!-- LEFT: image — zoom on card hover -->
-    <div class="w-[52%] shrink-0 overflow-hidden">
+    <div class="relative w-[52%] shrink-0 overflow-hidden" style="background:radial-gradient(circle at 50% 130%,#A2A6F5 20%,#4C2E92 55%,#2D292F 80%,#2D2D2D 95%)">
       {caseStudy.image ? (
         <img
           src={caseStudy.image}
           alt={caseStudy.name}
           loading="lazy"
-          class="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+          class="relative w-full h-full object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-105"
         />
       ) : (
-        <div class={`w-full h-full bg-gradient-to-br ${gradient}`}></div>
+        <div class="w-full h-full"></div>
       )}
     </div>
 
@@ -101,20 +102,21 @@ const textLink  = dark
   <a
     href={`/case-study/${caseStudy.slug}`}
     class={`relative flex flex-col h-full rounded-xl overflow-hidden ${cardShell} ${className}`.trim()}
+    style={!dark ? "background-color:#ffffff;" : undefined}
     data-category={caseStudy.industry ?? caseStudy.category}
     data-animate
   >
     <!-- Image — zoom on card hover -->
-    <div class="shrink-0 h-[224px] overflow-hidden">
+    <div class="relative shrink-0 h-[224px] overflow-hidden" style="background:radial-gradient(circle at 50% 130%,#A2A6F5 20%,#4C2E92 55%,#2D292F 80%,#2D2D2D 95%)">
       {caseStudy.image ? (
         <img
           src={caseStudy.image}
           alt={caseStudy.name}
           loading="lazy"
-          class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+          class="relative w-full h-full object-contain transition-transform duration-1000 ease-out group-hover:scale-105"
         />
       ) : (
-        <div class={`w-full h-full bg-gradient-to-br ${gradient}`}></div>
+        <div class="w-full h-full"></div>
       )}
     </div>
 
@@ -152,3 +154,4 @@ const textLink  = dark
   </a>
 
 )}
+
