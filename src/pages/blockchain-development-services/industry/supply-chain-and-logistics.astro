@@ -1,0 +1,333 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import Button from "../../../components/ui/Button.astro";
+import FeatureCard from "../../../components/ui/FeatureCard.astro";
+import { supplyChainData } from "../../../data/services";
+
+const services = [
+  { number: "01", title: "Supply Chain Traceability and End-to-End Cargo Tracking", description: "A shared, immutable record of every custody transfer from origin to final delivery — visible to all authorized parties in real time. Shippers, carriers, freight forwarders, and receivers work from the same data set, eliminating conflicting records and accelerating claims resolution." },
+  { number: "02", title: "Smart Contract Automation for Freight Payments and Trade Settlement", description: "Payment and settlement triggers that execute automatically on verified delivery events, customs clearance confirmations, or IoT sensor data — compressing payment cycles from weeks to hours without requiring trust between counterparties." },
+  { number: "03", title: "Product Provenance Verification and Anti-Counterfeiting", description: "On-chain product authentication records that trace goods from manufacturer to distributor to point of sale. Physical goods linked via QR codes, RFID, or NFC tags to their on-chain identity — critical for pharma, food, luxury goods, and electronics." },
+  { number: "04", title: "Trade Finance Document Digitization", description: "Blockchain-backed digitization of bills of lading, letters of credit, certificates of origin, and customs declarations — shareable across importers, exporters, freight forwarders, banks, and customs authorities in real time." },
+  { number: "05", title: "Multi-Party Warehouse and Inventory Visibility Platforms", description: "A shared data layer for inventory levels, warehouse events, and stock movements visible to suppliers, 3PLs, and buyers simultaneously — eliminating the reconciliation overhead of managing inventory across disconnected systems." },
+  { number: "06", title: "Cold Chain Monitoring with IoT and On-Chain Event Recording", description: "Smart contracts triggered by IoT sensor data, recording temperature, humidity, and location events on-chain for pharmaceutical, food, and chemical shipments — producing verifiable compliance documentation without manual data entry." },
+];
+
+const problems = [
+  { problem: "Fragmented shipment records across carriers and forwarders",    solution: "Single shared ledger accessible to all authorized parties — no central operator required" },
+  { problem: "Manual invoice reconciliation and slow freight payment cycles", solution: "Smart contracts trigger automated settlement on confirmed delivery or milestone events" },
+  { problem: "Counterfeit and tampered goods entering the supply chain",      solution: "On-chain provenance tied to physical goods via QR, RFID, or NFC from point of origin" },
+  { problem: "Paper-based trade documents prone to fraud and delays",         solution: "Digitized, tamper-proof documents shareable across borders and institutions instantly" },
+  { problem: "No real-time cargo visibility for buyers and shippers",         solution: "Live on-chain tracking events surfaced through custom portals or APIs" },
+  { problem: "Disputes between parties with conflicting records",             solution: "Immutable audit trail eliminates reconciliation disputes at every handoff point" },
+  { problem: "Cold chain compliance documentation done manually",             solution: "IoT-triggered on-chain events create auditable records automatically" },
+];
+
+const networks = [
+  { name: "Hyperledger Fabric",         why: "Permissioned consortium architecture for enterprise networks with controlled membership" },
+  { name: "Ethereum / EVM chains",      why: "Public traceability platforms requiring broad accessibility and third-party integrations" },
+  { name: "Polygon",                    why: "High-volume tracking and settlement systems where per-transaction cost matters at scale" },
+  { name: "Hedera",                     why: "Enterprise-grade throughput with predictable fees, well-suited for IoT event recording" },
+  { name: "Private / permissioned chains", why: "Platforms requiring full data control and restricted participant access" },
+];
+
+const smartContracts = [
+  "Custody transfer events between carriers, ports, customs brokers, and warehouses",
+  "Automated payment release on verified delivery confirmation or milestone completion",
+  "Multi-party access control and data permissions for consortium logistics networks",
+  "Dispute escalation logic with defined resolution paths and time-based conditions",
+  "Compliance enforcement for regulated goods, restricted trade routes, and cross-border requirements",
+];
+
+const I_MONITOR  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="2" y="3" width="20" height="14" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 21h8M12 17v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_SETTINGS = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_CODE     = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><polyline points="16 18 22 12 16 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_FILE     = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+
+const components = [
+  { icon: I_MONITOR,  title: "Real-Time Shipment and Cargo Tracking Portal", description: "Web-based visibility dashboards for shippers, carriers, and receivers with live event feeds, custody chain history, document access, and exception alerts — built for the actual users of the platform, not for a technical audience." },
+  { icon: I_SETTINGS, title: "Operator Console for Multi-Party Logistics Networks", description: "Tools for platform operators to onboard participants, manage access permissions, configure smart contract parameters, monitor network activity, and generate compliance and operational reports — without requiring blockchain expertise." },
+  { icon: I_CODE,     title: "API and Webhook Integration Layer", description: "RESTful and webhook-based APIs that connect your blockchain platform to existing ERP, WMS, TMS, and partner systems. Designed so third-party integrations don't require changes to the core platform architecture." },
+  { icon: I_FILE,     title: "Blockchain-Anchored Trade Document Management", description: "Digitized trade documents with on-chain anchoring, version control, multi-party signature workflows, and full audit trails — shareable across freight forwarders, customs authorities, banks, and trading partners." },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Discovery Sprint", description: "We map your current logistics workflows, identify where blockchain adds real operational value versus where it adds unnecessary complexity, and define the platform scope, architecture, and integration requirements. You get a buildable blueprint before development starts." },
+  { number: "02", title: "Build and QA", description: "Milestone-based delivery with working demos, integration testing against real logistics scenarios, and security reviews at each stage. No monolith delivered at the end — working software at every milestone." },
+  { number: "03", title: "Launch and Operational Support", description: "Post-launch monitoring, smart contract upgrades, and iterative development as your platform and participant network scale. The engagement does not end at launch." },
+];
+
+const engagementModels = [
+  { title: "End-to-end platform delivery", description: "SpaceDev owns architecture, development, security review, and launch. Best for teams that need a fully delivered platform without building a blockchain capability in-house." },
+  { title: "Team augmentation", description: "Blockchain specialists embedded in your existing engineering team. Best for companies with in-house development capacity that need domain expertise and protocol-level knowledge." },
+  { title: "Architecture and advisory", description: "Architecture design, technology selection, and technical advisory for in-house teams evaluating blockchain for logistics before committing to a build." },
+];
+
+const relatedServices = [
+  { title: "Smart Contract Development", description: "The automation layer governing freight payments, custody transfers, and compliance enforcement.", href: "/blockchain-development-services/smart-contract-development" },
+  { title: "dApp Development", description: "Portals and interfaces for multi-party logistics and supply chain networks.", href: "/blockchain-development-services/dapp-development" },
+  { title: "BlockAudit: Blockchain Security", description: "Smart contract auditing and security hardening before production launch.", href: "/blockaudit-smart-contract-and-blockchain-security" },
+  { title: "Blockchain Development Services", description: "The full capability stack behind every logistics solution we build.", href: "/blockchain-development-services" },
+];
+
+const I_CHAIN  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_GLOBE  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5"/><line x1="2" y1="12" x2="22" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_EYE    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.5"/></svg>`;
+const I_USERS  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="white" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const whyUs = [
+  { icon: I_CHAIN, title: "Integration, not replacement", description: "We build integrations with ERP (SAP, Oracle, Dynamics), WMS, TMS, IoT platforms, and payment rails — defined during discovery, not retrofitted after build. Integration architecture determines whether the platform works in production or only in a demo environment." },
+  { icon: I_GLOBE, title: "Network selection per use case", description: "The right network for a pharmaceutical cold chain platform is not the same as for a cross-border freight settlement system. We evaluate network options against your specific requirements before recommending an architecture." },
+  { icon: I_EYE,   title: "BlockAudit on every production deployment", description: "Every smart contract governing freight payments, custody transfers, and compliance enforcement goes through structured security review. BlockAudit — SpaceDev's dedicated security division — provides pre-launch hardening on projects that require deeper assurance." },
+  { icon: I_USERS, title: "Built for production, not pilots", description: "We work with freight operators, 3PLs, manufacturers, and platform builders to deliver systems that fit inside existing operations. Our incentive is aligned with your platform's success at scale, not just the completion of a build." },
+];
+---
+
+<ServicePageLayout data={supplyChainData}>
+  <div slot="pre-process">
+
+    <!-- ① Overview -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <h2 class="section-title text-white mb-6">Where Supply Chains Break — and How Blockchain Fixes It</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            Supply chains break at the handoffs. Every time data moves between carriers, customs authorities, warehouses, and buyers, reconciliation overhead accumulates, disputes go unresolved, and visibility disappears. These are not software problems — they are trust and coordination problems that existing ERP and TMS systems were never designed to solve.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            Blockchain in logistics does not mean replacing your current stack. It means adding a shared, tamper-proof coordination layer on top of it — one that all authorized parties can read from and write to, with no central operator required to maintain the integrity of the data.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-8">
+            SpaceDev works with freight operators, 3PLs, manufacturers, importers, and platform builders to deliver production-ready systems that fit inside existing operations from day one.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② Services -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Blockchain Use Cases We Build for Logistics and Supply Chain</h2>
+          <p class="text-sd-text-muted leading-relaxed">From cargo tracking and freight settlement to cold chain compliance and trade document digitization.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ Operational Problems table -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">How Blockchain Solves Operational Problems in Logistics and Freight</h2>
+          <p class="text-sd-text-muted leading-relaxed">Seven recurring pain points across freight, trade, and supply chain — and how blockchain addresses each.</p>
+        </div>
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/2">Operational Problem</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/2">How Blockchain Addresses It</th>
+              </tr>
+            </thead>
+            <tbody>
+              {problems.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.problem}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.solution}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="flex flex-col gap-4 md:hidden">
+          {problems.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.problem}</h3>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Solution:</span> {row.solution}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ Networks table -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Blockchain Networks for Enterprise Logistics and Supply Chain Platforms</h2>
+          <p class="text-sd-text-muted leading-relaxed">Network selection depends on whether your platform is permissioned or open, how many parties are involved, transaction volume, and regulatory requirements. We evaluate tradeoffs per project.</p>
+        </div>
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Network</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-2/3">Why It's Used in Logistics and Supply Chain</th>
+              </tr>
+            </thead>
+            <tbody>
+              {networks.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.name}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.why}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="flex flex-col gap-4 md:hidden">
+          {networks.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-2">{row.name}</h3>
+              <p class="text-sm text-sd-text-muted">{row.why}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ Smart Contracts -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <h2 class="section-title text-white mb-4" data-animate>Smart Contract Development for Freight, Customs, and Carrier Operations</h2>
+            <p class="text-sd-text-muted leading-relaxed" data-animate>
+              The operational logic of a logistics blockchain platform lives in its smart contracts. We build and audit contracts that govern the core events across your freight and trade workflows.
+            </p>
+            <p class="text-sm text-sd-text-muted mt-6 leading-relaxed" data-animate>
+              All contracts go through structured security review before production. When the project requires deeper assurance, <a href="/blockchain-development-services/security" class="text-sd-purple-300 hover:text-white transition-colors">BlockAudit</a> — SpaceDev's dedicated security division — provides smart contract auditing and pre-launch hardening.
+            </p>
+          </div>
+          <div class="flex flex-col gap-3">
+            {smartContracts.map((item) => (
+              <div class="flex gap-4 items-start rounded-2xl p-5 bg-white/5 border border-white/10" data-animate>
+                <svg viewBox="0 0 16 16" fill="none" class="w-5 h-5 mt-0.5 shrink-0"><circle cx="8" cy="8" r="7" stroke="rgba(167,139,250,0.5)" stroke-width="1"/><path d="M5 8l2 2 4-4" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ Platform Components -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Logistics Blockchain Platform Components</h2>
+          <p class="text-sd-text-muted leading-relaxed">The full delivery architecture for a production logistics blockchain platform — front end to integration layer.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+          {components.map((c) => (
+            <div class="flex flex-col gap-4" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={c.icon} />
+              </div>
+              <h3 class="text-lg font-display font-semibold text-white leading-snug">{c.title}</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">{c.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ Delivery Process -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <h2 class="section-title text-white mb-4" data-animate>Delivery Process for Logistics Blockchain Projects</h2>
+            <p class="text-sd-text-muted leading-relaxed" data-animate>Three phases, from initial workflow mapping to production launch and beyond.</p>
+          </div>
+          <div class="flex flex-col gap-4">
+            {deliverySteps.map((s) => (
+              <FeatureCard number={s.number} title={s.title} description={s.description} tone="dark" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑧ Engagement Models -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Engagement Models for Logistics and Supply Chain Blockchain Development</h2>
+          <p class="text-sd-text-muted leading-relaxed">Three ways to work with SpaceDev, depending on where you are in your evaluation and build process.</p>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {engagementModels.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑨ Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Blockchain Services for Logistics Platforms</h2>
+          <p class="text-sd-text-muted leading-relaxed">Every logistics blockchain platform draws on multiple capabilities. Depending on your scope, these services are likely part of your build.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((item) => (
+            <a
+              href={item.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑩ Why SpaceDev -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Why SpaceDev for Logistics and Supply Chain Blockchain</h2>
+          <p class="text-sd-text-muted leading-relaxed">We design systems that work in production, not just in a demo environment. That distinction shapes every architectural decision we make.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {whyUs.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3 mb-5" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

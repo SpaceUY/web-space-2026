@@ -1,0 +1,142 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import Button from "../../../components/ui/Button.astro";
+import { healthcareData } from "../../../data/services";
+
+const services = [
+  { number: "01", title: "Blockchain Health Records Infrastructure", description: "Distributed health records layers that allow patient data to flow securely between hospitals, clinics, labs, and payers — with no single party owning the master record. Patients retain verifiable ownership of their data, and every read and write event carries a complete audit trail." },
+  { number: "02", title: "Clinical Data Interoperability", description: "Interoperability layers that connect disparate EHRs, PACS systems, and insurance platforms through a shared blockchain data bus — enabling real-time record reconciliation without replacing existing infrastructure." },
+  { number: "03", title: "Smart Contract Automation for Claims and Billing", description: "Smart contracts that trigger claim submission, approval, and payment automatically when predefined clinical and coverage conditions are met — cutting settlement time, reducing dispute rates, and eliminating the manual reconciliation overhead that drives up administrative costs." },
+  { number: "04", title: "Drug Supply Chain and Pharmaceutical Tracking", description: "Blockchain-based pharmaceutical tracking systems that record the chain of custody for medications from manufacturer to dispensary, with immutable provenance records that regulators, distributors, and providers can verify independently." },
+  { number: "05", title: "Consent and Credentialing Management", description: "On-chain consent management systems that give patients auditable control over who accesses their data, and provider credentialing platforms that put medical license verification, board certifications, and malpractice records on a shared ledger — eliminating redundant verification overhead that slows provider onboarding." },
+];
+
+const useCases = [
+  { useCase: "Health Records",       problem: "Fragmented patient data across providers",        builds: "Permissioned distributed record systems" },
+  { useCase: "Claims Processing",    problem: "Manual reconciliation, slow settlement",          builds: "Smart contract billing automation" },
+  { useCase: "Drug Tracking",        problem: "Counterfeit risk, supply chain opacity",          builds: "Pharmaceutical provenance platforms" },
+  { useCase: "Consent Management",   problem: "Patients lack control over data access",          builds: "On-chain consent and audit trail systems" },
+  { useCase: "Provider Credentialing", problem: "Slow, redundant license verification",          builds: "Shared credentialing ledger infrastructure" },
+  { useCase: "Clinical Trials",      problem: "Data integrity and participant privacy",           builds: "Immutable trial data recording systems" },
+];
+
+const I_LOCK   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="3" y="11" width="18" height="11" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_GLOBE  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5"/><line x1="2" y1="12" x2="22" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_EYE    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.5"/></svg>`;
+const I_STAR   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const whyUs = [
+  { icon: I_LOCK,  title: "HIPAA-aligned architecture from day one", description: "Permissioned network design, encrypted data handling, and audit trail requirements built into the technical scope from the start — not retrofitted after development is underway." },
+  { icon: I_GLOBE, title: "Regulated, multi-stakeholder environments", description: "Our team has shipped blockchain infrastructure in regulated environments across fintech, supply chain, and life sciences — bringing the same architectural discipline to healthcare's compliance and integration challenges." },
+  { icon: I_EYE,   title: "BlockAudit security review on every deployment", description: "Every production smart contract we deploy goes through our internal BlockAudit security review — covering access control, logic errors, and HIPAA-relevant data exposure vectors before any code hits a live network." },
+  { icon: I_STAR,  title: "40+ five-star client ratings", description: "Our track record is reflected in 40+ five-star client ratings on Clutch and GoodFirms. US-focused delivery. Full-stack from smart contract to front end.", link: { text: "View our Clutch profile →", href: "https://clutch.co/profile/spacedev" } },
+];
+---
+
+<ServicePageLayout data={healthcareData}>
+  <div slot="pre-process">
+
+    <!-- ① Overview -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <h2 class="section-title text-white mb-6">Built for the Compliance and Data Complexity of Healthcare</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            Blockchain technology in healthcare means solving problems that EHR systems were never designed to handle: cross-provider data sharing without a central authority, tamper-proof audit trails for regulated records, and automated claim and consent workflows that currently run on manual processes.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed mb-8">
+            SpaceDev designs healthcare blockchain applications from the ground up with HIPAA considerations, permissioned access architecture, and legacy system integration built into the technical scope from day one — not retrofitted after the fact.
+          </p>
+          <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② Services -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Healthcare Blockchain Development Services</h2>
+          <p class="text-sd-text-muted leading-relaxed">End-to-end blockchain engineering for healthcare — from health record infrastructure to pharmaceutical supply chain tracking.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ Use Cases table -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Where SpaceDev Delivers in Healthcare</h2>
+          <p class="text-sd-text-muted leading-relaxed">Six active deployment areas where blockchain creates measurable value for healthcare organizations.</p>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Use Case</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Problem Solved</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/3">What We Build</th>
+              </tr>
+            </thead>
+            <tbody>
+              {useCases.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.useCase}</td>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.problem}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.builds}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="flex flex-col gap-4 md:hidden">
+          {useCases.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.useCase}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Problem solved:</span> {row.problem}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">What we build:</span> {row.builds}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ Why SpaceDev -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Why SpaceDev for Your Healthcare Blockchain Project</h2>
+          <p class="text-sd-text-muted leading-relaxed">Healthcare is not a generic enterprise blockchain project. It carries regulatory exposure, patient safety implications, and integration complexity with legacy clinical systems that most blockchain teams have never operated inside.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {whyUs.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3 mb-5" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              {item.link && (
+                <a href={item.link.href} target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-xs text-sd-purple-300 hover:text-white transition-colors">{item.link.text}</a>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

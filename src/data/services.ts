@@ -420,6 +420,163 @@ export const defiFinanceData: ServicePageData = {
 };
 
 /* ============================================================
+   INDUSTRY · SUPPLY CHAIN & LOGISTICS
+   ============================================================ */
+export const supplyChainData: ServicePageData = {
+  seo: {
+    title: "Blockchain Solutions for Logistics and Supply Chain | SpaceDev",
+    description: "Blockchain-based supply chain traceability, freight payment automation, product provenance, cold chain monitoring, and trade document digitization — built by SpaceDev for logistics operators, 3PLs, and manufacturers.",
+  },
+  eyebrow: "Industry · Supply Chain & Logistics",
+  title: "Blockchain Solutions for Logistics, Freight, and Supply Chain Operations",
+  description: "Supply chains break at the handoffs — where data moves between carriers, customs authorities, warehouses, and buyers. SpaceDev builds blockchain-based logistics and supply chain platforms that replace fragmented multi-party coordination with shared, tamper-proof infrastructure built for production.",
+  primaryCta: { label: "Talk to Our Logistics Blockchain Team", href: "/contact" },
+  compactHeroTitle: true,
+
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "Does blockchain replace our existing ERP, WMS, or TMS systems?", answer: "No. Blockchain in logistics adds a shared trust and visibility layer on top of the systems already running your operations. SpaceDev builds integrations with ERP platforms (SAP, Oracle, Microsoft Dynamics), WMS systems, TMS platforms, and IoT sensor networks — so the blockchain layer works alongside existing infrastructure rather than replacing it." },
+    { question: "Which blockchain network is best for a logistics or supply chain platform?", answer: "It depends on whether your platform is permissioned or open, how many parties are involved, transaction volume, and regulatory requirements. Hyperledger Fabric suits enterprise consortium networks. Ethereum and EVM chains work for public traceability platforms. Polygon fits high-volume tracking and settlement. Hedera handles IoT event recording with predictable fees. We evaluate tradeoffs per project." },
+    { question: "How does smart contract automation work for freight payments?", answer: "Payment and settlement triggers are encoded as smart contracts that execute automatically on verified delivery events, customs clearance confirmations, or IoT sensor data. This eliminates manual invoice reconciliation between carriers and shippers and compresses payment cycles from weeks to hours — without requiring trust between counterparties." },
+    { question: "Can blockchain help with trade finance documents like bills of lading?", answer: "Yes. Blockchain-backed digitization of bills of lading, letters of credit, certificates of origin, and customs declarations makes these documents shareable across importers, exporters, freight forwarders, banks, and customs authorities in real time — removing document fraud risk, eliminating version conflicts, and cutting processing delays at border crossings." },
+    { question: "What does the delivery process look like for a logistics blockchain platform?", answer: "We start with a Discovery Sprint that maps your current workflows, identifies where blockchain adds real operational value, and defines platform scope, architecture, and integration requirements. From there we move to milestone-based build and QA with working demos at each stage, followed by launch and ongoing operational support as your platform and participant network scale." },
+  ],
+
+  finalCta: {
+    title: "Build Blockchain Infrastructure for Your Logistics and Supply Chain Operations",
+    description: "Whether you need supply chain traceability, freight settlement automation, cargo tracking, trade document digitization, or multi-party inventory visibility — SpaceDev has the technical depth and operational experience to build it for production.",
+    buttonLabel: "Talk to Our Team",
+    buttonHref: "/contact",
+  },
+};
+
+/* ============================================================
+   INDUSTRY · HEALTHCARE
+   ============================================================ */
+export const healthcareData: ServicePageData = {
+  seo: {
+    title: "Blockchain Development for the Healthcare Industry | SpaceDev",
+    description: "HIPAA-aligned blockchain solutions for health records, claims automation, pharmaceutical tracking, and clinical data interoperability — built by SpaceDev for healthcare companies, payers, and life sciences.",
+  },
+  eyebrow: "Industry · Healthcare",
+  title: "Blockchain Development for the Healthcare Industry",
+  description: "SpaceDev builds blockchain solutions for healthcare companies that need to secure patient data, automate clinical workflows, and create interoperable health records across providers, payers, and systems — without compromising compliance or performance.",
+  primaryCta: { label: "Start Your Healthcare Project", href: "/contact" },
+  compactHeroTitle: true,
+
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What does HIPAA compliance mean for a blockchain healthcare application?", answer: "It means the architecture is designed around permissioned access, where only authorized parties can read or write to the records they are entitled to access. Patient data is never exposed on a public ledger. Encryption, access control, and audit trail requirements are built into the technical design from day one — not layered on after the fact." },
+    { question: "Can blockchain integrate with existing EHR and clinical systems?", answer: "Yes. Most production healthcare blockchain applications are hybrid architectures that sit alongside existing EHR, PACS, and insurance platforms rather than replacing them. The blockchain provides the interoperability and audit layer — data continues to live in existing systems, with the blockchain acting as the trusted reconciliation and consent management layer on top." },
+    { question: "Which blockchain networks are used for healthcare applications?", answer: "Healthcare applications typically run on permissioned networks — Hyperledger Fabric, Hyperledger Besu, or private Ethereum deployments — because they offer fine-grained access control and data privacy that public chains cannot provide by default. For specific use cases like credential verification or pharmaceutical provenance, hybrid approaches with public chain anchoring are also viable." },
+    { question: "How does smart contract automation work for healthcare claims processing?", answer: "A smart contract encodes the conditions under which a claim is approved and payment triggered — coverage rules, clinical codes, provider credentials, and prior authorization logic. When a claim is submitted and the conditions are met, settlement executes automatically without manual review. This reduces dispute rates, cuts settlement time, and creates an auditable record of every decision." },
+    { question: "How long does it take to build a healthcare blockchain solution?", answer: "It depends on scope and integration complexity. A focused application — such as a consent management system or a provider credentialing platform — can be scoped, built, and deployed in 12 to 20 weeks. A full interoperability layer or claims automation platform with legacy EHR integration typically runs 24 to 40 weeks. We scope every project individually after a discovery engagement." },
+  ],
+
+  finalCta: {
+    title: "Ready to Build Blockchain Infrastructure for Healthcare?",
+    description: "Whether you are a health system, payer, pharmaceutical company, or digital health startup, SpaceDev has the technical depth and regulatory awareness to deliver it correctly.",
+    buttonLabel: "Start Your Healthcare Blockchain Project",
+    buttonHref: "/contact",
+  },
+};
+
+/* ============================================================
+   INDUSTRY · ENERGY
+   ============================================================ */
+export const energyData: ServicePageData = {
+  seo: {
+    title: "Blockchain Development for the Energy Sector | SpaceDev",
+    description: "Custom blockchain infrastructure for energy trading platforms, REC tokenization, carbon credit tracking, and smart contract automation — built by SpaceDev for energy companies, utilities, and renewable energy developers.",
+  },
+  eyebrow: "Industry · Energy",
+  title: "Blockchain Development for the Energy Sector",
+  description: "SpaceDev builds blockchain infrastructure for energy companies, utilities, and renewable energy platforms that need to modernize how they trade, track, and settle energy transactions. From peer-to-peer energy trading platforms to tokenized renewable energy certificates, we deliver the technical architecture to make it work at scale.",
+  primaryCta: { label: "Discuss Your Energy Project", href: "/contact" },
+  compactHeroTitle: true,
+
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "Which blockchain networks are most used in energy applications?", answer: "Enterprise energy applications typically run on permissioned Ethereum networks (such as Hyperledger Besu or Quorum) or on public EVM-compatible chains like Polygon and Ethereum mainnet, depending on privacy and settlement requirements. P2P trading applications for consumer markets often use public chains for transparency, while utility and oil and gas applications tend toward permissioned or consortium chains for data privacy reasons." },
+    { question: "What is a blockchain energy trading platform and how is it different from traditional trading systems?", answer: "A blockchain energy trading platform replaces bilateral systems and manual reconciliation processes with smart contract-based settlement that executes automatically when trade conditions are met. It provides a shared, immutable ledger for all participants, eliminating the need for each party to maintain separate records and reconcile them after the fact." },
+    { question: "Can blockchain integrate with existing utility and metering infrastructure?", answer: "Yes. Most production energy blockchain applications are hybrid architectures that bridge existing IoT devices, smart meters, and operational systems with a blockchain settlement layer. The blockchain does not replace the physical infrastructure — it provides the data and financial settlement layer that sits on top of it." },
+    { question: "Is blockchain relevant for smaller renewable energy developers, not just large utilities?", answer: "Particularly so. Tokenization of renewable energy assets and P2P trading infrastructure are specifically advantageous for smaller developers who lack the scale to access traditional capital markets or institutional trading desks. Blockchain lowers the barrier to market participation." },
+    { question: "How long does it take to build a blockchain energy platform?", answer: "Scope varies significantly. A focused application such as a tokenized REC issuance and transfer system can be designed, built, audited, and deployed in 12 to 18 weeks. A full blockchain energy trading platform with oracle integration, compliance hooks, and multi-party access management typically runs 24 to 36 weeks. We scope every project individually after a discovery engagement." },
+  ],
+
+  finalCta: {
+    title: "Ready to Build Blockchain Infrastructure for Your Energy Business?",
+    description: "Whether you are a renewable energy developer looking to tokenize assets, an energy retailer building a P2P trading platform, or a utility operator modernizing how you manage grid data, SpaceDev has the technical depth to deliver it.",
+    buttonLabel: "Start Your Energy Blockchain Project",
+    buttonHref: "/contact",
+  },
+};
+
+/* ============================================================
+   DEFI · STABLECOINS
+   ============================================================ */
+export const stablecoinData: ServicePageData = {
+  seo: {
+    title: "Custom Stablecoin Development for Payments, DeFi, and Enterprise Settlement | SpaceDev",
+    description: "SpaceDev builds custom stablecoin solutions for fintech companies, DeFi protocols, payment platforms, and enterprises — fiat-backed, crypto-collateralized, algorithmic, and hybrid stablecoin infrastructure from architecture through production launch.",
+  },
+  eyebrow: "DeFi · Stablecoins",
+  title: "Custom Stablecoin Development for Payments, DeFi, and Enterprise Settlement",
+  description: "A stablecoin is only as good as the system built around it. SpaceDev builds custom stablecoin solutions for fintech companies, DeFi protocols, payment platforms, and enterprises that need programmable, stable digital currency infrastructure — from initial architecture through production launch.",
+  primaryCta: { label: "Talk to Our Stablecoin Development Team", href: "/contact" },
+  compactHeroTitle: true,
+
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What is the difference between a fiat-backed and a crypto-collateralized stablecoin?", answer: "A fiat-backed stablecoin holds reserves in traditional currency, typically USD or EUR, managed by a custodian or trust. A crypto-collateralized stablecoin is over-collateralized with on-chain crypto assets and uses liquidation mechanisms to maintain the peg without relying on a centralized reserve. The right choice depends on your regulatory environment, trust model, and target use case." },
+    { question: "How long does stablecoin development take?", answer: "A production-ready stablecoin with minting and burning mechanics, reserve management, compliance controls, and basic wallet integration typically takes between 3 and 5 months depending on scope and the complexity of the collateral model. A Discovery Sprint at the start locks in scope and reduces surprises during build." },
+    { question: "Does SpaceDev handle regulatory compliance for stablecoin issuance?", answer: "We build the technical mechanisms that enforce the compliance rules your legal advisors define — including KYC/AML integrations, transfer restrictions, blacklisting, and audit trails. We are an engineering partner, not a legal or compliance firm. We work alongside your counsel but do not replace them." },
+    { question: "Can you deploy the same stablecoin across multiple blockchains?", answer: "Yes. We design cross-chain deployment architecture using bridge protocols and canonical token standards. Multi-chain deployment requires careful bridge security design and liquidity coordination, which we address during the architecture phase." },
+  ],
+
+  finalCta: {
+    title: "Build Your Stablecoin with SpaceDev",
+    description: "Looking for a stablecoin development company to build fiat-backed, crypto-collateralized, or commodity-backed stablecoin infrastructure for payments, DeFi, or enterprise settlement? SpaceDev delivers the full stack — from economic design to production launch.",
+    buttonLabel: "Talk to Our Stablecoin Development Team",
+    buttonHref: "/contact",
+  },
+};
+
+/* ============================================================
+   LAYER 1 BLOCKCHAIN DEVELOPMENT
+   ============================================================ */
+export const layer1Data: ServicePageData = {
+  seo: {
+    title: "Custom Layer 1 Blockchain Development, From Protocol Design to Mainnet | SpaceDev",
+    description: "SpaceDev builds custom Layer 1 blockchain networks — Cosmos SDK, Substrate, EVM-compatible chains, and Avalanche subnets — from consensus design and tokenomics to mainnet launch and ecosystem tooling.",
+  },
+  eyebrow: "Blockchain Development",
+  title: "Custom Layer 1 Blockchain Development, From Protocol Design to Mainnet",
+  description: "Building a Layer 1 is one of the most technically demanding projects in Web3. SpaceDev builds custom Layer 1 blockchain networks for protocols, enterprises, and product teams that need sovereign chain infrastructure — covering the full cycle from protocol design to mainnet launch.",
+  primaryCta: { label: "Talk to Our L1 Blockchain Development Team", href: "/contact" },
+
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What is Layer 1 blockchain development?", answer: "Building the base protocol of a blockchain network: consensus mechanism, validator infrastructure, execution environment, native token, and governance. This is distinct from building applications on top of existing chains like Ethereum or Solana — it means creating the chain itself." },
+    { question: "How long does a Layer 1 build take?", answer: "Typically 6 to 12 months from architecture to mainnet, depending on framework choice and scope. Cosmos SDK and Substrate-based approaches compress timelines compared to building from scratch. A Discovery Sprint at the start locks in framework selection and scope before any development begins." },
+    { question: "What is the difference between Cosmos SDK, Substrate, and a custom chain?", answer: "Cosmos SDK is optimized for sovereign app-chains with IBC interoperability and is the most mature ecosystem for app-chain development. Substrate offers maximum modularity for frequent runtime upgrades and Polkadot ecosystem access. Custom from scratch delivers maximum protocol control at the highest cost and timeline. The right choice depends on your ecosystem targets, interoperability requirements, and long-term upgrade strategy." },
+    { question: "Do you build EVM-compatible Layer 1 chains?", answer: "Yes. Using Geth-based forks, Cosmos SDK with Ethermint, or Avalanche subnets with EVM support, depending on ecosystem compatibility and performance requirements. EVM-compatible chains allow existing Solidity contracts and Ethereum developer tooling to work on your chain with minimal changes." },
+  ],
+
+  finalCta: {
+    title: "Build Your Layer 1 Blockchain with SpaceDev",
+    description: "If you're evaluating partners for custom blockchain network development, sovereign app-chain infrastructure, or enterprise Layer 1 deployment, SpaceDev delivers from protocol architecture to production mainnet.",
+    buttonLabel: "Talk to Our Team About Your L1 Project",
+    buttonHref: "/contact",
+  },
+};
+
+/* ============================================================
    WEB & MOBILE
    ============================================================ */
 export const webMobileData: ServicePageData = {
