@@ -70,24 +70,6 @@ export const authors: Author[] = [
     ],
     social: { linkedin: "https://www.linkedin.com/in/jmsobral/" },
   },
-  {
-    slug: "stephania-almansor",
-    name: "Stephania Almansor",
-    role: "Head of Growth",
-    bio: "Stephania runs growth at SpaceDev, connecting engineering depth with the right partners and markets. Her background in product marketing and partnerships makes complex tech land with the people who need it.",
-    initials: "SA",
-    avatarGradient: "from-sd-purple-300 to-sd-purple-300",
-    social: { linkedin: "https://www.linkedin.com/in/stephania-almansor/" },
-  },
-  {
-    slug: "grecia-tardaguila",
-    name: "Grecia Tardáguila",
-    role: "Head of People",
-    bio: "Grecia leads People at SpaceDev — building career paths, mentorship programs, and a culture where engineers grow alongside the products they ship. She believes great teams are made, not hired.",
-    initials: "GT",
-    avatarGradient: "from-sd-purple to-sd-purple-300",
-    social: { linkedin: "https://www.linkedin.com/in/greciatardaguila/" },
-  },
 ];
 
 export function getAuthor(slug: string): Author | undefined {

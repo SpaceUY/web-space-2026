@@ -9,7 +9,7 @@ readTime: 10
 cover: "/images/content/9X2GlCwcuQ6xnkjL24hYUhozU.png"
 takeaways:
   - AI adoption has shifted from competitive advantage to fundamental business necessity for startups in 2025.
-  - Success requires sequential implementation: data foundation, automation, product development, predictive and generative AI, then cultural integration.
+  - "Success requires sequential implementation: data foundation, automation, product development, predictive and generative AI, then cultural integration."
   - Budget-friendly entry points exist; specialized expertise helps bridge execution gaps.
   - Clean, centralized data is a prerequisite; compliance and privacy are competitive advantages.
   - AI tools can extend team capacity 2-3x without proportional hiring increases.

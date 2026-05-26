@@ -9,7 +9,7 @@ readTime: 11
 cover: "/images/content/Sa5MlGeDLNgcFDmCL7kH7Q3TBgA.png"
 takeaways:
   - Web3 protocols now require decentralized yet reliable infrastructure with 99.9% uptime guarantees
-  - Developer talent must span multiple skills: Solidity, Rust, ZK proofs, and cross-chain deployment
+  - "Developer talent must span multiple skills: Solidity, Rust, ZK proofs, and cross-chain deployment"
   - Security-first practices with continuous monitoring are mandatory, not optional
   - Multi-chain interoperability and seamless SDK integration are baseline expectations
   - Partners should enable ecosystem growth through governance support and developer enablement
