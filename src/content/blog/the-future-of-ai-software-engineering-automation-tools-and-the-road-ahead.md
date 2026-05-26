@@ -6,6 +6,7 @@ author: federico-sendra
 category: AI
 tags: ["ai"]
 readTime: 3
+cover: "/images/content/c4SpYpXNEIPEN7vUedA03v3VZg.png"
 ---
 
 Every week, we explore what's new because in this fast-paced AI revolution, groundbreaking tools emerge almost daily. It's tough to keep up, which is why we curate these bite-sized articles packed with practical tools we know you'll find truly valuable.

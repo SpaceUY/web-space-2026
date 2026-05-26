@@ -6,6 +6,7 @@ author: federico-sendra
 category: "AI"
 tags: ["ai"]
 readTime: 5
+cover: "/images/content/2kwBmFhPTlXfy8RM1iE5tRfmPfM.png"
 ---
 
 Drug development has long relied on animal testing to evaluate a compound's safety. But the process is slow, expensive, and often doesn't translate well to human outcomes. Now, the FDA is pushing for a pivot. Within three to five years, animal studies could become the exception, not the rule.

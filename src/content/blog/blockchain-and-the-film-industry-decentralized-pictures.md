@@ -5,6 +5,7 @@ publishedAt: 2024-02-15
 author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["nft-gaming", "web3-infrastructure"]
+cover: "/images/content/GGG67bdz69DgCTI3JuvX59NA.png"
 readTime: 3
 ---
 

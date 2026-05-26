@@ -5,6 +5,7 @@ publishedAt: 2024-04-02
 author: federico-sendra
 category: "Blockchain Trends"
 tags: ["blockchain-basics", "fintech"]
+cover: "/images/content/kCetyET6H0EvLGrRcVOTSUfAfqo.png"
 readTime: 4
 ---
 

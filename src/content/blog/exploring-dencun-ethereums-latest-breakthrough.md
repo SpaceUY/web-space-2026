@@ -5,6 +5,7 @@ publishedAt: 2024-03-20
 author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["web3-infrastructure"]
+cover: "/images/content/VBWL0xqiCNsme8WFULlHgc2YMhs.png"
 readTime: 4
 ---
 

@@ -5,6 +5,7 @@ publishedAt: 2024-04-11
 author: federico-sendra
 category: "Blockchain Trends"
 tags: ["product-growth", "blockchain-basics"]
+cover: "/images/content/eGC3vJH4dLUVuXBOVdkGVL066FE.png"
 readTime: 4
 ---
 

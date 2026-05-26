@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HubSpotForm from "../components/HubSpotForm.astro";
+import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
 import { SITE } from "../lib/seo";
 
 const contactJsonLd = {
@@ -25,6 +26,7 @@ const contactJsonLd = {
   <section class="bg-[#141414] min-h-screen py-20 md:py-28">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10 grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
       <div data-animate>
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} visible={true} class="mb-8" />
         <h1 class="font-display font-light text-white text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight">
           Ready to reach the stars?
         </h1>

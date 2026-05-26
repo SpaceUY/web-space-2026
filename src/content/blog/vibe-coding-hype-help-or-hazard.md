@@ -6,6 +6,7 @@ author: juan-manuel-sobral
 category: AI
 tags: ["ai", "product-growth"]
 readTime: 6
+cover: "/images/content/5SIjYNrqoXVAQqwdwdO9upLD84.png"
 ---
 
 A new buzzword is spreading across engineering teams, hackathons, and overcrowded techy Discords: **vibe coding**. Depending on who you ask, it's either the most exciting thing to happen to software development since Git — or the beginning of the end for programming quality as we know it.

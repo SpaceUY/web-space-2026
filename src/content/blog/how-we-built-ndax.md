@@ -5,6 +5,7 @@ publishedAt: 2023-05-02
 author: juan-manuel-sobral
 category: "Product Development"
 tags: ["fintech", "smart-contracts"]
+cover: "/images/content/k9VyKGh5tqD9B5xLFRFXoVDVm44.png"
 readTime: 3
 ---
 
