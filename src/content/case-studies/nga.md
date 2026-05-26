@@ -19,19 +19,19 @@ techStack:
   - ClickHouse
 publishedAt: 2025-02-15
 heroImage: "/images/content/NGA_upwrok.png"
-summary: "NGA delivers next-generation analytics for trading desks — turning raw market and execution data into the dashboards, alerts, and post-trade reports that PMs and traders actually use. SpaceDev built the data platform, frontend, and pipelines that power it."
+summary: "NGA delivers next-generation analytics for trading desks, turning raw market and execution data into the dashboards, alerts, and post-trade reports that PMs and traders actually use. SpaceDev built the data platform, frontend, and pipelines that power it."
 objectives:
   - Process high-volume market and execution data with sub-second query latency.
   - Deliver dashboards that traders can trust during volatile market sessions.
   - Support custom analytics and post-trade reporting without engineering tickets.
-  - Keep the system operationally simple — analytics shouldn't have its own SRE problem.
+  - "Keep the system operationally simple: analytics shouldn't have its own SRE problem."
 deliverables:
   - "ClickHouse-backed data warehouse with streaming ingestion from exchange and broker feeds."
   - "Python data pipelines for normalization, enrichment, and post-trade analytics."
   - "React frontend with traders' dashboards, alerting, and report builder."
   - "Self-serve query layer so analysts can build views without engineering help."
   - "Observability surface for data freshness, query latency, and pipeline health."
-outcome: "NGA shipped a trading-desk analytics platform that holds up during the moments that matter most — and continues to expand into new asset classes alongside SpaceDev."
+outcome: "NGA shipped a trading-desk analytics platform that holds up during the moments that matter most, and continues to expand into new asset classes alongside SpaceDev."
 gallery:
   - "/images/content/2CwAd6ccigfVSdBclguDlaBJFHI.png"
   - "/images/content/2peMYeDaw4mwhK3fCXBjq0BczIY.png"
@@ -65,9 +65,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -78,4 +78,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

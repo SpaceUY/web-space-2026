@@ -19,7 +19,7 @@ techStack:
   - TypeScript
 publishedAt: 2025-02-15
 heroImage: "/images/content/Ndax_upwork.png"
-summary: "NDAX is one of Canada's leading regulated crypto exchanges. SpaceDev partnered with the team to extend their trading platform — hardening the matching engine, improving compliance flows, and delivering new product surfaces for institutional and retail traders."
+summary: "NDAX is one of Canada's leading regulated crypto exchanges. SpaceDev partnered with the team to extend their trading platform, hardening the matching engine, improving compliance flows, and delivering new product surfaces for institutional and retail traders."
 objectives:
   - Scale the trading engine to handle peak market volatility without degraded latency.
   - Streamline KYC, AML, and FINTRAC compliance workflows across the customer lifecycle.
@@ -80,9 +80,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -93,4 +93,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

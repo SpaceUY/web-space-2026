@@ -19,7 +19,7 @@ techStack:
   - TypeScript
 publishedAt: 2025-02-15
 heroImage: "/images/content/L1pBdQzCila7gtPoJgYYlxer94s.png"
-summary: "Twispi is a subscription-commerce platform built for creators who want recurring revenue without giving up control of their audience. SpaceDev built the full-stack product — storefronts, payments, and creator tooling — from an early prototype into a production-grade platform."
+summary: "Twispi is a subscription-commerce platform built for creators who want recurring revenue without giving up control of their audience. SpaceDev built the full-stack product (storefronts, payments, and creator tooling) from an early prototype into a production-grade platform."
 objectives:
   - Give creators a fast path to launch subscription products without engineering help.
   - Handle global payments, taxes, and recurring billing without compromising on UX.
@@ -31,7 +31,7 @@ deliverables:
   - "Member-only content gating with secure delivery for video, audio, and downloads."
   - "Analytics surface for creators (cohort retention, revenue, churn) with export tools."
   - "Onboarding flows that bring a new creator from signup to first paid subscriber in under a day."
-outcome: "Twispi launched a polished subscription platform that creators ship on without engineering support — with retention and conversion metrics competitive with category leaders."
+outcome: "Twispi launched a polished subscription platform that creators ship on without engineering support, with retention and conversion metrics competitive with category leaders."
 gallery:
   - "/images/content/0sy7J541aQiAxDWu9aIOHI4dsnc.png"
   - "/images/content/3bY8iUMx3B23jNPSht3ZTZofZQc.png"
@@ -63,9 +63,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -76,4 +76,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

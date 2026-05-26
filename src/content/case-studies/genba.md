@@ -31,7 +31,7 @@ deliverables:
   - "Brand and auditor dashboards with end-to-end traceability views."
   - "Factory-side tooling that works on basic hardware and unstable connectivity."
   - "Reporting pipeline for ESG, regulatory, and customer-facing transparency."
-outcome: "Genba shipped a supply-chain transparency platform that brands, factories, and auditors can all trust as a single source of truth — replacing brittle spreadsheets with verifiable on-chain records."
+outcome: "Genba shipped a supply-chain transparency platform that brands, factories, and auditors can all trust as a single source of truth, replacing brittle spreadsheets with verifiable on-chain records."
 gallery:
   - "/images/content/3Yx2oVNjRiB0sekSMLKn2N4Ko4c.png"
   - "/images/content/3bBbbJmkPBMkgIWJyqTIC826MA.png"
@@ -63,9 +63,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -76,4 +76,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

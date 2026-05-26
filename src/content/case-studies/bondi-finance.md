@@ -19,7 +19,7 @@ techStack:
   - TypeScript
 publishedAt: 2025-02-15
 heroImage: "/images/content/Bondi_upwrok.png"
-summary: "Bondi Finance brings emerging-market fixed-income to DeFi — tokenizing real-world bonds so global investors can access yields that were previously locked behind brokerage and jurisdiction barriers. SpaceDev built the smart contracts, compliance layer, and frontend that make it possible."
+summary: "Bondi Finance brings emerging-market fixed-income to DeFi by tokenizing real-world bonds so global investors can access yields that were previously locked behind brokerage and jurisdiction barriers. SpaceDev built the smart contracts, compliance layer, and frontend that make it possible."
 objectives:
   - Tokenize emerging-market bonds with verifiable on-chain provenance.
   - Build a permissioned compliance layer that satisfies KYC and accredited-investor checks.
@@ -31,7 +31,7 @@ deliverables:
   - "KYC and compliance layer integrated with off-chain providers."
   - "React investor app with portfolio, primary issuance, and secondary trading."
   - "Operational tooling for issuance, monitoring, and incident response."
-outcome: "Bondi Finance launched a credible RWA fixed-income protocol — bridging emerging-market debt and DeFi liquidity with the compliance posture institutional investors require."
+outcome: "Bondi Finance launched a credible RWA fixed-income protocol, bridging emerging-market debt and DeFi liquidity with the compliance posture institutional investors require."
 gallery:
   - "/images/content/0pEUCzUnBLnsX7uRs50aFr0RVUg.png"
   - "/images/content/3hUQbFuAGhwoEcCv00UGGXUgPzw.png"
@@ -63,9 +63,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -76,4 +76,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
