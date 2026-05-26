@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import SEOHead from "../components/seo/SEOHead.astro";
 import JsonLD from "../components/seo/JsonLD.astro";
+import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import { organizationJsonLd, SITE } from "../lib/seo";
@@ -19,6 +20,8 @@ interface Props {
   articleSection?: string;
   footerMarquee?: string;
   footerMarqueeTheme?: "light" | "dark";
+  /** Pass false to suppress auto breadcrumbs (use on pages that render their own inside the hero) */
+  breadcrumbs?: false;
 }
 
 const {
@@ -34,7 +37,27 @@ const {
   articleSection,
   footerMarquee,
   footerMarqueeTheme,
+  breadcrumbs: breadcrumbsProp,
 } = Astro.props;
+
+// Auto-generate breadcrumb items from URL path (e.g. /our-work → Home > Our Work)
+const autoCrumbs: Array<{ label: string; href?: string }> = [];
+if (breadcrumbsProp !== false) {
+  const segments = Astro.url.pathname.split("/").filter(Boolean);
+  if (segments.length > 0) {
+    autoCrumbs.push({ label: "Home", href: "/" });
+    let acc = "";
+    segments.forEach((seg, i) => {
+      acc += "/" + seg;
+      const label = seg
+        .split("-")
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ");
+      autoCrumbs.push(i < segments.length - 1 ? { label, href: acc } : { label });
+    });
+  }
+}
+const showAutoBreadcrumbs = autoCrumbs.length > 1;
 ---
 
 <!doctype html>
@@ -118,7 +141,14 @@ const {
 
     <Header />
 
-    <main id="main-content" class="flex-1">
+    <main id="main-content" class="flex-1 relative">
+      {showAutoBreadcrumbs && (
+        <div class="absolute top-[72px] left-0 right-0 z-20 pointer-events-none">
+          <div class="mx-auto max-w-[1440px] px-6 md:px-10 pt-5 pointer-events-auto">
+            <Breadcrumbs items={autoCrumbs} visible={true} />
+          </div>
+        </div>
+      )}
       <slot />
     </main>
 

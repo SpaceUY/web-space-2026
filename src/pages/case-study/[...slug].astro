@@ -64,6 +64,7 @@ const hasRichContent =
 ---
 
 <BaseLayout
+  breadcrumbs={false}
   title={`${entry.data.name} — Case Study | SpaceDev`}
   description={entry.data.tagline}
   ogImage={heroImage}
@@ -78,11 +79,7 @@ const hasRichContent =
 
       <!-- LEFT: text -->
       <div>
-        <a href="/our-work" class="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white mb-6 transition-colors">
-          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M11 7H3m0 0l3.5-3.5M3 7l3.5 3.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Back to our work
-        </a>
-        <Breadcrumbs items={breadcrumbs} />
+        <Breadcrumbs items={breadcrumbs} visible={true} class="mb-6" />
         <div data-animate style="transition-delay: 0ms">
           <Badge tone="outline" class="mb-5">{entry.data.category} · Case Study</Badge>
           <h1 class="text-4xl md:text-5xl lg:text-6xl text-white leading-tight">{entry.data.name}</h1>
@@ -101,13 +98,13 @@ const hasRichContent =
 
       <!-- RIGHT: cover image -->
       {heroImage && (
-        <div data-animate style="transition-delay: 180ms">
+        <div data-animate style="transition-delay: 180ms; border-radius:1rem; overflow:hidden; border:1px solid rgba(255,255,255,0.15); box-shadow:0 25px 50px rgba(0,0,0,0.5); aspect-ratio:16/9; background:radial-gradient(circle at 50% 130%,#A2A6F5 20%,#4C2E92 55%,#2D292F 80%,#2D2D2D 95%);">
           <img
             src={heroImage}
             alt={`${entry.data.name} — featured visual`}
             loading="eager"
             fetchpriority="high"
-            style="width:100%; border-radius:1rem; border:1px solid rgba(255,255,255,0.15); box-shadow:0 25px 50px rgba(0,0,0,0.5); aspect-ratio:16/9; object-fit:cover;"
+            style="width:100%; height:100%; object-fit:contain;"
           />
         </div>
       )}
