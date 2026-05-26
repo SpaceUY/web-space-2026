@@ -18,7 +18,7 @@ techStack:
   - Redis
   - TypeScript
 publishedAt: 2025-02-15
-heroImage: "/images/content/74toyIDgGrADHlRzGyQGjcOdDOs.png"
+heroImage: "/images/content/Ndax_upwork.png"
 summary: "NDAX is one of Canada's leading regulated crypto exchanges. SpaceDev partnered with the team to extend their trading platform — hardening the matching engine, improving compliance flows, and delivering new product surfaces for institutional and retail traders."
 objectives:
   - Scale the trading engine to handle peak market volatility without degraded latency.

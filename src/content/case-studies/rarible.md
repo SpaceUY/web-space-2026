@@ -22,7 +22,7 @@ techStack:
   - Node.js
   - IPFS
 publishedAt: 2025-02-15
-heroImage: "/images/content/ARj6QnZDQWmG0kFMu7g1VooFoY.png"
+heroImage: "/images/content/Rarible_upwrok.png"
 summary: "Rarible is a pioneering company in the blockchain and NFT space, offering a comprehensive ecosystem for creating, trading, and managing digital assets. Established over five years ago, Rarible has evolved into a multi-faceted platform designed to cater to both Web3 developers and mainstream businesses — democratizing access to NFT technology and empowering creators, collectors, and brands to leverage the benefits of blockchain."
 objectives:
   - "Horizontal growth: expand the ecosystem by rapidly integrating support for new blockchain architectures and deploying across diverse environments."
@@ -53,7 +53,7 @@ clutchReview:
 gallery:
   - "/images/content/AXmHZlKaMIGHXcZ0sROEO0Vufy4.png"
   - "/images/content/CogAqVk5s5qNKyZEaNtRCzRc5Aw.png"
-  - "/images/content/FVpY6L09hbdrEPXHKdWRGyPTZvg.png"
+  - "/images/content/ARj6QnZDQWmG0kFMu7g1VooFoY.png"
   - "/images/content/GUA6Mn0SNGs2Qj07dZf4azgskoA.png"
   - "/images/content/IocsAVt5fS4CADk6LJW8PpE9vw.png"
   - "/images/content/TVov1d6DE4YgiMFCmMHCHodEdbo.png"

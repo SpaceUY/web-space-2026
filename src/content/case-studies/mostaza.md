@@ -18,7 +18,7 @@ techStack:
   - PostgreSQL
   - Redis
 publishedAt: 2025-02-15
-heroImage: "/images/content/XDAptxzKQa3KCKNYFRQP44bmQ7c.png"
+heroImage: "/images/content/Mostaza_upwrok.png"
 summary: "Mostaza is one of Latin America's largest QSR chains. SpaceDev built the customer-facing mobile experience and the loyalty engine behind it — a unified ordering, rewards, and engagement platform across hundreds of locations."
 objectives:
   - Replace a fragmented set of customer touchpoints with a single mobile experience.

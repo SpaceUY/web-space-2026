@@ -18,7 +18,7 @@ techStack:
   - Python
   - ClickHouse
 publishedAt: 2025-02-15
-heroImage: "/images/content/Ot2G31pfkONVdn2AZOpauSzjaM.png"
+heroImage: "/images/content/NGA_upwrok.png"
 summary: "NGA delivers next-generation analytics for trading desks — turning raw market and execution data into the dashboards, alerts, and post-trade reports that PMs and traders actually use. SpaceDev built the data platform, frontend, and pipelines that power it."
 objectives:
   - Process high-volume market and execution data with sub-second query latency.

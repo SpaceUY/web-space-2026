@@ -18,7 +18,7 @@ techStack:
   - Web Audio API
   - TypeScript
 publishedAt: 2025-02-15
-heroImage: "/images/content/9MhAI5c6sxqv39yd3yGd5H2o9ko.png"
+heroImage: "/images/content/Glowy_upwrok.png"
 summary: "Glowy Music turns songs into immersive, music-reactive 3D experiences in the browser. SpaceDev built the rendering engine, audio analysis pipeline, and creator tools that power the platform."
 objectives:
   - Deliver music-reactive 3D experiences that run smoothly on mid-range consumer hardware.

@@ -18,7 +18,7 @@ techStack:
   - OpenAI
   - Node.js
 publishedAt: 2025-02-15
-heroImage: "/images/content/v0W9eCLICs41lrnFJpLyfet4ac.png"
+heroImage: "/images/content/NPiggyGPT_upwrok.png"
 summary: "PiggyGPT is a conversational personal-finance assistant that helps users budget, save, and plan in plain language. SpaceDev built the mobile app, the LLM-powered backend, and the integrations that make every conversation grounded in real account data."
 objectives:
   - Build a finance assistant that's conversational without hallucinating numbers.
