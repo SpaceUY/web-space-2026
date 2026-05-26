@@ -1,7 +1,7 @@
 ---
 interface NavItem { label: string; href: string }
-interface Props { expertise: NavItem[]; explore: NavItem[] }
-const { expertise, explore } = Astro.props;
+interface Props { expertise: NavItem[]; about: NavItem[]; explore: NavItem[] }
+const { expertise, about, explore } = Astro.props;
 ---
 
 <div
@@ -42,7 +42,18 @@ const { expertise, explore } = Astro.props;
 
     <a href="/our-work" class="block border-b border-white/10 py-5 text-lg text-white">Our Work</a>
     <a href="/careers" class="block border-b border-white/10 py-5 text-lg text-white">Careers</a>
-    <a href="/about-us" class="block border-b border-white/10 py-5 text-lg text-white">About</a>
+
+    <details class="border-b border-white/10 py-4">
+      <summary class="flex items-center justify-between cursor-pointer text-lg text-white">
+        About
+        <svg width="14" height="14" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <ul class="mt-4 space-y-3 pl-2">
+        {about.map((item) => (
+          <li><a href={item.href} class="block py-2 text-sd-text-muted hover:text-white">{item.label}</a></li>
+        ))}
+      </ul>
+    </details>
 
     <details class="border-b border-white/10 py-4">
       <summary class="flex items-center justify-between cursor-pointer text-lg text-white">
