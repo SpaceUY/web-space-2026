@@ -9,7 +9,7 @@ readTime: 12
 cover: "/images/content/Uq2tE6OoZv8AxWxDvroCH8r0.jpg"
 ---
 
-Most "Web2 to Web3 migration" content is written for greenfield startups. But the harder question — and the more common one — is: **how do you bring blockchain into a fintech that already has customers, regulators, and a P&L?** This is the playbook we use with our financial-services clients.
+Most "Web2 to Web3 migration" content is written for greenfield startups. But the harder question (and the more common one) is: **how do you bring blockchain into a fintech that already has customers, regulators, and a P&L?** This is the playbook we use with our financial-services clients.
 
 ## Phase 0: Decide why you're doing this
 
@@ -26,11 +26,11 @@ If you can't pick exactly one outcome that justifies the cost, **don't migrate**
 
 The biggest design decision is **where Web2 ends and Web3 begins** in your stack. Three common patterns:
 
-**Pattern A — On-chain only the asset.** Existing UI, existing risk engine, but the underlying value is a tokenized asset. Lowest disruption, lowest upside.
+**Pattern A: On-chain only the asset.** Existing UI, existing risk engine, but the underlying value is a tokenized asset. Lowest disruption, lowest upside.
 
-**Pattern B — On-chain settlement layer.** UI and onboarding stay Web2. Settlement, custody, and inter-institutional transfers move on-chain. Best for back-office transformation.
+**Pattern B: On-chain settlement layer.** UI and onboarding stay Web2. Settlement, custody, and inter-institutional transfers move on-chain. Best for back-office transformation.
 
-**Pattern C — On-chain product surface.** Customers interact with on-chain primitives directly (e.g. an on-chain lending protocol with a Web2 UI). Highest upside, highest complexity.
+**Pattern C: On-chain product surface.** Customers interact with on-chain primitives directly (e.g. an on-chain lending protocol with a Web2 UI). Highest upside, highest complexity.
 
 There's no universally right answer. Pick based on your regulatory posture and which outcome from Phase 0 you're actually after.
 
@@ -43,7 +43,7 @@ Fintech adds constraints that pure-Web3 startups don't face:
 - **Recordkeeping.** Auditors will ask for transaction histories that can be exported, not just queried on-chain.
 - **Customer recovery.** "Self-custody" is great until a retail customer loses their key. Plan for recoverable wallets, MPC, or qualified custody.
 
-These constraints aren't blockers — they're design inputs. The teams that ship successful Web3 fintech products bake them in early instead of bolting them on later.
+These constraints aren't blockers; they're design inputs. The teams that ship successful Web3 fintech products bake them in early instead of bolting them on later.
 
 ## Phase 3: Run a parallel pilot
 
@@ -65,7 +65,7 @@ The hardest part of "going Web3" isn't going. It's **staying**. Plan for:
 - **Periodic re-audits** as your contracts evolve.
 - **Regulatory reporting** that includes on-chain events alongside your existing surfaces.
 
-If this sounds like the same operational discipline you already apply to your core banking systems — that's because it is. Web3 doesn't replace fintech engineering rigor. It demands more of it.
+If this sounds like the same operational discipline you already apply to your core banking systems, that's because it is. Web3 doesn't replace fintech engineering rigor. It demands more of it.
 
 ## Where SpaceDev fits
 

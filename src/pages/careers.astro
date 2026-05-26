@@ -42,7 +42,7 @@ const jobPostingsJsonLd = {
   "@graph": positions.map((p) => ({
     "@type": "JobPosting",
     title: p.title,
-    description: `${p.title} role at SpaceDev — ${p.mode}.`,
+    description: `${p.title} role at SpaceDev, ${p.mode}.`,
     employmentType: "FULL_TIME",
     hiringOrganization: { "@type": "Organization", name: "SpaceDev", sameAs: "https://spacedev.io" },
     jobLocationType: "TELECOMMUTE",
@@ -53,7 +53,7 @@ const jobPostingsJsonLd = {
 
 <BaseLayout
   breadcrumbs={false}
-  title="Careers at SpaceDev — Join our remote engineering team"
+  title="Careers at SpaceDev: Join our remote engineering team"
   description="Join SpaceDev, a top-5 Clutch blockchain company. Open remote roles in Web3, full-stack, and mobile engineering with global mentorship and benefits."
   jsonLd={jobPostingsJsonLd}
 >

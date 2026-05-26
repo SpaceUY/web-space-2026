@@ -10,7 +10,7 @@ cover: "/images/content/50nXesZNFn34Yd4LegrcrmDpVic.png"
 takeaways:
   - AI-powered WhatsApp bots can automate up to 70% of customer inquiries
   - The solution provides 24/7 support while reducing workload on human agents
-  - Implementation involves four main steps — data gathering, WhatsApp Business setup, platform centralization, and ChatGPT integration
+  - Implementation involves four main steps: data gathering, WhatsApp Business setup, platform centralization, and ChatGPT integration
 ---
 
 A very easy and effective tool to take your company's customer service to the next level is an AI-powered WhatsApp bot. Acting as the first point of contact, it can automatically respond to most customer inquiries, increasing service quality, optimizing resources, and providing support 24/7. Plus, it's effortlessly scalable and decreases the workload on human agents, allowing them to focus on other things.

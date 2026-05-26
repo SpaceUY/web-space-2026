@@ -42,6 +42,6 @@ Most smart contract audits are slower than they need to be. Not because auditors
 
 ## Why this matters
 
-Audits are not "find the bugs". They're "convince an experienced reviewer that the system behaves as designed under adversarial conditions". The cleaner your starting state, the more time the auditor spends finding actual issues — and the less you spend on back-and-forth.
+Audits are not "find the bugs". They're "convince an experienced reviewer that the system behaves as designed under adversarial conditions". The cleaner your starting state, the more time the auditor spends finding actual issues, and the less you spend on back-and-forth.
 
 If you'd like a free pre-audit review against this checklist, [reach out](/contact). It's the cheapest way to make your real audit better.
