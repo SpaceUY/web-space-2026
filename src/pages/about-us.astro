@@ -99,23 +99,24 @@ const galleryPhotos = [
         <source src="https://wbufyhm7al1rxqad.public.blob.vercel-storage.com/we_are_space.mp4" type="video/mp4" />
       </video>
 
+      <!-- "We are SpaceDev" fades out early as video expands -->
       <div class="hero-title-overlay">
         <h1 class="hero-title text-white font-display font-light text-center whitespace-nowrap" style="font-size: clamp(48px, 9.5vw, 130px);">
           We are SpaceDev
         </h1>
       </div>
+
+      <!-- Positioning phrase fades in at the bottom once video is full-bleed -->
+      <div class="hero-phrase">
+        <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+          <p class="text-[10px] uppercase tracking-[0.22em] text-white/50 font-ui mb-4">Why SpaceDev</p>
+          <p class="font-display font-light text-2xl md:text-3xl lg:text-4xl text-white leading-[1.15] max-w-3xl">
+            We help startups and enterprises ship secure, scalable blockchain products without costly rewrites, delays, or architectural risks.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
-
-  <!-- ── POSITIONING PHRASE ──────────────────────────────────────────────── -->
-  <section class="bg-[#f5f5f5] py-24 md:py-36">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10 max-w-4xl" data-animate>
-      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple font-ui mb-6">Why SpaceDev</p>
-      <h2 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.08]">
-        We help startups and enterprises ship secure, scalable blockchain products without costly rewrites, delays, or architectural risks.
-      </h2>
-    </div>
-  </section>
 
   <!-- ── PROBLEM ─────────────────────────────────────────────────────────── -->
   <section class="bg-sd-dark py-24 md:py-32">
@@ -417,29 +418,58 @@ const galleryPhotos = [
     opacity: 0;
   }
 
+  /* Positioning phrase — anchored to the bottom of the sticky pane */
+  .hero-phrase {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    padding-bottom: clamp(48px, 7vh, 80px);
+    padding-top: 80px;
+    background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+    pointer-events: none;
+    /* Fallback: visible */
+    opacity: 1;
+  }
+
   @supports (animation-timeline: scroll()) {
+    /* Video: starts as a pill slightly above center, expands to full-bleed */
     .hero-video {
-      clip-path: inset(35% 35% round 16px);
+      clip-path: inset(38% 32% 28% 32% round 16px);
       animation: hero-expand linear both;
       animation-timeline: scroll(root);
-      animation-range: 0vh 80vh;
+      animation-range: 0vh 85vh;
     }
+    /* Title fades out early */
     .hero-title-overlay {
       opacity: 1;
       animation: hero-title-fade linear both;
       animation-timeline: scroll(root);
       animation-range: 5vh 35vh;
     }
+    /* Phrase fades in as video reaches full-bleed */
+    .hero-phrase {
+      opacity: 0;
+      animation: hero-phrase-in linear both;
+      animation-timeline: scroll(root);
+      animation-range: 55vh 100vh;
+    }
   }
 
   @keyframes hero-expand {
-    from { clip-path: inset(35% 35% round 16px); }
+    from { clip-path: inset(38% 32% 28% 32% round 16px); }
     to   { clip-path: inset(0% 0% round 0px); }
   }
 
   @keyframes hero-title-fade {
     from { opacity: 1; }
     to   { opacity: 0; }
+  }
+
+  @keyframes hero-phrase-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 
   /* ── Illuminated text ── */
@@ -459,6 +489,7 @@ const galleryPhotos = [
   @media (prefers-reduced-motion: reduce) {
     .hero-video         { animation: none; clip-path: inset(0% 0% round 0px); }
     .hero-title-overlay { animation: none; opacity: 0; }
+    .hero-phrase        { animation: none; opacity: 1; }
     .navigate-bright    { animation: none; color: #fff; }
   }
 </style>
