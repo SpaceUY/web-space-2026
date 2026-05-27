@@ -32,7 +32,7 @@ export const authors: Author[] = [
       { src: "/images/content/pVs0fAmc6Gp2davy0dgkOslc1c.png", alt: "Diego Priliac at a leadership offsite." },
       { src: "/images/content/sZeLM1jDYxCoaqnWcDNpUxjsw.png", alt: "Diego Priliac with the SpaceDev operations team." },
     ],
-    social: { linkedin: "https://www.linkedin.com/in/dpriliac/" },
+    social: { linkedin: "https://www.linkedin.com/in/diegopriliac/" },
   },
   {
     slug: "federico-sendra",
@@ -50,7 +50,7 @@ export const authors: Author[] = [
       { src: "/images/content/Uq2tE6OoZv8AxWxDvroCH8r0.jpg", alt: "Federico Sendra leading a Web2-to-Web3 migration workshop." },
       { src: "/images/content/uLuHSBzzLiHci62DaepeOWAGlU.png", alt: "Federico Sendra at SpaceDev All Hands 2024." },
     ],
-    social: { linkedin: "https://www.linkedin.com/in/fsendra/" },
+    social: { linkedin: "https://www.linkedin.com/in/federicosendra/" },
   },
   {
     slug: "juan-manuel-sobral",
