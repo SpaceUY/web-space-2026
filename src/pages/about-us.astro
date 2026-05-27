@@ -196,64 +196,6 @@ const howWeWork = [
     </div>
   </section>
 
-  <!-- ── TEAM LIFE MOSAIC ──────────────────────────────────────────────────
-       Between stats and testimonials: humanises the numbers.
-       Layout: big team photo (left half) + 2×2 grid of candid shots (right half)
-  ──────────────────────────────────────────────────────────────────────── -->
-  <section class="bg-sd-dark border-t border-white/10">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10 pt-16 pb-8" data-animate>
-      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 font-ui mb-2">The people</p>
-      <p class="font-display font-light text-2xl md:text-3xl text-white">
-        70+ engineers. 5 countries. One team.
-      </p>
-    </div>
-    <!-- Mosaic — mobile: just the big team photo; desktop: big + 2×2 -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 sm:grid-rows-2 h-[260px] sm:h-[420px] overflow-hidden">
-      <!-- Big: left half, full height on desktop -->
-      <div class="col-span-2 sm:row-span-2 overflow-hidden group">
-        <img
-          src="/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg"
-          alt="SpaceDev full team — annual retreat"
-          loading="lazy"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-        />
-      </div>
-      <!-- Small 2×2 — right half, desktop only -->
-      <div class="hidden sm:block overflow-hidden group">
-        <img
-          src="/images/content/9ZaBNdgUPn2Ft2zVORBykfjZRsg.jpg"
-          alt="SpaceDev team event"
-          loading="lazy"
-          class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-        />
-      </div>
-      <div class="hidden sm:block overflow-hidden group">
-        <img
-          src="/images/content/lkdG8nylwlZilyk9wstv0caDb8g.jpg"
-          alt="SpaceDev speaking at Ethereum Argentina"
-          loading="lazy"
-          class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-        />
-      </div>
-      <div class="hidden sm:block overflow-hidden group">
-        <img
-          src="/images/content/QPCMxqD1lS3XmxVU348dOJ5hlo8.jpg"
-          alt="SpaceDev team gathering"
-          loading="lazy"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-        />
-      </div>
-      <div class="hidden sm:block overflow-hidden group">
-        <img
-          src="/images/content/WB7HgzsFFgoV0rIo7ufy14HW5fM.jpg"
-          alt="SpaceDev team activity"
-          loading="lazy"
-          class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-        />
-      </div>
-    </div>
-  </section>
-
   <!-- ── PROOF: TESTIMONIALS ─────────────────────────────────────────────── -->
   <section class="bg-sd-dark border-t border-white/10">
     <div class="mx-auto max-w-[1100px] px-6 md:px-10 py-20 md:py-24">
@@ -339,13 +281,66 @@ const howWeWork = [
     </div>
   </section>
 
-  <!-- ── TEAM ────────────────────────────────────────────────────────────── -->
-  <section class="bg-[#f5f5f5] py-24 md:py-32">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10">
-      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple font-ui mb-4" data-animate>The team</p>
-      <h2 class="font-display font-light text-4xl md:text-5xl text-sd-text-dark leading-[1.1] mb-14" data-animate>
+  <!-- ── TEAM (unified: mosaic + leadership) ───────────────────────────── -->
+  <section class="bg-[#f5f5f5]">
+
+    <!-- Section header -->
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10 pt-24 md:pt-32 pb-10" data-animate>
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple font-ui mb-4">The team</p>
+      <h2 class="font-display font-light text-4xl md:text-5xl text-sd-text-dark leading-[1.1]">
         The people behind the products
       </h2>
+    </div>
+
+    <!-- Mosaic — full bleed, no horizontal padding -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 sm:grid-rows-2 h-[260px] sm:h-[420px] overflow-hidden">
+      <!-- Big: left half, full height on desktop -->
+      <div class="col-span-2 sm:row-span-2 overflow-hidden group">
+        <img
+          src="/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg"
+          alt="SpaceDev full team — annual retreat"
+          loading="lazy"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+      <!-- Small 2×2 — right half, desktop only -->
+      <div class="hidden sm:block overflow-hidden group">
+        <img
+          src="/images/content/9ZaBNdgUPn2Ft2zVORBykfjZRsg.jpg"
+          alt="SpaceDev team event"
+          loading="lazy"
+          class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+      <div class="hidden sm:block overflow-hidden group">
+        <img
+          src="/images/content/lkdG8nylwlZilyk9wstv0caDb8g.jpg"
+          alt="SpaceDev speaking at Ethereum Argentina"
+          loading="lazy"
+          class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+      <div class="hidden sm:block overflow-hidden group">
+        <img
+          src="/images/content/QPCMxqD1lS3XmxVU348dOJ5hlo8.jpg"
+          alt="SpaceDev team gathering"
+          loading="lazy"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+      <div class="hidden sm:block overflow-hidden group">
+        <img
+          src="/images/content/WB7HgzsFFgoV0rIo7ufy14HW5fM.jpg"
+          alt="SpaceDev team activity"
+          loading="lazy"
+          class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+    </div>
+
+    <!-- Leadership -->
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10 pt-12 pb-24 md:pb-32">
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple font-ui mb-10" data-animate>Leadership</p>
       <div class="grid gap-8 md:grid-cols-3">
         {team.map((person) => (
           <div class="rounded-2xl bg-white border border-sd-gray-border" data-animate>
