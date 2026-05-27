@@ -361,7 +361,7 @@ const howWeWork = [
 <style>
   /* ── Hero: sticky scroll-driven expand ── */
   .hero-scroll-track {
-    height: 500vh;
+    height: 750vh;
     background: #000;
   }
 
@@ -431,15 +431,17 @@ const howWeWork = [
     video.style.transition = "opacity 0.05s, clip-path 0.05s";
 
     const vh = window.innerHeight;
-    // Timing (in scroll-px from page top):
-    //  illuminate : 0    → 1.6 * vh
-    //  phrase fade: 1.6  → 2.2 * vh  (starts when illumination complete)
-    //  video reveal: 2.6 → 4.2 * vh  (long deliberate reveal)
+    // Scroll track = 750vh → max scrollY within hero ≈ 6.5 * vh
+    // Timing (scroll-px from page top):
+    //  illuminate : 0   → 1.6vh
+    //  phrase fade: 1.6 → 2.2vh
+    //  video reveal: 2.6 → 4.0vh  (video fully expanded)
+    //  hold on full video: 4.0 → 6.5vh  (user "rests" on the video)
     const ILLUM_END   = vh * 1.6;
     const FADE_START  = vh * 1.6;
     const FADE_END    = vh * 2.2;
     const VID_START   = vh * 2.6;
-    const VID_END     = vh * 4.2;
+    const VID_END     = vh * 4.0;
 
     function clamp(v: number, lo: number, hi: number) { return Math.max(lo, Math.min(hi, v)); }
     function norm(v: number, a: number, b: number)    { return clamp((v - a) / (b - a), 0, 1); }
