@@ -292,41 +292,28 @@ const howWeWork = [
       </h2>
     </div>
 
-    <!-- Photo strip — 4 photos, equal width, gap, rounded, breathable -->
+    <!-- Photo mosaic — 3 cols × 2 rows, same pattern as original about-us -->
     <div class="mx-auto max-w-[1100px] px-6 md:px-10 pb-12">
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div class="aspect-[4/3] rounded-2xl overflow-hidden group">
-          <img
-            src="/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg"
-            alt="SpaceDev full team — annual retreat"
-            loading="lazy"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          />
-        </div>
-        <div class="aspect-[4/3] rounded-2xl overflow-hidden group">
-          <img
-            src="/images/content/9ZaBNdgUPn2Ft2zVORBykfjZRsg.jpg"
-            alt="SpaceDev team event"
-            loading="lazy"
-            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-          />
-        </div>
-        <div class="aspect-[4/3] rounded-2xl overflow-hidden group">
-          <img
-            src="/images/content/QPCMxqD1lS3XmxVU348dOJ5hlo8.jpg"
-            alt="SpaceDev team gathering"
-            loading="lazy"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          />
-        </div>
-        <div class="aspect-[4/3] rounded-2xl overflow-hidden group">
-          <img
-            src="/images/content/lkdG8nylwlZilyk9wstv0caDb8g.jpg"
-            alt="SpaceDev speaking at Ethereum Argentina"
-            loading="lazy"
-            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-          />
-        </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        {[
+          { src: "/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg",          alt: "SpaceDev full team at annual retreat" },
+          { src: "/images/content/9ZaBNdgUPn2Ft2zVORBykfjZRsg.jpg",         alt: "Team members at a company event" },
+          { src: "/images/content/QPCMxqD1lS3XmxVU348dOJ5hlo8.jpg",         alt: "Team gathering with mate" },
+          { src: "/images/content/lkdG8nylwlZilyk9wstv0caDb8g.jpg",         alt: "SpaceDev at Ethereum Argentina" },
+          { src: "/images/content/WB7HgzsFFgoV0rIo7ufy14HW5fM.jpg",         alt: "Team activity outdoors" },
+          { src: "/images/content/WSgg2vvLbwIDpUqEcgfpoHmXa4.jpg",          alt: "SpaceDev engineers at an event" },
+        ].map((photo) => (
+          <div class="rounded-2xl overflow-hidden aspect-[4/3]" data-animate>
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              loading="lazy"
+              width="600"
+              height="450"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+        ))}
       </div>
     </div>
 
