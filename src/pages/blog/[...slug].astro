@@ -176,14 +176,12 @@ const breadcrumbJsonLd = {
     <!-- ── RIGHT COLUMN: sticky TOC + CTA ──────────────────────────── -->
     {tocHeadings.length > 0 && (
       <aside
-        class="hidden md:flex flex-col w-[360px] flex-shrink-0"
-        style="position: sticky; top: 68px; height: calc(100vh - 68px);"
+        class="hidden md:block w-[360px] flex-shrink-0"
+        style="position: sticky; top: 68px; max-height: calc(100vh - 68px); overflow-y: auto;"
         aria-label="Article sidebar"
       >
-        <!-- TOC — scrollable when headings overflow. min-h-0 is critical:
-             without it flex-1 children ignore the parent's fixed height
-             and push the CTA out of view. -->
-        <div class="flex-1 min-h-0 overflow-y-auto px-6 pt-10 pb-4 scrollbar-thin">
+        <div class="px-6 pt-10 pb-10 flex flex-col gap-6">
+          <!-- TOC -->
           <div class="rounded-2xl bg-[#f7f7f8] p-5">
             <p class="text-[10px] uppercase tracking-[0.2em] font-ui text-sd-text-gray mb-4">
               In this article
@@ -204,10 +202,8 @@ const breadcrumbJsonLd = {
               </ul>
             </nav>
           </div>
-        </div>
 
-        <!-- CTA — always visible at the bottom of the sidebar -->
-        <div class="px-6 pb-8 pt-2 flex-shrink-0">
+          <!-- CTA — 24px gap via gap-6 on the parent flex column -->
           <div class="rounded-2xl p-5" style="background: var(--sd-gradient-hero);">
             <p class="font-display text-white font-semibold text-[15px] leading-snug mb-1.5">
               Talk to a Blockchain Developer
