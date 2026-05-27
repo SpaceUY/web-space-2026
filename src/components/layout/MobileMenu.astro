@@ -6,14 +6,14 @@ const { expertise, about, explore } = Astro.props;
 
 <div
   id="mobile-menu"
-  class="hidden fixed inset-0 z-40 bg-sd-dark md:hidden opacity-0 transition-opacity duration-200"
+  style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 999; background: #141414; opacity: 0; transition: opacity 0.25s ease; overflow-y: auto;"
   role="dialog"
   aria-modal="true"
   aria-label="Mobile navigation"
 >
   <div class="flex items-center justify-between h-[72px] px-6 border-b border-white/5">
     <a href="/" class="flex items-center" aria-label="SpaceDev home">
-      <img src="/images/logo/spacedev-logo.svg" alt="SpaceDev" width="140" height="28" class="h-7 w-auto" />
+      <img src="/images/logo/spacedev-wordmark.png" alt="SpaceDev" width="123" height="24" class="w-[123px] h-auto" />
     </a>
     <button
       type="button"
@@ -27,7 +27,7 @@ const { expertise, about, explore } = Astro.props;
     </button>
   </div>
 
-  <nav class="px-6 py-8 overflow-y-auto h-[calc(100vh-72px)]" aria-label="Mobile">
+  <nav class="px-6 py-8" aria-label="Mobile">
     <details class="border-b border-white/10 py-4">
       <summary class="flex items-center justify-between cursor-pointer text-lg text-white">
         Our Expertise
