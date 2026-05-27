@@ -191,14 +191,15 @@ const breadcrumbJsonLd = {
       </div>
     </div>
 
-    <!-- ── RIGHT COLUMN: sticky TOC only ────────────────────────────── -->
+    <!-- ── RIGHT COLUMN: sticky TOC + CTA ──────────────────────────── -->
     {tocHeadings.length > 0 && (
       <aside
-        class="hidden md:flex flex-col w-[280px] flex-shrink-0"
+        class="hidden md:flex flex-col w-[320px] flex-shrink-0"
         style="position: sticky; top: 68px; height: calc(100vh - 68px);"
         aria-label="Article sidebar"
       >
-        <div class="px-6 pt-10">
+        <!-- TOC — scrollable when headings overflow -->
+        <div class="flex-1 overflow-y-auto px-6 pt-10 pb-4 scrollbar-thin">
           <div class="rounded-2xl bg-[#f7f7f8] p-5">
             <p class="text-[10px] uppercase tracking-[0.2em] font-ui text-sd-text-gray mb-4">
               In this article
@@ -209,7 +210,7 @@ const breadcrumbJsonLd = {
                   <li style={`padding-left: ${(h.depth - 2) * 10}px`}>
                     <a
                       href={`#${h.slug}`}
-                      class="sd-toc-link flex items-center px-3 py-1.5 rounded-lg text-[13px] leading-snug text-sd-text-gray hover:text-sd-purple hover:bg-sd-purple/5 transition-colors duration-150"
+                      class="sd-toc-link flex items-center px-3 py-1.5 rounded-lg text-[12px] leading-snug text-sd-text-gray hover:text-sd-purple hover:bg-sd-purple/5 transition-colors duration-150"
                       data-heading={h.slug}
                     >
                       {h.text}
@@ -218,6 +219,24 @@ const breadcrumbJsonLd = {
                 ))}
               </ul>
             </nav>
+          </div>
+        </div>
+
+        <!-- CTA — always visible at the bottom of the sidebar -->
+        <div class="px-6 pb-8 pt-2 flex-shrink-0">
+          <div class="rounded-2xl p-5" style="background: var(--sd-gradient-hero);">
+            <p class="font-display text-white font-semibold text-[15px] leading-snug mb-1.5">
+              Talk to a blockchain dev
+            </p>
+            <p class="text-white/65 text-xs leading-relaxed mb-4">
+              No sales pitch. Just a real conversation about your project.
+            </p>
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center w-full px-4 py-2 rounded-full bg-white text-sd-text-dark text-xs font-ui font-medium hover:bg-sd-purple hover:text-white transition-colors duration-200"
+            >
+              Book a free call →
+            </a>
           </div>
         </div>
       </aside>
