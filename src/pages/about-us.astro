@@ -103,7 +103,7 @@ const galleryPhotos = [
       <div class="hero-phrase">
         <div class="mx-auto max-w-[1440px] px-6 md:px-10">
           <p class="text-[10px] uppercase tracking-[0.22em] text-white/50 font-ui mb-4">Why SpaceDev</p>
-          <p class="font-display font-light text-2xl md:text-3xl lg:text-4xl text-white leading-[1.15] max-w-3xl">
+          <p class="font-display font-light text-3xl md:text-4xl lg:text-5xl text-white leading-[1.12] max-w-3xl">
             We help startups and enterprises ship secure, scalable blockchain products without costly rewrites, delays, or architectural risks.
           </p>
         </div>
@@ -407,12 +407,20 @@ const galleryPhotos = [
     left: 0;
     right: 0;
     z-index: 3;
-    padding-bottom: clamp(48px, 7vh, 80px);
-    padding-top: 80px;
-    background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+    padding-bottom: clamp(52px, 8vh, 90px);
+    padding-top: 120px;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.88) 0%,
+      rgba(0,0,0,0.65) 40%,
+      transparent 100%
+    );
     pointer-events: none;
-    /* Fallback: visible */
     opacity: 1;
+  }
+
+  .hero-phrase p {
+    text-shadow: 0 2px 16px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.8);
   }
 
   @supports (animation-timeline: scroll()) {
@@ -423,12 +431,12 @@ const galleryPhotos = [
       animation-timeline: scroll(root);
       animation-range: 0vh 85vh;
     }
-    /* Phrase fades in as video reaches full-bleed */
+    /* Phrase fades in as video starts expanding */
     .hero-phrase {
       opacity: 0;
       animation: hero-phrase-in linear both;
       animation-timeline: scroll(root);
-      animation-range: 55vh 100vh;
+      animation-range: 40vh 80vh;
     }
   }
 
