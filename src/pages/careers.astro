@@ -21,9 +21,9 @@ const benefits = [
 ];
 
 const peopleTeam = [
-  { name: "Valentina Restrepo", role: "HR Business Partner", linkedin: "https://www.linkedin.com/in/valentina-restrepo-duque/" },
-  { name: "Victoria Perdomo", role: "Talent & People Care", linkedin: "https://www.linkedin.com/in/victoria-perdomo-curi/" },
-  { name: "Florencia Suarez", role: "People & Talent Analyst", linkedin: "https://www.linkedin.com/in/suarezflorencia/" },
+  { name: "Valentina Restrepo", role: "HR Business Partner",      linkedin: "https://www.linkedin.com/in/valentina-restrepo-duque/", avatar: "/images/content/valentina.png" },
+  { name: "Victoria Perdomo",   role: "Talent & People Care",     linkedin: "https://www.linkedin.com/in/victoria-perdomo-curi/",    avatar: "/images/content/victoria.png"  },
+  { name: "Florencia Suarez",   role: "People & Talent Analyst",  linkedin: "https://www.linkedin.com/in/suarezflorencia/",          avatar: "/images/content/florencia.png" },
 ];
 
 const galleryPhotos = [
@@ -170,16 +170,28 @@ const jobPostingsJsonLd = {
           with strong human values. Join us to be part of a top-tier team where your growth,
           well-being and work-life balance are prioritized. Apply now!"
         </blockquote>
-        <figcaption class="flex flex-wrap justify-center gap-8">
+        <figcaption class="flex flex-wrap justify-center gap-10">
           {peopleTeam.map((person) => (
             <a
               href={person.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-center hover:opacity-70 transition-opacity"
+              class="flex flex-col items-center gap-3 hover:opacity-80 transition-opacity"
             >
-              <p class="text-sd-text-dark font-display font-medium text-sm">{person.name}</p>
-              <p class="text-sd-text-muted text-xs mt-0.5">{person.role}</p>
+              <div class="w-16 h-16 rounded-full overflow-hidden ring-2 ring-sd-gray-border shrink-0">
+                <img
+                  src={person.avatar}
+                  alt={person.name}
+                  loading="lazy"
+                  width="64"
+                  height="64"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="text-center">
+                <p class="text-sd-text-dark font-display font-medium text-sm">{person.name}</p>
+                <p class="text-sd-text-muted text-xs mt-0.5">{person.role}</p>
+              </div>
             </a>
           ))}
         </figcaption>
