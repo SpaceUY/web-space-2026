@@ -70,14 +70,6 @@ const howWeWork = [
   },
 ];
 
-const galleryPhotos = [
-  { src: "/images/content/uhSZSE63T2i0JocraoQgcgj6So.jpg", alt: "One of our developers speaking during an All Hands company-wide event." },
-  { src: "/images/content/9ZaBNdgUPn2Ft2zVORBykfjZRsg.jpg", alt: "SpaceDev team members posing together and enjoying mate at the All Hands event." },
-  { src: "/images/content/QPCMxqD1lS3XmxVU348dOJ5hlo8.jpg", alt: "Team members participating in a collaborative team-building activity." },
-  { src: "/images/content/wTwGjd148tprijNn5fRKVIjN6w.jpg", alt: "Close-up of a SpaceDev shirt featuring the company motto." },
-  { src: "/images/content/lkdG8nylwlZilyk9wstv0caDb8g.jpg", alt: "Juan Manuel Sobral, CTO of SpaceDev, giving a presentation at Ethereum Argentina 2023." },
-  { src: "/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg", alt: "Team members sharing a candid moment during an All Hands event." },
-];
 ---
 
 <BaseLayout
@@ -278,19 +270,6 @@ const galleryPhotos = [
               </div>
           )}
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── GALLERY ─────────────────────────────────────────────────────────── -->
-  <section class="bg-[#f5f5f5] py-16 md:py-20">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-3">
-        {galleryPhotos.map((img) => (
-          <div class="rounded-2xl overflow-hidden aspect-[4/3]" data-animate>
-            <img src={img.src} alt={img.alt} loading="lazy" width="800" height="600" class="w-full h-full object-cover" />
-          </div>
-        ))}
       </div>
     </div>
   </section>
