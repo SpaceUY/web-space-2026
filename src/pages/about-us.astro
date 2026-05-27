@@ -361,7 +361,7 @@ const howWeWork = [
 <style>
   /* ── Hero: sticky scroll-driven expand ── */
   .hero-scroll-track {
-    height: 300vh;
+    height: 500vh;
     background: #000;
   }
 
@@ -393,8 +393,7 @@ const howWeWork = [
     z-index: 4;
     background: #0d0c17;
     display: flex;
-    align-items: flex-end;
-    padding-bottom: clamp(64px, 10vh, 100px);
+    align-items: center;
     opacity: 0;
     pointer-events: none;
     will-change: opacity;
@@ -433,14 +432,14 @@ const howWeWork = [
 
     const vh = window.innerHeight;
     // Timing (in scroll-px from page top):
-    //  illuminate : 0  → 1.4 * vh
-    //  phrase fade: 1.4 → 1.9 * vh   (starts when illumination complete)
-    //  video reveal: 1.6 → 2.8 * vh
-    const ILLUM_END   = vh * 1.4;
-    const FADE_START  = vh * 1.4;
-    const FADE_END    = vh * 1.9;
-    const VID_START   = vh * 1.6;
-    const VID_END     = vh * 2.8;
+    //  illuminate : 0    → 1.6 * vh
+    //  phrase fade: 1.6  → 2.2 * vh  (starts when illumination complete)
+    //  video reveal: 2.6 → 4.2 * vh  (long deliberate reveal)
+    const ILLUM_END   = vh * 1.6;
+    const FADE_START  = vh * 1.6;
+    const FADE_END    = vh * 2.2;
+    const VID_START   = vh * 2.6;
+    const VID_END     = vh * 4.2;
 
     function clamp(v: number, lo: number, hi: number) { return Math.max(lo, Math.min(hi, v)); }
     function norm(v: number, a: number, b: number)    { return clamp((v - a) / (b - a), 0, 1); }
