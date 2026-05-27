@@ -1,51 +1,72 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import AnimatedCounter from "../components/ui/AnimatedCounter.astro";
 import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
 
-const allPosts = await getCollection("blog");
-const latestPosts = allPosts
-  .sort((a, b) => new Date(b.data.publishedAt).valueOf() - new Date(a.data.publishedAt).valueOf())
-  .slice(0, 2);
-
-const stats3 = [
-  { prefix: "+", value: "70", label1: "talented", label2: "team members" },
-  { prefix: "+", value: "160", label1: "successful", label2: "projects delivered" },
-  { prefix: "", value: "5", label1: "Presence in", label2: "5 countries", labelOverride: true },
+// Client logos — same as homepage marquee
+const clientLogos = [
+  { src: "/images/clients/apple.png",         alt: "Apple",        w: 62,  h: 74,  full: false },
+  { src: "/images/clients/acton_academy.png", alt: "Acton Academy",w: 118, h: 44,  full: false },
+  { src: "/images/clients/microsoft.svg",     alt: "Microsoft",    w: 174, h: 174, full: true  },
+  { src: "/images/clients/drata.svg",         alt: "Drata",        w: 174, h: 174, full: true  },
+  { src: "/images/clients/prose.svg",         alt: "prose",        w: 174, h: 174, full: true  },
+  { src: "/images/clients/ulta.svg",          alt: "ULTA Beauty",  w: 174, h: 174, full: true  },
+  { src: "/images/clients/scotia.svg",        alt: "Scotiabank",   w: 174, h: 174, full: true  },
+  { src: "/images/clients/utec.svg",          alt: "UTEC",         w: 174, h: 174, full: true  },
+  { src: "/images/clients/samsonite.svg",     alt: "Samsonite",    w: 174, h: 174, full: true  },
+  { src: "/images/clients/blockus.svg",       alt: "Blockus",      w: 174, h: 174, full: true  },
+  { src: "/images/clients/ute.png",           alt: "UTE",          w: 110, h: 50,  full: false },
+  { src: "/images/clients/orange.svg",        alt: "Orange",       w: 174, h: 174, full: true  },
+  { src: "/images/clients/d_local.svg",       alt: "dLocal",       w: 174, h: 174, full: true  },
+  { src: "/images/clients/schwarzkopf.svg",   alt: "Schwarzkopf",  w: 174, h: 174, full: true  },
+  { src: "/images/clients/rarible.svg",       alt: "Rarible",      w: 133, h: 31,  full: false },
+  { src: "/images/clients/ufc.svg",           alt: "UFC Strike",   w: 145, h: 22,  full: false },
 ];
 
-const stats4 = [
-  { bold: "event speakers", pre: "International", after: "(not bragging)" },
-  { bold: "+40 perfect 5-star ratings", after: "from happy customers\nin Clutch" },
-  { bold: "Top 5", after: "Blockchain Companies\nin the world by Clutch" },
-  { bold: "7 years", after: "helping clients\nsucceed!" },
+const team = [
+  {
+    name: "Federico Sendra",
+    role: "CEO & Co-founder",
+    avatar: "/images/content/DOT9ldmLAaVJejBjOexpqu1bDjs.png",
+    bio: "Entrepreneur and tech strategist who built SpaceDev to turn complexity into clarity. 10+ years helping companies ship secure, scalable systems through blockchain, AI, and digital transformation. He advises corporate leaders and innovation teams with one conviction: great technology should be human-first.",
+    linkedin: "https://www.linkedin.com/in/federicosendra/",
+  },
+  {
+    name: "Juan Manuel Sobral",
+    role: "CTO & Co-founder",
+    avatar: "/images/content/eHISRLFUhgnDA3fOxfapqrM7m0.jpg",
+    bio: "Partners with founders and companies to architect the tech, teams, and execution frameworks that unlock scale. Deep expertise in Web3 protocols and AI platforms, from smart contract design to market-ready products. His goal: get the right things to market fast.",
+    linkedin: "https://www.linkedin.com/in/jmsobral/",
+  },
+  {
+    name: "Diego Priliac",
+    role: "COO",
+    avatar: "/images/content/Ase2If5CJXH4BrNWxKF0JciqjUE.png",
+    bio: "Builds the operating system around our people: culture, processes, and client relationships. He believes the difference between good and great products is the system around the people who build them. Keeps SpaceDev human, transparent, and relentlessly outcome-driven.",
+    linkedin: "https://www.linkedin.com/in/diegopriliac/",
+  },
 ];
 
-const values = [
+const howWeWork = [
   {
-    icon: "/images/content/JHogPoUM4sCPo4r816ur9EcHs.svg",
-    title: "We are here to help",
-    description: "We're not just here to press some keys - we want to be your tech partner! We'll use our years of experience to help you make a product that stands out from the crowd!",
+    n: "01",
+    title: "Architecture first, code second",
+    desc: "We design the system before writing a single line. Solid foundations prevent the rewrites that sink projects.",
   },
   {
-    icon: "/images/content/xogWSUdGpi5BEVz8K4WKA5zSI.svg",
-    title: "We are tech-savvy",
-    description: "We strive to be proficient at what we do and that means constantly expanding our horizons.",
+    n: "02",
+    title: "Security embedded, not added",
+    desc: "Audits, static analysis, and threat modeling are part of every sprint, not a final checklist.",
   },
   {
-    icon: "/images/content/NQaNeD09wdw4EsvxsJ8IOWeE.svg",
-    title: "We are professional",
-    description: "You can count on us for transparency, honesty, respect, and unwavering commitment in all we do. We build trust through open communication and staying true to our word, ensuring every interaction reflects our dedication to doing the right thing for your business.",
+    n: "03",
+    title: "Rapid MVPs with production guardrails",
+    desc: "We move fast without cutting corners. Every prototype is built to survive contact with real users.",
   },
   {
-    icon: "/images/content/8x8x1nT1yym7h8hZkcOUsL0A5do.svg",
-    title: "We are flexible",
-    description: "It's important for us to keep a work-life balance that's suitable for both our clients and us. Don't worry, we do whatever's necessary to meet goals in a timely manner.",
-  },
-  {
-    icon: "/images/content/sujqj94Uf0BbTPbt246NbjhcOtI.svg",
-    title: "We are human",
-    description: "No space-faring member of ours is going to be stranded! Everyone has a say and is given ample room to grow in our work environments. We're just humans navigating the stars!",
+    n: "04",
+    title: "Outcome-driven delivery",
+    desc: "We measure success by your metrics, not ours. Shipping is the beginning, not the end.",
   },
 ];
 
@@ -53,123 +74,221 @@ const galleryPhotos = [
   { src: "/images/content/uhSZSE63T2i0JocraoQgcgj6So.jpg", alt: "One of our developers speaking during an All Hands company-wide event." },
   { src: "/images/content/9ZaBNdgUPn2Ft2zVORBykfjZRsg.jpg", alt: "SpaceDev team members posing together and enjoying mate at the All Hands event." },
   { src: "/images/content/QPCMxqD1lS3XmxVU348dOJ5hlo8.jpg", alt: "Team members participating in a collaborative team-building activity." },
-  { src: "/images/content/eHISRLFUhgnDA3fOxfapqrM7m0.jpg", alt: "The entire SpaceDev team gathered for a group photo at the All Hands 2024 event." },
-  { src: "/images/content/wTwGjd148tprijNn5fRKVIjN6w.jpg", alt: "Close-up of a SpaceDev shirt featuring the company motto: We help clients navigate the future." },
+  { src: "/images/content/wTwGjd148tprijNn5fRKVIjN6w.jpg", alt: "Close-up of a SpaceDev shirt featuring the company motto." },
   { src: "/images/content/lkdG8nylwlZilyk9wstv0caDb8g.jpg", alt: "Juan Manuel Sobral, CTO of SpaceDev, giving a presentation at Ethereum Argentina 2023." },
-  { src: "/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg", alt: "Team members sharing a candid moment and conversation during an All Hands event." },
-  { src: "/images/content/WSgg2vvLbwIDpUqEcgfpoHmXa4.jpg", alt: "SpaceDev team member warmly embracing a colleague during an All Hands gathering." },
-  { src: "/images/content/jrVqUaItfaiWthkT9E9WKH8cPaQ.jpg", alt: "SpaceDev team members enjoying a team-bonding activity at a park, engaging in outdoor fun." },
-];
-
-// 4 orbiting portraits (jguQhkTbp0MoZ9wxfnMs1gKc.png removed per design)
-const orbitPortraits = [
-  { src: "/images/content/3mmcSXAv2k0fk78C0Z1fgM86LQ.png", alt: "SpaceDev team member" },
-  { src: "/images/content/Qg6vUwbo5UymgibLLQpwgfAaW9Y.png", alt: "SpaceDev team member" },
-  { src: "/images/content/hYdfyHgO5TKgB3hgri2UDF288tA.png", alt: "SpaceDev team member" },
-  { src: "/images/content/ZhmOQQSS9e2RKMXaZGCU0VCxM.png", alt: "SpaceDev team member" },
+  { src: "/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg", alt: "Team members sharing a candid moment during an All Hands event." },
 ];
 ---
 
 <BaseLayout
   breadcrumbs={false}
-  title="About Us | SpaceDev: Meet the team behind the technology"
-  description="SpaceDev is a blockchain and software development partner with 70+ engineers across the U.S. and Latin America. Top 5 blockchain company by Clutch."
+  title="About Us | SpaceDev — Engineering-first Blockchain Development Partner"
+  description="SpaceDev helps startups and enterprises ship secure, scalable blockchain products without costly rewrites or architectural risks. 70+ engineers, 160+ products shipped."
 >
-  <!-- HERO: scroll-driven expand
-       Track is 300vh tall so there's room to scroll through the animation.
-       Inner sticky pane fills the viewport and stays pinned while the track scrolls.
-       Title overlays the video and fades out as the video clip expands. -->
+
+  <!-- ── HERO: scroll-driven expand ─────────────────────────────────────── -->
   <div class="hero-scroll-track">
     <div class="hero-sticky">
-      <!-- Breadcrumb overlay -->
       <div class="absolute top-24 left-0 right-0 z-10 mx-auto max-w-[1440px] px-6 md:px-10 pointer-events-none">
         <div class="pointer-events-auto inline-block">
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About Us" }]} visible={true} />
         </div>
       </div>
 
-      <!-- Video fills the entire pane; clip-path shrinks it to a pill on load -->
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-        class="hero-video"
-      >
+      <video autoplay muted loop playsinline class="hero-video">
         <source src="https://wbufyhm7al1rxqad.public.blob.vercel-storage.com/we_are_space.mp4" type="video/mp4" />
       </video>
 
-      <!-- Title: massive text that dwarfs the pill, fades on scroll -->
       <div class="hero-title-overlay">
         <h1 class="hero-title text-white font-display font-light text-center whitespace-nowrap" style="font-size: clamp(48px, 9.5vw, 130px);">
           We are SpaceDev
         </h1>
       </div>
-
     </div>
   </div>
 
-  <!-- WHO WE ARE -->
-  <section class="bg-[#f5f5f5] py-20 md:py-28">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10 max-w-3xl" data-animate>
-      <h2 class="font-display font-light text-5xl md:text-6xl lg:text-7xl text-sd-text-dark leading-[1.05] mb-10">
-        Who We Are
+  <!-- ── POSITIONING PHRASE ──────────────────────────────────────────────── -->
+  <section class="bg-[#f5f5f5] py-24 md:py-36">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10 max-w-4xl" data-animate>
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple font-ui mb-6">Why SpaceDev</p>
+      <h2 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.08]">
+        We help startups and enterprises ship secure, scalable blockchain products without costly rewrites, delays, or architectural risks.
       </h2>
-      <p class="font-body text-sd-text-dark text-xl md:text-2xl leading-relaxed mb-6">
-        At SpaceDev, engineering meets imagination.
+    </div>
+  </section>
+
+  <!-- ── PROBLEM ─────────────────────────────────────────────────────────── -->
+  <section class="bg-sd-dark py-24 md:py-32">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10" data-animate>
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 font-ui mb-8">The real problem</p>
+      <p class="font-display font-light text-3xl md:text-4xl lg:text-5xl text-white leading-[1.15] mb-8 max-w-3xl">
+        Most blockchain projects fail not because of lack of ideas, but due to technical debt, insecure contracts, and architecture that cannot scale.
       </p>
-      <p class="font-body text-sd-text-gray text-xl md:text-2xl leading-relaxed mb-6">
-        We're a custom software development company for businesses that move fast and think boldly. Our team delivers traditional software, mobile applications, and decentralized blockchain ecosystems with security, scalability, and user focus.
-      </p>
-      <p class="font-body text-sd-text-gray text-xl md:text-2xl leading-relaxed">
-        With offices across the U.S., Uruguay, Argentina, and Colombia, we work as one transparent, agile unit aligned with your goals. We build MVPs, develop full products, or provide IT staff augmentation to scale your team. Whatever path fits your vision.
+      <p class="text-lg text-white/60 leading-relaxed max-w-2xl">
+        SpaceDev was founded to eliminate those risks. We combine deep engineering discipline with real-world blockchain experience to deliver outcomes, not just code.
       </p>
     </div>
   </section>
 
-  <!-- QUICK FUN FACTS (STATS) -->
-  <section class="bg-[#f5f5f5] py-20 md:py-28">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <h2 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.05] mb-12" data-animate>
-        Quick fun facts about us
-      </h2>
-      <!-- Row 1: 3 large cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-        {stats3.map((s) => (
-          <div class="rounded-2xl bg-[#ebebeb] p-8 md:p-10 min-h-[180px] flex flex-col justify-end" data-animate>
-            {s.labelOverride ? (
-              <>
-                <p class="font-body text-sd-text-gray text-base mb-1">{s.label1}</p>
-                <p class="font-display font-semibold text-2xl md:text-3xl text-sd-text-dark">{s.label2}</p>
-              </>
-            ) : (
-              <>
-                <p class="font-body text-sd-text-dark text-base mb-1">
-                  <span class="font-display font-semibold text-2xl md:text-3xl">{s.prefix}{s.value}</span>
-                  {" "}{s.label1}
-                </p>
-                <p class="font-body text-sd-text-gray text-base">{s.label2}</p>
-              </>
-            )}
+  <!-- ── WHO WE SERVE ────────────────────────────────────────────────────── -->
+  <section class="bg-[#f5f5f5] py-24 md:py-32">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple font-ui mb-8" data-animate>Who we partner with</p>
+      <div class="grid gap-5 md:grid-cols-3 mb-10">
+        {[
+          {
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+            title: "Founders building Web3 protocols",
+            desc: "From token architecture to smart contract deployment. We help you go from whitepaper to working protocol.",
+          },
+          {
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>`,
+            title: "CTOs needing secure smart contract delivery",
+            desc: "You own the roadmap, we own the execution. Embedded security and audit-ready code from day one.",
+          },
+          {
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 14v3m4-3v3m4-3v3"/></svg>`,
+            title: "Enterprises adopting blockchain reliably",
+            desc: "Integration over disruption. We bring blockchain into your stack without betting the business on it.",
+          },
+        ].map((card) => (
+          <div class="rounded-2xl bg-white border border-sd-gray-border p-8 flex flex-col gap-5" data-animate>
+            <div class="text-sd-purple w-10 h-10 flex items-center justify-center rounded-xl bg-sd-purple/8">
+              <Fragment set:html={card.icon} />
+            </div>
+            <div>
+              <h3 class="font-display font-semibold text-base text-sd-text-dark mb-2 leading-snug">{card.title}</h3>
+              <p class="text-sm text-sd-text-gray leading-relaxed">{card.desc}</p>
+            </div>
           </div>
         ))}
       </div>
-      <!-- Row 2: 4 smaller cards -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {stats4.map((s) => (
-          <div class="rounded-2xl bg-[#ebebeb] p-6 md:p-8 min-h-[160px] flex flex-col justify-end" data-animate>
-            <p class="font-body text-sd-text-dark text-sm md:text-base leading-snug mb-1 whitespace-pre-line">
-              {s.pre && <span class="text-sd-text-gray">{s.pre}{" "}</span>}
-              <span class="font-display font-semibold">{s.bold}</span>
-            </p>
-            <p class="font-body text-sd-text-gray text-sm leading-snug whitespace-pre-line">{s.after}</p>
+      <!-- Not for -->
+      <p class="text-sm text-sd-text-gray border-l-2 border-sd-gray-border pl-4 max-w-xl" data-animate>
+        <span class="font-semibold text-sd-text-dark">Not the right fit:</span> hobby projects without real traction or undefined token-only experimentation without a clear product path.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── HOW WE WORK ─────────────────────────────────────────────────────── -->
+  <section class="bg-sd-dark py-24 md:py-32">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 font-ui mb-3" data-animate>How we work</p>
+      <h2 class="font-display font-light text-4xl md:text-5xl text-white leading-[1.1] mb-14" data-animate>
+        Engineering-first. Security-validated. Outcome-driven.
+      </h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        {howWeWork.map((item) => (
+          <div class="flex gap-6" data-animate>
+            <span class="font-display text-4xl font-light text-white/15 leading-none shrink-0 select-none">{item.n}</span>
+            <div>
+              <h3 class="font-display font-semibold text-white text-base mb-2">{item.title}</h3>
+              <p class="text-sm text-white/55 leading-relaxed">{item.desc}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- WE HELP CLIENTS NAVIGATE THE FUTURE -->
+  <!-- ── PROOF: STATS ────────────────────────────────────────────────────── -->
+  <section class="bg-sd-dark border-t border-white/10">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10 py-20 md:py-24">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6">
+        <AnimatedCounter value={70}  suffix="+" label="Engineers across 5 countries" />
+        <AnimatedCounter value={160} suffix="+" label="Products shipped" />
+        <AnimatedCounter value={40}  suffix="+" label="Five-star Clutch reviews" />
+        <AnimatedCounter value={7}   suffix="+" label="Years in the market" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROOF: TESTIMONIALS ─────────────────────────────────────────────── -->
+  <section class="bg-sd-dark border-t border-white/10">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10 py-20 md:py-24">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10" data-animate>
+        <div class="flex items-center gap-3">
+          <div class="flex gap-0.5">
+            {[1,2,3,4,5].map(() => (
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="text-white font-semibold">40+ five-star reviews on Clutch</p>
+        </div>
+        <a
+          href="https://clutch.co/profile/spacedev"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-sd-purple hover:text-sd-purple-300 transition-colors"
+        >
+          See all reviews
+          <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5" data-animate>
+        <blockquote class="bg-white/[0.04] rounded-2xl p-7 border border-white/10 flex flex-col">
+          <div class="flex gap-0.5 mb-5">
+            {[1,2,3,4,5].map(() => (
+              <svg width="13" height="13" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="text-sm text-white/75 leading-relaxed italic mb-5 flex-1">
+            "It's like Silicon Valley standard but in Uruguay. They are very flexible, allowing us to adjust our needs to the market conditions and business needs."
+          </p>
+          <footer class="text-xs text-sd-text-muted">
+            <span class="text-white/60 font-medium">Executive, Blockchain Company</span><br/>
+            Web3 Platform Development · San Francisco, CA · Feb 2023
+          </footer>
+        </blockquote>
+        <blockquote class="bg-white/[0.04] rounded-2xl p-7 border border-white/10 flex flex-col">
+          <div class="flex gap-0.5 mb-5">
+            {[1,2,3,4,5].map(() => (
+              <svg width="13" height="13" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="text-sm text-white/75 leading-relaxed italic mb-5 flex-1">
+            "SpaceDev have vast knowledge in the area of Web3 development. They understood our requirements clearly and efficiently. The work provided by SpaceDev has been exemplary."
+          </p>
+          <footer class="text-xs text-sd-text-muted">
+            <span class="text-white/60 font-medium">Monzoor Ullah, COO — Byrrgis</span><br/>
+            Crypto Trading Platform Development · Costa Rica · Oct 2025
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CLIENT LOGOS MARQUEE ────────────────────────────────────────────── -->
+  <section class="bg-sd-light overflow-hidden">
+    <div class="sd-marquee-wrapper">
+      <div class="sd-marquee">
+        <div class="sd-marquee-set">
+          {clientLogos.map((c) => c.full
+            ? <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="eager" class="shrink-0 block" />
+            : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
+                <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="eager" class="block" />
+              </div>
+          )}
+        </div>
+        <div class="sd-marquee-set" aria-hidden="true">
+          {clientLogos.map((c) => c.full
+            ? <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="shrink-0 block" />
+            : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
+                <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="block" />
+              </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── NAVIGATE THE FUTURE (illuminated text) ─────────────────────────── -->
   <section class="bg-black py-24 md:py-36">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <p class="navigate-bright font-display font-light text-5xl md:text-6xl lg:text-7xl leading-[1.1]">
@@ -181,192 +300,94 @@ const orbitPortraits = [
     </div>
   </section>
 
-  <!-- GALLERY (9 photos, before core values) -->
+  <!-- ── GALLERY ─────────────────────────────────────────────────────────── -->
   <section class="bg-[#f5f5f5] py-16 md:py-20">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
       <div class="grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-3">
         {galleryPhotos.map((img) => (
           <div class="rounded-2xl overflow-hidden aspect-[4/3]" data-animate>
-            <img
-              src={img.src}
-              alt={img.alt}
-              loading="lazy"
-              width="800"
-              height="600"
-              class="w-full h-full object-cover"
-            />
+            <img src={img.src} alt={img.alt} loading="lazy" width="800" height="600" class="w-full h-full object-cover" />
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- OUR CORE VALUES -->
-  <section class="bg-[#f5f5f5] pb-20 md:pb-28">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <h2 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.05] mb-14" data-animate>
-        Our core values
+  <!-- ── TEAM ────────────────────────────────────────────────────────────── -->
+  <section class="bg-[#f5f5f5] py-24 md:py-32">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple font-ui mb-4" data-animate>The team</p>
+      <h2 class="font-display font-light text-4xl md:text-5xl text-sd-text-dark leading-[1.1] mb-14" data-animate>
+        The people behind the products
       </h2>
-      <div class="grid gap-10 md:gap-14 md:grid-cols-3">
-        {values.map((v) => (
-          <div data-animate>
-            <div class="w-16 h-16 mb-5">
-              <img src={v.icon} alt={v.title} width="64" height="64" class="w-full h-full" />
-            </div>
-            <h3 class="font-display font-semibold text-xl text-sd-text-dark mb-3">{v.title}</h3>
-            <p class="font-body text-sd-text-gray leading-relaxed text-sm">{v.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- WHAT MAKES US DIFFERENT — orbit section -->
-  <section class="bg-[#f5f5f5] py-10 md:py-16 overflow-x-hidden">
-    <div
-      class="orbit-section relative mx-auto"
-      style="width: min(860px, 92vw); height: min(860px, 92vw);"
-    >
-      <!-- Decorative concentric arcs -->
-      <svg
-        class="absolute inset-0 w-full h-full pointer-events-none"
-        viewBox="0 0 860 860"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <circle cx="430" cy="430" r="255" stroke="#d4d4d4" stroke-width="1"/>
-        <circle cx="430" cy="430" r="355" stroke="#d4d4d4" stroke-width="1"/>
-      </svg>
-
-      <!-- Center content -->
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="text-center px-6 md:px-10" style="max-width: 380px;" data-animate>
-          <h2 class="font-display font-light text-4xl md:text-5xl text-sd-text-dark leading-[1.05] mb-6">
-            What makes<br />us different
-          </h2>
-          <p class="font-body text-sd-text-gray leading-relaxed text-sm mb-3">
-            Behind every line of code, there's a team of highly motivated, skilled
-            <strong class="text-sd-text-dark font-semibold">problem solvers</strong>
-            using the latest tools to build memorable products.
-          </p>
-          <p class="font-body text-sd-text-gray leading-relaxed text-sm">
-            We strive to conduct work processes that are detail-oriented without
-            sacrificing efficiency, knowing that quality will always be top priority.
-          </p>
-        </div>
-      </div>
-
-      <!-- 4 orbiting portraits — spaced 90° apart, starting at -45° -->
-      {orbitPortraits.map((p, i) => (
-        <div class="orbit-arm" style={`--a: ${i * 90 - 45}deg`}>
-          <div class="orbit-face">
-            <div class="w-[76px] h-[76px] md:w-[96px] md:h-[96px] rounded-full overflow-hidden ring-[3px] ring-white shadow-xl">
+      <div class="grid gap-8 md:grid-cols-3">
+        {team.map((person) => (
+          <div class="rounded-2xl bg-white border border-sd-gray-border overflow-hidden" data-animate>
+            <div class="aspect-[4/3] overflow-hidden bg-sd-light-2">
               <img
-                src={p.src}
-                alt={p.alt}
+                src={person.avatar}
+                alt={`${person.name}, ${person.role} at SpaceDev`}
                 loading="lazy"
+                width="400"
+                height="300"
                 class="w-full h-full object-cover"
               />
             </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- DIEGO QUOTE -->
-  <section class="bg-sd-dark py-20 md:py-28">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10">
-      <figure data-animate>
-        <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display font-light text-center mb-14">
-          "SpaceDev's edge is the blend of craft and care. I've seen talented engineers become force multipliers
-          when the system around them is clear, supportive, and accountable. My job is to build that system,
-          one that keeps us human, transparent, and relentlessly focused on outcomes. That's why we can step onto
-          stages around the world, ship memorable products, and still feel like a team you'd want to build with again."
-        </blockquote>
-        <figcaption class="flex items-center justify-end gap-4">
-          <div class="w-16 h-16 rounded-full overflow-hidden shrink-0">
-            <img
-              src="/images/content/WNxBc0mve9sQYZRHbjayiQrfwpE.jpeg"
-              alt="Diego Priliac, COO of SpaceDev"
-              width="64"
-              height="64"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div>
-            <p class="text-white font-display font-medium">Diego Priliac</p>
-            <p class="text-sd-text-muted text-sm mt-0.5">COO</p>
-            <a
-              href="https://www.linkedin.com/in/diegopriliac/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-1 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-sd-text-muted hover:text-white transition-colors"
-            >
-              CONNECT WITH ME
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="shrink-0">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-            </a>
-          </div>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- NOT JUST ANOTHER CODING COMPANY + BLOG -->
-  <section class="bg-[#f5f5f5] py-20 md:py-28">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <h2 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.05] mb-14" data-animate>
-        Not just another coding company
-      </h2>
-
-      <h3 class="font-display font-light text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-[1.05] mb-10" data-animate>
-        Latest articles in our blog
-      </h3>
-
-      <div class="grid gap-6 md:grid-cols-2">
-        {latestPosts.map((post) => (
-          <article class="rounded-2xl overflow-hidden bg-white border border-sd-gray-border hover:-translate-y-1 transition-transform duration-300" data-animate>
-            {post.data.cover && (
-              <div class="aspect-[16/9] overflow-hidden">
-                <img
-                  src={post.data.cover}
-                  alt={post.data.title}
-                  loading="lazy"
-                  width="800"
-                  height="450"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-            )}
-            <div class="p-6">
-              <h4 class="font-display font-semibold text-base text-sd-text-dark mb-5 leading-snug">{post.data.title}</h4>
+            <div class="p-7">
+              <p class="text-[10px] uppercase tracking-[0.18em] text-sd-purple font-ui mb-1">{person.role}</p>
+              <h3 class="font-display font-semibold text-lg text-sd-text-dark mb-3">{person.name}</h3>
+              <p class="text-sm text-sd-text-gray leading-relaxed mb-5">{person.bio}</p>
               <a
-                href={`/blog/${post.id}`}
-                class="inline-flex items-center gap-2 bg-sd-text-dark text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-sd-purple transition-colors"
+                href={person.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-sd-purple hover:text-sd-purple-2 transition-colors font-ui"
               >
-                Learn more
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                LinkedIn
               </a>
             </div>
-          </article>
+          </div>
         ))}
       </div>
     </div>
   </section>
+
+  <!-- ── WHY WE EXIST ────────────────────────────────────────────────────── -->
+  <section class="bg-sd-dark py-24 md:py-32">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10" data-animate>
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 font-ui mb-8">Why we exist</p>
+      <blockquote class="font-display font-light text-3xl md:text-4xl lg:text-5xl text-white leading-[1.15] mb-14 max-w-4xl">
+        Bitcoin proved that decentralized trust is possible. Delivering that trust securely is hard. We exist to help companies build blockchain products that work in the real world, not only on pitch decks.
+      </blockquote>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-sd-purple text-white text-sm font-ui font-semibold hover:bg-sd-purple-2 transition-colors"
+        >
+          Schedule a technical discovery
+        </a>
+        <a
+          href="/our-work"
+          class="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/25 text-white text-sm font-ui font-semibold hover:bg-white/10 transition-colors"
+        >
+          See our work
+        </a>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
 
 <style>
   /* ── Hero: sticky scroll-driven expand ── */
-
-  /* Track: gives enough height to scroll through the full animation */
   .hero-scroll-track {
     height: 300vh;
     background: #000;
   }
 
-  /* Sticky pane: fills the viewport, stays pinned while the track scrolls */
   .hero-sticky {
     position: sticky;
     top: 0;
@@ -375,7 +396,6 @@ const orbitPortraits = [
     background: #000;
   }
 
-  /* Video covers the full pane */
   .hero-video {
     position: absolute;
     inset: 0;
@@ -383,12 +403,9 @@ const orbitPortraits = [
     height: 100%;
     object-fit: cover;
     display: block;
-    /* Fallback: fully expanded */
     clip-path: inset(0% 0% round 0px);
   }
 
-  /* Title: fills the viewport, text dwarfs the pill underneath.
-     Centered so the huge letters overflow the pill on all sides. */
   .hero-title-overlay {
     position: absolute;
     inset: 0;
@@ -401,15 +418,12 @@ const orbitPortraits = [
   }
 
   @supports (animation-timeline: scroll()) {
-    /* Video: starts very small (pill), expands to full-bleed while text fades */
     .hero-video {
       clip-path: inset(35% 35% round 16px);
       animation: hero-expand linear both;
       animation-timeline: scroll(root);
       animation-range: 0vh 80vh;
     }
-
-    /* Title: fully visible at start, fades out early as video begins expanding */
     .hero-title-overlay {
       opacity: 1;
       animation: hero-title-fade linear both;
@@ -428,9 +442,8 @@ const orbitPortraits = [
     to   { opacity: 0; }
   }
 
-  /* ── "We help clients navigate" scroll-driven illumination ── */
+  /* ── Illuminated text ── */
   .navigate-bright { color: #fff; }
-  .navigate-dim    { color: #555; }
 
   @supports (animation-timeline: view()) {
     .navigate-bright {
@@ -439,54 +452,13 @@ const orbitPortraits = [
       animation-timeline: view();
       animation-range: entry 0% cover 40%;
     }
-    .navigate-dim {
-      color: #1a1a1a;
-      animation: illuminate-dim linear both;
-      animation-timeline: view();
-      animation-range: entry 15% cover 55%;
-    }
   }
 
-  @keyframes illuminate     { to { color: #ffffff; } }
-  @keyframes illuminate-dim { to { color: #555555; } }
-
-  /* ── Orbit portraits ── */
-  .orbit-arm {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 41%;
-    height: 0;
-    transform-origin: 0 0;
-    animation: orbit-spin 28s linear infinite;
-  }
-
-  .orbit-face {
-    position: absolute;
-    right: 0;
-    top: 0;
-    /* counter-rotation starts at -var(--a) so portrait is always upright */
-    animation: orbit-counter 28s linear infinite;
-  }
-
-  @keyframes orbit-spin {
-    from { transform: rotate(var(--a, 0deg)); }
-    to   { transform: rotate(calc(var(--a, 0deg) + 360deg)); }
-  }
-
-  /* The counter-rotation must negate both the initial --a AND the ongoing spin.
-     Net viewport rotation = arm + face = (--a + t*360) + (-–a - t*360) = 0° → always upright. */
-  @keyframes orbit-counter {
-    from { transform: translateX(50%) translateY(-50%) rotate(calc(-1 * var(--a, 0deg))); }
-    to   { transform: translateX(50%) translateY(-50%) rotate(calc(-1 * var(--a, 0deg) - 360deg)); }
-  }
+  @keyframes illuminate { to { color: #ffffff; } }
 
   @media (prefers-reduced-motion: reduce) {
     .hero-video         { animation: none; clip-path: inset(0% 0% round 0px); }
     .hero-title-overlay { animation: none; opacity: 0; }
     .navigate-bright    { animation: none; color: #fff; }
-    .navigate-dim       { animation: none; color: #555; }
-    .orbit-arm  { animation: none; transform: rotate(var(--a, 0deg)); }
-    .orbit-face { animation: none; transform: translateX(50%) translateY(-50%) rotate(calc(-1 * var(--a, 0deg))); }
   }
 </style>

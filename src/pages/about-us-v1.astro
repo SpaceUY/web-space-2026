@@ -1,0 +1,492 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
+
+const allPosts = await getCollection("blog");
+const latestPosts = allPosts
+  .sort((a, b) => new Date(b.data.publishedAt).valueOf() - new Date(a.data.publishedAt).valueOf())
+  .slice(0, 2);
+
+const stats3 = [
+  { prefix: "+", value: "70", label1: "talented", label2: "team members" },
+  { prefix: "+", value: "160", label1: "successful", label2: "projects delivered" },
+  { prefix: "", value: "5", label1: "Presence in", label2: "5 countries", labelOverride: true },
+];
+
+const stats4 = [
+  { bold: "event speakers", pre: "International", after: "(not bragging)" },
+  { bold: "+40 perfect 5-star ratings", after: "from happy customers\nin Clutch" },
+  { bold: "Top 5", after: "Blockchain Companies\nin the world by Clutch" },
+  { bold: "7 years", after: "helping clients\nsucceed!" },
+];
+
+const values = [
+  {
+    icon: "/images/content/JHogPoUM4sCPo4r816ur9EcHs.svg",
+    title: "We are here to help",
+    description: "We're not just here to press some keys - we want to be your tech partner! We'll use our years of experience to help you make a product that stands out from the crowd!",
+  },
+  {
+    icon: "/images/content/xogWSUdGpi5BEVz8K4WKA5zSI.svg",
+    title: "We are tech-savvy",
+    description: "We strive to be proficient at what we do and that means constantly expanding our horizons.",
+  },
+  {
+    icon: "/images/content/NQaNeD09wdw4EsvxsJ8IOWeE.svg",
+    title: "We are professional",
+    description: "You can count on us for transparency, honesty, respect, and unwavering commitment in all we do. We build trust through open communication and staying true to our word, ensuring every interaction reflects our dedication to doing the right thing for your business.",
+  },
+  {
+    icon: "/images/content/8x8x1nT1yym7h8hZkcOUsL0A5do.svg",
+    title: "We are flexible",
+    description: "It's important for us to keep a work-life balance that's suitable for both our clients and us. Don't worry, we do whatever's necessary to meet goals in a timely manner.",
+  },
+  {
+    icon: "/images/content/sujqj94Uf0BbTPbt246NbjhcOtI.svg",
+    title: "We are human",
+    description: "No space-faring member of ours is going to be stranded! Everyone has a say and is given ample room to grow in our work environments. We're just humans navigating the stars!",
+  },
+];
+
+const galleryPhotos = [
+  { src: "/images/content/uhSZSE63T2i0JocraoQgcgj6So.jpg", alt: "One of our developers speaking during an All Hands company-wide event." },
+  { src: "/images/content/9ZaBNdgUPn2Ft2zVORBykfjZRsg.jpg", alt: "SpaceDev team members posing together and enjoying mate at the All Hands event." },
+  { src: "/images/content/QPCMxqD1lS3XmxVU348dOJ5hlo8.jpg", alt: "Team members participating in a collaborative team-building activity." },
+  { src: "/images/content/eHISRLFUhgnDA3fOxfapqrM7m0.jpg", alt: "The entire SpaceDev team gathered for a group photo at the All Hands 2024 event." },
+  { src: "/images/content/wTwGjd148tprijNn5fRKVIjN6w.jpg", alt: "Close-up of a SpaceDev shirt featuring the company motto: We help clients navigate the future." },
+  { src: "/images/content/lkdG8nylwlZilyk9wstv0caDb8g.jpg", alt: "Juan Manuel Sobral, CTO of SpaceDev, giving a presentation at Ethereum Argentina 2023." },
+  { src: "/images/content/M5jQkkI9kNiJ1FOqaF68Hyqhw.jpg", alt: "Team members sharing a candid moment and conversation during an All Hands event." },
+  { src: "/images/content/WSgg2vvLbwIDpUqEcgfpoHmXa4.jpg", alt: "SpaceDev team member warmly embracing a colleague during an All Hands gathering." },
+  { src: "/images/content/jrVqUaItfaiWthkT9E9WKH8cPaQ.jpg", alt: "SpaceDev team members enjoying a team-bonding activity at a park, engaging in outdoor fun." },
+];
+
+// 4 orbiting portraits (jguQhkTbp0MoZ9wxfnMs1gKc.png removed per design)
+const orbitPortraits = [
+  { src: "/images/content/3mmcSXAv2k0fk78C0Z1fgM86LQ.png", alt: "SpaceDev team member" },
+  { src: "/images/content/Qg6vUwbo5UymgibLLQpwgfAaW9Y.png", alt: "SpaceDev team member" },
+  { src: "/images/content/hYdfyHgO5TKgB3hgri2UDF288tA.png", alt: "SpaceDev team member" },
+  { src: "/images/content/ZhmOQQSS9e2RKMXaZGCU0VCxM.png", alt: "SpaceDev team member" },
+];
+---
+
+<BaseLayout
+  breadcrumbs={false}
+  title="About Us | SpaceDev: Meet the team behind the technology"
+  description="SpaceDev is a blockchain and software development partner with 70+ engineers across the U.S. and Latin America. Top 5 blockchain company by Clutch."
+>
+  <!-- HERO: scroll-driven expand
+       Track is 300vh tall so there's room to scroll through the animation.
+       Inner sticky pane fills the viewport and stays pinned while the track scrolls.
+       Title overlays the video and fades out as the video clip expands. -->
+  <div class="hero-scroll-track">
+    <div class="hero-sticky">
+      <!-- Breadcrumb overlay -->
+      <div class="absolute top-24 left-0 right-0 z-10 mx-auto max-w-[1440px] px-6 md:px-10 pointer-events-none">
+        <div class="pointer-events-auto inline-block">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About Us" }]} visible={true} />
+        </div>
+      </div>
+
+      <!-- Video fills the entire pane; clip-path shrinks it to a pill on load -->
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        class="hero-video"
+      >
+        <source src="https://wbufyhm7al1rxqad.public.blob.vercel-storage.com/we_are_space.mp4" type="video/mp4" />
+      </video>
+
+      <!-- Title: massive text that dwarfs the pill, fades on scroll -->
+      <div class="hero-title-overlay">
+        <h1 class="hero-title text-white font-display font-light text-center whitespace-nowrap" style="font-size: clamp(48px, 9.5vw, 130px);">
+          We are SpaceDev
+        </h1>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WHO WE ARE -->
+  <section class="bg-[#f5f5f5] py-20 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10 max-w-3xl" data-animate>
+      <h2 class="font-display font-light text-5xl md:text-6xl lg:text-7xl text-sd-text-dark leading-[1.05] mb-10">
+        Who We Are
+      </h2>
+      <p class="font-body text-sd-text-dark text-xl md:text-2xl leading-relaxed mb-6">
+        At SpaceDev, engineering meets imagination.
+      </p>
+      <p class="font-body text-sd-text-gray text-xl md:text-2xl leading-relaxed mb-6">
+        We're a custom software development company for businesses that move fast and think boldly. Our team delivers traditional software, mobile applications, and decentralized blockchain ecosystems with security, scalability, and user focus.
+      </p>
+      <p class="font-body text-sd-text-gray text-xl md:text-2xl leading-relaxed">
+        With offices across the U.S., Uruguay, Argentina, and Colombia, we work as one transparent, agile unit aligned with your goals. We build MVPs, develop full products, or provide IT staff augmentation to scale your team. Whatever path fits your vision.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUICK FUN FACTS (STATS) -->
+  <section class="bg-[#f5f5f5] py-20 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <h2 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.05] mb-12" data-animate>
+        Quick fun facts about us
+      </h2>
+      <!-- Row 1: 3 large cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        {stats3.map((s) => (
+          <div class="rounded-2xl bg-[#ebebeb] p-8 md:p-10 min-h-[180px] flex flex-col justify-end" data-animate>
+            {s.labelOverride ? (
+              <>
+                <p class="font-body text-sd-text-gray text-base mb-1">{s.label1}</p>
+                <p class="font-display font-semibold text-2xl md:text-3xl text-sd-text-dark">{s.label2}</p>
+              </>
+            ) : (
+              <>
+                <p class="font-body text-sd-text-dark text-base mb-1">
+                  <span class="font-display font-semibold text-2xl md:text-3xl">{s.prefix}{s.value}</span>
+                  {" "}{s.label1}
+                </p>
+                <p class="font-body text-sd-text-gray text-base">{s.label2}</p>
+              </>
+            )}
+          </div>
+        ))}
+      </div>
+      <!-- Row 2: 4 smaller cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {stats4.map((s) => (
+          <div class="rounded-2xl bg-[#ebebeb] p-6 md:p-8 min-h-[160px] flex flex-col justify-end" data-animate>
+            <p class="font-body text-sd-text-dark text-sm md:text-base leading-snug mb-1 whitespace-pre-line">
+              {s.pre && <span class="text-sd-text-gray">{s.pre}{" "}</span>}
+              <span class="font-display font-semibold">{s.bold}</span>
+            </p>
+            <p class="font-body text-sd-text-gray text-sm leading-snug whitespace-pre-line">{s.after}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WE HELP CLIENTS NAVIGATE THE FUTURE -->
+  <section class="bg-black py-24 md:py-36">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <p class="navigate-bright font-display font-light text-5xl md:text-6xl lg:text-7xl leading-[1.1]">
+        We help clients navigate
+      </p>
+      <p class="navigate-bright font-display font-light text-5xl md:text-6xl lg:text-7xl leading-[1.1]">
+        the future...
+      </p>
+    </div>
+  </section>
+
+  <!-- GALLERY (9 photos, before core values) -->
+  <section class="bg-[#f5f5f5] py-16 md:py-20">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-3">
+        {galleryPhotos.map((img) => (
+          <div class="rounded-2xl overflow-hidden aspect-[4/3]" data-animate>
+            <img
+              src={img.src}
+              alt={img.alt}
+              loading="lazy"
+              width="800"
+              height="600"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR CORE VALUES -->
+  <section class="bg-[#f5f5f5] pb-20 md:pb-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <h2 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.05] mb-14" data-animate>
+        Our core values
+      </h2>
+      <div class="grid gap-10 md:gap-14 md:grid-cols-3">
+        {values.map((v) => (
+          <div data-animate>
+            <div class="w-16 h-16 mb-5">
+              <img src={v.icon} alt={v.title} width="64" height="64" class="w-full h-full" />
+            </div>
+            <h3 class="font-display font-semibold text-xl text-sd-text-dark mb-3">{v.title}</h3>
+            <p class="font-body text-sd-text-gray leading-relaxed text-sm">{v.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT MAKES US DIFFERENT — orbit section -->
+  <section class="bg-[#f5f5f5] py-10 md:py-16 overflow-x-hidden">
+    <div
+      class="orbit-section relative mx-auto"
+      style="width: min(860px, 92vw); height: min(860px, 92vw);"
+    >
+      <!-- Decorative concentric arcs -->
+      <svg
+        class="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 860 860"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <circle cx="430" cy="430" r="255" stroke="#d4d4d4" stroke-width="1"/>
+        <circle cx="430" cy="430" r="355" stroke="#d4d4d4" stroke-width="1"/>
+      </svg>
+
+      <!-- Center content -->
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center px-6 md:px-10" style="max-width: 380px;" data-animate>
+          <h2 class="font-display font-light text-4xl md:text-5xl text-sd-text-dark leading-[1.05] mb-6">
+            What makes<br />us different
+          </h2>
+          <p class="font-body text-sd-text-gray leading-relaxed text-sm mb-3">
+            Behind every line of code, there's a team of highly motivated, skilled
+            <strong class="text-sd-text-dark font-semibold">problem solvers</strong>
+            using the latest tools to build memorable products.
+          </p>
+          <p class="font-body text-sd-text-gray leading-relaxed text-sm">
+            We strive to conduct work processes that are detail-oriented without
+            sacrificing efficiency, knowing that quality will always be top priority.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4 orbiting portraits — spaced 90° apart, starting at -45° -->
+      {orbitPortraits.map((p, i) => (
+        <div class="orbit-arm" style={`--a: ${i * 90 - 45}deg`}>
+          <div class="orbit-face">
+            <div class="w-[76px] h-[76px] md:w-[96px] md:h-[96px] rounded-full overflow-hidden ring-[3px] ring-white shadow-xl">
+              <img
+                src={p.src}
+                alt={p.alt}
+                loading="lazy"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- DIEGO QUOTE -->
+  <section class="bg-sd-dark py-20 md:py-28">
+    <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+      <figure data-animate>
+        <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display font-light text-center mb-14">
+          "SpaceDev's edge is the blend of craft and care. I've seen talented engineers become force multipliers
+          when the system around them is clear, supportive, and accountable. My job is to build that system,
+          one that keeps us human, transparent, and relentlessly focused on outcomes. That's why we can step onto
+          stages around the world, ship memorable products, and still feel like a team you'd want to build with again."
+        </blockquote>
+        <figcaption class="flex items-center justify-end gap-4">
+          <div class="w-16 h-16 rounded-full overflow-hidden shrink-0">
+            <img
+              src="/images/content/WNxBc0mve9sQYZRHbjayiQrfwpE.jpeg"
+              alt="Diego Priliac, COO of SpaceDev"
+              width="64"
+              height="64"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <p class="text-white font-display font-medium">Diego Priliac</p>
+            <p class="text-sd-text-muted text-sm mt-0.5">COO</p>
+            <a
+              href="https://www.linkedin.com/in/diegopriliac/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-1 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-sd-text-muted hover:text-white transition-colors"
+            >
+              CONNECT WITH ME
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="shrink-0">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- NOT JUST ANOTHER CODING COMPANY + BLOG -->
+  <section class="bg-[#f5f5f5] py-20 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <h2 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.05] mb-14" data-animate>
+        Not just another coding company
+      </h2>
+
+      <h3 class="font-display font-light text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-[1.05] mb-10" data-animate>
+        Latest articles in our blog
+      </h3>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {latestPosts.map((post) => (
+          <article class="rounded-2xl overflow-hidden bg-white border border-sd-gray-border hover:-translate-y-1 transition-transform duration-300" data-animate>
+            {post.data.cover && (
+              <div class="aspect-[16/9] overflow-hidden">
+                <img
+                  src={post.data.cover}
+                  alt={post.data.title}
+                  loading="lazy"
+                  width="800"
+                  height="450"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            )}
+            <div class="p-6">
+              <h4 class="font-display font-semibold text-base text-sd-text-dark mb-5 leading-snug">{post.data.title}</h4>
+              <a
+                href={`/blog/${post.id}`}
+                class="inline-flex items-center gap-2 bg-sd-text-dark text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-sd-purple transition-colors"
+              >
+                Learn more
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ── Hero: sticky scroll-driven expand ── */
+
+  /* Track: gives enough height to scroll through the full animation */
+  .hero-scroll-track {
+    height: 300vh;
+    background: #000;
+  }
+
+  /* Sticky pane: fills the viewport, stays pinned while the track scrolls */
+  .hero-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+  }
+
+  /* Video covers the full pane */
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Fallback: fully expanded */
+    clip-path: inset(0% 0% round 0px);
+  }
+
+  /* Title: fills the viewport, text dwarfs the pill underneath.
+     Centered so the huge letters overflow the pill on all sides. */
+  .hero-title-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    /* Video: starts very small (pill), expands to full-bleed while text fades */
+    .hero-video {
+      clip-path: inset(35% 35% round 16px);
+      animation: hero-expand linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0vh 80vh;
+    }
+
+    /* Title: fully visible at start, fades out early as video begins expanding */
+    .hero-title-overlay {
+      opacity: 1;
+      animation: hero-title-fade linear both;
+      animation-timeline: scroll(root);
+      animation-range: 5vh 35vh;
+    }
+  }
+
+  @keyframes hero-expand {
+    from { clip-path: inset(35% 35% round 16px); }
+    to   { clip-path: inset(0% 0% round 0px); }
+  }
+
+  @keyframes hero-title-fade {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+  }
+
+  /* ── "We help clients navigate" scroll-driven illumination ── */
+  .navigate-bright { color: #fff; }
+  .navigate-dim    { color: #555; }
+
+  @supports (animation-timeline: view()) {
+    .navigate-bright {
+      color: #2a2a2a;
+      animation: illuminate linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+    .navigate-dim {
+      color: #1a1a1a;
+      animation: illuminate-dim linear both;
+      animation-timeline: view();
+      animation-range: entry 15% cover 55%;
+    }
+  }
+
+  @keyframes illuminate     { to { color: #ffffff; } }
+  @keyframes illuminate-dim { to { color: #555555; } }
+
+  /* ── Orbit portraits ── */
+  .orbit-arm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 41%;
+    height: 0;
+    transform-origin: 0 0;
+    animation: orbit-spin 28s linear infinite;
+  }
+
+  .orbit-face {
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* counter-rotation starts at -var(--a) so portrait is always upright */
+    animation: orbit-counter 28s linear infinite;
+  }
+
+  @keyframes orbit-spin {
+    from { transform: rotate(var(--a, 0deg)); }
+    to   { transform: rotate(calc(var(--a, 0deg) + 360deg)); }
+  }
+
+  /* The counter-rotation must negate both the initial --a AND the ongoing spin.
+     Net viewport rotation = arm + face = (--a + t*360) + (-–a - t*360) = 0° → always upright. */
+  @keyframes orbit-counter {
+    from { transform: translateX(50%) translateY(-50%) rotate(calc(-1 * var(--a, 0deg))); }
+    to   { transform: translateX(50%) translateY(-50%) rotate(calc(-1 * var(--a, 0deg) - 360deg)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video         { animation: none; clip-path: inset(0% 0% round 0px); }
+    .hero-title-overlay { animation: none; opacity: 0; }
+    .navigate-bright    { animation: none; color: #fff; }
+    .navigate-dim       { animation: none; color: #555; }
+    .orbit-arm  { animation: none; transform: rotate(var(--a, 0deg)); }
+    .orbit-face { animation: none; transform: translateX(50%) translateY(-50%) rotate(calc(-1 * var(--a, 0deg))); }
+  }
+</style>
