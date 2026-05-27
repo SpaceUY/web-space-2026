@@ -6,7 +6,7 @@ author: diego-priliac
 category: "AI"
 tags: ["ai", "product-growth"]
 readTime: 5
-cover: "/images/content/QtnkG3GgCwQfASAOuj52KuDs4.png"
+cover: "/images/content/3mGvxkRKscJFyBNytRzWDrsyg.png"
 takeaways:
   - AI tools function as virtual team members across marketing, product development, sales, and operations.
   - Strategic implementation requires assigning clear roles to each tool, mirroring human hiring practices.
