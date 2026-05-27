@@ -98,11 +98,11 @@ const howWeWork = [
         <source src="https://wbufyhm7al1rxqad.public.blob.vercel-storage.com/we_are_space.mp4" type="video/mp4" />
       </video>
 
-      <!-- Phrase cover — dark overlay visible on load, fades out on scroll -->
-      <div class="hero-phrase-cover" aria-hidden="false">
+      <!-- Phrase cover — dark overlay, words illuminate on scroll then fades -->
+      <div class="hero-phrase-cover">
         <div class="mx-auto max-w-[1100px] px-6 md:px-10">
           <p class="text-[10px] uppercase tracking-[0.22em] text-sd-purple-300 font-ui mb-6">Why SpaceDev</p>
-          <h1 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] max-w-4xl">
+          <h1 id="hero-illuminate-text" class="font-display font-light text-4xl md:text-5xl lg:text-6xl leading-[1.1] max-w-4xl">
             We help startups and enterprises ship secure, scalable blockchain products without costly rewrites, delays, or architectural risks.
           </h1>
         </div>
@@ -373,7 +373,7 @@ const howWeWork = [
     background: #000;
   }
 
-  /* Video — fallback: fully visible */
+  /* Video — JS-driven; fallback (no JS): fully visible */
   .hero-video {
     position: absolute;
     inset: 0;
@@ -381,11 +381,12 @@ const howWeWork = [
     height: 100%;
     object-fit: cover;
     display: block;
-    clip-path: inset(0% 0% round 0px);
     opacity: 1;
+    clip-path: inset(0% 0% round 0px);
+    will-change: opacity, clip-path;
   }
 
-  /* Phrase cover — dark full-screen overlay, fallback: hidden (video visible) */
+  /* Phrase cover — JS-driven; fallback (no JS): hidden so video shows */
   .hero-phrase-cover {
     position: absolute;
     inset: 0;
@@ -396,40 +397,85 @@ const howWeWork = [
     padding-bottom: clamp(64px, 10vh, 100px);
     opacity: 0;
     pointer-events: none;
-  }
-
-  @supports (animation-timeline: scroll()) {
-    /* Phrase: fully visible at load, fades out as user starts scrolling */
-    .hero-phrase-cover {
-      opacity: 1;
-      pointer-events: auto;
-      animation: phrase-out linear both;
-      animation-timeline: scroll(root);
-      animation-range: 10vh 55vh;
-    }
-
-    /* Video: starts as invisible pill, expands and reveals after phrase fades */
-    .hero-video {
-      opacity: 0;
-      clip-path: inset(40% 38% round 20px);
-      animation: hero-expand-in linear both;
-      animation-timeline: scroll(root);
-      animation-range: 40vh 110vh;
-    }
-  }
-
-  @keyframes phrase-out {
-    from { opacity: 1; }
-    to   { opacity: 0; pointer-events: none; }
-  }
-
-  @keyframes hero-expand-in {
-    from { opacity: 0; clip-path: inset(40% 38% round 20px); }
-    to   { opacity: 1; clip-path: inset(0% 0% round 0px); }
+    will-change: opacity;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-phrase-cover { animation: none; opacity: 0; }
-    .hero-video        { animation: none; opacity: 1; clip-path: inset(0% 0% round 0px); }
+    .hero-video        { opacity: 1 !important; clip-path: inset(0% 0% round 0px) !important; }
+    .hero-phrase-cover { opacity: 0 !important; pointer-events: none !important; }
   }
 </style>
+
+<script>
+  // ── Hero: illuminate phrase → then reveal video ──────────────────────────
+  const phraseEl   = document.getElementById("hero-illuminate-text") as HTMLElement | null;
+  const cover      = document.querySelector<HTMLElement>(".hero-phrase-cover");
+  const video      = document.querySelector<HTMLElement>(".hero-video");
+
+  if (phraseEl && cover && video && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+
+    // 1. Split text into word spans, all starting dim
+    const raw = phraseEl.textContent?.trim() ?? "";
+    phraseEl.innerHTML = raw
+      .split(/\s+/)
+      .map((w) => `<span class="hw" style="color:rgba(255,255,255,0.15);transition:color 0.25s ease">${w}</span>`)
+      .join(" ");
+    const words = Array.from(phraseEl.querySelectorAll<HTMLElement>(".hw"));
+
+    // 2. Show the phrase cover immediately
+    cover.style.opacity = "1";
+    cover.style.pointerEvents = "auto";
+
+    // 3. Video starts hidden as a small pill
+    video.style.opacity = "0";
+    video.style.clipPath = "inset(40% 38% round 20px)";
+    video.style.transition = "opacity 0.05s, clip-path 0.05s";
+
+    const vh = window.innerHeight;
+    // Timing (in scroll-px from page top):
+    //  illuminate : 0  → 1.4 * vh
+    //  phrase fade: 1.4 → 1.9 * vh   (starts when illumination complete)
+    //  video reveal: 1.6 → 2.8 * vh
+    const ILLUM_END   = vh * 1.4;
+    const FADE_START  = vh * 1.4;
+    const FADE_END    = vh * 1.9;
+    const VID_START   = vh * 1.6;
+    const VID_END     = vh * 2.8;
+
+    function clamp(v: number, lo: number, hi: number) { return Math.max(lo, Math.min(hi, v)); }
+    function norm(v: number, a: number, b: number)    { return clamp((v - a) / (b - a), 0, 1); }
+
+    let raf = false;
+    function update() {
+      const sy = window.scrollY;
+
+      // Illuminate words
+      const illumProg = norm(sy, 0, ILLUM_END);
+      const litCount  = Math.round(illumProg * words.length);
+      words.forEach((w, i) => {
+        w.style.color = i < litCount ? "#ffffff" : "rgba(255,255,255,0.15)";
+      });
+
+      // Fade phrase cover out
+      const fadeProg = norm(sy, FADE_START, FADE_END);
+      cover!.style.opacity = String(1 - fadeProg);
+      cover!.style.pointerEvents = fadeProg > 0.5 ? "none" : "auto";
+
+      // Video: fade in + expand pill
+      const vidProg = norm(sy, VID_START, VID_END);
+      video!.style.opacity = String(vidProg);
+      const inset  = 40 * (1 - vidProg);
+      const insetH = 38 * (1 - vidProg);
+      const radius = 20 * (1 - vidProg);
+      video!.style.clipPath = `inset(${inset.toFixed(1)}% ${insetH.toFixed(1)}% round ${radius.toFixed(1)}px)`;
+
+      raf = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!raf) { raf = true; requestAnimationFrame(update); }
+    }, { passive: true });
+
+    update(); // run once on load
+  }
+</script>
