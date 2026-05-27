@@ -81,7 +81,10 @@ const howWeWork = [
   description="SpaceDev helps startups and enterprises ship secure, scalable blockchain products without costly rewrites or architectural risks. 70+ engineers, 160+ products shipped."
 >
 
-  <!-- ── HERO: scroll-driven expand ─────────────────────────────────────── -->
+  <!-- ── HERO: phrase first → video expands on scroll ─────────────────────
+       Scroll 0–50vh  : phrase fades out
+       Scroll 40–100vh: video pill expands to full-bleed
+  ──────────────────────────────────────────────────────────────────────── -->
   <div class="hero-scroll-track">
     <div class="hero-sticky">
       <div class="absolute top-24 left-0 right-0 z-10 mx-auto max-w-[1440px] px-6 md:px-10 pointer-events-none">
@@ -90,21 +93,22 @@ const howWeWork = [
         </div>
       </div>
 
+      <!-- Video — starts hidden as small pill, expands after phrase fades -->
       <video autoplay muted loop playsinline class="hero-video">
         <source src="https://wbufyhm7al1rxqad.public.blob.vercel-storage.com/we_are_space.mp4" type="video/mp4" />
       </video>
+
+      <!-- Phrase cover — dark overlay visible on load, fades out on scroll -->
+      <div class="hero-phrase-cover" aria-hidden="false">
+        <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+          <p class="text-[10px] uppercase tracking-[0.22em] text-sd-purple-300 font-ui mb-6">Why SpaceDev</p>
+          <h1 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] max-w-4xl">
+            We help startups and enterprises ship secure, scalable blockchain products without costly rewrites, delays, or architectural risks.
+          </h1>
+        </div>
+      </div>
     </div>
   </div>
-
-  <!-- ── POSITIONING PHRASE — own dark section right after the video ──────── -->
-  <section class="bg-[#0d0c17] py-20 md:py-28">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10" data-animate>
-      <p class="text-[10px] uppercase tracking-[0.22em] text-sd-purple-300 font-ui mb-6">Why SpaceDev</p>
-      <h1 class="font-display font-light text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] max-w-4xl">
-        We help startups and enterprises ship secure, scalable blockchain products without costly rewrites, delays, or architectural risks.
-      </h1>
-    </div>
-  </section>
 
   <!-- ── PROBLEM ─────────────────────────────────────────────────────────── -->
   <section class="bg-sd-dark py-24 md:py-32">
@@ -369,6 +373,7 @@ const howWeWork = [
     background: #000;
   }
 
+  /* Video — fallback: fully visible */
   .hero-video {
     position: absolute;
     inset: 0;
@@ -377,23 +382,54 @@ const howWeWork = [
     object-fit: cover;
     display: block;
     clip-path: inset(0% 0% round 0px);
+    opacity: 1;
+  }
+
+  /* Phrase cover — dark full-screen overlay, fallback: hidden (video visible) */
+  .hero-phrase-cover {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    background: #0d0c17;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: clamp(64px, 10vh, 100px);
+    opacity: 0;
+    pointer-events: none;
   }
 
   @supports (animation-timeline: scroll()) {
-    .hero-video {
-      clip-path: inset(35% 35% round 16px);
-      animation: hero-expand linear both;
+    /* Phrase: fully visible at load, fades out as user starts scrolling */
+    .hero-phrase-cover {
+      opacity: 1;
+      pointer-events: auto;
+      animation: phrase-out linear both;
       animation-timeline: scroll(root);
-      animation-range: 0vh 80vh;
+      animation-range: 10vh 55vh;
+    }
+
+    /* Video: starts as invisible pill, expands and reveals after phrase fades */
+    .hero-video {
+      opacity: 0;
+      clip-path: inset(40% 38% round 20px);
+      animation: hero-expand-in linear both;
+      animation-timeline: scroll(root);
+      animation-range: 40vh 110vh;
     }
   }
 
-  @keyframes hero-expand {
-    from { clip-path: inset(35% 35% round 16px); }
-    to   { clip-path: inset(0% 0% round 0px); }
+  @keyframes phrase-out {
+    from { opacity: 1; }
+    to   { opacity: 0; pointer-events: none; }
+  }
+
+  @keyframes hero-expand-in {
+    from { opacity: 0; clip-path: inset(40% 38% round 20px); }
+    to   { opacity: 1; clip-path: inset(0% 0% round 0px); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-video { animation: none; clip-path: inset(0% 0% round 0px); }
+    .hero-phrase-cover { animation: none; opacity: 0; }
+    .hero-video        { animation: none; opacity: 1; clip-path: inset(0% 0% round 0px); }
   }
 </style>
