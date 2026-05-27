@@ -283,18 +283,20 @@ const howWeWork = [
       </h2>
       <div class="grid gap-8 md:grid-cols-3">
         {team.map((person) => (
-          <div class="rounded-2xl bg-white border border-sd-gray-border overflow-hidden" data-animate>
-            <div class="aspect-[4/3] overflow-hidden bg-sd-light-2">
-              <img
-                src={person.avatar}
-                alt={`${person.name}, ${person.role} at SpaceDev`}
-                loading="lazy"
-                width="400"
-                height="300"
-                class="w-full h-full object-cover"
-              />
+          <div class="rounded-2xl bg-white border border-sd-gray-border" data-animate>
+            <div class="pt-8 pb-2 flex justify-center">
+              <div class="w-28 h-28 rounded-full overflow-hidden ring-4 ring-sd-purple/10 shrink-0">
+                <img
+                  src={person.avatar}
+                  alt={`${person.name}, ${person.role} at SpaceDev`}
+                  loading="lazy"
+                  width="112"
+                  height="112"
+                  class="w-full h-full object-cover"
+                />
+              </div>
             </div>
-            <div class="p-7">
+            <div class="p-7 pt-4">
               <p class="text-[10px] uppercase tracking-[0.18em] text-sd-purple font-ui mb-1">{person.role}</p>
               <h3 class="font-display font-semibold text-lg text-sd-text-dark mb-3">{person.name}</h3>
               <p class="text-sm text-sd-text-gray leading-relaxed mb-5">{person.bio}</p>
