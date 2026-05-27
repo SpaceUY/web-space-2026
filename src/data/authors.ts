@@ -25,14 +25,14 @@ export const authors: Author[] = [
     initials: "DP",
     avatarGradient: "from-sd-purple to-sd-purple-2",
     avatar: "/images/content/Ase2If5CJXH4BrNWxKF0JciqjUE.png",
-    coverImage: "/images/content/QtnkG3GgCwQfASAOuj52KuDs4.png",
+    coverImage: "/images/content/Ase2If5CJXH4BrNWxKF0JciqjUE.png",
     gallery: [
       { src: "/images/content/YxwLtoX3RaoAbsRSfm7BHL1xtKI.png", alt: "Diego Priliac speaking about operations at a SpaceDev All Hands." },
       { src: "/images/content/jqHHiOTVsHa4ioIxPxCULv2gUg.png", alt: "Diego Priliac in conversation with team leads." },
       { src: "/images/content/pVs0fAmc6Gp2davy0dgkOslc1c.png", alt: "Diego Priliac at a leadership offsite." },
       { src: "/images/content/sZeLM1jDYxCoaqnWcDNpUxjsw.png", alt: "Diego Priliac with the SpaceDev operations team." },
     ],
-    social: { linkedin: "https://www.linkedin.com/in/diegopriliac/" },
+    social: { linkedin: "https://www.linkedin.com/in/dpriliac/" },
   },
   {
     slug: "federico-sendra",
@@ -50,7 +50,7 @@ export const authors: Author[] = [
       { src: "/images/content/Uq2tE6OoZv8AxWxDvroCH8r0.jpg", alt: "Federico Sendra leading a Web2-to-Web3 migration workshop." },
       { src: "/images/content/uLuHSBzzLiHci62DaepeOWAGlU.png", alt: "Federico Sendra at SpaceDev All Hands 2024." },
     ],
-    social: { linkedin: "https://www.linkedin.com/in/federicosendra/" },
+    social: { linkedin: "https://www.linkedin.com/in/fsendra/" },
   },
   {
     slug: "juan-manuel-sobral",
@@ -68,7 +68,7 @@ export const authors: Author[] = [
       { src: "/images/content/d3Ddsv9Vko4Mgi0ion6d7POiVc.png", alt: "Juan Manuel Sobral discussing memecoins and tokenomics." },
       { src: "/images/content/pGiXYozQ3mE4cilNOItfe2L2fUA.svg", alt: "SpaceDev co-founder signature illustration." },
     ],
-    social: { linkedin: "https://www.linkedin.com/in/jmsobral/" },
+    social: { linkedin: "https://www.linkedin.com/in/juanmsobral/" },
   },
 ];
 
