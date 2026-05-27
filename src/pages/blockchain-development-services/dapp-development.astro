@@ -4,10 +4,10 @@ import Button from "../../components/ui/Button.astro";
 import { dappData } from "../../data/services";
 
 const services = [
-  { number: "01", title: "Custom DApp Development",             description: "We build custom dApps from scratch, designed around your business model, tokenomics, and user flows — never one-size-fits-all solutions." },
+  { number: "01", title: "Custom DApp Development",             description: "We build custom dApps from scratch, designed around your business model, tokenomics, and user flows. Never one-size-fits-all solutions." },
   { number: "02", title: "Smart Contract Development",          description: "Secure, efficient smart contracts built with best practices, gas optimization, and extensive testing for production deployments." },
   { number: "03", title: "Blockchain Architecture & Scalability", description: "We design robust dApp architectures that support growth, handle high traffic, and evolve as your product and ecosystem mature." },
-  { number: "04", title: "Web3 Frontend & Backend Development", description: "User-friendly Web3 interfaces integrated with wallets, APIs, and decentralized storage — without compromising UX." },
+  { number: "04", title: "Web3 Frontend & Backend Development", description: "User-friendly Web3 interfaces integrated with wallets, APIs, and decentralized storage, without compromising UX." },
   { number: "05", title: "Blockchain Integration",              description: "Seamless integration with existing systems, third-party protocols, or legacy Web2 platforms." },
   { number: "06", title: "Security & Smart Contract Audits",    description: "Through our security expertise, we identify vulnerabilities early and reduce risks before your dApp reaches production." },
 ];
@@ -155,4 +155,40 @@ const industries = [
     </section>
 
   </div>
+
+  <div slot="post-whyus">
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services</h2>
+          <p class="text-sd-text-muted leading-relaxed">Building a dApp often draws on multiple capabilities. Depending on your scope, these services are likely part of your build.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {[
+            { title: "Smart Contract Development", description: "Audited, gas-optimized contracts powering your dApp's on-chain logic.", href: "/blockchain-development-services/smart-contract-development" },
+            { title: "Asset Tokenization",          description: "Turn real-world assets into digital tokens on your dApp infrastructure.", href: "/blockchain-development-services/asset-tokenization" },
+            { title: "BlockAudit: Blockchain Security", description: "Independent security review before your dApp goes live.", href: "/blockaudit-smart-contract-and-blockchain-security" },
+            { title: "IT Staff Augmentation",       description: "Embed senior blockchain engineers directly into your team.", href: "/staff-augmentation" },
+          ].map((service) => (
+            <a
+              href={service.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">{service.title}</h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{service.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+
 </ServicePageLayout>

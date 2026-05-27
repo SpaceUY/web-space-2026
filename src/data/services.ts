@@ -31,6 +31,8 @@ export interface ServicePageData {
   /** Case studies section heading — defaults to a generic title if omitted */
   caseStudiesTitle?: string;
   caseStudiesDescription?: string;
+  /** When set, replaces the "See all work" button with an inline text link */
+  caseStudiesLink?: { text: string; href: string };
   /** Case studies section background tone — defaults to "dark" (purple-deep) */
   caseStudiesTone?: "dark" | "light";
 
@@ -102,25 +104,26 @@ export const blockchainData: ServicePageData = {
       { number: "03", title: "Decentralized Identity", description: "Self-sovereign identity solutions that give users full control over their data — secure, private, and interoperable across chains.", href: "/blockchain-development-services/decentralized-identity" },
       { number: "04", title: "Asset Tokenization", description: "Turn real-world assets into digital tokens — unlocking liquidity, fractional ownership, and new investment opportunities.", href: "/blockchain-development-services/asset-tokenization" },
       { number: "05", title: "Layer 1 Blockchain Development", description: "Fully customized, scalable networks ranging from Layer 1 protocols to private enterprise chains — secure and future-ready.", href: "/blockchain-development-services/layer-1-blockchain-development" },
-      { number: "06", title: "DAO Development", description: "On-chain governance models for transparent decision-making, voting systems, and efficient treasury management.", href: "/blockchain-development-services/dao-development" },
+      { number: "06", title: "DAO Development", description: "On-chain governance models for transparent decision-making, voting systems, and efficient treasury management.", href: "/coming-soon" },
     ],
   },
 
   caseStudySlugs: ["blockchain-for-energy", "fightfi", "apebond", "rarible"],
   caseStudiesTitle: "Blockchain Development Projects We Are Proud Of",
-  caseStudiesDescription: "SpaceDev has shipped production-grade blockchain applications for clients across energy, DeFi, gaming, and NFT infrastructure. Explore our work.",
+  caseStudiesDescription: "SpaceDev has shipped production-grade blockchain applications for clients across energy, DeFi, gaming, and NFT infrastructure.",
+  caseStudiesLink: { text: "Explore our work.", href: "/our-work" },
 
   benefits: {
     title: "Benefits of Blockchain Adoption",
     description:
       "Businesses across industries are turning to blockchain because it's transparent, efficient, and secure. Custom blockchain solutions redefine how transactions, data, and trust work in digital ecosystems.",
     items: [
-      { title: "Increased Security", description: "Advanced cryptographic algorithms safeguard data and transactions. Each block is encrypted, verified, and immutable — protecting against cyberattacks and fraud.", icon: "lock" },
+      { title: "Increased Security", description: "Advanced cryptographic algorithms safeguard data and transactions. Each block is encrypted, verified, and immutable, protecting against cyberattacks and fraud.", icon: "lock" },
       { title: "Greater Transparency", description: "Every transaction is permanently recorded and easily auditable. This openness improves accountability and builds trust with users, partners, and regulators.", icon: "eye" },
       { title: "Improved Efficiency", description: "Automate repetitive workflows and eliminate intermediaries. Smart contracts streamline operations and shorten transaction times.", icon: "bolt" },
       { title: "Higher Reliability", description: "A decentralized network distributes data across multiple nodes, removing single points of failure and ensuring continuous uptime.", icon: "shield" },
       { title: "Cost Optimization", description: "By reducing intermediaries and automating operations, blockchain minimizes administrative costs and transaction fees.", icon: "tag" },
-      { title: "Enhanced Traceability", description: "Trace assets from origin to destination — improving supply-chain visibility, ensuring compliance, and strengthening consumer trust.", icon: "chain" },
+      { title: "Enhanced Traceability", description: "Trace assets from origin to destination, improving supply-chain visibility, ensuring compliance, and strengthening consumer trust.", icon: "chain" },
     ],
   },
 
@@ -143,8 +146,8 @@ export const blockchainData: ServicePageData = {
     title: "Why Choose SpaceDev as Your Tech Partner",
     style: "4col",
     items: [
-      { title: "Fast MVP Delivery", description: "We move ideas into action quickly. Our agile approach allows you to validate concepts, gather user feedback, and iterate — all before committing to full-scale development." },
-      { title: "Real Results, Not Buzzwords", description: "We measure success by what ships and scales. Every engagement is tied to concrete outcomes — faster transactions, higher adoption, measurable ROI." },
+      { title: "Fast MVP Delivery", description: "We move ideas into action quickly. Our agile approach allows you to validate concepts, gather user feedback, and iterate, before committing to full-scale development." },
+      { title: "Real Results, Not Buzzwords", description: "We measure success by what ships and scales. Every engagement is tied to concrete outcomes: faster transactions, higher adoption, measurable ROI." },
       { title: "Transparent Collaboration", description: "No black boxes. You have full visibility into progress, blockers, and decisions throughout the project. We work as an extension of your team, not a vendor." },
       { title: "Post-Launch Partnership", description: "Whether it's project-based execution or IT staff augmentation, we adapt to your structure, scale efficiently, and integrate as an extension of your existing team." },
     ],
@@ -158,10 +161,10 @@ export const blockchainData: ServicePageData = {
 
   faqs: [
     { question: "What does a blockchain development service include?", answer: "Full lifecycle coverage: blockchain consulting, architecture design, smart contract development, front-end and back-end integration, security auditing, and post-launch support." },
-    { question: "How long does custom blockchain development take?", answer: "Most MVPs are production-ready in 8 to 12 weeks. More complex platforms like DeFi protocols require a scoping phase first. Our Product Discovery process gives you accurate timelines before any budget commitment." },
+    { question: "How long does custom blockchain development take?", answer: `Most MVPs are production-ready in 8 to 12 weeks. More complex platforms like DeFi protocols require a scoping phase first. Our <a href="/product-discovery" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Product Discovery</a> process gives you accurate timelines before any budget commitment.` },
     { question: "Which blockchain networks do you build on?", answer: "Ethereum, Solana, Polygon, BNB Chain, Avalanche, and other major Layer 1 and Layer 2 networks. Network selection is always driven by your performance, cost, and ecosystem requirements." },
-    { question: "Do you offer smart contract security audits?", answer: "Yes. Independent smart contract audits are handled by BlockAudit, our dedicated blockchain security division." },
-    { question: "Can you work alongside our existing development team?", answer: "Yes. Our IT Staff Augmentation model lets you embed experienced blockchain engineers into your team without a full outsourced engagement." },
+    { question: "Do you offer smart contract security audits?", answer: `Yes. Independent smart contract audits are handled by <a href="/blockaudit-smart-contract-and-blockchain-security" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">BlockAudit</a>, our dedicated blockchain security division.` },
+    { question: "Can you work alongside our existing development team?", answer: `Yes. Our <a href="/staff-augmentation" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">IT Staff Augmentation</a> model lets you embed experienced blockchain engineers into your team without a full outsourced engagement.` },
   ],
 
   finalCta: {
@@ -203,10 +206,10 @@ export const dappData: ServicePageData = {
 
   whyUs: {
     title: "Why choose SpaceDev as your DApp development company?",
-    description: "We don't just deliver code — we help you build production-grade decentralized products.",
+    description: "We don't just deliver code: we help you build production-grade decentralized products.",
     items: [
       { title: "Web2 + Web3 expertise", description: "Proven expertise combining solid web2 engineering with advanced web3 and blockchain capabilities." },
-      { title: "End-to-end delivery", description: "Strategy, development, security, and scaling — all under one roof." },
+      { title: "End-to-end delivery", description: "Strategy, development, security, and scaling, all under one roof." },
       { title: "Flexible engagement", description: "Project-based or staff augmentation models to fit your team and timeline." },
       { title: "US market experience", description: "Extensive experience working with startups and enterprises in the US market." },
       { title: "Built to last", description: "Strong focus on scalability, security, and long-term success from day one." },
@@ -331,13 +334,13 @@ export const decentralizedIdentityData: ServicePageData = {
   },
   eyebrow: "Sub-service · Blockchain",
   title: "Decentralized Identity Development Services",
-  description: "Decentralized identity (DID) helps organizations verify people, accounts, and credentials without forcing users to hand over more data than necessary. SpaceDev designs and builds DID solutions that work in the real world — scalable identity experiences, secure integrations, and production-ready operations.",
+  description: "Decentralized identity (DID) helps organizations verify people, accounts, and credentials without forcing users to hand over more data than necessary. SpaceDev designs and builds DID solutions that work in the real world: scalable identity experiences, secure integrations, and production-ready operations.",
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   footerMarqueeTheme: "dark",
 
   finalCta: {
-    title: "Build decentralized identity experiences that improve onboarding, privacy, and trust — without sacrificing usability.",
+    title: "Build decentralized identity experiences that improve onboarding, privacy, and trust without sacrificing usability.",
     buttonLabel: "Talk to our blockchain team",
     buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
     external: true,
@@ -556,13 +559,13 @@ export const layer1Data: ServicePageData = {
   },
   eyebrow: "Blockchain Development",
   title: "Custom Layer 1 Blockchain Development, From Protocol Design to Mainnet",
-  description: "Building a Layer 1 is one of the most technically demanding projects in Web3. SpaceDev builds custom Layer 1 blockchain networks for protocols, enterprises, and product teams that need sovereign chain infrastructure — covering the full cycle from protocol design to mainnet launch.",
+  description: "Building a Layer 1 is one of the most technically demanding projects in Web3. SpaceDev builds custom Layer 1 blockchain networks for protocols, enterprises, and product teams that need sovereign chain infrastructure: covering the full cycle from protocol design to mainnet launch.",
   primaryCta: { label: "Talk to Our L1 Blockchain Development Team", href: "/contact" },
 
   footerMarqueeTheme: "dark",
 
   faqs: [
-    { question: "What is Layer 1 blockchain development?", answer: "Building the base protocol of a blockchain network: consensus mechanism, validator infrastructure, execution environment, native token, and governance. This is distinct from building applications on top of existing chains like Ethereum or Solana — it means creating the chain itself." },
+    { question: "What is Layer 1 blockchain development?", answer: "Building the base protocol of a blockchain network: consensus mechanism, validator infrastructure, execution environment, native token, and governance. This is distinct from building applications on top of existing chains like Ethereum or Solana, it means creating the chain itself." },
     { question: "How long does a Layer 1 build take?", answer: "Typically 6 to 12 months from architecture to mainnet, depending on framework choice and scope. Cosmos SDK and Substrate-based approaches compress timelines compared to building from scratch. A Discovery Sprint at the start locks in framework selection and scope before any development begins." },
     { question: "What is the difference between Cosmos SDK, Substrate, and a custom chain?", answer: "Cosmos SDK is optimized for sovereign app-chains with IBC interoperability and is the most mature ecosystem for app-chain development. Substrate offers maximum modularity for frequent runtime upgrades and Polkadot ecosystem access. Custom from scratch delivers maximum protocol control at the highest cost and timeline. The right choice depends on your ecosystem targets, interoperability requirements, and long-term upgrade strategy." },
     { question: "Do you build EVM-compatible Layer 1 chains?", answer: "Yes. Using Geth-based forks, Cosmos SDK with Ethermint, or Avalanche subnets with EVM support, depending on ecosystem compatibility and performance requirements. EVM-compatible chains allow existing Solidity contracts and Ethereum developer tooling to work on your chain with minimal changes." },

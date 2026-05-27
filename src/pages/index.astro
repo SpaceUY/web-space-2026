@@ -76,7 +76,7 @@ const industries = [
         SpaceDev is a <strong class="font-semibold">blockchain development company</strong> specializing in custom Web3 solutions, decentralized application development, and smart contract engineering. We work with startups, fintechs, and growth-stage companies that need a technical partner with both the depth to build and the speed to ship.
       </p>
       <p class="mt-4 text-sm md:text-base text-white max-w-2xl leading-relaxed font-body font-light">
-        From <strong class="font-semibold">dApp architecture</strong> to token infrastructure and <strong class="font-semibold">smart contract auditing</strong>, our engineering teams cover the full product lifecycle — from initial scoping to production and scale.
+        From <strong class="font-semibold">dApp architecture</strong> to token infrastructure and <strong class="font-semibold">smart contract auditing</strong>, our engineering teams cover the full product lifecycle, from initial scoping to production and scale.
       </p>
     </div>
   </section>
@@ -111,14 +111,14 @@ const industries = [
   <section class="bg-sd-light py-20 md:py-32">
     <div class="sd-container">
       <div class="max-w-2xl mb-16">
-        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Core Services</h2>
+        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Our Web2 and Web3 Development Services</h2>
         <p class="mt-6 text-base text-sd-text-gray leading-relaxed max-w-xl">
-          We help businesses transform ideas into products through a mix of next-generation web3 engineering and traditional software development. Each service is designed to help you build smarter, move faster, and scale with confidence.
+          We build the infrastructure that decentralized products run on. Whether you need a full-stack dApp, a custom blockchain protocol, or a secure smart contract system, our teams work across EVM-compatible chains, Solana, and Layer 2 networks.
         </p>
       </div>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {[
-          { title: "Blockchain Software Development", href: "/blockchain-development-services", desc: "We turn complex ideas into reliable decentralized applications. Our blockchain development services deliver scalable, transparent infrastructure built to grow with your business." },
+          { title: "Blockchain Software Development", href: "/blockchain-development-services", desc: "Custom blockchain solutions for products that need more than a generic stack. We design and build decentralized applications (dApps), token systems, DeFi protocols, and Layer 1/Layer 2 infrastructure with architecture decisions grounded in your product's actual scale requirements." },
           { title: "Web and Mobile App Development", href: "/innovative-web-and-mobile-solutions", desc: "From web platforms to mobile apps, we build high-performance digital products that users actually enjoy. Design thinking, agile development, and scalable architecture: all under one team." },
           { title: "IT Staff Augmentation", href: "/staff-augmentation", desc: "Connect with skilled developers, designers, and engineers who fit your workflow from day one. You get the expertise without the overhead, faster and fully managed." },
           { title: "Product Discovery", href: "/product-discovery", desc: "We help you validate ideas, define priorities, and design a roadmap before writing a single line of code. Business goals, user needs, and technical scope, aligned from day one." },
@@ -147,9 +147,10 @@ const industries = [
 
   <!-- QUOTE REVEAL — between Core Services and Why SpaceDev -->
   <QuoteReveal
-    text="Take your business to new heights quickly—let us handle the technology"
+    text="Take your business to new heights quickly, let us handle the technology."
     tone="dark"
     maxWidth="max-w-[720px]"
+    padding="py-36 md:py-56"
   />
 
   <!-- WHY SPACEDEV (light) -->
@@ -163,11 +164,11 @@ const industries = [
       </div>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mb-12">
         {[
-          { n: "01", title: "Full-cycle product ownership", desc: "One partner from discovery to post-launch — no handoff gaps." },
+          { n: "01", title: "Full-cycle product ownership", desc: "One partner from discovery to post-launch. No handoff gaps." },
           { n: "02", title: "Web3 + Web2 under one team", desc: "Blockchain infrastructure and the product layer built together." },
           { n: "03", title: "BlockAudit security practice", desc: "Smart contract auditing built into development, not bolted on." },
-          { n: "04", title: "Flexible engagement models", desc: "Staff aug, fixed-scope, or full MVP builds — structured around your need." },
-          { n: "05", title: "40+ five-star client reviews", desc: "Verified on Clutch and GoodFirms — across DeFi, fintech, and gaming." },
+          { n: "04", title: "Flexible engagement models", desc: "Staff aug, fixed-scope, or full MVP builds, structured around your need." },
+          { n: "05", title: "40+ five-star client reviews", desc: "Verified on Clutch and GoodFirms across DeFi, fintech, and gaming." },
           { n: "06", title: "AWS Partner", desc: "Cloud infrastructure support alongside blockchain development." },
         ].map(w => (
           <div class="group rounded-2xl p-7 bg-sd-light-2 transition-colors duration-300 hover:bg-sd-purple/15" data-animate>
@@ -207,12 +208,12 @@ const industries = [
   <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
     <div class="sd-container">
       <div class="max-w-2xl mb-16">
-        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Check out some of our success stories!</h2>
+        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Web3 and Web2 Development Case Studies</h2>
         <p class="mt-6 text-base text-sd-text-gray leading-relaxed">
           Every product tells a story: one of collaboration, innovation, and measurable results. SpaceDev not only delivers projects; we support businesses' growth with the kind of technology that earns trust, scales with users, and stands the test of time.
         </p>
       </div>
-      <div id="home-cs-zone" class="relative grid gap-6 md:grid-cols-2">
+      <div id="home-cs-zone" class="relative grid gap-6 md:grid-cols-3">
         <!-- Custom cursor: rotating text ring -->
         <div id="home-cs-cursor" class="pointer-events-none fixed z-50 opacity-0 transition-opacity duration-200" style="transform: translate(-50%, -50%); will-change: transform; width: 120px; height: 120px;">
           <svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
@@ -229,22 +230,18 @@ const industries = [
           <CaseStudyCard caseStudy={c} />
         ))}
       </div>
-      <div class="mt-10">
-        <a href="/our-work" class="inline-flex items-center gap-2 text-sd-text-dark text-sm hover:text-sd-purple transition-colors font-medium">
-          See all work →
+      <div class="mt-10 flex flex-col gap-8 items-start">
+        <a href="/our-work" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors">
+          See all work
         </a>
+        <p class="text-xl text-sd-text-gray">
+          Eager to create your own success story?
+          <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer"
+            class="text-sd-text-dark hover:underline hover:underline-offset-4 hover:text-sd-purple transition-colors font-medium">
+            Book a call.
+          </a>
+        </p>
       </div>
-    </div>
-  </section>
-
-  <!-- MINI-CTA after case studies -->
-  <section class="bg-sd-light py-16 border-t border-sd-gray-border">
-    <div class="sd-container">
-      <p class="text-2xl md:text-3xl text-sd-text-dark font-display mb-6">Eager to create your own success story?</p>
-      <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors">
-        Book a call
-      </a>
     </div>
   </section>
 
@@ -253,7 +250,7 @@ const industries = [
     <div class="sd-container">
       <div class="max-w-2xl mb-14">
         <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">
-          There are two ways to work with us —<br/>pick what suits you!
+          There are two ways to work with us
         </h2>
       </div>
       <div class="grid gap-6 md:grid-cols-2 mb-10">
@@ -304,12 +301,16 @@ const industries = [
           <p class="text-sm text-sd-text-gray">Ideal for rapidly scaling team capacity with on-demand expert IT talent.</p>
         </div>
       </div>
-      <div class="bg-white rounded-2xl border border-sd-gray-border p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <p class="text-base font-display text-sd-text-dark mb-1">Still not sure which option you need?</p>
-          <p class="text-sm text-sd-text-gray">No worries, we're here to help you find the best fit!</p>
+      <div
+        class="relative overflow-hidden rounded-3xl px-10 py-12 md:px-16 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-8"
+        style="background: var(--sd-gradient-purple-dark);"
+      >
+        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 70% 50%, #7c3aed, transparent 60%);"></div>
+        <div class="relative">
+          <p class="text-2xl md:text-3xl text-white font-display leading-snug">Still not sure which option you need?</p>
+          <p class="text-sd-text-muted mt-2 leading-relaxed">No worries, we're here to help you find the best fit!</p>
         </div>
-        <a href="/contact" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors whitespace-nowrap">
+        <a href="/contact" class="relative shrink-0 inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3 text-sm text-white font-medium hover:bg-white/20 transition-colors backdrop-blur-sm whitespace-nowrap">
           Get in touch
         </a>
       </div>
@@ -321,7 +322,7 @@ const industries = [
     <div class="sd-container">
       <div class="max-w-2xl mb-14">
         <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight">
-          Over <span style="background: linear-gradient(90deg, #44cdf3 0%, #673ae4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">40 perfect 5-star ratings</span> from happy customers
+          Over <span style="background: linear-gradient(90deg, #3b2080 0%, #673ae4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">40 perfect 5-star ratings</span> from happy customers
         </h2>
         <p class="mt-5 text-base text-sd-text-gray leading-relaxed">
           Clients choose SpaceDev for reliability, communication, and technical depth, and stay for the results. Every partnership reflects our belief that success is built on trust, collaboration, and a shared vision.
@@ -329,18 +330,14 @@ const industries = [
       </div>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {[
-          { quote: `"They showed a strong commitment to resolving issues and delivering effective solutions"`, company: "Ubicuity", location: "San Francisco, California", period: "APR 2023 - NOV 2023" },
-          { quote: `"It's a pleasure to collaborate with them"`, company: "Ulta Beauty", location: "Bolingbrook, Illinois", period: "APR 2023 - ONGOING" },
-          { quote: `"SpaceDev meets the required deadlines"`, company: "Blockus", location: "San Francisco, California", period: "JAN 2023 - ONGOING" },
-          { quote: `"They felt more like a partner than a service provider"`, company: "Boto", location: "Spain", period: "FEB 2022 - FEB 2023" },
+          { quote: `"They showed a strong commitment to resolving issues and delivering effective solutions"`, company: "Ubicuity", location: "San Francisco, California", period: "APR 2023 - NOV 2023", href: "https://clutch.co/profile/spacedev?page=4#review-248076" },
+          { quote: `"It's a pleasure to collaborate with them"`, company: "Ulta Beauty", location: "Bolingbrook, Illinois", period: "APR 2023 - ONGOING", href: "https://clutch.co/profile/spacedev?page=2#review-242145" },
+          { quote: `"SpaceDev meets the required deadlines"`, company: "Blockus", location: "San Francisco, California", period: "JAN 2023 - ONGOING", href: "https://clutch.co/profile/spacedev?page=5#review-219434" },
+          { quote: `"They felt more like a partner than a service provider"`, company: "Boto", location: "Spain", period: "FEB 2022 - FEB 2023", href: "https://clutch.co/profile/spacedev#review-244036" },
         ].map(t => (
-          <div class="bg-[#e8e8e8] rounded-2xl p-6 flex flex-col" data-animate>
-            <div class="flex items-center gap-3 mb-4 pb-4 border-b border-[#e0e0e0]">
-              <!-- Clutch "C" lettermark -->
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
-                <rect width="32" height="32" rx="4" fill="white"/>
-                <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="700" fill="#1a1a1a">C</text>
-              </svg>
+          <a href={t.href} target="_blank" rel="noopener noreferrer" class="group bg-[#e8e8e8] rounded-2xl p-6 flex flex-col hover:bg-[#e0e0e0] transition-colors" data-animate>
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-[#d0d0d0]">
+              <img src="/images/Clutch-sm.svg" alt="Clutch" class="h-7 w-auto" />
               <div class="flex items-center gap-2">
                 <span class="text-sd-text-dark font-semibold text-sm">5.0</span>
                 <span class="text-[#FF3D2E] text-sm leading-none">★★★★★</span>
@@ -354,8 +351,14 @@ const industries = [
               <p class="text-xs text-sd-text-muted mt-0.5">{t.location}</p>
               <p class="text-xs text-sd-text-muted mt-0.5">{t.period}</p>
             </div>
-          </div>
+          </a>
         ))}
+      </div>
+      <div class="mt-10">
+        <a href="https://clutch.co/profile/spacedev" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sd-text-dark text-sm font-medium hover:text-sd-purple hover:underline hover:underline-offset-4 transition-colors">
+          See our Clutch profile →
+        </a>
       </div>
     </div>
   </section>
@@ -364,24 +367,26 @@ const industries = [
   <section class="bg-sd-light py-20 md:py-28 border-t border-sd-gray-border">
     <div class="sd-container">
       <h2 class="text-3xl md:text-4xl text-sd-text-dark font-display leading-tight tracking-tight mb-14">Highly reviewed by</h2>
-      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
+      <div class="grid grid-cols-4 md:grid-cols-8 gap-x-6 gap-y-14 items-center justify-items-center">
         {[
-          { src: "/images/content/zPERVUfXVexzfhErCDP4RSRooMk.svg", alt: "Official Member Forbes 2024" },
-          { src: "/images/content/aBdWHMkZEsQNlbGeQBO4XJATg8.svg", alt: "Top Ethereum Company Clutch 2024" },
-          { src: "/images/content/bdBmJxXbS0JbYnv70UAcRb5GrwM.svg", alt: "Top Blockchain Company Clutch 2024" },
-          { src: "/images/content/1exsYdT6xVql7iTE5bqqdWOjRI.svg", alt: "Top Blockchain Company Clutch Latin America 2024" },
-          { src: "/images/content/io1CW4NvxRfJCwsXcDcmSR9I4U.svg", alt: "Clutch 1000 2023" },
-          { src: "/images/content/uzUPR58aJMlGaMdsQDEp1vIE3Q.svg", alt: "Top Web3 Clutch 2023" },
-          { src: "/images/content/WNyphXBw9RH2QiIGe1gENvdRb3Y.svg", alt: "Upwork Expert-Vetted Leading Development Company" },
-          { src: "/images/content/4zJE6sBRdXmWJ0jpJ853uz4HF8.svg", alt: "Top Blockchain Company Clutch 2023" },
-          { src: "/images/content/9OYbtJK9SdtfcTqrTSOiKucFkFc.svg", alt: "Top Blockchain Development Company GoodFirms" },
-          { src: "/images/content/ehEE6oOVqif6LDETLECnU2DsY.svg", alt: "Most Reviewed Software Developers Miami" },
-          { src: "/images/content/nP3aIhjlgbCspDHyMD8puWCbWU.svg", alt: "Top Blockchain Company Clutch Latin America 2023" },
-          { src: "/images/content/tfNqyIxGUkSzf4hgbfIY4n2TLp4.svg", alt: "Top B2B Companies Clutch Uruguay 2022" },
-          { src: "/images/content/p5gbeY490nFrI1CctwNGY4JJA.svg", alt: "Top Blockchain Development Company GoodFirms" },
-          { src: "/images/content/fsRat8jg5KpcGRaObGavSpSs.svg", alt: "Top Blockchain Development Company GoodFirms" },
+          { src: "/images/content/zPERVUfXVexzfhErCDP4RSRooMk.svg", alt: "AWS Partner",                                          href: "https://partners.amazonaws.com/" },
+          { src: "/images/content/aBdWHMkZEsQNlbGeQBO4XJATg8.svg", alt: "Official Member Forbes Technology Council 2024",    href: "https://www.forbes.com/councils/forbestechcouncil/" },
+          { src: "/images/content/bdBmJxXbS0JbYnv70UAcRb5GrwM.svg", alt: "Top Ethereum Company Clutch 2024",                 href: "https://clutch.co/profile/spacedev" },
+          { src: "/images/content/1exsYdT6xVql7iTE5bqqdWOjRI.svg", alt: "Top Blockchain Company Clutch 2024",                href: "https://clutch.co/profile/spacedev" },
+          { src: "/images/content/io1CW4NvxRfJCwsXcDcmSR9I4U.svg", alt: "Top Blockchain Company Clutch Latin America 2024",  href: "https://clutch.co/profile/spacedev" },
+          { src: "/images/content/uzUPR58aJMlGaMdsQDEp1vIE3Q.svg", alt: "Top Web3 Clutch 2023",                              href: "https://clutch.co/profile/spacedev" },
+          { src: "/images/content/WNyphXBw9RH2QiIGe1gENvdRb3Y.svg", alt: "Official Member Forbes Technology Council 2023",   href: "https://www.forbes.com/councils/forbestechcouncil/" },
+          { src: "/images/content/4zJE6sBRdXmWJ0jpJ853uz4HF8.svg", alt: "Clutch 1000 2023",                                  href: "https://clutch.co/profile/spacedev" },
+          { src: "/images/content/9OYbtJK9SdtfcTqrTSOiKucFkFc.svg", alt: "Upwork Expert-Vetted Leading Development Company", href: "https://www.upwork.com/agencies/spacedev/" },
+          { src: "/images/content/ehEE6oOVqif6LDETLECnU2DsY.svg", alt: "Top Blockchain Company Clutch 2023",                 href: "https://clutch.co/profile/spacedev" },
+          { src: "/images/content/nP3aIhjlgbCspDHyMD8puWCbWU.svg", alt: "Most Reviewed Software Developers Miami",           href: "https://themanifest.com/" },
+          { src: "/images/content/tfNqyIxGUkSzf4hgbfIY4n2TLp4.svg", alt: "Top Blockchain Company Clutch Latin America 2023", href: "https://clutch.co/profile/spacedev" },
+          { src: "/images/content/p5gbeY490nFrI1CctwNGY4JJA.svg", alt: "Top B2B Companies Clutch Uruguay 2022",              href: "https://clutch.co/profile/spacedev" },
+          { src: "/images/content/fsRat8jg5KpcGRaObGavSpSs.svg", alt: "Top Blockchain Development Company GoodFirms",        href: "https://www.goodfirms.co/" },
         ].map((b) => (
-          <img src={b.src} alt={b.alt} loading="lazy" class="h-24 md:h-28 w-auto object-contain" />
+          <a href={b.href} target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-70">
+            <img src={b.src} alt={b.alt} loading="lazy" class="h-24 md:h-28 w-auto object-contain" />
+          </a>
         ))}
       </div>
     </div>
@@ -390,19 +395,22 @@ const industries = [
   <!-- WE SUPPORT (light) — communities & conferences -->
   <section class="bg-sd-light py-20 md:py-24 border-t border-sd-gray-border">
     <div class="sd-container">
-      <p class="text-center text-xs uppercase tracking-[0.2em] text-sd-text-gray font-medium mb-12">We support</p>
-      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 opacity-90">
+      <h2 class="text-3xl md:text-4xl text-sd-text-dark font-display leading-tight tracking-tight mb-14">We support</h2>
+      <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-x-6 gap-y-8 items-center justify-items-center">
         {[
-          { src: "/images/content/tEUseewFeuWDUJuJGNTkPa0amk.png", alt: "Ethereum Argentina" },
-          { src: "/images/content/j5gWTfiVgDuBsVZ2AV0EDRao8.png", alt: "DEC Institute" },
-          { src: "/images/content/MrWHz25zFuUyPR7j3zfp9W3zM.png", alt: "Ethereum Uruguay" },
-          { src: "/images/content/wdpDn751pDCKDfmyyHBXCFMqhns.svg", alt: "Cámara Blockchain del Uruguay" },
-          { src: "/images/content/kM3IjbL29OQveuvBHUmbnpSDBmE.png", alt: "IT Builders" },
-          { src: "/images/content/MYcPcE7qfLNS2A6YUn0AALlhU.png", alt: "DevFest Google" },
-          { src: "/images/content/YNeJkqrfvKqDVlMxsZydxYCPtc.svg", alt: "CUTI" },
-          { src: "/images/content/fz7h8Vi22wz1sBL99ZxGS44Kw.png", alt: "Uruguay Technology" },
+          { src: "/images/content/tEUseewFeuWDUJuJGNTkPa0amk.png", alt: "Ethereum Argentina",          href: "https://ethereumargentina.org/" },
+          { src: "/images/content/j5gWTfiVgDuBsVZ2AV0EDRao8.png",  alt: "DEC Institute",               href: "https://decinstitute.org/" },
+          { src: "/images/content/MrWHz25zFuUyPR7j3zfp9W3zM.png",  alt: "Ethereum Uruguay",            href: "https://www.ethereumuruguay.org/" },
+          { src: "/images/content/wdpDn751pDCKDfmyyHBXCFMqhns.svg", alt: "Cámara Blockchain Uruguay",  href: "https://www.cbu.org.uy/" },
+          { src: "/images/content/kM3IjbL29OQveuvBHUmbnpSDBmE.png", alt: "IT Builders",                href: "https://itbuilderslive.com/" },
+          { src: "/images/content/MYcPcE7qfLNS2A6YUn0AALlhU.png",  alt: "DevFest Google",             href: "https://developers.google.com/community" },
+          { src: "/images/content/product-tank.avif",                alt: "ProductTank",                href: "https://www.mindtheproduct.com/producttank/" },
+          { src: "/images/content/YNeJkqrfvKqDVlMxsZydxYCPtc.svg", alt: "CUTI",                       href: "https://cuti.org.uy/" },
+          { src: "/images/content/fz7h8Vi22wz1sBL99ZxGS44Kw.png",  alt: "Uruguay Technology",         href: "https://uruguaytechnology.uy/en/" },
         ].map((c) => (
-          <img src={c.src} alt={c.alt} loading="lazy" class="h-12 md:h-14 w-auto object-contain" />
+          <a href={c.href} target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-70">
+            <img src={c.src} alt={c.alt} loading="lazy" class="h-12 md:h-14 w-auto object-contain" />
+          </a>
         ))}
       </div>
     </div>
@@ -412,7 +420,7 @@ const industries = [
   <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
     <div class="sd-container">
       <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
-        <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-sd-text-dark leading-tight tracking-tight md:sticky md:top-32">
+        <h2 class="text-4xl md:text-6xl font-display text-sd-text-dark leading-tight tracking-tight md:sticky md:top-32">
           Frequently Asked Questions
         </h2>
         <div class="bg-[#f2f2f2] rounded-2xl overflow-hidden px-6 md:px-8">
@@ -468,23 +476,25 @@ const industries = [
     <!-- Subtle purple gradient bg from original -->
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 0%, rgba(103,58,228,0.06) 0%, transparent 70%);"></div>
     <div class="relative sd-container">
-      <h2 class="text-5xl md:text-7xl lg:text-8xl text-sd-text-dark font-display leading-none tracking-tight mb-8 max-w-4xl">
-        Ready to build the future with SpaceDev?
-      </h2>
-      <p class="text-base text-sd-text-gray leading-relaxed mb-2 max-w-2xl">
-        Your next big idea deserves a partner who understands both innovation and execution.
-      </p>
-      <p class="text-base text-sd-text-gray leading-relaxed mb-2 max-w-2xl">
-        SpaceDev combines web3 development services, blockchain expertise, and global engineering talent to help you move from vision to reality with speed and precision.
-      </p>
-      <p class="text-base text-sd-text-gray leading-relaxed mb-10 max-w-2xl">
-        Let's turn your concept into a product that scales, engages, and endures.
-      </p>
-      <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors">
-        Schedule a call
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight mb-6">
+          Ready to build the future with SpaceDev?
+        </h2>
+        <p class="text-base text-sd-text-gray leading-relaxed mb-4">
+          Your next big idea deserves a partner who understands both innovation and execution.
+        </p>
+        <p class="text-base text-sd-text-gray leading-relaxed mb-4">
+          SpaceDev combines web3 development services, blockchain expertise, and global engineering talent to help you move from vision to reality with speed and precision.
+        </p>
+        <p class="text-base text-sd-text-gray leading-relaxed mb-8">
+          Let's turn your concept into a product that scales, engages, and endures.
+        </p>
+        <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-sd-dark text-white text-sm font-medium hover:bg-sd-dark-2 transition-colors">
+          Schedule a call
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 

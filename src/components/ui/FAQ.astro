@@ -19,6 +19,8 @@ const questionColor = tone === "dark" ? "text-white" : "text-sd-text-dark";
 const answerColor = tone === "dark" ? "text-sd-text-muted" : "text-sd-text-gray";
 const iconColor = tone === "dark" ? "text-sd-purple-300" : "text-sd-purple";
 
+const stripHtml = (html: string) => html.replace(/<[^>]+>/g, "");
+
 const faqJsonLd = withJsonLd
   ? {
       "@context": "https://schema.org",
@@ -26,7 +28,7 @@ const faqJsonLd = withJsonLd
       mainEntity: items.map((item) => ({
         "@type": "Question",
         name: item.question,
-        acceptedAnswer: { "@type": "Answer", text: item.answer },
+        acceptedAnswer: { "@type": "Answer", text: stripHtml(item.answer) },
       })),
     }
   : null;
@@ -42,7 +44,7 @@ const faqJsonLd = withJsonLd
         </span>
       </summary>
       <div class={`mt-4 text-sm md:text-base leading-relaxed ${answerColor}`}>
-        {item.answer}
+        <Fragment set:html={item.answer} />
       </div>
     </details>
   ))}
