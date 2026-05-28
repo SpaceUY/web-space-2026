@@ -67,7 +67,11 @@ const industries = [
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.18) 0%, transparent 65%);"></div>
     <div class="relative w-full px-6 pb-10">
       <p class="text-5xl md:text-[80px] text-white font-display leading-none tracking-tight">
-        Finally: Your <span id="rotating-word" class="text-white">Flexible</span><br/>Tech Partner.
+        Finally: Your<br/>
+        <span style="display:inline-block; overflow:hidden; vertical-align:bottom; line-height:1.05;">
+          <span id="rotating-word" class="text-white" style="display:inline-block;">Flexible</span>
+        </span><br/>
+        Tech Partner.
       </p>
       <h1 class="mt-16 text-lg md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
         Blockchain Development Company & Web3 Software Partner
@@ -495,22 +499,38 @@ const industries = [
   import { initScrollAnimations } from "../lib/animations";
   document.addEventListener("DOMContentLoaded", initScrollAnimations);
 
-  // Rotating word animation
+  // Rotating word — slide up from below
   const words = ["Fast", "Flexible", "Reliable"];
   let idx = 0;
   const el = document.getElementById("rotating-word");
   if (el) {
-    setInterval(() => {
+    const SLIDE = "cubic-bezier(0.2, 0.7, 0.3, 1)";
+
+    function nextWord() {
       idx = (idx + 1) % words.length;
-      el.style.opacity = "0";
+
+      // Exit: slide up and fade out
+      el.style.transition = `transform 0.28s ${SLIDE}, opacity 0.2s ease`;
+      el.style.transform  = "translateY(-110%)";
+      el.style.opacity    = "0";
+
       setTimeout(() => {
-        if (el) {
-          el.textContent = words[idx];
-          el.style.opacity = "1";
-        }
-      }, 200);
-    }, 2000);
-    el.style.transition = "opacity 0.2s ease";
+        // Swap word and position it below
+        el.textContent      = words[idx];
+        el.style.transition = "none";
+        el.style.transform  = "translateY(110%)";
+        el.style.opacity    = "0";
+
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          // Enter: slide up into place
+          el.style.transition = `transform 0.32s ${SLIDE}, opacity 0.22s ease`;
+          el.style.transform  = "translateY(0)";
+          el.style.opacity    = "1";
+        }));
+      }, 290);
+    }
+
+    setInterval(nextWord, 2400);
   }
 
   // Case studies — spinning VIEW PROJECT cursor

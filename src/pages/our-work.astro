@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import CaseStudyCard from "../components/ui/CaseStudyCard.astro";
 import AnimatedCounter from "../components/ui/AnimatedCounter.astro";
 import CTA from "../components/ui/CTA.astro";
 import QuoteReveal from "../components/ui/QuoteReveal.astro";
@@ -153,6 +152,32 @@ const clientLogos = [
 
   </section>
 
+  <!-- CLIENT LOGOS MARQUEE -->
+  <section class="bg-sd-light overflow-hidden">
+    <div class="sd-marquee-wrapper">
+      <div class="sd-marquee">
+        <!-- Set 1 -->
+        <div class="sd-marquee-set">
+          {clientLogos.map((c) => c.full
+            ? <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="eager" class="shrink-0 block" />
+            : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
+                <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="eager" class="block" />
+              </div>
+          )}
+        </div>
+        <!-- Set 2 — duplicate for seamless loop -->
+        <div class="sd-marquee-set" aria-hidden="true">
+          {clientLogos.map((c) => c.full
+            ? <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="shrink-0 block" />
+            : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
+                <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="block" />
+              </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── CASE STUDIES (light, cards breathe) ── -->
   <section class="bg-sd-light-2 py-20 md:py-28">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10">
@@ -163,27 +188,6 @@ const clientLogos = [
         <h2 class="font-display font-semibold text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.1]">
           Our work
         </h2>
-      </div>
-
-      <!-- Client logo strip — all logos on a single line, smaller -->
-      <div class="flex items-center gap-x-6 mb-12 pb-12 border-b border-sd-gray-border overflow-x-auto" data-animate>
-        <span class="text-[10px] uppercase tracking-[0.18em] text-sd-text-gray shrink-0 whitespace-nowrap mr-1">Featured clients</span>
-        {clientLogos.map((logo) => (
-          logo.full ? (
-            <div class="w-[36px] h-[36px] shrink-0 opacity-35 grayscale hover:opacity-65 hover:grayscale-0 transition-all duration-300">
-              <img src={logo.src} alt={logo.alt} width="36" height="36" loading="lazy" class="w-full h-full object-contain" />
-            </div>
-          ) : (
-            <img
-              src={logo.src}
-              alt={logo.alt}
-              width={Math.round(logo.w * (20 / logo.h))}
-              height="20"
-              loading="lazy"
-              class="h-[20px] w-auto shrink-0 object-contain opacity-35 grayscale hover:opacity-65 hover:grayscale-0 transition-all duration-300"
-            />
-          )
-        ))}
       </div>
 
       <!-- Filter bar with counts -->
@@ -211,11 +215,11 @@ const clientLogos = [
 
       </div>
 
-      <!-- Mixed rhythm grid — 1 featured (full-width) + 3 small, repeating -->
-      <div id="sd-case-grid" class="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+      <!-- Spotlight grid — 3 cols, dark cards with cursor-torch reveal -->
+      <div id="sd-case-grid" class="grid gap-[18px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {caseStudies.map((c, idx) => (
           <>
-            {/* Mid-page CTA — injected before the 4th group (index 12) */}
+            {/* Mid-page CTA — injected before index 12 */}
             {idx === 12 && (
               <div class="sm:col-span-2 md:col-span-3 rounded-xl overflow-hidden" style="background: var(--sd-purple-deep);">
                 <div class="px-8 py-12 md:px-14 md:py-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
@@ -247,7 +251,79 @@ const clientLogos = [
                 </div>
               </div>
             )}
-            <CaseStudyCard caseStudy={c} featured={idx % 5 === 0} />
+
+            <!-- Spotlight card -->
+            <a
+              href={`/case-study/${c.slug}`}
+              data-category={c.industry}
+              class="spotlight-card relative overflow-hidden rounded-2xl block"
+              style="background: #14101F; height: 340px; box-shadow: 0 1px 2px rgba(0,0,0,.04); transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s cubic-bezier(.2,.7,.3,1); text-decoration: none;"
+            >
+              <!-- Layer 1: project image -->
+              {c.image && (
+                <img
+                  src={c.image}
+                  alt={c.name}
+                  loading="lazy"
+                  class="card-img absolute inset-0 w-full h-full object-cover"
+                  style="transition: transform 0.8s cubic-bezier(.2,.7,.3,1), filter 0.3s ease;"
+                />
+              )}
+
+              <!-- Layer 2: light bloom — warm glow radiating from cursor -->
+              <div
+                class="card-glow absolute inset-0 pointer-events-none"
+                style="background: transparent; transition: background 0.1s linear; mix-blend-mode: screen;"
+              ></div>
+
+              <!-- Layer 3: dark veil -->
+              <div
+                class="card-veil absolute inset-0"
+                style="background: linear-gradient(to bottom, rgba(20,16,31,0.78), rgba(20,16,31,0.97)); transition: background 0.1s linear;"
+              ></div>
+
+              <!-- Layer 3: content -->
+              <div class="relative z-10 flex flex-col justify-between h-full p-5">
+                <!-- Header row -->
+                <div class="flex items-start justify-between">
+                  <span
+                    class="text-[10px] font-mono tracking-[0.12em] font-semibold px-[9px] py-[4px] rounded-[4px]"
+                    style="background: rgba(172,147,242,.15); color: #AC93F2; backdrop-filter: blur(8px);"
+                  >
+                    {c.category.toUpperCase()}
+                  </span>
+                  <span
+                    class="hint-pill text-[10px] font-mono tracking-[0.12em]"
+                    style="color: #AC93F2; opacity: 0.85; transition: opacity 0.2s linear;"
+                  >
+                    &#x21BB; HOVER TO REVEAL
+                  </span>
+                </div>
+
+                <!-- Footer block -->
+                <div>
+                  <h3
+                    class="card-title font-display font-semibold text-[#F9F9F9] mb-2"
+                    style="font-size: 30px; line-height: 0.95; letter-spacing: -0.03em; text-shadow: 0 2px 12px rgba(0,0,0,.5); transition: transform 0.25s cubic-bezier(.2,.7,.3,1);"
+                  >
+                    {c.name}
+                  </h3>
+                  {c.services && c.services.length > 0 && (
+                    <p class="text-[10px] font-mono tracking-[0.04em] mb-3" style="color: #C8B5FF;">
+                      {c.services.join(" · ")}
+                    </p>
+                  )}
+                  <div class="pt-3" style="border-top: 1px solid rgba(172,147,242,0.25);">
+                    <span
+                      class="card-link text-[12px] font-semibold text-[#F9F9F9] inline-flex items-center gap-1"
+                      style="opacity: 0.78; transition: gap 0.25s cubic-bezier(.2,.7,.3,1);"
+                    >
+                      View case study <span class="card-arrow font-mono" style="transition: transform 0.25s cubic-bezier(.2,.7,.3,1);">&#x2192;</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
           </>
         ))}
       </div>
@@ -266,7 +342,130 @@ const clientLogos = [
 
 </BaseLayout>
 
+<style>
+  @media (max-width: 999px) {
+    /* Veil fades in/out via opacity */
+    .spotlight-card .card-veil,
+    .spotlight-card .card-glow {
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 1;
+    }
+    .spotlight-card.mob-lit .card-veil,
+    .spotlight-card.mob-lit .card-glow {
+      opacity: 0;
+    }
+
+    /* Image dims + zooms out at rest, full brightness + zoom in when lit */
+    .spotlight-card .card-img {
+      transition: filter 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: brightness(0.55);
+      transform: scale(1.0);
+    }
+    .spotlight-card.mob-lit .card-img {
+      filter: brightness(1);
+      transform: scale(1.07);
+    }
+
+    /* Subtle glow on the card border when lit */
+    .spotlight-card {
+      transition: box-shadow 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    .spotlight-card.mob-lit {
+      box-shadow: 0 0 32px rgba(103,58,228,0.4), 0 0 0 1px rgba(172,147,242,0.25) !important;
+    }
+
+    .hint-pill { display: none; }
+  }
+</style>
+
 <script>
+  const isMobile = window.innerWidth < 1000;
+
+  // ── DESKTOP ONLY: cursor spotlight ───────────────────────────────────────
+  if (!isMobile) {
+    document.querySelectorAll<HTMLElement>(".spotlight-card").forEach((card) => {
+      const veil  = card.querySelector<HTMLElement>(".card-veil");
+      const glow  = card.querySelector<HTMLElement>(".card-glow");
+      const hint  = card.querySelector<HTMLElement>(".hint-pill");
+      const title = card.querySelector<HTMLElement>(".card-title");
+      const arrow = card.querySelector<HTMLElement>(".card-arrow");
+      const img   = card.querySelector<HTMLElement>(".card-img");
+      if (!veil) return;
+
+      const VEIL_REST = "linear-gradient(to bottom, rgba(20,16,31,0.78), rgba(20,16,31,0.97))";
+
+      card.addEventListener("mouseenter", () => {
+        card.style.transform = "translateY(-4px)";
+        card.style.boxShadow = "0 22px 40px -22px rgba(59,27,153,.7), 0 0 0 1px rgba(172,147,242,.25)";
+        card.style.cursor    = img ? "crosshair" : "pointer";
+        if (hint)  hint.style.opacity    = "0";
+        if (title) title.style.transform = "translateY(-4px)";
+        if (arrow) arrow.style.transform = "translateX(4px)";
+        if (img)   { img.style.transform = "scale(1.05)"; img.style.filter = "brightness(1.2) saturate(1.15)"; }
+      });
+
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        veil.style.background = `radial-gradient(circle 200px at ${x}px ${y}px, rgba(20,16,31,0) 0%, rgba(20,16,31,0) 30%, rgba(20,16,31,0.55) 60%, rgba(20,16,31,0.88) 100%)`;
+        if (glow) glow.style.background = `radial-gradient(circle 110px at ${x}px ${y}px, rgba(255,252,235,0.35) 0%, rgba(210,190,255,0.18) 38%, rgba(0,0,0,0) 68%)`;
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+        card.style.boxShadow = "0 1px 2px rgba(0,0,0,.04)";
+        card.style.cursor    = "";
+        veil.style.background = VEIL_REST;
+        if (glow)  glow.style.background = "transparent";
+        if (hint)  hint.style.opacity    = "0.85";
+        if (title) title.style.transform = "";
+        if (arrow) arrow.style.transform = "";
+        if (img)   { img.style.transform = ""; img.style.filter = ""; }
+      });
+    });
+  }
+
+  // ── MOBILE ONLY: one card lit at a time — whichever is closest to center ──
+  if (isMobile) {
+    const mobileCards = Array.from(document.querySelectorAll<HTMLElement>(".spotlight-card"));
+    let raf = false;
+
+    function tick() {
+      const vh      = window.innerHeight;
+      const vCenter = vh / 2;
+
+      // Find the card whose center is closest to the viewport center
+      let closest: HTMLElement | null = null;
+      let closestDist = Infinity;
+
+      mobileCards.forEach((card) => {
+        const rect       = card.getBoundingClientRect();
+        const cardCenter = rect.top + card.offsetHeight / 2;
+        const dist       = Math.abs(cardCenter - vCenter);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closest     = card;
+        }
+      });
+
+      // Only light that one card — and only if it's actually in the viewport range
+      mobileCards.forEach((card) => {
+        card.classList.toggle("mob-lit", card === closest && closestDist < vh * 0.55);
+      });
+
+      raf = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!raf) { raf = true; requestAnimationFrame(tick); }
+    }, { passive: true });
+
+    tick();
+  }
+
+  // ── FILTER BUTTONS ───────────────────────────────────────────────────────
   const buttons = document.querySelectorAll<HTMLButtonElement>(".sd-filter-btn");
   const cards   = document.querySelectorAll<HTMLElement>("#sd-case-grid > [data-category]");
 

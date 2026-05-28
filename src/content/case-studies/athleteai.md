@@ -31,7 +31,7 @@ deliverables:
   - "Backend services for athlete profiles, plan generation, and performance history."
   - "Coach dashboard with cohort analytics and review workflows."
   - "Content tooling so the AthleteAI team can publish drills and programs without engineering."
-outcome: "AthleteAI launched a coaching product that performs like a Web2 fitness app while delivering AI feedback that previously required in-person experts — and continues to expand into new sports alongside SpaceDev."
+outcome: "AthleteAI launched a coaching product that performs like a Web2 fitness app while delivering AI feedback that previously required in-person experts, and continues to expand into new sports alongside SpaceDev."
 gallery:
   - "/images/content/9vLI9ldVI6m3F1ii6SQpr7UIOf8.png"
   - "/images/content/Ali9YqnrWOTGFPxwRQVXV45hyEc.png"
@@ -59,9 +59,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -72,4 +72,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

@@ -27,7 +27,7 @@ Let's face it: seed phrases and browser extensions aren't exactly user-friendly.
 
 What MetaMask Embedded Wallets offers is a refreshing alternative. With simple login options like Google, Apple ID, or X, users can jump in with no steep learning curve. Behind the scenes, a non-custodial wallet is created instantly. No need to write down a secret phrase or install anything.
 
-This is the kind of frictionless UX we've been craving — one that blends Web2 familiarity with Web3 principles.
+This is the kind of frictionless UX we've been craving, one that blends Web2 familiarity with Web3 principles.
 
 ## Invisible, Yet Secure
 
@@ -60,7 +60,7 @@ It's a robust system that gives peace of mind without adding overhead.
 
 ## A Toolkit That Grows With You
 
-Whether you're building your first dapp or scaling to millions, Embedded Wallets fit right into your stack. We've seen enterprise clients already making the switch — names like Fox.com, Animoca Brands, and LINE NEXT. And now, this tech is accessible to every developer in the MetaMask ecosystem.
+Whether you're building your first dapp or scaling to millions, Embedded Wallets fit right into your stack. We've seen enterprise clients already making the switch: names like Fox.com, Animoca Brands, and LINE NEXT. And now, this tech is accessible to every developer in the MetaMask ecosystem.
 
 ## Why This Matters and Who It Impacts
 

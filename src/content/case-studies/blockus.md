@@ -31,7 +31,7 @@ deliverables:
   - "Smart contract suite for in-game assets, marketplaces, and reward distribution."
   - "Developer console for project management, key custody, and on-chain analytics."
   - "Reference integrations and documentation that cut studio onboarding to under a week."
-outcome: "Blockus shipped a Web3 platform that game studios can adopt without ripping out their tech stack — and SpaceDev continues to evolve the SDK and infrastructure alongside the founding team."
+outcome: "Blockus shipped a Web3 platform that game studios can adopt without ripping out their tech stack, and SpaceDev continues to evolve the SDK and infrastructure alongside the founding team."
 metrics:
   - value: "3"
     label: "SDK targets (TS, Unity, Unreal)"
@@ -79,9 +79,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -92,4 +92,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

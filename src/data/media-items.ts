@@ -16,7 +16,7 @@ export const mediaItems: MediaItem[] = [
     date: new Date("2025-09-19"),
     location: "Remote",
     tags: ["Blockchain", "AI", "Hackathon"],
-    highlight: "2nd place — AI-powered smart contract auditor",
+    highlight: "2nd place: AI-powered smart contract auditor",
     image: "/images/content/XmV4LZomh05W5CVRT4vmq0Nuo.png",
     body: `Over several high-energy weeks, the Hedera x AI Hackathon brought together builders from around the world to explore the intersection of decentralized infrastructure and artificial intelligence. Organized by the [Hedera](https://hedera.com/) Foundation and Hashgraph, the program attracted:
 
@@ -31,9 +31,9 @@ The hackathon culminated in a global Demo Day featuring live remarks from Hedera
 SpaceDev proudly took 2nd place with "Contracts Auditor", an AI Agent designed to audit smart contracts in real time and display results directly on-chain. By integrating micro-payments via HIP-991, the tool ensures "security audits are not only automated and affordable, but seamlessly integrated into developer workflows."
 
 This milestone wouldn't have been possible without:
-— Santiago Grangetto, who led development and managed the live defense
-— Joaquín Ferreira, who contributed key technical components
-— Brenda Gutiérrez, who delivered a sharp, polished presentation on Demo Day
+- Santiago Grangetto, who led development and managed the live defense
+- Joaquín Ferreira, who contributed key technical components
+- Brenda Gutiérrez, who delivered a sharp, polished presentation on Demo Day
 
 [Watch the live demo on Hedera's official X account](https://x.com/HashgraphOnline/status/1933196939736338497)
 
@@ -67,7 +67,7 @@ Juan Manuel was also one of the judges for the hackathon, which brought together
 
 Witnessing the energy across all the events held throughout the week, especially those hosted by [Blerify](https://www.linkedin.com/company/blerify/), [Lulubit](https://www.linkedin.com/company/lulubit/), [REDLINE LAB](https://www.linkedin.com/company/redline-lab/) and Innovation Smart District, was deeply motivational for everyone in attendance. It's undeniable that Latin America has come a long way and is now a strong web3 hub.
 
-SpaceDev would like to thank [Steven Clarke-Martin](https://www.linkedin.com/in/stevenclarkemartin/) for the invitation to be part of ETH Canal, and all who made the event not only possible but so impactful. More pioneers like them are needed leading these initiatives across LATAM — creating spaces where innovation, collaboration, and vision come together.
+SpaceDev would like to thank [Steven Clarke-Martin](https://www.linkedin.com/in/stevenclarkemartin/) for the invitation to be part of ETH Canal, and all who made the event not only possible but so impactful. More pioneers like them are needed leading these initiatives across LATAM, creating spaces where innovation, collaboration, and vision come together.
 
 For anyone interested, Frank and Gonza's talks are available here: [https://www.youtube.com/watch?v=2aO-BIgHxdI](https://www.youtube.com/watch?v=2aO-BIgHxdI) ("ZK in a Nutshell" & "The Gem of Pectra")
 
@@ -121,7 +121,7 @@ At SpaceDev, we remain committed to education and building secure, reliable bloc
   },
   {
     slug: "the-blockchain-revolution-googledev-fest",
-    title: "The Blockchain Revolution — Google DevFest",
+    title: "The Blockchain Revolution at Google DevFest",
     date: new Date("2024-11-16"),
     location: "Montevideo, Uruguay",
     tags: ["Blockchain", "Conference"],
@@ -194,7 +194,7 @@ Before an audience eager to make an impact in the world, their insights highligh
     date: new Date("2024-08-15"),
     location: "Montevideo, Uruguay",
     tags: ["Ethereum", "Hackathon"],
-    highlight: "20 teams from 12 countries — Vitalik Buterin surprise guest",
+    highlight: "20 teams from 12 countries, with Vitalik Buterin as surprise guest",
     image: "/images/content/64v7ic0nCR8AHLwB1CKVleMXbw.jpg",
     body: `The much-anticipated Ethereum Uruguay Buildathon was a resounding success for the community despite being the first of its kind in the country's history. Held on August 15-16 as part of the larger Ethereum Conference, the event brought together both enthusiasts and experts from blockchain and crypto who soon found themselves in an environment filled with creativity, learning, and collaboration.
 
@@ -240,7 +240,7 @@ The book (in Spanish) can be downloaded after filling out a short form [here](ht
   },
   {
     slug: "bitcoin-energy-summit-miami-2024",
-    title: "Bitcoin Energy Summit — Miami 2024",
+    title: "Bitcoin Energy Summit, Miami 2024",
     date: new Date("2024-04-22"),
     location: "Miami, United States",
     tags: ["Bitcoin", "Web3"],

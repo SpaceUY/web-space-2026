@@ -11,7 +11,7 @@ cover: "/images/content/2kwBmFhPTlXfy8RM1iE5tRfmPfM.png"
 
 Drug development has long relied on animal testing to evaluate a compound's safety. But the process is slow, expensive, and often doesn't translate well to human outcomes. Now, the FDA is pushing for a pivot. Within three to five years, animal studies could become the exception, not the rule.
 
-The agency laid out its vision in an April roadmap: computational models, AI-based platforms, and human cell simulations could replace many animal tests — particularly for monoclonal antibody drugs. The potential payoff? Faster timelines, cheaper development, and eventually, more affordable drugs.
+The agency laid out its vision in an April roadmap: computational models, AI-based platforms, and human cell simulations could replace many animal tests, particularly for monoclonal antibody drugs. The potential payoff? Faster timelines, cheaper development, and eventually, more affordable drugs.
 
 ## Who's Leading the Charge?
 
@@ -33,7 +33,7 @@ Charles River's NAM portfolio is already pulling in around $200 million annually
 
 Not quite yet. While the FDA's shift signals major change, experts agree that animal testing won't vanish overnight. For now, a hybrid model is the most likely path forward: fewer animal studies, supplemented by advanced simulations and human-based models.
 
-Under current FDA guidelines, monoclonal antibodies still require animal testing, typically involving 144 non-human primates per study, with each animal costing about $50,000. These studies can last up to six months — time and money the industry would love to save.
+Under current FDA guidelines, monoclonal antibodies still require animal testing, typically involving 144 non-human primates per study, with each animal costing about $50,000. These studies can last up to six months, time and money the industry would love to save.
 
 As Brendan Smith, biotech analyst at TD Cowen, puts it: "I don't think we'll get to a point immediately, in the near term, where all of a sudden, animal testing is gone entirely."
 

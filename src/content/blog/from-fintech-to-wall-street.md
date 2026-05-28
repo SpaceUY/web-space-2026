@@ -22,15 +22,15 @@ This week, Figure Technology Solutions, a fintech co-founded by Mike Cagney (who
 
 The IPO isn't just another crypto story. It highlights three signals founders should keep on their radar:
 
-1. **Blockchain is moving into mainstream capital markets** — By putting historically illiquid assets (like home equity loans) on-chain, Figure is proving blockchain can transform not just payments, but the very infrastructure of lending, trading, and investing.
+1. **Blockchain is moving into mainstream capital markets:** By putting historically illiquid assets (like home equity loans) on-chain, Figure is proving blockchain can transform not just payments, but the very infrastructure of lending, trading, and investing.
 
-2. **The regulatory climate is shifting** — With a crypto-friendly U.S. administration and the successful IPO of Circle, the stage is set for more digital-asset firms to go public. Entrepreneurs building in fintech, lending, or DeFi should see this as validation: the market and regulators are opening doors.
+2. **The regulatory climate is shifting:** With a crypto-friendly U.S. administration and the successful IPO of Circle, the stage is set for more digital-asset firms to go public. Entrepreneurs building in fintech, lending, or DeFi should see this as validation: the market and regulators are opening doors.
 
-3. **Profitability is possible in blockchain-native businesses** — Many Web3 startups struggle to move beyond hype. Figure's numbers demonstrate that blockchain infrastructure can deliver real, sustainable revenue when tied to strong financial products.
+3. **Profitability is possible in blockchain-native businesses:** Many Web3 startups struggle to move beyond hype. Figure's numbers demonstrate that blockchain infrastructure can deliver real, sustainable revenue when tied to strong financial products.
 
 ## The Bigger Picture: Liquidity Where None Existed
 
-One of the most powerful aspects of Figure's model is tokenizing illiquid assets. Home equity, loans, and other traditionally static instruments gain new life when placed on-chain. Liquidity, transparency, and accessibility aren't just theoretical anymore — they're market advantages.
+One of the most powerful aspects of Figure's model is tokenizing illiquid assets. Home equity, loans, and other traditionally static instruments gain new life when placed on-chain. Liquidity, transparency, and accessibility aren't just theoretical anymore; they're market advantages.
 
 For startups, this is a blueprint:
 - Ask where your industry holds "locked" value.

@@ -71,52 +71,58 @@ const hasRichContent =
   ogType="article"
   jsonLd={csJsonLd}
 >
-  <!-- HERO — two-column: text left, cover image right -->
+  <!-- HERO — stacked on mobile, two-col on desktop -->
   <section class="relative overflow-hidden bg-[#0d0c17]">
     <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, rgba(103,58,228,0.28) 0%, rgba(74,57,124,0.12) 45%, transparent 72%);"></div>
 
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1440px; margin: 0 auto; padding: 7rem 2.5rem 5rem;">
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-24 pb-12 sm:pt-36 sm:pb-24">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-16 items-center">
 
-      <!-- LEFT: text -->
-      <div>
-        <Breadcrumbs items={breadcrumbs} visible={true} class="mb-6" />
-        <div data-animate style="transition-delay: 0ms">
-          <Badge tone="outline" class="mb-5">{entry.data.category} · Case Study</Badge>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl text-white leading-tight">{entry.data.name}</h1>
+        <!-- Text — always first in DOM (top on mobile, left on desktop) -->
+        <div>
+          <Breadcrumbs items={breadcrumbs} visible={true} class="mb-6" />
+          <div data-animate>
+            <Badge tone="outline" class="mb-5 whitespace-nowrap">{entry.data.category} · Case Study</Badge>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mt-4">{entry.data.name}</h1>
+          </div>
+          <p class="mt-4 text-base sm:text-xl text-white/80 leading-snug" data-animate>{entry.data.tagline}</p>
+          {entry.data.services.length > 0 && (
+            <ul class="mt-6 flex flex-wrap gap-2" data-animate>
+              {entry.data.services.map((s) => (
+                <li class="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs text-white/80 border border-white/20">
+                  {s}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
-        <p class="mt-4 text-lg md:text-xl text-white/80 leading-snug" data-animate style="transition-delay: 120ms">{entry.data.tagline}</p>
-        {entry.data.services.length > 0 && (
-          <ul class="mt-7 flex flex-wrap gap-2" data-animate style="transition-delay: 220ms">
-            {entry.data.services.map((s) => (
-              <li class="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs text-white/80 border border-white/20">
-                {s}
-              </li>
-            ))}
-          </ul>
+
+        <!-- Cover image — below text on mobile, right col on desktop -->
+        {heroImage && (
+          <div
+            data-animate
+            class="w-full rounded-2xl overflow-hidden"
+            style="border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 25px 50px rgba(0,0,0,0.5); aspect-ratio: 16/9; background: radial-gradient(circle at 50% 130%, #A2A6F5 20%, #4C2E92 55%, #2D292F 80%, #2D2D2D 95%);"
+          >
+            <img
+              src={heroImage}
+              alt={`${entry.data.name} — featured visual`}
+              loading="eager"
+              fetchpriority="high"
+              class="w-full h-full object-contain"
+            />
+          </div>
         )}
+
       </div>
-
-      <!-- RIGHT: cover image -->
-      {heroImage && (
-        <div data-animate style="transition-delay: 180ms; border-radius:1rem; overflow:hidden; border:1px solid rgba(255,255,255,0.15); box-shadow:0 25px 50px rgba(0,0,0,0.5); aspect-ratio:16/9; background:radial-gradient(circle at 50% 130%,#A2A6F5 20%,#4C2E92 55%,#2D292F 80%,#2D2D2D 95%);">
-          <img
-            src={heroImage}
-            alt={`${entry.data.name} — featured visual`}
-            loading="eager"
-            fetchpriority="high"
-            style="width:100%; height:100%; object-fit:contain;"
-          />
-        </div>
-      )}
-
     </div>
   </section>
 
   <!-- METRICS BAND (only if defined) -->
   {metrics && metrics.length > 0 && (
-    <section class="bg-[#0d0c17] border-b border-white/5 py-12 md:py-16">
-      <div class="mx-auto max-w-[1200px] px-6 md:px-10">
-        <div class={`grid grid-cols-2 md:grid-cols-${Math.min(metrics.length, 4)} gap-8 md:gap-12`}>
+    <section class="bg-[#0d0c17] border-b border-white/5 py-12 sm:py-16">
+      <div class="mx-auto max-w-[1200px] px-6 sm:px-10">
+        <div class={`grid grid-cols-2 sm:grid-cols-${Math.min(metrics.length, 4)} gap-8 sm:gap-12`}>
           {metrics.map((m) => {
             // Parse "160+", "5.0", "Multi-year" etc into numeric + suffix
             const match = String(m.value).match(/^(\d+(?:\.\d+)?)(.*)$/);
@@ -137,9 +143,9 @@ const hasRichContent =
   )}
 
   <!-- META BAR -->
-  <section class="bg-sd-dark py-10 border-b border-white/5">
-    <div class="mx-auto max-w-[1200px] px-6 md:px-10">
-      <dl class="grid grid-cols-2 md:grid-cols-4 gap-8">
+  <section class="bg-sd-dark py-8 border-b border-white/5">
+    <div class="mx-auto max-w-[1200px] px-6 sm:px-10">
+      <dl class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
         {meta.map((m) => (
           <div>
             <dt class="text-[10px] uppercase tracking-[0.2em] text-sd-text-muted mb-1">{m.label}</dt>
@@ -154,25 +160,25 @@ const hasRichContent =
     <>
       <!-- SUMMARY / OVERVIEW -->
       {summary && (
-        <section class="bg-sd-light py-16 md:py-24">
-          <div class="mx-auto max-w-[1100px] px-6 md:px-10 grid gap-10 lg:grid-cols-3">
-            <div class="lg:col-span-1">
+        <section class="bg-sd-light py-14 sm:py-24">
+          <div class="mx-auto max-w-[1100px] px-6 sm:px-10 grid gap-6 sm:gap-10 sm:grid-cols-3">
+            <div class="sm:col-span-1">
               <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Overview</p>
-              <h2 class="text-3xl md:text-4xl text-sd-dark leading-tight">About {entry.data.client ?? entry.data.name}</h2>
+              <h2 class="text-2xl sm:text-4xl text-sd-dark leading-tight">About {entry.data.client ?? entry.data.name}</h2>
             </div>
-            <p class="lg:col-span-2 text-lg md:text-xl text-sd-text-gray leading-relaxed">{summary}</p>
+            <p class="sm:col-span-2 text-base sm:text-xl text-sd-text-gray leading-relaxed">{summary}</p>
           </div>
         </section>
       )}
 
       <!-- CHALLENGE / SOLUTION (markdown body) -->
-      <section class="bg-sd-dark py-16 md:py-24">
-        <div class="mx-auto max-w-[1200px] px-6 md:px-10 grid gap-12 lg:grid-cols-3">
-          <article class="sd-prose sd-prose-dark lg:col-span-2">
+      <section class="bg-sd-dark py-14 sm:py-24">
+        <div class="mx-auto max-w-[1200px] px-6 sm:px-10 grid gap-10 sm:grid-cols-3">
+          <article class="sd-prose sd-prose-dark sm:col-span-2 min-w-0">
             <Content />
           </article>
 
-          <aside class="space-y-8 lg:sticky lg:top-24 lg:self-start">
+          <aside class="space-y-8 sm:sticky sm:top-24 sm:self-start border-t border-white/10 pt-8 sm:border-0 sm:pt-0">
             {entry.data.services.length > 0 && (
               <div>
                 <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Services</h3>
@@ -181,7 +187,6 @@ const hasRichContent =
                 </ul>
               </div>
             )}
-
             {entry.data.techStack.length > 0 && (
               <div class="border-t border-white/10 pt-8">
                 <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Tech Stack</h3>
@@ -198,15 +203,15 @@ const hasRichContent =
 
       <!-- OBJECTIVES -->
       {objectives.length > 0 && (
-        <section class="bg-sd-light-2 py-16 md:py-24">
-          <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+        <section class="bg-sd-light-2 py-14 sm:py-24">
+          <div class="mx-auto max-w-[1100px] px-6 sm:px-10">
             <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Objectives</p>
-            <h2 class="text-3xl md:text-4xl text-sd-dark mb-10 leading-tight">What we set out to do</h2>
-            <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <h2 class="text-2xl sm:text-4xl text-sd-dark mb-8 sm:mb-10 leading-tight">What we set out to do</h2>
+            <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {objectives.map((o, i) => (
-                <li class="bg-white rounded-2xl p-6 border border-sd-gray-border">
+                <li class="bg-white rounded-2xl p-5 sm:p-6 border border-sd-gray-border">
                   <span class="block text-xs font-mono text-sd-purple mb-3">0{i + 1}</span>
-                  <p class="text-sd-text-gray leading-relaxed">{o}</p>
+                  <p class="text-sd-text-gray leading-relaxed text-sm sm:text-base">{o}</p>
                 </li>
               ))}
             </ol>
@@ -216,15 +221,15 @@ const hasRichContent =
 
       <!-- DELIVERABLES -->
       {deliverables.length > 0 && (
-        <section class="bg-sd-dark py-16 md:py-24">
-          <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+        <section class="bg-sd-dark py-14 sm:py-24">
+          <div class="mx-auto max-w-[1100px] px-6 sm:px-10">
             <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">What we delivered</p>
-            <h2 class="text-3xl md:text-4xl text-white mb-10 leading-tight">Solutions shipped</h2>
-            <ul class="space-y-4">
+            <h2 class="text-2xl sm:text-4xl text-white mb-8 sm:mb-10 leading-tight">Solutions shipped</h2>
+            <ul class="space-y-3">
               {deliverables.map((d) => (
-                <li class="flex gap-4 bg-white/[0.03] rounded-xl p-6 border border-white/10">
-                  <span class="shrink-0 w-2 h-2 mt-2 rounded-full bg-sd-purple-300"></span>
-                  <p class="text-white/85 leading-relaxed">{d}</p>
+                <li class="flex gap-4 bg-white/[0.03] rounded-xl p-5 sm:p-6 border border-white/10">
+                  <span class="shrink-0 w-2 h-2 mt-1.5 rounded-full bg-sd-purple-300"></span>
+                  <p class="text-white/85 leading-relaxed text-sm sm:text-base">{d}</p>
                 </li>
               ))}
             </ul>
@@ -234,11 +239,11 @@ const hasRichContent =
 
       <!-- GALLERY -->
       {gallery.length > 0 && (
-        <section class="bg-sd-dark py-16 md:py-24">
-          <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <section class="bg-sd-dark py-14 sm:py-24">
+          <div class="mx-auto max-w-[1440px] px-6 sm:px-10">
             <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">Gallery</p>
-            <h2 class="text-3xl md:text-4xl text-white mb-10 leading-tight">A closer look</h2>
-            <div class="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            <h2 class="text-2xl sm:text-4xl text-white mb-8 sm:mb-10 leading-tight">A closer look</h2>
+            <div class="grid gap-3 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {gallery.map((src, i) => (
                 <figure class={`overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] ${i % 5 === 0 ? "sm:col-span-2" : ""}`}>
                   <img
@@ -303,13 +308,13 @@ const hasRichContent =
     </>
   ) : (
     <!-- DEFAULT BODY (no rich content yet) -->
-    <section class="bg-sd-dark py-16 md:py-24">
-      <div class="mx-auto max-w-[1200px] px-6 md:px-10 grid gap-12 lg:grid-cols-3">
-        <article class="sd-prose sd-prose-dark lg:col-span-2">
+    <section class="bg-sd-dark py-14 sm:py-24">
+      <div class="mx-auto max-w-[1200px] px-6 sm:px-10 grid gap-10 sm:grid-cols-3">
+        <article class="sd-prose sd-prose-dark sm:col-span-2 min-w-0">
           <Content />
         </article>
 
-        <aside class="space-y-8 lg:sticky lg:top-24 lg:self-start">
+        <aside class="space-y-8 sm:sticky sm:top-24 sm:self-start border-t border-white/10 pt-8 sm:border-0 sm:pt-0">
           {entry.data.services.length > 0 && (
             <div>
               <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Services</h3>
@@ -318,7 +323,6 @@ const hasRichContent =
               </ul>
             </div>
           )}
-
           {entry.data.techStack.length > 0 && (
             <div class="border-t border-white/10 pt-8">
               <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Tech Stack</h3>
@@ -335,10 +339,10 @@ const hasRichContent =
   )}
 
   <!-- UP NEXT — two cards -->
-  <section class="bg-sd-dark border-t border-white/5 py-16 md:py-24">
-    <div class="mx-auto max-w-[1200px] px-6 md:px-10">
-      <p class="text-xs uppercase tracking-[0.2em] text-sd-text-muted mb-8">Continue Reading</p>
-      <div class="grid sm:grid-cols-2 gap-5">
+  <section class="bg-sd-dark border-t border-white/5 py-14 sm:py-24">
+    <div class="mx-auto max-w-[1200px] px-6 sm:px-10">
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-text-muted mb-6 sm:mb-8">Continue Reading</p>
+      <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
         {[next, nextNext].map((study) => (
           <a
             href={`/case-study/${study.id}`}
@@ -369,30 +373,3 @@ const hasRichContent =
   />
 </BaseLayout>
 
-<style>
-  /* Hero two-column layout */
-  .cs-hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    align-items: center;
-  }
-
-  @media (min-width: 640px) {
-    .cs-hero-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      padding-top: 7rem;
-      padding-bottom: 7rem;
-    }
-  }
-
-  .cs-hero-image img {
-    width: 100%;
-    border-radius: 1rem;
-    border: 1px solid rgba(255,255,255,0.15);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
-</style>

@@ -1,6 +1,6 @@
 ---
 title: "Zero-Knowledge Rollups for RWAs: Architecture, Costs, Pitfalls"
-description: "Tokenized real-world assets (RWAs) are no longer fringe crypto concepts. As of mid-2025, analytics show roughly $26.5B in RWAs live on public chains — here's how ZK rollups fit into that infrastructure."
+description: "Tokenized real-world assets (RWAs) are no longer fringe crypto concepts. As of mid-2025, analytics show roughly $26.5B in RWAs live on public chains. Here's how ZK rollups fit into that infrastructure."
 publishedAt: 2025-10-07
 author: juan-manuel-sobral
 category: "Blockchain Trends"
@@ -12,7 +12,7 @@ takeaways:
   - Data availability strategy fundamentally determines user exit rights; Ethereum blobs offer cost efficiency but have ~18-day retention windows, while external DA layers present different trade-offs.
   - Compliance and identity gating should be architected upfront using standards like ERC-3643, not retrofitted after launch.
   - Proof generation and verification costs are distinct line items; verification gas budgets depend primarily on proof system selection (Groth16, PLONK, STARK).
-  - Five recurring failure modes — off-chain provenance gaps, circuit bloat, DA strategy vagueness, late-stage compliance integration, and oracle staleness — have documented mitigation strategies.
+  - Five recurring failure modes (off-chain provenance gaps, circuit bloat, DA strategy vagueness, late-stage compliance integration, and oracle staleness) have documented mitigation strategies.
 ---
 
 ## Reality Check
@@ -37,19 +37,19 @@ ZK is optimal when your system cannot tolerate optimistic-style challenge period
 
 Successful implementations compose seven pieces:
 
-1. **Sequencer** — Orders transactions; trade-offs exist between centralized responsiveness and decentralized censorship resistance.
+1. **Sequencer:** Orders transactions; trade-offs exist between centralized responsiveness and decentralized censorship resistance.
 
-2. **Prover(s)** — Generate validity proofs; performance determines latency and cost.
+2. **Prover(s):** Generate validity proofs; performance determines latency and cost.
 
-3. **Verifier contract** — On-chain proof validation; verification gas depends on proof system selection.
+3. **Verifier contract:** On-chain proof validation; verification gas depends on proof system selection.
 
-4. **Data availability** — Ensures users can reconstruct state and exit if sequencers fail.
+4. **Data availability:** Ensures users can reconstruct state and exit if sequencers fail.
 
-5. **Compliance & identity layer** — Standards like ERC-3643 encode permissioned behavior.
+5. **Compliance & identity layer:** Standards like ERC-3643 encode permissioned behavior.
 
-6. **Attestation layer** — Systems like Ethereum Attestation Service provide tamper-evident statements for off-chain facts.
+6. **Attestation layer:** Systems like Ethereum Attestation Service provide tamper-evident statements for off-chain facts.
 
-7. **Oracles** — External signals with built-in staleness checks and failover mechanisms.
+7. **Oracles:** External signals with built-in staleness checks and failover mechanisms.
 
 ## Data Availability Strategy
 
@@ -76,31 +76,31 @@ Express verification budgets in gas units before modeling cost bands across hist
 
 ## The Five Failure Modes
 
-### Mode 1 — Off-Chain Data Provenance Gap
+### Mode 1: Off-Chain Data Provenance Gap
 
 RWA systems depend on facts originating outside the chain: custodian inventory statements, auditor attestations, transfer agent records. Teams sometimes omit how external claims become verifiable circuit inputs.
 
 **Fix:** Adopt an attestation layer with explicit schemas. EAS supports both on-chain and off-chain attestations, cryptographically binding external claims to identities and timestamps. Reference attestation hashes in batch metadata or circuit logic.
 
-### Mode 2 — Proof-Size and Circuit-Complexity Explosion
+### Mode 2: Proof-Size and Circuit-Complexity Explosion
 
 All-in-one circuits combining transfers, limits, and compliance gates become expensive as workloads grow, increasing proving time and verification gas.
 
 **Fix:** Modularize circuits and employ recursive proofs. Isolate core transfer logic while moving compliance and analytics into separate modules that roll up recursively, reducing per-batch proof weight and enabling independent submodule evolution.
 
-### Mode 3 — Data Availability Strategy Ambiguity
+### Mode 3: Data Availability Strategy Ambiguity
 
 DA receives only cursory treatment ("we'll use blobs"), without modeling retention windows or layer assumptions.
 
 **Fix:** Write explicit DA rationale: identify which data users need for trust-minimized exit, document storage location and duration, clarify user procedures if sequencers fail. For blobs, communicate the approximately 18-day window; for Celestia, explain data availability sampling assumptions; for EigenDA, detail restaking and AVS model dependencies.
 
-### Mode 4 — Compliance Bolted On Late
+### Mode 4: Compliance Bolted On Late
 
 Teams ship permissionless MVPs, then add KYC when partners demand it, creating UX friction and brittle code paths.
 
 **Fix:** Select permissioned token standards upfront if your asset faces regulation. ERC-3643 encodes on-chain gating; ERC-1404 defines restricted transfers with human-readable restriction codes. Integrate gating at the token layer and reference these flags in circuit logic.
 
-### Mode 5 — Oracle Sync and Heartbeat Failures
+### Mode 5: Oracle Sync and Heartbeat Failures
 
 RWAs depending on price or status oracles face risks when staleness isn't a design priority. Slow feeds can halt rollups or enable settlement on stale data.
 
@@ -108,7 +108,7 @@ RWAs depending on price or status oracles face risks when staleness isn't a desi
 
 ## Sizing UX and Safety
 
-Users experience latency tails (p95/p99 percentiles), not averages. Research on tail-at-scale effects shows "latency variability at the component level magnifies at the service level." For RWA flows — onboarding, mint/burn windows, redemptions — define SLOs on percentile latencies and monitor queue depth during traffic spikes.
+Users experience latency tails (p95/p99 percentiles), not averages. Research on tail-at-scale effects shows "latency variability at the component level magnifies at the service level." For RWA flows (onboarding, mint/burn windows, redemptions), define SLOs on percentile latencies and monitor queue depth during traffic spikes.
 
 By Little's Law (L = λW), rising queue depth at steady arrival rates signals increasing time-in-system before user complaints emerge, providing early warning of backpressure.
 
@@ -119,11 +119,11 @@ Track:
 
 ## Architecture Options
 
-**Option A — Minimalist Validity Rollup:** Sequencer and prover off-chain; on-chain verifier checks proofs; DA via blobs or calldata; off-chain attestations referenced in batch metadata. Simple to deploy but risks under-designed attestation and DA rationale.
+**Option A: Minimalist Validity Rollup:** Sequencer and prover off-chain; on-chain verifier checks proofs; DA via blobs or calldata; off-chain attestations referenced in batch metadata. Simple to deploy but risks under-designed attestation and DA rationale.
 
-**Option B — Validity Rollup + Explicit DA + Oracle Anchoring:** Formalizes DA choice (blobs with clear retention or external DA layer) and oracle heartbeat/fallback rules. Improves user promises and incident response.
+**Option B: Validity Rollup + Explicit DA + Oracle Anchoring:** Formalizes DA choice (blobs with clear retention or external DA layer) and oracle heartbeat/fallback rules. Improves user promises and incident response.
 
-**Option C — Modular Circuits + Recursive Proofs + Compliance-Aware Tokens:** Splits logic into core transfer, compliance, and audit subcircuits; uses ERC-3643/1404 for on-chain gating. Enables evolvability and predictable verification gas per module.
+**Option C: Modular Circuits + Recursive Proofs + Compliance-Aware Tokens:** Splits logic into core transfer, compliance, and audit subcircuits; uses ERC-3643/1404 for on-chain gating. Enables evolvability and predictable verification gas per module.
 
 ## Practical Blueprint
 
