@@ -18,7 +18,7 @@ techStack:
   - TypeScript
   - PostgreSQL
 publishedAt: 2025-02-15
-heroImage: "/images/content/3Yx2oVNjRiB0sekSMLKn2N4Ko4c.png"
+heroImage: "/images/case-studies/genba/genba_.png"
 summary: "Genba brings on-chain transparency to manufacturing supply chains. SpaceDev built the IoT-to-blockchain pipeline and stakeholder tooling that lets brands, factories, and auditors verify provenance and compliance with the same source of truth."
 objectives:
   - Capture manufacturing events from the shop floor and anchor them on-chain.

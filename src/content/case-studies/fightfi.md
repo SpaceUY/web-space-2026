@@ -24,7 +24,7 @@ techStack:
   - Prisma
   - Aptos
 publishedAt: 2025-02-15
-heroImage: "/images/content/FIGHTFI_upwrok.png"
+heroImage: "/images/case-studies/fightfi/fightfi_.png"
 summary: "FightFI is a gamified Web3 platform designed to drive user engagement through daily missions, giveaways, and NFT-based rewards. By blending GameFi mechanics, digital collectibles, and strong community interaction, FightFI delivers an interactive and rewarding experience for fight fans worldwide."
 objectives:
   - Deliver a gamified Web3 experience that drives daily user engagement.

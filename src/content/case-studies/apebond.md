@@ -21,7 +21,7 @@ techStack:
   - Next.js
   - React
 publishedAt: 2025-02-15
-heroImage: "/images/content/Apebond_upwrok.png"
+heroImage: "/images/case-studies/apebond/apebond_.png"
 summary: "ApeBond is a leading on-chain OTC marketplace that revolutionizes how crypto projects raise funds and how users access discounted digital assets. As the #1 bonding protocol in DeFi, ApeBond empowers retail users and project teams with NFT-based bonds, real yield opportunities, and a multi-chain DEX aggregator."
 objectives:
   - Integrate the Solana ecosystem into the platform to enable bond issuance on Solana.

@@ -1,6 +1,36 @@
 {
   "redirects": [
     {
+      "source": "/post/marketing-web-3",
+      "destination": "/blog/web3-marketing-strategies",
+      "permanent": true
+    },
+    {
+      "source": "/post/real-world-assets-(rwas)-explained",
+      "destination": "/blog/real-world-assets-rwas-explained",
+      "permanent": true
+    },
+    {
+      "source": "/post/save-time-with-a-smart-contract-audit-checklist",
+      "destination": "/blog/smart-contract-audit-checklist",
+      "permanent": true
+    },
+    {
+      "source": "/post/simply-put-what-are-memecoins",
+      "destination": "/blog/what-are-memecoins",
+      "permanent": true
+    },
+    {
+      "source": "/post/web2-web3-migration-guide-for-fintech-the-first-90-days",
+      "destination": "/blog/web2-to-web3-fintech",
+      "permanent": true
+    },
+    {
+      "source": "/post/we%E2%80%99re-now-an-aws-partner",
+      "destination": "/blog/aws-select-partner",
+      "permanent": true
+    },
+    {
       "source": "/post/:slug*",
       "destination": "/blog/:slug*",
       "permanent": true

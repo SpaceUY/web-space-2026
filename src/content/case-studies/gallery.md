@@ -17,7 +17,7 @@ techStack:
   - The Graph
   - TypeScript
 publishedAt: 2025-02-15
-heroImage: "/images/content/I40tC40MkHhAGN4cLmv5PYmHzNE.png"
+heroImage: "/images/case-studies/gallery/gallery_.png"
 summary: "Gallery is a curated NFT exhibition platform built for serious collectors. SpaceDev shipped the frontend, indexing layer, and exhibition tooling that turn fragmented on-chain collections into coherent, gallery-quality experiences."
 objectives:
   - Make on-chain art presentable at the same quality bar as a physical gallery.

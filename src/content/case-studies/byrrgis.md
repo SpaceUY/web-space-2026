@@ -3,7 +3,7 @@ name: "Byrrgis"
 tagline: "Non-custodial Web3 broker for cross-chain token trading: one click, any chain."
 category: Web3
 accent: cyan
-client: "Robert Freeman, Ark, Monzy"
+client: "Byrrgis"
 industry: "DeFi & Trading"
 year: 2025
 duration: "August 2025 – present"
@@ -30,7 +30,7 @@ techStack:
   - BullMQ
   - Azure
 publishedAt: 2025-08-01
-heroImage: "/images/content/Byrrgis_upwrok.png"
+heroImage: "/images/case-studies/byrrgis/byrrgis_.png"
 summary: "Byrrgis is a non-custodial Web3 broker that enables seamless cross-chain token trading in a single click. SpaceDev partnered with Byrrgis from product discovery through production, designing and building the full platform: cross-chain swap engine, real-time market data, automated token and smart contract audits, and advanced trading tools like stop-loss, take-profit, and custom token packs."
 objectives:
   - "Lead product discovery to define architecture, UX, and feature roadmap for a cross-chain DeFi broker."

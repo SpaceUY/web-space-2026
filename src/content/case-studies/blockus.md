@@ -18,7 +18,7 @@ techStack:
   - TypeScript
   - React
 publishedAt: 2025-02-15
-heroImage: "/images/content/Blockus_upwork.png"
+heroImage: "/images/case-studies/blockus/blockus_.png"
 summary: "Blockus builds Web3 infrastructure that lets traditional game studios add blockchain features without rewriting their stacks. SpaceDev embedded a Web3 cell to ship the SDK, payments rails, and developer tooling that game teams use to mint, trade, and reward players on-chain."
 objectives:
   - Give game studios a drop-in Web3 SDK that abstracts away wallets, gas, and chain selection.

@@ -18,7 +18,7 @@ techStack:
   - PostgreSQL
   - TypeScript
 publishedAt: 2025-02-15
-heroImage: "/images/content/L1pBdQzCila7gtPoJgYYlxer94s.png"
+heroImage: "/images/case-studies/twispi/twispi_.png"
 summary: "Twispi is a subscription-commerce platform built for creators who want recurring revenue without giving up control of their audience. SpaceDev built the full-stack product (storefronts, payments, and creator tooling) from an early prototype into a production-grade platform."
 objectives:
   - Give creators a fast path to launch subscription products without engineering help.
