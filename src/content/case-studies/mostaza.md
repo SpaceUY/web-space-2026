@@ -32,6 +32,7 @@ deliverables:
   - "POS and store-ops integration so digital orders land cleanly in the kitchen."
   - "Marketing tooling for promotions, push, and segmented campaigns."
 outcome: "Mostaza now runs digital ordering and loyalty as a first-class channel — with measurable lifts in repeat visits, average ticket, and customer lifetime value across the chain."
+galleryType: "mobile"
 gallery:
   - "/images/content/9rmaMxYJ0sZhtf3po6j9stcKFSk.png"
   - "/images/content/QS9g7VhU7rO9ufoNWjdMvFzTKIE.png"

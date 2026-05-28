@@ -50,6 +50,8 @@ const caseStudies = defineCollection({
     deliverables: z.array(z.string()).default([]),
     outcome: z.string().optional(),
     gallery: z.array(z.string()).default([]),
+    /** Controls gallery layout: "desktop" = sticky text + stacked landscape images (scroll); "mobile" = heading + horizontal-scroll portrait cards */
+    galleryType: z.enum(["mobile", "desktop"]).default("desktop"),
     /** KPI highlights shown in the metrics band */
     metrics: z
       .array(z.object({ value: z.string(), label: z.string() }))

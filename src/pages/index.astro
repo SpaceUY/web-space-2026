@@ -46,14 +46,14 @@ const I_ROCKET = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fi
 const I_HOUSE = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 2.25 11.25 L 12 3 L 21.75 11.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M 4.5 9.75 L 4.5 21 L 19.5 21 L 19.5 9.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M 9.75 21 L 9.75 15.75 L 14.25 15.75 L 14.25 21" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>`;
 
 const industries = [
-  { name: "Finance and Fintech", slug: "finance-and-fintech", icon: I_BUILDING, desc: "SpaceDev helps financial institutions and fintech startups build secure, scalable products that enhance transparency and automation.\nFrom DeFi platforms and payment gateways to traditional fintech systems, tokenized assets, and digital wallets, we simplify complexity and drive financial innovation." },
-  { name: "Gaming and NFTs", slug: "gaming-and-nfts", icon: I_CHAT, desc: "Our team builds NFT ecosystems, web3 gaming platforms, and play-to-earn models that merge creativity with blockchain-backed ownership.\nWe deliver immersive experiences with secure smart contracts and scalable infrastructure." },
-  { name: "Healthcare and Life Sciences", slug: "healthcare-and-life-sciences", icon: I_HEART, desc: "We help healthcare providers ensure data integrity, secure patient identity management, and traceable medical supply chains.\nOur solutions prioritize compliance, security, and seamless interoperability." },
-  { name: "Supply Chain and Logistics", slug: "supply-chain-and-logistics", icon: I_TRUCK, desc: "We build solutions that bring real-time visibility, tracking, and trust to global logistics.\nOur systems reduce fraud, enhance traceability, and simplify auditing at every stage." },
-  { name: "Real Estate and PropTech", slug: "real-estate-and-proptech", icon: I_HOUSE, desc: "We can create tokenized property solutions, automated contract workflows, and secure ownership records that streamline property transactions and investment management." },
-  { name: "Education and EdTech", slug: "education-and-edtech", icon: I_GRADUATION, desc: "SpaceDev supports educational platforms with digital learning systems, decentralized certification, and blockchain credentials that enhance authenticity and accessibility." },
-  { name: "Energy", slug: "energy", icon: I_ENERGY, desc: "We help leading energy companies enhance data integrity, collaboration, and operational visibility. Our solutions support exploration and production through automated reporting, streamlined joint ventures, and improved efficiency across the oil and gas value chain." },
-  { name: "Startups and Emerging Ventures", slug: "startups-and-emerging-ventures", icon: I_ROCKET, desc: "We help founders turn ideas into products through Product Discovery, MVP development, and rapid prototyping.\nWhether entering Web3 or scaling a SaaS, our team delivers the strategy, speed, and structure to grow." },
+  { name: "Finance and Fintech",          slug: "finance-and-fintech",          icon: I_BUILDING,   desc: "SpaceDev helps financial institutions and fintech startups build secure, scalable products that enhance transparency and automation.\nFrom DeFi platforms and payment gateways to traditional fintech systems, tokenized assets, and digital wallets, we simplify complexity and drive financial innovation." },
+  { name: "Gaming and NFTs",              slug: "gaming-and-nfts",              icon: I_CHAT,       desc: "Our team builds NFT ecosystems, web3 gaming platforms, and play-to-earn models that merge creativity with blockchain-backed ownership.\nWe deliver immersive experiences with secure smart contracts and scalable infrastructure.",       href: "/coming-soon" },
+  { name: "Healthcare and Life Sciences", slug: "healthcare",                   icon: I_HEART,      desc: "We help healthcare providers ensure data integrity, secure patient identity management, and traceable medical supply chains.\nOur solutions prioritize compliance, security, and seamless interoperability." },
+  { name: "Supply Chain and Logistics",   slug: "supply-chain-and-logistics",   icon: I_TRUCK,      desc: "We build solutions that bring real-time visibility, tracking, and trust to global logistics.\nOur systems reduce fraud, enhance traceability, and simplify auditing at every stage." },
+  { name: "Real Estate and PropTech",     slug: "real-estate-and-proptech",     icon: I_HOUSE,      desc: "We can create tokenized property solutions, automated contract workflows, and secure ownership records that streamline property transactions and investment management.",                                                                     href: "/coming-soon" },
+  { name: "Education and EdTech",         slug: "education-and-edtech",         icon: I_GRADUATION, desc: "SpaceDev supports educational platforms with digital learning systems, decentralized certification, and blockchain credentials that enhance authenticity and accessibility.",                                                                 href: "/coming-soon" },
+  { name: "Energy",                       slug: "energy",                       icon: I_ENERGY,     desc: "We help leading energy companies enhance data integrity, collaboration, and operational visibility. Our solutions support exploration and production through automated reporting, streamlined joint ventures, and improved efficiency across the oil and gas value chain." },
+  { name: "Startups and Emerging Ventures", slug: "startups-and-emerging-ventures", icon: I_ROCKET, desc: "We help founders turn ideas into products through Product Discovery, MVP development, and rapid prototyping.\nWhether entering Web3 or scaling a SaaS, our team delivers the strategy, speed, and structure to grow.",                   href: "/coming-soon" },
 ];
 ---
 
@@ -67,7 +67,7 @@ const industries = [
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.18) 0%, transparent 65%);"></div>
     <div class="relative w-full px-6 pb-10">
       <p class="text-5xl md:text-[80px] text-white font-display leading-none tracking-tight">
-        Finally: Your <span id="rotating-word" class="text-white">Flexible</span><br/>Tech Partner.
+        Finally: Your <span id="rotating-word" class="text-white">Flexible</span><br class="hidden md:block"/>Tech Partner.
       </p>
       <h1 class="mt-16 text-lg md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
         Blockchain Development Company & Web3 Software Partner
@@ -192,7 +192,7 @@ const industries = [
       </div>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {industries.map(ind => (
-          <a href={`/blockchain-development-services/industry/${ind.slug}`} class="group block bg-sd-light-2 rounded-2xl p-7 border border-sd-gray-border hover:border-sd-purple/30 hover:bg-sd-purple/5 transition-colors duration-300" data-animate>
+          <a href={ind.href ?? `/blockchain-development-services/industry/${ind.slug}`} class="group block bg-sd-light-2 rounded-2xl p-7 border border-sd-gray-border hover:border-sd-purple/30 hover:bg-sd-purple/5 transition-colors duration-300" data-animate>
             <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
               <Fragment set:html={ind.icon} />
             </div>

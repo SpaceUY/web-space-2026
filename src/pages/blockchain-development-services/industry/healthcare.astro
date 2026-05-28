@@ -4,11 +4,11 @@ import Button from "../../../components/ui/Button.astro";
 import { healthcareData } from "../../../data/services";
 
 const services = [
-  { number: "01", title: "Blockchain Health Records Infrastructure", description: "Distributed health records layers that allow patient data to flow securely between hospitals, clinics, labs, and payers — with no single party owning the master record. Patients retain verifiable ownership of their data, and every read and write event carries a complete audit trail." },
-  { number: "02", title: "Clinical Data Interoperability", description: "Interoperability layers that connect disparate EHRs, PACS systems, and insurance platforms through a shared blockchain data bus — enabling real-time record reconciliation without replacing existing infrastructure." },
-  { number: "03", title: "Smart Contract Automation for Claims and Billing", description: "Smart contracts that trigger claim submission, approval, and payment automatically when predefined clinical and coverage conditions are met — cutting settlement time, reducing dispute rates, and eliminating the manual reconciliation overhead that drives up administrative costs." },
+  { number: "01", title: "Blockchain Health Records Infrastructure", description: "Distributed health records layers that allow patient data to flow securely between hospitals, clinics, labs, and payers, with no single party owning the master record. Patients retain verifiable ownership of their data, and every read and write event carries a complete audit trail." },
+  { number: "02", title: "Clinical Data Interoperability", description: "Interoperability layers that connect disparate EHRs, PACS systems, and insurance platforms through a shared blockchain data bus, enabling real-time record reconciliation without replacing existing infrastructure." },
+  { number: "03", title: "Smart Contract Automation for Claims and Billing", description: "Smart contracts that trigger claim submission, approval, and payment automatically when predefined clinical and coverage conditions are met, cutting settlement time, reducing dispute rates, and eliminating the manual reconciliation overhead that drives up administrative costs." },
   { number: "04", title: "Drug Supply Chain and Pharmaceutical Tracking", description: "Blockchain-based pharmaceutical tracking systems that record the chain of custody for medications from manufacturer to dispensary, with immutable provenance records that regulators, distributors, and providers can verify independently." },
-  { number: "05", title: "Consent and Credentialing Management", description: "On-chain consent management systems that give patients auditable control over who accesses their data, and provider credentialing platforms that put medical license verification, board certifications, and malpractice records on a shared ledger — eliminating redundant verification overhead that slows provider onboarding." },
+  { number: "05", title: "Consent and Credentialing Management", description: "On-chain consent management systems that give patients auditable control over who accesses their data, and provider credentialing platforms that put medical license verification, board certifications, and malpractice records on a shared ledger, eliminating redundant verification overhead that slows provider onboarding." },
 ];
 
 const useCases = [
@@ -26,9 +26,9 @@ const I_EYE    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:
 const I_STAR   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
 const whyUs = [
-  { icon: I_LOCK,  title: "HIPAA-aligned architecture from day one", description: "Permissioned network design, encrypted data handling, and audit trail requirements built into the technical scope from the start — not retrofitted after development is underway." },
-  { icon: I_GLOBE, title: "Regulated, multi-stakeholder environments", description: "Our team has shipped blockchain infrastructure in regulated environments across fintech, supply chain, and life sciences — bringing the same architectural discipline to healthcare's compliance and integration challenges." },
-  { icon: I_EYE,   title: "BlockAudit security review on every deployment", description: "Every production smart contract we deploy goes through our internal BlockAudit security review — covering access control, logic errors, and HIPAA-relevant data exposure vectors before any code hits a live network." },
+  { icon: I_LOCK,  title: "HIPAA-aligned architecture from day one", description: "Permissioned network design, encrypted data handling, and audit trail requirements built into the technical scope from the start, not retrofitted after development is underway." },
+  { icon: I_GLOBE, title: "Regulated, multi-stakeholder environments", description: "Our team has shipped blockchain infrastructure in regulated environments across fintech, supply chain, and life sciences. Bringing the same architectural discipline to healthcare's compliance and integration challenges." },
+  { icon: I_EYE,   title: "BlockAudit security review on every deployment", description: "Every production smart contract we deploy goes through our internal BlockAudit security review, covering access control, logic errors, and HIPAA-relevant data exposure vectors before any code hits a live network." },
   { icon: I_STAR,  title: "40+ five-star client ratings", description: "Our track record is reflected in 40+ five-star client ratings on Clutch and GoodFirms. US-focused delivery. Full-stack from smart contract to front end.", link: { text: "View our Clutch profile →", href: "https://clutch.co/profile/spacedev" } },
 ];
 ---
@@ -45,7 +45,7 @@ const whyUs = [
             Blockchain technology in healthcare means solving problems that EHR systems were never designed to handle: cross-provider data sharing without a central authority, tamper-proof audit trails for regulated records, and automated claim and consent workflows that currently run on manual processes.
           </p>
           <p class="text-sd-text-muted leading-relaxed mb-8">
-            SpaceDev designs healthcare blockchain applications from the ground up with HIPAA considerations, permissioned access architecture, and legacy system integration built into the technical scope from day one — not retrofitted after the fact.
+            SpaceDev designs healthcare blockchain applications from the ground up with HIPAA considerations, permissioned access architecture, and legacy system integration built into the technical scope from day one, not retrofitted after the fact.
           </p>
           <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
         </div>
@@ -57,7 +57,7 @@ const whyUs = [
       <div class="sd-container">
         <div class="max-w-2xl mb-14" data-animate>
           <h2 class="section-title text-white mb-4">Healthcare Blockchain Development Services</h2>
-          <p class="text-sd-text-muted leading-relaxed">End-to-end blockchain engineering for healthcare — from health record infrastructure to pharmaceutical supply chain tracking.</p>
+          <p class="text-sd-text-muted leading-relaxed">End-to-end blockchain engineering for healthcare: from health record infrastructure to pharmaceutical supply chain tracking.</p>
         </div>
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
