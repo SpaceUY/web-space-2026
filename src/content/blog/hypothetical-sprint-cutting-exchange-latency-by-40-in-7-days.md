@@ -24,7 +24,7 @@ So let's imagine: you say to us, *"We need latency down by 40% before next week'
 Here's an important rule: **you can't fix what you can't measure**. So, we'd start by instrumenting your stack with:
 
 - **Queue depth metrics** in the order-matching engine
-- **p95/p99 latency histograms** (not just averages — tail latencies matter most)
+- **p95/p99 latency histograms** (not just averages; tail latencies matter most)
 - **Context switches, lock contention stats, and GC pauses**
 - **Synthetic load replay** to simulate burst traffic
 

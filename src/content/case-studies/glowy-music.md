@@ -24,14 +24,14 @@ objectives:
   - Deliver music-reactive 3D experiences that run smoothly on mid-range consumer hardware.
   - Sync audio analysis with visuals at sub-frame precision across devices.
   - Give creators a no-code editor to compose visual scenes synchronized to their tracks.
-  - Optimize for shareability — every experience is a link that loads instantly.
+  - "Optimize for shareability: every experience is a link that loads instantly."
 deliverables:
   - "Three.js rendering engine with reactive shaders driven by Web Audio analysis."
   - "Creator editor with timeline, asset library, and live preview."
   - "Audio fingerprinting and beat-detection pipeline for automatic scene cues."
   - "Embed and share surface optimized for social and messenger previews."
   - "Performance profiling and graceful degradation on lower-tier devices."
-outcome: "Glowy Music shipped an experience that bridges music and visuals in a browser tab — turning every song into something fans can see, share, and remix."
+outcome: "Glowy Music shipped an experience that bridges music and visuals in a browser tab, turning every song into something fans can see, share, and remix."
 gallery:
   - "/images/content/0KhPTyLW0QYS4e3I9rav5yvVXU.png"
   - "/images/content/1WpPaC2DBMT6FZdSvWH8ujfhlo.png"
@@ -59,9 +59,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -72,4 +72,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

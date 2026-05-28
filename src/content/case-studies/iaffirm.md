@@ -18,7 +18,7 @@ techStack:
   - Node.js
 publishedAt: 2025-02-15
 heroImage: "/images/content/iaffirm_upwrok.png"
-summary: "iAffirm puts verifiable credentials in users' pockets — academic records, professional licenses, employment history, all anchored on-chain and presentable with a tap. SpaceDev built the smart contracts, mobile wallet, and issuer tooling that make the system practical at scale."
+summary: "iAffirm puts verifiable credentials in users' pockets: academic records, professional licenses, employment history, all anchored on-chain and presentable with a tap. SpaceDev built the smart contracts, mobile wallet, and issuer tooling that make the system practical at scale."
 objectives:
   - Give users self-sovereign control over their credentials without the UX cost.
   - Let issuers (universities, employers, regulators) issue verifiable credentials at scale.
@@ -30,7 +30,7 @@ deliverables:
   - "Issuer console for batch issuance, revocation, and credential templates."
   - "Verifier SDK so third parties can validate credentials in seconds."
   - "Cryptographic primitives for selective disclosure and privacy-preserving proofs."
-outcome: "iAffirm launched a credential platform that puts users in control while giving issuers and verifiers infrastructure they can rely on — the foundation for a more portable identity layer."
+outcome: "iAffirm launched a credential platform that puts users in control while giving issuers and verifiers infrastructure they can rely on, as the foundation for a more portable identity layer."
 gallery:
   - "/images/content/1x8OnazrWmpOMfg5O7kwSo4hkk.png"
   - "/images/content/8LoDPj8MYpR5HktRTKg0BWfk.png"
@@ -64,9 +64,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -77,4 +77,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

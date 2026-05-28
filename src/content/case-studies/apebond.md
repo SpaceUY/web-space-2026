@@ -34,7 +34,7 @@ deliverables:
   - "Solana account-system design enabling a smooth migration path for existing users."
   - "Frontend enhancements covering both new Solana flows and improvements to the existing Ethereum experience."
   - "Collaboration on the Sherlock audit and ongoing post-launch support."
-outcome: "Through our collaboration, ApeBond successfully expanded its cross-chain functionality and solidified its position as a leading DeFi protocol. By integrating Solana support and enhancing the user experience across multiple chains, we helped unlock new growth opportunities for the platform — empowering users and projects to engage with decentralized finance with greater speed, flexibility, and reach."
+outcome: "Through our collaboration, ApeBond successfully expanded its cross-chain functionality and solidified its position as a leading DeFi protocol. By integrating Solana support and enhancing the user experience across multiple chains, we helped unlock new growth opportunities for the platform, empowering users and projects to engage with decentralized finance with greater speed, flexibility, and reach."
 gallery:
   - "/images/content/8TISDFpHin3eIi1CpXoBRIKmCw.png"
   - "/images/content/DjnuG8L441KxbwIVcMZf3tNupo.png"
@@ -49,7 +49,7 @@ gallery:
 
 ## The Challenge
 
-With a strong track record and a growing ecosystem, ApeBond enables secure, transparent, and accessible participation in DeFi — from sales of bluechip tokens at a discount to token launch support and liquidity-growth solutions. The next step was clear: expand multi-chain capabilities by integrating Solana, without disrupting the platform's reliable Ethereum experience.
+With a strong track record and a growing ecosystem, ApeBond enables secure, transparent, and accessible participation in DeFi, from sales of bluechip tokens at a discount to token launch support and liquidity-growth solutions. The next step was clear: expand multi-chain capabilities by integrating Solana, without disrupting the platform's reliable Ethereum experience.
 
 That required backend and frontend enhancements to ensure full compatibility and a seamless user experience across both networks.
 

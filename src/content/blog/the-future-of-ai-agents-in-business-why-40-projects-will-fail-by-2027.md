@@ -89,4 +89,4 @@ Failures prompt shifts toward cautious, phased adoption emphasizing short-term d
 
 Gartner's forecast reminds organizations that potential doesn't equal readiness. Companies rushing forward without foundational infrastructure risk project failure and eroded AI trust. The trend shifts toward realistic, modular strategies where smaller, well-governed wins deliver more long-term value than bold experiments.
 
-Success requires starting small, thinking long-term, and prioritizing alignment over pure automation — building wisely step by step.
+Success requires starting small, thinking long-term, and prioritizing alignment over pure automation, building wisely step by step.

@@ -14,7 +14,7 @@ export const services = [
   {
     title: "IT Staff Augmentation",
     description:
-      "Connect with skilled developers, designers, and engineers who fit your workflow from day one. You get the expertise without the overhead — faster and fully managed.",
+      "Connect with skilled developers, designers, and engineers who fit your workflow from day one. You get the expertise without the overhead, faster and fully managed.",
     href: "/staff-augmentation",
   },
   {
@@ -48,11 +48,11 @@ export const industries = [
   { name: "Real Estate", description: "Property tokenization, digital deeds, and on-chain rental marketplaces that bring liquidity and transparency to real estate." },
   { name: "Education", description: "Verified credentials, decentralized learning records, and engagement platforms for modern institutions and edtech startups." },
   { name: "Energy / Oil & Gas", description: "Trust layers for energy data, carbon tracking, and decentralized grid coordination with auditable on-chain records." },
-  { name: "Startups", description: "From MVP to Series A — full product ownership, fast iteration, and the technical depth to scale with you." },
+  { name: "Startups", description: "From MVP to Series A: full product ownership, fast iteration, and the technical depth to scale with you." },
 ] as const;
 
 export const values = [
-  { title: "We are here to help", description: "We're not just here to press some keys — we want to be your tech partner. We use our years of experience to help you make a product that stands out from the crowd." },
+  { title: "We are here to help", description: "We're not just here to press some keys. We want to be your tech partner and use our years of experience to help you make a product that stands out from the crowd." },
   { title: "We are tech-savvy", description: "We strive to be proficient at what we do and that means constantly expanding our horizons across both Web2 and Web3." },
   { title: "We are professional", description: "You can count on us for transparency, honesty, respect, and unwavering commitment in all we do. We build trust through open communication." },
   { title: "We are flexible", description: "It's important for us to keep a work-life balance that's suitable for both our clients and us. We do whatever's necessary to meet goals on time." },

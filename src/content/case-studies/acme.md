@@ -23,14 +23,14 @@ objectives:
   - Deliver wallet infrastructure that meets enterprise security and compliance standards.
   - Abstract multi-chain complexity behind a single SDK developers actually want to use.
   - Support hot/warm/cold custody patterns with policy-based controls.
-  - Ship operational tooling — monitoring, signing workflows, and incident response.
+  - "Ship operational tooling: monitoring, signing workflows, and incident response."
 deliverables:
   - "Smart contract suite for multi-sig, account-abstraction, and policy-controlled wallets."
   - "TypeScript SDK with first-class support for the most-used EVM chains."
   - "Backend orchestration for signing workflows, key custody, and gas management."
   - "Policy engine for spending limits, whitelists, and approval rules."
   - "Operational surface (dashboards, alerts, runbooks) for 24/7 ops teams."
-outcome: "ACME shipped a wallet infrastructure platform that fintechs and Web3 companies can adopt without building custody from scratch — and SpaceDev continues to evolve the platform alongside the team."
+outcome: "ACME shipped a wallet infrastructure platform that fintechs and Web3 companies can adopt without building custody from scratch, and SpaceDev continues to evolve the platform alongside the team."
 gallery:
   - "/images/content/0nylq8mCRszdPqwB6nOZfTR0o0.png"
   - "/images/content/2XWwT3Pp2eavgVno8ar5bgmLmQ.png"
@@ -62,9 +62,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -75,4 +75,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

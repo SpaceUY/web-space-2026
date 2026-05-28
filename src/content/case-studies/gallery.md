@@ -23,14 +23,14 @@ objectives:
   - Make on-chain art presentable at the same quality bar as a physical gallery.
   - Index multi-chain NFT data with low latency and high reliability.
   - Give curators a tooling layer to compose exhibitions without engineering help.
-  - Optimize for collector behavior — provenance, history, and craft over hype.
+  - "Optimize for collector behavior: provenance, history, and craft over hype."
 deliverables:
   - "Next.js frontend with curated exhibitions, collector profiles, and artwork detail pages."
   - "Multi-chain indexing layer using The Graph and custom subgraphs."
   - "Curator tooling for composing exhibitions, ordering pieces, and writing context."
   - "Provenance views that surface ownership history, sale records, and on-chain metadata."
   - "Performance optimizations for image-heavy pages (CDN, responsive imagery, lazy loading)."
-outcome: "Gallery launched a polished home for on-chain art — one curators, collectors, and artists actually use to present and discover work."
+outcome: "Gallery launched a polished home for on-chain art that curators, collectors, and artists actually use to present and discover work."
 gallery:
   - "/images/content/28J4lnXTDRiFPZFKDObRPdbkrWo.svg"
   - "/images/content/33iREgidXL4SpQEZuEvXAzXFzeE.png"
@@ -63,9 +63,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -76,4 +76,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

@@ -19,7 +19,7 @@ techStack:
   - Redis
 publishedAt: 2025-02-15
 heroImage: "/images/content/Mostaza_upwrok.png"
-summary: "Mostaza is one of Latin America's largest QSR chains. SpaceDev built the customer-facing mobile experience and the loyalty engine behind it — a unified ordering, rewards, and engagement platform across hundreds of locations."
+summary: "Mostaza is one of Latin America's largest QSR chains. SpaceDev built the customer-facing mobile experience and the loyalty engine behind it: a unified ordering, rewards, and engagement platform across hundreds of locations."
 objectives:
   - Replace a fragmented set of customer touchpoints with a single mobile experience.
   - Deliver a loyalty program that drives repeat visits without crushing unit economics.
@@ -60,9 +60,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -73,4 +73,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

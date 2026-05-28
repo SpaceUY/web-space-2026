@@ -1,6 +1,6 @@
 ---
 title: "A Few Thoughts on Decentralization…"
-description: "The SpaceDev team explores blockchain technology and the real challenges of decentralization — why blockchains consistently fall short of true decentralization, and what might change that."
+description: "The SpaceDev team explores blockchain technology and the real challenges of decentralization: why blockchains consistently fall short of true decentralization, and what might change that."
 publishedAt: 2023-03-02
 author: federico-sendra
 category: "Blockchain Trends"

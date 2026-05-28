@@ -1,6 +1,6 @@
 ---
 title: "How Hard Is It to Become a Blockchain Developer?"
-description: "One of the rarest events in tech is finding yourself in a static position. Here's an honest look at the path to becoming a blockchain developer — the learning curve, the opportunities, and how to get started."
+description: "One of the rarest events in tech is finding yourself in a static position. Here's an honest look at the path to becoming a blockchain developer: the learning curve, the opportunities, and how to get started."
 publishedAt: 2024-04-11
 author: federico-sendra
 category: "Blockchain Trends"

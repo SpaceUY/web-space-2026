@@ -4,7 +4,7 @@ tagline: "On a mission to build trust across the cloud."
 category: Web2
 accent: mixed
 client: "Drata"
-industry: "Security & Compliance — GRC"
+industry: "Security & Compliance: GRC"
 year: 2024
 duration: "4+ year partnership"
 team: "Embedded engineering"
@@ -27,9 +27,9 @@ objectives:
   - "Streamline security: enable secure data collection and management for audit evidence."
   - "Manage risk: support companies in proactively identifying gaps in their security posture via automated controls and clear framework tracking."
 deliverables:
-  - "Drata Agent (macOS, Linux, Windows) — SpaceDev rebuilt and improved the cross-platform tool that runs on users' devices and collects critical compliance-related data. Designed to be secure and lightweight, the Agent continuously monitors system information, providing key evidence that feeds Drata's automation engine."
-  - "Secure Audit Hub Architecture — SpaceDev supported the development of the Audit Hub, a feature that lets external auditors access relevant, permissioned data securely. Granular access control ensures auditors can evaluate compliance without compromising sensitive company information."
-outcome: "What began as a collaboration during Drata's earliest stage evolved into a long-term partnership spanning over four years. SpaceDev has continued to support Drata across multiple phases of growth — from device-level agents to secure audit workflows — empowering their technical team with scalable, high-impact development. Today, we're proud to remain a trusted engineering partner to one of the most influential players in the GRC space."
+  - "Drata Agent (macOS, Linux, Windows): SpaceDev rebuilt and improved the cross-platform tool that runs on users' devices and collects critical compliance-related data. Designed to be secure and lightweight, the Agent continuously monitors system information, providing key evidence that feeds Drata's automation engine."
+  - "Secure Audit Hub Architecture: SpaceDev supported the development of the Audit Hub, a feature that lets external auditors access relevant, permissioned data securely. Granular access control ensures auditors can evaluate compliance without compromising sensitive company information."
+outcome: "What began as a collaboration during Drata's earliest stage evolved into a long-term partnership spanning over four years. SpaceDev has continued to support Drata across multiple phases of growth, from device-level agents to secure audit workflows, empowering their technical team with scalable, high-impact development. Today, we're proud to remain a trusted engineering partner to one of the most influential players in the GRC space."
 metrics:
   - value: "4+"
     label: "Years together"
@@ -65,7 +65,7 @@ Our contributions helped reinforce Drata's technical architecture and supported 
 
 ## Our Approach
 
-We embedded with Drata's engineering org and took ownership of two high-leverage areas: the cross-platform Drata Agent that runs on customer devices, and the Audit Hub that powers external auditor workflows. Both demanded a careful balance of security, reliability, and developer ergonomics — and both became durable parts of the platform.
+We embedded with Drata's engineering org and took ownership of two high-leverage areas: the cross-platform Drata Agent that runs on customer devices, and the Audit Hub that powers external auditor workflows. Both demanded a careful balance of security, reliability, and developer ergonomics, and both became durable parts of the platform.
 
 ## Results
 

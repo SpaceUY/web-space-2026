@@ -18,7 +18,7 @@ takeaways:
 
 Decentralized finance has been evolving with striking speed. At first, the narrative was dominated by tokens, incentives, and rapid liquidity cycles. Now, DeFi is starting to connect with real world, traditional economic activity.
 
-This is where Real World Assets come in. RWAs are tangible, traditional off-chain assets — government bonds, private loans, real estate, commodities — represented on a blockchain through digital tokens. They carry yield, contractual terms, and timing that exist outside of crypto markets, and as a result they influence how value and risk are understood inside decentralized systems.
+This is where Real World Assets come in. RWAs are tangible, traditional off-chain assets (government bonds, private loans, real estate, commodities) represented on a blockchain through digital tokens. They carry yield, contractual terms, and timing that exist outside of crypto markets, and as a result they influence how value and risk are understood inside decentralized systems.
 
 Tokenization is the process of taking an existing asset and creating a digital representation of it that can be transferred, traded, and integrated with smart contracts. Tokens are designed to reflect ownership or entitlement to the economic returns of the underlying asset.
 

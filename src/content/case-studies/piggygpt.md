@@ -31,7 +31,7 @@ deliverables:
   - "Aggregator integrations for accounts, transactions, and balances."
   - "Privacy-preserving prompt pipeline that scrubs PII before model calls."
   - "Onboarding flow that gets a user to their first useful insight in under five minutes."
-outcome: "PiggyGPT launched a finance assistant that gives real, data-grounded advice in natural language — without the privacy and accuracy compromises that usually come with LLMs in finance."
+outcome: "PiggyGPT launched a finance assistant that gives real, data-grounded advice in natural language, without the privacy and accuracy compromises that usually come with LLMs in finance."
 gallery:
   - "/images/content/1M7qFuSR9zE9CqLkzUasrcQlxI.svg"
   - "/images/content/1a0fCOiJQyGNmhsITzL4Hv6vibY.png"
@@ -59,9 +59,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -72,4 +72,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

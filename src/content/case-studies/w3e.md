@@ -30,7 +30,7 @@ deliverables:
   - "On-chain credentialing for course completions and skill certifications."
   - "Instructor dashboard with cohort analytics and assignment review."
   - "Backend services and PostgreSQL schema designed for content scale and learner velocity."
-outcome: "W3E launched a Web3 education platform that delivers practical skills with credentials learners can take with them — bridging the gap between content and career outcomes."
+outcome: "W3E launched a Web3 education platform that delivers practical skills with credentials learners can take with them, bridging the gap between content and career outcomes."
 gallery:
   - "/images/content/0gKCPPHervtjDWwfsXxXf7BLc.png"
   - "/images/content/6SIWc6mxMRX0Iw2b7FM7w4RVX4.png"
@@ -61,9 +61,9 @@ Key constraints:
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery — reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow — without the technical debt that usually accumulates when you optimize for speed alone.
+The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
 
 ## Results
 
@@ -74,4 +74,4 @@ The result is a system that's both fast to ship today and structured to scale to
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements — see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.

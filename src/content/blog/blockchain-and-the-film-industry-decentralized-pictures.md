@@ -1,6 +1,6 @@
 ---
 title: "Blockchain and the Film Industry: Decentralized Pictures"
-description: "Decentralized Pictures is a nonprofit redefining film financing through blockchain, empowering a global community to decide which films get made — a revolutionary model backed by Francis Ford Coppola's American Zoetrope."
+description: "Decentralized Pictures is a nonprofit redefining film financing through blockchain, empowering a global community to decide which films get made, a revolutionary model backed by Francis Ford Coppola's American Zoetrope."
 publishedAt: 2024-02-15
 author: juan-manuel-sobral
 category: "Blockchain Trends"

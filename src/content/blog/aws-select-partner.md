@@ -13,14 +13,14 @@ Today we're announcing that SpaceDev has been recognized as an **AWS Select Part
 
 ## What this means for our clients
 
-**Direct access to AWS expertise.** As a Select Partner, we have a faster path to AWS solutions architects, training, and credits — which translates into better-designed systems for the products we ship.
+**Direct access to AWS expertise.** As a Select Partner, we have a faster path to AWS solutions architects, training, and credits, which translates into better-designed systems for the products we ship.
 
-**Co-engineered architectures.** When the projects we ship rely on AWS — and most of them do — we now have the partnership backing to design for the long term: cost, security, and operational simplicity.
+**Co-engineered architectures.** When the projects we ship rely on AWS (and most of them do), we now have the partnership backing to design for the long term: cost, security, and operational simplicity.
 
 **Reference architectures across Web2 and Web3.** Our team has already shipped production deployments using ECS, Fargate, RDS, MSK, and EKS. Becoming a Select Partner formalizes that experience and gives us access to advanced solution patterns.
 
 ## Why it matters for Web3 too
 
-A surprisingly large amount of Web3 infrastructure runs on traditional cloud — RPC nodes, indexers, monitoring, off-chain services. The boundary between "Web2 infrastructure" and "Web3 stack" is blurrier than it looks. Being an AWS partner sharpens our ability to ship secure, performant systems on both sides of that line.
+A surprisingly large amount of Web3 infrastructure runs on traditional cloud: RPC nodes, indexers, monitoring, off-chain services. The boundary between "Web2 infrastructure" and "Web3 stack" is blurrier than it looks. Being an AWS partner sharpens our ability to ship secure, performant systems on both sides of that line.
 
 If you're planning a cloud migration, a new product launch, or a Web3 platform that needs serious uptime, [let's talk](/contact).

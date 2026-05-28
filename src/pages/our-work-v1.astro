@@ -1,0 +1,338 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CaseStudyCard from "../components/ui/CaseStudyCard.astro";
+import AnimatedCounter from "../components/ui/AnimatedCounter.astro";
+import CTA from "../components/ui/CTA.astro";
+import QuoteReveal from "../components/ui/QuoteReveal.astro";
+import { caseStudies } from "../data/case-studies";
+
+const industries = ["DeFi & Crypto", "NFT & Gaming", "SaaS & Products", "AI & Data", "Enterprise"] as const;
+
+const filters = [
+  { label: "All",            value: "all",            count: caseStudies.length },
+  ...industries.map((ind) => ({
+    label: ind,
+    value: ind,
+    count: caseStudies.filter((c) => c.industry === ind).length,
+  })),
+];
+
+// Same logos as homepage marquee — exact pixel dimensions from spacedev.io Framer CSS
+const clientLogos = [
+  { src: "/images/clients/apple.png",         alt: "Apple",        w: 62,  h: 74,  full: false },
+  { src: "/images/clients/acton_academy.png", alt: "Acton Academy",w: 118, h: 44,  full: false },
+  { src: "/images/clients/microsoft.svg",     alt: "Microsoft",    w: 174, h: 174, full: true  },
+  { src: "/images/clients/drata.svg",         alt: "Drata",        w: 174, h: 174, full: true  },
+  { src: "/images/clients/prose.svg",         alt: "prose",        w: 174, h: 174, full: true  },
+  { src: "/images/clients/ulta.svg",          alt: "ULTA Beauty",  w: 174, h: 174, full: true  },
+  { src: "/images/clients/scotia.svg",        alt: "Scotiabank",   w: 174, h: 174, full: true  },
+  { src: "/images/clients/utec.svg",          alt: "UTEC",         w: 174, h: 174, full: true  },
+  { src: "/images/clients/samsonite.svg",     alt: "Samsonite",    w: 174, h: 174, full: true  },
+  { src: "/images/clients/blockus.svg",       alt: "Blockus",      w: 174, h: 174, full: true  },
+  { src: "/images/clients/ute.png",           alt: "UTE",          w: 110, h: 50,  full: false },
+  { src: "/images/clients/orange.svg",        alt: "Orange",       w: 174, h: 174, full: true  },
+  { src: "/images/clients/d_local.svg",       alt: "dLocal",       w: 174, h: 174, full: true  },
+  { src: "/images/clients/schwarzkopf.svg",   alt: "Schwarzkopf",  w: 174, h: 174, full: true  },
+  { src: "/images/clients/rarible.svg",       alt: "Rarible",      w: 133, h: 31,  full: false },
+  { src: "/images/clients/ufc.svg",           alt: "UFC Strike",   w: 145, h: 22,  full: false },
+];
+---
+
+<BaseLayout
+  title="Our Work | SpaceDev — Selected case studies in Web3 and SaaS"
+  description="Explore 20+ case studies from SpaceDev: blockchain platforms, NFT marketplaces, fintech, gaming, and enterprise SaaS shipped with our clients."
+>
+
+  <!-- ── HERO ── -->
+  <section class="relative overflow-hidden bg-[#0d0c17] min-h-[68vh] flex items-end">
+
+    <!-- Ambient glow — upper-center soft blob -->
+    <div
+      class="absolute top-[-10%] left-1/2 -translate-x-1/3 w-[900px] h-[560px] rounded-full pointer-events-none"
+      style="background: radial-gradient(ellipse at center, rgba(103,58,228,0.28) 0%, rgba(74,57,124,0.12) 45%, transparent 72%);"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative w-full mx-auto max-w-[1440px] px-6 md:px-10 pt-28 md:pt-36 pb-20 md:pb-28">
+
+      <div class="max-w-4xl" data-animate>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-display leading-[1.05]">
+          Explore some of our amazing success stories!
+        </h1>
+        <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
+          Find inspiration and take your business to the next level.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── QUOTE + STATS + CLUTCH (dark authority block) ── -->
+  <section class="bg-sd-dark">
+
+    <!-- Big quote -->
+    <QuoteReveal
+      tone="dark"
+      text="We are here to support you every step of the way, whether you are seeking to disrupt your industry or stay ahead of the competition. By leveraging our up-to-date expertise, you can turn your vision into a reality and reach new heights."
+    />
+
+    <!-- Stats strip -->
+    <div class="border-t border-white/10">
+      <div class="mx-auto max-w-[1100px] px-6 md:px-10 py-16 md:py-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6">
+          <AnimatedCounter value={160} suffix="+" label="Projects delivered" />
+          <AnimatedCounter value={40}  suffix="+" label="Clutch reviews"     />
+          <AnimatedCounter value={5}   suffix=".0" prefix="" label="Average Clutch rating ★★★★★" />
+          <AnimatedCounter value={7}   suffix="+"  label="Years in the market" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Clutch social proof -->
+    <div class="border-t border-white/10">
+      <div class="mx-auto max-w-[1100px] px-6 md:px-10 py-16 md:py-20">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10" data-animate>
+          <div class="flex items-center gap-3">
+            <div class="flex gap-0.5">
+              {[1,2,3,4,5].map(() => (
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="text-white font-semibold">40+ five-star reviews on Clutch</p>
+          </div>
+          <a
+            href="https://clutch.co/profile/spacedev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-sm font-semibold text-sd-purple hover:text-sd-purple-300 transition-colors"
+          >
+            See all reviews
+            <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5" data-animate>
+          <blockquote class="bg-white/[0.04] rounded-2xl p-7 border border-white/10 flex flex-col">
+            <div class="flex gap-0.5 mb-5">
+              {[1,2,3,4,5].map(() => (
+                <svg width="13" height="13" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="text-sm text-white/75 leading-relaxed italic mb-5 flex-1">
+              "It's like Silicon Valley standard but in Uruguay. They are very flexible, allowing us to adjust our needs to the market conditions and business needs."
+            </p>
+            <footer class="text-xs text-sd-text-muted">
+              <span class="text-white/60 font-medium">Executive, Blockchain Company</span><br/>
+              Web3 Platform Development · San Francisco, CA · Feb 2023
+            </footer>
+          </blockquote>
+
+          <blockquote class="bg-white/[0.04] rounded-2xl p-7 border border-white/10 flex flex-col">
+            <div class="flex gap-0.5 mb-5">
+              {[1,2,3,4,5].map(() => (
+                <svg width="13" height="13" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="text-sm text-white/75 leading-relaxed italic mb-5 flex-1">
+              "SpaceDev have vast knowledge in the area of Web3 development. They understood our requirements clearly and efficiently. The work provided by SpaceDev has been exemplary."
+            </p>
+            <footer class="text-xs text-sd-text-muted">
+              <span class="text-white/60 font-medium">Monzoor Ullah, COO — Byrrgis</span><br/>
+              Crypto Trading Platform Development · Costa Rica · Oct 2025
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CLIENT LOGOS MARQUEE -->
+  <section class="bg-sd-light overflow-hidden">
+    <div class="sd-marquee-wrapper">
+      <div class="sd-marquee">
+        <!-- Set 1 -->
+        <div class="sd-marquee-set">
+          {clientLogos.map((c) => c.full
+            ? <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="eager" class="shrink-0 block" />
+            : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
+                <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="eager" class="block" />
+              </div>
+          )}
+        </div>
+        <!-- Set 2 — duplicate for seamless loop -->
+        <div class="sd-marquee-set" aria-hidden="true">
+          {clientLogos.map((c) => c.full
+            ? <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="shrink-0 block" />
+            : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
+                <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="block" />
+              </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CASE STUDIES (light, cards breathe) ── -->
+  <section class="bg-sd-light-2 py-20 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+
+      <!-- Heading -->
+      <div class="mb-10" data-animate>
+        <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Case Studies</p>
+        <h2 class="font-display font-semibold text-4xl md:text-5xl lg:text-6xl text-sd-text-dark leading-[1.1]">
+          Our work
+        </h2>
+      </div>
+
+      <!-- Filter bar with counts -->
+      <div class="flex flex-wrap items-center gap-2 mb-12" role="tablist" aria-label="Filter case studies">
+        {filters.map((f, i) => (
+          <button
+            type="button"
+            class={`sd-filter-btn inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border transition-all ${
+              i === 0
+                ? "bg-sd-text-dark border-sd-text-dark text-white"
+                : "border-sd-gray-border text-sd-text-gray hover:text-sd-text-dark hover:border-sd-text-dark bg-white"
+            }`}
+            data-filter={f.value}
+            role="tab"
+            aria-selected={i === 0}
+          >
+            {f.label}
+            <span class={`text-[11px] px-1.5 py-0.5 rounded-full ${
+              i === 0 ? "bg-white/20 text-white" : "bg-sd-light-2 text-sd-text-gray"
+            }`}>
+              {f.count}
+            </span>
+          </button>
+        ))}
+
+      </div>
+
+      <!-- Mixed rhythm grid — 1 featured (full-width) + 3 small, repeating -->
+      <div id="sd-case-grid" class="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        {caseStudies.map((c, idx) => (
+          <>
+            {/* Mid-page CTA — injected before the 4th group (index 12) */}
+            {idx === 12 && (
+              <div class="sm:col-span-2 md:col-span-3 rounded-xl overflow-hidden" style="background: var(--sd-purple-deep);">
+                <div class="px-8 py-12 md:px-14 md:py-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
+                  <div class="max-w-xl">
+                    <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">Ready to be next?</p>
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl text-white/75 font-display font-light leading-tight mb-4">
+                      You've seen what we build.<br />Let's talk about what you need.
+                    </h3>
+                    <p class="text-sd-text-muted text-sm md:text-base leading-relaxed">
+                      From a one-week discovery sprint to a multi-year engineering partnership — we'll find the fastest path to your goals.
+                    </p>
+                  </div>
+                  <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+                    <a
+                      href="/contact"
+                      class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-sd-purple text-white text-sm font-semibold hover:bg-sd-purple-2 transition-colors"
+                    >
+                      Start a project
+                    </a>
+                    <a
+                      href="https://meetings.hubspot.com/federico-sendra/meet-space"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/25 text-white text-sm font-semibold hover:bg-white/10 transition-colors"
+                    >
+                      Book a call
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+            <CaseStudyCard caseStudy={c} featured={idx % 5 === 0} />
+          </>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <CTA
+    title="Have a project in mind?"
+    description="From a one-week discovery sprint to a multi-year partnership — let's see how we can help."
+    buttons={[
+      { label: "Start a project", href: "/contact" },
+      { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", variant: "outline-light", external: true },
+    ]}
+  />
+
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".sd-filter-btn");
+  const cards   = document.querySelectorAll<HTMLElement>("#sd-case-grid > [data-category]");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter ?? "all";
+
+      buttons.forEach((b) => {
+        const active = b === btn;
+        b.setAttribute("aria-selected", String(active));
+        b.classList.toggle("bg-sd-text-dark",       active);
+        b.classList.toggle("border-sd-text-dark",   active);
+        b.classList.toggle("text-white",            active);
+        b.classList.toggle("bg-white",             !active);
+        b.classList.toggle("border-sd-gray-border",!active);
+        b.classList.toggle("text-sd-text-gray",    !active);
+        // Update the count badge inside each button
+        const badge = b.querySelector("span");
+        if (badge) {
+          badge.className = active
+            ? "text-[11px] px-1.5 py-0.5 rounded-full bg-white/20 text-white"
+            : "text-[11px] px-1.5 py-0.5 rounded-full bg-sd-light-2 text-sd-text-gray";
+        }
+      });
+
+      cards.forEach((card) => {
+        const show = filter === "all" || card.dataset.category === filter;
+        card.style.display = show ? "" : "none";
+      });
+    });
+  });
+
+  // ── ILLUMINATE QUOTE — words light up gray → white on scroll ──
+  const quoteEl = document.getElementById("sd-illuminate-quote");
+  if (quoteEl) {
+    const rawText = quoteEl.textContent?.trim() ?? "";
+    quoteEl.innerHTML = rawText
+      .split(/\s+/)
+      .map((w) => `<span class="sd-word">${w}</span>`)
+      .join(" ");
+
+    const wordEls = [...quoteEl.querySelectorAll<HTMLElement>(".sd-word")];
+
+    // Set initial dim color on all words
+    wordEls.forEach((w) => {
+      w.style.color = "rgba(255,255,255,0.18)";
+      w.style.transition = "color 0.45s ease";
+    });
+
+    function illuminate() {
+      const rect = quoteEl!.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // Progress: 0 when element top hits bottom of viewport, 1 when element top is 15% from top
+      const progress = Math.max(0, Math.min(1, (vh * 0.88 - rect.top) / (vh * 0.72)));
+      const litCount = Math.round(progress * wordEls.length);
+      wordEls.forEach((w, i) => {
+        w.style.color = i < litCount ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.18)";
+      });
+    }
+
+    window.addEventListener("scroll", illuminate, { passive: true });
+    illuminate(); // run once on load in case already in view
+  }
+</script>

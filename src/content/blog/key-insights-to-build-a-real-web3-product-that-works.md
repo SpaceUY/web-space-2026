@@ -1,6 +1,6 @@
 ---
 title: "Key Insights to Build a Real Web3 Product That Works"
-description: "Web3 isn't just a trend, it's a shift. But building a product in this space requires more than just slapping 'blockchain' on your pitch deck — here are the core insights you must lock in before you write a single line of code."
+description: "Web3 isn't just a trend, it's a shift. But building a product in this space requires more than just slapping 'blockchain' on your pitch deck; here are the core insights you must lock in before you write a single line of code."
 publishedAt: 2025-09-03
 author: federico-sendra
 category: "Blockchain Trends"
@@ -8,7 +8,7 @@ tags: ["product-growth", "web3-infrastructure"]
 cover: "/images/content/VUCXsmRvqZrSwTQ8z4LOaKzFRo.png"
 readTime: 4
 takeaways:
-  - User experience transcends Web3 — abstract complexity using familiar design patterns.
+  - User experience transcends Web3; abstract complexity using familiar design patterns.
   - Wallet selection shapes both authentication and user friction in your product.
   - Chain selection should prioritize scalability needs over current trends.
   - Tokens enhance products but shouldn't function as the core offering.
@@ -68,7 +68,7 @@ In Web3, your users can (and should) be your co-owners, evangelists, and contrib
 ### How to build one
 - Start early on platforms like **Discord**, **Lens**, or **Farcaster**.
 - Use governance tools like **Snapshot** or **Tally** to involve your users.
-- Reward participation meaningfully — think beyond airdrops.
+- Reward participation meaningfully; think beyond airdrops.
 
 ## 6. Data is Public, Use It
 

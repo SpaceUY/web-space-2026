@@ -122,8 +122,8 @@ const explore = [
     </button>
   </div>
 
-  <MobileMenu expertise={expertise} about={about} explore={explore} />
 </header>
+<MobileMenu expertise={expertise} about={about} explore={explore} />
 
 <script>
   const toggle = document.querySelector<HTMLButtonElement>("[data-mobile-menu-toggle]");
@@ -132,15 +132,15 @@ const explore = [
 
   function openMenu() {
     if (!menu || !toggle) return;
-    menu.classList.remove("hidden");
-    requestAnimationFrame(() => menu.classList.add("opacity-100"));
+    menu.style.display = "block";
+    requestAnimationFrame(() => { menu.style.opacity = "1"; });
     toggle.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
   }
   function closeMenu() {
     if (!menu || !toggle) return;
-    menu.classList.add("hidden");
-    menu.classList.remove("opacity-100");
+    menu.style.opacity = "0";
+    setTimeout(() => { menu.style.display = "none"; }, 250);
     toggle.setAttribute("aria-expanded", "false");
     document.body.style.overflow = "";
   }

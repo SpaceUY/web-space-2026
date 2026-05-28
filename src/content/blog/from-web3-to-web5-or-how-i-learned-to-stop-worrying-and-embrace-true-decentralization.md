@@ -9,7 +9,7 @@ cover: "/images/content/FbmwPbUfDAa0q00EdQ3JbNrTpE.png"
 readTime: 5
 takeaways:
   - Web5 combines Web2 and Web3 principles, prioritizing full decentralization with user data control
-  - Four core components — DIDs, verifiable credentials, DWNs, and DWAs — work together to enable secure, decentralized interactions
+  - Four core components (DIDs, verifiable credentials, DWNs, and DWAs) work together to enable secure, decentralized interactions
   - Users maintain complete ownership of personal data stored in encrypted digital wallets and decentralized nodes
   - Web5 enables serverless applications and seamless transitions between services without credential re-entry
   - Emerging "emotional web" capabilities integrate IoT and biometric technologies for responsive, user-centric experiences

@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["smart-contracts"]
 readTime: 8
-cover: "/images/content/FCBKViQg3nV6hMSlU6WlaGTZ8yk.jpg"
+cover: "/images/content/8avQhh2xnXVeHKr5gw0tR54o3Q.png"
 ---
 
 Most smart contract audits are slower than they need to be. Not because auditors are slow, but because the code arrives in a state that wastes the first week clarifying instead of reviewing. Here's the checklist we ask every BlockAudit client to run through before kickoff.
@@ -42,6 +42,6 @@ Most smart contract audits are slower than they need to be. Not because auditors
 
 ## Why this matters
 
-Audits are not "find the bugs". They're "convince an experienced reviewer that the system behaves as designed under adversarial conditions". The cleaner your starting state, the more time the auditor spends finding actual issues — and the less you spend on back-and-forth.
+Audits are not "find the bugs". They're "convince an experienced reviewer that the system behaves as designed under adversarial conditions". The cleaner your starting state, the more time the auditor spends finding actual issues, and the less you spend on back-and-forth.
 
 If you'd like a free pre-audit review against this checklist, [reach out](/contact). It's the cheapest way to make your real audit better.
