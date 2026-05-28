@@ -17,7 +17,7 @@ techStack:
   - Node.js
   - PostgreSQL
 publishedAt: 2025-02-15
-heroImage: "/images/content/V8Regk2iKjatIWoOeKz1uXIuys.png"
+heroImage: "/images/case-studies/w3e/w3e_.png"
 summary: "W3E is an education platform that turns Web3 from buzzwords into job-ready skills. SpaceDev built the learning experience, content platform, and credentialing rails that make a course completion something employers actually trust."
 objectives:
   - Ship a learning experience that holds attention as well as the best Web2 EdTech.

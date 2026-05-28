@@ -100,17 +100,14 @@ const hasRichContent =
 
         <!-- Cover image — below text on mobile, right col on desktop -->
         {heroImage && (
-          <div
-            data-animate
-            class="w-full rounded-2xl overflow-hidden"
-            style="border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 25px 50px rgba(0,0,0,0.5); aspect-ratio: 16/9; background: radial-gradient(circle at 50% 130%, #A2A6F5 20%, #4C2E92 55%, #2D292F 80%, #2D2D2D 95%);"
-          >
+          <div data-animate class="w-full flex items-center justify-center" style="filter: drop-shadow(0 0 60px rgba(255,255,255,0.35)) drop-shadow(0 0 120px rgba(255,255,255,0.15));">
             <img
               src={heroImage}
               alt={`${entry.data.name} — featured visual`}
               loading="eager"
               fetchpriority="high"
-              class="w-full h-full object-contain"
+              class="block"
+              style="width: 125%; max-width: none; margin-left: -12.5%;"
             />
           </div>
         )}

@@ -17,7 +17,7 @@ techStack:
   - React Native
   - Node.js
 publishedAt: 2025-02-15
-heroImage: "/images/content/iaffirm_upwrok.png"
+heroImage: "/images/case-studies/iaffirm/iaffirm_.png"
 summary: "iAffirm puts verifiable credentials in users' pockets: academic records, professional licenses, employment history, all anchored on-chain and presentable with a tap. SpaceDev built the smart contracts, mobile wallet, and issuer tooling that make the system practical at scale."
 objectives:
   - Give users self-sovereign control over their credentials without the UX cost.

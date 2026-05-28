@@ -21,7 +21,7 @@ techStack:
   - TypeScript
   - PostgreSQL
 publishedAt: 2025-02-15
-heroImage: "/images/content/zFnoUrxDLmxmtNrnnpiSOQg0VQ.png"
+heroImage: "/images/case-studies/blockchain-for-energy/blockchain-for-energy_.png"
 summary: "B4E is a consortium of energy leaders rethinking how carbon markets are tracked, verified, and traded. SpaceDev partnered with the team to build a tokenization platform on Hedera that turns carbon-capture initiatives into auditable on-chain assets, replacing manual, error-prone workflows with a standardized, automated pipeline."
 objectives:
   - Tokenize carbon-capture initiatives with verifiable provenance and traceability.

@@ -17,7 +17,7 @@ techStack:
   - TypeScript
   - Node.js
 publishedAt: 2025-02-15
-heroImage: "/images/content/HMR5221J4v8ugzepNPrUc9v0u4.png"
+heroImage: "/images/case-studies/acme/acme_.png"
 summary: "ACME provides enterprise-grade wallet infrastructure for fintechs, exchanges, and Web3 platforms that need custody without rolling their own. SpaceDev built the smart contracts, SDK, and orchestration backend that make ACME's wallet platform production-ready."
 objectives:
   - Deliver wallet infrastructure that meets enterprise security and compliance standards.

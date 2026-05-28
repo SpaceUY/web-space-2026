@@ -3,155 +3,166 @@ import type { CaseStudy } from "../../data/case-studies";
 
 interface Props {
   caseStudy: CaseStudy;
-  featured?: boolean;
-  dark?: boolean;
   class?: string;
 }
 
-const { caseStudy, featured = false, dark = false, class: className = "" } = Astro.props;
-
-const accentGradients: Record<NonNullable<CaseStudy["accent"]>, string> = {
-  purple: "from-sd-purple to-sd-purple-2",
-  cyan:   "from-sd-purple-300 to-sd-purple",
-  green:  "from-sd-green to-sd-purple-300",
-  mixed:  "from-sd-purple via-sd-purple-400 to-sd-green",
-};
-
-const gradient = accentGradients[caseStudy.accent ?? "purple"];
-
-// Pills — static
-const tagBase     = "inline-flex items-center px-2.5 py-1 rounded-md text-[10px] border";
-const tagCategory = dark
-  ? `${tagBase} bg-white/10 text-white/60 border-white/10`
-  : `${tagBase} bg-white/70 text-sd-text-gray border-sd-gray-border`;
-const tagService = dark
-  ? `${tagBase} bg-white/[0.05] text-white/50 border-white/10`
-  : `${tagBase} bg-white/70 text-sd-text-gray border-sd-gray-border`;
-
-// group on <a> so bar + image react to card hover
-const cardShell = dark
-  ? "group bg-white/[0.04]"
-  : "group";
-
-const textTitle = dark ? "text-white"    : "text-sd-text-dark";
-const textBody  = dark ? "text-white/55" : "text-sd-text-gray";
-// same color as description by default, turns purple on card hover
-const textLink  = dark
-  ? "text-white/55 group-hover:text-sd-purple-300"
-  : "text-sd-text-gray group-hover:text-sd-purple";
+const { caseStudy: c, class: className = "" } = Astro.props;
 ---
 
-{featured ? (
+<a
+  href={`/case-study/${c.slug}`}
+  data-category={c.industry ?? c.category}
+  class={`spotlight-card relative overflow-hidden rounded-2xl block ${className}`.trim()}
+  style="background: #14101F; height: 340px; box-shadow: 0 1px 2px rgba(0,0,0,.04); transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s cubic-bezier(.2,.7,.3,1); text-decoration: none;"
+>
+  <!-- Layer 1: project image -->
+  {c.image && (
+    <img
+      src={c.image}
+      alt={c.name}
+      loading="lazy"
+      class="card-img absolute inset-0 w-full h-full object-cover"
+      style="transition: transform 0.8s cubic-bezier(.2,.7,.3,1), filter 0.3s ease;"
+    />
+  )}
 
-  <a
-    href={`/case-study/${caseStudy.slug}`}
-    class={`relative col-span-2 flex items-stretch h-full rounded-xl overflow-hidden ${cardShell} ${className}`.trim()}
-    style={!dark ? "background-color:#ffffff;" : undefined}
-    data-category={caseStudy.industry ?? caseStudy.category}
-    data-animate
-  >
-    <!-- LEFT: image — zoom on card hover -->
-    <div class="relative w-[52%] shrink-0 overflow-hidden" style="background:radial-gradient(circle at 50% 130%,#A2A6F5 20%,#4C2E92 55%,#2D292F 80%,#2D2D2D 95%)">
-      {caseStudy.image ? (
-        <img
-          src={caseStudy.image}
-          alt={caseStudy.name}
-          loading="lazy"
-          class="relative w-full h-full object-contain transition-transform duration-[1400ms] ease-out group-hover:scale-105"
-        />
-      ) : (
-        <div class="w-full h-full"></div>
-      )}
-    </div>
+  <!-- Layer 2: light bloom -->
+  <div
+    class="card-glow absolute inset-0 pointer-events-none"
+    style="background: transparent; transition: background 0.1s linear; mix-blend-mode: screen;"
+  ></div>
 
-    <!-- RIGHT: content — relative so the bar anchors here (starts at image boundary) -->
-    <div class="relative flex flex-col flex-1 p-7">
-      <div class="flex flex-wrap gap-2 mb-2.5">
-        <span class={`${tagCategory} uppercase tracking-wider`}>{caseStudy.category}</span>
-        {caseStudy.services?.slice(0, 3).map((s) => (
-          <span class={tagService}>{s}</span>
-        ))}
-      </div>
+  <!-- Layer 3: dark veil -->
+  <div
+    class="card-veil absolute inset-0"
+    style="background: linear-gradient(to bottom, rgba(20,16,31,0.78), rgba(20,16,31,0.97)); transition: background 0.1s linear;"
+  ></div>
 
-      <h3 class={`text-xl font-display font-semibold leading-snug mb-3 ${textTitle}`}>
-        {caseStudy.name}
-      </h3>
-
-      <p class={`flex-1 text-sm leading-relaxed line-clamp-3 ${textBody}`}>
-        {caseStudy.tagline}
-      </p>
-
-      <span class={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 ${textLink}`}>
-        View case study
-        <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true">
-          <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+  <!-- Layer 4: content -->
+  <div class="relative z-10 flex flex-col justify-between h-full p-5">
+    <!-- Header row -->
+    <div class="flex items-start justify-between">
+      <span
+        class="text-[10px] font-mono tracking-[0.12em] font-semibold px-[9px] py-[4px] rounded-[4px]"
+        style="background: rgba(172,147,242,.15); color: #AC93F2; backdrop-filter: blur(8px);"
+      >
+        {c.category.toUpperCase()}
       </span>
-
-      <!-- Bar anchored inside content panel — starts at image boundary -->
-      <div
-        class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-linear"
-        style="background: #673ae4;"
-        aria-hidden="true"
-      ></div>
-    </div>
-  </a>
-
-) : (
-
-  <a
-    href={`/case-study/${caseStudy.slug}`}
-    class={`relative flex flex-col h-full rounded-xl overflow-hidden ${cardShell} ${className}`.trim()}
-    style={!dark ? "background-color:#ffffff;" : undefined}
-    data-category={caseStudy.industry ?? caseStudy.category}
-    data-animate
-  >
-    <!-- Image — zoom on card hover -->
-    <div class="relative shrink-0 h-[224px] overflow-hidden" style="background:radial-gradient(circle at 50% 130%,#A2A6F5 20%,#4C2E92 55%,#2D292F 80%,#2D2D2D 95%)">
-      {caseStudy.image ? (
-        <img
-          src={caseStudy.image}
-          alt={caseStudy.name}
-          loading="lazy"
-          class="relative w-full h-full object-contain transition-transform duration-1000 ease-out group-hover:scale-105"
-        />
-      ) : (
-        <div class="w-full h-full"></div>
-      )}
-    </div>
-
-    <!-- Content -->
-    <div class="flex flex-col flex-1 p-5">
-      <div class="flex flex-wrap gap-2 mb-2.5">
-        <span class={`${tagCategory} uppercase tracking-wider`}>{caseStudy.category}</span>
-        {caseStudy.services?.slice(0, 2).map((s) => (
-          <span class={tagService}>{s}</span>
-        ))}
-      </div>
-
-      <h3 class={`text-xl font-display font-semibold leading-snug mb-3 ${textTitle}`}>
-        {caseStudy.name}
-      </h3>
-
-      <p class={`flex-1 text-sm leading-relaxed line-clamp-2 ${textBody}`}>
-        {caseStudy.tagline}
-      </p>
-
-      <span class={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 ${textLink}`}>
-        View case study
-        <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true">
-          <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <span
+        class="hint-pill text-[10px] font-mono tracking-[0.12em]"
+        style="color: #AC93F2; opacity: 0.85; transition: opacity 0.2s linear;"
+      >
+        &#x21BB; HOVER TO REVEAL
       </span>
     </div>
 
-    <!-- Progress bar: scaleX 0→1 on group hover, origin-left -->
-    <div
-      class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[600ms] ease-linear"
-      style="background: #673ae4;"
-      aria-hidden="true"
-    ></div>
-  </a>
+    <!-- Footer block -->
+    <div>
+      <h3
+        class="card-title font-display font-semibold text-[#F9F9F9] mb-2"
+        style="font-size: 30px; line-height: 0.95; letter-spacing: -0.03em; text-shadow: 0 2px 12px rgba(0,0,0,.5); transition: transform 0.25s cubic-bezier(.2,.7,.3,1);"
+      >
+        {c.name}
+      </h3>
+      {c.services && c.services.length > 0 && (
+        <p class="text-[10px] font-mono tracking-[0.04em] mb-3" style="color: #C8B5FF;">
+          {c.services.join(" · ")}
+        </p>
+      )}
+      <div class="pt-3" style="border-top: 1px solid rgba(172,147,242,0.25);">
+        <span
+          class="card-link text-[12px] font-semibold text-[#F9F9F9] inline-flex items-center gap-1"
+          style="opacity: 0.78; transition: gap 0.25s cubic-bezier(.2,.7,.3,1);"
+        >
+          View case study <span class="card-arrow font-mono" style="transition: transform 0.25s cubic-bezier(.2,.7,.3,1);">&#x2192;</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</a>
 
-)}
+<script>
+  // Runs once per page (Astro deduplicates component scripts)
+  function initSpotlight() {
+    const isMobile = window.innerWidth < 1000;
 
+    // ── DESKTOP: cursor spotlight ─────────────────────────────────────────
+    if (!isMobile) {
+      document.querySelectorAll<HTMLElement>(".spotlight-card").forEach((card) => {
+        const veil  = card.querySelector<HTMLElement>(".card-veil");
+        const glow  = card.querySelector<HTMLElement>(".card-glow");
+        const hint  = card.querySelector<HTMLElement>(".hint-pill");
+        const title = card.querySelector<HTMLElement>(".card-title");
+        const arrow = card.querySelector<HTMLElement>(".card-arrow");
+        const img   = card.querySelector<HTMLElement>(".card-img");
+        if (!veil) return;
+
+        const VEIL_REST = "linear-gradient(to bottom, rgba(20,16,31,0.78), rgba(20,16,31,0.97))";
+
+        card.addEventListener("mouseenter", () => {
+          card.style.transform = "translateY(-4px)";
+          card.style.boxShadow = "0 22px 40px -22px rgba(59,27,153,.7), 0 0 0 1px rgba(172,147,242,.25)";
+          card.style.cursor    = img ? "crosshair" : "pointer";
+          if (hint)  hint.style.opacity    = "0";
+          if (title) title.style.transform = "translateY(-4px)";
+          if (arrow) arrow.style.transform = "translateX(4px)";
+          if (img)   { img.style.transform = "scale(1.3)"; img.style.filter = "brightness(1.2) saturate(1.15)"; }
+        });
+
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          veil.style.background = `radial-gradient(circle 200px at ${x}px ${y}px, rgba(20,16,31,0) 0%, rgba(20,16,31,0) 30%, rgba(20,16,31,0.55) 60%, rgba(20,16,31,0.88) 100%)`;
+          if (glow) glow.style.background = `radial-gradient(circle 110px at ${x}px ${y}px, rgba(255,252,235,0.35) 0%, rgba(210,190,255,0.18) 38%, rgba(0,0,0,0) 68%)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "";
+          card.style.boxShadow = "0 1px 2px rgba(0,0,0,.04)";
+          card.style.cursor    = "";
+          veil.style.background = VEIL_REST;
+          if (glow)  glow.style.background = "transparent";
+          if (hint)  hint.style.opacity    = "0.85";
+          if (title) title.style.transform = "";
+          if (arrow) arrow.style.transform = "";
+          if (img)   { img.style.transform = ""; img.style.filter = ""; }
+        });
+      });
+    }
+
+    // ── MOBILE: one card lit at a time ────────────────────────────────────
+    if (isMobile) {
+      const mobileCards = Array.from(document.querySelectorAll<HTMLElement>(".spotlight-card"));
+      let raf = false;
+
+      function tick() {
+        const vh      = window.innerHeight;
+        const vCenter = vh / 2;
+        let closest: HTMLElement | null = null;
+        let closestDist = Infinity;
+
+        mobileCards.forEach((card) => {
+          const rect       = card.getBoundingClientRect();
+          const cardCenter = rect.top + card.offsetHeight / 2;
+          const dist       = Math.abs(cardCenter - vCenter);
+          if (dist < closestDist) { closestDist = dist; closest = card; }
+        });
+
+        mobileCards.forEach((card) => {
+          card.classList.toggle("mob-lit", card === closest && closestDist < vh * 0.55);
+        });
+
+        raf = false;
+      }
+
+      window.addEventListener("scroll", () => {
+        if (!raf) { raf = true; requestAnimationFrame(tick); }
+      }, { passive: true });
+
+      tick();
+    }
+  }
+
+  initSpotlight();
+</script>

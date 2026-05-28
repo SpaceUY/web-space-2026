@@ -3,15 +3,27 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import FAQ from "../components/ui/FAQ.astro";
 import QuoteReveal from "../components/ui/QuoteReveal.astro";
 import CaseStudyCard from "../components/ui/CaseStudyCard.astro";
+import AuthorAvatar from "../components/ui/AuthorAvatar.astro";
 import { homeFaqs } from "../data/site-content";
 import { featuredCaseStudies } from "../data/case-studies";
+import { getAuthor } from "../data/authors";
 import { websiteJsonLd } from "../lib/seo";
 import { getCollection } from "astro:content";
 
 const recentPosts = (await getCollection("blog"))
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
-  .slice(0, 4);
+  .slice(0, 3);
+
+const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric" });
+const accentByCategory: Record<string, string> = {
+  "Blockchain Trends": "from-sd-purple to-sd-purple-2",
+  "Web2 Trends": "from-sd-purple-300 to-sd-purple",
+  "Product Development": "from-sd-green to-sd-purple-300",
+  "AI": "from-sd-purple-300 to-sd-purple-300",
+  "Augmented Reality": "from-sd-purple-300 to-sd-green",
+  "Techy Trends": "from-sd-purple to-sd-purple-300",
+};
 
 // Client logos — exact pixel dimensions from spacedev.io Framer CSS
 // full174: SVGs are 174×174 with FAFAFA background baked in (render as-is)
@@ -66,11 +78,8 @@ const industries = [
   <section class="bg-sd-dark h-screen -mt-[72px] flex flex-col justify-end items-start relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.18) 0%, transparent 65%);"></div>
     <div class="relative w-full px-6 pb-10">
-      <p class="text-5xl md:text-[80px] text-white font-display leading-none tracking-tight">
-        Finally: Your<br class="hidden md:block"/>
-        <span style="display:inline-block; overflow:hidden; vertical-align:bottom; line-height:1.05;">
-          <span id="rotating-word" class="text-white" style="display:inline-block;">Flexible</span>
-        </span><br class="hidden md:block"/>
+      <p class="text-[30px] md:text-[80px] text-white font-display leading-none tracking-tight">
+        <span class="whitespace-nowrap">Finally: Your&#160;<span style="display:inline-block; overflow:hidden; vertical-align:bottom; line-height:1.05;"><span id="rotating-word" class="text-white" style="display:inline-block;">Flexible</span></span></span><br/>
         Tech Partner.
       </p>
       <h1 class="mt-16 text-lg md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
@@ -151,7 +160,7 @@ const industries = [
 
   <!-- QUOTE REVEAL — between Core Services and Why SpaceDev -->
   <QuoteReveal
-    text="Take your business to new heights quickly, let us handle the technology."
+    text="Take your business to new heights quickly. Let us handle the technology."
     tone="dark"
     maxWidth="max-w-[720px]"
     padding="py-36 md:py-56"
@@ -171,7 +180,7 @@ const industries = [
           { n: "01", title: "Full-cycle product ownership", desc: "One partner from discovery to post-launch. No handoff gaps." },
           { n: "02", title: "Web3 + Web2 under one team", desc: "Blockchain infrastructure and the product layer built together." },
           { n: "03", title: "BlockAudit security practice", desc: "Smart contract auditing built into development, not bolted on." },
-          { n: "04", title: "Flexible engagement models", desc: "Staff aug, fixed-scope, or full MVP builds, structured around your need." },
+          { n: "04", title: "Flexible engagement models", desc: "Staff aug, fixed-scope, or full MVP builds, structured around your needs." },
           { n: "05", title: "40+ five-star client reviews", desc: "Verified on Clutch and GoodFirms across DeFi, fintech, and gaming." },
           { n: "06", title: "AWS Partner", desc: "Cloud infrastructure support alongside blockchain development." },
         ].map(w => (
@@ -217,20 +226,8 @@ const industries = [
           Every product tells a story: one of collaboration, innovation, and measurable results. SpaceDev not only delivers projects; we support businesses' growth with the kind of technology that earns trust, scales with users, and stands the test of time.
         </p>
       </div>
-      <div id="home-cs-zone" class="relative grid gap-6 md:grid-cols-3">
-        <!-- Custom cursor: rotating text ring -->
-        <div id="home-cs-cursor" class="pointer-events-none fixed z-50 opacity-0 transition-opacity duration-200" style="transform: translate(-50%, -50%); will-change: transform; width: 120px; height: 120px;">
-          <svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
-            <circle cx="60" cy="60" r="58" fill="white"/>
-            <defs>
-              <path id="home-cs-text-path" d="M60,60 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1-84,0"/>
-            </defs>
-            <text class="cs-spin-text" font-size="14" letter-spacing="0.8" fill="black" font-family="Saira, sans-serif">
-              <textPath href="#home-cs-text-path" textLength="264" lengthAdjust="spacing">VIEW PROJECT &#x2009;&#x2009;•&#x2009;&#x2009; VIEW PROJECT &#x2009;&#x2009;•&#x2009;&#x2009;</textPath>
-            </text>
-          </svg>
-        </div>
-        {featuredCaseStudies.map((c) => (
+      <div class="grid gap-[18px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        {featuredCaseStudies.slice(0, 3).map((c) => (
           <CaseStudyCard caseStudy={c} />
         ))}
       </div>
@@ -254,7 +251,7 @@ const industries = [
     <div class="sd-container">
       <div class="max-w-2xl mb-14">
         <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">
-          There are two ways to work with us
+          There are two ways to work with us.<br/>Pick what suits you!
         </h2>
       </div>
       <div class="grid gap-6 md:grid-cols-2 mb-10">
@@ -442,30 +439,54 @@ const industries = [
           Check out some related articles from our blog!
         </h3>
       </div>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {recentPosts.map(post => (
-          <a href={`/blog/${post.id}`} class="group block overflow-hidden" data-animate>
-            {post.data.cover && (
-              <div class="aspect-[4/3] overflow-hidden bg-sd-dark">
-                <img
-                  src={post.data.cover}
-                  alt={post.data.title}
-                  loading="lazy"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {recentPosts.map((post) => {
+          const author = getAuthor(post.data.author);
+          const gradient = accentByCategory[post.data.category] ?? "from-sd-purple to-sd-purple-300";
+          return (
+            <article
+              class="group flex flex-col rounded-2xl overflow-hidden bg-white border border-sd-gray-border shadow-sm hover:shadow-[0_8px_32px_rgba(103,58,228,0.12)] hover:border-sd-purple/30 hover:-translate-y-1 transition-all duration-300"
+              data-animate
+            >
+              <a href={`/blog/${post.id}`} class="block overflow-hidden">
+                <div class={`relative aspect-[16/10] bg-gradient-to-br ${gradient}`}>
+                  {post.data.cover && (
+                    <img
+                      src={post.data.cover}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
+                  <span class="absolute top-4 left-4 inline-flex items-center px-2.5 py-1 rounded-full bg-white/80 backdrop-blur-md text-[10px] uppercase tracking-wider text-sd-purple border border-sd-purple/20 font-ui">
+                    {post.data.category}
+                  </span>
+                </div>
+              </a>
+              <div class="flex flex-col flex-1 p-5">
+                <a href={`/blog/${post.id}`} class="flex flex-col flex-1">
+                  <div class="flex items-center gap-2 text-xs text-sd-text-gray mb-3 font-body">
+                    <time datetime={post.data.publishedAt.toISOString()}>{dateFmt.format(post.data.publishedAt)}</time>
+                    <span aria-hidden="true">·</span>
+                    <span>{post.data.readTime} min read</span>
+                  </div>
+                  <h3 class="font-display text-lg md:text-xl text-sd-text-dark group-hover:text-sd-purple transition-colors leading-snug">
+                    {post.data.title}
+                  </h3>
+                  <p class="mt-2 text-sm text-sd-text-gray leading-relaxed line-clamp-2 font-body">{post.data.description}</p>
+                </a>
+                {author && (
+                  <div class="mt-5 pt-4 border-t border-sd-gray-border">
+                    <a href={`/author/${author.slug}`} class="inline-flex">
+                      <AuthorAvatar author={author} size="sm" showRole tone="light" />
+                    </a>
+                  </div>
+                )}
               </div>
-            )}
-            <div class="pt-4 pb-2">
-              <div class="flex items-center justify-between text-xs text-sd-text-muted uppercase tracking-[0.1em] mb-3">
-                <span>{post.data.publishedAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase()}</span>
-                <span>READING TIME {post.data.readTime} MIN</span>
-              </div>
-              <h3 class="text-base md:text-lg font-display text-sd-text-dark leading-snug line-clamp-3 group-hover:text-sd-purple transition-colors">
-                {post.data.title}
-              </h3>
-            </div>
-          </a>
-        ))}
+            </article>
+          );
+        })}
       </div>
       <div class="mt-10">
         <a href="/blog" class="inline-flex items-center gap-2 text-sd-text-dark text-sm hover:text-sd-purple transition-colors font-medium">
@@ -543,39 +564,5 @@ const industries = [
     setInterval(nextWord, 2400);
   }
 
-  // Case studies — spinning VIEW PROJECT cursor
-  const csZone   = document.getElementById("home-cs-zone");
-  const csCursor = document.getElementById("home-cs-cursor");
-  if (csZone && csCursor) {
-    let csRaf: number;
-    window.addEventListener("mousemove", (e: MouseEvent) => {
-      cancelAnimationFrame(csRaf);
-      csRaf = requestAnimationFrame(() => {
-        csCursor.style.left = e.clientX + "px";
-        csCursor.style.top  = e.clientY + "px";
-        const rect   = csZone.getBoundingClientRect();
-        const inside = e.clientX >= rect.left && e.clientX <= rect.right &&
-                       e.clientY >= rect.top  && e.clientY <= rect.bottom;
-        csCursor.style.opacity     = inside ? "1" : "0";
-        document.body.style.cursor = inside ? "none" : "";
-      });
-    });
-  }
 
 </script>
-
-<style>
-  #home-cs-zone,
-  #home-cs-zone *,
-  #home-cs-zone a,
-  #home-cs-zone a:hover { cursor: none !important; }
-
-  .cs-spin-text {
-    animation: cs-spin 9s linear infinite;
-    transform-origin: 60px 60px;
-  }
-  @keyframes cs-spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
-</style>

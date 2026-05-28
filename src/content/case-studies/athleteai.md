@@ -18,7 +18,7 @@ techStack:
   - TensorFlow
   - Node.js
 publishedAt: 2025-02-15
-heroImage: "/images/content/Tdb3IvjZu1jObmIvvIwOdDI19e4.png"
+heroImage: "/images/case-studies/athleteai/athleteai_.png"
 summary: "AthleteAI brings personalized, AI-driven coaching to athletes at every level. SpaceDev partnered with the team to ship a mobile-first product that combines computer vision, biomechanics models, and adaptive training plans into a single coaching experience."
 objectives:
   - Translate raw video and wearable data into actionable, athlete-specific coaching feedback.
