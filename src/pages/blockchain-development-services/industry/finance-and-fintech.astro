@@ -4,13 +4,13 @@ import Button from "../../../components/ui/Button.astro";
 import { defiFinanceData } from "../../../data/services";
 
 const services = [
-  { number: "01", title: "DeFi Smart Contract Development", description: "Custom smart contracts for lending protocols, automated market makers, staking systems, and governance mechanisms — written in Solidity or Rust, with every deployment going through our internal audit pipeline before mainnet." },
-  { number: "02", title: "DeFi Token Development", description: "Full-stack token engineering: tokenomics modeling, ERC-20/ERC-721/ERC-1155 contract development, vesting logic, and integration with your broader DeFi protocol — utility, governance, or RWA-backed." },
-  { number: "03", title: "DeFi Lending and Borrowing Platforms", description: "Collateralization ratios, liquidation mechanics, interest rate curves, and oracle integration — covering the full spectrum from simple P2P lending dApps to multi-asset money markets." },
-  { number: "04", title: "Decentralized Exchange (DEX) Development", description: "AMM-based and order-book DEX platforms with custom liquidity pool logic, price oracle integrations, and fee structures — front-end interface, smart contract backend, and wallet connection layer as a unified product." },
+  { number: "01", title: "DeFi Smart Contract Development", description: "Custom smart contracts for lending protocols, automated market makers, staking systems, and governance mechanisms, written in Solidity or Rust, with every deployment going through our internal audit pipeline before mainnet." },
+  { number: "02", title: "DeFi Token Development", description: "Full-stack token engineering: tokenomics modeling, ERC-20/ERC-721/ERC-1155 contract development, vesting logic, and integration with your broader DeFi protocol: utility, governance, or RWA-backed." },
+  { number: "03", title: "DeFi Lending and Borrowing Platforms", description: "Collateralization ratios, liquidation mechanics, interest rate curves, and oracle integration, covering the full spectrum from simple P2P lending dApps to multi-asset money markets." },
+  { number: "04", title: "Decentralized Exchange (DEX) Development", description: "AMM-based and order-book DEX platforms with custom liquidity pool logic, price oracle integrations, and fee structures: front-end interface, smart contract backend, and wallet connection layer as a unified product." },
   { number: "05", title: "DeFi Application Development", description: "Complete DeFi dApp development: yield aggregators, DeFi dashboards, cross-protocol integrations, and custom financial instruments built on top of existing DeFi primitives." },
-  { number: "06", title: "Asset Tokenization", description: "End-to-end tokenization services — from legal and technical structure definition to token contract deployment and secondary market trading infrastructure. Real estate, fund shares, invoice financing, and commodity-backed instruments." },
-  { number: "07", title: "DeFi Security Audit (BlockAudit)", description: "Automated static analysis and manual code review covering reentrancy vulnerabilities, access control flaws, oracle manipulation vectors, and logic errors specific to DeFi cash flow systems — at any stage of your protocol's lifecycle." },
+  { number: "06", title: "Asset Tokenization", description: "End-to-end tokenization services. From legal and technical structure definition to token contract deployment and secondary market trading infrastructure. Real estate, fund shares, invoice financing, and commodity-backed instruments." },
+  { number: "07", title: "DeFi Security Audit (BlockAudit)", description: "Automated static analysis and manual code review covering reentrancy vulnerabilities, access control flaws, oracle manipulation vectors, and logic errors specific to DeFi cash flow systems, at any stage of your protocol's lifecycle." },
 ];
 
 const protocolTypes = [
@@ -32,12 +32,12 @@ const whoWeServe = [
   { icon: I_FINTECH, title: "Fintech companies",                 description: "Exploring decentralized rails for payments, lending, or treasury management as an extension of their existing product." },
   { icon: I_ROCKET,  title: "Web3 startups",                    description: "Launching new DeFi protocols who need a full-stack team that understands both the technical and go-to-market dimensions of a DeFi product launch." },
   { icon: I_CHART,   title: "Institutional investors and funds", description: "Looking to build or integrate tokenized asset infrastructure for on-chain capital allocation." },
-  { icon: I_STAR,    title: "Gaming and NFT platforms",          description: "Requiring DeFi mechanics — in-game token economies, staking, or yield-bearing assets integrated directly into gameplay." },
+  { icon: I_STAR,    title: "Gaming and NFT platforms",          description: "Requiring DeFi mechanics: in-game token economies, staking, or yield-bearing assets integrated directly into gameplay." },
 ];
 
 const whyUs = [
-  { title: "DeFi-first, not a department", description: "Our blockchain practice is not one capability among twenty — it is the core of what we do. Every engineer and every process is built around on-chain product delivery." },
-  { title: "Multi-chain track record", description: "We've shipped DeFi infrastructure across Ethereum, Polygon, BNB Chain, Solana, and Avalanche — from seed-stage protocols to integrations managing significant on-chain TVL." },
+  { title: "DeFi-first, not a department", description: "Our blockchain practice is not one capability among twenty. It is the core of what we do. Every engineer and every process is built around on-chain product delivery." },
+  { title: "Multi-chain track record", description: "We've shipped DeFi infrastructure across Ethereum, Polygon, BNB Chain, Solana, and Avalanche, from seed-stage protocols to integrations managing significant on-chain TVL." },
   { title: "Long-term tech partner", description: "We don't build what you ask for and disappear. Our incentive is aligned with your protocol's success, not just the completion of a sprint." },
   { title: "40+ five-star ratings", description: "Reflected in 40+ five-star client ratings on Clutch and GoodFirms. Our CTO is recognized as one of Uruguay's most influential voices in technology.", link: { text: "View our Clutch profile →", href: "https://clutch.co/profile/spacedev" } },
 ];
@@ -56,10 +56,10 @@ const whyUs = [
             Decentralized finance development is not a feature you bolt onto a product. It is a fundamental architectural decision that determines how liquidity flows, how users interact with financial primitives, and how your protocol handles risk at scale.
           </p>
           <p class="text-sd-text-muted leading-relaxed mb-4">
-            The most common mistake teams make is treating DeFi as a faster version of traditional fintech. It is not. Smart contracts in DeFi replace the legal and operational infrastructure of conventional financial systems — which means bugs are not just product issues, they are financial liabilities.
+            The most common mistake teams make is treating DeFi as a faster version of traditional fintech. It is not. Smart contracts in DeFi replace the legal and operational infrastructure of conventional financial systems, which means bugs are not just product issues, they are financial liabilities.
           </p>
           <p class="text-sd-text-muted leading-relaxed mb-8">
-            SpaceDev approaches every DeFi project with this in mind. Our engineering teams combine protocol-level expertise with business logic modeling so that what gets built is not just technically correct — it is economically sound.
+            SpaceDev approaches every DeFi project with this in mind. Our engineering teams combine protocol-level expertise with business logic modeling so that what gets built is not just technically correct: it is economically sound.
           </p>
           <Button href="https://meetings.hubspot.com/federico-sendra/meet-space" variant="primary" external>Book a call</Button>
         </div>
@@ -71,7 +71,7 @@ const whyUs = [
       <div class="sd-container">
         <div class="max-w-2xl mb-14" data-animate>
           <h2 class="section-title text-white mb-4">DeFi Development Services We Deliver</h2>
-          <p class="text-sd-text-muted leading-relaxed">Full-cycle DeFi engineering — from protocol design to post-launch security.</p>
+          <p class="text-sd-text-muted leading-relaxed">Full-cycle DeFi engineering: from protocol design to post-launch security.</p>
         </div>
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
@@ -194,7 +194,7 @@ const whyUs = [
       <div class="sd-container">
         <div class="mb-12" data-animate>
           <h2 class="section-title text-white mb-4">Why SpaceDev as Your DeFi Development Company</h2>
-          <p class="text-sd-text-muted leading-relaxed max-w-2xl">We don't just deliver smart contracts — we help you build economically sound, production-grade DeFi protocols.</p>
+          <p class="text-sd-text-muted leading-relaxed max-w-2xl">We don't just deliver smart contracts, we help you build economically sound, production-grade DeFi protocols.</p>
         </div>
         <div class="grid sm:grid-cols-2 gap-4">
           {whyUs.map((item) => (

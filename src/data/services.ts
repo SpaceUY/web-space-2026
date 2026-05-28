@@ -235,35 +235,13 @@ export const banksData: ServicePageData = {
     description: "Compliant blockchain and tokenization solutions for banks, fintechs, and asset managers. Programmable money, settlement, and digital asset custody.",
   },
   eyebrow: "Sub-service · Blockchain",
-  title: "Blockchain for Banks",
-  description: "We help banks and regulated financial institutions adopt blockchain where it matters: tokenized deposits, instant settlement, compliant digital asset custody, and programmable payments.",
+  title: "Blockchain Infrastructure for Banks",
+  description: "We integrate directly into your core banking solution through a seamless, plug-and-play approach that enhances capabilities without disrupting existing systems.",
   primaryCta: { label: "Talk to our team", href: "/contact" },
-  secondaryCta: { label: "Read fintech case studies", href: "/our-work" },
 
-  offers: {
-    eyebrow: "Solutions for regulated finance",
-    title: "Programmable money, built for compliance",
-    items: [
-      { number: "01", title: "Tokenized Deposits", description: "On-chain representations of customer deposits with full reserve accounting and regulator-ready reporting." },
-      { number: "02", title: "Settlement Networks", description: "Permissioned and hybrid networks for inter-bank settlement, FX, and securities clearing." },
-      { number: "03", title: "Digital Asset Custody", description: "MPC, HSM, and policy-engine architectures that meet bank-grade controls and audit trails." },
-      { number: "04", title: "RWA Tokenization", description: "Bonds, money market funds, real estate — issuance, lifecycle, and secondary markets in one stack." },
-      { number: "05", title: "Compliance & Risk", description: "On-chain KYC/AML, travel-rule integrations, sanctions screening, and risk dashboards." },
-      { number: "06", title: "Payment Rails", description: "Stablecoin and CBDC-ready payment infrastructure for cross-border and B2B use cases." },
-    ],
-  },
 
-  caseStudySlugs: ["bondi-finance", "ndax-canada", "drata"],
 
-  benefits: {
-    title: "Why financial institutions choose blockchain",
-    items: [
-      { title: "Faster settlement", description: "T+0 settlement for assets that traditionally take days." },
-      { title: "Lower operational cost", description: "Eliminate reconciliation overhead and intermediaries." },
-      { title: "New product surface", description: "Programmable money unlocks products that simply weren't possible on legacy rails." },
-      { title: "Audit-ready transparency", description: "Cryptographic audit trails for regulators, internal control, and customers." },
-    ],
-  },
+
 
   finalCta: {
     title: "Build the bank of the next decade",
@@ -272,10 +250,6 @@ export const banksData: ServicePageData = {
     external: true,
   },
 
-  heroImage: {
-    src: "/images/content/kW2lB3flyULttPe65AAE9bOBMVI.jpeg",
-    alt: "Modern banking and financial services with blockchain infrastructure.",
-  },
   offersIllustration: {
     src: "/images/content/L5mZDwRMP1XtyYGb0P8kuICAtEs.svg",
     alt: "Architecture diagram showing tokenized deposits and settlement networks.",
@@ -310,11 +284,11 @@ export const smartContractData: ServicePageData = {
 export const partnerData: ServicePageData = {
   seo: {
     title: "Blockchain Partner for Agencies: Strategy, Infrastructure and Support | SpaceDev",
-    description: "SpaceDev works with agencies as a blockchain partner — expand what you sell, protect your margins, and ship blockchain projects with confidence. White label or client-facing.",
+    description: "SpaceDev works with agencies as a blockchain partner. Expand what you sell, protect your margins, and ship blockchain projects with confidence. White label or client-facing.",
   },
   eyebrow: "Sub-service · Blockchain",
   title: "A Blockchain Partner for Agencies",
-  description: "Your clients want Web3 experiences, tokenized loyalty, on-chain verification, and wallet-based onboarding — but building those capabilities in-house is expensive and risky. SpaceDev works with agencies as a blockchain partner so you can expand what you sell, protect your margins, and ship with confidence.",
+  description: "Your clients want Web3 experiences, tokenized loyalty, on-chain verification, and wallet-based onboarding, but building those capabilities in-house is expensive and risky. SpaceDev works with agencies as a blockchain partner so you can expand what you sell, protect your margins, and ship with confidence.",
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   finalCta: {
@@ -407,7 +381,7 @@ export const defiFinanceData: ServicePageData = {
   footerMarqueeTheme: "dark",
 
   faqs: [
-    { question: "How long does it take to build a DeFi application?", answer: "It depends heavily on protocol complexity. A focused single-purpose DeFi dApp — such as a staking platform or a basic lending pool — can be designed, built, audited, and deployed in 10 to 16 weeks. Multi-protocol systems with custom tokenomics and front-end interfaces typically run 20 to 32 weeks. We scope every project individually after a discovery phase." },
+    { question: "How long does it take to build a DeFi application?", answer: "It depends heavily on protocol complexity. A focused single-purpose DeFi dApp, such as a staking platform or a basic lending pool, can be designed, built, audited, and deployed in 10 to 16 weeks. Multi-protocol systems with custom tokenomics and front-end interfaces typically run 20 to 32 weeks. We scope every project individually after a discovery phase." },
     { question: "What blockchains do you build DeFi protocols on?", answer: "We work across EVM-compatible chains (Ethereum, Polygon, Arbitrum, Base, BNB Chain, Avalanche) and non-EVM chains including Solana. The right chain depends on your target user base, transaction cost tolerance, and ecosystem integrations." },
     { question: "Do you offer smart contract audits for protocols built by other teams?", answer: "Yes. Our BlockAudit division operates as a standalone service. If your protocol was built externally and you need an independent security review before launch or before a funding event, we can scope an audit independently of any development engagement." },
     { question: "What is the difference between a DeFi development company and a general blockchain agency?", answer: "A decentralized finance development company should demonstrate prior work specifically in financial protocol architecture, not just token minting or NFT marketplaces. DeFi involves economic design decisions, attack surface modeling, and liquidity engineering that require domain-specific experience. Before engaging any team, ask to see prior DeFi-specific work and their audit methodology." },
@@ -428,27 +402,27 @@ export const defiFinanceData: ServicePageData = {
 export const supplyChainData: ServicePageData = {
   seo: {
     title: "Blockchain Solutions for Logistics and Supply Chain | SpaceDev",
-    description: "Blockchain-based supply chain traceability, freight payment automation, product provenance, cold chain monitoring, and trade document digitization — built by SpaceDev for logistics operators, 3PLs, and manufacturers.",
+    description: "Blockchain-based supply chain traceability, freight payment automation, product provenance, cold chain monitoring, and trade document digitization, built by SpaceDev for logistics operators, 3PLs, and manufacturers.",
   },
   eyebrow: "Industry · Supply Chain & Logistics",
   title: "Blockchain Solutions for Logistics, Freight, and Supply Chain Operations",
-  description: "Supply chains break at the handoffs — where data moves between carriers, customs authorities, warehouses, and buyers. SpaceDev builds blockchain-based logistics and supply chain platforms that replace fragmented multi-party coordination with shared, tamper-proof infrastructure built for production.",
+  description: "Supply chains break at the handoffs, where data moves between carriers, customs authorities, warehouses, and buyers. SpaceDev builds blockchain-based logistics and supply chain platforms that replace fragmented multi-party coordination with shared, tamper-proof infrastructure built for production.",
   primaryCta: { label: "Talk to Our Logistics Blockchain Team", href: "/contact" },
   compactHeroTitle: true,
 
   footerMarqueeTheme: "dark",
 
   faqs: [
-    { question: "Does blockchain replace our existing ERP, WMS, or TMS systems?", answer: "No. Blockchain in logistics adds a shared trust and visibility layer on top of the systems already running your operations. SpaceDev builds integrations with ERP platforms (SAP, Oracle, Microsoft Dynamics), WMS systems, TMS platforms, and IoT sensor networks — so the blockchain layer works alongside existing infrastructure rather than replacing it." },
+    { question: "Does blockchain replace our existing ERP, WMS, or TMS systems?", answer: "No. Blockchain in logistics adds a shared trust and visibility layer on top of the systems already running your operations. SpaceDev builds integrations with ERP platforms (SAP, Oracle, Microsoft Dynamics), WMS systems, TMS platforms, and IoT sensor networks, so the blockchain layer works alongside existing infrastructure rather than replacing it." },
     { question: "Which blockchain network is best for a logistics or supply chain platform?", answer: "It depends on whether your platform is permissioned or open, how many parties are involved, transaction volume, and regulatory requirements. Hyperledger Fabric suits enterprise consortium networks. Ethereum and EVM chains work for public traceability platforms. Polygon fits high-volume tracking and settlement. Hedera handles IoT event recording with predictable fees. We evaluate tradeoffs per project." },
-    { question: "How does smart contract automation work for freight payments?", answer: "Payment and settlement triggers are encoded as smart contracts that execute automatically on verified delivery events, customs clearance confirmations, or IoT sensor data. This eliminates manual invoice reconciliation between carriers and shippers and compresses payment cycles from weeks to hours — without requiring trust between counterparties." },
-    { question: "Can blockchain help with trade finance documents like bills of lading?", answer: "Yes. Blockchain-backed digitization of bills of lading, letters of credit, certificates of origin, and customs declarations makes these documents shareable across importers, exporters, freight forwarders, banks, and customs authorities in real time — removing document fraud risk, eliminating version conflicts, and cutting processing delays at border crossings." },
+    { question: "How does smart contract automation work for freight payments?", answer: "Payment and settlement triggers are encoded as smart contracts that execute automatically on verified delivery events, customs clearance confirmations, or IoT sensor data. This eliminates manual invoice reconciliation between carriers and shippers and compresses payment cycles from weeks to hours, without requiring trust between counterparties." },
+    { question: "Can blockchain help with trade finance documents like bills of lading?", answer: "Yes. Blockchain-backed digitization of bills of lading, letters of credit, certificates of origin, and customs declarations makes these documents shareable across importers, exporters, freight forwarders, banks, and customs authorities in real time, removing document fraud risk, eliminating version conflicts, and cutting processing delays at border crossings." },
     { question: "What does the delivery process look like for a logistics blockchain platform?", answer: "We start with a Discovery Sprint that maps your current workflows, identifies where blockchain adds real operational value, and defines platform scope, architecture, and integration requirements. From there we move to milestone-based build and QA with working demos at each stage, followed by launch and ongoing operational support as your platform and participant network scale." },
   ],
 
   finalCta: {
     title: "Build Blockchain Infrastructure for Your Logistics and Supply Chain Operations",
-    description: "Whether you need supply chain traceability, freight settlement automation, cargo tracking, trade document digitization, or multi-party inventory visibility — SpaceDev has the technical depth and operational experience to build it for production.",
+    description: "Whether you need supply chain traceability, freight settlement automation, cargo tracking, trade document digitization, or multi-party inventory visibility, SpaceDev has the technical depth and operational experience to build it for production.",
     buttonLabel: "Talk to Our Team",
     buttonHref: "/contact",
   },
@@ -460,22 +434,22 @@ export const supplyChainData: ServicePageData = {
 export const healthcareData: ServicePageData = {
   seo: {
     title: "Blockchain Development for the Healthcare Industry | SpaceDev",
-    description: "HIPAA-aligned blockchain solutions for health records, claims automation, pharmaceutical tracking, and clinical data interoperability — built by SpaceDev for healthcare companies, payers, and life sciences.",
+    description: "HIPAA-aligned blockchain solutions for health records, claims automation, pharmaceutical tracking, and clinical data interoperability, built by SpaceDev for healthcare companies, payers, and life sciences.",
   },
   eyebrow: "Industry · Healthcare",
   title: "Blockchain Development for the Healthcare Industry",
-  description: "SpaceDev builds blockchain solutions for healthcare companies that need to secure patient data, automate clinical workflows, and create interoperable health records across providers, payers, and systems — without compromising compliance or performance.",
+  description: "SpaceDev builds blockchain solutions for healthcare companies that need to secure patient data, automate clinical workflows, and create interoperable health records across providers, payers, and systems, without compromising compliance or performance.",
   primaryCta: { label: "Start Your Healthcare Project", href: "/contact" },
   compactHeroTitle: true,
 
   footerMarqueeTheme: "dark",
 
   faqs: [
-    { question: "What does HIPAA compliance mean for a blockchain healthcare application?", answer: "It means the architecture is designed around permissioned access, where only authorized parties can read or write to the records they are entitled to access. Patient data is never exposed on a public ledger. Encryption, access control, and audit trail requirements are built into the technical design from day one — not layered on after the fact." },
-    { question: "Can blockchain integrate with existing EHR and clinical systems?", answer: "Yes. Most production healthcare blockchain applications are hybrid architectures that sit alongside existing EHR, PACS, and insurance platforms rather than replacing them. The blockchain provides the interoperability and audit layer — data continues to live in existing systems, with the blockchain acting as the trusted reconciliation and consent management layer on top." },
-    { question: "Which blockchain networks are used for healthcare applications?", answer: "Healthcare applications typically run on permissioned networks — Hyperledger Fabric, Hyperledger Besu, or private Ethereum deployments — because they offer fine-grained access control and data privacy that public chains cannot provide by default. For specific use cases like credential verification or pharmaceutical provenance, hybrid approaches with public chain anchoring are also viable." },
-    { question: "How does smart contract automation work for healthcare claims processing?", answer: "A smart contract encodes the conditions under which a claim is approved and payment triggered — coverage rules, clinical codes, provider credentials, and prior authorization logic. When a claim is submitted and the conditions are met, settlement executes automatically without manual review. This reduces dispute rates, cuts settlement time, and creates an auditable record of every decision." },
-    { question: "How long does it take to build a healthcare blockchain solution?", answer: "It depends on scope and integration complexity. A focused application — such as a consent management system or a provider credentialing platform — can be scoped, built, and deployed in 12 to 20 weeks. A full interoperability layer or claims automation platform with legacy EHR integration typically runs 24 to 40 weeks. We scope every project individually after a discovery engagement." },
+    { question: "What does HIPAA compliance mean for a blockchain healthcare application?", answer: "It means the architecture is designed around permissioned access, where only authorized parties can read or write to the records they are entitled to access. Patient data is never exposed on a public ledger. Encryption, access control, and audit trail requirements are built into the technical design from day one, not layered on after the fact." },
+    { question: "Can blockchain integrate with existing EHR and clinical systems?", answer: "Yes. Most production healthcare blockchain applications are hybrid architectures that sit alongside existing EHR, PACS, and insurance platforms rather than replacing them. The blockchain provides the interoperability and audit layer: data continues to live in existing systems, with the blockchain acting as the trusted reconciliation and consent management layer on top." },
+    { question: "Which blockchain networks are used for healthcare applications?", answer: "Healthcare applications typically run on permissioned networks (Hyperledger Fabric, Hyperledger Besu, or private Ethereum deployments) because they offer fine-grained access control and data privacy that public chains cannot provide by default. For specific use cases like credential verification or pharmaceutical provenance, hybrid approaches with public chain anchoring are also viable." },
+    { question: "How does smart contract automation work for healthcare claims processing?", answer: "A smart contract encodes the conditions under which a claim is approved and payment triggered: coverage rules, clinical codes, provider credentials, and prior authorization logic. When a claim is submitted and the conditions are met, settlement executes automatically without manual review. This reduces dispute rates, cuts settlement time, and creates an auditable record of every decision." },
+    { question: "How long does it take to build a healthcare blockchain solution?", answer: "It depends on scope and integration complexity. A focused application (such as a consent management system or a provider credentialing platform) can be scoped, built, and deployed in 12 to 20 weeks. A full interoperability layer or claims automation platform with legacy EHR integration typically runs 24 to 40 weeks. We scope every project individually after a discovery engagement." },
   ],
 
   finalCta: {
@@ -492,7 +466,7 @@ export const healthcareData: ServicePageData = {
 export const energyData: ServicePageData = {
   seo: {
     title: "Blockchain Development for the Energy Sector | SpaceDev",
-    description: "Custom blockchain infrastructure for energy trading platforms, REC tokenization, carbon credit tracking, and smart contract automation — built by SpaceDev for energy companies, utilities, and renewable energy developers.",
+    description: "Custom blockchain infrastructure for energy trading platforms, REC tokenization, carbon credit tracking, and smart contract automation, built by SpaceDev for energy companies, utilities, and renewable energy developers.",
   },
   eyebrow: "Industry · Energy",
   title: "Blockchain Development for the Energy Sector",
@@ -505,7 +479,7 @@ export const energyData: ServicePageData = {
   faqs: [
     { question: "Which blockchain networks are most used in energy applications?", answer: "Enterprise energy applications typically run on permissioned Ethereum networks (such as Hyperledger Besu or Quorum) or on public EVM-compatible chains like Polygon and Ethereum mainnet, depending on privacy and settlement requirements. P2P trading applications for consumer markets often use public chains for transparency, while utility and oil and gas applications tend toward permissioned or consortium chains for data privacy reasons." },
     { question: "What is a blockchain energy trading platform and how is it different from traditional trading systems?", answer: "A blockchain energy trading platform replaces bilateral systems and manual reconciliation processes with smart contract-based settlement that executes automatically when trade conditions are met. It provides a shared, immutable ledger for all participants, eliminating the need for each party to maintain separate records and reconcile them after the fact." },
-    { question: "Can blockchain integrate with existing utility and metering infrastructure?", answer: "Yes. Most production energy blockchain applications are hybrid architectures that bridge existing IoT devices, smart meters, and operational systems with a blockchain settlement layer. The blockchain does not replace the physical infrastructure — it provides the data and financial settlement layer that sits on top of it." },
+    { question: "Can blockchain integrate with existing utility and metering infrastructure?", answer: "Yes. Most production energy blockchain applications are hybrid architectures that bridge existing IoT devices, smart meters, and operational systems with a blockchain settlement layer. The blockchain does not replace the physical infrastructure, it provides the data and financial settlement layer that sits on top of it." },
     { question: "Is blockchain relevant for smaller renewable energy developers, not just large utilities?", answer: "Particularly so. Tokenization of renewable energy assets and P2P trading infrastructure are specifically advantageous for smaller developers who lack the scale to access traditional capital markets or institutional trading desks. Blockchain lowers the barrier to market participation." },
     { question: "How long does it take to build a blockchain energy platform?", answer: "Scope varies significantly. A focused application such as a tokenized REC issuance and transfer system can be designed, built, audited, and deployed in 12 to 18 weeks. A full blockchain energy trading platform with oracle integration, compliance hooks, and multi-party access management typically runs 24 to 36 weeks. We scope every project individually after a discovery engagement." },
   ],
@@ -524,11 +498,11 @@ export const energyData: ServicePageData = {
 export const stablecoinData: ServicePageData = {
   seo: {
     title: "Custom Stablecoin Development for Payments, DeFi, and Enterprise Settlement | SpaceDev",
-    description: "SpaceDev builds custom stablecoin solutions for fintech companies, DeFi protocols, payment platforms, and enterprises — fiat-backed, crypto-collateralized, algorithmic, and hybrid stablecoin infrastructure from architecture through production launch.",
+    description: "SpaceDev builds custom stablecoin solutions for fintech companies, DeFi protocols, payment platforms, and enterprises: fiat-backed, crypto-collateralized, algorithmic, and hybrid stablecoin infrastructure from architecture through production launch.",
   },
   eyebrow: "DeFi · Stablecoins",
   title: "Custom Stablecoin Development for Payments, DeFi, and Enterprise Settlement",
-  description: "A stablecoin is only as good as the system built around it. SpaceDev builds custom stablecoin solutions for fintech companies, DeFi protocols, payment platforms, and enterprises that need programmable, stable digital currency infrastructure — from initial architecture through production launch.",
+  description: "A stablecoin is only as good as the system built around it. SpaceDev builds custom stablecoin solutions for fintech companies, DeFi protocols, payment platforms, and enterprises that need programmable, stable digital currency infrastructure: from initial architecture through production launch.",
   primaryCta: { label: "Talk to Our Stablecoin Development Team", href: "/contact" },
   compactHeroTitle: true,
 
@@ -537,13 +511,13 @@ export const stablecoinData: ServicePageData = {
   faqs: [
     { question: "What is the difference between a fiat-backed and a crypto-collateralized stablecoin?", answer: "A fiat-backed stablecoin holds reserves in traditional currency, typically USD or EUR, managed by a custodian or trust. A crypto-collateralized stablecoin is over-collateralized with on-chain crypto assets and uses liquidation mechanisms to maintain the peg without relying on a centralized reserve. The right choice depends on your regulatory environment, trust model, and target use case." },
     { question: "How long does stablecoin development take?", answer: "A production-ready stablecoin with minting and burning mechanics, reserve management, compliance controls, and basic wallet integration typically takes between 3 and 5 months depending on scope and the complexity of the collateral model. A Discovery Sprint at the start locks in scope and reduces surprises during build." },
-    { question: "Does SpaceDev handle regulatory compliance for stablecoin issuance?", answer: "We build the technical mechanisms that enforce the compliance rules your legal advisors define — including KYC/AML integrations, transfer restrictions, blacklisting, and audit trails. We are an engineering partner, not a legal or compliance firm. We work alongside your counsel but do not replace them." },
+    { question: "Does SpaceDev handle regulatory compliance for stablecoin issuance?", answer: "We build the technical mechanisms that enforce the compliance rules your legal advisors define: KYC/AML integrations, transfer restrictions, blacklisting, and audit trails. We are an engineering partner, not a legal or compliance firm. We work alongside your counsel but do not replace them." },
     { question: "Can you deploy the same stablecoin across multiple blockchains?", answer: "Yes. We design cross-chain deployment architecture using bridge protocols and canonical token standards. Multi-chain deployment requires careful bridge security design and liquidity coordination, which we address during the architecture phase." },
   ],
 
   finalCta: {
     title: "Build Your Stablecoin with SpaceDev",
-    description: "Looking for a stablecoin development company to build fiat-backed, crypto-collateralized, or commodity-backed stablecoin infrastructure for payments, DeFi, or enterprise settlement? SpaceDev delivers the full stack — from economic design to production launch.",
+    description: "Looking for a stablecoin development company to build fiat-backed, crypto-collateralized, or commodity-backed stablecoin infrastructure for payments, DeFi, or enterprise settlement? SpaceDev delivers the full stack: from economic design to production launch.",
     buttonLabel: "Talk to Our Stablecoin Development Team",
     buttonHref: "/contact",
   },

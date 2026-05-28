@@ -5,16 +5,16 @@ import FeatureCard from "../../../components/ui/FeatureCard.astro";
 import { supplyChainData } from "../../../data/services";
 
 const services = [
-  { number: "01", title: "Supply Chain Traceability and End-to-End Cargo Tracking", description: "A shared, immutable record of every custody transfer from origin to final delivery — visible to all authorized parties in real time. Shippers, carriers, freight forwarders, and receivers work from the same data set, eliminating conflicting records and accelerating claims resolution." },
-  { number: "02", title: "Smart Contract Automation for Freight Payments and Trade Settlement", description: "Payment and settlement triggers that execute automatically on verified delivery events, customs clearance confirmations, or IoT sensor data — compressing payment cycles from weeks to hours without requiring trust between counterparties." },
-  { number: "03", title: "Product Provenance Verification and Anti-Counterfeiting", description: "On-chain product authentication records that trace goods from manufacturer to distributor to point of sale. Physical goods linked via QR codes, RFID, or NFC tags to their on-chain identity — critical for pharma, food, luxury goods, and electronics." },
-  { number: "04", title: "Trade Finance Document Digitization", description: "Blockchain-backed digitization of bills of lading, letters of credit, certificates of origin, and customs declarations — shareable across importers, exporters, freight forwarders, banks, and customs authorities in real time." },
-  { number: "05", title: "Multi-Party Warehouse and Inventory Visibility Platforms", description: "A shared data layer for inventory levels, warehouse events, and stock movements visible to suppliers, 3PLs, and buyers simultaneously — eliminating the reconciliation overhead of managing inventory across disconnected systems." },
-  { number: "06", title: "Cold Chain Monitoring with IoT and On-Chain Event Recording", description: "Smart contracts triggered by IoT sensor data, recording temperature, humidity, and location events on-chain for pharmaceutical, food, and chemical shipments — producing verifiable compliance documentation without manual data entry." },
+  { number: "01", title: "Supply Chain Traceability and End-to-End Cargo Tracking", description: "A shared, immutable record of every custody transfer from origin to final delivery, visible to all authorized parties in real time. Shippers, carriers, freight forwarders, and receivers work from the same data set, eliminating conflicting records and accelerating claims resolution." },
+  { number: "02", title: "Smart Contract Automation for Freight Payments and Trade Settlement", description: "Payment and settlement triggers that execute automatically on verified delivery events, customs clearance confirmations, or IoT sensor data, compressing payment cycles from weeks to hours without requiring trust between counterparties." },
+  { number: "03", title: "Product Provenance Verification and Anti-Counterfeiting", description: "On-chain product authentication records that trace goods from manufacturer to distributor to point of sale. Physical goods linked via QR codes, RFID, or NFC tags to their on-chain identity, critical for pharma, food, luxury goods, and electronics." },
+  { number: "04", title: "Trade Finance Document Digitization", description: "Blockchain-backed digitization of bills of lading, letters of credit, certificates of origin, and customs declarations, shareable across importers, exporters, freight forwarders, banks, and customs authorities in real time." },
+  { number: "05", title: "Multi-Party Warehouse and Inventory Visibility Platforms", description: "A shared data layer for inventory levels, warehouse events, and stock movements visible to suppliers, 3PLs, and buyers simultaneously, eliminating the reconciliation overhead of managing inventory across disconnected systems." },
+  { number: "06", title: "Cold Chain Monitoring with IoT and On-Chain Event Recording", description: "Smart contracts triggered by IoT sensor data, recording temperature, humidity, and location events on-chain for pharmaceutical, food, and chemical shipments, producing verifiable compliance documentation without manual data entry." },
 ];
 
 const problems = [
-  { problem: "Fragmented shipment records across carriers and forwarders",    solution: "Single shared ledger accessible to all authorized parties — no central operator required" },
+  { problem: "Fragmented shipment records across carriers and forwarders",    solution: "Single shared ledger accessible to all authorized parties. No central operator required." },
   { problem: "Manual invoice reconciliation and slow freight payment cycles", solution: "Smart contracts trigger automated settlement on confirmed delivery or milestone events" },
   { problem: "Counterfeit and tampered goods entering the supply chain",      solution: "On-chain provenance tied to physical goods via QR, RFID, or NFC from point of origin" },
   { problem: "Paper-based trade documents prone to fraud and delays",         solution: "Digitized, tamper-proof documents shareable across borders and institutions instantly" },
@@ -45,15 +45,15 @@ const I_CODE     = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;heigh
 const I_FILE     = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
 
 const components = [
-  { icon: I_MONITOR,  title: "Real-Time Shipment and Cargo Tracking Portal", description: "Web-based visibility dashboards for shippers, carriers, and receivers with live event feeds, custody chain history, document access, and exception alerts — built for the actual users of the platform, not for a technical audience." },
-  { icon: I_SETTINGS, title: "Operator Console for Multi-Party Logistics Networks", description: "Tools for platform operators to onboard participants, manage access permissions, configure smart contract parameters, monitor network activity, and generate compliance and operational reports — without requiring blockchain expertise." },
+  { icon: I_MONITOR,  title: "Real-Time Shipment and Cargo Tracking Portal", description: "Web-based visibility dashboards for shippers, carriers, and receivers with live event feeds, custody chain history, document access, and exception alerts, built for the actual users of the platform, not for a technical audience." },
+  { icon: I_SETTINGS, title: "Operator Console for Multi-Party Logistics Networks", description: "Tools for platform operators to onboard participants, manage access permissions, configure smart contract parameters, monitor network activity, and generate compliance and operational reports, without requiring blockchain expertise." },
   { icon: I_CODE,     title: "API and Webhook Integration Layer", description: "RESTful and webhook-based APIs that connect your blockchain platform to existing ERP, WMS, TMS, and partner systems. Designed so third-party integrations don't require changes to the core platform architecture." },
-  { icon: I_FILE,     title: "Blockchain-Anchored Trade Document Management", description: "Digitized trade documents with on-chain anchoring, version control, multi-party signature workflows, and full audit trails — shareable across freight forwarders, customs authorities, banks, and trading partners." },
+  { icon: I_FILE,     title: "Blockchain-Anchored Trade Document Management", description: "Digitized trade documents with on-chain anchoring, version control, multi-party signature workflows, and full audit trails, shareable across freight forwarders, customs authorities, banks, and trading partners." },
 ];
 
 const deliverySteps = [
   { number: "01", title: "Discovery Sprint", description: "We map your current logistics workflows, identify where blockchain adds real operational value versus where it adds unnecessary complexity, and define the platform scope, architecture, and integration requirements. You get a buildable blueprint before development starts." },
-  { number: "02", title: "Build and QA", description: "Milestone-based delivery with working demos, integration testing against real logistics scenarios, and security reviews at each stage. No monolith delivered at the end — working software at every milestone." },
+  { number: "02", title: "Build and QA", description: "Milestone-based delivery with working demos, integration testing against real logistics scenarios, and security reviews at each stage. No monolith delivered at the end. Working software at every milestone." },
   { number: "03", title: "Launch and Operational Support", description: "Post-launch monitoring, smart contract upgrades, and iterative development as your platform and participant network scale. The engagement does not end at launch." },
 ];
 
@@ -76,9 +76,9 @@ const I_EYE    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:
 const I_USERS  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="white" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
 const whyUs = [
-  { icon: I_CHAIN, title: "Integration, not replacement", description: "We build integrations with ERP (SAP, Oracle, Dynamics), WMS, TMS, IoT platforms, and payment rails — defined during discovery, not retrofitted after build. Integration architecture determines whether the platform works in production or only in a demo environment." },
+  { icon: I_CHAIN, title: "Integration, not replacement", description: "We build integrations with ERP (SAP, Oracle, Dynamics), WMS, TMS, IoT platforms, and payment rails, defined during discovery, not retrofitted after build. Integration architecture determines whether the platform works in production or only in a demo environment." },
   { icon: I_GLOBE, title: "Network selection per use case", description: "The right network for a pharmaceutical cold chain platform is not the same as for a cross-border freight settlement system. We evaluate network options against your specific requirements before recommending an architecture." },
-  { icon: I_EYE,   title: "BlockAudit on every production deployment", description: "Every smart contract governing freight payments, custody transfers, and compliance enforcement goes through structured security review. BlockAudit — SpaceDev's dedicated security division — provides pre-launch hardening on projects that require deeper assurance." },
+  { icon: I_EYE,   title: "BlockAudit on every production deployment", description: "Every smart contract governing freight payments, custody transfers, and compliance enforcement goes through structured security review. BlockAudit (SpaceDev's dedicated security division) provides pre-launch hardening on projects that require deeper assurance." },
   { icon: I_USERS, title: "Built for production, not pilots", description: "We work with freight operators, 3PLs, manufacturers, and platform builders to deliver systems that fit inside existing operations. Our incentive is aligned with your platform's success at scale, not just the completion of a build." },
 ];
 ---
@@ -90,12 +90,12 @@ const whyUs = [
     <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
       <div class="sd-container">
         <div class="max-w-3xl mx-auto" data-animate>
-          <h2 class="section-title text-white mb-6">Where Supply Chains Break — and How Blockchain Fixes It</h2>
+          <h2 class="section-title text-white mb-6">Where Supply Chains Break and How Blockchain Fixes It</h2>
           <p class="text-sd-text-muted leading-relaxed mb-4">
-            Supply chains break at the handoffs. Every time data moves between carriers, customs authorities, warehouses, and buyers, reconciliation overhead accumulates, disputes go unresolved, and visibility disappears. These are not software problems — they are trust and coordination problems that existing ERP and TMS systems were never designed to solve.
+            Supply chains break at the handoffs. Every time data moves between carriers, customs authorities, warehouses, and buyers, reconciliation overhead accumulates, disputes go unresolved, and visibility disappears. These are not software problems. They are trust and coordination problems that existing ERP and TMS systems were never designed to solve.
           </p>
           <p class="text-sd-text-muted leading-relaxed mb-4">
-            Blockchain in logistics does not mean replacing your current stack. It means adding a shared, tamper-proof coordination layer on top of it — one that all authorized parties can read from and write to, with no central operator required to maintain the integrity of the data.
+            Blockchain in logistics does not mean replacing your current stack. It means adding a shared, tamper-proof coordination layer on top of it, one that all authorized parties can read from and write to, with no central operator required to maintain the integrity of the data.
           </p>
           <p class="text-sd-text-muted leading-relaxed mb-8">
             SpaceDev works with freight operators, 3PLs, manufacturers, importers, and platform builders to deliver production-ready systems that fit inside existing operations from day one.
@@ -129,7 +129,7 @@ const whyUs = [
       <div class="sd-container">
         <div class="max-w-2xl mb-12" data-animate>
           <h2 class="section-title text-white mb-4">How Blockchain Solves Operational Problems in Logistics and Freight</h2>
-          <p class="text-sd-text-muted leading-relaxed">Seven recurring pain points across freight, trade, and supply chain — and how blockchain addresses each.</p>
+          <p class="text-sd-text-muted leading-relaxed">Seven recurring pain points across freight, trade, and supply chain: how blockchain addresses each.</p>
         </div>
         <div class="hidden md:block overflow-x-auto" data-animate>
           <table class="w-full text-sm border-collapse">
@@ -206,7 +206,7 @@ const whyUs = [
               The operational logic of a logistics blockchain platform lives in its smart contracts. We build and audit contracts that govern the core events across your freight and trade workflows.
             </p>
             <p class="text-sm text-sd-text-muted mt-6 leading-relaxed" data-animate>
-              All contracts go through structured security review before production. When the project requires deeper assurance, <a href="/blockchain-development-services/security" class="text-sd-purple-300 hover:text-white transition-colors">BlockAudit</a> — SpaceDev's dedicated security division — provides smart contract auditing and pre-launch hardening.
+              All contracts go through structured security review before production. When the project requires deeper assurance, <a href="/blockchain-development-services/security" class="text-sd-purple-300 hover:text-white transition-colors">BlockAudit</a> (SpaceDev's dedicated security division) provides smart contract auditing and pre-launch hardening.
             </p>
           </div>
           <div class="flex flex-col gap-3">
@@ -226,7 +226,7 @@ const whyUs = [
       <div class="sd-container">
         <div class="max-w-2xl mb-14" data-animate>
           <h2 class="section-title text-white mb-4">Logistics Blockchain Platform Components</h2>
-          <p class="text-sd-text-muted leading-relaxed">The full delivery architecture for a production logistics blockchain platform — front end to integration layer.</p>
+          <p class="text-sd-text-muted leading-relaxed">The full delivery architecture for a production logistics blockchain platform: front end to integration layer.</p>
         </div>
         <div class="grid sm:grid-cols-2 gap-x-12 gap-y-12">
           {components.map((c) => (

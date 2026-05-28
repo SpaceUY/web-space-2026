@@ -56,7 +56,8 @@ const summary     = entry.data.summary;
 const objectives  = entry.data.objectives ?? [];
 const deliverables = entry.data.deliverables ?? [];
 const outcome      = entry.data.outcome;
-const gallery      = (entry.data.gallery ?? []).slice(0, 5);
+const gallery      = (entry.data.gallery ?? []).slice(0, 6);
+const galleryType  = entry.data.galleryType ?? "desktop";
 const metrics      = entry.data.metrics;
 const clutchReview = entry.data.clutchReview;
 const hasRichContent =
@@ -237,26 +238,56 @@ const hasRichContent =
         </section>
       )}
 
-      <!-- GALLERY -->
+      <!-- GALLERY — scroll-hijacked horizontal pan -->
       {gallery.length > 0 && (
-        <section class="bg-sd-dark py-14 sm:py-24">
-          <div class="mx-auto max-w-[1440px] px-6 sm:px-10">
-            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">Gallery</p>
-            <h2 class="text-2xl sm:text-4xl text-white mb-8 sm:mb-10 leading-tight">A closer look</h2>
-            <div class="grid gap-3 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <!--
+          Pin wrapper: taller than 100vh so the page has scroll "room" to spend.
+          Height is set by JS once image dimensions are known.
+        -->
+        <div id="cs-gallery-pin" class="relative bg-sd-dark">
+
+          <!--
+            Sticky section: stays locked to the top of the viewport while the
+            user scrolls through the pin wrapper. JS drives scrollLeft on the
+            track based on how far into the pin we've scrolled.
+          -->
+          <section
+            id="cs-gallery-section"
+            class="bg-sd-dark sticky top-0 overflow-hidden flex flex-col justify-start pt-16 md:pt-24"
+            style="height: 100svh;"
+          >
+            {/* Heading */}
+            <div class="mx-auto max-w-[1100px] px-6 md:px-10 mb-8 w-full">
+              <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Gallery</p>
+              <h2 class="text-3xl md:text-4xl text-white leading-tight">A closer look</h2>
+            </div>
+
+            {/* Scroll track — no snap, JS drives scrollLeft */}
+            <div
+              id="cs-gallery-track"
+              class="cs-gallery-scroll flex gap-3 md:gap-5 overflow-x-hidden pl-6 md:pl-10"
+            >
               {gallery.map((src, i) => (
-                <figure class={`overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] ${i % 5 === 0 ? "sm:col-span-2" : ""}`}>
+                <figure
+                  class="shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-[#0d0c17]"
+                  style={galleryType === "mobile"
+                    ? "width: clamp(75px, 21vw, 318px); aspect-ratio: 9/16;"
+                    : "width: clamp(300px, 58vw, 600px); aspect-ratio: 3/2;"}
+                >
                   <img
                     src={src}
-                    alt={`${entry.data.name} — visual ${i + 1}`}
-                    loading="lazy"
+                    alt={`${entry.data.name} — ${galleryType === "mobile" ? "screen" : "visual"} ${i + 1}`}
+                    loading={i === 0 ? "eager" : "lazy"}
                     class="w-full h-full object-cover"
                   />
                 </figure>
               ))}
+              {/* Trailing spacer */}
+              <div class="shrink-0 w-6 md:w-10" aria-hidden="true"></div>
             </div>
-          </div>
-        </section>
+          </section>
+
+        </div>
       )}
 
       <!-- CLUTCH REVIEW (only if defined) -->
@@ -373,3 +404,73 @@ const hasRichContent =
   />
 </BaseLayout>
 
+<style>
+  /* Hero two-column layout */
+  .cs-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 640px) {
+    .cs-hero-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
+  }
+
+  .cs-hero-image img {
+    width: 100%;
+    border-radius: 1rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  /* Gallery scroll track: overflow hidden (JS drives scrollLeft, no visible bar) */
+  .cs-gallery-scroll { scrollbar-width: none; }
+  .cs-gallery-scroll::-webkit-scrollbar { display: none; }
+</style>
+
+<script>
+  // ── GALLERY SCROLL HIJACK ──────────────────────────────────────────────────
+  // Vertical page scroll is redirected to horizontal image panning while the
+  // sticky gallery section is in view. Once images are fully scrolled, the
+  // page scroll continues normally.
+
+  const pin   = document.getElementById("cs-gallery-pin");
+  const track = document.getElementById("cs-gallery-track");
+
+  if (pin && track) {
+    // Set pin height = viewport height + full horizontal scroll distance.
+    // This gives the page exactly enough "virtual" vertical scroll space to
+    // translate 1:1 into horizontal movement on the track.
+    const setHeight = () => {
+      const maxH = track.scrollWidth - track.clientWidth;
+      pin.style.height = window.innerHeight + maxH + "px";
+    };
+
+    // Re-calculate once all images have loaded (scrollWidth may change)
+    if (document.readyState === "complete") {
+      setHeight();
+    } else {
+      window.addEventListener("load", setHeight, { once: true });
+      setHeight(); // best-effort run immediately (cached images)
+    }
+    window.addEventListener("resize", setHeight);
+
+    // On every page scroll: map how far into the pin we've scrolled → scrollLeft
+    const onScroll = () => {
+      const pinTop    = pin.getBoundingClientRect().top;
+      const scrolledIn = Math.max(0, -pinTop);          // 0 until pin top hits viewport top
+      const maxScroll  = track.scrollWidth - track.clientWidth;
+      track.scrollLeft  = Math.min(scrolledIn, maxScroll);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+</script>
