@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Strip Git metadata for Vercel
         run: rm -rf .git
       - name: Install Vercel CLI
