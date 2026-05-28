@@ -433,12 +433,27 @@ const serviceJsonLd = {
     <section class={`py-20 md:py-28 ${data.caseStudiesTone === "light" ? "border-t border-sd-gray-border" : ""}`} style={data.caseStudiesTone === "light" ? "background: #EDEDED;" : "background: var(--sd-purple-deep);"}>
       <div class="sd-container">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-          <SectionHeading
-            title={data.caseStudiesTitle ?? "Our Work in Action"}
-            description={data.caseStudiesDescription ?? "Take a closer look at how our services have helped teams ship at scale."}
-            tone={data.caseStudiesTone === "light" ? "dark" : "light"}
-          />
-          <Button href="/our-work" variant={data.caseStudiesTone === "light" ? "outline-dark" : "outline-light"}>See all work</Button>
+          <div>
+            <SectionHeading
+              title={data.caseStudiesTitle ?? "Our Work in Action"}
+              description={data.caseStudiesLink ? undefined : (data.caseStudiesDescription ?? "Take a closer look at how our services have helped teams ship at scale.")}
+              tone={data.caseStudiesTone === "light" ? "dark" : "light"}
+            />
+            {data.caseStudiesLink && (
+              <p class={`mt-5 text-base md:text-lg leading-relaxed max-w-3xl ${data.caseStudiesTone === "light" ? "text-sd-text-gray" : "text-sd-text-muted"}`}>
+                {data.caseStudiesDescription}{" "}
+                <a
+                  href={data.caseStudiesLink.href}
+                  class={`font-medium hover:underline hover:underline-offset-4 transition-colors ${data.caseStudiesTone === "light" ? "text-sd-text-dark hover:text-sd-purple" : "text-white/70 hover:text-white"}`}
+                >
+                  {data.caseStudiesLink.text}
+                </a>
+              </p>
+            )}
+          </div>
+          {!data.caseStudiesLink && (
+            <Button href="/our-work" variant={data.caseStudiesTone === "light" ? "outline-dark" : "outline-light"}>See all work</Button>
+          )}
         </div>
         <div id="case-studies-zone" class="relative grid gap-6 md:grid-cols-2">
           <!-- Custom cursor: rotating text ring -->
@@ -585,6 +600,9 @@ const serviceJsonLd = {
       </div>
     </section>
   )}
+
+  <!-- Named slot: inject content after Why Us and before FAQ / Final CTA -->
+  <slot name="post-whyus" />
 
   <!-- FAQ -->
   {data.faqs && data.faqs.length > 0 && (

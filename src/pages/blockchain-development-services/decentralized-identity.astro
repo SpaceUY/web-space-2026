@@ -5,9 +5,9 @@ import FeatureCard from "../../components/ui/FeatureCard.astro";
 import { decentralizedIdentityData } from "../../data/services";
 
 const whatYouGet = [
-  { title: "A complete identity product — UX flows, credential issuance, verification, and lifecycle management", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="3" y="4" width="18" height="16" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 9h8M8 13h5" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="9" r="0" fill="white"/></svg>` },
+  { title: "A complete identity product: UX flows, credential issuance, verification, and lifecycle management", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><rect x="3" y="4" width="18" height="16" rx="2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 9h8M8 13h5" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="9" r="0" fill="white"/></svg>` },
   { title: "Practical architecture that balances privacy, security, and usability", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
-  { title: "Enterprise-friendly delivery — APIs, admin tooling, monitoring, and documentation", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
+  { title: "Enterprise-friendly delivery: APIs, admin tooling, monitoring, and documentation", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
   { title: "Security-driven engineering, with optional deeper validation via BlockAudit", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
 ];
 
@@ -24,7 +24,7 @@ const enables = [
   },
   {
     title: "Reusable Credentials Across Experiences",
-    description: "Issue once, verify many times — across partners, apps, and environments.",
+    description: "Issue once, verify many times. Across partners, apps, and environments.",
     icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="16 6 12 2 8 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="2" x2="12" y2="15" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`,
   },
   {
@@ -35,8 +35,8 @@ const enables = [
 ];
 
 const solutions = [
-  { number: "01", title: "DID-Based Onboarding and Account Verification", description: "Identity flows that replace fragile 'upload, wait, approve' experiences with verifiable proofs — while maintaining a clean UX." },
-  { number: "02", title: "Verifiable Credentials Issuance and Verification", description: "Systems that issue credentials, manage revocation, and verify claims — designed for high-volume environments and clear auditability." },
+  { number: "01", title: "DID-Based Onboarding and Account Verification", description: "Identity flows that replace fragile 'upload, wait, approve' experiences with verifiable proofs, while maintaining a clean UX." },
+  { number: "02", title: "Verifiable Credentials Issuance and Verification", description: "Systems that issue credentials, manage revocation, and verify claims, designed for high-volume environments and clear auditability." },
   { number: "03", title: "Wallet and Identity Experiences Users Actually Complete", description: "Credential storage, recovery patterns, session management, and user journeys that keep drop-off low without compromising security." },
   { number: "04", title: "APIs and Integrations for Existing Systems", description: "We integrate with existing user databases, CRM, IAM, KYC providers, and internal services through robust APIs and event-driven patterns." },
 ];
@@ -44,12 +44,12 @@ const solutions = [
 const architecture = [
   { title: "Choosing DID Methods and Credential Formats", description: "We help you select approaches that fit your ecosystem, interoperability goals, and user experience expectations.", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="11" cy="11" r="8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21l-4.35-4.35" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
   { title: "Privacy, Data Minimization, and Storage Patterns", description: "We design the split between on-chain anchors, off-chain data, and encrypted storage so sensitive information is handled responsibly.", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><ellipse cx="12" cy="5" rx="9" ry="3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
-  { title: "Scalability and Reliability", description: "We build for performance, monitoring, and operational readiness — including CI/CD, environments, logging, and incident response planning.", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M3 3v16a2 2 0 0 0 2 2h16" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M7 16l4-6 4 3 4-8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
+  { title: "Scalability and Reliability", description: "We build for performance, monitoring, and operational readiness, including CI/CD, environments, logging, and incident response planning.", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M3 3v16a2 2 0 0 0 2 2h16" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M7 16l4-6 4 3 4-8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
   { title: "Security-First Delivery With BlockAudit Support", description: "Identity systems are high-trust infrastructure. We implement secure patterns across authentication flows, key handling, and verification logic.", icon: `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
 ];
 
 const engagementModels = [
-  { title: "End-to-End Product Delivery", description: "We own architecture, development, QA, and launch — acting as your full delivery partner from discovery to production." },
+  { title: "End-to-End Product Delivery", description: "We own architecture, development, QA, and launch, acting as your full delivery partner from discovery to production." },
   { title: "Team Augmentation", description: "Embed decentralized identity specialists into your existing team to accelerate delivery and close capability gaps." },
   { title: "Architecture and Advisory", description: "Strategic support for in-house teams navigating DID method selection, credential design, and integration patterns." },
 ];
@@ -64,7 +64,7 @@ const engagementModels = [
         <div class="max-w-3xl mx-auto" data-animate>
           <h2 class="section-title text-white mb-6">Decentralized Identity, Built for Real Products and Real Compliance</h2>
           <p class="text-sd-text-muted leading-relaxed mb-4">
-            DID programs fail when they're run like research projects. We build identity products that support everyday workflows, stakeholder needs, and operational realities — with a strong focus on the USA market.
+            DID programs fail when they're run like research projects. We build identity products that support everyday workflows, stakeholder needs, and operational realities, with a strong focus on the USA market.
           </p>
           <p class="text-sd-text-muted leading-relaxed mb-8">
             From verifiable credential issuance to wallet-based onboarding, we combine web2-grade product engineering with web3 capabilities to deliver identity systems you can actually ship.
@@ -79,7 +79,7 @@ const engagementModels = [
       <div class="sd-container">
         <div class="max-w-2xl mb-10" data-animate>
           <h2 class="section-title text-white mb-4">What You Get With SpaceDev</h2>
-          <p class="text-sd-text-muted">A complete identity product — not a prototype.</p>
+          <p class="text-sd-text-muted">A complete identity product, not a prototype.</p>
         </div>
         <div class="grid sm:grid-cols-2 gap-4">
           {whatYouGet.map((item) => (
@@ -139,7 +139,7 @@ const engagementModels = [
       <div class="sd-container">
         <div class="max-w-2xl mb-10" data-animate>
           <h2 class="section-title text-white mb-4">Architecture Choices, Made Practical</h2>
-          <p class="text-sd-text-muted leading-relaxed">We help you make the right decisions early — so they don't become constraints later.</p>
+          <p class="text-sd-text-muted leading-relaxed">We help you make the right decisions early so they don't become constraints later.</p>
         </div>
         <div class="grid sm:grid-cols-2 gap-4">
           {architecture.map((item) => (
@@ -163,7 +163,7 @@ const engagementModels = [
         <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
           <div class="md:sticky md:top-32" data-animate>
             <h2 class="section-title text-white mb-6">Delivery Approach</h2>
-            <p class="text-sd-text-muted leading-relaxed">A structured path from idea to production — without the research-project risk.</p>
+            <p class="text-sd-text-muted leading-relaxed">A structured path from idea to production without the research-project risk.</p>
           </div>
           <ol class="flex flex-col gap-6">
             {[
