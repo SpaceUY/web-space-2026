@@ -32,22 +32,12 @@ deliverables:
   - "Operational surface (dashboards, alerts, runbooks) for 24/7 ops teams."
 outcome: "ACME shipped a wallet infrastructure platform that fintechs and Web3 companies can adopt without building custody from scratch, and SpaceDev continues to evolve the platform alongside the team."
 gallery:
-  - "/images/content/0nylq8mCRszdPqwB6nOZfTR0o0.png"
-  - "/images/content/2XWwT3Pp2eavgVno8ar5bgmLmQ.png"
-  - "/images/content/6usdZfFR0QpGyOcSWk6B98f6I4w.png"
-  - "/images/content/B0NA1uI956ED6Ge8ZTASeXy3o.png"
-  - "/images/content/EQVkOZYgv3yk5qyxmpfpX5MkZYU.png"
-  - "/images/content/FiZpSF379icvtGGdDqoEIWL7FY.png"
-  - "/images/content/HMR5221J4v8ugzepNPrUc9v0u4.png"
-  - "/images/content/LBj83yg7gXmENJ41HTP7BgJzW64.png"
-  - "/images/content/W98kIZvLt0XMiXJC3pT1jRU2hU.svg"
-  - "/images/content/Wy69TFi9ffOfu4wdIQDPbVhBs.png"
-  - "/images/content/deQV4KY5mjtzo8cXNRfz3F6Zg.png"
-  - "/images/content/g8f1pm40TLfKelxjf5URbtlb5og.png"
-  - "/images/content/l1j00Ag8oiJKwdKr8Uk0p8Zg.png"
-  - "/images/content/oL6DQFHRZDzNlwGYclXPXJSRVv8.png"
-  - "/images/content/qoQ9ecVGqGfYAO9YJpjXAfu7Uo.png"
-  - "/images/content/tP7G0qUKdQxouaQpm1zzmDi62CQ.png"
+  - "/images/case-studies/acme/gallery/gallery1.png"
+  - "/images/case-studies/acme/gallery/gallery2.png"
+  - "/images/case-studies/acme/gallery/gallery3.png"
+  - "/images/case-studies/acme/gallery/gallery4.png"
+  - "/images/case-studies/acme/gallery/gallery5.png"
+  - "/images/case-studies/acme/gallery/gallery6.png"
 ---
 
 ## The Challenge

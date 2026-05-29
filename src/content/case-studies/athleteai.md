@@ -32,19 +32,14 @@ deliverables:
   - "Coach dashboard with cohort analytics and review workflows."
   - "Content tooling so the AthleteAI team can publish drills and programs without engineering."
 outcome: "AthleteAI launched a coaching product that performs like a Web2 fitness app while delivering AI feedback that previously required in-person experts, and continues to expand into new sports alongside SpaceDev."
+galleryType: "mobile"
 gallery:
-  - "/images/content/9vLI9ldVI6m3F1ii6SQpr7UIOf8.png"
-  - "/images/content/Ali9YqnrWOTGFPxwRQVXV45hyEc.png"
-  - "/images/content/FMSsP29uobYk712yruMcfRMFA.png"
-  - "/images/content/SiKLJrHBNznOkVXIyZPcMGjCxmY.png"
-  - "/images/content/TJt0lONwgKPP1h5GamOliyDzykk.png"
-  - "/images/content/Tdb3IvjZu1jObmIvvIwOdDI19e4.png"
-  - "/images/content/YX5a1WSGZnkXsimoSLlL9Wqzbg.svg"
-  - "/images/content/fj4V1AJjKbAVAtJHF5nWIEjYAI.png"
-  - "/images/content/jgF6NqErVPBcgeDTJSEQXaSv8k4.png"
-  - "/images/content/kU3alH3RBuUYnJd9EGjYyZ99rBk.png"
-  - "/images/content/rvubG3QHBegUs5EtW3glDHlM.svg"
-  - "/images/content/uLyTEx4put8HzL82KTIL0owR8NM.svg"
+  - "/images/case-studies/athleteai/gallery/gallery1.png"
+  - "/images/case-studies/athleteai/gallery/gallery2.png"
+  - "/images/case-studies/athleteai/gallery/gallery3.png"
+  - "/images/case-studies/athleteai/gallery/gallery4.png"
+  - "/images/case-studies/athleteai/gallery/gallery5.png"
+  - "/images/case-studies/athleteai/gallery/gallery6.png"
 ---
 
 ## The Challenge

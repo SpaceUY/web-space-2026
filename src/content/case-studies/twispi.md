@@ -33,22 +33,11 @@ deliverables:
   - "Onboarding flows that bring a new creator from signup to first paid subscriber in under a day."
 outcome: "Twispi launched a polished subscription platform that creators ship on without engineering support, with retention and conversion metrics competitive with category leaders."
 gallery:
-  - "/images/content/0sy7J541aQiAxDWu9aIOHI4dsnc.png"
-  - "/images/content/3bY8iUMx3B23jNPSht3ZTZofZQc.png"
-  - "/images/content/566CawBBvO6PBQaMQWDQEkRbs.png"
-  - "/images/content/81Ki3oVi0ckeoCZB0Unx2CmArTs.png"
-  - "/images/content/BzcdCbDJbDUYzL1c290wsvcXPGE.png"
-  - "/images/content/EwtMgPZHsPsVFwDoSShG1T2s.png"
-  - "/images/content/IGevunxvhtL4sJPD44iI3WyCmSA.png"
-  - "/images/content/KoTJmRh6kIO37jMMHhlTKjL2WqQ.png"
-  - "/images/content/L1pBdQzCila7gtPoJgYYlxer94s.png"
-  - "/images/content/PdGL08Qm3BgmTsanhJRSujElZs.png"
-  - "/images/content/Z0KIDaI7BLDQGoClp8Isw3GdtvM.svg"
-  - "/images/content/g2CyzBkKuZ2oGvJv8NUGbsuryRE.png"
-  - "/images/content/i9k8nxFj1R6QjJgUWkGUFXY.png"
-  - "/images/content/nP1QMIBOwVZGgYpqaPdmvwdlNuQ.png"
-  - "/images/content/rLkemTui1bTM38K0GqCNhkHEY.png"
-  - "/images/content/xlxsvr4BAjbDR3yHenq0ivlWtbc.png"
+  - "/images/case-studies/twispi/gallery/gallery1.png"
+  - "/images/case-studies/twispi/gallery/gallery2.png"
+  - "/images/case-studies/twispi/gallery/gallery3.png"
+  - "/images/case-studies/twispi/gallery/gallery4.png"
+  - "/images/case-studies/twispi/gallery/gallery5.png"
 ---
 
 ## The Challenge

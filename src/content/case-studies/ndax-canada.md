@@ -46,26 +46,14 @@ clutchReview:
   reviewer: "VP Engineering, NDAX"
   stars: 5
   url: "https://clutch.co/profile/spacedev"
+galleryType: "mobile"
 gallery:
-  - "/images/content/1oYizfRQHYQJrDo0uSWNaoHKEOc.png"
-  - "/images/content/6BHRGFPQfdyFbpORSUyy8jpVg1c.svg"
-  - "/images/content/6TwHgrC1W42a6hstAKU9HwA.png"
-  - "/images/content/74toyIDgGrADHlRzGyQGjcOdDOs.png"
-  - "/images/content/8lrnKni0PjAdbROIJNinz5VzCw.png"
-  - "/images/content/Bn0yasD7L4ast7YR1tvJIANfCU.png"
-  - "/images/content/ETm1IgTCqOwiQU0BM4NUlhs48.png"
-  - "/images/content/G6FrxHO2dL9IcgUw5RwkUELN6g.png"
-  - "/images/content/HBUy2Mg7WbrGBXadX0mHWEqPrE.png"
-  - "/images/content/Hk7g6ggjuUZqeLzatdjfgLp808.png"
-  - "/images/content/IQFuNsxPDj2OX5aEDAcZ1CyL5Yc.png"
-  - "/images/content/IkKd49plXHEJHJ2r7gZ3aJDAtwY.png"
-  - "/images/content/KwDbjsWZcxVCDcpA3c1Jvj3g.png"
-  - "/images/content/R2rgN2JXKuBnpO9e0MCHeRsiFA.png"
-  - "/images/content/VDE8B5Nq0XffpaMjfQT0FuZKYY.svg"
-  - "/images/content/fjsHK2L08CGrBSOccHGHW4G4I0.png"
-  - "/images/content/mBbK0x80nAN2Piprgce5Ky9koQ.png"
-  - "/images/content/oOGCyHUJxiiOLzUCE6LGGqQx8.png"
-  - "/images/content/rcxcK5iupaEREfA4ETgU80Sjw7s.svg"
+  - "/images/case-studies/ndax-canada/gallery/gallery1.png"
+  - "/images/case-studies/ndax-canada/gallery/gallery2.png"
+  - "/images/case-studies/ndax-canada/gallery/gallery3.png"
+  - "/images/case-studies/ndax-canada/gallery/gallery4.png"
+  - "/images/case-studies/ndax-canada/gallery/gallery5.png"
+  - "/images/case-studies/ndax-canada/gallery/gallery6.png"
 ---
 
 ## The Challenge

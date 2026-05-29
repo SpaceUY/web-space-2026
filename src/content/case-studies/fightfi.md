@@ -39,14 +39,11 @@ deliverables:
   - "Active contribution to feature scoping, effort estimation, and agile adaptation as priorities evolved."
 outcome: "FightFI is proving that gamification and Web3 are a powerful match. By combining NFT-based rewards, on-chain mechanics, and seamless user experiences, the platform keeps users coming back, engaged and rewarded. With SpaceDev as a tech partner, FightFI transformed an ambitious idea into a dynamic product, ready to scale and lead the next wave of interactive Web3 platforms."
 gallery:
-  - "/images/content/2Ol47l34qw6mbYzHVcCSulNCg.png"
-  - "/images/content/5jC3FClXApl2OUq4F7hIEn1auk.png"
-  - "/images/content/CXLN46CTiyrOakVCUidwfqT5cAA.png"
-  - "/images/content/FZQmCdTtMO1cOAcxLTicLMtajbU.png"
-  - "/images/content/MGNkbQ5Lnhggyzccv7n9vU4pf2Q.png"
-  - "/images/content/UTOI8bFOzuiBVL3pKooMysgyDQ.png"
-  - "/images/content/k8pZkGKtXHbtioacqiB0muE3Gw.png"
-  - "/images/content/mCcKR1zTRyyPiTgNaP5ByACzABI.png"
+  - "/images/case-studies/fightfi/gallery/gallery1.png"
+  - "/images/case-studies/fightfi/gallery/gallery2.png"
+  - "/images/case-studies/fightfi/gallery/gallery3.png"
+  - "/images/case-studies/fightfi/gallery/gallery4.png"
+  - "/images/case-studies/fightfi/gallery/gallery5.png"
 ---
 
 ## The Challenge

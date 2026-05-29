@@ -32,21 +32,11 @@ deliverables:
   - "Backend services and PostgreSQL schema designed for content scale and learner velocity."
 outcome: "W3E launched a Web3 education platform that delivers practical skills with credentials learners can take with them, bridging the gap between content and career outcomes."
 gallery:
-  - "/images/content/0gKCPPHervtjDWwfsXxXf7BLc.png"
-  - "/images/content/6SIWc6mxMRX0Iw2b7FM7w4RVX4.png"
-  - "/images/content/8t4hhNSeluqj1eMLzfMQaz1C88I.png"
-  - "/images/content/EPBljtfDFNJJAL9XbRXqAu8btPQ.svg"
-  - "/images/content/HtLa38whlUS6iQbZiNAjHceXGss.png"
-  - "/images/content/PBLG6bzloe8mu8JR0nlJCwyrk.png"
-  - "/images/content/QUmCXBEx1Vtvffw8XN25QmkaJA.png"
-  - "/images/content/V8Regk2iKjatIWoOeKz1uXIuys.png"
-  - "/images/content/VbCtvPf2W8D2lOrCjbsgs31UTo.png"
-  - "/images/content/YL8ZXWfg4wZOia99f12fdkPCp7Q.png"
-  - "/images/content/YP2l8Pap43t7x8Ys5Qq3rLnraM.png"
-  - "/images/content/bWrb0jNExRBcEmUChqegEzVZBTo.png"
-  - "/images/content/cEJnj8gpzvE6lUrr9rUMbgclEbM.png"
-  - "/images/content/d22R2Sfh1TND9rOs6BYhFxBoXwI.png"
-  - "/images/content/tSC1D3e2UWrjk7gmG7G3UN5Dosw.png"
+  - "/images/case-studies/w3e/gallery/gallery1.png"
+  - "/images/case-studies/w3e/gallery/gallery2.png"
+  - "/images/case-studies/w3e/gallery/gallery3.png"
+  - "/images/case-studies/w3e/gallery/gallery4.png"
+  - "/images/case-studies/w3e/gallery/gallery5.png"
 ---
 
 ## The Challenge

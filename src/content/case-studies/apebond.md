@@ -36,15 +36,11 @@ deliverables:
   - "Collaboration on the Sherlock audit and ongoing post-launch support."
 outcome: "Through our collaboration, ApeBond successfully expanded its cross-chain functionality and solidified its position as a leading DeFi protocol. By integrating Solana support and enhancing the user experience across multiple chains, we helped unlock new growth opportunities for the platform, empowering users and projects to engage with decentralized finance with greater speed, flexibility, and reach."
 gallery:
-  - "/images/content/8TISDFpHin3eIi1CpXoBRIKmCw.png"
-  - "/images/content/DjnuG8L441KxbwIVcMZf3tNupo.png"
-  - "/images/content/F3QTuHtGYyF0pvfaWdtTmu2RH4.png"
-  - "/images/content/ItdzpXkJpgVwP0oVB8YOKEXAFMA.png"
-  - "/images/content/JlunlEhuoXpkHIuKzkq6ihccujU.png"
-  - "/images/content/JxkYnyMiQj4zbx9xZLVmxrY9UHM.png"
-  - "/images/content/QiyGn0LqE9v7iA1z2eY2EBFtEe8.png"
-  - "/images/content/Sr85qHUoLM2xkjgqiSuZHKs4go.png"
-  - "/images/content/o6ZAxqWdxuZMR1FphTkoWJh8Q8k.png"
+  - "/images/case-studies/apebond/gallery/gallery1.png"
+  - "/images/case-studies/apebond/gallery/gallery2.png"
+  - "/images/case-studies/apebond/gallery/gallery3.png"
+  - "/images/case-studies/apebond/gallery/gallery4.png"
+  - "/images/case-studies/apebond/gallery/gallery5.png"
 ---
 
 ## The Challenge

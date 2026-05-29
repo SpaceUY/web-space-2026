@@ -32,23 +32,11 @@ deliverables:
   - "Performance optimizations for image-heavy pages (CDN, responsive imagery, lazy loading)."
 outcome: "Gallery launched a polished home for on-chain art that curators, collectors, and artists actually use to present and discover work."
 gallery:
-  - "/images/content/28J4lnXTDRiFPZFKDObRPdbkrWo.svg"
-  - "/images/content/33iREgidXL4SpQEZuEvXAzXFzeE.png"
-  - "/images/content/3naqD808EjxPonnQZQ8AaTk348.png"
-  - "/images/content/6DZByKlWik9DN7ThzZZuOX3TE.png"
-  - "/images/content/8IlMDMPIs1hh5dNuHGt4v7XoaM.png"
-  - "/images/content/DWVFh2G8DtpftjGMST6gFpLObo.png"
-  - "/images/content/HkjmtL6FBhhJHEDVRRo2oH77b0.png"
-  - "/images/content/I40tC40MkHhAGN4cLmv5PYmHzNE.png"
-  - "/images/content/KdOYtgdrPT2RUefRAdEbGgBXZzo.png"
-  - "/images/content/U3z051g1VMyKjq4m3veceh2ooY.png"
-  - "/images/content/ZuEKqPDWGR8Vg2iGfoLyRjWGRuw.png"
-  - "/images/content/gR9fodBYRakEdi9mjRyWI2i0g.png"
-  - "/images/content/h9G9w8XGT9qHQh4YCQ3N1aWW4.png"
-  - "/images/content/jP5AJv78Qs277LFdY1y9LTyHxS0.svg"
-  - "/images/content/p48J1TOLF8SHPC8FJb7Af5LpOUA.png"
-  - "/images/content/qinUGlnOj0rTtvJ98AudZhybvI.png"
-  - "/images/content/vhF5Wy3gUDbSyHNg0QEvGSMy4aw.png"
+  - "/images/case-studies/gallery/gallery/gallery1.png"
+  - "/images/case-studies/gallery/gallery/gallery2.png"
+  - "/images/case-studies/gallery/gallery/gallery3.png"
+  - "/images/case-studies/gallery/gallery/gallery4.png"
+  - "/images/case-studies/gallery/gallery/gallery5.png"
 ---
 
 ## The Challenge

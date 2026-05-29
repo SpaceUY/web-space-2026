@@ -33,22 +33,11 @@ deliverables:
   - "Operational tooling for issuance, monitoring, and incident response."
 outcome: "Bondi Finance launched a credible RWA fixed-income protocol, bridging emerging-market debt and DeFi liquidity with the compliance posture institutional investors require."
 gallery:
-  - "/images/content/0pEUCzUnBLnsX7uRs50aFr0RVUg.png"
-  - "/images/content/3hUQbFuAGhwoEcCv00UGGXUgPzw.png"
-  - "/images/content/4pF5XGKcsGZPQkTEzzhI8Prko.png"
-  - "/images/content/BWo772E6zF1DoiTq15QHca6DA.png"
-  - "/images/content/RK47OdDCt7ymDeGfAh9lvJM8HQ.png"
-  - "/images/content/W9r4YBMqOXXjArRKKfSr1pPaN9k.png"
-  - "/images/content/WIQjve0TIDMsDrTRwo5jp8edalY.png"
-  - "/images/content/coyrZmGPmrlUzmf2F6exT73Cdj8.png"
-  - "/images/content/cur2nZ5a4CSQeeJbS9vQDaqjYt0.svg"
-  - "/images/content/e9d8YapPbjaVJnddEUAW9xsYD4.png"
-  - "/images/content/gMKusz7rfExygWA9B8otnlY3ivI.png"
-  - "/images/content/jcF2x1iCu64eZVnTHu3ktkD51E0.png"
-  - "/images/content/lIO3T6PcfOzy6ZYnujIx0a6P0.png"
-  - "/images/content/ueHBAS8Zz9f2CWM3QCgDVqLSFBY.png"
-  - "/images/content/wD09grq0qnt6gzMlXmKhkI0JHk.png"
-  - "/images/content/x2mHTHcoRwnKaf1Nnjj7demnQs.png"
+  - "/images/case-studies/bondi-finance/gallery/gallery1.png"
+  - "/images/case-studies/bondi-finance/gallery/gallery2.png"
+  - "/images/case-studies/bondi-finance/gallery/gallery3.png"
+  - "/images/case-studies/bondi-finance/gallery/gallery4.png"
+  - "/images/case-studies/bondi-finance/gallery/gallery5.png"
 ---
 
 ## The Challenge

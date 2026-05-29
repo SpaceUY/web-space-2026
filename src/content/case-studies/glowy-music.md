@@ -32,19 +32,14 @@ deliverables:
   - "Embed and share surface optimized for social and messenger previews."
   - "Performance profiling and graceful degradation on lower-tier devices."
 outcome: "Glowy Music shipped an experience that bridges music and visuals in a browser tab, turning every song into something fans can see, share, and remix."
+galleryType: "mobile"
 gallery:
-  - "/images/content/0KhPTyLW0QYS4e3I9rav5yvVXU.png"
-  - "/images/content/1WpPaC2DBMT6FZdSvWH8ujfhlo.png"
-  - "/images/content/2nGQJj2Q9hpzGrolGwYfedCP8k.png"
-  - "/images/content/4p79FVFfk21c5sTvKmpAxnBrUpY.png"
-  - "/images/content/9MhAI5c6sxqv39yd3yGd5H2o9ko.png"
-  - "/images/content/JceBjbP14FDRpUXPDhYiQSAEO80.png"
-  - "/images/content/S3Os6sVMspgFKFjRFxc9MZma0.svg"
-  - "/images/content/XJXkhvOXpYlOBwX0waRfBGLor3Y.png"
-  - "/images/content/c7vBAYjNJdBMPaTtIpEkr6S7NU.png"
-  - "/images/content/gFDblDS9mKnvFQ7FH89mSo8KDw.png"
-  - "/images/content/oKBq2TDLKdTH8OIQmmc4iuK5MU.png"
-  - "/images/content/wR2pAGYpOSjIqnv8G1WuUYhKJ0.png"
+  - "/images/case-studies/glowy-music/gallery/gallery1.png"
+  - "/images/case-studies/glowy-music/gallery/gallery2.png"
+  - "/images/case-studies/glowy-music/gallery/gallery3.png"
+  - "/images/case-studies/glowy-music/gallery/gallery4.png"
+  - "/images/case-studies/glowy-music/gallery/gallery5.png"
+  - "/images/case-studies/glowy-music/gallery/gallery6.png"
 ---
 
 ## The Challenge
