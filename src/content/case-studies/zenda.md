@@ -47,11 +47,6 @@ metrics:
     label: "Orders created"
   - value: "Ongoing"
     label: "Since Apr 2025"
-clutchReview:
-  text: ""
-  reviewer: ""
-  stars: 5
-  url: "https://clutch.co/profile/spacedev"
 ---
 
 ## The Challenge

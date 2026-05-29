@@ -1,49 +1,635 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/ui/Button.astro";
+
+interface CalEvent {
+  name: string;
+  date: string;
+  month: number;
+  country: string;
+  website: string;
+  category: "blockchain" | "ai" | "fintech" | "product";
+  spaceAttends?: boolean;
+}
+
+const events: CalEvent[] = [
+  // January
+  { name: "Buidl Europe 2026",               date: "Jan 7",  month: 1,  country: "Portugal",     website: "https://www.buidleurope.com/",                                        category: "blockchain" },
+  { name: "Punta Tech Meetup 2026",          date: "Jan 12", month: 1,  country: "Uruguay",      website: "http://www.puntameetup.com/",                                         category: "product",    spaceAttends: true },
+  { name: "Crypto Finance St. Moritz",       date: "Jan 14", month: 1,  country: "Switzerland",  website: "https://cfc-stmoritz.com/",                                           category: "blockchain" },
+  { name: "Bitcoin Medellin 2026",           date: "Jan 16", month: 1,  country: "Colombia",     website: "https://btcmedellin.com/",                                            category: "blockchain" },
+  { name: "Bitcoin Day Naples",              date: "Jan 17", month: 1,  country: "USA",          website: "https://bitcoinday.io/naples24",                                      category: "blockchain" },
+  { name: "Web3 Hub Davos 2026",             date: "Jan 19", month: 1,  country: "Switzerland",  website: "https://web3hubdavos.com/",                                           category: "blockchain" },
+  { name: "Davos Innovation Week",           date: "Jan 19", month: 1,  country: "Switzerland",  website: "https://www.davosinnovationweek.com/",                                category: "product" },
+  { name: "Fintech Retreat 26",              date: "Jan 25", month: 1,  country: "USA",          website: "https://www.fintechretreat.com/fintech-retreat",                      category: "fintech" },
+  { name: "DeFi Retreat 26",                 date: "Jan 25", month: 1,  country: "USA",          website: "https://www.fintechretreat.com/defi-retreat",                         category: "blockchain" },
+  { name: "WallStreetBets Live",             date: "Jan 28", month: 1,  country: "USA",          website: "https://wsblive.com/",                                                category: "fintech" },
+  { name: "Product-Led Summit DC",           date: "Jan 28", month: 1,  country: "USA",          website: "https://world.productledalliance.com/location/washington",            category: "product" },
+  { name: "The Satoshi Roundtable XII",      date: "Jan 29", month: 1,  country: "UAE",          website: "https://satoshiroundtable.org/",                                      category: "blockchain" },
+  { name: "Adopting Bitcoin 2026",           date: "Jan 30", month: 1,  country: "South Africa", website: "https://za26.adoptingbitcoin.org/",                                  category: "blockchain" },
+  { name: "Oasis on Chain 2026",             date: "Jan 31", month: 1,  country: "Bahamas",      website: "https://www.oasisonchain.xyz/",                                       category: "blockchain" },
+  // February
+  { name: "AIBC Eurasia",                    date: "Feb 9",  month: 2,  country: "UAE",          website: "https://aibc.world/eurasia/",                                         category: "blockchain" },
+  { name: "Consensus Hong Kong 2026",        date: "Feb 10", month: 2,  country: "China",        website: "https://consensus-hongkong.coindesk.com/",                            category: "blockchain" },
+  { name: "Finnovate Europe 2026",           date: "Feb 10", month: 2,  country: "UK",           website: "https://informaconnect.com/finovateeurope/",                          category: "fintech" },
+  { name: "Africa Tech Summit Nairobi",      date: "Feb 11", month: 2,  country: "Kenya",        website: "https://www.africatechsummit.com/nairobi/",                           category: "product" },
+  { name: "FiNext Conference & Awards",      date: "Feb 11", month: 2,  country: "UAE",          website: "https://finextcon.com/",                                              category: "fintech" },
+  { name: "ETH Denver 2026",                 date: "Feb 17", month: 2,  country: "USA",          website: "https://ethdenver.com/",                                              category: "blockchain", spaceAttends: true },
+  { name: "Product World 2026",              date: "Feb 18", month: 2,  country: "USA",          website: "https://productworld.co/",                                            category: "product" },
+  { name: "Developer Week 2026",             date: "Feb 18", month: 2,  country: "USA",          website: "https://www.developerweek.com/",                                      category: "product" },
+  { name: "CDAO Financial Services NY",      date: "Feb 18", month: 2,  country: "USA",          website: "https://cdaofs.coriniumintelligence.com/",                            category: "ai" },
+  { name: "Gartner CIO Leadership Forum",    date: "Feb 23", month: 2,  country: "USA",          website: "https://www.gartner.com/en/conferences/na/cio-us-west",               category: "product" },
+  { name: "Product-Led Summit Austin",       date: "Feb 24", month: 2,  country: "USA",          website: "https://world.productledalliance.com/location/austin",                category: "product" },
+  { name: "GFTN Forum Japan",                date: "Feb 24", month: 2,  country: "Japan",        website: "https://gftnforum.jp/",                                               category: "fintech" },
+  { name: "ProductCon London",               date: "Feb 24", month: 2,  country: "UK",           website: "https://productschool.com/productcon/london-2026",                    category: "product" },
+  { name: "Generative AI Summit Austin",     date: "Feb 25", month: 2,  country: "USA",          website: "https://world.aiacceleratorinstitute.com/location/austin",            category: "ai" },
+  { name: "Chief AI Officer Summit UK",      date: "Feb 25", month: 2,  country: "UK",           website: "https://caio-london.re-work.co/",                                     category: "ai" },
+  { name: "AI Coding Summit",                date: "Feb 26", month: 2,  country: "Online",       website: "https://aicodingsummit.com/",                                         category: "ai",         spaceAttends: true },
+  // March
+  { name: "Crypto Expo Europe 2026",         date: "Mar 1",  month: 3,  country: "Romania",      website: "https://cryptoexpoeurope.com/",                                       category: "blockchain" },
+  { name: "Gartner Data & Analytics Summit", date: "Mar 9",  month: 3,  country: "USA",          website: "https://www.gartner.com/en/conferences/na/data-analytics-us",         category: "ai" },
+  { name: "GDC 2026",                        date: "Mar 9",  month: 3,  country: "USA",          website: "https://gdconf.com/",                                                 category: "product" },
+  { name: "Customer Success Summit NY",      date: "Mar 10", month: 3,  country: "USA",          website: "https://events.customersuccesscollective.com/location/newyork/",      category: "product" },
+  { name: "Enterprise Connect 2026",         date: "Mar 10", month: 3,  country: "USA",          website: "https://enterpriseconnect.com/",                                      category: "product" },
+  { name: "SXSW Conference",                 date: "Mar 12", month: 3,  country: "USA",          website: "https://sxsw.com/conference/",                                        category: "product" },
+  { name: "DC Blockchain Summit 2026",       date: "Mar 17", month: 3,  country: "USA",          website: "https://www.dcblockchainsummit.com/",                                 category: "blockchain" },
+  { name: "Fintech Americas Miami 2026",     date: "Mar 24", month: 3,  country: "USA",          website: "https://www.fintechamericas.co/en/conference-miami",                  category: "fintech",    spaceAttends: true },
+  { name: "Digital Asset Summit 2026 NY",    date: "Mar 24", month: 3,  country: "USA",          website: "https://blockworks.co/event/digital-asset-summit-nyc-2026",           category: "blockchain", spaceAttends: true },
+  { name: "Next Block Expo Europe",          date: "Mar 24", month: 3,  country: "Poland",       website: "https://nextblockexpo.com/",                                          category: "blockchain" },
+  { name: "Global Blockchain Congress",      date: "Mar 26", month: 3,  country: "UAE",          website: "https://www.gbc-uae.com/",                                            category: "blockchain" },
+  { name: "Product-Led Summit NY",           date: "Mar 26", month: 3,  country: "USA",          website: "https://world.productledalliance.com/location/newyork",               category: "product" },
+  { name: "EthCC Cannes",                    date: "Mar 30", month: 3,  country: "France",       website: "https://ethcc.io/",                                                   category: "blockchain" },
+  // April
+  { name: "ETHGlobal Cannes",                date: "Apr 3",  month: 4,  country: "France",       website: "https://ethglobal.com/events/cannes2026",                             category: "blockchain" },
+  { name: "Human X San Francisco",           date: "Apr 6",  month: 4,  country: "USA",          website: "https://www.humanx.co/",                                              category: "ai" },
+  { name: "BitBlockBoom Conference",         date: "Apr 9",  month: 4,  country: "USA",          website: "https://bitblockboom.com/",                                           category: "blockchain" },
+  { name: "Ethereum Zurich",                 date: "Apr 10", month: 4,  country: "Switzerland",  website: "https://ethereumzuri.ch/",                                            category: "blockchain" },
+  { name: "Paris Blockchain Week 2026",      date: "Apr 15", month: 4,  country: "France",       website: "https://www.parisblockchainweek.com/",                                category: "blockchain" },
+  { name: "Gen AI Summit Silicon Valley",    date: "Apr 15", month: 4,  country: "USA",          website: "https://world.aiacceleratorinstitute.com/location/siliconvalley",     category: "ai",         spaceAttends: true },
+  { name: "AI in Finance Summit NY",         date: "Apr 15", month: 4,  country: "USA",          website: "https://ny-ai-finance.re-work.co/",                                   category: "ai" },
+  { name: "HK Web3 Festival 2026",           date: "Apr 20", month: 4,  country: "China",        website: "https://www.web3festival.org/hongkong2026/#/zh",                      category: "blockchain" },
+  { name: "eMerge Americas 2026",            date: "Apr 22", month: 4,  country: "USA",          website: "https://emergeamericas.com/",                                         category: "product" },
+  { name: "Bitcoin 2026 Las Vegas",          date: "Apr 27", month: 4,  country: "USA",          website: "https://2026.b.tc/",                                                  category: "blockchain", spaceAttends: true },
+  // May
+  { name: "Consensus 2026",                  date: "May 5",  month: 5,  country: "USA",          website: "https://consensus.coindesk.com/",                                     category: "blockchain", spaceAttends: true },
+  { name: "Embedded Vision Summit",          date: "May 11", month: 5,  country: "USA",          website: "https://embeddedvisionsummit.com/",                                   category: "ai" },
+  { name: "AI & Big Data Expo 2026",         date: "May 18", month: 5,  country: "USA",          website: "https://www.ai-expo.net/northamerica/",                               category: "ai" },
+  { name: "ProductCon New York 2026",        date: "May 20", month: 5,  country: "USA",          website: "https://productschool.com/productcon/newyork-2026",                   category: "product" },
+  { name: "Payments Canada Summit",          date: "May 5",  month: 5,  country: "Canada",       website: "https://www.thesummit.ca/",                                           category: "fintech" },
+  { name: "Africa Tech Summit London",       date: "May 29", month: 5,  country: "UK",           website: "https://www.africatechsummit.com/london/",                            category: "product" },
+  { name: "Cisco Live San Diego 2026",       date: "May 31", month: 5,  country: "USA",          website: "https://www.ciscolive.com/global.html",                               category: "product" },
+  // June
+  { name: "Tech Week New York 2026",         date: "Jun 1",  month: 6,  country: "USA",          website: "https://www.tech-week.com/",                                          category: "product" },
+  { name: "AIBC Asia",                       date: "Jun 1",  month: 6,  country: "Philippines",  website: "https://aibc.world/asia/",                                            category: "blockchain" },
+  { name: "SXSW London",                     date: "Jun 1",  month: 6,  country: "UK",           website: "https://www.sxswlondon.com/",                                         category: "product" },
+  { name: "Money 20/20 Europe 2026",         date: "Jun 2",  month: 6,  country: "Netherlands",  website: "https://europe.money2020.com/",                                       category: "fintech" },
+  { name: "Proof of Talk 2026",              date: "Jun 2",  month: 6,  country: "France",       website: "https://www.proofoftalk.io/",                                         category: "blockchain" },
+  { name: "Istanbul Blockchain Week 2026",   date: "Jun 2",  month: 6,  country: "Turkey",       website: "https://istanbulblockchainweek.com/",                                 category: "blockchain" },
+  { name: "Gen AI Summit New York",          date: "Jun 4",  month: 6,  country: "USA",          website: "https://world.aiacceleratorinstitute.com/location/newyork",           category: "ai" },
+  { name: "Web Summit Rio 2026",             date: "Jun 8",  month: 6,  country: "Brazil",       website: "https://rio.websummit.com/",                                          category: "product" },
+  { name: "ETHConf 2026",                    date: "Jun 8",  month: 6,  country: "USA",          website: "https://ethconf.com/",                                                category: "blockchain" },
+  { name: "Super AI 2026",                   date: "Jun 10", month: 6,  country: "Singapore",    website: "https://www.superai.com/",                                            category: "ai" },
+  { name: "DappCon 2026",                    date: "Jun 16", month: 6,  country: "Germany",      website: "https://dappcon.io/",                                                 category: "blockchain" },
+  { name: "Web3 Summit 2026",                date: "Jun 18", month: 6,  country: "Germany",      website: "https://web3summit.com/",                                             category: "blockchain" },
+  { name: "Dutch Blockchain Week",           date: "Jun 22", month: 6,  country: "Netherlands",  website: "https://dutchblockchainweek.com/",                                    category: "blockchain" },
+  // July
+  { name: "ETHGlobal Pragma Cannes",         date: "Jul 3",  month: 7,  country: "France",       website: "https://ethglobal.com/events/pragma-cannes",                          category: "blockchain" },
+  { name: "ETH Women Toronto",               date: "Jul 21", month: 7,  country: "Canada",       website: "https://www.ethwomen.com/",                                           category: "blockchain" },
+  { name: "Blockchain Futurist Conference",  date: "Jul 21", month: 7,  country: "Canada",       website: "https://www.futuristconference.com/",                                 category: "blockchain" },
+  { name: "Bitcoin++ Finds Consensus",       date: "Jul 22", month: 7,  country: "Canada",       website: "https://btcpp.dev/conf/toronto",                                      category: "blockchain" },
+  { name: "ETHGlobal Pragma Lisbon",         date: "Jul 23", month: 7,  country: "Portugal",     website: "https://ethglobal.com/events/pragma-lisbon2026",                      category: "blockchain" },
+  // August
+  { name: "AI4 2026",                        date: "Aug 4",  month: 8,  country: "USA",          website: "https://ai4.io/",                                                     category: "ai" },
+  { name: "CDAO Chicago 2026",               date: "Aug 5",  month: 8,  country: "USA",          website: "https://da-metro-chicago.coriniumintelligence.com/",                  category: "ai" },
+  { name: "Blockchain Rio 2026",             date: "Aug 12", month: 8,  country: "Brazil",       website: "https://blockchainrio.com.br/",                                       category: "blockchain" },
+  { name: "IJCAI-ECAI Bremen",               date: "Aug 15", month: 8,  country: "Germany",      website: "https://2026.ijcai.org/",                                             category: "ai" },
+  { name: "Wyoming Blockchain Symposium",    date: "Aug 17", month: 8,  country: "USA",          website: "https://www.salt.org/events/wyoming-blockchain-symposium-2026",       category: "blockchain" },
+  { name: "CoinFest Asia 2026",              date: "Aug 20", month: 8,  country: "Indonesia",    website: "https://coinfest.asia/",                                              category: "blockchain" },
+  { name: "Bitcoin Asia 2026",               date: "Aug 27", month: 8,  country: "Japan",        website: "https://asia.b.tc/",                                                  category: "blockchain" },
+  // September
+  { name: "Conf3rence 2026",                 date: "Sep 15", month: 9,  country: "Germany",      website: "https://www.conf3rence.com/",                                         category: "blockchain" },
+  { name: "ETH Tokyo 2026",                  date: "Sep 19", month: 9,  country: "Japan",        website: "https://ethtokyo.org/",                                               category: "blockchain" },
+  { name: "Human X Europe",                  date: "Sep 22", month: 9,  country: "Netherlands",  website: "https://www.humanx.co/europe",                                        category: "ai" },
+  { name: "Reuters Events: Momentum AI",     date: "Sep 24", month: 9,  country: "USA",          website: "https://events.reutersevents.com/momentum",                           category: "ai" },
+  { name: "ETHGlobal Pragma Tokyo",          date: "Sep 24", month: 9,  country: "Japan",        website: "https://ethglobal.com/events/pragma-tokyo2026",                       category: "blockchain", spaceAttends: true },
+  // October
+  { name: "TOKEN2049 Singapore 2026",        date: "Oct 7",  month: 10, country: "Singapore",    website: "https://token2049.com/singapore/",                                     category: "blockchain" },
+  { name: "TechCrunch Disrupt 2026",         date: "Oct 13", month: 10, country: "USA",          website: "https://techcrunch.com/events/tc-disrupt-2026/",                      category: "product" },
+  { name: "Money 20/20 USA 2026",            date: "Oct 18", month: 10, country: "USA",          website: "https://us.money2020.com/",                                           category: "fintech" },
+  { name: "Product-Led Summit Boston",       date: "Oct 28", month: 10, country: "USA",          website: "https://world.productledalliance.com/location/boston",                category: "product" },
+  // November
+  { name: "AIBC World 2026",                 date: "Nov 2",  month: 11, country: "Italy",        website: "https://aibc.world/",                                                 category: "blockchain" },
+  { name: "DevCon India",                    date: "Nov 3",  month: 11, country: "India",        website: "https://devcon.org/en/",                                              category: "blockchain" },
+  { name: "ETHGlobal Pragma Mumbai",         date: "Nov 5",  month: 11, country: "India",        website: "https://ethglobal.com/events/pragma-mumbai",                          category: "blockchain" },
+  { name: "Web Summit 2026",                 date: "Nov 9",  month: 11, country: "Portugal",     website: "https://websummit.com/",                                              category: "product" },
+  { name: "Solana Breakpoint 2026",          date: "Nov 15", month: 11, country: "UK",           website: "https://solana.com/breakpoint",                                       category: "blockchain" },
+  { name: "Slush 2026",                      date: "Nov 18", month: 11, country: "Finland",      website: "https://slush.org/",                                                  category: "product" },
+  { name: "AWS re:Invent 2026",              date: "Nov 30", month: 11, country: "USA",          website: "https://reinvent.awsevents.com",                                      category: "product" },
+  // December
+  { name: "Blockchain Life 2026",            date: "Dec 1",  month: 12, country: "UAE",          website: "https://blockchain-life.com/autumn2026/",                             category: "blockchain" },
+  { name: "United XR Europe",                date: "Dec 7",  month: 12, country: "Belgium",      website: "https://unitedxr.eu/",                                                category: "product" },
+  { name: "AI Summit New York 2026",         date: "Dec 9",  month: 12, country: "USA",          website: "https://newyork.theaisummit.com",                                     category: "ai" },
+  // TBD
+  { name: "Bitcoin Alive",                   date: "TBD",    month: 0,  country: "Australia",    website: "https://bitcoinalive.io/",                                            category: "blockchain" },
+  { name: "Panama Blockchain Week",          date: "TBD",    month: 0,  country: "Panama",       website: "https://panamablockchainweek.com/",                                   category: "blockchain", spaceAttends: true },
+  { name: "Avalanche Summit EMEA",           date: "TBD",    month: 0,  country: "UK",           website: "https://www.avalanchesummitemea.com/",                                category: "blockchain", spaceAttends: true },
+  { name: "NFT NYC 2026",                    date: "TBD",    month: 0,  country: "USA",          website: "https://www.nft.nyc/",                                                category: "blockchain" },
+  { name: "IVS Crypto Kyoto",                date: "TBD",    month: 0,  country: "Japan",        website: "https://www.ivs.events/crypto",                                       category: "blockchain" },
+  { name: "ETHWarsaw",                       date: "TBD",    month: 0,  country: "Poland",       website: "https://www.ethwarsaw.dev/",                                          category: "blockchain" },
+  { name: "Korea Blockchain Week 2026",      date: "TBD",    month: 0,  country: "South Korea",  website: "https://koreablockchainweek.com/",                                    category: "blockchain" },
+  { name: "London Blockchain Conference",    date: "TBD",    month: 0,  country: "UK",           website: "https://londonblockchain.net/",                                       category: "blockchain" },
+  { name: "Binance Blockchain Week Dubai",   date: "TBD",    month: 0,  country: "UAE",          website: "https://www.binanceblockchainweek.com/",                              category: "blockchain" },
+];
+
+// ── Utilities ────────────────────────────────────────────────────────────────
+function parseDay(date: string): number {
+  const m = date.match(/(\d+)/);
+  return m ? parseInt(m[1]) : 0;
+}
+function getCalendarCells(month: number): (number | null)[] {
+  const rawFirst = new Date(2026, month - 1, 1).getDay();
+  const firstDay = rawFirst === 0 ? 6 : rawFirst - 1; // Mon=0
+  const daysInMonth = new Date(2026, month, 0).getDate();
+  const cells: (number | null)[] = [];
+  for (let i = 0; i < firstDay; i++) cells.push(null);
+  for (let d = 1; d <= daysInMonth; d++) cells.push(d);
+  while (cells.length % 7 !== 0) cells.push(null);
+  return cells;
+}
+
+const monthsMeta = [
+  { num: 1,  label: "January",   short: "Jan" },
+  { num: 2,  label: "February",  short: "Feb" },
+  { num: 3,  label: "March",     short: "Mar" },
+  { num: 4,  label: "April",     short: "Apr" },
+  { num: 5,  label: "May",       short: "May" },
+  { num: 6,  label: "June",      short: "Jun" },
+  { num: 7,  label: "July",      short: "Jul" },
+  { num: 8,  label: "August",    short: "Aug" },
+  { num: 9,  label: "September", short: "Sep" },
+  { num: 10, label: "October",   short: "Oct" },
+  { num: 11, label: "November",  short: "Nov" },
+  { num: 12, label: "December",  short: "Dec" },
+];
+
+// Category styles — solid, high contrast
+const CAT: Record<string, { bg: string; text: string; label: string }> = {
+  blockchain: { bg: "#673ae4", text: "#ffffff", label: "Blockchain & Crypto" },
+  ai:         { bg: "#44cdf3", text: "#0d1117", label: "AI" },
+  fintech:    { bg: "#00ffb2", text: "#0d1117", label: "FinTech" },
+  product:    { bg: "#8572bc", text: "#ffffff", label: "Product & Tech" },
+};
+
+const monthData = monthsMeta.map(({ num, label, short }) => {
+  const byDay: Record<number, CalEvent[]> = {};
+  events.filter(e => e.month === num).forEach(evt => {
+    const d = parseDay(evt.date);
+    if (d > 0) { if (!byDay[d]) byDay[d] = []; byDay[d].push(evt); }
+  });
+  const allEvts = events.filter(e => e.month === num);
+  return { num, label, short, byDay, allEvts, cells: getCalendarCells(num) };
+});
+
+const tbdEvents  = events.filter(e => e.month === 0);
+const totalCount = events.filter(e => e.month > 0).length;
+const weekDays   = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 ---
 
+<style>
+  @keyframes cal-cell-in {
+    from { opacity: 0; transform: translateY(8px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)  scale(1); }
+  }
+  @keyframes cal-list-in {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes cal-today-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(103,58,228,0.6); }
+    50%       { box-shadow: 0 0 0 5px rgba(103,58,228,0); }
+  }
+
+  .cal-cell { animation: cal-cell-in 0.28s ease both; }
+
+  .cal-event-pill {
+    transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cal-event-pill:hover {
+    transform: scale(1.04) translateY(-1px);
+    filter: brightness(1.15);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+    z-index: 1;
+  }
+
+  .cal-list-item {
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  }
+  .cal-list-item:hover {
+    background: rgba(103,58,228,0.15) !important;
+    border-color: rgba(103,58,228,0.4) !important;
+    transform: translateX(4px);
+  }
+  .cal-list-item.cal-list-animate {
+    animation: cal-list-in 0.3s ease both;
+  }
+
+  .cal-today {
+    animation: cal-today-pulse 2s ease-in-out infinite;
+    background: rgba(103,58,228,0.18) !important;
+    outline: 1.5px solid rgba(103,58,228,0.7);
+    outline-offset: -1px;
+  }
+</style>
+
 <BaseLayout
-  title="Events Calendar | SpaceDev"
-  description="Explore the international events shaping the tech, finance, innovation, blockchain, and AI industries every month."
+  title="Events Calendar 2026 | SpaceDev — Blockchain, AI & FinTech"
+  description="International blockchain, crypto, AI and fintech events in 2026. Browse month by month."
 >
-  <!-- HERO -->
-  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-24 md:py-36">
-      <div class="max-w-3xl" data-animate>
-        <h1 class="font-display font-semibold text-5xl md:text-7xl text-white leading-[1.0]">
-          Events Calendar
-        </h1>
-        <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-xl leading-relaxed">
-          Explore the international events shaping the tech, finance, innovation, blockchain, and AI industries every month.
-        </p>
-        <div class="mt-10 flex flex-wrap items-center gap-4">
-          <Button href="/contact" variant="primary">Get in touch</Button>
-          <span class="text-sd-text-muted text-sm">Or subscribe to our newsletter</span>
+
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+<section style="background: var(--sd-gradient-hero);" class="py-16 md:py-24">
+  <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+    <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 font-ui mb-4">2026</p>
+    <h1 class="font-display text-4xl md:text-6xl text-white leading-tight mb-4">Events Calendar</h1>
+    <p class="text-white/60 text-lg mb-8 max-w-xl">{totalCount}+ events worldwide. Blockchain, crypto, AI and fintech.</p>
+    <div class="flex flex-wrap gap-2">
+      {Object.entries(CAT).map(([, c]) => (
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-ui font-medium"
+          style={`background:${c.bg}; color:${c.text};`}>
+          {c.label}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── CALENDAR ──────────────────────────────────────────────────────────── -->
+<div style="background:#0d0c17; min-height:100vh;">
+  <div class="mx-auto max-w-[1440px] px-4 md:px-10 py-10">
+
+    <!-- Category filters -->
+    <div class="flex flex-wrap gap-2 mb-8" id="cal-filters">
+      {[
+        { key: "all",        label: "All events",          bg: "#ffffff", text: "#141414" },
+        { key: "blockchain", label: "Blockchain & Crypto",  bg: "#673ae4", text: "#ffffff" },
+        { key: "ai",         label: "AI",                  bg: "#44cdf3", text: "#0d1117" },
+        { key: "fintech",    label: "FinTech",              bg: "#00ffb2", text: "#0d1117" },
+        { key: "product",    label: "Product & Tech",       bg: "#8572bc", text: "#ffffff" },
+      ].map(f => (
+        <button
+          data-filter={f.key}
+          data-bg={f.bg}
+          data-color={f.text}
+          class="cal-filter px-4 py-1.5 rounded-full text-xs font-ui border border-white/20 text-white/50 transition-all duration-200 hover:text-white hover:border-white/40"
+          style={f.key === "all" ? `background:${f.bg}; color:${f.text}; border-color:${f.bg};` : ""}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Month navigator -->
+    <div class="flex items-center justify-between mb-2">
+      <button id="prev-btn" class="w-10 h-10 rounded-full border border-white/20 text-white/60 hover:text-white hover:border-white/50 flex items-center justify-center transition-all" aria-label="Previous month">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <h2 id="month-label" class="font-display text-2xl md:text-3xl text-white"></h2>
+      <button id="next-btn" class="w-10 h-10 rounded-full border border-white/20 text-white/60 hover:text-white hover:border-white/50 flex items-center justify-center transition-all" aria-label="Next month">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- Month dots nav -->
+    <div class="flex justify-center gap-1.5 mb-6">
+      {monthsMeta.map(m => (
+        <button
+          data-month={m.num}
+          class="month-dot text-[10px] font-ui text-white/40 px-2 py-1 rounded transition-all hover:text-white/80 hover:bg-white/10"
+          title={m.label}
+        >
+          {m.short}
+        </button>
+      ))}
+    </div>
+
+    <!-- Slide container -->
+    <div id="slide-container" class="overflow-hidden relative" style="min-height:520px;">
+      {monthData.map(({ num, label, byDay, allEvts, cells }) => (
+        <div
+          class="month-slide absolute inset-0 w-full"
+          data-month={num}
+          style="display:none;"
+        >
+          <!-- Calendar grid -->
+          <div class="rounded-2xl overflow-hidden mb-6" style="border:1px solid rgba(255,255,255,0.22);">
+            <!-- Weekday headers -->
+            <div class="grid grid-cols-7" style="background:rgba(103,58,228,0.35); border-bottom:1px solid rgba(255,255,255,0.2);">
+              {weekDays.map((d, i) => (
+                <div class={`py-3 text-center text-[11px] uppercase tracking-widest font-ui font-semibold ${i >= 5 ? "text-white/50" : "text-white"}`}>
+                  {d}
+                </div>
+              ))}
+            </div>
+            <!-- Day cells -->
+            <div class="grid grid-cols-7">
+              {cells.map((day, idx) => {
+                const isWeekend = idx % 7 >= 5;
+                const dayEvts   = day ? (byDay[day] ?? []) : [];
+                const hasEvts   = dayEvts.length > 0;
+                return (
+                  <div
+                    class={`cal-cell relative p-1 md:p-1.5`}
+                    style={`min-height:110px; border-right:1px solid rgba(255,255,255,0.22); border-bottom:1px solid rgba(255,255,255,0.22); background:${!day ? "rgba(0,0,0,0.3)" : isWeekend ? "rgba(255,255,255,0.03)" : "transparent"};`}
+                  >
+                    {day && (
+                      <>
+                        <span class={`text-[11px] font-ui leading-none block mb-1 ${hasEvts ? "text-white font-semibold" : "text-white/40"}`}>
+                          {day}
+                        </span>
+                        <div class="flex flex-col gap-0.5">
+                          {dayEvts.map(evt => (
+                            <a
+                              href={evt.website}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              data-category={evt.category}
+                              class="cal-event cal-event-pill relative block truncate rounded px-1.5 py-1 text-[11px] md:text-[12px] leading-snug font-ui transition-opacity"
+                              title={`${evt.name} — ${evt.country}`}
+                              style={`background:${CAT[evt.category].bg}; color:${CAT[evt.category].text};`}
+                            >
+                              {evt.name}
+                            </a>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <!-- Event list for this month -->
+          {allEvts.length > 0 && (
+            <div>
+              <p class="text-xs uppercase tracking-[0.18em] text-white/40 font-ui mb-3">{allEvts.length} events in {label}</p>
+              <div class="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
+                {allEvts.map(evt => (
+                  <a
+                    href={evt.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-category={evt.category}
+                    class="cal-event cal-list-item group flex items-center gap-3 px-4 py-3 rounded-xl"
+                    style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);"
+                  >
+                    <span class="shrink-0 w-1.5 h-1.5 rounded-full" style={`background:${CAT[evt.category].bg};`}></span>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm text-white truncate font-body leading-tight">
+                        {evt.name}
+                      </p>
+                      <p class="text-[11px] text-white/40 font-body mt-0.5">{evt.date} · {evt.country}</p>
+                    </div>
+                    <svg class="w-3.5 h-3.5 text-white/20 group-hover:text-white/60 shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+          {allEvts.length === 0 && (
+            <p class="text-center text-white/30 py-10 font-body">No events this month for the selected category.</p>
+          )}
         </div>
-        <form class="mt-4 flex gap-3 max-w-md" onsubmit="return false;">
-          <input
-            type="email"
-            placeholder="Your email"
-            class="flex-1 rounded-full px-5 py-3 bg-transparent border border-white/20 text-white placeholder:text-sd-text-muted text-sm focus:outline-none focus:border-white/50"
-          />
-          <button
-            type="submit"
-            class="rounded-full px-6 py-3 bg-white text-sd-text-dark font-semibold text-sm hover:bg-sd-light-2 transition-colors"
-          >
-            Sign up!
-          </button>
-        </form>
+      ))}
+
+      <!-- TBD month slot -->
+      <div class="month-slide absolute inset-0 w-full" data-month="0" style="display:none;">
+        <p class="text-xs uppercase tracking-[0.18em] text-white/40 font-ui mb-3">{tbdEvents.length} events — date not yet confirmed</p>
+        <div class="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
+          {tbdEvents.map(evt => (
+            <a
+              href={evt.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-category={evt.category}
+              class="cal-event group flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200"
+              style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);"
+            >
+              <span class="shrink-0 w-1.5 h-1.5 rounded-full" style={`background:${CAT[evt.category].bg};`}></span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm text-white truncate font-body">{evt.name}</p>
+                <p class="text-[11px] text-white/40 font-body mt-0.5">TBD · {evt.country}</p>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- YEAR SECTION -->
-  <section class="bg-sd-light py-16 md:py-24">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <p class="font-display font-semibold text-[clamp(6rem,15vw,16rem)] text-sd-text-dark leading-none select-none">
-        2025
-      </p>
+    <!-- TBD link -->
+    <div class="mt-8 text-center">
+      <button id="tbd-btn" class="text-xs text-white/30 hover:text-white/60 font-ui underline underline-offset-4 transition-colors">
+        + {tbdEvents.length} events with date TBD
+      </button>
     </div>
-  </section>
+
+  </div>
+</div>
+
+<!-- ── CTA ────────────────────────────────────────────────────────────────── -->
+<section class="py-16 md:py-20" style="background: var(--sd-gradient-hero);">
+  <div class="mx-auto max-w-[1440px] px-6 md:px-10 text-center">
+    <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 font-ui mb-4">Meet us in person</p>
+    <h2 class="font-display text-3xl md:text-4xl text-white mb-4">Are you attending any of these?</h2>
+    <p class="text-white/60 max-w-lg mx-auto mb-8 leading-relaxed">We attend blockchain and tech conferences throughout the year. If you spot us, let's talk.</p>
+    <Button href="/contact" variant="primary">Get in touch</Button>
+  </div>
+</section>
+
 </BaseLayout>
+
+<script>
+  // ── Data ──────────────────────────────────────────────────────────────────
+  const MONTHS = [1,2,3,4,5,6,7,8,9,10,11,12];
+  const LABELS = ["January","February","March","April","May","June",
+                  "July","August","September","October","November","December"];
+
+  let currentMonth = 5; // default: May (current)
+  let currentFilter = "all";
+  let showTbd = false;
+
+  const slides        = document.querySelectorAll<HTMLElement>(".month-slide");
+  const monthLabel    = document.getElementById("month-label")!;
+  const prevBtn       = document.getElementById("prev-btn")!;
+  const nextBtn       = document.getElementById("next-btn")!;
+  const tbdBtn        = document.getElementById("tbd-btn")!;
+  const monthDots     = document.querySelectorAll<HTMLElement>(".month-dot");
+  const slideContainer= document.getElementById("slide-container")!;
+
+  // ── Show month ────────────────────────────────────────────────────────────
+  function showMonth(num: number, dir: "left"|"right"|"none" = "none") {
+    const incoming = document.querySelector<HTMLElement>(`.month-slide[data-month="${num}"]`);
+    const outgoing = document.querySelector<HTMLElement>(`.month-slide[data-month="${currentMonth}"]`);
+    if (!incoming) return;
+
+    currentMonth = num;
+    monthLabel.textContent = num === 0 ? "Date TBD" : `${LABELS[num - 1]} 2026`;
+
+    // Update dots
+    monthDots.forEach(dot => {
+      const active = parseInt(dot.dataset.month ?? "0") === num;
+      dot.style.color            = active ? "#ffffff" : "";
+      dot.style.fontWeight       = active ? "700" : "";
+      dot.style.backgroundColor  = active ? "#673ae4" : "";
+      dot.style.opacity          = active ? "1" : "";
+    });
+
+    // Update nav buttons
+    prevBtn.style.opacity = num <= 1 ? "0.3" : "1";
+    nextBtn.style.opacity = num >= 12 ? "0.3" : "1";
+
+    // Animate
+    if (outgoing && outgoing !== incoming && dir !== "none") {
+      const fromX = dir === "left" ? "-100%" : "100%";
+      const toX   = dir === "left" ? "100%"  : "-100%";
+
+      outgoing.style.transition = "none";
+      outgoing.style.transform  = "translateX(0)";
+      outgoing.style.display    = "block";
+
+      incoming.style.transition = "none";
+      incoming.style.transform  = fromX;
+      incoming.style.display    = "block";
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const dur = "0.3s";
+          outgoing!.style.transition = `transform ${dur} ease, opacity ${dur} ease`;
+          outgoing!.style.transform  = toX;
+          outgoing!.style.opacity    = "0";
+
+          incoming.style.transition = `transform ${dur} ease, opacity ${dur} ease`;
+          incoming.style.transform  = "translateX(0)";
+          incoming.style.opacity    = "1";
+
+          setTimeout(() => {
+            if (outgoing) { outgoing.style.display = "none"; outgoing.style.opacity = "1"; outgoing.style.transform = ""; outgoing.style.transition = ""; }
+            incoming.style.transition = "";
+            animateCells(incoming);
+            animateList(incoming);
+          }, 320);
+        });
+      });
+    } else {
+      if (outgoing) { outgoing.style.display = "none"; }
+      incoming.style.display    = "block";
+      incoming.style.transform  = "";
+      incoming.style.opacity    = "1";
+      animateCells(incoming);
+      animateList(incoming);
+    }
+
+    // Adjust container height to incoming slide
+    slideContainer.style.minHeight = incoming.scrollHeight + "px";
+    applyFilter(currentFilter, false);
+  }
+
+  // ── Cell stagger ─────────────────────────────────────────────────────────
+  function animateCells(slide: HTMLElement) {
+    const cells = slide.querySelectorAll<HTMLElement>(".cal-cell");
+    cells.forEach((cell, i) => {
+      cell.style.animation = "none";
+      void (cell as HTMLElement).offsetHeight; // force reflow
+      cell.style.animation = "";
+      cell.style.animationDelay = `${i * 12}ms`;
+    });
+  }
+
+  // ── List stagger ─────────────────────────────────────────────────────────
+  function animateList(slide: HTMLElement) {
+    const items = slide.querySelectorAll<HTMLElement>(".cal-list-item");
+    items.forEach((item, i) => {
+      item.classList.remove("cal-list-animate");
+      void (item as HTMLElement).offsetHeight;
+      item.style.animationDelay = `${i * 35}ms`;
+      item.classList.add("cal-list-animate");
+    });
+  }
+
+  // ── Filter ────────────────────────────────────────────────────────────────
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>(".cal-filter");
+  function applyFilter(cat: string, updateBtns = true) {
+    currentFilter = cat;
+    if (updateBtns) {
+      filterBtns.forEach(btn => {
+        const active = btn.dataset.filter === cat;
+        if (active) {
+          btn.style.background  = btn.dataset.bg   ?? "#fff";
+          btn.style.color       = btn.dataset.color ?? "#000";
+          btn.style.borderColor = btn.dataset.bg   ?? "#fff";
+        } else {
+          btn.style.background  = "transparent";
+          btn.style.color       = "rgba(255,255,255,0.5)";
+          btn.style.borderColor = "rgba(255,255,255,0.2)";
+        }
+      });
+    }
+    document.querySelectorAll<HTMLElement>(".cal-event").forEach(evt => {
+      const show = cat === "all" || evt.dataset.category === cat;
+      evt.style.opacity       = show ? "1" : "0.1";
+      evt.style.pointerEvents = show ? "" : "none";
+    });
+  }
+
+  // ── Events ────────────────────────────────────────────────────────────────
+  prevBtn.addEventListener("click", () => {
+    if (currentMonth > 1) showMonth(currentMonth - 1, "right");
+  });
+  nextBtn.addEventListener("click", () => {
+    if (currentMonth < 12) showMonth(currentMonth + 1, "left");
+  });
+  tbdBtn.addEventListener("click", () => {
+    showTbd = !showTbd;
+    showMonth(0, "none");
+  });
+  monthDots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      const n = parseInt(dot.dataset.month ?? "1");
+      showMonth(n, n > currentMonth ? "left" : "right");
+    });
+  });
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => applyFilter(btn.dataset.filter ?? "all"));
+  });
+
+  // ── Touch swipe ───────────────────────────────────────────────────────────
+  let touchStartX = 0;
+  slideContainer.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  slideContainer.addEventListener("touchend", e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0 && currentMonth < 12) showMonth(currentMonth + 1, "left");
+      if (diff < 0 && currentMonth > 1)  showMonth(currentMonth - 1, "right");
+    }
+  }, { passive: true });
+
+  // ── Init ─────────────────────────────────────────────────────────────────
+  showMonth(5, "none"); // start on May
+
+  // ── Highlight today ───────────────────────────────────────────────────────
+  const today = new Date();
+  const todayMonth = today.getMonth() + 1;
+  const todayDay   = today.getDate();
+  const todaySlide = document.querySelector<HTMLElement>(`.month-slide[data-month="${todayMonth}"]`);
+  if (todaySlide) {
+    const cells = todaySlide.querySelectorAll<HTMLElement>(".cal-cell");
+    cells.forEach(cell => {
+      const num = cell.querySelector("span")?.textContent?.trim();
+      if (num && parseInt(num) === todayDay) {
+        cell.classList.add("cal-today");
+      }
+    });
+  }
+</script>

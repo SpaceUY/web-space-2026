@@ -38,7 +38,7 @@ export const authors: Author[] = [
     slug: "federico-sendra",
     name: "Federico Sendra",
     role: "CEO & Co-founder",
-    bio: "Federico co-founded SpaceDev to bring startup agility to enterprise-grade engineering. He's spent the last decade helping Web2 and Web3 teams ship products that perform — from MVPs to multi-year platforms.",
+    bio: "Federico co-founded SpaceDev to bring startup agility to enterprise-grade engineering. He's spent the last decade helping Web2 and Web3 teams ship products that perform, from MVPs to multi-year platforms.",
     initials: "FS",
     avatarGradient: "from-sd-purple-300 to-sd-purple",
     avatar: "/images/content/DOT9ldmLAaVJejBjOexpqu1bDjs.png",

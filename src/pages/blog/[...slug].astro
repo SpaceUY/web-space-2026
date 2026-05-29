@@ -95,7 +95,18 @@ const breadcrumbJsonLd = {
       <div class="mb-7">
         <!-- Breadcrumb -->
         <nav aria-label="Breadcrumb" class="mb-5">
-          <ol class="flex flex-wrap items-center gap-1.5 text-xs text-sd-text-gray font-ui uppercase tracking-wider">
+          {/* Mobile: simple back link with comfortable tap target */}
+          <a
+            href="/blog"
+            class="sm:hidden inline-flex items-center gap-2 text-sm font-ui text-sd-text-gray hover:text-sd-purple transition-colors py-2"
+          >
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Blog
+          </a>
+          {/* Desktop: full breadcrumb trail */}
+          <ol class="hidden sm:flex flex-wrap items-center gap-1.5 text-xs text-sd-text-gray font-ui uppercase tracking-wider">
             <li>
               <a href="/" class="hover:text-sd-purple transition-colors">Home</a>
             </li>
