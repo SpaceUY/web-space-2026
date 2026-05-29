@@ -218,44 +218,40 @@ const clientLogos = [
 
       <!-- Spotlight grid — 3 cols, dark cards with cursor-torch reveal -->
       <div id="sd-case-grid" class="grid gap-[18px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        {caseStudies.map((c, idx) => (
-          <>
-            {/* Mid-page CTA — injected before index 12 */}
-            {idx === 12 && (
-              <div class="sm:col-span-2 md:col-span-3 rounded-xl overflow-hidden" style="background: var(--sd-purple-deep);">
-                <div class="px-8 py-12 md:px-14 md:py-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
-                  <div class="max-w-xl">
-                    <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">Ready to be next?</p>
-                    <h3 class="text-2xl md:text-3xl lg:text-4xl text-white font-display font-light leading-tight mb-4">
-                      You've seen what we build.<br />Let's talk about what you need.
-                    </h3>
-                    <p class="text-white/80 text-sm md:text-base leading-relaxed">
-                      From a one-week discovery sprint to a multi-year engineering partnership — we'll find the fastest path to your goals.
-                    </p>
-                  </div>
-                  <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-                    <a
-                      href="/contact"
-                      class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-sd-purple text-white text-sm font-semibold hover:bg-sd-purple-2 transition-colors"
-                    >
-                      Start a project
-                    </a>
-                    <a
-                      href="https://meetings.hubspot.com/federico-sendra/meet-space"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/25 text-white text-sm font-semibold hover:bg-white/10 transition-colors"
-                    >
-                      Book a call
-                    </a>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            <CaseStudyCard caseStudy={c} />
-          </>
+        {caseStudies.map((c) => (
+          <CaseStudyCard caseStudy={c} />
         ))}
+
+        <!-- CTA: mid-grid on All, last on filtered — repositioned by JS -->
+        <div id="sd-work-cta" class="sm:col-span-2 md:col-span-3 rounded-xl overflow-hidden" style="background: var(--sd-purple-deep);">
+          <div class="px-8 py-12 md:px-14 md:py-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
+            <div class="max-w-xl">
+              <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">Ready to be next?</p>
+              <h3 class="text-2xl md:text-3xl lg:text-4xl text-white font-display font-light leading-tight mb-4">
+                You've seen what we build.<br />Let's talk about what you need.
+              </h3>
+              <p class="text-white/80 text-sm md:text-base leading-relaxed">
+                From a one-week discovery sprint to a multi-year engineering partnership, we'll find the fastest path to your goals.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+              <a
+                href="/contact"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-sd-purple text-white text-sm font-semibold hover:bg-sd-purple-2 transition-colors"
+              >
+                Start a project
+              </a>
+              <a
+                href="https://meetings.hubspot.com/federico-sendra/meet-space"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/25 text-white text-sm font-semibold hover:bg-white/10 transition-colors"
+              >
+                Book a call
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -276,6 +272,22 @@ const clientLogos = [
   // ── FILTER BUTTONS ───────────────────────────────────────────────────────
   const buttons = document.querySelectorAll<HTMLButtonElement>(".sd-filter-btn");
   const cards   = document.querySelectorAll<HTMLElement>("#sd-case-grid > [data-category]");
+  const grid    = document.getElementById("sd-case-grid");
+  const cta     = document.getElementById("sd-work-cta");
+
+  // Position CTA: mid-grid (after card 12) on All, last on any filter
+  function positionCta(filter: string) {
+    if (!grid || !cta) return;
+    if (filter === "all") {
+      const anchor = Array.from(cards)[12];
+      anchor ? grid.insertBefore(cta, anchor) : grid.appendChild(cta);
+    } else {
+      grid.appendChild(cta);
+    }
+  }
+
+  // Set initial position (All is default)
+  positionCta("all");
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -290,7 +302,6 @@ const clientLogos = [
         b.classList.toggle("bg-white",             !active);
         b.classList.toggle("border-sd-gray-border",!active);
         b.classList.toggle("text-sd-text-gray",    !active);
-        // Update the count badge inside each button
         const badge = b.querySelector("span");
         if (badge) {
           badge.className = active
@@ -303,6 +314,8 @@ const clientLogos = [
         const show = filter === "all" || card.dataset.category === filter;
         card.style.display = show ? "" : "none";
       });
+
+      positionCta(filter);
     });
   });
 

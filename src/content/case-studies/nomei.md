@@ -48,11 +48,6 @@ metrics:
     label: "Subscription tiers"
   - value: "Ongoing"
     label: "End-to-end partnership"
-clutchReview:
-  text: ""
-  reviewer: ""
-  stars: 5
-  url: "https://clutch.co/profile/spacedev"
 ---
 
 ## The Challenge

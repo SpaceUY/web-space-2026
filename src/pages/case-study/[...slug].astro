@@ -287,8 +287,8 @@ const hasRichContent =
         </div>
       )}
 
-      <!-- CLUTCH REVIEW (only if defined) -->
-      {clutchReview && (
+      <!-- CLUTCH REVIEW (only if defined and has real text) -->
+      {clutchReview?.text && (
         <section class="bg-sd-light-2 py-16 md:py-24 border-y border-sd-gray-border">
           <div class="mx-auto max-w-[800px] px-6 md:px-10 text-center">
             <div class="flex justify-center gap-1 mb-8">

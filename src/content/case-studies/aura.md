@@ -43,11 +43,6 @@ metrics:
     label: "Tether gold-backed token"
   - value: "Web2.5"
     label: "Familiar UX, Web3 rails"
-clutchReview:
-  text: ""
-  reviewer: ""
-  stars: 5
-  url: "https://clutch.co/profile/spacedev"
 ---
 
 ## The Challenge
