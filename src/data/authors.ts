@@ -59,7 +59,7 @@ export const authors: Author[] = [
     bio: "Juan Manuel leads the technical vision at SpaceDev with deep expertise in smart contracts, decentralized protocols, and scalable backend systems. He's a frequent speaker on blockchain at conferences across the Americas.",
     initials: "JM",
     avatarGradient: "from-sd-green to-sd-purple-300",
-    avatar: "/images/content/eHISRLFUhgnDA3fOxfapqrM7m0.jpg",
+    avatar: "/images/about-us/eHISRLFUhgnDA3fOxfapqrM7m0.jpg",
     coverImage: "/images/content/FCBKViQg3nV6hMSlU6WlaGTZ8yk.jpg",
     gallery: [
       { src: "/images/content/9feDkXRGNd52EakG0mP2Umo.png", alt: "Juan Manuel Sobral on stage at Ethereum Argentina." },
