@@ -192,52 +192,35 @@ const monthData = monthsMeta.map(({ num, label, short }) => {
 
 const tbdEvents  = events.filter(e => e.month === 0);
 const totalCount = events.filter(e => e.month > 0).length;
-const weekDays   = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 ---
 
 <style>
-  @keyframes cal-cell-in {
-    from { opacity: 0; transform: translateY(8px) scale(0.97); }
-    to   { opacity: 1; transform: translateY(0)  scale(1); }
+  @keyframes row-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
-  @keyframes cal-list-in {
-    from { opacity: 0; transform: translateX(-12px); }
-    to   { opacity: 1; transform: translateX(0); }
+  .cal-row {
+    animation: row-in 0.25s ease both;
   }
-  @keyframes cal-today-pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(103,58,228,0.6); }
-    50%       { box-shadow: 0 0 0 5px rgba(103,58,228,0); }
+  .cal-row:hover .cal-row-title {
+    color: #673ae4;
   }
-
-  .cal-cell { animation: cal-cell-in 0.28s ease both; }
-
-  .cal-event-pill {
-    transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+  .cal-row:hover .cal-know-more {
+    opacity: 1;
+    transform: translateX(0);
   }
-  .cal-event-pill:hover {
-    transform: scale(1.04) translateY(-1px);
-    filter: brightness(1.15);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.35);
-    z-index: 1;
+  .cal-know-more {
+    opacity: 0.4;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
   }
-
-  .cal-list-item {
-    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-  }
-  .cal-list-item:hover {
-    background: rgba(103,58,228,0.15) !important;
-    border-color: rgba(103,58,228,0.4) !important;
-    transform: translateX(4px);
-  }
-  .cal-list-item.cal-list-animate {
-    animation: cal-list-in 0.3s ease both;
-  }
-
-  .cal-today {
-    animation: cal-today-pulse 2s ease-in-out infinite;
-    background: rgba(103,58,228,0.18) !important;
-    outline: 1.5px solid rgba(103,58,228,0.7);
-    outline-offset: -1px;
+  .year-display {
+    font-size: clamp(40px, 9vw, 110px);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #141414;
+    font-family: var(--font-display);
   }
 </style>
 
@@ -247,65 +230,36 @@ const weekDays   = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 >
 
 <!-- ── HERO ──────────────────────────────────────────────────────────────── -->
-<section style="background: var(--sd-gradient-hero);" class="py-16 md:py-24">
-  <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-    <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 font-ui mb-4">2026</p>
-    <h1 class="font-display text-4xl md:text-6xl text-white leading-tight mb-4">Events Calendar</h1>
-    <p class="text-white/60 text-lg mb-8 max-w-xl">{totalCount}+ events worldwide. Blockchain, crypto, AI and fintech.</p>
-    <div class="flex flex-wrap gap-2">
-      {Object.entries(CAT).map(([, c]) => (
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-ui font-medium"
-          style={`background:${c.bg}; color:${c.text};`}>
-          {c.label}
-        </span>
-      ))}
+<section style="background: var(--sd-gradient-hero);" class="py-20 md:py-32">
+  <div class="mx-auto max-w-[1440px] px-6 md:px-16">
+    <h1 class="font-display text-5xl md:text-7xl text-white leading-tight mb-6 max-w-2xl">Events Calendar</h1>
+    <p class="text-white/60 text-lg mb-10 max-w-xl leading-relaxed">
+      Explore the international events shaping the tech, finance, innovation, blockchain, and AI industries every month.
+    </p>
+    <div class="flex flex-wrap items-center gap-4">
+      <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-sd-text-dark font-ui text-sm font-medium hover:bg-white/90 transition-colors">
+        Get in touch
+      </a>
+      <span class="text-white/50 text-sm font-body">Or subscribe to our newsletter</span>
     </div>
   </div>
 </section>
 
 <!-- ── CALENDAR ──────────────────────────────────────────────────────────── -->
-<div style="background:#0d0c17; min-height:100vh;">
-  <div class="mx-auto max-w-[1440px] px-4 md:px-10 py-10">
+<div class="bg-sd-light">
+  <div class="mx-auto max-w-[1440px] px-6 md:px-16 py-16">
 
-    <!-- Category filters -->
-    <div class="flex flex-wrap gap-2 mb-8" id="cal-filters">
-      {[
-        { key: "all",        label: "All events",          bg: "#ffffff", text: "#141414" },
-        { key: "blockchain", label: "Blockchain & Crypto",  bg: "#673ae4", text: "#ffffff" },
-        { key: "ai",         label: "AI",                  bg: "#44cdf3", text: "#0d1117" },
-        { key: "fintech",    label: "FinTech",              bg: "#00ffb2", text: "#0d1117" },
-        { key: "product",    label: "Product & Tech",       bg: "#8572bc", text: "#ffffff" },
-      ].map(f => (
-        <button
-          data-filter={f.key}
-          data-bg={f.bg}
-          data-color={f.text}
-          class="cal-filter px-4 py-1.5 rounded-full text-xs font-ui border border-white/20 text-white/50 transition-all duration-200 hover:text-white hover:border-white/40"
-          style={f.key === "all" ? `background:${f.bg}; color:${f.text}; border-color:${f.bg};` : ""}
-        >
-          {f.label}
-        </button>
-      ))}
+    <!-- Year -->
+    <div class="text-center mb-8 select-none">
+      <span class="year-display">2026</span>
     </div>
 
-    <!-- Month navigator -->
-    <div class="flex items-center justify-between mb-2">
-      <button id="prev-btn" class="w-10 h-10 rounded-full border border-white/20 text-white/60 hover:text-white hover:border-white/50 flex items-center justify-center transition-all" aria-label="Previous month">
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-      </button>
-      <h2 id="month-label" class="font-display text-2xl md:text-3xl text-white"></h2>
-      <button id="next-btn" class="w-10 h-10 rounded-full border border-white/20 text-white/60 hover:text-white hover:border-white/50 flex items-center justify-center transition-all" aria-label="Next month">
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-      </button>
-    </div>
-
-    <!-- Month dots nav -->
-    <div class="flex justify-center gap-1.5 mb-6">
+    <!-- Month pills -->
+    <div class="flex flex-wrap justify-center gap-2 mb-12">
       {monthsMeta.map(m => (
         <button
           data-month={m.num}
-          class="month-dot text-[10px] font-ui text-white/40 px-2 py-1 rounded transition-all hover:text-white/80 hover:bg-white/10"
-          title={m.label}
+          class="month-pill px-4 py-1.5 rounded-full text-sm font-ui border border-sd-gray-border text-sd-text-gray hover:border-sd-purple hover:text-sd-text-dark transition-all duration-200"
         >
           {m.short}
         </button>
@@ -313,115 +267,67 @@ const weekDays   = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
     </div>
 
     <!-- Slide container -->
-    <div id="slide-container" class="overflow-hidden relative" style="min-height:520px;">
-      {monthData.map(({ num, label, byDay, allEvts, cells }) => (
-        <div
-          class="month-slide absolute inset-0 w-full"
-          data-month={num}
-          style="display:none;"
-        >
-          <!-- Calendar grid -->
-          <div class="rounded-2xl overflow-hidden mb-6" style="border:1px solid rgba(255,255,255,0.22);">
-            <!-- Weekday headers -->
-            <div class="grid grid-cols-7" style="background:rgba(103,58,228,0.35); border-bottom:1px solid rgba(255,255,255,0.2);">
-              {weekDays.map((d, i) => (
-                <div class={`py-3 text-center text-[11px] uppercase tracking-widest font-ui font-semibold ${i >= 5 ? "text-white/50" : "text-white"}`}>
-                  {d}
+    <div id="slide-container" class="relative overflow-hidden">
+      {monthData.map(({ num, label, allEvts }) => (
+        <div class="month-slide" data-month={num} style="display:none;">
+
+          <!-- Month heading -->
+          <p class="text-xs uppercase tracking-[0.2em] text-sd-text-muted font-ui mb-6">{label} 2026 &mdash; {allEvts.length} events</p>
+
+          <!-- Event rows -->
+          <div class="divide-y divide-sd-gray-border">
+            {allEvts.length === 0 && (
+              <p class="py-12 text-center text-sd-text-muted font-body">No events this month.</p>
+            )}
+            {allEvts.map((evt, i) => (
+              <a
+                href={evt.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-category={evt.category}
+                class="cal-event cal-row group flex items-center justify-between py-6 gap-4"
+                style={`animation-delay:${i * 40}ms`}
+              >
+                <div class="flex-1 min-w-0">
+                  <p class="text-xs text-sd-text-muted font-body mb-1">{evt.date}, 2026</p>
+                  <p class="cal-row-title font-display text-2xl md:text-3xl text-sd-text-dark transition-colors duration-200 leading-snug">
+                    {evt.name}
+                  </p>
+                  <p class="text-sm text-sd-text-gray font-body mt-1">{evt.country}</p>
                 </div>
-              ))}
-            </div>
-            <!-- Day cells -->
-            <div class="grid grid-cols-7">
-              {cells.map((day, idx) => {
-                const isWeekend = idx % 7 >= 5;
-                const dayEvts   = day ? (byDay[day] ?? []) : [];
-                const hasEvts   = dayEvts.length > 0;
-                return (
-                  <div
-                    class={`cal-cell relative p-1 md:p-1.5`}
-                    style={`min-height:110px; border-right:1px solid rgba(255,255,255,0.22); border-bottom:1px solid rgba(255,255,255,0.22); background:${!day ? "rgba(0,0,0,0.3)" : isWeekend ? "rgba(255,255,255,0.03)" : "transparent"};`}
-                  >
-                    {day && (
-                      <>
-                        <span class={`text-[11px] font-ui leading-none block mb-1 ${hasEvts ? "text-white font-semibold" : "text-white/40"}`}>
-                          {day}
-                        </span>
-                        <div class="flex flex-col gap-0.5">
-                          {dayEvts.map(evt => (
-                            <a
-                              href={evt.website}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              data-category={evt.category}
-                              class="cal-event cal-event-pill relative block truncate rounded px-1.5 py-1 text-[11px] md:text-[12px] leading-snug font-ui transition-opacity"
-                              title={`${evt.name} — ${evt.country}`}
-                              style={`background:${CAT[evt.category].bg}; color:${CAT[evt.category].text};`}
-                            >
-                              {evt.name}
-                            </a>
-                          ))}
-                        </div>
-                      </>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+                <span class="cal-know-more shrink-0 text-xs uppercase tracking-widest font-ui text-sd-text-dark">
+                  Know more
+                </span>
+              </a>
+            ))}
           </div>
 
-          <!-- Event list for this month -->
-          {allEvts.length > 0 && (
-            <div>
-              <p class="text-xs uppercase tracking-[0.18em] text-white/40 font-ui mb-3">{allEvts.length} events in {label}</p>
-              <div class="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
-                {allEvts.map(evt => (
-                  <a
-                    href={evt.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-category={evt.category}
-                    class="cal-event cal-list-item group flex items-center gap-3 px-4 py-3 rounded-xl"
-                    style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);"
-                  >
-                    <span class="shrink-0 w-1.5 h-1.5 rounded-full" style={`background:${CAT[evt.category].bg};`}></span>
-                    <div class="flex-1 min-w-0">
-                      <p class="text-sm text-white truncate font-body leading-tight">
-                        {evt.name}
-                      </p>
-                      <p class="text-[11px] text-white/40 font-body mt-0.5">{evt.date} · {evt.country}</p>
-                    </div>
-                    <svg class="w-3.5 h-3.5 text-white/20 group-hover:text-white/60 shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
-                    </svg>
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-          {allEvts.length === 0 && (
-            <p class="text-center text-white/30 py-10 font-body">No events this month for the selected category.</p>
-          )}
         </div>
       ))}
 
-      <!-- TBD month slot -->
-      <div class="month-slide absolute inset-0 w-full" data-month="0" style="display:none;">
-        <p class="text-xs uppercase tracking-[0.18em] text-white/40 font-ui mb-3">{tbdEvents.length} events — date not yet confirmed</p>
-        <div class="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
-          {tbdEvents.map(evt => (
+      <!-- TBD slot -->
+      <div class="month-slide" data-month="0" style="display:none;">
+        <p class="text-xs uppercase tracking-[0.2em] text-sd-text-muted font-ui mb-6">Date TBD &mdash; {tbdEvents.length} events</p>
+        <div class="divide-y divide-sd-gray-border">
+          {tbdEvents.map((evt, i) => (
             <a
               href={evt.website}
               target="_blank"
               rel="noopener noreferrer"
               data-category={evt.category}
-              class="cal-event group flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200"
-              style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);"
+              class="cal-event cal-row group flex items-center justify-between py-6 gap-4"
+              style={`animation-delay:${i * 40}ms`}
             >
-              <span class="shrink-0 w-1.5 h-1.5 rounded-full" style={`background:${CAT[evt.category].bg};`}></span>
               <div class="flex-1 min-w-0">
-                <p class="text-sm text-white truncate font-body">{evt.name}</p>
-                <p class="text-[11px] text-white/40 font-body mt-0.5">TBD · {evt.country}</p>
+                <p class="text-xs text-sd-text-muted font-body mb-1">TBD, 2026</p>
+                <p class="cal-row-title font-display text-2xl md:text-3xl text-sd-text-dark transition-colors duration-200 leading-snug">
+                  {evt.name}
+                </p>
+                <p class="text-sm text-sd-text-gray font-body mt-1">{evt.country}</p>
               </div>
+              <span class="cal-know-more shrink-0 text-xs uppercase tracking-widest font-ui text-sd-text-dark">
+                Know more
+              </span>
             </a>
           ))}
         </div>
@@ -429,8 +335,8 @@ const weekDays   = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
     </div>
 
     <!-- TBD link -->
-    <div class="mt-8 text-center">
-      <button id="tbd-btn" class="text-xs text-white/30 hover:text-white/60 font-ui underline underline-offset-4 transition-colors">
+    <div class="mt-12 text-center border-t border-sd-gray-border pt-8">
+      <button id="tbd-btn" class="text-sm text-sd-text-muted hover:text-sd-text-dark font-ui transition-colors">
         + {tbdEvents.length} events with date TBD
       </button>
     </div>
@@ -440,9 +346,9 @@ const weekDays   = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 
 <!-- ── CTA ────────────────────────────────────────────────────────────────── -->
 <section class="py-16 md:py-20" style="background: var(--sd-gradient-hero);">
-  <div class="mx-auto max-w-[1440px] px-6 md:px-10 text-center">
+  <div class="mx-auto max-w-[1440px] px-6 md:px-16 text-center">
     <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 font-ui mb-4">Meet us in person</p>
-    <h2 class="font-display text-3xl md:text-4xl text-white mb-4">Are you attending any of these?</h2>
+    <h2 class="font-display text-3xl md:text-5xl text-white mb-4">Are you attending any of these?</h2>
     <p class="text-white/60 max-w-lg mx-auto mb-8 leading-relaxed">We attend blockchain and tech conferences throughout the year. If you spot us, let's talk.</p>
     <Button href="/contact" variant="primary">Get in touch</Button>
   </div>
@@ -451,160 +357,90 @@ const weekDays   = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 </BaseLayout>
 
 <script>
-  // ── Data ──────────────────────────────────────────────────────────────────
-  const MONTHS = [1,2,3,4,5,6,7,8,9,10,11,12];
   const LABELS = ["January","February","March","April","May","June",
                   "July","August","September","October","November","December"];
 
-  let currentMonth = 5; // default: May (current)
-  let currentFilter = "all";
-  let showTbd = false;
+  let currentMonth = 5;
 
-  const slides        = document.querySelectorAll<HTMLElement>(".month-slide");
-  const monthLabel    = document.getElementById("month-label")!;
-  const prevBtn       = document.getElementById("prev-btn")!;
-  const nextBtn       = document.getElementById("next-btn")!;
-  const tbdBtn        = document.getElementById("tbd-btn")!;
-  const monthDots     = document.querySelectorAll<HTMLElement>(".month-dot");
-  const slideContainer= document.getElementById("slide-container")!;
+  const slideContainer = document.getElementById("slide-container")!;
+  const monthPills     = document.querySelectorAll<HTMLElement>(".month-pill");
+  const tbdBtn         = document.getElementById("tbd-btn")!;
 
-  // ── Show month ────────────────────────────────────────────────────────────
   function showMonth(num: number, dir: "left"|"right"|"none" = "none") {
     const incoming = document.querySelector<HTMLElement>(`.month-slide[data-month="${num}"]`);
     const outgoing = document.querySelector<HTMLElement>(`.month-slide[data-month="${currentMonth}"]`);
     if (!incoming) return;
 
     currentMonth = num;
-    monthLabel.textContent = num === 0 ? "Date TBD" : `${LABELS[num - 1]} 2026`;
 
-    // Update dots
-    monthDots.forEach(dot => {
-      const active = parseInt(dot.dataset.month ?? "0") === num;
-      dot.style.color            = active ? "#ffffff" : "";
-      dot.style.fontWeight       = active ? "700" : "";
-      dot.style.backgroundColor  = active ? "#673ae4" : "";
-      dot.style.opacity          = active ? "1" : "";
+    // Update pills
+    monthPills.forEach(pill => {
+      const active = parseInt(pill.dataset.month ?? "0") === num;
+      pill.style.background   = active ? "#673ae4" : "";
+      pill.style.color        = active ? "#ffffff" : "";
+      pill.style.borderColor  = active ? "#673ae4" : "";
     });
 
-    // Update nav buttons
-    prevBtn.style.opacity = num <= 1 ? "0.3" : "1";
-    nextBtn.style.opacity = num >= 12 ? "0.3" : "1";
-
-    // Animate
+    // Slide animation
     if (outgoing && outgoing !== incoming && dir !== "none") {
-      const fromX = dir === "left" ? "-100%" : "100%";
-      const toX   = dir === "left" ? "100%"  : "-100%";
+      const fromX = dir === "left" ? "-60px" : "60px";
+      const toX   = dir === "left" ? "60px"  : "-60px";
 
       outgoing.style.transition = "none";
-      outgoing.style.transform  = "translateX(0)";
       outgoing.style.display    = "block";
 
       incoming.style.transition = "none";
-      incoming.style.transform  = fromX;
+      incoming.style.opacity    = "0";
+      incoming.style.transform  = `translateX(${fromX})`;
       incoming.style.display    = "block";
 
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          const dur = "0.3s";
-          outgoing!.style.transition = `transform ${dur} ease, opacity ${dur} ease`;
-          outgoing!.style.transform  = toX;
+          outgoing!.style.transition = "opacity 0.2s ease";
           outgoing!.style.opacity    = "0";
 
-          incoming.style.transition = `transform ${dur} ease, opacity ${dur} ease`;
-          incoming.style.transform  = "translateX(0)";
-          incoming.style.opacity    = "1";
+          incoming.style.transition  = "opacity 0.25s ease, transform 0.25s ease";
+          incoming.style.opacity     = "1";
+          incoming.style.transform   = "translateX(0)";
 
           setTimeout(() => {
-            if (outgoing) { outgoing.style.display = "none"; outgoing.style.opacity = "1"; outgoing.style.transform = ""; outgoing.style.transition = ""; }
+            if (outgoing) { outgoing.style.display = "none"; outgoing.style.opacity = "1"; outgoing.style.transition = ""; }
             incoming.style.transition = "";
-            animateCells(incoming);
-            animateList(incoming);
-          }, 320);
+            animateRows(incoming);
+          }, 260);
         });
       });
     } else {
-      if (outgoing) { outgoing.style.display = "none"; }
-      incoming.style.display    = "block";
-      incoming.style.transform  = "";
-      incoming.style.opacity    = "1";
-      animateCells(incoming);
-      animateList(incoming);
+      if (outgoing) outgoing.style.display = "none";
+      incoming.style.display   = "block";
+      incoming.style.opacity   = "1";
+      incoming.style.transform = "";
+      animateRows(incoming);
     }
-
-    // Adjust container height to incoming slide
-    slideContainer.style.minHeight = incoming.scrollHeight + "px";
-    applyFilter(currentFilter, false);
   }
 
-  // ── Cell stagger ─────────────────────────────────────────────────────────
-  function animateCells(slide: HTMLElement) {
-    const cells = slide.querySelectorAll<HTMLElement>(".cal-cell");
-    cells.forEach((cell, i) => {
-      cell.style.animation = "none";
-      void (cell as HTMLElement).offsetHeight; // force reflow
-      cell.style.animation = "";
-      cell.style.animationDelay = `${i * 12}ms`;
+  function animateRows(slide: HTMLElement) {
+    const rows = slide.querySelectorAll<HTMLElement>(".cal-row");
+    rows.forEach((row, i) => {
+      row.style.animation = "none";
+      void row.offsetHeight;
+      row.style.animation = "";
+      row.style.animationDelay = `${i * 35}ms`;
     });
   }
 
-  // ── List stagger ─────────────────────────────────────────────────────────
-  function animateList(slide: HTMLElement) {
-    const items = slide.querySelectorAll<HTMLElement>(".cal-list-item");
-    items.forEach((item, i) => {
-      item.classList.remove("cal-list-animate");
-      void (item as HTMLElement).offsetHeight;
-      item.style.animationDelay = `${i * 35}ms`;
-      item.classList.add("cal-list-animate");
-    });
-  }
-
-  // ── Filter ────────────────────────────────────────────────────────────────
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>(".cal-filter");
-  function applyFilter(cat: string, updateBtns = true) {
-    currentFilter = cat;
-    if (updateBtns) {
-      filterBtns.forEach(btn => {
-        const active = btn.dataset.filter === cat;
-        if (active) {
-          btn.style.background  = btn.dataset.bg   ?? "#fff";
-          btn.style.color       = btn.dataset.color ?? "#000";
-          btn.style.borderColor = btn.dataset.bg   ?? "#fff";
-        } else {
-          btn.style.background  = "transparent";
-          btn.style.color       = "rgba(255,255,255,0.5)";
-          btn.style.borderColor = "rgba(255,255,255,0.2)";
-        }
-      });
-    }
-    document.querySelectorAll<HTMLElement>(".cal-event").forEach(evt => {
-      const show = cat === "all" || evt.dataset.category === cat;
-      evt.style.opacity       = show ? "1" : "0.1";
-      evt.style.pointerEvents = show ? "" : "none";
-    });
-  }
-
-  // ── Events ────────────────────────────────────────────────────────────────
-  prevBtn.addEventListener("click", () => {
-    if (currentMonth > 1) showMonth(currentMonth - 1, "right");
-  });
-  nextBtn.addEventListener("click", () => {
-    if (currentMonth < 12) showMonth(currentMonth + 1, "left");
-  });
-  tbdBtn.addEventListener("click", () => {
-    showTbd = !showTbd;
-    showMonth(0, "none");
-  });
-  monthDots.forEach(dot => {
-    dot.addEventListener("click", () => {
-      const n = parseInt(dot.dataset.month ?? "1");
+  // Month pill clicks
+  monthPills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      const n = parseInt(pill.dataset.month ?? "1");
       showMonth(n, n > currentMonth ? "left" : "right");
     });
   });
-  filterBtns.forEach(btn => {
-    btn.addEventListener("click", () => applyFilter(btn.dataset.filter ?? "all"));
-  });
 
-  // ── Touch swipe ───────────────────────────────────────────────────────────
+  // TBD
+  tbdBtn.addEventListener("click", () => showMonth(0, "none"));
+
+  // Touch swipe
   let touchStartX = 0;
   slideContainer.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
   slideContainer.addEventListener("touchend", e => {
@@ -615,21 +451,7 @@ const weekDays   = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
     }
   }, { passive: true });
 
-  // ── Init ─────────────────────────────────────────────────────────────────
-  showMonth(5, "none"); // start on May
-
-  // ── Highlight today ───────────────────────────────────────────────────────
-  const today = new Date();
-  const todayMonth = today.getMonth() + 1;
-  const todayDay   = today.getDate();
-  const todaySlide = document.querySelector<HTMLElement>(`.month-slide[data-month="${todayMonth}"]`);
-  if (todaySlide) {
-    const cells = todaySlide.querySelectorAll<HTMLElement>(".cal-cell");
-    cells.forEach(cell => {
-      const num = cell.querySelector("span")?.textContent?.trim();
-      if (num && parseInt(num) === todayDay) {
-        cell.classList.add("cal-today");
-      }
-    });
-  }
+  // Init — start on current month
+  const nowMonth = new Date().getMonth() + 1;
+  showMonth(nowMonth <= 12 ? nowMonth : 5, "none");
 </script>
