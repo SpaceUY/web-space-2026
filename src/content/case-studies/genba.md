@@ -33,22 +33,12 @@ deliverables:
   - "Reporting pipeline for ESG, regulatory, and customer-facing transparency."
 outcome: "Genba shipped a supply-chain transparency platform that brands, factories, and auditors can all trust as a single source of truth, replacing brittle spreadsheets with verifiable on-chain records."
 gallery:
-  - "/images/content/3Yx2oVNjRiB0sekSMLKn2N4Ko4c.png"
-  - "/images/content/3bBbbJmkPBMkgIWJyqTIC826MA.png"
-  - "/images/content/4FNMeBkhTCdfWfbadOTUsRk.png"
-  - "/images/content/6BHRGFPQfdyFbpORSUyy8jpVg1c.svg"
-  - "/images/content/7JUlHxnOIWHMfdQE3VnCBpFHR5Q.png"
-  - "/images/content/BFcg1f66iq1AoMDKVkSsA7WNJqA.png"
-  - "/images/content/BUJL1W3MwHf9QfeJ4Q9ViiU0A.png"
-  - "/images/content/Dt9ldRC61UO9BbwiiJ06nd3tqX8.png"
-  - "/images/content/HVU3G0AwEaIE4dOfiQzUpGljUPI.svg"
-  - "/images/content/UOTYd14Aeca75YCprsyoJS4coQ.png"
-  - "/images/content/UjWZnjbExcBz7dikJWBL7BGQc.png"
-  - "/images/content/WFuxuWiQduOgsdE3OwBi7VKlmTA.png"
-  - "/images/content/XJpgPwWFyYIw4TKHH146YiBH9E.png"
-  - "/images/content/jrInsxlYW1IKAIdu4bo9qFcm9I8.png"
-  - "/images/content/lujckVYNntgfsmPKcFnfXjyEHdQ.svg"
-  - "/images/content/t3SzeYfCVMUsqQmTXawgJPwum6Y.png"
+  - "/images/case-studies/genba/gallery/gallery1.png"
+  - "/images/case-studies/genba/gallery/gallery2.png"
+  - "/images/case-studies/genba/gallery/gallery3.png"
+  - "/images/case-studies/genba/gallery/gallery4.png"
+  - "/images/case-studies/genba/gallery/gallery5.png"
+  - "/images/case-studies/genba/gallery/gallery6.png"
 ---
 
 ## The Challenge

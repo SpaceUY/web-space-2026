@@ -47,24 +47,12 @@ clutchReview:
   stars: 5
   url: "https://clutch.co/profile/spacedev"
 gallery:
-  - "/images/content/12AxkMqNxzOXIH0R8HxXR0wU.svg"
-  - "/images/content/1S1Y2PjzlkTmoFxuPOZKRZ9f6Q.png"
-  - "/images/content/6LZNA2fKi17valZV7hwiJH9aX6Y.png"
-  - "/images/content/6RtFc9Frlno8dV6S6NCRfGO4c.png"
-  - "/images/content/8ooF9A2LYJEKdXK4iig6LfVRXD4.png"
-  - "/images/content/Mvf3QIDsykhaLcwjtXgjerZ4rhc.png"
-  - "/images/content/NN7ilRcbBhpMFsKtsUhKf2yIJyo.svg"
-  - "/images/content/VDE8B5Nq0XffpaMjfQT0FuZKYY.svg"
-  - "/images/content/cWUSZBnkq64n0iGaw8XbcGPcTPs.png"
-  - "/images/content/cwxltHR6By63CrtaeY7RtLNAq0.png"
-  - "/images/content/fn3HwIUXEw1Fe2OKiFGVVzf82fA.png"
-  - "/images/content/gIzBQWHakivN2UNC2u0Lh3cIxg.png"
-  - "/images/content/gMLAu6sX5TTQ4ADKWuZFAaD1JM.png"
-  - "/images/content/kWA85QNsIbaBtb2WZejVehNbQ8.png"
-  - "/images/content/pXWJ6v3Ummh0FbHJrcLCJx9HxE.png"
-  - "/images/content/qXDQ2f3E3RuobyrVb0zCCUJDGw.png"
-  - "/images/content/sv7mGP45bN457M0vTKQslKSp1Y.png"
-  - "/images/content/yeEZfn6fRH8zORRsHs17XARaL0.png"
+  - "/images/case-studies/blockus/gallery/gallery1.png"
+  - "/images/case-studies/blockus/gallery/gallery2.png"
+  - "/images/case-studies/blockus/gallery/gallery3.png"
+  - "/images/case-studies/blockus/gallery/gallery4.png"
+  - "/images/case-studies/blockus/gallery/gallery5.png"
+  - "/images/case-studies/blockus/gallery/gallery6.png"
 ---
 
 ## The Challenge

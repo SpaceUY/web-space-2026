@@ -34,18 +34,12 @@ deliverables:
 outcome: "Mostaza now runs digital ordering and loyalty as a first-class channel — with measurable lifts in repeat visits, average ticket, and customer lifetime value across the chain."
 galleryType: "mobile"
 gallery:
-  - "/images/content/9rmaMxYJ0sZhtf3po6j9stcKFSk.png"
-  - "/images/content/QS9g7VhU7rO9ufoNWjdMvFzTKIE.png"
-  - "/images/content/S5NXFQ2X7RtpNTqe2d4k8zKKE.png"
-  - "/images/content/U55S0xccFNvtNYaUjh6PukgjY.svg"
-  - "/images/content/XDAptxzKQa3KCKNYFRQP44bmQ7c.png"
-  - "/images/content/ZQDmy9uXxQfTeWDAlV20badq9I.png"
-  - "/images/content/avsPr7S0zKaOlblBpybYQzR2w.png"
-  - "/images/content/bipqa4ozIOFDsSB9Zg92zmijY.png"
-  - "/images/content/lEKuBGS2turHpB3VJb5nePhi8Og.png"
-  - "/images/content/rKA3kpNhbpFWO9yddvBxbmkHG4.png"
-  - "/images/content/wna0L3FSuIpCV9vsBX4R0VgJHc.png"
-  - "/images/content/yzZXMCvYIUxmcqCEggo6XJMDRVc.png"
+  - "/images/case-studies/mostaza/gallery/gallery1.png"
+  - "/images/case-studies/mostaza/gallery/gallery2.png"
+  - "/images/case-studies/mostaza/gallery/gallery3.png"
+  - "/images/case-studies/mostaza/gallery/gallery4.png"
+  - "/images/case-studies/mostaza/gallery/gallery5.png"
+  - "/images/case-studies/mostaza/gallery/gallery6.png"
 ---
 
 ## The Challenge

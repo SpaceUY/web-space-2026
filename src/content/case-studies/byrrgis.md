@@ -62,6 +62,13 @@ clutchReview:
   reviewer: "Monzoor Ullah, COO, Byrrgis"
   stars: 5
   url: "https://clutch.co/profile/spacedev"
+gallery:
+  - "/images/case-studies/byrrgis/gallery/gallery1.png"
+  - "/images/case-studies/byrrgis/gallery/gallery2.png"
+  - "/images/case-studies/byrrgis/gallery/gallery3.png"
+  - "/images/case-studies/byrrgis/gallery/gallery4.png"
+  - "/images/case-studies/byrrgis/gallery/gallery5.png"
+  - "/images/case-studies/byrrgis/gallery/gallery6.png"
 ---
 
 ## The Challenge

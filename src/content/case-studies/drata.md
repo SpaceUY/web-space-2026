@@ -45,16 +45,12 @@ clutchReview:
   stars: 5
   url: "https://clutch.co/profile/spacedev"
 gallery:
-  - "/images/content/8dvmMMSiSxG9JTXA3EiOxWF3b8.png"
-  - "/images/content/Dks8oA2XQG5c7TjD1e4Vf9qF7ng.png"
-  - "/images/content/GCJw5AEcacYIr6mbUI7qfUJxYAo.png"
-  - "/images/content/J2qAaUqLVYCOgEvKt1IAVr1IDQ.png"
-  - "/images/content/Lc9P99wGZPOSFl5GBDijRww2Yw.png"
-  - "/images/content/Q3o8RGt1IT8jShombAUUTJhv0U.png"
-  - "/images/content/XkG3vciP8BbM2mpSUyjYui7tqQY.png"
-  - "/images/content/a9YvFG8W3w1ojs0nwbkKLyIsfJM.png"
-  - "/images/content/dXu3SnSV2fc4IcteOeB4Tnvt7ak.png"
-  - "/images/content/gxfClo4lpbXqYfGOshrTAzDEBSc.png"
+  - "/images/case-studies/drata/gallery/gallery1.png"
+  - "/images/case-studies/drata/gallery/gallery2.png"
+  - "/images/case-studies/drata/gallery/gallery3.png"
+  - "/images/case-studies/drata/gallery/gallery4.png"
+  - "/images/case-studies/drata/gallery/gallery5.png"
+  - "/images/case-studies/drata/gallery/gallery6.png"
 ---
 
 ## The Challenge

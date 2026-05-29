@@ -43,6 +43,14 @@ metrics:
     label: "Tether gold-backed token"
   - value: "Web2.5"
     label: "Familiar UX, Web3 rails"
+galleryType: "mobile"
+gallery:
+  - "/images/case-studies/aura/gallery/gallery1.png"
+  - "/images/case-studies/aura/gallery/gallery2.png"
+  - "/images/case-studies/aura/gallery/gallery3.png"
+  - "/images/case-studies/aura/gallery/gallery4.png"
+  - "/images/case-studies/aura/gallery/gallery5.png"
+  - "/images/case-studies/aura/gallery/gallery6.png"
 ---
 
 ## The Challenge

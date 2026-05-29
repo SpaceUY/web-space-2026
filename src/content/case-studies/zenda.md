@@ -47,6 +47,14 @@ metrics:
     label: "Orders created"
   - value: "Ongoing"
     label: "Since Apr 2025"
+galleryType: "mobile"
+gallery:
+  - "/images/case-studies/zenda/gallery/gallery1.png"
+  - "/images/case-studies/zenda/gallery/gallery2.png"
+  - "/images/case-studies/zenda/gallery/gallery3.png"
+  - "/images/case-studies/zenda/gallery/gallery4.png"
+  - "/images/case-studies/zenda/gallery/gallery5.png"
+  - "/images/case-studies/zenda/gallery/gallery6.png"
 ---
 
 ## The Challenge

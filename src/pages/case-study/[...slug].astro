@@ -56,7 +56,7 @@ const summary     = entry.data.summary;
 const objectives  = entry.data.objectives ?? [];
 const deliverables = entry.data.deliverables ?? [];
 const outcome      = entry.data.outcome;
-const gallery      = (entry.data.gallery ?? []).slice(0, 6);
+const gallery      = (entry.data.gallery ?? []).slice(0, 8);
 const galleryType  = entry.data.galleryType ?? "desktop";
 const metrics      = entry.data.metrics;
 const clutchReview = entry.data.clutchReview;
@@ -236,7 +236,7 @@ const hasRichContent =
       )}
 
       <!-- GALLERY — scroll-hijacked horizontal pan -->
-      {gallery.length > 0 && (
+      {gallery.length >= 4 && (
         <!--
           Pin wrapper: taller than 100vh so the page has scroll "room" to spend.
           Height is set by JS once image dimensions are known.

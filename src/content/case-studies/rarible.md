@@ -51,18 +51,11 @@ clutchReview:
   stars: 5
   url: "https://clutch.co/profile/spacedev"
 gallery:
-  - "/images/content/AXmHZlKaMIGHXcZ0sROEO0Vufy4.png"
-  - "/images/content/CogAqVk5s5qNKyZEaNtRCzRc5Aw.png"
-  - "/images/content/ARj6QnZDQWmG0kFMu7g1VooFoY.png"
-  - "/images/content/GUA6Mn0SNGs2Qj07dZf4azgskoA.png"
-  - "/images/content/IocsAVt5fS4CADk6LJW8PpE9vw.png"
-  - "/images/content/TVov1d6DE4YgiMFCmMHCHodEdbo.png"
-  - "/images/content/YGl2g5zxrvJiZGFIqai0toNFw.png"
-  - "/images/content/Z7BBNuKnjGm6ivHjRRNZEtZ4hXk.png"
-  - "/images/content/dPApUMVVERMwElNN2nXyB0hSQg.png"
-  - "/images/content/g7pSTZY4YpKilEzpVRNZYyd74qA.png"
-  - "/images/content/jrGslrlXTYP9QwQUppZJAODU5TE.png"
-  - "/images/content/ouIWJKhRCTnNdOCJciu4mByYQok.png"
+  - "/images/case-studies/rarible/gallery/gallery1.png"
+  - "/images/case-studies/rarible/gallery/gallery2.png"
+  - "/images/case-studies/rarible/gallery/gallery3.png"
+  - "/images/case-studies/rarible/gallery/gallery4.png"
+  - "/images/case-studies/rarible/gallery/gallery5.png"
 ---
 
 ## The Challenge

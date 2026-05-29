@@ -32,19 +32,14 @@ deliverables:
   - "Privacy-preserving prompt pipeline that scrubs PII before model calls."
   - "Onboarding flow that gets a user to their first useful insight in under five minutes."
 outcome: "PiggyGPT launched a finance assistant that gives real, data-grounded advice in natural language, without the privacy and accuracy compromises that usually come with LLMs in finance."
+galleryType: "mobile"
 gallery:
-  - "/images/content/1M7qFuSR9zE9CqLkzUasrcQlxI.svg"
-  - "/images/content/1a0fCOiJQyGNmhsITzL4Hv6vibY.png"
-  - "/images/content/9ETMsAQCXxFWIkhH7VEDTTEKbOM.png"
-  - "/images/content/9hy1uaG2NT3ISDVnRgokkMgOII.png"
-  - "/images/content/AOx95IZE6IzJpVdl9PomQz94FY.png"
-  - "/images/content/EAdasDBVV3VescrEi2cpOhcyziw.png"
-  - "/images/content/kLZ8DcXg5x9Z8Z2qM0oOJesXlg.png"
-  - "/images/content/mZ7u5sV1G1uIHIhgDk4Ii3iuE.png"
-  - "/images/content/nk4f0ZFLBEWdhpM1xt8NHkU2Uc.png"
-  - "/images/content/oADVWO14ujcE9a6GlzWw78J5v8.png"
-  - "/images/content/v0W9eCLICs41lrnFJpLyfet4ac.png"
-  - "/images/content/v69IKVNaDZqplcDw1tLICQSR8.png"
+  - "/images/case-studies/piggygpt/gallery/gallery1.png"
+  - "/images/case-studies/piggygpt/gallery/gallery2.png"
+  - "/images/case-studies/piggygpt/gallery/gallery3.png"
+  - "/images/case-studies/piggygpt/gallery/gallery4.png"
+  - "/images/case-studies/piggygpt/gallery/gallery5.png"
+  - "/images/case-studies/piggygpt/gallery/gallery6.png"
 ---
 
 ## The Challenge

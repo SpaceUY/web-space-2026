@@ -33,14 +33,11 @@ deliverables:
   - "Production-grade backend services and integrations to keep token issuance, custody, and reporting in sync across stakeholders."
 outcome: "B4E now operates a credible, transparent tokenization layer for carbon markets that scales with new participants without breaking the trust model. SpaceDev continues to evolve the platform alongside the consortium."
 gallery:
-  - "/images/content/3T7brdzF2ACQkZfzPgKJ77zJu8E.png"
-  - "/images/content/A1hbbKlvW88XVxJGCvNZBsqDeM.png"
-  - "/images/content/AIF2BMweOkJyUv9U5v6dSvwcInY.png"
-  - "/images/content/D4VO480UlKDSEfRGxJMDHHpnoM.png"
-  - "/images/content/S2ZuUX3bMPxIfUHG8DKIOBYU5o.png"
-  - "/images/content/WZJiLBaRQhVoCDtgfDZSVXYv36w.png"
-  - "/images/content/YL0d4DXAqxyDKRoaSHJnCkA2ds.png"
-  - "/images/content/Zxalav3Y8w5rYSnjA8TUP5p8Hcc.png"
+  - "/images/case-studies/blockchain-for-energy/gallery/gallery1.png"
+  - "/images/case-studies/blockchain-for-energy/gallery/gallery2.png"
+  - "/images/case-studies/blockchain-for-energy/gallery/gallery3.png"
+  - "/images/case-studies/blockchain-for-energy/gallery/gallery4.png"
+  - "/images/case-studies/blockchain-for-energy/gallery/gallery5.png"
 ---
 
 ## The Challenge
