@@ -24,7 +24,7 @@ The focal point of crypto innovation is shifting, with LATAM becoming a key play
 
 ## Regional Drivers of Crypto Adoption
 
-The continent's social, political and geographical properties make it fertile ground for the adoption of new technologies. Economic instability and hyperinflation—in the case of Argentina and Venezuela, for example—have pushed citizens toward alternative financial solutions. The World Bank has indicated that LATAM countries receive billions in remittances annually, often through traditional banking channels that are costly and slow. Cryptocurrencies offer a faster, cheaper, and more secure method for transferring money, addressing a significant pain point for millions of people—especially if they have to send it across borders, as is the reality for many small businesses and families. Crypto circumvents restrictive capital controls.
+The continent's social, political and geographical properties make it fertile ground for the adoption of new technologies. Economic instability and hyperinflation (in the case of Argentina and Venezuela, for example) have pushed citizens toward alternative financial solutions. The World Bank has indicated that LATAM countries receive billions in remittances annually, often through traditional banking channels that are costly and slow. Cryptocurrencies offer a faster, cheaper, and more secure method for transferring money, addressing a significant pain point for millions of people, especially if they have to send it across borders, as is the reality for many small businesses and families. Crypto circumvents restrictive capital controls.
 
 ## Country-Specific Challenges
 

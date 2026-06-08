@@ -46,22 +46,22 @@ gallery:
 
 ## The Challenge
 
-Basketball players looking to get noticed face a practical problem: game footage is scattered, hard to clip, and even harder to distribute in a format that actually reaches coaches and recruiters. Athlete.AI was founded to solve exactly that — but the founder, Kevin Keranen, needed a team that could move fast and ship a real product, not a prototype.
+Basketball players looking to get noticed face a practical problem: game footage is scattered, hard to clip, and even harder to distribute in a format that actually reaches coaches and recruiters. Athlete.AI was founded to solve exactly that, but the founder, Kevin Keranen, needed a team that could move fast and ship a real product, not a prototype.
 
-There was no prior discovery sprint. The team came to SpaceDev with a concept and a clear audience — players, coaches, parents, and fans — and a tight four-month window to get something to market. The mobile experience needed to feel as fluid as the social apps athletes already used daily, while also handling the demands of video capture, processing, and sharing at live events.
+There was no prior discovery sprint. The team came to SpaceDev with a concept, a clear audience (players, coaches, parents, and fans), and a tight four-month window to get something to market. The mobile experience needed to feel as fluid as the social apps athletes already used daily, while also handling the demands of video capture, processing, and sharing at live events.
 
 ## Our Approach
 
-SpaceDev assembled a focused team of four: two mid-level developers, a senior developer, and a QA analyst. We chose React Native with Expo and GlueStack for the frontend to maximize iteration speed without sacrificing the native feel that video-heavy apps require. For the video infrastructure, we integrated Mux — a purpose-built video platform — to handle transcoding and streaming, with AWS S3 backing asset storage. The backend was built on Next.js, keeping the architecture simple and deployable.
+SpaceDev assembled a focused team of four: two mid-level developers, a senior developer, and a QA analyst. We chose React Native with Expo and GlueStack for the frontend to maximize iteration speed without sacrificing the native feel that video-heavy apps require. For the video infrastructure, we integrated Mux, a purpose-built video platform, to handle transcoding and streaming, with AWS S3 backing asset storage. The backend was built on Next.js, keeping the architecture simple and deployable.
 
 The team worked directly with the client's PM, Kyle Palmer, through short feedback cycles. We kept scope honest: ship the core experience first, validate it at real events, then layer on additional features. That discipline kept the project on track even without a formal discovery phase upfront.
 
 ## Results
 
-The app shipped to the iOS App Store within the four-month engagement. Before the partnership formally concluded, it was already being used on the ground — filming highlights at basketball tournaments across the United States. The filming team provided positive feedback on the core capture and sharing flow.
+The app shipped to the iOS App Store within the four-month engagement. Before the partnership formally concluded, it was already being used on the ground, filming highlights at basketball tournaments across the United States. The filming team provided positive feedback on the core capture and sharing flow.
 
 At release, some planned features remained in development. The client chose to hand the project to a partner company for ongoing development, which was a deliberate transition rather than an unfinished delivery. The foundation SpaceDev built was solid enough to support that continuity.
 
 ## Tech Stack
 
-The stack was chosen for speed and practicality. React Native with Expo handled cross-platform mobile development with a clear iOS-first priority. GlueStack provided the component foundation. Mux took on the complexity of video processing so the team could focus on the product experience. AWS S3 handled storage, and Next.js served as the backend layer — a straightforward choice that kept infrastructure overhead low for an early-stage startup.
+The stack was chosen for speed and practicality. React Native with Expo handled cross-platform mobile development with a clear iOS-first priority. GlueStack provided the component foundation. Mux took on the complexity of video processing so the team could focus on the product experience. AWS S3 handled storage, and Next.js served as the backend layer, a straightforward choice that kept infrastructure overhead low for an early-stage startup.

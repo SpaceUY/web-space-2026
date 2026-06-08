@@ -45,7 +45,7 @@ gallery:
 
 ## The Challenge
 
-The Acton School of Business runs a curriculum that asks a genuinely hard question: what should you do next? Their courses guide people through psychological assessments, journaling, field trips, and conversations with accountability partners — all in service of helping them figure out where they'll actually thrive. The material is rigorous and personal, and it had been confined to classroom settings.
+The Acton School of Business runs a curriculum that asks a genuinely hard question: what should you do next? Their courses guide people through psychological assessments, journaling, field trips, and conversations with accountability partners, all in service of helping them figure out where they'll actually thrive. The material is rigorous and personal, and it had been confined to classroom settings.
 
 The challenge was translating that experience into a digital product that didn't flatten it. A simple course portal wouldn't cut it. The platform had to feel inviting and human, it needed to support real social interactions between participants, it had to work equally well on mobile and desktop, and it had to let the Acton team manage content without filing engineering tickets. All of that on a six-month MVP timeline.
 
@@ -57,7 +57,7 @@ SpaceDev built three things in parallel: a React Native mobile app for iOS and A
 
 For content management, we integrated Contentful so the Acton team could update course material, add sessions, and adjust the structure without touching code. This was important for a curriculum that's meant to evolve over time based on how participants respond.
 
-The social layer was one of the more interesting engineering problems. Course participants needed to find and connect with accountability partners, check in with each other weekly, and maintain those relationships throughout the six-week program. We built this as a lightweight social network embedded within the platform — not a full social media feature set, but enough to make the human connection part of the product experience.
+The social layer was one of the more interesting engineering problems. Course participants needed to find and connect with accountability partners, check in with each other weekly, and maintain those relationships throughout the six-week program. We built this as a lightweight social network embedded within the platform: not a full social media feature set, but enough to make the human connection part of the product experience.
 
 ## Results
 

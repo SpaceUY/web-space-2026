@@ -24,7 +24,7 @@ techStack:
   - Stripe
 publishedAt: 2025-02-15
 heroImage: "/images/case-studies/blockus/blockus_.png"
-summary: "Blockus is a Web3 gaming infrastructure platform backed by Maple, Altos Ventures, a16zcrypto, and CSS23. It gives game studios all the tools they need to build and operate blockchain-based game economies — without requiring players to understand wallets or crypto. SpaceDev built the core API, NFT management system, instant wallet creation, and developer back office that power the platform."
+summary: "Blockus is a Web3 gaming infrastructure platform backed by Maple, Altos Ventures, a16zcrypto, and CSS23. It gives game studios all the tools they need to build and operate blockchain-based game economies, without requiring players to understand wallets or crypto. SpaceDev built the core API, NFT management system, instant wallet creation, and developer back office that power the platform."
 objectives:
   - Build a robust API to support NFT management and integrate all blockchain operations with secure, transparent transactions.
   - Develop an intuitive developer UI and back office with customizable functionalities tailored to each game's requirements.
@@ -63,17 +63,17 @@ gallery:
 
 ## The Challenge
 
-The rise of Play-to-Earn games and crypto-native experiences created a real opportunity for game studios — but also a real barrier. Casual players who want to engage with NFTs or on-chain assets quickly discover they need to set up a wallet, understand digital ownership, and manage gas fees before they can even start playing. That friction is a significant entry barrier, both for users and for the developers trying to reach them.
+The rise of Play-to-Earn games and crypto-native experiences created a real opportunity for game studios, but also a real barrier. Casual players who want to engage with NFTs or on-chain assets quickly discover they need to set up a wallet, understand digital ownership, and manage gas fees before they can even start playing. That friction is a significant entry barrier, both for users and for the developers trying to reach them.
 
-Blockus set out to fix this: build a platform that gives game studios all the tools they need to operate Web3 game economies, while making the experience for players as familiar as any traditional game. The challenge was holding both sides of that equation at once — sophisticated blockchain infrastructure for developers, zero-friction onboarding for players. The founding team, backed by Maple, Altos Ventures, a16zcrypto, and CSS23, needed an engineering partner who could move fast and understand the domain deeply.
+Blockus set out to fix this: build a platform that gives game studios all the tools they need to operate Web3 game economies, while making the experience for players as familiar as any traditional game. The challenge was holding both sides of that equation at once: sophisticated blockchain infrastructure for developers and zero-friction onboarding for players. The founding team, backed by Maple, Altos Ventures, a16zcrypto, and CSS23, needed an engineering partner who could move fast and understand the domain deeply.
 
 ## Our Approach
 
-SpaceDev assembled a five-person team — a senior frontend developer, two senior backend engineers (one specializing in blockchain), a PM, and a QA — and committed to shipping an MVP in three months against a twelve-month engagement.
+SpaceDev assembled a five-person team (a senior frontend developer, two senior backend engineers with one specializing in blockchain, a PM, and a QA) and committed to shipping an MVP in three months against a twelve-month engagement.
 
 The foundation was a robust API built with Node.js and Express.js that handles all NFT management and blockchain operations for the platform. Smart contracts were written in Solidity and deployed using Hardhat, with Gelato managing on-chain automation so developers don't have to think about cron jobs or keepers. Cloud Functions and Cloud Firestore handle the serverless and database layer, giving the platform flexibility without the overhead of managing infrastructure.
 
-The most important UX decision was instant wallet creation: users who have never interacted with Web3 before can get a wallet automatically when they first engage, with no setup required on their end. Combined with gasless transactions — where the platform absorbs gas costs rather than passing them to players — and Stripe integration for fiat purchases, the result is a Web3 platform that feels like a regular game to anyone who plays it.
+The most important UX decision was instant wallet creation: users who have never interacted with Web3 before can get a wallet automatically when they first engage, with no setup required on their end. Combined with gasless transactions (where the platform absorbs gas costs rather than passing them to players) and Stripe integration for fiat purchases, the result is a Web3 platform that feels like a regular game to anyone who plays it.
 
 ## Results
 

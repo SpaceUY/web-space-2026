@@ -2,6 +2,24 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AnimatedCounter from "../components/ui/AnimatedCounter.astro";
 import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
+import AuthorAvatar from "../components/ui/AuthorAvatar.astro";
+import { getCollection } from "astro:content";
+import { getAuthor } from "../data/authors";
+
+const allPosts = await getCollection("blog");
+const latestPosts = allPosts
+  .sort((a, b) => new Date(b.data.publishedAt).valueOf() - new Date(a.data.publishedAt).valueOf())
+  .slice(0, 3);
+
+const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric" });
+const accentByCategory: Record<string, string> = {
+  "Blockchain Trends": "from-sd-purple to-sd-purple-2",
+  "Web2 Trends": "from-sd-purple-300 to-sd-purple",
+  "Product Development": "from-sd-green to-sd-purple-300",
+  "AI": "from-sd-purple-300 to-sd-purple-300",
+  "Augmented Reality": "from-sd-purple-300 to-sd-green",
+  "Techy Trends": "from-sd-purple to-sd-purple-300",
+};
 
 // Client logos — same as homepage marquee
 const clientLogos = [
@@ -390,6 +408,71 @@ const howWeWork = [
           class="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/25 text-white text-sm font-ui font-semibold hover:bg-white/10 transition-colors"
         >
           See our work
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST BLOG POSTS -->
+  <section class="bg-sd-light py-20 md:py-32 border-t border-sd-gray-border">
+    <div class="sd-container">
+      <div class="max-w-2xl mb-14">
+        <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight" data-animate>
+          Latest from our blog
+        </h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {latestPosts.map((post) => {
+          const author = getAuthor(post.data.author);
+          const gradient = accentByCategory[post.data.category] ?? "from-sd-purple to-sd-purple-300";
+          return (
+            <article
+              class="group flex flex-col rounded-2xl overflow-hidden bg-white border border-sd-gray-border shadow-sm hover:shadow-[0_8px_32px_rgba(103,58,228,0.12)] hover:border-sd-purple/30 hover:-translate-y-1 transition-all duration-300"
+              data-animate
+            >
+              <a href={`/blog/${post.id}`} class="block overflow-hidden">
+                <div class={`relative aspect-[16/10] bg-gradient-to-br ${gradient}`}>
+                  {post.data.cover && (
+                    <img
+                      src={post.data.cover}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
+                  <span class="absolute top-4 left-4 inline-flex items-center px-2.5 py-1 rounded-full bg-white/80 backdrop-blur-md text-[10px] uppercase tracking-wider text-sd-purple border border-sd-purple/20 font-ui">
+                    {post.data.category}
+                  </span>
+                </div>
+              </a>
+              <div class="flex flex-col flex-1 p-5">
+                <a href={`/blog/${post.id}`} class="flex flex-col flex-1">
+                  <div class="flex items-center gap-2 text-xs text-sd-text-gray mb-3 font-body">
+                    <time datetime={post.data.publishedAt.toISOString()}>{dateFmt.format(post.data.publishedAt)}</time>
+                    <span aria-hidden="true">·</span>
+                    <span>{post.data.readTime} min read</span>
+                  </div>
+                  <h3 class="font-display text-lg md:text-xl text-sd-text-dark group-hover:text-sd-purple transition-colors leading-snug">
+                    {post.data.title}
+                  </h3>
+                  <p class="mt-2 text-sm text-sd-text-gray leading-relaxed line-clamp-2 font-body">{post.data.description}</p>
+                </a>
+                {author && (
+                  <div class="mt-5 pt-4 border-t border-sd-gray-border">
+                    <a href={`/author/${author.slug}`} class="inline-flex">
+                      <AuthorAvatar author={author} size="sm" showRole tone="light" />
+                    </a>
+                  </div>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      <div class="mt-10">
+        <a href="/blog" class="inline-flex items-center gap-2 text-sd-text-dark text-sm hover:text-sd-purple transition-colors font-medium">
+          View all posts →
         </a>
       </div>
     </div>

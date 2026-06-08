@@ -83,17 +83,17 @@ Juan Manuel's: [https://www.youtube.com/watch?v=rwXz-8YzErw](https://www.youtube
     image: "/images/content/HJg078MZp7nMebbEjdTJK9P4Ew.png",
     body: `On April 23rd, SpaceDev hosted a special edition of "Techy for a Day," an initiative organized annually by CUTI (Uruguayan Chamber of Information Technologies) to commemorate International Girls in ICT Day. Although the official date was April 24th, the Space team's schedule required them to celebrate it a day earlier, allowing them to better prepare for the occasion.
 
-This year, SpaceDev welcomed over 20 students aged 12 to 14 from Colegio y Liceo Reina y Reyes, setting a new record. Perhaps it was the presence of so many future techies that made the Space team truly realize how much the number of women within the company has grown—many of whom took the lead in running the day's activities.
+This year, SpaceDev welcomed over 20 students aged 12 to 14 from Colegio y Liceo Reina y Reyes, setting a new record. Perhaps it was the presence of so many future techies that made the Space team truly realize how much the number of women within the company has grown, many of whom took the lead in running the day's activities.
 
 The day began with introductory talks and a guided tour of the office, where the students could see the team in action and get a feel for the work environment. Smiles quickly followed as they discovered some of the team's favorite perks: remote work, All Hands meetings, and of course, the fact that Space is pet friendly!
 
-SpaceDev designed an immersive experience combining presentations and games to explain what the tech industry is, why it's one of the best career options, and how—despite progress in diversity—there's still a need for more women to join the field. Through different stations, the girls explored areas such as People Care, Project Management & QA, Development, Marketing & Sales, and Gaming.
+SpaceDev designed an immersive experience combining presentations and games to explain what the tech industry is, why it's one of the best career options, and how, despite progress in diversity, there's still a need for more women to join the field. Through different stations, the girls explored areas such as People Care, Project Management & QA, Development, Marketing & Sales, and Gaming.
 
 [img:/images/content/bbJ4MYZVVnuUlZuV8HJT2Fy8KE.jpeg]
 
 The girls responded with enthusiasm: they actively participated in all the activities and asked curious and insightful questions. Some even joked that once they turned 18, they wanted to work at Space. For the team, hearing those words was a real reward and a reminder that inspiring others truly makes a difference.
 
-In addition to the main activities, there were relaxed moments including a special snack break—unsurprisingly, one of the highlights of the day.
+In addition to the main activities, there were relaxed moments including a special snack break (unsurprisingly, one of the highlights of the day).
 
 [img:/images/content/MmpRWIbeJl3DDh3s5Z4WFJPNjY.jpeg]
 
@@ -136,7 +136,7 @@ Each DevFest is tailored to the unique needs and interests of its local communit
 
 [img:/images/content/oDCBuseZbg1AdpSBDJF7xq9hCw.png]
 
-This year, the organizers sought to feature someone who could expound on a disruptive technology—something innovative that sparks interest and introduces new ways of doing things.
+This year, the organizers sought to feature someone who could expound on a disruptive technology: something innovative that sparks interest and introduces new ways of doing things.
 
 With this in mind, they invited Federico to take the stage and deliver his talk titled The Blockchain Revolution. In approximately 30 minutes, Federico covered:
 - The concept of trust – what it is and why it matters.
