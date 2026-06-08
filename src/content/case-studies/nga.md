@@ -1,37 +1,38 @@
 ---
 name: "NGA"
-tagline: "Next-gen analytics for trading desks."
+tagline: "A website and mobile app bringing the Acton School of Business's life-transforming courses to the world."
 category: Web2
 accent: mixed
-client: "NGA"
-industry: "Fintech / Trading"
+client: "Next Great Adventure (NGA)"
+industry: "EdTech / Professional Development"
 year: 2024
-duration: "4–8 months"
-team: "4–8 engineers"
+duration: "MVP: 6 months · Product development: 4 years"
+team: "2 full-stack developers, 1 PM, 1 QA"
 services:
-  - Frontend Engineering
-  - Backend
-  - Data Pipelines
+  - Mobile Development
+  - Frontend Development
+  - Backend Engineering
 techStack:
+  - React Native
   - React
-  - TypeScript
-  - Python
-  - ClickHouse
+  - NestJS
+  - PostgreSQL
+  - Contentful
 publishedAt: 2025-02-15
 heroImage: "/images/case-studies/nga/nga_.png"
-summary: "NGA delivers next-generation analytics for trading desks, turning raw market and execution data into the dashboards, alerts, and post-trade reports that PMs and traders actually use. SpaceDev built the data platform, frontend, and pipelines that power it."
+summary: "Next Great Adventure (NGA) is a digital learning platform built in partnership with the Acton School of Business, offering 26 remote, interactive experiences that help people figure out what they should do next in life and work. SpaceDev built the mobile app, website, and backend that make this curriculum accessible to anyone, anywhere."
 objectives:
-  - Process high-volume market and execution data with sub-second query latency.
-  - Deliver dashboards that traders can trust during volatile market sessions.
-  - Support custom analytics and post-trade reporting without engineering tickets.
-  - "Keep the system operationally simple: analytics shouldn't have its own SRE problem."
+  - Create a visually appealing, user-friendly website and iOS/Android mobile app for the Acton course library.
+  - Synchronize user progress in real time across web and mobile so learners can move between devices seamlessly.
+  - Build a social layer that connects course participants and fosters accountability partnerships.
+  - Make content management straightforward for the Acton team so they can update material without engineering help.
 deliverables:
-  - "ClickHouse-backed data warehouse with streaming ingestion from exchange and broker feeds."
-  - "Python data pipelines for normalization, enrichment, and post-trade analytics."
-  - "React frontend with traders' dashboards, alerting, and report builder."
-  - "Self-serve query layer so analysts can build views without engineering help."
-  - "Observability surface for data freshness, query latency, and pipeline health."
-outcome: "NGA shipped a trading-desk analytics platform that holds up during the moments that matter most, and continues to expand into new asset classes alongside SpaceDev."
+  - "React Native mobile app for iOS and Android covering course access, progress tracking, and social features."
+  - "React-based website capturing the inspirational tone of the Acton brand, with landing pages for new user acquisition and personalized demos."
+  - "NestJS + PostgreSQL backend supporting real-time sync, user data, and course content delivery."
+  - "Built-in social network for course participants, enabling peer connection and accountability check-ins."
+  - "Contentful CMS integration for uniform display of dynamic content with easy admin-side management."
+outcome: "The NGA platform delivers 26 remote, interactive learning sessions over six weeks, with 4–6 hours of coursework per week. Participants use psychological assessments, field trips, and introspective journaling to build a concrete plan around their unique strengths. Weekly accountability check-ins help them stay on track. The platform has been running and evolving for over four years, making the Acton curriculum accessible to a global audience."
 galleryType: "mobile"
 gallery:
   - "/images/case-studies/nga/gallery/gallery1.png"
@@ -44,27 +45,26 @@ gallery:
 
 ## The Challenge
 
-NGA approached SpaceDev with a clear vision but a complex execution problem in the Fintech / Trading space. The team needed an experienced engineering partner who could navigate Web2 architecture decisions while shipping a production-grade product on a startup timeline.
+The Acton School of Business runs a curriculum that asks a genuinely hard question: what should you do next? Their courses guide people through psychological assessments, journaling, field trips, and conversations with accountability partners — all in service of helping them figure out where they'll actually thrive. The material is rigorous and personal, and it had been confined to classroom settings.
 
-Key constraints:
+The challenge was translating that experience into a digital product that didn't flatten it. A simple course portal wouldn't cut it. The platform had to feel inviting and human, it needed to support real social interactions between participants, it had to work equally well on mobile and desktop, and it had to let the Acton team manage content without filing engineering tickets. All of that on a six-month MVP timeline.
 
-- A small founding team that needed engineering leverage, not just hands.
-- A non-trivial domain that required careful product discovery before writing code.
-- A go-to-market window that didn't allow for the typical "rebuild everything in v2" path.
+There was also a technical dimension: progress needed to sync in real time across devices, so a user could start a session on their phone and pick up on their laptop without losing their place. That kind of continuity matters a lot when the content is personal and emotionally engaging.
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+SpaceDev built three things in parallel: a React Native mobile app for iOS and Android, a React website, and a NestJS backend connected to PostgreSQL. The backend handled authentication, user progress, real-time sync, and the social features. The mobile app and website shared the same backend, so cross-device continuity was built into the architecture from day one rather than bolted on later.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
+For content management, we integrated Contentful so the Acton team could update course material, add sessions, and adjust the structure without touching code. This was important for a curriculum that's meant to evolve over time based on how participants respond.
+
+The social layer was one of the more interesting engineering problems. Course participants needed to find and connect with accountability partners, check in with each other weekly, and maintain those relationships throughout the six-week program. We built this as a lightweight social network embedded within the platform — not a full social media feature set, but enough to make the human connection part of the product experience.
 
 ## Results
 
-- Production launch on time, within scope, and on budget.
-- A maintainable codebase that the in-house team can own and extend.
-- Measurable improvements in user retention, transaction throughput, and operational cost.
-- A long-term partnership that continues to evolve the product quarter by quarter.
+The platform launched with 26 remote, interactive sessions structured across six weeks. Each week involves four to six hours of coursework tailored to users' traits and personalities. Psychological tests, introspective journaling, and field trips give participants actionable insight into their own strengths and the industries, roles, and communities where they're likely to thrive.
+
+The collaboration with Acton Academy grew into a four-year engagement. The platform has continued to evolve, expanding its reach and allowing the life-changing Acton curriculum to find a global audience that would never have had access to it in a classroom setting.
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The mobile app was built in React Native targeting iOS and Android. The web frontend used React. The backend was built on NestJS with PostgreSQL as the primary database. Contentful handled content management and dynamic course delivery. The team consisted of two senior full-stack developers, a project manager, and a QA engineer.

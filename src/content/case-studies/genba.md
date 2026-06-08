@@ -1,37 +1,37 @@
 ---
 name: "Genba"
-tagline: "On-chain manufacturing transparency."
-category: Web3
+tagline: "Driving innovation in Latin America through factory automation."
+category: Web2
 accent: green
-client: "Genba"
-industry: "Supply Chain"
+client: "Genba Robotics"
+industry: "Robotics & Industrial Automation"
 year: 2024
-duration: "4–8 months"
-team: "4–8 engineers"
+duration: "Discovery: 2 weeks · MVP: 2 months"
+team: "1 senior developer, 1 PM, 1 QA, 1 UX/UI designer"
 services:
-  - Smart Contracts
-  - Backend
-  - IoT
+  - Product Discovery
+  - UX/UI Design
+  - Frontend Development
+  - Backend Engineering
 techStack:
-  - Solidity
-  - Node.js
-  - TypeScript
-  - PostgreSQL
+  - React
+  - NestJS
+  - MongoDB
 publishedAt: 2025-02-15
 heroImage: "/images/case-studies/genba/genba_.png"
-summary: "Genba brings on-chain transparency to manufacturing supply chains. SpaceDev built the IoT-to-blockchain pipeline and stakeholder tooling that lets brands, factories, and auditors verify provenance and compliance with the same source of truth."
+summary: "Genba is a robotics startup revolutionizing factory productivity in Latin America with cost-effective automation solutions. SpaceDev ran a two-week Discovery Sprint and built the Paretto palletizing platform — a plug-and-play interface that lets factory operators configure robotic palletizing workflows without technical expertise."
 objectives:
-  - Capture manufacturing events from the shop floor and anchor them on-chain.
-  - Give brands real-time visibility into supplier compliance and provenance.
-  - Provide a tamper-resistant audit trail for ESG and regulatory reporting.
-  - Keep adoption costs low for factories with limited digital infrastructure.
+  - Design and build an intuitive palletizing platform that factory operators can configure themselves.
+  - Define clear product requirements through upfront discovery to avoid costly rework under a tight timeline.
+  - Deliver a functional, reliable MVP quickly enough to support Genba's demonstration milestone with Newlab and Grupo Ras.
+  - Make the configuration process fast and accessible for users without a robotics background.
 deliverables:
-  - "IoT and edge ingestion that captures manufacturing events with cryptographic attestation."
-  - "Smart contracts for batch tracking, certifications, and chain-of-custody transfers."
-  - "Brand and auditor dashboards with end-to-end traceability views."
-  - "Factory-side tooling that works on basic hardware and unstable connectivity."
-  - "Reporting pipeline for ESG, regulatory, and customer-facing transparency."
-outcome: "Genba shipped a supply-chain transparency platform that brands, factories, and auditors can all trust as a single source of truth, replacing brittle spreadsheets with verifiable on-chain records."
+  - "Two-week Discovery Sprint with UX research and product definition, conducted jointly with Genba's team."
+  - "UX/UI design for the Paretto platform, covering the full configuration flow for factory operators."
+  - "React frontend providing a plug-and-play interface for palletizing process configuration."
+  - "NestJS + MongoDB backend handling process parameters, layer pattern algorithms, and robotic arm instructions."
+  - "Integrated system connecting the configuration interface to the UR20 robotic arm from Universal Robots."
+outcome: "Genba successfully demonstrated Paretto at the Newlab event at the Uruguay Innovation Hub, powered by a UR20 from Universal Robots, in collaboration with Grupo Ras. The platform allows users to configure a complete palletizing process by entering parameters like pallet size, product type, weight, and layer patterns — the system's algorithm handles the rest, instructing the robotic arm to execute the process end to end."
 gallery:
   - "/images/case-studies/genba/gallery/gallery1.png"
   - "/images/case-studies/genba/gallery/gallery2.png"
@@ -43,27 +43,26 @@ gallery:
 
 ## The Challenge
 
-Genba approached SpaceDev with a clear vision but a complex execution problem in the Supply Chain space. The team needed an experienced engineering partner who could navigate Web3 architecture decisions while shipping a production-grade product on a startup timeline.
+Genba is a standout from the Newlab Pilot Showcase, building cost-effective robotic solutions to automate factory processes for Latin American clients. Their focus is end-of-line automation — specifically palletizing — an area where labor is still dominant in the region despite the clear efficiency case for robotics. The gap isn't the hardware; it's the software that makes the hardware accessible.
 
-Key constraints:
+The core problem was that configuring a robotic palletizing system typically required specialized technical knowledge that most factory floor operators don't have. Genba needed a platform — called Paretto — that could sit in front of the robotic hardware and make the configuration process feel as simple as filling out a form. They also had a specific milestone to hit: a live demonstration at the Newlab event at the Uruguay Innovation Hub, which created a hard delivery deadline.
 
-- A small founding team that needed engineering leverage, not just hands.
-- A non-trivial domain that required careful product discovery before writing code.
-- A go-to-market window that didn't allow for the typical "rebuild everything in v2" path.
+The tight timeline made upfront clarity especially important. Building the wrong thing and discovering it during QA wasn't an option.
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+We started with a two-week Discovery Sprint, working closely with Genba's product team to understand the factory operator's mental model, define the user flows, and lock in the UX/UI design before writing a line of production code. This investment at the front end saved significant time later — decisions that typically surface during development were resolved during discovery, when they're cheapest to change.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
+From there, a focused team of four — a senior developer, project manager, QA engineer, and UX/UI designer — built the Paretto platform over two months. The frontend was built in React, with NestJS and MongoDB on the backend. The architecture was designed to translate user-entered parameters (pallet dimensions, product specifications, weight, desired layer patterns) into the precise instructions that the UR20 robotic arm from Universal Robots needed to execute the task.
+
+The UX work was particularly important here. The interface needed to feel approachable to factory operators who aren't software users by training. Every configuration step was designed to reduce cognitive load and give operators immediate confidence that the system understood what they wanted.
 
 ## Results
 
-- Production launch on time, within scope, and on budget.
-- A maintainable codebase that the in-house team can own and extend.
-- Measurable improvements in user retention, transaction throughput, and operational cost.
-- A long-term partnership that continues to evolve the product quarter by quarter.
+Genba successfully demonstrated Paretto at the Newlab event at the Uruguay Innovation Hub, with the platform running live on a UR20 robotic arm in collaboration with Grupo Ras. The demonstration validated the core concept: operators could configure a full palletizing process by entering key parameters, and the platform's algorithm handled everything from layer optimization to robotic arm instruction delivery.
+
+The result is a genuinely plug-and-play experience for factory automation. What previously required specialized robotics programming knowledge is now accessible to floor operators through a clean, guided interface. For Genba's clients in Latin America — where automation adoption is accelerating but technical talent is often scarce — this accessibility is the product's main value.
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The platform was built with React on the frontend and NestJS with MongoDB on the backend. The system integrates with Universal Robots hardware, specifically the UR20. Design was done through a structured UX/UI process during the Discovery Sprint phase before development began.

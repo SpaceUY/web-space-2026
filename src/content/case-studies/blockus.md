@@ -1,46 +1,52 @@
 ---
 name: "Blockus"
-tagline: "Web3 infrastructure for game studios."
+tagline: "Take your game to the realm of Web3."
 category: Web3
 accent: green
 client: "Blockus"
 industry: "Gaming & Web3"
 year: 2024
-duration: "4–8 months"
-team: "4–8 engineers"
+duration: "12 months"
+team: "5 people"
 services:
   - Backend Engineering
   - Smart Contracts
-  - SDK Development
+  - Frontend Engineering
 techStack:
   - Node.js
+  - Express.js
+  - React.js
   - Solidity
-  - TypeScript
-  - React
+  - Hardhat
+  - Cloud Functions
+  - Cloud Firestore
+  - Gelato
+  - Stripe
 publishedAt: 2025-02-15
 heroImage: "/images/case-studies/blockus/blockus_.png"
-summary: "Blockus builds Web3 infrastructure that lets traditional game studios add blockchain features without rewriting their stacks. SpaceDev embedded a Web3 cell to ship the SDK, payments rails, and developer tooling that game teams use to mint, trade, and reward players on-chain."
+summary: "Blockus is a Web3 gaming infrastructure platform backed by Maple, Altos Ventures, a16zcrypto, and CSS23. It gives game studios all the tools they need to build and operate blockchain-based game economies — without requiring players to understand wallets or crypto. SpaceDev built the core API, NFT management system, instant wallet creation, and developer back office that power the platform."
 objectives:
-  - Give game studios a drop-in Web3 SDK that abstracts away wallets, gas, and chain selection.
-  - Enable on-chain payments and player rewards without disrupting existing in-game economies.
-  - Provide a developer console with analytics, key management, and contract deployment tooling.
-  - Keep the platform performant at gaming-grade scale (millions of low-value transactions).
+  - Build a robust API to support NFT management and integrate all blockchain operations with secure, transparent transactions.
+  - Develop an intuitive developer UI and back office with customizable functionalities tailored to each game's requirements.
+  - Implement instant wallet creation to onboard Web2 users into Web3 with zero friction.
+  - Ship the MVP within 3 months while building toward a full 12-month platform roadmap.
 deliverables:
-  - "Web3 SDK with TypeScript, Unity, and Unreal bindings used by partner studios in production."
-  - "Custodial and self-custody wallet flows with social login and gas abstraction."
-  - "Smart contract suite for in-game assets, marketplaces, and reward distribution."
-  - "Developer console for project management, key custody, and on-chain analytics."
-  - "Reference integrations and documentation that cut studio onboarding to under a week."
-outcome: "Blockus shipped a Web3 platform that game studios can adopt without ripping out their tech stack, and SpaceDev continues to evolve the SDK and infrastructure alongside the founding team."
+  - "Core NFT management API integrating all blockchain operations across the platform."
+  - "Developer back office with game-specific customization options for managing in-game economies."
+  - "Instant wallet creation flow to onboard new-to-crypto users without requiring prior Web3 knowledge."
+  - "Gasless transaction support so players can interact on-chain without holding ETH."
+  - "Stripe-based fiat payment integration for purchasing in-game assets with traditional payment methods."
+  - "Smart contracts written in Solidity and deployed via Hardhat, with Gelato handling automation."
+outcome: "The platform launched and now stands at the forefront of the Web3 gaming space, enabling developers to build blockchain-compatible virtual experiences while players manage, trade, and showcase their in-game assets. An NFT marketplace is in active development as the next milestone."
 metrics:
-  - value: "3"
-    label: "SDK targets (TS, Unity, Unreal)"
-  - value: "< 1 week"
-    label: "Studio onboarding time"
-  - value: "8"
-    label: "Engineers on the project"
-  - value: "Gaming"
-    label: "Production scale"
+  - value: "3 months"
+    label: "MVP release time"
+  - value: "12 months"
+    label: "Total project duration"
+  - value: "5"
+    label: "Team members"
+  - value: "Gasless"
+    label: "Transaction model"
 clutchReview:
   text: "SpaceDev helped us ship a Web3 SDK that studios could actually adopt. Their expertise in both blockchain architecture and developer experience made the difference."
   reviewer: "Co-founder, Blockus"
@@ -57,27 +63,25 @@ gallery:
 
 ## The Challenge
 
-Blockus approached SpaceDev with a clear vision but a complex execution problem in the Gaming & Web3 space. The team needed an experienced engineering partner who could navigate Web3 architecture decisions while shipping a production-grade product on a startup timeline.
+The rise of Play-to-Earn games and crypto-native experiences created a real opportunity for game studios — but also a real barrier. Casual players who want to engage with NFTs or on-chain assets quickly discover they need to set up a wallet, understand digital ownership, and manage gas fees before they can even start playing. That friction is a significant entry barrier, both for users and for the developers trying to reach them.
 
-Key constraints:
-
-- A small founding team that needed engineering leverage, not just hands.
-- A non-trivial domain that required careful product discovery before writing code.
-- A go-to-market window that didn't allow for the typical "rebuild everything in v2" path.
+Blockus set out to fix this: build a platform that gives game studios all the tools they need to operate Web3 game economies, while making the experience for players as familiar as any traditional game. The challenge was holding both sides of that equation at once — sophisticated blockchain infrastructure for developers, zero-friction onboarding for players. The founding team, backed by Maple, Altos Ventures, a16zcrypto, and CSS23, needed an engineering partner who could move fast and understand the domain deeply.
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+SpaceDev assembled a five-person team — a senior frontend developer, two senior backend engineers (one specializing in blockchain), a PM, and a QA — and committed to shipping an MVP in three months against a twelve-month engagement.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
+The foundation was a robust API built with Node.js and Express.js that handles all NFT management and blockchain operations for the platform. Smart contracts were written in Solidity and deployed using Hardhat, with Gelato managing on-chain automation so developers don't have to think about cron jobs or keepers. Cloud Functions and Cloud Firestore handle the serverless and database layer, giving the platform flexibility without the overhead of managing infrastructure.
+
+The most important UX decision was instant wallet creation: users who have never interacted with Web3 before can get a wallet automatically when they first engage, with no setup required on their end. Combined with gasless transactions — where the platform absorbs gas costs rather than passing them to players — and Stripe integration for fiat purchases, the result is a Web3 platform that feels like a regular game to anyone who plays it.
 
 ## Results
 
-- Production launch on time, within scope, and on budget.
-- A maintainable codebase that the in-house team can own and extend.
-- Measurable improvements in user retention, transaction throughput, and operational cost.
-- A long-term partnership that continues to evolve the product quarter by quarter.
+The partnership culminated in a platform that now operates at the forefront of the Web3 gaming space. Developers can build blockchain-compatible game economies using customizable tools in the back office, while players manage, trade, and showcase their in-game assets without ever needing to think about wallets or gas.
+
+The support for gasless transactions and fiat currency purchases removes two of the most common reasons players abandon Web3 games before they start. An NFT marketplace is already in development as the next major milestone, extending the ecosystem further.
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The platform runs on Node.js and Express.js on the backend, with React.js powering the developer-facing UI. Smart contracts are written in Solidity and tested and deployed via Hardhat. Gelato handles on-chain automation. Cloud Functions and Cloud Firestore provide the serverless infrastructure. Stripe handles fiat payment processing for in-game purchases.
+

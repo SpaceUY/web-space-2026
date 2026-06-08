@@ -1,51 +1,50 @@
 ---
 name: "NDAX Canada"
-tagline: "Regulated crypto exchange for the Canadian market."
+tagline: "Canada's first officially endorsed crypto exchange platform."
 category: Web3
 accent: cyan
 client: "NDAX Canada"
 industry: "Fintech & Crypto"
 year: 2024
-duration: "4–8 months"
-team: "4–8 engineers"
+duration: "MVP: 3 months · Product development: 2 years"
+team: "2 full-stack developers, 1 PM, 1 QA, 1 UX/UI designer"
 services:
-  - Backend Engineering
-  - Compliance
-  - Trading Engine
+  - Frontend Development
+  - Mobile Development
+  - Third-party Integration
 techStack:
-  - Node.js
-  - Postgres
-  - Redis
   - TypeScript
+  - Angular 8
+  - Node.js
+  - Express
+  - MongoDB
+  - React Native
+  - AlphaPoint
+  - Figma
 publishedAt: 2025-02-15
 heroImage: "/images/case-studies/ndax-canada/ndax-canada_.png"
-summary: "NDAX is one of Canada's leading regulated crypto exchanges. SpaceDev partnered with the team to extend their trading platform, hardening the matching engine, improving compliance flows, and delivering new product surfaces for institutional and retail traders."
+summary: "NDAX is Canada's first officially endorsed cryptocurrency exchange platform. SpaceDev designed and built the new frontend and a full React Native mobile app, integrating both with AlphaPoint to deliver a compliant, banking-connected platform that Canadians could actually trust and use."
 objectives:
-  - Scale the trading engine to handle peak market volatility without degraded latency.
-  - Streamline KYC, AML, and FINTRAC compliance workflows across the customer lifecycle.
-  - Ship new product surfaces (staking, OTC desk, advanced order types) on a regulated timeline.
-  - Reduce operational toil for the in-house engineering team via better tooling and observability.
+  - Build a trustworthy platform compliant with Canadian governmental and legal requirements.
+  - Enable full integration with Canada's banking system through AlphaPoint.
+  - Deliver a secure, user-friendly mobile experience for trading, staking, and earning from digital assets.
+  - Streamline the user verification process to convert more registered users into active traders.
 deliverables:
-  - "Performance hardening of the order book and matching engine for higher throughput under load."
-  - "Automated compliance pipeline integrating KYC providers, sanctions screening, and audit-ready reporting."
-  - "New trading features (advanced orders, staking dashboards) rolled out behind feature flags."
-  - "Observability layer with custom dashboards for trading ops and incident response."
-  - "Documentation and on-call runbooks the in-house team owns end-to-end."
-outcome: "NDAX shipped major platform upgrades on a regulated timeline, with measurable improvements in throughput, compliance turnaround, and engineering velocity. SpaceDev continues to evolve the platform alongside the in-house team."
+  - "New frontend built with TypeScript, Angular 8, NodeJS, and Express, meeting Canadian regulatory requirements."
+  - "React Native mobile app for iOS and Android covering account access, trading, staking, and earnings."
+  - "Seamless AlphaPoint integration ensuring accurate information exchange and persistent user activity storage."
+  - "UX/UI design in Figma optimized for clarity and trust in a regulated financial context."
+  - "MongoDB-backed data layer supporting the full platform with a path to scalability."
+outcome: "After the new frontend launched, monthly new user registrations grew from roughly 50 to roughly 200. The user verification completion rate climbed from 50% to 80% of registered users. Client funds are held in segregated Canadian bank accounts, legally separate from operating capital — a key trust signal for both regulators and users."
 metrics:
-  - value: "4–8mo"
-    label: "Delivery window"
-  - value: "8"
-    label: "Engineers embedded"
-  - value: "99.9%"
-    label: "Uptime target"
-  - value: "3"
-    label: "Compliance standards met"
-clutchReview:
-  text: "SpaceDev navigated complex regulatory requirements with expertise. They delivered a trading platform that exceeded our performance benchmarks and met strict compliance standards on schedule."
-  reviewer: "VP Engineering, NDAX"
-  stars: 5
-  url: "https://clutch.co/profile/spacedev"
+  - value: "3mo"
+    label: "MVP delivery"
+  - value: "4x"
+    label: "New user registrations"
+  - value: "80%"
+    label: "Verification completion rate"
+  - value: "2yrs"
+    label: "Ongoing product development"
 galleryType: "mobile"
 gallery:
   - "/images/case-studies/ndax-canada/gallery/gallery1.png"
@@ -58,27 +57,26 @@ gallery:
 
 ## The Challenge
 
-NDAX Canada approached SpaceDev with a clear vision but a complex execution problem in the Fintech & Crypto space. The team needed an experienced engineering partner who could navigate Web3 architecture decisions while shipping a production-grade product on a startup timeline.
+Cryptocurrency adoption in Canada was being held back by a simple problem: there was no platform that regulators, banks, and everyday users could all trust at the same time. NDAX wanted to fill that gap and set the standard for the Canadian crypto industry — but doing that required building something more serious than a typical exchange.
 
-Key constraints:
+The existing platform wasn't positioned to engage with financial institutions or meet the compliance requirements of Canadian regulators. It lacked the depth of UX that would make digital asset ownership feel safe and approachable to the average Canadian. And without a real mobile app, NDAX was limited to users willing to trade on desktop — a significant ceiling for a consumer-facing product.
 
-- A small founding team that needed engineering leverage, not just hands.
-- A non-trivial domain that required careful product discovery before writing code.
-- A go-to-market window that didn't allow for the typical "rebuild everything in v2" path.
+The challenge wasn't just technical. It was about earning trust on multiple fronts simultaneously: regulatory, institutional, and consumer.
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+SpaceDev took on both the web frontend and the mobile experience from the ground up. For the web, we redesigned and rebuilt the platform using TypeScript and Angular 8 with a Node.js/Express backend and MongoDB, ensuring every layer of the stack was structured to meet the demands of a regulated financial environment.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
+The integration with AlphaPoint — the leading white-label cryptocurrency exchange software — was central to the project. Getting this right meant that NDAX could maintain a solid, compliant connection to Canada's banking institutions while accurately representing user data and saving account activity in real time. This wasn't a simple API connection; it required careful coordination to ensure information integrity across the full transaction lifecycle.
+
+For mobile, we built a dedicated React Native app rather than a responsive wrapper. The goal was a native experience that gave users everything they needed — account access, buying, selling, trading, staking, and earnings — in an interface that felt reliable and secure. UX/UI design was handled in Figma, with a deliberate focus on clarity and reducing friction in flows that touch real money.
 
 ## Results
 
-- Production launch on time, within scope, and on budget.
-- A maintainable codebase that the in-house team can own and extend.
-- Measurable improvements in user retention, transaction throughput, and operational cost.
-- A long-term partnership that continues to evolve the product quarter by quarter.
+The impact was clear and measurable. After the new platform launched, monthly new user registrations jumped from roughly 50 to roughly 200. More importantly, the rate of users completing the verification process — converting from registered to active — rose from 50% to 80%. That second number matters more than the first: it means the platform was working as intended, giving users enough confidence to complete the steps required to actually trade.
+
+NDAX's structure also played into this: client funds are held in segregated Canadian bank accounts, legally separate from the company's operating capital. That model, combined with a platform that looked and felt like it belonged in the Canadian financial system, gave both regulators and users reasons to trust it. The partnership continued for two years of ongoing product development and scalability work after the initial MVP.
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The platform was built on TypeScript and Angular 8 for the frontend, with Node.js and Express on the backend and MongoDB as the primary data store. The mobile app was built in React Native, shared across iOS and Android. AlphaPoint served as the exchange engine layer connecting NDAX to the Canadian banking system. Design was done in Figma.
