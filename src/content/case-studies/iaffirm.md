@@ -42,21 +42,21 @@ gallery:
 
 ## The Challenge
 
-Most affirmation apps work the same way: a library of pre-written phrases, maybe organized by category, delivered on a schedule. That approach is easy to build, but it doesn't actually meet people where they are. A generic affirmation about confidence means something very different to someone navigating a career change than to someone recovering from illness. iAffirm was founded on the belief that this gap was solvable — that AI could finally make personalization real, not just cosmetic.
+Most affirmation apps work the same way: a library of pre-written phrases, maybe organized by category, delivered on a schedule. That approach is easy to build, but it doesn't actually meet people where they are. A generic affirmation about confidence means something very different to someone navigating a career change than to someone recovering from illness. iAffirm was founded on the belief that this gap was solvable: AI could finally make personalization real, not just cosmetic.
 
-The challenge wasn't the idea. It was the execution. The client came to SpaceDev with a strong vision but with some critical aspects of the AI integration that needed to be rethought before building could begin. Getting the personalization right meant understanding each user's context, goals, and needs — and feeding that understanding into the model in a way that produced genuinely useful, safe, and coherent experiences. That required careful product and technical work before a single screen was designed.
+The challenge wasn't the idea. It was the execution. The client came to SpaceDev with a strong vision but with some critical aspects of the AI integration that needed to be rethought before building could begin. Getting the personalization right meant understanding each user's context, goals, and needs, and feeding that understanding into the model in a way that produced genuinely useful, safe, and coherent experiences. That required careful product and technical work before a single screen was designed.
 
 ## Our Approach
 
 SpaceDev assigned a senior full-stack AI developer and a mid-level full-stack developer to the project. The first priority was the product framework: mapping out how AI would be used, what data the system needed to know about each user, and how to structure prompts and outputs so that affirmations, visualizations, and guided meditations actually reflected each person's situation rather than pulling from a generic pool.
 
-Through internal product development sessions, SpaceDev helped the client work through the implications of different design decisions and arrive at a much clearer picture of what needed to be built. The technical stack — React on the frontend, Nest.js and PostgreSQL on the backend, Python for the AI integration layer — was chosen to be practical and maintainable for a product that would live in the health and wellness space, where consistency and reliability matter.
+Through internal product development sessions, SpaceDev helped the client work through the implications of different design decisions and arrive at a much clearer picture of what needed to be built. The technical stack (React on the frontend, Nest.js and PostgreSQL on the backend, Python for the AI integration layer) was chosen to be practical and maintainable for a product that would live in the health and wellness space, where consistency and reliability matter.
 
 ## Results
 
 The engagement delivered a working technical foundation and, importantly, a clearly defined product direction. The client came out of the process knowing what they were building and why, with the AI integration structured in a way that supports genuine personalization rather than surface-level customization.
 
-iAffirm applied for a mental health apps grant, which reflects both the seriousness of the product's intent and the groundwork laid during this phase. While the product had not yet launched publicly at the time of writing, it was positioned to do so with a solid base. For SpaceDev, this was a project where the most valuable contribution wasn't just the code — it was helping the team see the product clearly before committing fully to building it.
+iAffirm applied for a mental health apps grant, which reflects both the seriousness of the product's intent and the groundwork laid during this phase. While the product had not yet launched publicly at the time of writing, it was positioned to do so with a solid base. For SpaceDev, this was a project where the most valuable contribution wasn't just the code; it was helping the team see the product clearly before committing fully to building it.
 
 ## Tech Stack
 

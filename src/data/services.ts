@@ -83,7 +83,7 @@ export const blockchainData: ServicePageData = {
   seo: {
     title: "Blockchain Development Services Built for Real Business Outcomes | SpaceDev",
     description:
-      "SpaceDev is a custom blockchain development company that takes products from concept to mainnet. Web3 engineering, product strategy, and embedded security — all under one roof.",
+      "SpaceDev is a custom blockchain development company that takes products from concept to mainnet. Web3 engineering, product strategy, and embedded security, all under one roof.",
   },
   eyebrow: "Advanced Blockchain Development",
   title: "Blockchain Development Services Built for Real Business Outcomes",
@@ -99,11 +99,11 @@ export const blockchainData: ServicePageData = {
       "A memorable product starts with a vision and ends with something that creates impact. Our blockchain engineers, designers, and consultants work together to build systems that are transparent, efficient, secure, and for real business outcomes.",
     style: "cards",
     items: [
-      { number: "01", title: "Smart Contract Development", description: "Audited, gas-optimized contracts on Ethereum, Aptos, Solana and other major ecosystems — designed for security and longevity.", href: "/blockchain-development-services/smart-contract-development" },
+      { number: "01", title: "Smart Contract Development", description: "Audited, gas-optimized contracts on Ethereum, Aptos, Solana and other major ecosystems, designed for security and longevity.", href: "/blockchain-development-services/smart-contract-development" },
       { number: "02", title: "dApp Development", description: "High-performance decentralized applications that combine seamless UX with robust, scalable on-chain logic.", href: "/blockchain-development-services/dapp-development" },
-      { number: "03", title: "Decentralized Identity", description: "Self-sovereign identity solutions that give users full control over their data — secure, private, and interoperable across chains.", href: "/blockchain-development-services/decentralized-identity" },
-      { number: "04", title: "Asset Tokenization", description: "Turn real-world assets into digital tokens — unlocking liquidity, fractional ownership, and new investment opportunities.", href: "/blockchain-development-services/asset-tokenization" },
-      { number: "05", title: "Layer 1 Blockchain Development", description: "Fully customized, scalable networks ranging from Layer 1 protocols to private enterprise chains — secure and future-ready.", href: "/blockchain-development-services/layer-1-blockchain-development" },
+      { number: "03", title: "Decentralized Identity", description: "Self-sovereign identity solutions that give users full control over their data: secure, private, and interoperable across chains.", href: "/blockchain-development-services/decentralized-identity" },
+      { number: "04", title: "Asset Tokenization", description: "Turn real-world assets into digital tokens, unlocking liquidity, fractional ownership, and new investment opportunities.", href: "/blockchain-development-services/asset-tokenization" },
+      { number: "05", title: "Layer 1 Blockchain Development", description: "Fully customized, scalable networks ranging from Layer 1 protocols to private enterprise chains, secure and future-ready.", href: "/blockchain-development-services/layer-1-blockchain-development" },
       { number: "06", title: "DAO Development", description: "On-chain governance models for transparent decision-making, voting systems, and efficient treasury management.", href: "/coming-soon" },
     ],
   },
@@ -304,7 +304,7 @@ export const partnerData: ServicePageData = {
 export const decentralizedIdentityData: ServicePageData = {
   seo: {
     title: "Decentralized Identity Development Services | SpaceDev",
-    description: "SpaceDev designs and builds decentralized identity (DID) solutions — verifiable credentials, wallet-based onboarding, and identity infrastructure for production-grade platforms.",
+    description: "SpaceDev designs and builds decentralized identity (DID) solutions: verifiable credentials, wallet-based onboarding, and identity infrastructure for production-grade platforms.",
   },
   eyebrow: "Sub-service · Blockchain",
   title: "Decentralized Identity Development Services",
@@ -324,7 +324,7 @@ export const decentralizedIdentityData: ServicePageData = {
 export const realEstateTokData: ServicePageData = {
   seo: {
     title: "Real Estate Tokenization Development Services | SpaceDev",
-    description: "End-to-end development of real estate tokenization platforms — fractional ownership, compliant issuance, investor and issuer portals, and secondary market infrastructure built for production.",
+    description: "End-to-end development of real estate tokenization platforms: fractional ownership, compliant issuance, investor and issuer portals, and secondary market infrastructure built for production.",
   },
   eyebrow: "Sub-service · Asset Tokenization",
   title: "Real Estate Tokenization Development Services",
@@ -345,7 +345,7 @@ export const realEstateTokData: ServicePageData = {
 export const tokenizationData: ServicePageData = {
   seo: {
     title: "Asset Tokenization Development Services | SpaceDev",
-    description: "Tokenize real-world assets: real estate, commodities, securities, and fixed income. Issuance, lifecycle, custody, and secondary markets — end to end.",
+    description: "Tokenize real-world assets: real estate, commodities, securities, and fixed income. Issuance, lifecycle, custody, and secondary markets, end to end.",
   },
   eyebrow: "Sub-service · Blockchain",
   title: "Asset Tokenization Development Services",
@@ -529,7 +529,7 @@ export const stablecoinData: ServicePageData = {
 export const layer1Data: ServicePageData = {
   seo: {
     title: "Custom Layer 1 Blockchain Development, From Protocol Design to Mainnet | SpaceDev",
-    description: "SpaceDev builds custom Layer 1 blockchain networks — Cosmos SDK, Substrate, EVM-compatible chains, and Avalanche subnets — from consensus design and tokenomics to mainnet launch and ecosystem tooling.",
+    description: "SpaceDev builds custom Layer 1 blockchain networks (Cosmos SDK, Substrate, EVM-compatible chains, and Avalanche subnets) from consensus design and tokenomics to mainnet launch and ecosystem tooling.",
   },
   eyebrow: "Blockchain Development",
   title: "Custom Layer 1 Blockchain Development, From Protocol Design to Mainnet",
@@ -560,7 +560,7 @@ export const webMobileData: ServicePageData = {
   seo: {
     title: "Web & Mobile App Development Services - Custom Software | SpaceDev",
     description:
-      "Custom software, web apps, and mobile apps engineered for scale. React, Next.js, React Native, Python — design, ship, iterate.",
+      "Custom software, web apps, and mobile apps engineered for scale. React, Next.js, React Native, Python: design, ship, iterate.",
   },
   eyebrow: "Innovative Web & Mobile Development",
   title: "Innovative Web & Mobile Development",
@@ -615,9 +615,9 @@ export const webMobileData: ServicePageData = {
     description: "Custom software can redefine how a business operates. With the right technology, design, and strategy, brands gain speed, visibility, and customer loyalty. Drive growth, simplify operations, and scale confidently with our software development and web and mobile app development services.",
     items: [
       { icon: "chart",   title: "Scalable Growth", description: "Every architecture is built to handle growth in users, data, and functionality." },
-      { icon: "heart",   title: "Enhanced User Experience", description: "Apps focused on speed, simplicity, and flow — users find value in every interaction and return more often." },
+      { icon: "heart",   title: "Enhanced User Experience", description: "Apps focused on speed, simplicity, and flow; users find value in every interaction and return more often." },
       { icon: "globe",   title: "Broader Reach", description: "Through mobile and web app development, brands connect with audiences across platforms and devices." },
-      { icon: "rocket",  title: "Faster Go-to-Market", description: "Agile development moves your app from idea to release quickly — without losing quality or stability." },
+      { icon: "rocket",  title: "Faster Go-to-Market", description: "Agile development moves your app from idea to release quickly, without losing quality or stability." },
       { icon: "bolt",    title: "Improved Efficiency", description: "Web and mobile solutions automate workflows and improve collaboration, freeing teams to focus on strategy." },
       { icon: "tag",     title: "Cost-Effective Development", description: "Modern frameworks and cross-platform builds reduce maintenance costs over the long run." },
     ],
@@ -637,14 +637,14 @@ export const webMobileData: ServicePageData = {
   },
 
   faqs: [
-    { question: "What's the difference between web and mobile app development?", answer: "Web apps run in browsers and reach the broadest audience, while mobile apps target iOS and Android — offering tighter integration with the device, push notifications, and offline-first patterns. Most modern products need both." },
+    { question: "What's the difference between web and mobile app development?", answer: "Web apps run in browsers and reach the broadest audience, while mobile apps target iOS and Android, offering tighter integration with the device, push notifications, and offline-first patterns. Most modern products need both." },
     { question: "How long does it take to develop an app?", answer: "An MVP typically ships in 8–14 weeks. A full production release with multiple platforms and integrations is usually 4–9 months." },
-    { question: "What technologies do you use for app development?", answer: "React, Next.js, Node.js, TypeScript, React Native, Flutter, Python, Go, and PostgreSQL are our day-to-day stack — plus AWS / Vercel / GCP for infrastructure." },
-    { question: "Do you offer web-based mobile app development?", answer: "Yes — we ship Progressive Web Apps when reach matters more than device integration, and React Native or native code when performance and platform features matter more." },
-    { question: "What are your web and mobile app development services?", answer: "We cover the full lifecycle — consultancy, UX/UI design, frontend and backend development, mobile (native and cross-platform) apps, QA, integrations, and post-launch support." },
+    { question: "What technologies do you use for app development?", answer: "React, Next.js, Node.js, TypeScript, React Native, Flutter, Python, Go, and PostgreSQL are our day-to-day stack, plus AWS / Vercel / GCP for infrastructure." },
+    { question: "Do you offer web-based mobile app development?", answer: "Yes. We ship Progressive Web Apps when reach matters more than device integration, and React Native or native code when performance and platform features matter more." },
+    { question: "What are your web and mobile app development services?", answer: "We cover the full lifecycle: consultancy, UX/UI design, frontend and backend development, mobile (native and cross-platform) apps, QA, integrations, and post-launch support." },
     { question: "Do you provide post-launch maintenance and updates?", answer: "Always. Most clients continue with us on a monthly retainer for monitoring, updates, and ongoing iteration." },
     { question: "Can you help with scaling an existing product?", answer: "Yes. We frequently come in to refactor architecture, improve performance, ship missing features, or rebuild a product that has outgrown its original codebase." },
-    { question: "Do you work with startups and enterprises alike?", answer: "Yes — from seed-stage MVPs to enterprise SaaS deployments. Our process scales to both." },
+    { question: "Do you work with startups and enterprises alike?", answer: "Yes, from seed-stage MVPs to enterprise SaaS deployments. Our process scales to both." },
   ],
 
   finalCta: {
@@ -678,7 +678,7 @@ export const staffAugData: ServicePageData = {
     items: [
       { number: "1", title: "Identify Your Needs", description: "We begin by understanding your goals, technical requirements, and timelines to match the right talent to your project." },
       { number: "2", title: "Candidate Screening", description: "Your project is matched with experts from our in-house team. Each professional is proven, ready to integrate fast, and deliver results from day one." },
-      { number: "3", title: "Welcome Aboard", description: "Once selected, engineers integrate quickly into your environment — adapting to your tools, processes, and time zones from the first week." },
+      { number: "3", title: "Welcome Aboard", description: "Once selected, engineers integrate quickly into your environment, adapting to your tools, processes, and time zones from the first week." },
       { number: "4", title: "Management and Scaling", description: "As your project evolves, we help you scale your team up or down easily. Our flexible structure gives you agility without long-term commitments. Most teams are ready to start within one to two weeks." },
     ],
     variant: "sticky-light",
@@ -704,12 +704,12 @@ export const staffAugData: ServicePageData = {
     title: "Why companies choose SpaceDev",
     description: "Businesses partner with SpaceDev when they need reliable talent, seamless collaboration, and results that create impact.",
     items: [
-      { title: "Fast Turnaround", description: "Expand your team within days instead of months — our network of vetted developers ensures no delay in project delivery." },
+      { title: "Fast Turnaround", description: "Expand your team within days instead of months; our network of vetted developers ensures no delay in project delivery." },
       { title: "Proven IT Talent", description: "Each professional we recommend has deep expertise across web3, blockchain, AI, cloud, and full-stack development." },
       { title: "Transparent Model", description: "No hidden charges or unclear terms. Pricing and engagement models are straightforward, keeping you confident at every stage." },
-      { title: "Seamless Integration", description: "Our engineers and designers adapt to your tools, processes, and team culture — collaboration stays consistent." },
+      { title: "Seamless Integration", description: "Our engineers and designers adapt to your tools, processes, and team culture; collaboration stays consistent." },
       { title: "Flexible Engagements", description: "Choose full-time, part-time, or hourly models. Scaling resources is as simple as adjusting a schedule." },
-      { title: "Results That Matter", description: "Every engagement is built around outcomes — faster releases, improved quality, higher productivity." },
+      { title: "Results That Matter", description: "Every engagement is built around outcomes: faster releases, improved quality, higher productivity." },
     ],
   },
 
@@ -737,7 +737,7 @@ export const staffAugData: ServicePageData = {
    ============================================================ */
 export const productDiscoveryData: ServicePageData = {
   seo: {
-    title: "Product Discovery — A strategic approach by SpaceDev",
+    title: "Product Discovery: A Strategic Approach by SpaceDev",
     description: "Validate ideas, define MVPs, and design roadmaps before writing a single line of code. Six discovery sprints tailored to your stage.",
   },
   eyebrow: "Product Discovery",
@@ -821,7 +821,7 @@ export const blockAuditData: ServicePageData = {
   },
 
   finalCta: {
-    title: "Smart contract audits protect your future—stay secure.",
+    title: "Smart contract audits protect your future. Stay secure.",
     buttonLabel: "Get in touch",
     buttonHref: "/contact",
   },

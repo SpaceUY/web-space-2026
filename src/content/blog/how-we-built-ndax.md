@@ -77,7 +77,7 @@ Users maintain complete asset control with daily and weekly payout options, flex
 
 ### Canadian Integration
 
-NDAX applies consistent fees regardless of transaction amount or method—whether transferring cryptocurrency to personal wallets or fiat to Canadian bank accounts. Banking relationships facilitate seamless Canadian dollar deposits and withdrawals, supported by comprehensive safety measures and guarantees exceeding competitor offerings.
+NDAX applies consistent fees regardless of transaction amount or method, whether transferring cryptocurrency to personal wallets or fiat to Canadian bank accounts. Banking relationships facilitate seamless Canadian dollar deposits and withdrawals, supported by comprehensive safety measures and guarantees exceeding competitor offerings.
 
 ## Conclusion
 

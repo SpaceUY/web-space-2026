@@ -44,7 +44,7 @@ Proof of stake networks penalize validators for misconduct through slashing mech
 
 ## Deciphering the Best Crypto Staking Platforms
 
-Multiple staking pathways exist: digital wallet staking, decentralized finance services, direct protocol participation, or centralized exchange platforms—the latter benefiting less technically experienced investors.
+Multiple staking pathways exist: digital wallet staking, decentralized finance services, direct protocol participation, or centralized exchange platforms; the latter benefits less technically experienced investors.
 
 ### Aave
 

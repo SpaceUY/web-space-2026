@@ -44,9 +44,9 @@ gallery:
 
 ## The Challenge
 
-Glowy Music came to SpaceDev with a clear mission: build a mobile app that transforms how fans engage with the music world. The platform needed to do more than stream music — it needed to connect fans with artists, events, industry professionals, and breaking news, all in one place. The vision was ambitious, and the founding team needed an engineering partner who could help translate that vision into a real, shippable product.
+Glowy Music came to SpaceDev with a clear mission: build a mobile app that transforms how fans engage with the music world. The platform needed to do more than stream music; it needed to connect fans with artists, events, industry professionals, and breaking news, all in one place. The vision was ambitious, and the founding team needed an engineering partner who could help translate that vision into a real, shippable product.
 
-The biggest challenge wasn't technical complexity in isolation — it was the combination of a broad product scope and a tight timeline. The Glowy team was launching first in Argentina with plans to expand quickly across Latin America, which meant every architectural decision needed to account for future growth while still delivering a high-quality experience on day one. There was no room for a bloated MVP that would need to be torn down and rebuilt.
+The biggest challenge wasn't technical complexity in isolation; it was the combination of a broad product scope and a tight timeline. The Glowy team was launching first in Argentina with plans to expand quickly across Latin America, which meant every architectural decision needed to account for future growth while still delivering a high-quality experience on day one. There was no room for a bloated MVP that would need to be torn down and rebuilt.
 
 The founding team also needed help thinking through the product itself. Which features should be in the MVP? Where does the scope stop? These product strategy questions had to be answered before a single line of code was written.
 
@@ -62,11 +62,11 @@ Throughout the engagement, we maintained tight alignment with the founding team 
 
 ## Results
 
-The Glowy Music MVP launched as a polished, fully functional mobile experience. Fans can discover new music, follow their favorite artists, browse upcoming events, and stay connected to the industry in real time — all from a single app. The user experience prioritized simplicity and engagement, making it easy for fans to go beyond passive listening.
+The Glowy Music MVP launched as a polished, fully functional mobile experience. Fans can discover new music, follow their favorite artists, browse upcoming events, and stay connected to the industry in real time, all from a single app. The user experience prioritized simplicity and engagement, making it easy for fans to go beyond passive listening.
 
 Behind the scenes, the Glowy team gained a robust admin platform that gives them direct control over every aspect of the product: who's on the platform, what events are listed, what news gets published, and how ads are delivered. Push notification management was built in from day one, enabling targeted communication with the user base.
 
-The platform launched in Argentina with the infrastructure in place to support expansion. The technical foundation — a scalable backend on AWS, a cross-platform mobile app, and a flexible admin system — means the Glowy team can move fast as they grow into new markets without rebuilding what already works.
+The platform launched in Argentina with the infrastructure in place to support expansion. The technical foundation (a scalable backend on AWS, a cross-platform mobile app, and a flexible admin system) means the Glowy team can move fast as they grow into new markets without rebuilding what already works.
 
 ## Tech Stack
 

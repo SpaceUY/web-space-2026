@@ -18,7 +18,7 @@ techStack:
   - PostgreSQL
 publishedAt: 2025-02-15
 heroImage: "/images/case-studies/w3e/w3e_.png"
-summary: "W3E is an e-sports live event, expo, and decentralized gaming hub that needed a Gaming Launchpad — a platform to enhance user engagement by providing a seamless, intuitive way to participate in IDOs and INOs. SpaceDev built the smart contracts, cross-chain infrastructure, and frontend that brought the Launchpad to life."
+summary: "W3E is an e-sports live event, expo, and decentralized gaming hub that needed a Gaming Launchpad: a platform to enhance user engagement by providing a seamless, intuitive way to participate in IDOs and INOs. SpaceDev built the smart contracts, cross-chain infrastructure, and frontend that brought the Launchpad to life."
 objectives:
   - Build an IDO and INO Launchpad that acts as a bridge between users and blockchain gaming investment opportunities.
   - Develop tools to track and analyze future, ongoing, and past token and NFT offerings.
@@ -41,17 +41,17 @@ gallery:
 
 ## The Challenge
 
-W3E is more than an e-sports brand — it's a decentralized gaming hub built for brands, players, game developers, content creators, and anyone looking to participate in the Web3 gaming ecosystem. Founded by content creators and former professional players, W3E runs live events, expos, and online competitions where digital asset ownership is part of the experience.
+W3E is more than an e-sports brand: it's a decentralized gaming hub built for brands, players, game developers, content creators, and anyone looking to participate in the Web3 gaming ecosystem. Founded by content creators and former professional players, W3E runs live events, expos, and online competitions where digital asset ownership is part of the experience.
 
-To take that vision to the next level, W3E needed a Gaming Launchpad: a platform that would let community members easily invest in IDOs (Initial Dex Offerings) and INOs (Initial NFT Offerings) tied to games and projects within the W3E ecosystem. The challenge wasn't just building a frontend — it required cross-chain smart contract infrastructure capable of handling IDO mechanics, staking, and treasury security at scale.
+To take that vision to the next level, W3E needed a Gaming Launchpad: a platform that would let community members easily invest in IDOs (Initial Dex Offerings) and INOs (Initial NFT Offerings) tied to games and projects within the W3E ecosystem. The challenge wasn't just building a frontend; it required cross-chain smart contract infrastructure capable of handling IDO mechanics, staking, and treasury security at scale.
 
 The project demanded a team with deep full-stack and blockchain expertise. With 5 senior full-stack developers with blockchain specialization, a PM, and a QA engineer, SpaceDev assembled a team capable of moving fast without sacrificing the security standards that DeFi infrastructure demands.
 
 ## Our Approach
 
-SpaceDev's work centered on two parallel tracks: smart contract infrastructure and the user-facing Launchpad experience. On the blockchain side, the team designed and deployed cross-chain smart contracts covering IDO participation, staking mechanics, and treasury security — ensuring that funds and token distribution were handled safely and transparently.
+SpaceDev's work centered on two parallel tracks: smart contract infrastructure and the user-facing Launchpad experience. On the blockchain side, the team designed and deployed cross-chain smart contracts covering IDO participation, staking mechanics, and treasury security, ensuring that funds and token distribution were handled safely and transparently.
 
-On the product side, SpaceDev built tools that give W3E users complete visibility into every offering. Users can browse upcoming IDOs and INOs, review detailed project information to make informed investment decisions, and track the status of active and completed offerings — all from a single interface. The goal was to make the experience approachable for crypto newcomers while remaining fully featured for experienced participants.
+On the product side, SpaceDev built tools that give W3E users complete visibility into every offering. Users can browse upcoming IDOs and INOs, review detailed project information to make informed investment decisions, and track the status of active and completed offerings, all from a single interface. The goal was to make the experience approachable for crypto newcomers while remaining fully featured for experienced participants.
 
 The entire MVP was delivered in 5.5 months, from initial development through QA and staging deployment. Throughout the process, the team maintained close collaboration with W3E stakeholders to ensure the Launchpad matched the community-first spirit of the broader W3E platform.
 
@@ -63,4 +63,4 @@ Whether users want to support a favorite team, trade in-game NFTs, participate i
 
 ## Tech Stack
 
-The project was built on a full-stack foundation combining Next.js on the frontend with Node.js and PostgreSQL on the backend. The smart contract layer covered cross-chain IDO and staking mechanics with a focus on transaction security and treasury management — the kind of blockchain infrastructure where correctness is non-negotiable.
+The project was built on a full-stack foundation combining Next.js on the frontend with Node.js and PostgreSQL on the backend. The smart contract layer covered cross-chain IDO and staking mechanics with a focus on transaction security and treasury management, the kind of blockchain infrastructure where correctness is non-negotiable.
