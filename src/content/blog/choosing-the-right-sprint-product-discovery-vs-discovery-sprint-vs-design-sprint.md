@@ -80,4 +80,4 @@ If you're looking to design a user interface, build a feature, or improve an exi
 
 By understanding where you are in the product development process and what your goals are, you can choose the method that best fits your needs, saving time, resources, and most importantly, releasing the best product possible to the market.
 
-Choosing the right approach when starting a new project can be overwhelming. With 7 years of experience and a highly skilled team, SpaceDev is ready to make that decision easier for you. If you're looking for expert guidance on where to begin, schedule a call with us.
+Choosing the right approach when starting a new project can be overwhelming. With 8 years of experience and a highly skilled team, SpaceDev is ready to make that decision easier for you. If you're looking for expert guidance on where to begin, schedule a call with us.

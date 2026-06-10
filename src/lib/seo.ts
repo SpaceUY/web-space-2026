@@ -55,6 +55,6 @@ export const organizationJsonLd = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "5",
-    reviewCount: "40",
+    reviewCount: "50",
   },
 };

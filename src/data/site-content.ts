@@ -75,9 +75,9 @@ export interface Stat {
 
 export const stats: Stat[] = [
   { value: 70, prefix: "+", label: "Talented team members" },
-  { value: 160, prefix: "+", label: "Successful projects delivered" },
-  { value: 7, label: "Years helping clients" },
-  { value: 40, prefix: "+", label: "Perfect 5-star ratings on Clutch" },
+  { value: 200, prefix: "+", label: "Successful projects delivered" },
+  { value: 8, label: "Years helping clients" },
+  { value: 50, prefix: "+", label: "Perfect 5-star ratings on Clutch" },
 ];
 
 export const homeFaqs = [
