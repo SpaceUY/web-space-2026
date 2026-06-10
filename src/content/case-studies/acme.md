@@ -1,36 +1,37 @@
 ---
 name: "ACME"
-tagline: "Enterprise wallet infrastructure."
+tagline: "Turn loyalty points into currency with just a tap."
 category: Web3
 accent: purple
 client: "ACME"
-industry: "Crypto Infrastructure"
+industry: "Loyalty & Fintech"
 year: 2023
-duration: "4–8 months"
-team: "4–8 engineers"
+duration: "Ongoing"
+team: "2 engineers"
 services:
-  - Smart Contracts
+  - Backend Engineering
+  - Frontend Engineering
   - SDK Development
-  - Backend
 techStack:
-  - Solidity
+  - React
+  - WunderGraph
   - TypeScript
-  - Node.js
+  - PostgreSQL
 publishedAt: 2025-02-15
 heroImage: "/images/case-studies/acme/acme_.png"
-summary: "ACME provides enterprise-grade wallet infrastructure for fintechs, exchanges, and Web3 platforms that need custody without rolling their own. SpaceDev built the smart contracts, SDK, and orchestration backend that make ACME's wallet platform production-ready."
+summary: "ACME reimagines how loyalty points are managed and redeemed — making the process as simple as a single tap. Similar to how Visa made cash universally spendable, ACME lets any merchant, online or in-store, reward and accept loyalty points just like Apple Pay. SpaceDev upgraded the platform's entire technology stack to support TypeScript, multi-chain Web3 interactions, and overall performance improvements."
 objectives:
-  - Deliver wallet infrastructure that meets enterprise security and compliance standards.
-  - Abstract multi-chain complexity behind a single SDK developers actually want to use.
-  - Support hot/warm/cold custody patterns with policy-based controls.
-  - "Ship operational tooling: monitoring, signing workflows, and incident response."
+  - Upgrade the backend and frontend to a modern TypeScript-based stack.
+  - Implement multi-chain support to broaden the platform's reach and versatility.
+  - Enable seamless Web3 interactions — crypto payments, NFT acquisition, and smart contract execution — behind a simple one-tap interface.
+  - Improve overall performance and system efficiency for both end users and integrating merchants.
 deliverables:
-  - "Smart contract suite for multi-sig, account-abstraction, and policy-controlled wallets."
-  - "TypeScript SDK with first-class support for the most-used EVM chains."
-  - "Backend orchestration for signing workflows, key custody, and gas management."
-  - "Policy engine for spending limits, whitelists, and approval rules."
-  - "Operational surface (dashboards, alerts, runbooks) for 24/7 ops teams."
-outcome: "ACME shipped a wallet infrastructure platform that fintechs and Web3 companies can adopt without building custody from scratch, and SpaceDev continues to evolve the platform alongside the team."
+  - "Full TypeScript migration across backend and frontend codebases."
+  - "Multi-chain integration layer supporting crypto fund usage from digital wallets in a single tap."
+  - "OnRamp service integration for purchasing cryptocurrency via credit card and other payment methods."
+  - "NFT acquisition flow embedded directly into the platform."
+  - "Smart contract execution interface allowing clients to trigger any contract function from the ACME UI."
+outcome: "With the added capabilities, ACME is able to provide a seamless user experience for loyalty point transactions and Web3 interactions, making processes that are complex under the hood feel effortless to end users — true to its product name, Acme One Tap."
 gallery:
   - "/images/case-studies/acme/gallery/gallery1.png"
   - "/images/case-studies/acme/gallery/gallery2.png"
@@ -42,27 +43,25 @@ gallery:
 
 ## The Challenge
 
-ACME approached SpaceDev with a clear vision but a complex execution problem in the Crypto Infrastructure space. The team needed an experienced engineering partner who could navigate Web3 architecture decisions while shipping a production-grade product on a startup timeline.
+ACME had a compelling product vision: turn loyalty points into spendable currency that works everywhere, the same way a Visa card or Apple Pay does. Behind that simple premise, though, was a technically demanding platform that needed to handle crypto wallets, on-chain transactions, NFT flows, and smart contract interactions — all without exposing any of that complexity to the end user.
 
-Key constraints:
-
-- A small founding team that needed engineering leverage, not just hands.
-- A non-trivial domain that required careful product discovery before writing code.
-- A go-to-market window that didn't allow for the typical "rebuild everything in v2" path.
+The existing codebase hadn't kept pace with the product's ambitions. The technology stack needed a significant upgrade to support the multi-chain Web3 capabilities the roadmap required, and the system had to be reliable and performant enough to serve merchants and consumers at scale. The team needed engineering partners who understood both the Web3 side and the product experience side of the problem.
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web3 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+SpaceDev embedded two blockchain developers — one focused on the frontend, one on the backend — to work directly alongside the ACME team on an ongoing basis. The primary work was a full TypeScript migration across the stack, establishing a consistent, type-safe foundation for all future development.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
+From there, we built out the multi-chain support layer that powers ACME's core interactions: using crypto funds from digital wallets with a single tap, purchasing cryptocurrency through the most appropriate OnRamp services for each transaction, acquiring NFTs through the platform, and executing any smart contract function that client integrations require. WunderGraph was used to federate and simplify the API layer, keeping backend complexity from leaking into the frontend. PostgreSQL handles the relational data backing the loyalty point ledger and transaction history.
+
+The goal throughout was to make the interface between the user and the blockchain invisible. Every interaction that involves an elaborate on-chain process — wallet lookup, gas estimation, transaction signing, confirmation — is resolved automatically, with the user seeing nothing more than a tap and a confirmation.
 
 ## Results
 
-- Production launch on time, within scope, and on budget.
-- A maintainable codebase that the in-house team can own and extend.
-- Measurable improvements in user retention, transaction throughput, and operational cost.
-- A long-term partnership that continues to evolve the product quarter by quarter.
+ACME now offers a platform that is genuinely appealing for businesses looking to add loyalty point transactions and Web3 interactions to their products. The TypeScript migration improved code quality and developer velocity across the board, and the multi-chain architecture gives the platform the flexibility to support new networks without rearchitecting the core.
+
+The result is a product that lives up to its name: Acme One Tap. Operations that involve elaborate processes behind the scenes are completed with a single interaction on the surface — making Web3 accessible to the kind of everyday users who have no interest in managing wallets or understanding gas fees.
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web3 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The platform is built on React for the frontend, with WunderGraph handling API federation and TypeScript enforced throughout. PostgreSQL serves as the primary database for loyalty point ledgers and transaction records. The Web3 layer integrates directly with multiple chains and OnRamp providers, with smart contract interactions handled client-side through standard EVM tooling.
+

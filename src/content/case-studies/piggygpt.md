@@ -1,37 +1,40 @@
 ---
 name: "PiggyGPT"
-tagline: "AI-powered personal finance assistant."
-category: Web2
+tagline: "AI-powered trading for the EVM ecosystem, without the complexity."
+category: Web3
 accent: cyan
 client: "PiggyGPT"
-industry: "Fintech & AI"
+industry: "DeFi & AI"
 year: 2024
-duration: "4–8 months"
-team: "4–8 engineers"
+duration: "Ongoing from March 2024"
+team: "Staff Augmentation"
 services:
   - AI Integration
-  - Mobile Engineering
-  - Backend
+  - DeFi Development
+  - Product Development
 techStack:
-  - React Native
-  - Python
-  - OpenAI
-  - Node.js
+  - React
+  - TypeScript
+  - Material UI
+  - Prisma
+  - Wondergraph
 publishedAt: 2025-02-15
 heroImage: "/images/case-studies/piggygpt/piggygpt_.png"
-summary: "PiggyGPT is a conversational personal-finance assistant that helps users budget, save, and plan in plain language. SpaceDev built the mobile app, the LLM-powered backend, and the integrations that make every conversation grounded in real account data."
+summary: "PiggyGPT is an AI-driven trading platform built to make decentralized finance accessible to retail traders in the EVM ecosystem. SpaceDev contributed to defining the product, integrating cross-chain swap capabilities, and building the AI assistant layer that lets users trade, get insights, and manage wallets directly from Telegram — without needing to understand the underlying infrastructure."
 objectives:
-  - Build a finance assistant that's conversational without hallucinating numbers.
-  - Connect cleanly to bank, card, and brokerage data via aggregator APIs.
-  - Keep user data private with strict separation between conversation and PII.
-  - Deliver a mobile-first experience that feels as fast as a chat app.
+  - Make DeFi trading accessible to retail users without requiring deep technical knowledge of blockchain.
+  - Automate trade execution and route optimization across multiple EVM chains.
+  - Integrate ChatGPT-powered trading assistance directly into Telegram, with future expansion to WhatsApp and Discord.
+  - Provide self-custodial wallet management so users own their assets from day one.
+  - Build engagement mechanics including daily rewards and airdrop-driven incentive programs.
 deliverables:
-  - "React Native app with chat-first UI, charts, and goal tracking."
-  - "LLM orchestration backend (OpenAI + custom tools) grounded in user account data."
-  - "Aggregator integrations for accounts, transactions, and balances."
-  - "Privacy-preserving prompt pipeline that scrubs PII before model calls."
-  - "Onboarding flow that gets a user to their first useful insight in under five minutes."
-outcome: "PiggyGPT launched a finance assistant that gives real, data-grounded advice in natural language, without the privacy and accuracy compromises that usually come with LLMs in finance."
+  - "AI conversational assistant (ChatGPT-powered) integrated into Telegram for real-time trading guidance."
+  - "Automated one-tap trade execution with cross-chain swap routing via Jupiter, LEFI, and Deep Bridge."
+  - "Self-custodial wallet provisioning on user sign-in, with no friction for non-technical users."
+  - "Airdrop and daily engagement reward system to drive adoption and retention."
+  - "Front-end dashboard built with React, TypeScript, and Material UI, prototyped with V0 by Vercel."
+  - "elizaOS-based AI agent deployed across Discord, Telegram, and Twitter."
+outcome: "PiggyGPT reached over 10,000 participants in its initial testnet campaigns and processed 5,000 USDC in trading volume during the testing phase. The platform secured strategic collaborations with Monarium, Arbitrum, and Safe, and established a tokenomics model to sustain liquidity and user incentives going forward."
 galleryType: "mobile"
 gallery:
   - "/images/case-studies/piggygpt/gallery/gallery1.png"
@@ -44,27 +47,24 @@ gallery:
 
 ## The Challenge
 
-PiggyGPT approached SpaceDev with a clear vision but a complex execution problem in the Fintech & AI space. The team needed an experienced engineering partner who could navigate Web2 architecture decisions while shipping a production-grade product on a startup timeline.
+Decentralized finance holds genuine promise for retail traders, but the barrier to entry has always been steep. Managing bridges, gas fees, wallet keys, and fragmented liquidity across chains is genuinely confusing, and most platforms assume a level of technical fluency that the majority of users simply don't have. PiggyGPT was built to change that.
 
-Key constraints:
-
-- A small founding team that needed engineering leverage, not just hands.
-- A non-trivial domain that required careful product discovery before writing code.
-- A go-to-market window that didn't allow for the typical "rebuild everything in v2" path.
+The challenge SpaceDev was brought in to solve was both technical and product-level: how do you make cross-chain trading feel as simple as sending a message, while still connecting to real DeFi infrastructure? The team needed to identify which features mattered most, architect integrations with existing protocols, and ship something that retail users would actually use — not just tolerate.
 
 ## Our Approach
 
-We embedded a dedicated cell of senior engineers with hands-on experience in Web2 systems. Discovery first, then architecture, then incremental delivery, reviewed weekly with the founding team. We brought UX/UI, engineering, and DevOps under one roof so that handoffs never became bottlenecks.
+SpaceDev's role was to analyze the product requirements, identify the right technical integrations, and build the system layer by layer. We used ChatGPT to power the conversational trading assistant inside Telegram, giving users a familiar interface for getting trade insights and executing swaps. GitHub Copilot accelerated the coding process, and V0 by Vercel allowed rapid UI prototyping so the team could iterate on the interface quickly.
 
-The result is a system that's both fast to ship today and structured to scale tomorrow, without the technical debt that usually accumulates when you optimize for speed alone.
+For the cross-chain swaps — one of the most technically demanding parts of the project — we integrated with established DeFi protocols: Jupiter, LEFI, and Deep Bridge. These integrations handle route optimization automatically, so users never have to think about which chain they're on or how to move assets between them. Self-custodial wallets are provisioned at sign-in, meaning users hold their assets from the start without going through a complex setup.
+
+We also built an elizaOS-based AI agent deployed across Discord, Telegram, and Twitter to extend the platform's presence and enable community-level trading assistance at scale.
 
 ## Results
 
-- Production launch on time, within scope, and on budget.
-- A maintainable codebase that the in-house team can own and extend.
-- Measurable improvements in user retention, transaction throughput, and operational cost.
-- A long-term partnership that continues to evolve the product quarter by quarter.
+The testnet campaign attracted over 10,000 participants and saw 5,000 USDC in trading volume during the testing phase — meaningful early signals for a retail-focused DeFi product. The platform established strategic partnerships with Monarium (for future crypto-to-fiat off-ramps in Europe), Arbitrum, and Safe.
+
+A tokenomics model was designed to sustain the reward and airdrop system long-term, ensuring that user incentives align with platform growth. Plans are in place to expand to additional blockchains and messaging platforms beyond Telegram.
 
 ## Tech Stack
 
-The implementation leverages a modern, audit-friendly stack tailored to Web2 requirements; see the techStack metadata above for the full list. Each choice was made for long-term maintainability and operational simplicity, not novelty.
+The frontend is built with React, TypeScript, and Material UI, with Prisma handling data access and Wondergraph supporting data querying needs. The AI layer runs on ChatGPT for the conversational assistant and elizaOS for the multi-platform agent. V0 by Vercel enabled rapid prototyping during the UI iteration phase. The stack was chosen to balance development speed with the reliability that financial applications require.
