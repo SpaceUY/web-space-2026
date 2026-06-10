@@ -75,20 +75,30 @@ const industries = [
   jsonLd={websiteJsonLd}
 >
   <!-- HERO (dark) -->
-  <section class="bg-sd-dark h-screen -mt-[72px] flex flex-col justify-end items-start relative overflow-hidden">
+  <section class="bg-sd-dark min-h-[100dvh] -mt-[72px] flex flex-col justify-end items-start relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.18) 0%, transparent 65%);"></div>
-    <div class="relative w-full px-6 pb-10">
-      <p class="text-[38px] md:text-[80px] text-white font-display leading-none tracking-tight">
+
+    <!-- Title — centered on mobile, flows normally on desktop -->
+    <div class="sm:hidden absolute inset-0 flex items-center px-6 pointer-events-none">
+      <p class="text-[clamp(28px,8vw,80px)] text-white font-display leading-none tracking-tight">
         <span class="whitespace-nowrap">Finally: Your&#160;<span style="display:inline-block; overflow:hidden; vertical-align:bottom; line-height:1.05;"><span id="rotating-word" class="text-white" style="display:inline-block;">Flexible</span></span></span><br/>
         Tech Partner.
       </p>
-      <h1 class="mt-16 text-lg md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
+    </div>
+
+    <div class="relative w-full px-6 pb-10 sm:pb-14">
+      <!-- Title desktop only -->
+      <p class="hidden sm:block text-[clamp(28px,8vw,80px)] text-white font-display leading-none tracking-tight">
+        <span class="whitespace-nowrap">Finally: Your&#160;<span style="display:inline-block; overflow:hidden; vertical-align:bottom; line-height:1.05;"><span id="rotating-word-desktop" class="text-white" style="display:inline-block;">Flexible</span></span></span><br/>
+        Tech Partner.
+      </p>
+      <h1 class="mt-8 sm:mt-16 text-base sm:text-lg md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
         Blockchain Development Company & Web3 Software Partner
       </h1>
-      <p class="mt-6 text-sm md:text-base text-white max-w-2xl leading-relaxed font-body font-light">
+      <p class="mt-4 text-sm md:text-base text-white max-w-2xl leading-relaxed font-body font-light">
         SpaceDev is a <strong class="font-semibold">blockchain development company</strong> specializing in custom Web3 solutions, decentralized application development, and smart contract engineering. We work with startups, fintechs, and growth-stage companies that need a technical partner with both the depth to build and the speed to ship.
       </p>
-      <p class="mt-4 text-sm md:text-base text-white max-w-2xl leading-relaxed font-body font-light">
+      <p class="mt-4 text-sm md:text-base text-white max-w-2xl leading-relaxed font-body font-light hidden sm:block">
         From <strong class="font-semibold">dApp architecture</strong> to token infrastructure and <strong class="font-semibold">smart contract auditing</strong>, our engineering teams cover the full product lifecycle, from initial scoping to production and scale.
       </p>
     </div>
@@ -172,7 +182,7 @@ const industries = [
       <div class="max-w-2xl mb-16">
         <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Why Partner with a Blockchain Development Company Like SpaceDev</h2>
         <p class="mt-6 text-base text-sd-text-gray leading-relaxed">
-          There are many development agencies. Fewer have deep blockchain engineering depth. Even fewer combine that with Web2 product experience, a security practice, and a track record across 40+ projects in DeFi, NFT infrastructure, fintech, and enterprise blockchain.
+          There are many development agencies. Fewer have deep blockchain engineering depth. Even fewer combine that with Web2 product experience, a security practice, and a track record across 50+ projects in DeFi, NFT infrastructure, fintech, and enterprise blockchain.
         </p>
       </div>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mb-12">
@@ -181,7 +191,7 @@ const industries = [
           { n: "02", title: "Web3 + Web2 under one team", desc: "Blockchain infrastructure and the product layer built together." },
           { n: "03", title: "BlockAudit security practice", desc: "Smart contract auditing built into development, not bolted on." },
           { n: "04", title: "Flexible engagement models", desc: "Staff aug, fixed-scope, or full MVP builds, structured around your needs." },
-          { n: "05", title: "40+ five-star client reviews", desc: "Verified on Clutch and GoodFirms across DeFi, fintech, and gaming." },
+          { n: "05", title: "50+ five-star client reviews", desc: "Verified on Clutch and GoodFirms across DeFi, fintech, and gaming." },
           { n: "06", title: "AWS Partner", desc: "Cloud infrastructure support alongside blockchain development." },
         ].map(w => (
           <div class="group rounded-2xl p-7 bg-sd-light-2 transition-colors duration-300 hover:bg-sd-purple/15" data-animate>
@@ -203,7 +213,7 @@ const industries = [
       <div class="max-w-2xl mb-16">
         <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Blockchain Development for Fintech, DeFi & Web3 Startups</h2>
       </div>
-      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {industries.map(ind => (
           <a href={ind.href ?? `/blockchain-development-services/industry/${ind.slug}`} class="group block bg-sd-light-2 rounded-2xl p-7 border border-sd-gray-border hover:border-sd-purple/30 hover:bg-sd-purple/5 transition-colors duration-300" data-animate>
             <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
@@ -323,13 +333,13 @@ const industries = [
     <div class="sd-container">
       <div class="max-w-2xl mb-14">
         <h2 class="text-4xl md:text-5xl text-sd-text-dark font-display leading-tight tracking-tight">
-          Over <span style="background: linear-gradient(90deg, #3b2080 0%, #673ae4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">40 perfect 5-star ratings</span> from happy customers
+          Over <span style="background: linear-gradient(90deg, #3b2080 0%, #673ae4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">50 perfect 5-star ratings</span> from happy customers
         </h2>
         <p class="mt-5 text-base text-sd-text-gray leading-relaxed">
           Clients choose SpaceDev for reliability, communication, and technical depth, and stay for the results. Every partnership reflects our belief that success is built on trust, collaboration, and a shared vision.
         </p>
       </div>
-      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {[
           { quote: `"They showed a strong commitment to resolving issues and delivering effective solutions"`, company: "Ubicuity", location: "San Francisco, California", period: "APR 2023 - NOV 2023", href: "https://clutch.co/profile/spacedev?page=4#review-248076" },
           { quote: `"It's a pleasure to collaborate with them"`, company: "Ulta Beauty", location: "Bolingbrook, Illinois", period: "APR 2023 - ONGOING", href: "https://clutch.co/profile/spacedev?page=2#review-242145" },
@@ -368,7 +378,7 @@ const industries = [
   <section class="bg-sd-light py-20 md:py-28 border-t border-sd-gray-border">
     <div class="sd-container">
       <h2 class="text-3xl md:text-4xl text-sd-text-dark font-display leading-tight tracking-tight mb-14">Highly reviewed by</h2>
-      <div class="grid grid-cols-4 md:grid-cols-8 gap-x-6 gap-y-14 items-center justify-items-center">
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-x-6 gap-y-8 items-center justify-items-center">
         {[
           { src: "/images/content/zPERVUfXVexzfhErCDP4RSRooMk.svg", alt: "AWS Partner",                                          href: "https://partners.amazonaws.com/" },
           { src: "/images/content/aBdWHMkZEsQNlbGeQBO4XJATg8.svg", alt: "Official Member Forbes Technology Council 2024",    href: "https://www.forbes.com/councils/forbestechcouncil/" },
@@ -501,7 +511,7 @@ const industries = [
     <!-- Subtle purple gradient bg from original -->
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 0%, rgba(103,58,228,0.06) 0%, transparent 70%);"></div>
     <div class="relative sd-container">
-      <div class="max-w-3xl mx-auto">
+      <div class="max-w-2xl mb-6">
         <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight mb-6">
           Ready to build the future with SpaceDev?
         </h2>
@@ -533,30 +543,39 @@ const industries = [
   // Rotating word — slide up from below
   const words = ["Fast", "Flexible", "Reliable"];
   let idx = 0;
-  const el = document.getElementById("rotating-word");
-  if (el) {
+  // rotating-word = mobile (centered), rotating-word-desktop = desktop (bottom)
+  const els = [
+    document.getElementById("rotating-word"),
+    document.getElementById("rotating-word-desktop"),
+  ].filter(Boolean) as HTMLElement[];
+
+  const el = els[0];
+  if (els.length > 0) {
     const SLIDE = "cubic-bezier(0.2, 0.7, 0.3, 1)";
 
     function nextWord() {
       idx = (idx + 1) % words.length;
 
-      // Exit: slide up and fade out
-      el.style.transition = `transform 0.28s ${SLIDE}, opacity 0.2s ease`;
-      el.style.transform  = "translateY(-110%)";
-      el.style.opacity    = "0";
+      els.forEach(e => {
+        e.style.transition = `transform 0.28s ${SLIDE}, opacity 0.2s ease`;
+        e.style.transform  = "translateY(-110%)";
+        e.style.opacity    = "0";
+      });
 
       setTimeout(() => {
-        // Swap word and position it below
-        el.textContent      = words[idx];
-        el.style.transition = "none";
-        el.style.transform  = "translateY(110%)";
-        el.style.opacity    = "0";
+        els.forEach(e => {
+          e.textContent      = words[idx];
+          e.style.transition = "none";
+          e.style.transform  = "translateY(110%)";
+          e.style.opacity    = "0";
+        });
 
         requestAnimationFrame(() => requestAnimationFrame(() => {
-          // Enter: slide up into place
-          el.style.transition = `transform 0.32s ${SLIDE}, opacity 0.22s ease`;
-          el.style.transform  = "translateY(0)";
-          el.style.opacity    = "1";
+          els.forEach(e => {
+            e.style.transition = `transform 0.32s ${SLIDE}, opacity 0.22s ease`;
+            e.style.transform  = "translateY(0)";
+            e.style.opacity    = "1";
+          });
         }));
       }, 290);
     }

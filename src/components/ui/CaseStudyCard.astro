@@ -143,14 +143,17 @@ const { caseStudy: c, class: className = "" } = Astro.props;
         let closestDist = Infinity;
 
         mobileCards.forEach((card) => {
-          const rect       = card.getBoundingClientRect();
-          const cardCenter = rect.top + card.offsetHeight / 2;
-          const dist       = Math.abs(cardCenter - vCenter);
+          const rect = card.getBoundingClientRect();
+          // only consider cards actually visible in viewport
+          if (rect.bottom < 0 || rect.top > vh) return;
+          const cardCenter = rect.top + rect.height / 2;
+          const dist = Math.abs(cardCenter - vCenter);
           if (dist < closestDist) { closestDist = dist; closest = card; }
         });
 
         mobileCards.forEach((card) => {
-          card.classList.toggle("mob-lit", card === closest && closestDist < vh * 0.55);
+          // light the closest visible card — no threshold needed
+          card.classList.toggle("mob-lit", card === closest && closest !== null);
         });
 
         raf = false;
@@ -160,9 +163,13 @@ const { caseStudy: c, class: className = "" } = Astro.props;
         if (!raf) { raf = true; requestAnimationFrame(tick); }
       }, { passive: true });
 
-      tick();
+      // also re-run on resize in case orientation changes
+      window.addEventListener("resize", tick, { passive: true });
+
+      // run after layout is painted
+      requestAnimationFrame(tick);
     }
   }
 
-  initSpotlight();
+  document.addEventListener("DOMContentLoaded", initSpotlight);
 </script>
