@@ -5,7 +5,7 @@ publishedAt: 2023-03-20
 author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["blockchain-basics"]
-cover: "/images/content/JeQLv4bNGrE9UXUBQ7qTuS80hV4.png"
+cover: "/images/content/JeQLv4bNGrE9UXUBQ7qTuS80hV4.webp"
 readTime: 3
 metadescription: "Blockchain is far more than bitcoin: a flexible technology with vast potential. A clear introduction to what blockchain is and why it matters today."
 ---

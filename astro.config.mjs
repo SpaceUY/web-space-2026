@@ -1,8 +1,31 @@
 import { defineConfig } from 'astro/config';
+import { readFileSync, readdirSync } from 'node:fs';
 
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
+
+/**
+ * Build a slug → lastmod map from content frontmatter so the sitemap can emit
+ * honest <lastmod> values (Google uses lastmod for recrawl prioritization;
+ * it ignores changefreq/priority). Only blog posts and case studies have
+ * reliable dates — other pages omit lastmod rather than faking it.
+ */
+function contentDates(dir) {
+  const map = {};
+  for (const f of readdirSync(dir)) {
+    if (!f.endsWith('.md')) continue;
+    const src = readFileSync(`${dir}/${f}`, 'utf8');
+    const updated = src.match(/^updatedAt:\s*["']?(\d{4}-\d{2}-\d{2})/m);
+    const published = src.match(/^publishedAt:\s*["']?(\d{4}-\d{2}-\d{2})/m);
+    const date = (updated ?? published)?.[1];
+    if (date) map[f.replace(/\.md$/, '')] = date;
+  }
+  return map;
+}
+
+const blogDates = contentDates('./src/content/blog');
+const caseDates = contentDates('./src/content/case-studies');
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,6 +44,16 @@ export default defineConfig({
       !page.includes('/post/'),
     serialize(item) {
       const url = item.url;
+
+      // lastmod from content frontmatter (blog posts and case studies)
+      const blogMatch = url.match(/\/blog\/([^/]+)\/?$/);
+      const caseMatch = url.match(/\/case-study\/([^/]+)\/?$/);
+      const lastmod =
+        (blogMatch && blogDates[blogMatch[1]]) ||
+        (caseMatch && caseDates[caseMatch[1]]) ||
+        undefined;
+      if (lastmod) item = { ...item, lastmod };
+
       // Home gets the highest priority and weekly updates
       if (url === 'https://spacedev.io/') {
         return { ...item, priority: 1.0, changefreq: 'weekly' };

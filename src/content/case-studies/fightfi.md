@@ -39,11 +39,11 @@ deliverables:
   - "Active contribution to feature scoping, effort estimation, and agile adaptation as priorities evolved."
 outcome: "FightFI is proving that gamification and Web3 are a powerful match. By combining NFT-based rewards, on-chain mechanics, and seamless user experiences, the platform keeps users coming back, engaged and rewarded. With SpaceDev as a tech partner, FightFI transformed an ambitious idea into a dynamic product, ready to scale and lead the next wave of interactive Web3 platforms."
 gallery:
-  - "/images/case-studies/fightfi/gallery/gallery1.png"
-  - "/images/case-studies/fightfi/gallery/gallery2.png"
+  - "/images/case-studies/fightfi/gallery/gallery1.webp"
+  - "/images/case-studies/fightfi/gallery/gallery2.webp"
   - "/images/case-studies/fightfi/gallery/gallery3.png"
-  - "/images/case-studies/fightfi/gallery/gallery4.png"
-  - "/images/case-studies/fightfi/gallery/gallery5.png"
+  - "/images/case-studies/fightfi/gallery/gallery4.webp"
+  - "/images/case-studies/fightfi/gallery/gallery5.webp"
 metatitle: "FightFI Case Study: GameFi dApp on Aptos | SpaceDev"
 metadescription: "SpaceDev built FightFI's gamified Web3 platform on Aptos: dApp development with NFT rewards, smart contracts, wallet auth, and real-time fan leaderboards."
 ---

@@ -40,7 +40,7 @@ gallery:
   - "/images/case-studies/piggygpt/gallery/gallery1.png"
   - "/images/case-studies/piggygpt/gallery/gallery2.png"
   - "/images/case-studies/piggygpt/gallery/gallery3.png"
-  - "/images/case-studies/piggygpt/gallery/gallery4.png"
+  - "/images/case-studies/piggygpt/gallery/gallery4.webp"
   - "/images/case-studies/piggygpt/gallery/gallery5.png"
   - "/images/case-studies/piggygpt/gallery/gallery6.png"
 metatitle: "PiggyGPT Case Study: AI DeFi Trading Platform | SpaceDev"

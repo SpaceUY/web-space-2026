@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["smart-contracts", "defi"]
 readTime: 5
-cover: "/images/content/bVD0R0iXQ8QzvTTXdhaxjxRR8.png"
+cover: "/images/content/bVD0R0iXQ8QzvTTXdhaxjxRR8.webp"
 takeaways:
   - Smart contracts replace human intermediaries with deterministic, self-executing code. No administrator, no discretion, no selective enforcement.
   - DeFi TVL stands at approximately $89 billion. Unique DeFi users surpassed 20 million, up from 940,000 in 2021.

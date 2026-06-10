@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: AI
 tags: ["ai", "product-growth"]
 readTime: 6
-cover: "/images/content/5SIjYNrqoXVAQqwdwdO9upLD84.png"
+cover: "/images/content/5SIjYNrqoXVAQqwdwdO9upLD84.webp"
 metadescription: "Vibe coding is the new buzzword in software development. Is it the biggest shift since Git or a hazard for code quality? A clear-eyed look at the hype."
 ---
 

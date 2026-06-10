@@ -18,7 +18,7 @@ techStack:
   - PostgreSQL
   - Python
 publishedAt: 2025-02-15
-heroImage: "/images/case-studies/iaffirm/iaffirm_.png"
+heroImage: "/images/case-studies/iaffirm/iaffirm_.webp"
 summary: "iAffirm is a web app that helps users improve their mental health and daily confidence through AI-generated affirmations, visualizations, and guided meditations tailored to each person's goals and context. SpaceDev built the initial product framework, addressed key gaps in how AI was being used, and helped the client clarify and refine their product direction before development began in earnest."
 objectives:
   - Move beyond generic affirmation templates and deliver experiences personalized to each user's specific situation and goals.
@@ -33,11 +33,11 @@ deliverables:
   - "Internal product development work that clarified the client's direction and refined the project scope."
 outcome: "iAffirm completed the foundational stage of development with a clear product direction and a working technical framework. The client applied for a mental health apps grant and was positioned for launch, with the AI integration properly structured to deliver genuinely personalized experiences rather than template-driven content."
 gallery:
-  - "/images/case-studies/iaffirm/gallery/gallery1.png"
+  - "/images/case-studies/iaffirm/gallery/gallery1.webp"
   - "/images/case-studies/iaffirm/gallery/gallery2.png"
   - "/images/case-studies/iaffirm/gallery/gallery3.png"
   - "/images/case-studies/iaffirm/gallery/gallery4.png"
-  - "/images/case-studies/iaffirm/gallery/gallery5.png"
+  - "/images/case-studies/iaffirm/gallery/gallery5.webp"
 metatitle: "iAffirm Case Study: AI Mental Wellness Web App | SpaceDev"
 metadescription: "SpaceDev built iAffirm's AI integration and product foundation: personalized affirmations, visualizations, and guided meditations with Python and Nest.js."
 ---

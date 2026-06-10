@@ -52,7 +52,7 @@ gallery:
   - "/images/case-studies/ndax-canada/gallery/gallery3.png"
   - "/images/case-studies/ndax-canada/gallery/gallery4.png"
   - "/images/case-studies/ndax-canada/gallery/gallery5.png"
-  - "/images/case-studies/ndax-canada/gallery/gallery6.png"
+  - "/images/case-studies/ndax-canada/gallery/gallery6.webp"
 metatitle: "NDAX Canada Case Study: Crypto Exchange Platform | SpaceDev"
 metadescription: "SpaceDev built NDAX's frontend and React Native crypto exchange app with AlphaPoint banking integration, quadrupling signups and lifting verification to 80%."
 ---

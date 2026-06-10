@@ -38,7 +38,7 @@ outcome: "Through our collaboration, ApeBond successfully expanded its cross-cha
 gallery:
   - "/images/case-studies/apebond/gallery/gallery1.png"
   - "/images/case-studies/apebond/gallery/gallery2.png"
-  - "/images/case-studies/apebond/gallery/gallery3.png"
+  - "/images/case-studies/apebond/gallery/gallery3.webp"
   - "/images/case-studies/apebond/gallery/gallery4.png"
   - "/images/case-studies/apebond/gallery/gallery5.png"
 metatitle: "ApeBond: Solana DeFi Development Case Study | SpaceDev"

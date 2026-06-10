@@ -6,7 +6,7 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["web3-infrastructure", "blockchain-basics"]
 readTime: 4
-cover: "/images/content/eGC3vJH4dLUVuXBOVdkGVL066FE.png"
+cover: "/images/content/eGC3vJH4dLUVuXBOVdkGVL066FE.webp"
 metatitle: "Blockchain Protocols Explained: Why They Matter | SpaceDev"
 metadescription: "Blockchain protocols are the foundational rules of every network, defining how data is validated, transactions are processed, and participants interact."
 ---

@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["smart-contracts"]
 readTime: 8
-cover: "/images/content/8avQhh2xnXVeHKr5gw0tR54o3Q.png"
+cover: "/images/content/8avQhh2xnXVeHKr5gw0tR54o3Q.webp"
 metatitle: "Smart Contract Audit Checklist: Save Time | SpaceDev"
 ---
 

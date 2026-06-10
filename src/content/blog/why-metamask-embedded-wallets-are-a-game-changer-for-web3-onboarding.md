@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["fintech", "blockchain-basics"]
 readTime: 7
-cover: "/images/content/RVMvAqis5lvyDbQre8vqzsh7BT8.png"
+cover: "/images/content/RVMvAqis5lvyDbQre8vqzsh7BT8.webp"
 takeaways:
   - MetaMask Embedded Wallets eliminate traditional onboarding friction through social login integration.
   - Non-custodial wallets are created instantly without seed phrases or browser extensions.

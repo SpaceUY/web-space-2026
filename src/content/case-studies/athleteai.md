@@ -36,12 +36,12 @@ deliverables:
 outcome: "The app shipped to the App Store on time and was actively used at basketball tournaments across the USA. The core product was functional at release; remaining feature work was handed off to the client's partner company for continued development."
 galleryType: "mobile"
 gallery:
-  - "/images/case-studies/athleteai/gallery/gallery1.png"
-  - "/images/case-studies/athleteai/gallery/gallery2.png"
-  - "/images/case-studies/athleteai/gallery/gallery3.png"
-  - "/images/case-studies/athleteai/gallery/gallery4.png"
+  - "/images/case-studies/athleteai/gallery/gallery1.webp"
+  - "/images/case-studies/athleteai/gallery/gallery2.webp"
+  - "/images/case-studies/athleteai/gallery/gallery3.webp"
+  - "/images/case-studies/athleteai/gallery/gallery4.webp"
   - "/images/case-studies/athleteai/gallery/gallery5.png"
-  - "/images/case-studies/athleteai/gallery/gallery6.png"
+  - "/images/case-studies/athleteai/gallery/gallery6.webp"
 metatitle: "AthleteAI Case Study: Sports Highlights App | SpaceDev"
 metadescription: "SpaceDev built AthleteAI's iOS app in four months: React Native video capture, highlight reels, and Mux streaming, used at live basketball tournaments."
 ---

@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["nft-gaming", "web3-infrastructure"]
 readTime: 4
-cover: "/images/content/GGG67bdz69DgCTI3JuvX59NA.png"
+cover: "/images/content/GGG67bdz69DgCTI3JuvX59NA.webp"
 metadescription: "Blockchain can fix the music industry's biggest problems, bringing greater transparency and fairer royalty distribution to artists through Web3 technology."
 ---
 

@@ -6,7 +6,7 @@ author: federico-sendra
 category: Web2 Trends
 tags: ["product-growth"]
 readTime: 5
-cover: "/images/content/HnBRzRZKIvGkGHIfxiQev0lU2o0.png"
+cover: "/images/content/HnBRzRZKIvGkGHIfxiQev0lU2o0.webp"
 takeaways:
   - Remote work has become standard, with over 80% of developers working remotely or hybrid
   - Remote hiring provides access to global talent and enables faster product development

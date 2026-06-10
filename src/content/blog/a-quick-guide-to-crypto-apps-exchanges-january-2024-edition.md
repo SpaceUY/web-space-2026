@@ -5,7 +5,7 @@ publishedAt: 2024-01-29
 author: federico-sendra
 category: "Blockchain Trends"
 tags: ["fintech", "blockchain-basics"]
-cover: "/images/content/qFJKTDemuBdfzAflDu2hTIy3mw.png"
+cover: "/images/content/qFJKTDemuBdfzAflDu2hTIy3mw.webp"
 readTime: 3
 metatitle: "Crypto Apps & Exchanges Guide: January 2024 Edition"
 metadescription: "Navigate the evolving cryptocurrency landscape with our curated guide to the most promising crypto apps and exchanges to kickstart your journey in 2024."

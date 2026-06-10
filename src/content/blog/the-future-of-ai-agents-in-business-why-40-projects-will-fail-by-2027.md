@@ -6,7 +6,7 @@ author: diego-priliac
 category: "AI"
 tags: ["ai", "product-growth"]
 readTime: 11
-cover: "/images/content/YxwLtoX3RaoAbsRSfm7BHL1xtKI.png"
+cover: "/images/content/YxwLtoX3RaoAbsRSfm7BHL1xtKI.webp"
 takeaways:
   - Gartner forecasts over 40 agentic AI projects will be discontinued by 2027.
   - Failures stem from scalability issues, technology immaturity, and misalignment with business objectives.

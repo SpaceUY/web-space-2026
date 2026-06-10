@@ -35,12 +35,12 @@ deliverables:
   - "Full frontend implementation using React, Redux, Formik, axios, and supporting libraries."
 outcome: "The Ubicuity platform is now a comprehensive solution for space managers and content providers who want to deliver immersive digital experiences in any environment. It has been deployed at real cultural venues, including the Roberto Polo Collection at the Toledo Museum of Contemporary Art and the ARCO Art Fair in Spain, where it showcased the work of artist Guillermo Forner."
 gallery:
-  - "/images/case-studies/ubicuity/gallery/gallery1.png"
-  - "/images/case-studies/ubicuity/gallery/gallery2.png"
-  - "/images/case-studies/ubicuity/gallery/gallery3.png"
-  - "/images/case-studies/ubicuity/gallery/gallery4.png"
-  - "/images/case-studies/ubicuity/gallery/gallery5.png"
-  - "/images/case-studies/ubicuity/gallery/gallery6.png"
+  - "/images/case-studies/ubicuity/gallery/gallery1.webp"
+  - "/images/case-studies/ubicuity/gallery/gallery2.webp"
+  - "/images/case-studies/ubicuity/gallery/gallery3.webp"
+  - "/images/case-studies/ubicuity/gallery/gallery4.webp"
+  - "/images/case-studies/ubicuity/gallery/gallery5.webp"
+  - "/images/case-studies/ubicuity/gallery/gallery6.webp"
 metatitle: "Ubicuity Case Study: Interactive Digital Spaces | SpaceDev"
 metadescription: "SpaceDev built Ubicuity's frontend tooling: a Figma-like visual designer, code editor, and React Native app powering digital experiences at museums and fairs."
 ---

@@ -5,7 +5,7 @@ publishedAt: 2024-04-02
 author: federico-sendra
 category: "Blockchain Trends"
 tags: ["blockchain-basics", "fintech"]
-cover: "/images/content/kCetyET6H0EvLGrRcVOTSUfAfqo.png"
+cover: "/images/content/kCetyET6H0EvLGrRcVOTSUfAfqo.webp"
 readTime: 4
 metatitle: "Bitcoin 101: Basic Concepts Everyone Must Know | SpaceDev"
 metadescription: "Bitcoin basics explained: how the world's first cryptocurrency works, why it matters, and the fundamental concepts everyone interested in crypto must know."

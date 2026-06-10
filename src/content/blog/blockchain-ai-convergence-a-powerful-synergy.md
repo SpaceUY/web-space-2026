@@ -6,7 +6,7 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["ai", "web3-infrastructure"]
 readTime: 5
-cover: "/images/content/DmHKXFBCvlA7Y9zmzYpBfOzzko.png"
+cover: "/images/content/DmHKXFBCvlA7Y9zmzYpBfOzzko.webp"
 takeaways:
   - AI deal value surged 52% in 2024 to $131.5 billion; blockchain market projected to reach $306 billion by 2030
   - Blockchain ensures data integrity for AI models while AI enhances blockchain security through anomaly detection

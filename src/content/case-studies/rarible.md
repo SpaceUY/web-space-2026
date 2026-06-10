@@ -51,7 +51,7 @@ clutchReview:
   stars: 5
   url: "https://clutch.co/profile/spacedev"
 gallery:
-  - "/images/case-studies/rarible/gallery/gallery1.png"
+  - "/images/case-studies/rarible/gallery/gallery1.webp"
   - "/images/case-studies/rarible/gallery/gallery2.png"
   - "/images/case-studies/rarible/gallery/gallery3.png"
   - "/images/case-studies/rarible/gallery/gallery4.png"

@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["web3-infrastructure", "defi"]
 readTime: 10
-cover: "/images/content/ISwpOm131QIqCH8MFaadZ9zSvus.png"
+cover: "/images/content/ISwpOm131QIqCH8MFaadZ9zSvus.webp"
 takeaways:
   - ZK rollups enable faster finality without challenge periods, making them suitable for regulated RWA workflows that require predictable settlement timelines.
   - Data availability strategy fundamentally determines user exit rights; Ethereum blobs offer cost efficiency but have ~18-day retention windows, while external DA layers present different trade-offs.

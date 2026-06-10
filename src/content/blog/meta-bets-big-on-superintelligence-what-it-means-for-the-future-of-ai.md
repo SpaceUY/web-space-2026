@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: "AI"
 tags: ["ai"]
 readTime: 4
-cover: "/images/content/YsbdX3EJ9VDlsYSu4d9uLfVvKy4.png"
+cover: "/images/content/YsbdX3EJ9VDlsYSu4d9uLfVvKy4.webp"
 metatitle: "Meta's Superintelligence Bet: The Future of AI | SpaceDev"
 metadescription: "Meta is investing hundreds of billions in superintelligence and AI supercomputers. Here's how Zuckerberg's bet reshapes the competitive AI landscape."
 ---
