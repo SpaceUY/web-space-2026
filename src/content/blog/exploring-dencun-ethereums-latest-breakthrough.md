@@ -7,6 +7,8 @@ category: "Blockchain Trends"
 tags: ["web3-infrastructure"]
 cover: "/images/content/VBWL0xqiCNsme8WFULlHgc2YMhs.png"
 readTime: 4
+metatitle: "Ethereum's Dencun Upgrade Explained: Scalability Wins"
+metadescription: "Ethereum's Dencun upgrade marks a major milestone for scalability and efficiency, cutting congestion and transaction fees for users and developers alike."
 ---
 
 The cryptoverse is surfing the ripples of Ethereum's latest upgrade! Known as Dencun, it represents a significant milestone towards scalability and efficiency. Bringing optimization to Ethereum's bandwidth, it addresses long-standing concerns about congestion and high transaction fees – think of it as widening lanes on a highway to accommodate more traffic – for users and developers alike.

@@ -13,6 +13,8 @@ takeaways:
   - Implementation requires minimal developer effort with just four lines of code.
   - MPC-TSS key management provides enterprise-grade security through distributed key storage.
   - Solution scales from individual developers to enterprise clients.
+metatitle: "MetaMask Embedded Wallets for Web3 Onboarding | SpaceDev"
+metadescription: "MetaMask Embedded Wallets remove seed phrases and extensions from Web3 onboarding, using social login to boost user retention in your dApp from day one."
 ---
 
 At SpaceDev, we spend our days deep in the trenches with developers, helping teams bring ambitious Web3 ideas to life. And if there's one thing we've consistently seen, it's how crucial a smooth onboarding experience is for user retention.

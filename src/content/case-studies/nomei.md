@@ -53,6 +53,8 @@ metrics:
     label: "Subscription tiers"
   - value: "Ongoing"
     label: "End-to-end partnership"
+metatitle: "Nomei Case Study: AI Personal Growth Platform | SpaceDev"
+metadescription: "SpaceDev is Nomei's end-to-end product engineering partner, shipping an AI coaching platform with long-term memory, safeguarding, and emotional analytics."
 ---
 
 ## The Challenge

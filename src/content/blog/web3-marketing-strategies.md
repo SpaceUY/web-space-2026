@@ -8,6 +8,7 @@ tags: ["product-growth", "web3-infrastructure"]
 readTime: 6
 metatitle: "Web3 Marketing Strategies: From Basic to Advanced"
 cover: "/images/content/hxho9VrUWQGx6HtGs0MBU04Ln1M.png"
+metadescription: "Most Web3 marketing chases hype. Learn the strategies that compound: community, narrative, distribution, and product-led growth loops beyond bull markets."
 ---
 
 Most Web3 marketing playbooks were written for one specific market condition: a bull run. They optimize for a moment, not a movement. The teams that actually compound (Rarible, Aave, Optimism) built distribution that survived multiple cycles.

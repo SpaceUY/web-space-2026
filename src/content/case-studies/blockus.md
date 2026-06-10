@@ -59,6 +59,8 @@ gallery:
   - "/images/case-studies/blockus/gallery/gallery4.png"
   - "/images/case-studies/blockus/gallery/gallery5.png"
   - "/images/case-studies/blockus/gallery/gallery6.png"
+metatitle: "Blockus Case Study: Web3 Gaming Infrastructure | SpaceDev"
+metadescription: "SpaceDev built Blockus's Web3 gaming platform: NFT management API, instant wallets, gasless transactions, and Stripe payments for blockchain game economies."
 ---
 
 ## The Challenge

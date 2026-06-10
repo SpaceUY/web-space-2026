@@ -13,6 +13,8 @@ takeaways:
   - Compliance and identity gating should be architected upfront using standards like ERC-3643, not retrofitted after launch.
   - Proof generation and verification costs are distinct line items; verification gas budgets depend primarily on proof system selection (Groth16, PLONK, STARK).
   - Five recurring failure modes (off-chain provenance gaps, circuit bloat, DA strategy vagueness, late-stage compliance integration, and oracle staleness) have documented mitigation strategies.
+metatitle: "ZK Rollups for RWAs: Architecture, Costs, Pitfalls"
+metadescription: "Tokenized real-world assets top $26.5B on public chains. How ZK rollups fit RWA infrastructure: architecture choices, costs, and pitfalls to avoid."
 ---
 
 ## Reality Check

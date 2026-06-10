@@ -40,6 +40,8 @@ gallery:
   - "/images/case-studies/bondi-finance/gallery/gallery3.png"
   - "/images/case-studies/bondi-finance/gallery/gallery4.png"
   - "/images/case-studies/bondi-finance/gallery/gallery5.png"
+metatitle: "Bondi Finance: Bond Tokenization DeFi Case Study | SpaceDev"
+metadescription: "SpaceDev built Bondi Finance's smart contract infrastructure from scratch: KYC-gated bond tokenization, USDC funding, and NFT rewards bridging TradFi and DeFi."
 ---
 
 ## The Challenge

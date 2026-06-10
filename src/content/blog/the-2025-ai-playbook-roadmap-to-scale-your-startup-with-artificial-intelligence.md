@@ -13,6 +13,8 @@ takeaways:
   - Budget-friendly entry points exist; specialized expertise helps bridge execution gaps.
   - Clean, centralized data is a prerequisite; compliance and privacy are competitive advantages.
   - AI tools can extend team capacity 2-3x without proportional hiring increases.
+metatitle: "AI Playbook: Scale Your Startup with AI | SpaceDev"
+metadescription: "A practical AI roadmap for startups: data foundations, automation, predictive and generative AI, and how to scale team capacity without overhiring."
 ---
 
 ## Introduction: Why AI is No Longer Optional

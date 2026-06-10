@@ -7,6 +7,8 @@ category: "AI"
 tags: ["ai"]
 readTime: 4
 cover: "/images/content/YsbdX3EJ9VDlsYSu4d9uLfVvKy4.png"
+metatitle: "Meta's Superintelligence Bet: The Future of AI | SpaceDev"
+metadescription: "Meta is investing hundreds of billions in superintelligence and AI supercomputers. Here's how Zuckerberg's bet reshapes the competitive AI landscape."
 ---
 
 If there was ever any doubt that AI is the battleground of the future, Mark Zuckerberg just erased it.

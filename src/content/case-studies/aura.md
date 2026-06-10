@@ -51,6 +51,8 @@ gallery:
   - "/images/case-studies/aura/gallery/gallery4.png"
   - "/images/case-studies/aura/gallery/gallery5.png"
   - "/images/case-studies/aura/gallery/gallery6.png"
+metatitle: "Aura Case Study: Gold-Backed Fintech App on XAUT | SpaceDev"
+metadescription: "SpaceDev led Aura from discovery to production in 5.5 months, building a fintech mobile app for gold-backed savings and investment powered by Tether's XAUT."
 ---
 
 ## The Challenge

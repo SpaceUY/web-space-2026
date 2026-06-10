@@ -7,6 +7,8 @@ category: "Blockchain Trends"
 tags: ["product-growth", "blockchain-basics"]
 cover: "/images/content/eGC3vJH4dLUVuXBOVdkGVL066FE.png"
 readTime: 4
+metatitle: "How Hard Is It to Become a Blockchain Developer? | SpaceDev"
+metadescription: "An honest look at the path to becoming a blockchain developer: the learning curve, smart contract skills, career opportunities, and how to get started."
 ---
 
 One of the rarest events in tech is finding yourself in a static position. With the highest turnover rates of any sector, constantly changing trends, the continuous appearance of disruptive products or technologies, and an ecosystem with as much corporate diversity as there are people, developers never "know enough" and are always challenged either by the projects they do or the very tools they use.

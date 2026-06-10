@@ -7,6 +7,7 @@ category: "Blockchain Trends"
 tags: ["web3-infrastructure", "blockchain-basics"]
 cover: "/images/content/VBWL0xqiCNsme8WFULlHgc2YMhs.png"
 readTime: 5
+metadescription: "From conferences and hackathons to workshops and meetups, here's your complete guide to Ethereum events for the rest of 2024 as the community keeps growing."
 ---
 
 The blockchain community keeps growing with fresh events emerging worldwide. These gatherings, ranging from large conferences to smaller meetups, welcome developers, investors, and enthusiasts to network, learn, and collaborate. This comprehensive guide highlights upcoming Ethereum events through year-end.

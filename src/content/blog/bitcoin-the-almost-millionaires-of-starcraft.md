@@ -7,6 +7,8 @@ category: Blockchain Trends
 tags: ["blockchain-basics", "nft-gaming"]
 cover: "/images/content/3fuM3Z1MSowq1AA5jeBRovzFEFk.png"
 readTime: 3
+metatitle: "Bitcoin & the Almost Millionaires of StarCraft | SpaceDev"
+metadescription: "How losing a StarCraft tournament almost made gamers Bitcoin millionaires: one of the most curious stories in crypto history, from esports' golden era."
 ---
 
 Imagine becoming a millionaire after NOT winning a tournament.

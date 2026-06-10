@@ -7,6 +7,8 @@ category: "Blockchain Trends"
 tags: ["blockchain-basics", "fintech"]
 cover: "/images/content/kCetyET6H0EvLGrRcVOTSUfAfqo.png"
 readTime: 4
+metatitle: "Bitcoin 101: Basic Concepts Everyone Must Know | SpaceDev"
+metadescription: "Bitcoin basics explained: how the world's first cryptocurrency works, why it matters, and the fundamental concepts everyone interested in crypto must know."
 ---
 
 Bitcoin, the world's first and most prominent cryptocurrency, has been making headlines lately. As of today, the price of one Bitcoin is hovering around $71K dollars, recovering strength from last week's retrace.

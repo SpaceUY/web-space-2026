@@ -7,6 +7,8 @@ category: "Web2 Trends"
 tags: ["product-growth", "web3-infrastructure"]
 readTime: 3
 cover: "/images/content/hxho9VrUWQGx6HtGs0MBU04Ln1M.png"
+metatitle: "Top 5 Web3 Marketing Agencies for Your Business | SpaceDev"
+metadescription: "Discover the top 5 Web3 marketing agencies specializing in blockchain, DeFi, and NFT promotion to help your Web3 business reach the right audience."
 ---
 
 Web3, the decentralized web, is reshaping the way businesses connect with their audiences, leveraging blockchain, decentralized finance (DeFi), non-fungible tokens (NFTs) and other technologies to create a more transparent, secure, and engaging online experience.

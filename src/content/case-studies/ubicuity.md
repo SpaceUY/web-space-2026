@@ -41,6 +41,8 @@ gallery:
   - "/images/case-studies/ubicuity/gallery/gallery4.png"
   - "/images/case-studies/ubicuity/gallery/gallery5.png"
   - "/images/case-studies/ubicuity/gallery/gallery6.png"
+metatitle: "Ubicuity Case Study: Interactive Digital Spaces | SpaceDev"
+metadescription: "SpaceDev built Ubicuity's frontend tooling: a Figma-like visual designer, code editor, and React Native app powering digital experiences at museums and fairs."
 ---
 
 ## The Challenge

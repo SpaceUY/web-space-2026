@@ -37,6 +37,8 @@ gallery:
   - "/images/case-studies/w3e/gallery/gallery3.png"
   - "/images/case-studies/w3e/gallery/gallery4.png"
   - "/images/case-studies/w3e/gallery/gallery5.png"
+metatitle: "W3E Case Study: Web3 Gaming Launchpad for IDOs | SpaceDev"
+metadescription: "SpaceDev built W3E's Web3 gaming launchpad: cross-chain smart contracts, IDO and INO participation flows, staking, and analytics for blockchain gaming fans."
 ---
 
 ## The Challenge

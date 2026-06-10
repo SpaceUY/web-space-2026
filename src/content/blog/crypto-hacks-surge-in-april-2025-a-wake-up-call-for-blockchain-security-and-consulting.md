@@ -11,6 +11,8 @@ takeaways:
   - $357 million in losses across 18 crypto incidents in April 2025 (990% increase from March)
   - A social engineering scam resulted in 3,520 BTC (~$330.7 million) theft from a U.S. investor
   - Surface-level security measures are insufficient; comprehensive cybersecurity strategy is essential
+metatitle: "Crypto Hacks Surge: A Blockchain Security Wake-Up Call"
+metadescription: "April 2025 saw $357 million lost across 18 crypto hacks, a 990% jump from March. Why smart contract audits and blockchain security are now non-negotiable."
 ---
 
 April 2025 marked a significant escalation in crypto-related cyberattacks, with **losses totaling approximately $357 million across 18 incidents**, a staggering **990% increase** compared to March.

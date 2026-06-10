@@ -13,6 +13,7 @@ takeaways:
   - Oracles present challenges for blockchains handling real-world data
   - Distribution may better describe blockchain architecture than decentralization
   - Innovative structural changes could improve consensus mechanisms
+metadescription: "SpaceDev explores why blockchains consistently fall short of true decentralization, the real challenges of Web3 infrastructure, and what might change that."
 ---
 
 The SpaceDev team has been immersed in blockchain fundamentals recently. Juan Manuel Sobral and Elina García, specialists with academic and professional backgrounds, elevated company-wide understanding through regular Tech Talks sessions.

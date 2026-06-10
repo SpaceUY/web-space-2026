@@ -28,7 +28,7 @@ const industries = [
 ];
 ---
 
-<ServicePageLayout data={staffAugData}>
+<ServicePageLayout data={{ ...staffAugData, seo: { title: "IT Staff Augmentation & Nearshore Teams | SpaceDev", description: "IT staff augmentation with pre-vetted nearshore developers, designers, and specialists ready in under 2 weeks. Scale your team with SpaceDev today." } }}>
   <!-- INTRO: feature block + marquee — injects between hero and 4-step process -->
   <div slot="pre-process">
     <section class="bg-sd-light-2 py-20 md:py-28 border-b border-sd-gray-border">

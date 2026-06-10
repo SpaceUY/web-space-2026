@@ -42,6 +42,8 @@ gallery:
   - "/images/case-studies/athleteai/gallery/gallery4.png"
   - "/images/case-studies/athleteai/gallery/gallery5.png"
   - "/images/case-studies/athleteai/gallery/gallery6.png"
+metatitle: "AthleteAI Case Study: Sports Highlights App | SpaceDev"
+metadescription: "SpaceDev built AthleteAI's iOS app in four months: React Native video capture, highlight reels, and Mux streaming, used at live basketball tournaments."
 ---
 
 ## The Challenge

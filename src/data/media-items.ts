@@ -7,6 +7,10 @@ export interface MediaItem {
   highlight: string;
   image: string;
   body: string;
+  /** SEO meta description override (140–160 chars); falls back to highlight */
+  seoDescription?: string;
+  /** SEO <title> override (≤ 60 chars, replaces the full title) */
+  seoTitle?: string;
 }
 
 export const mediaItems: MediaItem[] = [
@@ -17,6 +21,8 @@ export const mediaItems: MediaItem[] = [
     location: "Remote",
     tags: ["Blockchain", "AI", "Hackathon"],
     highlight: "2nd place: AI-powered smart contract auditor",
+    seoDescription:
+      "SpaceDev won 2nd place at the Hedera AI x Hackathon with Contracts Auditor, an AI agent that audits smart contracts in real time and posts results on-chain.",
     image: "/images/content/XmV4LZomh05W5CVRT4vmq0Nuo.png",
     body: `Over several high-energy weeks, the Hedera x AI Hackathon brought together builders from around the world to explore the intersection of decentralized infrastructure and artificial intelligence. Organized by the [Hedera](https://hedera.com/) Foundation and Hashgraph, the program attracted:
 
@@ -52,6 +58,8 @@ Big congrats again to Santi and the team. We're proud 🚀💜`,
     location: "Panama City, Panama",
     tags: ["Ethereum", "Web3"],
     highlight: "3 speakers + co-organized the hackathon",
+    seoDescription:
+      "SpaceDev co-organized the ETH Canal hackathon in Panama City and brought three speakers, including CTO Juan Manuel Sobral, to Ethereum's premier LATAM event.",
     image: "/images/content/OGPyJFH6FLi6cbxKox8VcWnEChE.png",
     body: `From April 18 to 25, Panama City was home to one of Ethereum's annual premiere events, ETH Canal. Developers, entrepreneurs, public sector leaders, and blockchain enthusiasts from around the world converged to bridge global innovation with local ecosystems, fostering collaboration and showcasing advancements in blockchain.
 
@@ -80,6 +88,8 @@ Juan Manuel's: [https://www.youtube.com/watch?v=rwXz-8YzErw](https://www.youtube
     location: "Montevideo, Uruguay",
     tags: ["Community", "Education"],
     highlight: "20+ students aged 12–14 introduced to tech careers",
+    seoDescription:
+      "SpaceDev hosted Techy for a Day in Montevideo, welcoming 20+ students aged 12-14 to explore tech careers for International Girls in ICT Day with CUTI.",
     image: "/images/content/HJg078MZp7nMebbEjdTJK9P4Ew.png",
     body: `On April 23rd, SpaceDev hosted a special edition of "Techy for a Day," an initiative organized annually by CUTI (Uruguayan Chamber of Information Technologies) to commemorate International Girls in ICT Day. Although the official date was April 24th, the Space team's schedule required them to celebrate it a day earlier, allowing them to better prepare for the occasion.
 
@@ -106,6 +116,9 @@ Once again, "Techy for a Day" proved that opening the doors of the tech industry
     location: "Montevideo, Uruguay",
     tags: ["Media", "Blockchain"],
     highlight: "CTO Juan Manuel Sobral on radio program \"Se Arregla el Mundo\"",
+    seoTitle: "SpaceDev CTO Analyzes the $LIBRA Scandal on Uruguayan Radio",
+    seoDescription:
+      "SpaceDev CTO Juan Manuel Sobral analyzed the $LIBRA meme coin scandal on radio show Se Arregla el Mundo, explaining blockchain transparency and crypto risks.",
     image: "/images/content/8JXs19LZQA3XBCpVLDzsjFTChAg.png",
     body: `Last week, our CTO and co-founder, Juan Manuel Sobral, participated in the radio show [Se Arregla el Mundo](https://www.youtube.com/watch?v=-8pIflHWR-s) to analyze one of decentralized space's hottest topics: the scandal involving Argentine President Javier Milei and the meme coin $LIBRA.
 
@@ -126,6 +139,9 @@ At SpaceDev, we remain committed to education and building secure, reliable bloc
     location: "Montevideo, Uruguay",
     tags: ["Blockchain", "Conference"],
     highlight: "CEO Federico Sendra keynote speaker",
+    seoTitle: "SpaceDev CEO Keynotes Blockchain Talk at Google DevFest",
+    seoDescription:
+      "SpaceDev CEO Federico Sendra delivered The Blockchain Revolution keynote at Google DevFest Montevideo, covering trust, security, and real web3 use cases.",
     image: "/images/content/QViIAM5GOjsnPVrrLM0WSr5juU.png",
     body: `On Saturday, November 16, SpaceDev CEO and co-founder Federico Sendra participated in the renowned Google DevFest event. If you're not familiar with GDF, they are annual tech conferences organized by Google Developer Groups (GDG) communities around the globe. These gatherings provide a platform for local developers to connect, learn, and build using Google's tools and technologies.
 
@@ -159,6 +175,8 @@ Until next time!
     location: "Montevideo, Uruguay",
     tags: ["Product", "Leadership"],
     highlight: "CTO spoke on product leadership and innovation culture",
+    seoDescription:
+      "SpaceDev CTO Juan Manuel Sobral spoke at ProductTank Montevideo on product leadership, innovation culture, and lessons from building resilient tech teams.",
     image: "/images/content/oMuEpBFoB9O0x6rNU6qQRmdk02U.png",
     body: `On November 14, a new edition of ProductTank took place at Uruguay Innovation Hub's Innovation Campus. Titled "Towards a More Innovative Uruguay," the event brought together two prominent entrepreneurs from the local tech scene to share their insights on creating impactful products in a competitive market and building scalable, resilient teams.
 
@@ -195,6 +213,8 @@ Before an audience eager to make an impact in the world, their insights highligh
     location: "Montevideo, Uruguay",
     tags: ["Ethereum", "Hackathon"],
     highlight: "20 teams from 12 countries, with Vitalik Buterin as surprise guest",
+    seoDescription:
+      "SpaceDev co-mentored Ethereum Uruguay's first Buildathon, where 20 teams from 12 countries built web3 projects and Vitalik Buterin made a surprise visit.",
     image: "/images/content/64v7ic0nCR8AHLwB1CKVleMXbw.jpg",
     body: `The much-anticipated Ethereum Uruguay Buildathon was a resounding success for the community despite being the first of its kind in the country's history. Held on August 15-16 as part of the larger Ethereum Conference, the event brought together both enthusiasts and experts from blockchain and crypto who soon found themselves in an environment filled with creativity, learning, and collaboration.
 
@@ -223,6 +243,9 @@ Ethereum Uruguay continues to establish itself as a key regional figure when it 
     location: "Montevideo, Uruguay",
     tags: ["Recognition", "Leadership"],
     highlight: "Recognized by Experis / ManpowerGroup alongside President Lacalle Pou",
+    seoTitle: "SpaceDev CTO Named Among Uruguay's Top 25 Tech Leaders",
+    seoDescription:
+      "SpaceDev CTO Juan Manuel Sobral was named one of Uruguay's top 25 tech leaders by Experis ManpowerGroup, at an event attended by President Lacalle Pou.",
     image: "/images/content/4iLfAiTTcdW0rd1pSEocerjB9V0.png",
     body: `On May 31st, [Experis](https://www.experis.com.uy/wps/portal/experis/v3/uy/inicio) presented the book "25 Leaders Transforming Technology in Uruguay," recognizing the professionals driving the advancement of the ICT sector in the country. The event, held on the 22nd floor of the World Trade Center Montevideo Free Zone tower, was attended by prominent industry figures, including the [President of Uruguay, Luis Lacalle Pou](https://es.wikipedia.org/wiki/Luis_Lacalle_Pou).
 
@@ -245,6 +268,8 @@ The book (in Spanish) can be downloaded after filling out a short form [here](ht
     location: "Miami, United States",
     tags: ["Bitcoin", "Web3"],
     highlight: "CTO panelist on \"Building and Securing Trust\"",
+    seoDescription:
+      "SpaceDev CTO Juan Manuel Sobral joined the Bitcoin Energy Summit 2024 in Miami as a panelist on Building and Securing Trust in blockchain and crypto.",
     image: "/images/content/0dgnwv0B9TDVgsLtDKiG4WSq1xY.png",
     body: `SpaceDev participated in the second edition of the Bitcoin Energy Summit, which took place in Miami on April 22-23, 2024.
 
