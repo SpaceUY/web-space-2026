@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/ui/Button.astro";
-import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
 
 const positions = [
   { title: "Full Stack Web3 Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/67321-full-stack-web3-developer" },
@@ -52,7 +51,6 @@ const jobPostingsJsonLd = {
 ---
 
 <BaseLayout
-  breadcrumbs={false}
   title="Careers at SpaceDev: Join our remote engineering team"
   description="Join SpaceDev, a top-5 Clutch blockchain company. Open remote roles in Web3, full-stack, and mobile engineering with global mentorship and benefits."
   jsonLd={jobPostingsJsonLd}
@@ -67,9 +65,8 @@ const jobPostingsJsonLd = {
       class="absolute inset-0 w-full h-full object-cover object-center"
     />
     <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(10,6,20,0.88) 25%, rgba(50,30,90,0.45) 65%, rgba(10,6,20,0.75) 100%), linear-gradient(to bottom, rgba(10,6,20,0.2) 0%, rgba(10,6,20,0.85) 100%);"></div>
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-28 md:pt-36 pb-16 md:pb-20 w-full">
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-36 pb-16 md:pt-40 md:pb-20 w-full">
       <div class="max-w-3xl" data-animate>
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Careers" }]} visible={true} class="mb-8" />
         <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-display leading-[1.05]">
           Check out our latest IT Job Openings
         </h1>

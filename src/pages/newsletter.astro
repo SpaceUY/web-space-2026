@@ -1,9 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Badge from "../components/ui/Badge.astro";
-import SectionHeading from "../components/ui/SectionHeading.astro";
-import Card from "../components/ui/Card.astro";
-import HubSpotForm from "../components/HubSpotForm.astro";
+import NewsletterForm from "../components/ui/NewsletterForm.astro";
 
 const valueProps = [
   { title: "Practical, not promotional", description: "We write the kind of articles we wish we'd had when we were learning. No fluff, no listicles." },
@@ -16,44 +13,54 @@ const valueProps = [
   title="Newsletter | SpaceDev — Engineering notes from the team"
   description="Occasional updates from the SpaceDev engineering team. Practical articles on Web3, security, and product. Roughly monthly. No spam."
 >
-  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="relative mx-auto max-w-[1100px] px-6 md:px-10 py-20 md:py-28">
-      <div class="max-w-2xl" data-animate>
-        <Badge tone="green" withDot class="mb-6">Newsletter</Badge>
-        <h1 class="text-4xl md:text-6xl text-white">Engineering notes, in your inbox</h1>
-        <p class="mt-6 text-lg text-sd-text-muted leading-relaxed">
-          Occasional articles from the SpaceDev engineering team on Web3 security, product discovery,
-          and the technologies we ship in production.
-        </p>
-      </div>
-    </div>
-  </section>
+  <section class="relative overflow-hidden min-h-[80vh] flex flex-col justify-center bg-sd-dark">
+    <div class="relative w-full mx-auto max-w-[1440px] px-6 md:px-10 pt-36 pb-20 md:pt-40 md:pb-28">
+      <div class="grid gap-16 md:grid-cols-[1fr_auto] md:items-center">
 
-  <section class="bg-sd-dark py-16 md:py-24">
-    <div class="mx-auto max-w-[1100px] px-6 md:px-10 grid gap-12 lg:grid-cols-2">
-      <div data-animate>
-        <SectionHeading eyebrow="Subscribe" title="Get the next one" class="mb-8" />
-        <Card variant="dark" hover={false}>
-          <HubSpotForm />
-        </Card>
-        <p class="mt-4 text-xs text-sd-text-muted">
-          We use HubSpot to manage subscriptions. Unsubscribe in one click anytime.
-        </p>
-      </div>
-
-      <div class="space-y-6">
-        {valueProps.map((v) => (
-          <div class="flex gap-4" data-animate>
-            <div class="shrink-0 w-10 h-10 rounded-full bg-sd-purple/15 text-sd-purple-300 flex items-center justify-center" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <h3 class="text-base text-white mb-1">{v.title}</h3>
-              <p class="text-sm text-sd-text-muted leading-relaxed">{v.description}</p>
-            </div>
+        <!-- LEFT: title + form -->
+        <div data-animate>
+          <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-display leading-[1.05]">Engineering notes, in your inbox</h1>
+          <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-xl leading-relaxed">
+            Occasional articles from the SpaceDev engineering team on Web3 security, product discovery,
+            and the technologies we ship in production.
+          </p>
+          <div class="mt-10 max-w-sm">
+            <NewsletterForm />
           </div>
-        ))}
+          <p class="mt-3 text-xs text-white/40">No spam. Unsubscribe in one click anytime.</p>
+        </div>
+
+        <!-- RIGHT: value props, staggered animation -->
+        <div class="hidden md:flex flex-col gap-8 max-w-xs">
+          {valueProps.map((v, i) => (
+            <div
+              class="nl-prop flex gap-4"
+              style={`--delay: ${i * 180}ms`}
+            >
+              <div class="shrink-0 w-8 h-8 rounded-full bg-white/8 text-white/50 flex items-center justify-center mt-0.5" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h3 class="text-sm text-white font-medium mb-1">{v.title}</h3>
+                <p class="text-sm text-white/45 leading-relaxed">{v.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   </section>
+
+  <style>
+    .nl-prop {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: nl-rise 0.55s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+      animation-delay: calc(0.6s + var(--delay));
+    }
+    @keyframes nl-rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </BaseLayout>

@@ -11,9 +11,18 @@ interface Props {
   /** When true, render visible breadcrumbs (in addition to JSON-LD) */
   visible?: boolean;
   class?: string;
+  /** "dark" (default) = white text for dark bg. "light" = dark text for light bg */
+  tone?: "dark" | "light";
 }
 
-const { items, visible = false, class: className = "" } = Astro.props;
+const { items, visible = false, class: className = "", tone = "dark" } = Astro.props;
+
+const isLight = tone === "light";
+const pillBg    = isLight ? "bg-black/5 border-black/10"   : "bg-white/8 border-white/15";
+const textMuted = isLight ? "text-sd-text-gray/70"          : "text-white/50";
+const textActive = isLight ? "text-sd-text-dark"            : "text-white";
+const mobileText = isLight ? "text-sd-text-gray/70"         : "text-white/60";
+const mobileHover = isLight ? "hover:text-sd-text-dark"     : "hover:text-white/90";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -39,7 +48,7 @@ const jsonLd = {
         {parent?.href ? (
           <a
             href={parent.href}
-            class="inline-flex items-center gap-2 text-xs font-ui uppercase tracking-widest text-white/60 hover:text-white/90 transition-colors"
+            class={`inline-flex items-center gap-2 text-xs font-ui uppercase tracking-widest transition-colors ${mobileText} ${mobileHover}`}
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -47,29 +56,29 @@ const jsonLd = {
             {parent.label}
           </a>
         ) : (
-          <span class="text-xs font-ui uppercase tracking-widest text-white/60">
+          <span class={`text-xs font-ui uppercase tracking-widest ${mobileText}`}>
             {items[items.length - 1]?.label}
           </span>
         )}
       </div>
 
       {/* Desktop — pill with full path */}
-      <div class="hidden sm:inline-flex items-center rounded-full border border-white/15 bg-white/8 px-4 py-2 backdrop-blur-sm">
+      <div class={`hidden sm:inline-flex items-center rounded-full border px-4 py-2 backdrop-blur-sm ${pillBg}`}>
         <ol class="flex items-center gap-0">
           {items.map((c, idx) => (
             <li class="inline-flex items-center">
               {idx > 0 && (
-                <svg class="mx-2 opacity-30" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                  <path d="M4 2l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg class={`mx-2 ${isLight ? "opacity-25" : "opacity-30"}`} width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M4 2l4 4-4 4" stroke={isLight ? "#141414" : "white"} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               )}
               {c.href && idx < items.length - 1 ? (
                 <a
                   href={c.href}
-                  class="text-xs font-ui uppercase tracking-widest text-white/50 hover:text-white/80 transition-colors"
+                  class={`text-xs font-ui uppercase tracking-widest transition-colors ${textMuted} hover:opacity-100`}
                 >{c.label}</a>
               ) : (
-                <span class="text-xs font-ui uppercase tracking-widest text-white">{c.label}</span>
+                <span class={`text-xs font-ui uppercase tracking-widest ${textActive}`}>{c.label}</span>
               )}
             </li>
           ))}

@@ -1,0 +1,257 @@
+---
+// HubSpot portal + form IDs
+const PORTAL_ID = "22632737";
+const FORM_ID   = "acdc5149-7c32-48f4-9137-ab4212538377";
+
+// NOTE FOR FEDERICO: verify these internal field names match HubSpot form definition
+// Marketing → Forms → contact form → edit each field → "Field name" property
+const HUBSPOT_ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
+
+const helpOptions = [
+  "Advanced Blockchain Development",
+  "Web & Mobile Development",
+  "IT Staff Augmentation",
+  "Product Discovery",
+  "BlockAudit: Security Audit",
+  "Existing Software Rescue",
+  "Partnership with SpaceDev",
+  "Other",
+];
+
+const sourceOptions = [
+  "Google",
+  "LinkedIn",
+  "Email",
+  "Clutch",
+  "Upwork",
+  "Referral",
+  "Other",
+];
+---
+
+<form id="contact-form" novalidate data-endpoint={HUBSPOT_ENDPOINT}>
+  <!-- Full name -->
+  <div class="form-field">
+    <label for="cf-fullname">Full name <span class="required">*</span></label>
+    <input id="cf-fullname" name="fullname" type="text" autocomplete="name" required placeholder=" " />
+  </div>
+
+  <!-- Email -->
+  <div class="form-field">
+    <label for="cf-email">Email <span class="required">*</span></label>
+    <input id="cf-email" name="email" type="email" autocomplete="email" required placeholder=" " />
+  </div>
+
+  <!-- What do you need help with? -->
+  <div class="form-field">
+    <label for="cf-help">What do you need help with? <span class="required">*</span></label>
+    <div class="select-wrap">
+      <select id="cf-help" name="what_do_you_need_help_with_" required>
+        <option value="" disabled selected>Please select</option>
+        {helpOptions.map(o => <option value={o}>{o}</option>)}
+      </select>
+      <svg class="select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+        <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- How did you find us? -->
+  <div class="form-field">
+    <label for="cf-source">How did you find us? <span class="required">*</span></label>
+    <div class="select-wrap">
+      <select id="cf-source" name="how_did_you_find_us_" required>
+        <option value="" disabled selected>Please select</option>
+        {sourceOptions.map(o => <option value={o}>{o}</option>)}
+      </select>
+      <svg class="select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+        <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Company / LinkedIn -->
+  <div class="form-field">
+    <label for="cf-company">Company or LinkedIn profile <span class="optional">(optional)</span></label>
+    <input id="cf-company" name="company" type="text" placeholder="My website is... or my LinkedIn profile is..." />
+  </div>
+
+  <!-- Message -->
+  <div class="form-field">
+    <label for="cf-message">Message <span class="required">*</span></label>
+    <textarea id="cf-message" name="message" rows="4" required placeholder="I need support with..."></textarea>
+  </div>
+
+  <!-- Error message -->
+  <p id="cf-error" class="cf-error" aria-live="polite" hidden>Something went wrong. Please try again or email us at info@spacedev.io.</p>
+
+  <!-- Submit -->
+  <button type="submit" id="cf-submit">
+    <span id="cf-btn-label">Send</span>
+    <svg id="cf-spinner" class="cf-spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="display:none">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2.5" stroke-dasharray="31.4" stroke-dashoffset="10" stroke-linecap="round"/>
+    </svg>
+  </button>
+</form>
+
+<!-- Success state -->
+<div id="cf-success" hidden class="cf-success">
+  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+    <circle cx="20" cy="20" r="19" stroke="#673ae4" stroke-width="2"/>
+    <path d="M12 20l6 6 10-12" stroke="#673ae4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <h3>Message sent!</h3>
+  <p>We'll get back to you within 1 business day.</p>
+</div>
+
+<style>
+  form { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-family: var(--font-body, sans-serif);
+    font-weight: 400;
+  }
+  .required { color: #673ae4; }
+  .optional { color: rgba(255,255,255,0.3); font-size: 12px; }
+
+  input, textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 15px;
+    font-family: var(--font-body, sans-serif);
+    padding: 0.5rem 0;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    resize: none;
+  }
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+  input:focus, textarea:focus, select:focus { border-color: #673ae4; }
+
+  .select-wrap { position: relative; }
+  select {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 15px;
+    font-family: var(--font-body, sans-serif);
+    padding: 0.5rem 0;
+    padding-right: 1.5rem;
+    outline: none;
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 0.2s;
+  }
+  select option { background: #1e1e1e; color: #fff; }
+  select:focus { border-color: #673ae4; }
+  .select-arrow {
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.4);
+    pointer-events: none;
+  }
+
+  button[type="submit"] {
+    margin-top: 0.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 9999px;
+    background: #673ae4;
+    color: #fff;
+    font-size: 15px;
+    font-family: var(--font-body, sans-serif);
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  button[type="submit"]:hover { background: #4a397c; }
+  button[type="submit"]:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .cf-spinner {
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .cf-error {
+    font-size: 13px;
+    color: #f87171;
+    padding: 0.75rem 1rem;
+    background: rgba(248,113,113,0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(248,113,113,0.2);
+  }
+
+  .cf-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem;
+  }
+  .cf-success h3 { color: #fff; font-size: 1.25rem; font-family: var(--font-display, sans-serif); }
+  .cf-success p  { color: rgba(255,255,255,0.55); font-size: 14px; }
+</style>
+
+<script>
+  const form    = document.getElementById("contact-form") as HTMLFormElement | null;
+  const success = document.getElementById("cf-success") as HTMLElement | null;
+  const errorEl = document.getElementById("cf-error") as HTMLElement | null;
+  const submitBtn = document.getElementById("cf-submit") as HTMLButtonElement | null;
+  const btnLabel  = document.getElementById("cf-btn-label") as HTMLElement | null;
+  const spinner   = document.getElementById("cf-spinner") as HTMLElement | null;
+
+  const ENDPOINT = form?.dataset.endpoint ?? "";
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    if (submitBtn) submitBtn.disabled = true;
+    if (btnLabel)  btnLabel.textContent = "Sending...";
+    if (spinner)   spinner.style.display = "block";
+    if (errorEl)   errorEl.hidden = true;
+
+    const data = new FormData(form);
+    const fields = Array.from(data.entries())
+      .filter(([, v]) => v !== "")
+      .map(([name, value]) => ({ name, value: String(value) }));
+
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fields,
+          context: { pageUri: window.location.href, pageName: document.title },
+        }),
+      });
+
+      if (!res.ok) throw new Error();
+
+      form.hidden = true;
+      if (success) success.hidden = false;
+    } catch {
+      if (errorEl)   errorEl.hidden = false;
+      if (submitBtn) submitBtn.disabled = false;
+      if (btnLabel)  btnLabel.textContent = "Send";
+      if (spinner)   spinner.style.display = "none";
+    }
+  });
+</script>

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AnimatedCounter from "../components/ui/AnimatedCounter.astro";
-import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
 import AuthorAvatar from "../components/ui/AuthorAvatar.astro";
 import { getCollection } from "astro:content";
 import { getAuthor } from "../data/authors";
@@ -105,12 +104,6 @@ const howWeWork = [
   ──────────────────────────────────────────────────────────────────────── -->
   <div class="hero-scroll-track">
     <div class="hero-sticky">
-      <div class="absolute top-24 left-0 right-0 z-10 mx-auto max-w-[1440px] px-6 md:px-10 pointer-events-none">
-        <div class="pointer-events-auto inline-block">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About Us" }]} visible={true} />
-        </div>
-      </div>
-
       <!-- Video — starts hidden as small pill, expands after phrase fades -->
       <video autoplay muted loop playsinline class="hero-video">
         <source src="https://wbufyhm7al1rxqad.public.blob.vercel-storage.com/we_are_space2.mp4" type="video/mp4" />
