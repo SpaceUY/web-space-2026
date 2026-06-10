@@ -55,6 +55,8 @@ gallery:
   - "/images/case-studies/zenda/gallery/gallery4.png"
   - "/images/case-studies/zenda/gallery/gallery5.png"
   - "/images/case-studies/zenda/gallery/gallery6.png"
+metatitle: "Zenda Case Study: Crypto Exchange Development | SpaceDev"
+metadescription: "SpaceDev led Zenda from discovery to production: a Uruguayan crypto exchange for USDT with KYC, non-custodial wallets, RedPagos and MercadoPago payments."
 ---
 
 ## The Challenge

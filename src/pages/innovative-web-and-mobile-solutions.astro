@@ -4,7 +4,7 @@ import Button from "../components/ui/Button.astro";
 import { webMobileData } from "../data/services";
 ---
 
-<ServicePageLayout data={webMobileData}>
+<ServicePageLayout data={{ ...webMobileData, seo: { title: "Custom Web & Mobile App Development Services | SpaceDev", description: "Custom software, web, and mobile app development engineered for scale. React, Next.js, React Native, and Python experts. Design, ship, and iterate." } }}>
   <!-- ENGINEERING WHAT USERS LOVE — right after hero -->
   <div slot="pre-process">
     <section class="bg-sd-light-2 py-20 md:py-28 border-b border-sd-gray-border">

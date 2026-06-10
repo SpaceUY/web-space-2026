@@ -6,13 +6,15 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["web3-infrastructure", "defi"]
 readTime: 10
-cover: "/images/content/ISwpOm131QIqCH8MFaadZ9zSvus.png"
+cover: "/images/content/ISwpOm131QIqCH8MFaadZ9zSvus.webp"
 takeaways:
   - ZK rollups enable faster finality without challenge periods, making them suitable for regulated RWA workflows that require predictable settlement timelines.
   - Data availability strategy fundamentally determines user exit rights; Ethereum blobs offer cost efficiency but have ~18-day retention windows, while external DA layers present different trade-offs.
   - Compliance and identity gating should be architected upfront using standards like ERC-3643, not retrofitted after launch.
   - Proof generation and verification costs are distinct line items; verification gas budgets depend primarily on proof system selection (Groth16, PLONK, STARK).
   - Five recurring failure modes (off-chain provenance gaps, circuit bloat, DA strategy vagueness, late-stage compliance integration, and oracle staleness) have documented mitigation strategies.
+metatitle: "ZK Rollups for RWAs: Architecture, Costs, Pitfalls"
+metadescription: "Tokenized real-world assets top $26.5B on public chains. How ZK rollups fit RWA infrastructure: architecture choices, costs, and pitfalls to avoid."
 ---
 
 ## Reality Check

@@ -69,7 +69,7 @@ const relatedServices = [
 ];
 ---
 
-<ServicePageLayout data={layer1Data}>
+<ServicePageLayout data={{ ...layer1Data, seo: { title: "Custom Layer 1 Blockchain Development Services | SpaceDev", description: "Layer 1 blockchain development with Cosmos SDK, Substrate, EVM chains, and Avalanche subnets, from consensus design and tokenomics to mainnet launch." } }}>
   <div slot="pre-process">
 
     <!-- ① Overview -->

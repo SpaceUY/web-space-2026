@@ -6,7 +6,8 @@ author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["nft-gaming", "web3-infrastructure"]
 readTime: 4
-cover: "/images/content/GGG67bdz69DgCTI3JuvX59NA.png"
+cover: "/images/content/GGG67bdz69DgCTI3JuvX59NA.webp"
+metadescription: "Blockchain can fix the music industry's biggest problems, bringing greater transparency and fairer royalty distribution to artists through Web3 technology."
 ---
 
 Remember the excitement of getting your first CD? I do! It was Limp Bizkit's Chocolate Starfish and the Hot Dog Flavored Water (hey, that's a title). Back then, opening a CD's plastic case and leafing through the booklet had the combined thrill of a Christmas morning and an initiation ritual; our cultural interactions used to be more connected to physical objects, for better or worse. Before you say something about age, I'm in my early thirties! But that's the thing, after I got my first records as a teen, mp3 players were already popular and streaming took over not long after that.

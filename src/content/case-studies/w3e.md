@@ -33,10 +33,12 @@ deliverables:
 outcome: "The W3E Gaming Launchpad provides a direct and simple way to interact with every participant, event, and opportunity in W3E's community. The MVP launched on the web in a staging environment, making investing in blockchain gaming more intuitive and accessible for W3E's growing user base."
 gallery:
   - "/images/case-studies/w3e/gallery/gallery1.png"
-  - "/images/case-studies/w3e/gallery/gallery2.png"
+  - "/images/case-studies/w3e/gallery/gallery2.webp"
   - "/images/case-studies/w3e/gallery/gallery3.png"
-  - "/images/case-studies/w3e/gallery/gallery4.png"
-  - "/images/case-studies/w3e/gallery/gallery5.png"
+  - "/images/case-studies/w3e/gallery/gallery4.webp"
+  - "/images/case-studies/w3e/gallery/gallery5.webp"
+metatitle: "W3E Case Study: Web3 Gaming Launchpad for IDOs | SpaceDev"
+metadescription: "SpaceDev built W3E's Web3 gaming launchpad: cross-chain smart contracts, IDO and INO participation flows, staking, and analytics for blockchain gaming fans."
 ---
 
 ## The Challenge

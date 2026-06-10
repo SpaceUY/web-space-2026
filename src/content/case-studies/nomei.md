@@ -23,9 +23,9 @@ publishedAt: 2025-05-01
 heroImage: "/images/case-studies/nomei/nomei_.png"
 gallery:
   - "/images/case-studies/nomei/gallery/gallery1.png"
-  - "/images/case-studies/nomei/gallery/gallery2.png"
+  - "/images/case-studies/nomei/gallery/gallery2.webp"
   - "/images/case-studies/nomei/gallery/gallery3.png"
-  - "/images/case-studies/nomei/gallery/gallery4.png"
+  - "/images/case-studies/nomei/gallery/gallery4.webp"
 summary: "Nomei is an AI-native personal development platform that brings meditation, AI coaching, journaling, manifestation audio, and community into a single connected experience. SpaceDev acts as Nomei's end-to-end product engineering and product management partner, owning delivery from discovery through production, and has shipped the platform's most defensible capabilities: a long-term Memory engine, an enterprise-grade Safeguarding system, and a cross-feature emotional analytics layer."
 objectives:
   - "Replace the fragmented stack of single-purpose wellness apps with one integrated experience that knows the user across every feature."
@@ -53,6 +53,8 @@ metrics:
     label: "Subscription tiers"
   - value: "Ongoing"
     label: "End-to-end partnership"
+metatitle: "Nomei Case Study: AI Personal Growth Platform | SpaceDev"
+metadescription: "SpaceDev is Nomei's end-to-end product engineering partner, shipping an AI coaching platform with long-term memory, safeguarding, and emotional analytics."
 ---
 
 ## The Challenge

@@ -36,7 +36,7 @@ gallery:
   - "/images/case-studies/twispi/gallery/gallery2.png"
   - "/images/case-studies/twispi/gallery/gallery3.png"
   - "/images/case-studies/twispi/gallery/gallery4.png"
-  - "/images/case-studies/twispi/gallery/gallery5.png"
+  - "/images/case-studies/twispi/gallery/gallery5.webp"
 ---
 
 ## The Challenge

@@ -39,6 +39,8 @@ gallery:
   - "/images/case-studies/acme/gallery/gallery4.png"
   - "/images/case-studies/acme/gallery/gallery5.png"
   - "/images/case-studies/acme/gallery/gallery6.png"
+metatitle: "ACME Case Study: Web3 Loyalty Points Platform | SpaceDev"
+metadescription: "SpaceDev upgraded ACME's Web3 loyalty platform with multi-chain blockchain development, enabling one-tap crypto payments, NFTs, and smart contracts."
 ---
 
 ## The Challenge

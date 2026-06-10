@@ -34,7 +34,7 @@ const whyUs = [
 ];
 ---
 
-<ServicePageLayout data={energyData}>
+<ServicePageLayout data={{ ...energyData, seo: { ...energyData.seo, description: "Blockchain development for energy: trading platforms, REC tokenization, and carbon credit tracking for utilities and renewables. Talk to SpaceDev's team." } }}>
   <div slot="pre-process">
 
     <!-- ① Overview -->

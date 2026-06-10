@@ -5,10 +5,24 @@
 ## Services
 
 - [Blockchain Development Services](https://spacedev.io/blockchain-development-services): End-to-end blockchain development including DeFi platforms, dApps, NFTs, DAOs, smart contracts, cryptocurrencies, and white-label crypto exchanges across Ethereum, Aptos, Solana and other ecosystems.
+- [Smart Contract Development](https://spacedev.io/blockchain-development-services/smart-contract-development): Solidity, Rust and Move smart contracts with audit-ready engineering practices.
+- [dApp Development](https://spacedev.io/blockchain-development-services/dapp-development): Custom decentralized applications designed, built and scaled for production.
+- [Asset Tokenization](https://spacedev.io/blockchain-development-services/asset-tokenization): Tokenization platforms for real-world assets, including [real estate](https://spacedev.io/blockchain-development-services/asset-tokenization/real-estate).
+- [Blockchain for Banks](https://spacedev.io/blockchain-development-services/blockchain-for-banks): Blockchain infrastructure and digital asset solutions for financial institutions.
+- [White-Label Blockchain Partner](https://spacedev.io/blockchain-development-services/blockchain-partner): White-label blockchain development for agencies and consultancies.
+- [Decentralized Identity](https://spacedev.io/blockchain-development-services/decentralized-identity): DID and verifiable credentials infrastructure.
+- [Layer 1 Development](https://spacedev.io/blockchain-development-services/layer-1-blockchain-development): Custom chains with Cosmos SDK, Substrate, EVM and Avalanche subnets.
 - [Web & Mobile Solutions](https://spacedev.io/innovative-web-and-mobile-solutions): Full-stack web and mobile app development using React, Node.js, React Native and modern cloud infrastructure.
-- [IT Staff Augmentation](https://spacedev.io/staff-augmentation): Pre-vetted engineers, designers and specialists available in under 2 weeks. Scale your team without long hiring cycles.
+- [IT Staff Augmentation](https://spacedev.io/staff-augmentation): Pre-vetted nearshore engineers, designers and specialists from LATAM available in under 2 weeks. Scale your team without long hiring cycles.
 - [Product Discovery](https://spacedev.io/product-discovery): Strategy sprints, MVP definition, brand strategy, go-to-market planning, and continuous discovery for product-market fit.
 - [BlockAudit Security](https://spacedev.io/blockaudit-smart-contract-and-blockchain-security): Smart contract and blockchain security auditing to detect vulnerabilities before deployment.
+
+## Industry solutions
+
+- [Finance & Fintech](https://spacedev.io/blockchain-development-services/industry/finance-and-fintech): DeFi protocols, tokenized financial infrastructure, [stablecoin development](https://spacedev.io/blockchain-development-services/industry/finance-and-fintech/stablecoins).
+- [Healthcare](https://spacedev.io/blockchain-development-services/industry/healthcare): HIPAA-aligned health records, claims automation, pharma tracking.
+- [Energy](https://spacedev.io/blockchain-development-services/industry/energy): Energy trading, REC tokenization, carbon credit tracking.
+- [Supply Chain & Logistics](https://spacedev.io/blockchain-development-services/industry/supply-chain-and-logistics): Traceability, freight payments, provenance.
 
 ## Company
 
@@ -17,6 +31,8 @@
 - 160+ successful projects delivered
 - 40+ perfect 5-star ratings on Clutch
 - Recognized as Top 5 Blockchain Companies worldwide by Clutch
+- Leadership: Federico Sendra (CEO), Diego Priliac (COO), Juan Manuel Sobral (CTO)
+- [About Us](https://spacedev.io/about-us) · [SpaceDev in the Media](https://spacedev.io/spacedev-in-the-media) · [FAQs](https://spacedev.io/faqs)
 
 ## Industries served
 
@@ -31,6 +47,8 @@ Finance & Fintech (DeFi), Gaming & NFTs, Healthcare, Supply Chain & Logistics, R
 
 ## Optional
 
-- [Our Work](https://spacedev.io/our-work): Portfolio of 20+ case studies including Blockchain For Energy, FightFI, ApeBond, Drata, Rarible, NDAX Canada, Blockus, Ubicuity.
-- [Blog](https://spacedev.io/blog): Articles on Web3, blockchain, AI, AR, product development and tech trends.
+- [llms-full.txt](https://spacedev.io/llms-full.txt): Extended version of this file with detailed service descriptions, engagement models, FAQ answers and the full case study list.
+- [Our Work](https://spacedev.io/our-work): Portfolio of 24 case studies including NDAX Canada, Drata, Rarible, ApeBond, Bondi Finance, Blockus, FightFI, Aura, Zenda.
+- [Blog](https://spacedev.io/blog): Articles on Web3, blockchain, AI, AR, product development and tech trends. RSS: https://spacedev.io/rss.xml
 - [Careers](https://spacedev.io/careers): Open remote roles across Web3, full-stack, mobile and blockchain engineering.
+- [Events Calendar](https://spacedev.io/events-calendar): International tech, finance, blockchain and AI events by month.

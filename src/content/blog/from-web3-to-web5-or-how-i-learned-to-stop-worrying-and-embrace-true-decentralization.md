@@ -13,6 +13,8 @@ takeaways:
   - Users maintain complete ownership of personal data stored in encrypted digital wallets and decentralized nodes
   - Web5 enables serverless applications and seamless transitions between services without credential re-entry
   - Emerging "emotional web" capabilities integrate IoT and biometric technologies for responsive, user-centric experiences
+metatitle: "From Web3 to Web5: Embracing True Decentralization"
+metadescription: "When Web3 faced criticism for not being truly decentralized, Jack Dorsey proposed Web5. A deep dive into what Web5 actually is and why it matters for users."
 ---
 
 When the term 'Web2' was coined in 1999, it described the then up-and-coming version of the internet we know today, which was transitioning from an almost hypertext-exclusive world to hosting multimedia content, social networks and information shared in real time. Soon, it became impossible to navigate without bumping into certain brands, corporations or services. Sometimes all they asked was a simple thing in exchange: your data. More than twenty years and several innovations later, tech referents are still debating how the internet will evolve beyond that.

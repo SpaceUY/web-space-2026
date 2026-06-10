@@ -5,8 +5,10 @@ publishedAt: 2023-05-02
 author: juan-manuel-sobral
 category: "Product Development"
 tags: ["fintech", "smart-contracts"]
-cover: "/images/content/k9VyKGh5tqD9B5xLFRFXoVDVm44.png"
+cover: "/images/content/k9VyKGh5tqD9B5xLFRFXoVDVm44.webp"
 readTime: 3
+metatitle: "How We Built NDAX, Canada's Biggest Crypto Exchange"
+metadescription: "How SpaceDev built NDAX, Canada's most prominent crypto exchange: blockchain development meets traditional finance, regulation, and bank-grade security."
 ---
 
 Frowning upon blockchain mentions may have become normalized, yet integrating this technology into established financial systems presents substantial obstacles. NDAX co-founder Hussein Hammoud envisioned a bank-backed cryptocurrency exchange meeting Canadian governmental standards, enabling citizens to convert digital assets into fiat currency. This ambitious goal required overcoming numerous technical and regulatory hurdles.

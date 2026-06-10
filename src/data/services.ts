@@ -131,7 +131,7 @@ export const blockchainData: ServicePageData = {
     text: "There's no question that blockchain will change the world; the real question is when. We can drive this change by embracing and promoting the technology. At SpaceDev, we firmly believe in its transformative power. Partner with us to unlock the full potential of blockchain and lead the future of innovation.",
     author: "Juan Manuel Sobral",
     role: "CTO & Co-founder",
-    photo: "/images/juan-manuel-sobral.png",
+    photo: "/images/juan-manuel-sobral.webp",
     linkedin: "https://www.linkedin.com/in/juanmanuelsobral/",
   },
 

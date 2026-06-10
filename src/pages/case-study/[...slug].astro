@@ -59,8 +59,9 @@ const hasRichContent =
 ---
 
 <BaseLayout
-  title={`${entry.data.name} — Case Study | SpaceDev`}
-  description={entry.data.tagline}
+  breadcrumbs={false}
+  title={entry.data.metatitle ?? `${entry.data.name} — Case Study | SpaceDev`}
+  description={entry.data.metadescription ?? entry.data.tagline}
   ogImage={heroImage}
   ogType="article"
   jsonLd={csJsonLd}
