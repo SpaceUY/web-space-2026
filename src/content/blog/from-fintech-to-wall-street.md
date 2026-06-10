@@ -6,12 +6,13 @@ author: federico-sendra
 category: "Blockchain Trends"
 tags: ["fintech", "defi"]
 readTime: 4
-cover: "/images/content/uLuHSBzzLiHci62DaepeOWAGlU.png"
+cover: "/images/content/uLuHSBzzLiHci62DaepeOWAGlU.webp"
 takeaways:
   - Figure Technology Solutions demonstrated a 22% revenue surge with $191 million in revenue and $29 million profit for H1 2025.
   - Blockchain infrastructure is transitioning from theoretical to practical applications in mainstream finance.
   - Regulatory environment is becoming more favorable for digital-asset companies.
   - Asset tokenization creates liquidity opportunities in traditionally illiquid markets.
+metadescription: "Figure Technology Solutions' IPO filing signals a new era for blockchain in mainstream capital markets. Why founders and investors should pay attention."
 ---
 
 When a blockchain-native lender makes headlines on Wall Street, founders and investors should pay attention.

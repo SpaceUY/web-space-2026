@@ -6,7 +6,7 @@ import { blockAuditData } from "../data/services";
 
 ---
 
-<ServicePageLayout data={blockAuditData}>
+<ServicePageLayout data={{ ...blockAuditData, seo: { ...blockAuditData.seo, description: "Smart contract audit and blockchain security services: static and manual analysis, formal verification, and post-launch monitoring. Secure your Web3 project." } }}>
 
   <!-- TAGLINE + WHY CHOOSE — injects between hero and process -->
   <div slot="pre-process">

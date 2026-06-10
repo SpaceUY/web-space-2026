@@ -42,7 +42,7 @@ const industries = [
   #cards-cursor-zone * { cursor: none; }
 </style>
 
-<ServicePageLayout data={dappData}>
+<ServicePageLayout data={{ ...dappData, seo: { title: "Custom dApp Development Services for Web3 | SpaceDev", description: "Custom decentralized application development for Web3. SpaceDev designs, builds, and scales secure, production-ready dApps aligned with your business goals." } }}>
   <div slot="pre-process">
 
     <!-- Overview CTA -->

@@ -5,8 +5,10 @@ publishedAt: 2024-02-15
 author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["nft-gaming", "web3-infrastructure"]
-cover: "/images/content/GGG67bdz69DgCTI3JuvX59NA.png"
+cover: "/images/content/GGG67bdz69DgCTI3JuvX59NA.webp"
 readTime: 3
+metatitle: "Blockchain in Film: Decentralized Pictures Explained"
+metadescription: "Decentralized Pictures uses blockchain to democratize film financing, letting a global community decide which films get made, backed by Coppola's Zoetrope."
 ---
 
 The intersection of technology and creativity has always been a passion of mine, especially when it involves blockchain. Recently, I stumbled upon a groundbreaking initiative that perfectly encapsulates this fusion: [Decentralized Pictures](https://decentralized.pictures/) (DCP), a nonprofit organization that's redefining the landscape of film financing and production.

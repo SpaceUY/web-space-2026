@@ -39,9 +39,9 @@ deliverables:
 outcome: "Mostaza entered active development with a clear MVP strategy, a dedicated cross-functional team, and a technical foundation built to serve everyday Latin American users entering the Web3 economy for the first time."
 galleryType: "mobile"
 gallery:
-  - "/images/case-studies/mostaza/gallery/gallery1.png"
-  - "/images/case-studies/mostaza/gallery/gallery2.png"
-  - "/images/case-studies/mostaza/gallery/gallery3.png"
+  - "/images/case-studies/mostaza/gallery/gallery1.webp"
+  - "/images/case-studies/mostaza/gallery/gallery2.webp"
+  - "/images/case-studies/mostaza/gallery/gallery3.webp"
   - "/images/case-studies/mostaza/gallery/gallery4.png"
   - "/images/case-studies/mostaza/gallery/gallery5.png"
   - "/images/case-studies/mostaza/gallery/gallery6.png"

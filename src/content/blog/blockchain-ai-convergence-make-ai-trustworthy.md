@@ -13,6 +13,7 @@ takeaways:
   - AI agents with on-chain wallets and smart contract execution rights are no longer theoretical.
   - Implementation focuses on verifiable workflows recording critical events, permissions, and proofs in shared ledgers while maintaining off-chain computation.
   - Near-term applications include fraud detection, smart contract auditing, data marketplace infrastructure, and autonomous agent coordination.
+metatitle: "Blockchain and AI in 2026: Making AI Trustworthy | SpaceDev"
 ---
 
 AI and blockchain are often discussed as separate technology bets. In 2026, that framing is obsolete. As these technologies mature, developers combine automation, digital identity, decentralized ownership, and transparent verification. The technologies address complementary challenges with converging solutions.

@@ -55,7 +55,7 @@ const engagementModels = [
 ];
 ---
 
-<ServicePageLayout data={decentralizedIdentityData}>
+<ServicePageLayout data={{ ...decentralizedIdentityData, seo: { ...decentralizedIdentityData.seo, description: "Decentralized identity (DID) development services: verifiable credentials, wallet-based onboarding, and production-grade infrastructure. Talk to SpaceDev." } }}>
   <div slot="pre-process">
 
     <!-- ① Overview -->

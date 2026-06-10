@@ -31,6 +31,8 @@ const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 4);
 
 // metatitle: use custom field if set, otherwise fall back to "title | SpaceDev Blog"
 const pageTitle = post.data.metatitle ?? `${post.data.title} | SpaceDev Blog`;
+// metadescription: SEO override (140-160 chars), falls back to the post description
+const pageDescription = post.data.metadescription ?? post.data.description;
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -72,7 +74,7 @@ const breadcrumbJsonLd = {
 <BaseLayout
   breadcrumbs={false}
   title={pageTitle}
-  description={post.data.description}
+  description={pageDescription}
   ogType="article"
   ogImage={post.data.cover}
   publishedTime={post.data.publishedAt.toISOString()}

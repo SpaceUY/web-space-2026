@@ -35,11 +35,13 @@ deliverables:
   - "Advisory support on blockchain scalability and long-term product development best practices."
 outcome: "Bondi Finance launched as a fully functional, scalable platform prepared for expansion, attracting early-stage investors ahead of its early 2025 launch. The collaboration delivered a technically sound product while exceeding client expectations on transparency and efficiency. Bondi Finance expressed high satisfaction with SpaceDev's ability to deliver a comprehensive solution aligned with their vision."
 gallery:
-  - "/images/case-studies/bondi-finance/gallery/gallery1.png"
-  - "/images/case-studies/bondi-finance/gallery/gallery2.png"
-  - "/images/case-studies/bondi-finance/gallery/gallery3.png"
-  - "/images/case-studies/bondi-finance/gallery/gallery4.png"
-  - "/images/case-studies/bondi-finance/gallery/gallery5.png"
+  - "/images/case-studies/bondi-finance/gallery/gallery1.webp"
+  - "/images/case-studies/bondi-finance/gallery/gallery2.webp"
+  - "/images/case-studies/bondi-finance/gallery/gallery3.webp"
+  - "/images/case-studies/bondi-finance/gallery/gallery4.webp"
+  - "/images/case-studies/bondi-finance/gallery/gallery5.webp"
+metatitle: "Bondi Finance: Bond Tokenization DeFi Case Study | SpaceDev"
+metadescription: "SpaceDev built Bondi Finance's smart contract infrastructure from scratch: KYC-gated bond tokenization, USDC funding, and NFT rewards bridging TradFi and DeFi."
 ---
 
 ## The Challenge

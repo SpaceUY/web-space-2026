@@ -6,7 +6,9 @@ author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["defi", "fintech"]
 readTime: 5
-cover: "/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.png"
+cover: "/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.webp"
+metatitle: "Real-World Assets (RWAs): Types, Benefits, Examples"
+metadescription: "Real-world assets (RWAs) bring physical and financial assets on-chain. Learn how tokenization boosts liquidity, transparency, and access to markets."
 ---
 
 Real World Assets are physical or traditional financial assets that are increasingly being represented on blockchain networks. This tokenization process improves liquidity, accessibility, transparency, and efficiency in asset trading. Below is a detailed look at different types of RWAs and how they are being digitized and used in the modern financial ecosystem.

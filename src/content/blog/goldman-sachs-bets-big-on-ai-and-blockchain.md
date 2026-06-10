@@ -6,12 +6,13 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["ai", "fintech"]
 readTime: 7
-cover: "/images/content/551gfTZfH8x4VlokOkb2lOOl4.png"
+cover: "/images/content/551gfTZfH8x4VlokOkb2lOOl4.webp"
 takeaways:
   - Goldman Sachs launched GS AI Assistant firmwide on June 23, 2025, with plans to reach all 46,000 employees by year-end.
   - Developer pilots showed up to 20% efficiency gains from AI deployment.
   - Digital asset M&A grew from approximately $1 billion in 2019 to $15.8 billion in 2024, a fifteenfold expansion.
   - GS DAP aims to establish blockchain-powered interoperability for capital markets infrastructure.
+metadescription: "Goldman Sachs launched its GS AI Assistant firmwide and expanded digital asset M&A fifteenfold. How the bank is betting big on AI and blockchain in finance."
 ---
 
 On June 23, 2025, the halls at Goldman Sachs quietly buzzed with excitement. Inside, CIO Marco Argenti sent a memo that rippled across the firm: the GS AI Assistant, a generative AI-powered copilot, is now officially live firmwide. Initially tested by around 10,000 employees, this intelligent assistant helps with everything from summarizing dense documents to data analysis and drafting content.

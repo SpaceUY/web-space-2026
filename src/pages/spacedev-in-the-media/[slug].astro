@@ -71,8 +71,8 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   breadcrumbs={false}
-  title={`${item.title} | SpaceDev in the Media`}
-  description={item.highlight}
+  title={item.seoTitle ?? `${item.title} | SpaceDev in the Media`}
+  description={item.seoDescription ?? item.highlight}
   jsonLd={[articleJsonLd, breadcrumbJsonLd]}
 >
   <!-- HERO: text left + image right -->

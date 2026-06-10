@@ -6,7 +6,9 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["web3-infrastructure", "blockchain-basics"]
 readTime: 4
-cover: "/images/content/eGC3vJH4dLUVuXBOVdkGVL066FE.png"
+cover: "/images/content/eGC3vJH4dLUVuXBOVdkGVL066FE.webp"
+metatitle: "Blockchain Protocols Explained: Why They Matter | SpaceDev"
+metadescription: "Blockchain protocols are the foundational rules of every network, defining how data is validated, transactions are processed, and participants interact."
 ---
 
 Whether public or private, well established or brand new, every blockchain network operates under a set of foundational rules. These define how data is validated, how transactions are processed, and how participants interact within the system. Think of it as the operating system of a blockchain; without it, there would be no structure or security.
