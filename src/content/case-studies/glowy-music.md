@@ -19,7 +19,7 @@ techStack:
   - PostgreSQL
   - AWS
 publishedAt: 2025-02-15
-heroImage: "/images/case-studies/glowy-music/glowy-music_.png"
+heroImage: "/images/case-studies/glowy-music/glowy-music_.webp"
 summary: "Glowy Music is a mobile platform that connects fans with artists, events, producers, and managers across the music industry. SpaceDev built the MVP mobile app and the backoffice admin panel that powers the entire platform, taking it from concept to launch in seven months."
 objectives:
   - "Deliver a polished MVP mobile app that lets fans discover music, follow artists, and engage with upcoming events."
@@ -34,12 +34,12 @@ deliverables:
 outcome: "Glowy Music launched its MVP with a seamless fan experience and a fully operational admin platform, positioning the product for expansion across Latin America."
 galleryType: "mobile"
 gallery:
-  - "/images/case-studies/glowy-music/gallery/gallery1.png"
-  - "/images/case-studies/glowy-music/gallery/gallery2.png"
-  - "/images/case-studies/glowy-music/gallery/gallery3.png"
+  - "/images/case-studies/glowy-music/gallery/gallery1.webp"
+  - "/images/case-studies/glowy-music/gallery/gallery2.webp"
+  - "/images/case-studies/glowy-music/gallery/gallery3.webp"
   - "/images/case-studies/glowy-music/gallery/gallery4.png"
-  - "/images/case-studies/glowy-music/gallery/gallery5.png"
-  - "/images/case-studies/glowy-music/gallery/gallery6.png"
+  - "/images/case-studies/glowy-music/gallery/gallery5.webp"
+  - "/images/case-studies/glowy-music/gallery/gallery6.webp"
 ---
 
 ## The Challenge

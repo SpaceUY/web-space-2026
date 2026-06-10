@@ -5,8 +5,10 @@ publishedAt: 2025-05-15
 author: juan-manuel-sobral
 category: AI
 tags: ["ai", "product-growth"]
-cover: "/images/content/3mGvxkRKscJFyBNytRzWDrsyg.png"
+cover: "/images/content/3mGvxkRKscJFyBNytRzWDrsyg.webp"
 readTime: 6
+metatitle: "Multi-Agent AI Systems to Optimize Sales | SpaceDev"
+metadescription: "Boost sales and customer service with a multi-agent AI system: autonomous agents that automate every stage of your sales cycle and lift conversions."
 ---
 
 Nowadays, the success of a business depends on immediacy and efficiency. So, it makes sense: an artificial intelligence system based on a multi-agent architecture is bound to have the highest impact in customer service and sales optimization. Such an approach automates critical tasks at every stage of the sales cycle, empowering the user experience and maximizing conversion rates.

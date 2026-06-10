@@ -6,11 +6,13 @@ author: diego-priliac
 category: Product Development
 tags: ["product-growth"]
 readTime: 6
-cover: "/images/content/pVs0fAmc6Gp2davy0dgkOslc1c.png"
+cover: "/images/content/pVs0fAmc6Gp2davy0dgkOslc1c.webp"
 takeaways:
   - Product Discovery suits early-stage products requiring market validation
   - Discovery Sprints accelerate validation of specific features within 1-2 weeks
   - Design Sprints enable rapid prototyping and user testing over five days
+metatitle: "Product Discovery vs Discovery Sprint vs Design Sprint"
+metadescription: "Product Discovery, Discovery Sprints, and Design Sprints each validate ideas differently. Learn which approach best fits your product's stage and goals."
 ---
 
 Making an impactful product out of an idea takes several stages of discovery, testing, and validation. Three popular approaches often used by teams to optimize and speed up this process: Product Discovery, Discovery Sprints, and Design Sprints. While they may sound similar, each serves a unique purpose and constitutes an essential step of product development. Understanding the differences is crucial to determining which one will most effectively guide your product's success.

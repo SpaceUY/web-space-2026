@@ -6,12 +6,14 @@ author: diego-priliac
 category: "Blockchain Trends"
 tags: ["fintech", "defi"]
 readTime: 4
-cover: "/images/content/uLuHSBzzLiHci62DaepeOWAGlU.png"
+cover: "/images/content/uLuHSBzzLiHci62DaepeOWAGlU.webp"
 takeaways:
   - Ripple acquired Canadian payment firm Rail for $200 million to accelerate stablecoin adoption.
   - Rail's platform connects digital assets to traditional fiat systems via API.
   - The deal pushes Ripple's M&A spending past $3 billion.
   - Integration enables comprehensive stablecoin payment solutions across global trade corridors.
+metatitle: "Ripple Buys Rail for $200M: Stablecoin Payments Shift"
+metadescription: "Ripple acquired payment infrastructure firm Rail for $200M, pushing its M&A total past $3B and cementing its lead in the future of stablecoin payments."
 ---
 
 When Ripple makes a move, the fintech world pays attention. This time, the San Francisco blockchain powerhouse is making waves north of the border, acquiring Canadian payment infrastructure firm Rail for a cool **$200 million**.

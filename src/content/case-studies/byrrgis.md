@@ -64,11 +64,11 @@ clutchReview:
   url: "https://clutch.co/profile/spacedev"
 gallery:
   - "/images/case-studies/byrrgis/gallery/gallery1.png"
-  - "/images/case-studies/byrrgis/gallery/gallery2.png"
-  - "/images/case-studies/byrrgis/gallery/gallery3.png"
+  - "/images/case-studies/byrrgis/gallery/gallery2.webp"
+  - "/images/case-studies/byrrgis/gallery/gallery3.webp"
   - "/images/case-studies/byrrgis/gallery/gallery4.png"
-  - "/images/case-studies/byrrgis/gallery/gallery5.png"
-  - "/images/case-studies/byrrgis/gallery/gallery6.png"
+  - "/images/case-studies/byrrgis/gallery/gallery5.webp"
+  - "/images/case-studies/byrrgis/gallery/gallery6.webp"
 ---
 
 ## The Challenge

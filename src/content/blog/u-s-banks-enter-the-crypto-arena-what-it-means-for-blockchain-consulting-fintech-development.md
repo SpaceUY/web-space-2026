@@ -6,12 +6,13 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["fintech", "smart-contracts"]
 readTime: 4
-cover: "/images/content/J8qCLvFdZOivyDaLs0dELBR2r0.png"
+cover: "/images/content/J8qCLvFdZOivyDaLs0dELBR2r0.webp"
 takeaways:
   - The OCC authorized U.S. national banks to offer crypto custody and trading services with third-party provider partnerships
   - Banks require customized blockchain solutions integrated with legacy systems for compliance and security
   - Strategic blockchain consulting is increasingly essential as regulatory frameworks evolve
   - Financial institutions expect significant fintech application development focused on crypto-traditional banking integration
+metatitle: "U.S. Banks Enter Crypto: Impact on Fintech | SpaceDev"
 ---
 
 The future of traditional banking is becoming increasingly intertwined with blockchain, and the latest move from U.S. regulators just confirmed it.

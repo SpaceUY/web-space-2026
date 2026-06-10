@@ -51,6 +51,8 @@ gallery:
   - "/images/case-studies/drata/gallery/gallery4.png"
   - "/images/case-studies/drata/gallery/gallery5.png"
   - "/images/case-studies/drata/gallery/gallery6.png"
+metatitle: "Drata Case Study: Compliance Automation Platform | SpaceDev"
+metadescription: "SpaceDev partnered with Drata for 4+ years, rebuilding the cross-platform compliance Agent and Audit Hub powering automated security compliance in the cloud."
 ---
 
 ## The Challenge

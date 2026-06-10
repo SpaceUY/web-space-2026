@@ -6,7 +6,7 @@
       "permanent": true
     },
     {
-      "source": "/post/real-world-assets-(rwas)-explained",
+      "source": "/post/real-world-assets-\\(rwas\\)-explained",
       "destination": "/blog/real-world-assets-rwas-explained",
       "permanent": true
     },
@@ -27,6 +27,11 @@
     },
     {
       "source": "/post/we%E2%80%99re-now-an-aws-partner",
+      "destination": "/blog/aws-select-partner",
+      "permanent": true
+    },
+    {
+      "source": "/post/we’re-now-an-aws-partner",
       "destination": "/blog/aws-select-partner",
       "permanent": true
     },

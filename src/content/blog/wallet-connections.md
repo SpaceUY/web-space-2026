@@ -6,13 +6,14 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["blockchain-basics", "web3-infrastructure"]
 readTime: 3
-cover: "/images/content/hSDllB1d1JjC9oNH7hkkChHjq8.png"
+cover: "/images/content/hSDllB1d1JjC9oNH7hkkChHjq8.webp"
 takeaways:
   - Digital wallets are essential infrastructure for web3 ecosystems, enabling secure asset management and dApp interaction
   - Multiple wallet connection approaches exist (browser extensions, mobile wallets, JavaScript libraries)
   - Five primary non-custodial wallet types serve different security and convenience needs
   - SDKs like RainbowKit, Torus, and Web3Modal streamline wallet integration with improved user experience
   - RainbowKit offers developers rapid dApp development through simplified wallet connection setup
+metadescription: "Digital wallets are essential to interact with dApps in Web3. Explore wallet types, web3 libraries, and SDKs for seamless wallet connection integration."
 ---
 
 ## Summary

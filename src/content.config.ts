@@ -25,6 +25,8 @@ const blog = defineCollection({
     draft: z.boolean().default(false),
     /** Override the <title> tag shown in Google search results (≤ 60 chars recommended) */
     metatitle: z.string().optional(),
+    /** Override the meta description shown in search results (140–160 chars recommended) */
+    metadescription: z.string().optional(),
   }),
 });
 
@@ -65,6 +67,10 @@ const caseStudies = defineCollection({
         url: z.string().default("https://clutch.co/profile/spacedev"),
       })
       .optional(),
+    /** Override the <title> tag shown in Google search results (≤ 60 chars recommended) */
+    metatitle: z.string().optional(),
+    /** Override the meta description shown in search results (140–160 chars recommended) */
+    metadescription: z.string().optional(),
   }),
 });
 
