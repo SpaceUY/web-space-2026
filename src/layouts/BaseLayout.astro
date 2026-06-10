@@ -22,6 +22,8 @@ interface Props {
   footerMarqueeTheme?: "light" | "dark";
   /** Pass false to suppress auto breadcrumbs (use on pages that render their own inside the hero) */
   breadcrumbs?: false;
+  /** "dark" (default) = white text for dark heroes. "light" = dark text for light heroes */
+  breadcrumbTone?: "dark" | "light";
 }
 
 const {
@@ -38,6 +40,7 @@ const {
   footerMarquee,
   footerMarqueeTheme,
   breadcrumbs: breadcrumbsProp,
+  breadcrumbTone = "dark",
 } = Astro.props;
 
 // Auto-generate breadcrumb items from URL path (e.g. /our-work → Home > Our Work)
@@ -145,7 +148,7 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
       {showAutoBreadcrumbs && (
         <div class="absolute top-[72px] left-0 right-0 z-20 pointer-events-none">
           <div class="mx-auto max-w-[1440px] px-6 md:px-10 pt-5 pointer-events-auto">
-            <Breadcrumbs items={autoCrumbs} visible={true} />
+            <Breadcrumbs items={autoCrumbs} visible={true} tone={breadcrumbTone} />
           </div>
         </div>
       )}

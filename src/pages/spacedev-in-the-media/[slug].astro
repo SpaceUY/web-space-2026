@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/seo/Breadcrumbs.astro";
 import Button from "../../components/ui/Button.astro";
 import { mediaItems } from "../../data/media-items";
 import { SITE } from "../../lib/seo";
@@ -70,7 +69,6 @@ const breadcrumbJsonLd = {
 ---
 
 <BaseLayout
-  breadcrumbs={false}
   title={`${item.title} | SpaceDev in the Media`}
   description={item.highlight}
   jsonLd={[articleJsonLd, breadcrumbJsonLd]}
@@ -78,20 +76,11 @@ const breadcrumbJsonLd = {
   <!-- HERO: text left + image right -->
   <section class="relative overflow-hidden" style="background-color: var(--sd-dark-hero);">
     <div class="absolute inset-0" style="background: linear-gradient(135deg, #191429 0%, #312652 100%);"></div>
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-28 md:pt-36 pb-12 md:pb-16 w-full">
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-36 md:pt-40 pb-12 md:pb-16 w-full">
       <div class="grid md:grid-cols-[1fr_420px] lg:grid-cols-[1fr_520px] gap-10 md:gap-16 items-center">
 
         <!-- LEFT: meta + title -->
         <div data-animate>
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Space in the Media", href: "/spacedev-in-the-media" },
-              { label: item.title },
-            ]}
-            visible={true}
-            class="mb-6"
-          />
           <div class="flex flex-wrap gap-2 mb-5">
             {item.tags.map((tag) => (
               <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] uppercase tracking-wider font-ui bg-white/10 text-white/80 border border-white/15">

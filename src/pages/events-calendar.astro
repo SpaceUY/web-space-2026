@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/ui/Button.astro";
+import NewsletterForm from "../components/ui/NewsletterForm.astro";
 
 interface CalEvent {
   name: string;
@@ -231,17 +232,21 @@ const totalCount = events.filter(e => e.month > 0).length;
 >
 
 <!-- ── HERO ──────────────────────────────────────────────────────────────── -->
-<section style="background: var(--sd-gradient-hero);" class="py-20 md:py-32">
-  <div class="mx-auto max-w-[1440px] px-6 md:px-16">
-    <h1 class="font-display text-5xl md:text-7xl text-white leading-tight mb-6 max-w-2xl">Events Calendar</h1>
-    <p class="text-white/60 text-lg mb-10 max-w-xl leading-relaxed">
-      Explore the international events shaping the tech, finance, innovation, blockchain, and AI industries every month.
-    </p>
-    <div class="flex flex-wrap items-center gap-4">
-      <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-sd-text-dark font-ui text-sm font-medium hover:bg-white/90 transition-colors">
-        Get in touch
-      </a>
-      <span class="text-white/50 text-sm font-body">Or subscribe to our newsletter</span>
+<section style="background: var(--sd-gradient-hero);" class="relative min-h-[80vh] flex flex-col justify-center">
+  <div class="relative w-full mx-auto max-w-[1440px] px-6 md:px-10 pt-36 pb-20 md:pt-40 md:pb-28">
+    <div class="max-w-4xl" data-animate>
+      <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-white leading-[1.05]">Events Calendar</h1>
+      <p class="mt-8 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
+        Explore the international events shaping the tech, finance, innovation, blockchain, and AI industries every month.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 max-w-2xl">
+        <a href="/contact" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-sd-text-dark font-ui text-sm font-medium hover:bg-white/90 transition-colors whitespace-nowrap self-start">
+          Get in touch
+        </a>
+        <div class="w-full sm:flex-1">
+          <NewsletterForm compact />
+        </div>
+      </div>
     </div>
   </div>
 </section>

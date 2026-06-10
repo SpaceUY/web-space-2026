@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
 import Button from "../components/ui/Button.astro";
 import { mediaItems } from "../data/media-items";
 import { SITE } from "../lib/seo";
@@ -17,7 +16,6 @@ const pageJsonLd = {
 ---
 
 <BaseLayout
-  breadcrumbs={false}
   title="SpaceDev in the Media: Events, Press & Speaking"
   description="Explore SpaceDev's journey from hackathons to keynote speeches at global events. Discover the milestones that shaped our path and join us for what's next!"
   jsonLd={pageJsonLd}
@@ -32,13 +30,8 @@ const pageJsonLd = {
       class="absolute inset-0 w-full h-full object-cover object-center"
     />
     <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(10,6,20,0.88) 25%, rgba(50,30,90,0.45) 65%, rgba(10,6,20,0.75) 100%), linear-gradient(to bottom, rgba(10,6,20,0.2) 0%, rgba(10,6,20,0.85) 100%);"></div>
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-28 md:pt-36 pb-16 md:pb-20 w-full">
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-36 pb-16 md:pt-40 md:pb-20 w-full">
       <div class="max-w-3xl" data-animate>
-        <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "About Us", href: "/about-us" }, { label: "Space in the Media" }]}
-          visible={true}
-          class="mb-8"
-        />
         <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-display leading-[1.05]">
           SpaceDev in the Media
         </h1>

@@ -3,7 +3,6 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Badge from "../../components/ui/Badge.astro";
 import CTA from "../../components/ui/CTA.astro";
-import Breadcrumbs from "../../components/seo/Breadcrumbs.astro";
 import AnimatedCounter from "../../components/ui/AnimatedCounter.astro";
 import { SITE } from "../../lib/seo";
 import "../../styles/prose.css";
@@ -38,11 +37,6 @@ const csJsonLd = {
   ...(entry.data.client && { author: { "@type": "Organization", name: entry.data.client } }),
 };
 
-const breadcrumbs = [
-  { label: "Home", href: "/" },
-  { label: "Our Work", href: "/our-work" },
-  { label: entry.data.name },
-];
 
 const meta: { label: string; value?: string | number }[] = [
   { label: "Industry",  value: entry.data.industry  },
@@ -65,7 +59,6 @@ const hasRichContent =
 ---
 
 <BaseLayout
-  breadcrumbs={false}
   title={`${entry.data.name} — Case Study | SpaceDev`}
   description={entry.data.tagline}
   ogImage={heroImage}
@@ -81,7 +74,6 @@ const hasRichContent =
 
         <!-- Text — always first in DOM (top on mobile, left on desktop) -->
         <div>
-          <Breadcrumbs items={breadcrumbs} visible={true} class="mb-6" />
           <div data-animate>
             <Badge tone="outline" class="mb-5 whitespace-nowrap">{entry.data.category} · Case Study</Badge>
             <h1 class="text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mt-4">{entry.data.name}</h1>

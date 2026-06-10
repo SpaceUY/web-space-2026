@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HubSpotForm from "../components/HubSpotForm.astro";
-import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
+import ContactForm from "../components/ui/ContactForm.astro";
 import { SITE } from "../lib/seo";
 
 const contactJsonLd = {
@@ -19,29 +18,21 @@ const contactJsonLd = {
 ---
 
 <BaseLayout
-  breadcrumbs={false}
   title="Contact SpaceDev | Talk to a Web3 & software engineering partner"
   description="Tell us about your project. Free 30-minute consultation with a SpaceDev engineer. Offices in Miami, Montevideo, Buenos Aires and Medellín."
   jsonLd={contactJsonLd}
 >
-  <section class="bg-[#141414] min-h-screen py-20 md:py-28">
+  <section class="bg-[#141414] min-h-screen pt-36 pb-20 md:pt-40 md:pb-28">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10 grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
       <div data-animate>
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} visible={true} class="mb-8" />
-        <h1 class="font-display font-light text-white text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight">
+        <h1 class="font-display font-light text-white text-4xl md:text-6xl lg:text-8xl leading-[1.05] tracking-tight">
           Ready to reach the stars?
         </h1>
       </div>
 
       <div class="lg:pt-6" data-animate>
         <div class="rounded-2xl border border-white/10 bg-[#1e1e1e] p-6 md:p-8">
-          <HubSpotForm />
-          <noscript>
-            <p class="text-sm text-sd-text-muted">
-              The contact form requires JavaScript. Please enable JS or email us at
-              <a href={`mailto:${SITE.email}`} class="text-sd-purple-300 underline">{SITE.email}</a>.
-            </p>
-          </noscript>
+          <ContactForm />
         </div>
       </div>
     </div>
