@@ -18,6 +18,8 @@ export default defineConfig({
       !page.endsWith('/privacy-policy/') &&
       !page.endsWith('/coming-soon/') &&
       !page.endsWith('/ui-kit/') &&
+      !page.endsWith('/about-us-v1/') &&
+      !page.endsWith('/our-work-v1/') &&
       !page.includes('/post/'),
     serialize(item) {
       const url = item.url;
