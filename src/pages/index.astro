@@ -78,31 +78,44 @@ const industries = [
   <section class="bg-sd-dark min-h-[100dvh] -mt-[72px] flex flex-col justify-end items-start relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.18) 0%, transparent 65%);"></div>
 
-    <!-- Title — centered on mobile, flows normally on desktop -->
-    <div class="sm:hidden absolute inset-0 flex items-center px-6 pointer-events-none">
-      <p class="text-[clamp(28px,8vw,80px)] text-white font-display leading-none tracking-tight">
+    <div class="relative w-full px-6 pb-10 sm:pb-14">
+      <p class="hero-line hero-line-1 text-[clamp(28px,8vw,80px)] text-white font-display leading-none tracking-tight">
         <span class="whitespace-nowrap">Finally: Your&#160;<span style="display:inline-block; overflow:hidden; vertical-align:bottom; line-height:1.05;"><span id="rotating-word" class="text-white" style="display:inline-block;">Flexible</span></span></span><br/>
         Tech Partner.
       </p>
-    </div>
-
-    <div class="relative w-full px-6 pb-10 sm:pb-14">
-      <!-- Title desktop only -->
-      <p class="hidden sm:block text-[clamp(28px,8vw,80px)] text-white font-display leading-none tracking-tight">
-        <span class="whitespace-nowrap">Finally: Your&#160;<span style="display:inline-block; overflow:hidden; vertical-align:bottom; line-height:1.05;"><span id="rotating-word-desktop" class="text-white" style="display:inline-block;">Flexible</span></span></span><br/>
-        Tech Partner.
-      </p>
-      <h1 class="mt-8 sm:mt-16 text-base sm:text-lg md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
+      <h1 class="hero-line hero-line-2 mt-6 sm:mt-16 text-base sm:text-lg md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
         Blockchain Development Company & Web3 Software Partner
       </h1>
-      <p class="mt-4 text-sm md:text-base text-white max-w-2xl leading-relaxed font-body font-light">
-        SpaceDev is a <strong class="font-semibold">blockchain development company</strong> specializing in custom Web3 solutions, decentralized application development, and smart contract engineering. We work with startups, fintechs, and growth-stage companies that need a technical partner with both the depth to build and the speed to ship.
-      </p>
-      <p class="mt-4 text-sm md:text-base text-white max-w-2xl leading-relaxed font-body font-light">
-        From <strong class="font-semibold">dApp architecture</strong> to token infrastructure and <strong class="font-semibold">smart contract auditing</strong>, our engineering teams cover the full product lifecycle, from initial scoping to production and scale.
+      <p class="hero-line hero-line-3 mt-4 text-sm sm:text-base md:text-lg text-white/80 max-w-2xl leading-relaxed font-body font-light">
+        SpaceDev builds custom <strong class="font-semibold text-white">Web3</strong> and <strong class="font-semibold text-white">blockchain</strong> solutions, from <strong class="font-semibold text-white">dApps</strong> and <strong class="font-semibold text-white">smart contracts</strong> to <strong class="font-semibold text-white">DeFi</strong> and token infrastructure, for startups, fintechs and enterprises that need a technical partner with real depth.
       </p>
     </div>
   </section>
+
+  <style>
+    @keyframes hero-rise {
+      from {
+        opacity: 0;
+        transform: translateY(48px);
+        filter: blur(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+    .hero-line {
+      animation: hero-rise 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .hero-line-1 { animation-delay: 0.2s; }
+    .hero-line-2 { animation-delay: 0.65s; }
+    .hero-line-3 { animation-delay: 1.0s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-line { animation: none; }
+    }
+  </style>
 
   <!-- CLIENT LOGOS MARQUEE — exact pixel sizes from spacedev.io Framer CSS -->
   <section class="bg-sd-light overflow-hidden">
@@ -378,8 +391,11 @@ const industries = [
   <section class="bg-sd-light py-20 md:py-28 border-t border-sd-gray-border">
     <div class="sd-container">
       <h2 class="text-3xl md:text-4xl text-sd-text-dark font-display leading-tight tracking-tight mb-14">Highly reviewed by</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-x-6 gap-y-8 items-center justify-items-center">
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 lg:grid-cols-8 gap-x-6 gap-y-10 items-center justify-items-center">
         {[
+          { src: "/images/clutch-2026-top-blockchain.png",      alt: "Top Blockchain Company Clutch 2026",                href: "https://clutch.co/profile/spacedev" },
+          { src: "/images/clutch-2026-top-blockchain-latam.png", alt: "Top Blockchain Company Clutch Latin America 2026",  href: "https://clutch.co/profile/spacedev" },
+          { src: "/images/clutch-2026-top-ethereum.png",         alt: "Top Ethereum Company Clutch 2026",                  href: "https://clutch.co/profile/spacedev" },
           { src: "/images/content/zPERVUfXVexzfhErCDP4RSRooMk.svg", alt: "AWS Partner",                                          href: "https://partners.amazonaws.com/" },
           { src: "/images/content/aBdWHMkZEsQNlbGeQBO4XJATg8.svg", alt: "Official Member Forbes Technology Council 2024",    href: "https://www.forbes.com/councils/forbestechcouncil/" },
           { src: "/images/content/bdBmJxXbS0JbYnv70UAcRb5GrwM.svg", alt: "Top Ethereum Company Clutch 2024",                 href: "https://clutch.co/profile/spacedev" },
@@ -543,39 +559,26 @@ const industries = [
   // Rotating word — slide up from below
   const words = ["Fast", "Flexible", "Reliable"];
   let idx = 0;
-  // rotating-word = mobile (centered), rotating-word-desktop = desktop (bottom)
-  const els = [
-    document.getElementById("rotating-word"),
-    document.getElementById("rotating-word-desktop"),
-  ].filter(Boolean) as HTMLElement[];
-
-  const el = els[0];
-  if (els.length > 0) {
+  const el = document.getElementById("rotating-word");
+  if (el) {
     const SLIDE = "cubic-bezier(0.2, 0.7, 0.3, 1)";
 
     function nextWord() {
       idx = (idx + 1) % words.length;
-
-      els.forEach(e => {
-        e.style.transition = `transform 0.28s ${SLIDE}, opacity 0.2s ease`;
-        e.style.transform  = "translateY(-110%)";
-        e.style.opacity    = "0";
-      });
+      el.style.transition = `transform 0.28s ${SLIDE}, opacity 0.2s ease`;
+      el.style.transform  = "translateY(-110%)";
+      el.style.opacity    = "0";
 
       setTimeout(() => {
-        els.forEach(e => {
-          e.textContent      = words[idx];
-          e.style.transition = "none";
-          e.style.transform  = "translateY(110%)";
-          e.style.opacity    = "0";
-        });
+        el.textContent      = words[idx];
+        el.style.transition = "none";
+        el.style.transform  = "translateY(110%)";
+        el.style.opacity    = "0";
 
         requestAnimationFrame(() => requestAnimationFrame(() => {
-          els.forEach(e => {
-            e.style.transition = `transform 0.32s ${SLIDE}, opacity 0.22s ease`;
-            e.style.transform  = "translateY(0)";
-            e.style.opacity    = "1";
-          });
+          el.style.transition = `transform 0.32s ${SLIDE}, opacity 0.22s ease`;
+          el.style.transform  = "translateY(0)";
+          el.style.opacity    = "1";
         }));
       }, 290);
     }
