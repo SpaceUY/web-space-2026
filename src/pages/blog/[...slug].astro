@@ -80,6 +80,7 @@ const breadcrumbJsonLd = {
   authorName={author?.name}
   articleSection={post.data.category}
   jsonLd={[articleJsonLd, breadcrumbJsonLd]}
+  breadcrumbs={false}
 >
 
   <!-- ─── ARTICLE LAYOUT ──────────────────────────────────────────────────
@@ -94,34 +95,15 @@ const breadcrumbJsonLd = {
 
       <!-- Header: breadcrumb · title · meta -->
       <div class="mb-7">
-        <!-- Breadcrumb -->
-        <nav aria-label="Breadcrumb" class="mb-5">
-          {/* Mobile: simple back link with comfortable tap target */}
-          <a
-            href="/blog"
-            class="sm:hidden inline-flex items-center gap-2 text-sm font-ui text-sd-text-gray hover:text-sd-purple transition-colors py-2"
-          >
-            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Blog
-          </a>
-          {/* Desktop: full breadcrumb trail */}
-          <ol class="hidden sm:flex flex-wrap items-center gap-1.5 text-xs text-sd-text-gray font-ui uppercase tracking-wider">
-            <li>
-              <a href="/" class="hover:text-sd-purple transition-colors">Home</a>
-            </li>
-            <li aria-hidden="true" class="text-sd-gray-border">/</li>
-            <li>
-              <a href="/blog" class="hover:text-sd-purple transition-colors">Blog</a>
-            </li>
-            <li aria-hidden="true" class="text-sd-gray-border">/</li>
-            <li class="text-sd-text-dark truncate max-w-[420px]" aria-current="page">
-              {post.data.title}
-            </li>
-          </ol>
+        <nav aria-label="Breadcrumb" class="mb-5 hidden sm:flex items-center gap-2 text-xs font-ui uppercase tracking-widest text-sd-text-gray/60">
+          <a href="/" class="hover:text-sd-purple transition-colors">Home</a>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="opacity-30"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="/blog" class="hover:text-sd-purple transition-colors">Blog</a>
         </nav>
-
+        <a href="/blog" class="sm:hidden mb-4 inline-flex items-center gap-2 text-xs font-ui uppercase tracking-widest text-sd-text-gray/60 hover:text-sd-purple transition-colors">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Blog
+        </a>
         <h1 id="article-title" class="font-display text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-tight" style="font-weight: 400; letter-spacing: -0.02em;">
           {post.data.title}
         </h1>

@@ -3,24 +3,21 @@
 const PORTAL_ID = "22632737";
 const FORM_ID   = "acdc5149-7c32-48f4-9137-ab4212538377";
 
-// NOTE FOR FEDERICO: verify these internal field names match HubSpot form definition
-// Marketing → Forms → contact form → edit each field → "Field name" property
 const HUBSPOT_ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
 
+// Internal values match HubSpot form field options exactly
 const helpOptions = [
-  "Advanced Blockchain Development",
-  "Web & Mobile Development",
-  "IT Staff Augmentation",
-  "Product Discovery",
-  "BlockAudit: Security Audit",
+  "Build a product",
   "Existing Software Rescue",
-  "Partnership with SpaceDev",
+  "Staff Augmentation",
+  "Discovery Sprint - Technical consultancy",
+  "Interested in a partnership with SpaceDev",
   "Other",
 ];
 
 const sourceOptions = [
   "Google",
-  "LinkedIn",
+  "Linkedin",
   "Email",
   "Clutch",
   "Upwork",
@@ -33,7 +30,7 @@ const sourceOptions = [
   <!-- Full name -->
   <div class="form-field">
     <label for="cf-fullname">Full name <span class="required">*</span></label>
-    <input id="cf-fullname" name="fullname" type="text" autocomplete="name" required placeholder=" " />
+    <input id="cf-fullname" name="firstname" type="text" autocomplete="name" required placeholder=" " />
   </div>
 
   <!-- Email -->
@@ -73,7 +70,7 @@ const sourceOptions = [
   <!-- Company / LinkedIn -->
   <div class="form-field">
     <label for="cf-company">Company or LinkedIn profile <span class="optional">(optional)</span></label>
-    <input id="cf-company" name="company" type="text" placeholder="My website is... or my LinkedIn profile is..." />
+    <input id="cf-company" name="company_or_linkedin_profile" type="text" placeholder="My website is... or my LinkedIn profile is..." />
   </div>
 
   <!-- Message -->

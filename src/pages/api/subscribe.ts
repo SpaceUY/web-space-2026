@@ -1,5 +1,7 @@
 import type { APIRoute } from "astro";
 
+export const prerender = false;
+
 // Brevo list ID — update when confirmed
 const BREVO_LIST_ID = 2; // TODO: replace with actual list ID from Brevo → Contacts → Lists
 
