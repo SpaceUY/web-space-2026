@@ -39,9 +39,14 @@ import { blockAuditData } from "../data/services";
               vulnerabilities across the board.
             </p>
           </div>
-          <!-- Lottie animation RIGHT -->
-          <figure class="rounded-3xl overflow-hidden" data-animate>
-            <div id="lottie-why-choose" class="w-full aspect-video"></div>
+          <!-- Animation RIGHT -->
+          <figure class="flex items-center justify-center" data-animate>
+            <img
+              src="/images/content/blockaudit-why-choose.gif"
+              alt="Smart contract audit security visualization"
+              class="w-full max-w-[420px] h-auto mx-auto"
+              loading="lazy"
+            />
           </figure>
         </div>
       </div>
@@ -84,14 +89,3 @@ import { blockAuditData } from "../data/services";
 
 </ServicePageLayout>
 
-<script>
-  import lottie from "lottie-web";
-  const anim = lottie.loadAnimation({
-    container: document.getElementById("lottie-why-choose")!,
-    renderer: "svg",
-    loop: true,
-    autoplay: true,
-    path: "/images/content/blockaudit-why-choose.json",
-  });
-  anim.setSpeed(0.3);
-</script>
