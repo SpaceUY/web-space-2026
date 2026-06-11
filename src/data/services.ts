@@ -132,7 +132,7 @@ export const blockchainData: ServicePageData = {
     author: "Juan Manuel Sobral",
     role: "CTO & Co-founder",
     photo: "/images/juan-manuel-sobral.webp",
-    linkedin: "https://www.linkedin.com/in/juanmanuelsobral/",
+    linkedin: "https://www.linkedin.com/in/juanmsobral/",
   },
 
   midCta: {
