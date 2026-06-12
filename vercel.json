@@ -11,6 +11,11 @@
       "permanent": true
     },
     {
+      "source": "/post/real-world-assets-%28rwas%29-explained",
+      "destination": "/blog/real-world-assets-rwas-explained",
+      "permanent": true
+    },
+    {
       "source": "/post/save-time-with-a-smart-contract-audit-checklist",
       "destination": "/blog/smart-contract-audit-checklist",
       "permanent": true

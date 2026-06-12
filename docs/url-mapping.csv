@@ -1,0 +1,101 @@
+old_url,new_url,status,nota
+/,/,OK,Path idéntico en el build nuevo
+/404,,INFO,Artefacto del sitemap de Framer; el nuevo sitemap no lo incluye. Sin acción.
+/about-us,/about-us,OK,Path idéntico en el build nuevo
+/author/diego-priliac,/author/diego-priliac,OK,Path idéntico en el build nuevo
+/author/federico-sendra,/author/federico-sendra,OK,Path idéntico en el build nuevo
+/author/juan-manuel-sobral,/author/juan-manuel-sobral,OK,Path idéntico en el build nuevo
+/blockaudit-smart-contract-and-blockchain-security,/blockaudit-smart-contract-and-blockchain-security,OK,Path idéntico en el build nuevo
+/blockchain-development-services,/blockchain-development-services,OK,Path idéntico en el build nuevo
+/blockchain-development-services/asset-tokenization,/blockchain-development-services/asset-tokenization,OK,Path idéntico en el build nuevo
+/blockchain-development-services/blockchain-for-banks,/blockchain-development-services/blockchain-for-banks,OK,Path idéntico en el build nuevo
+/blockchain-development-services/blockchain-partner,/blockchain-development-services/blockchain-partner,OK,Path idéntico en el build nuevo
+/blockchain-development-services/dapp-development,/blockchain-development-services/dapp-development,OK,Path idéntico en el build nuevo
+/blockchain-development-services/smart-contract-development,/blockchain-development-services/smart-contract-development,OK,Path idéntico en el build nuevo
+/blog,/blog,OK,Path idéntico en el build nuevo
+/careers,/careers,OK,Path idéntico en el build nuevo
+/case-study/acme,/case-study/acme,OK,Path idéntico en el build nuevo
+/case-study/apebond,/case-study/apebond,OK,Path idéntico en el build nuevo
+/case-study/athleteai,/case-study/athleteai,OK,Path idéntico en el build nuevo
+/case-study/blockchain-for-energy,/case-study/blockchain-for-energy,OK,Path idéntico en el build nuevo
+/case-study/blockus,/case-study/blockus,OK,Path idéntico en el build nuevo
+/case-study/bondi-finance,/case-study/bondi-finance,OK,Path idéntico en el build nuevo
+/case-study/drata,/case-study/drata,OK,Path idéntico en el build nuevo
+/case-study/fightfi,/case-study/fightfi,OK,Path idéntico en el build nuevo
+/case-study/gallery,/case-study/gallery,OK,Path idéntico en el build nuevo
+/case-study/genba,/case-study/genba,OK,Path idéntico en el build nuevo
+/case-study/glowy-music,/case-study/glowy-music,OK,Path idéntico en el build nuevo
+/case-study/iaffirm,/case-study/iaffirm,OK,Path idéntico en el build nuevo
+/case-study/mostaza,/case-study/mostaza,OK,Path idéntico en el build nuevo
+/case-study/ndax-canada,/case-study/ndax-canada,OK,Path idéntico en el build nuevo
+/case-study/nga,/case-study/nga,OK,Path idéntico en el build nuevo
+/case-study/piggygpt,/case-study/piggygpt,OK,Path idéntico en el build nuevo
+/case-study/rarible,/case-study/rarible,OK,Path idéntico en el build nuevo
+/case-study/twispi,/case-study/twispi,OK,Path idéntico en el build nuevo
+/case-study/ubicuity,/case-study/ubicuity,OK,Path idéntico en el build nuevo
+/case-study/w3e,/case-study/w3e,OK,Path idéntico en el build nuevo
+/contact,/contact,OK,Path idéntico en el build nuevo
+/digital-library,/digital-library,OK,Path idéntico en el build nuevo
+/digital-library/why-we-should-care-about-latam,/digital-library/why-we-should-care-about-latam,OK,Path idéntico en el build nuevo
+/events-calendar,/events-calendar,OK,Path idéntico en el build nuevo
+/faqs,/faqs,OK,Path idéntico en el build nuevo
+/innovative-web-and-mobile-solutions,/innovative-web-and-mobile-solutions,OK,Path idéntico en el build nuevo
+/newsletter,/newsletter,OK,Path idéntico en el build nuevo
+/our-work,/our-work,OK,Path idéntico en el build nuevo
+/post/a-few-thoughts-on-decentralization,/blog/a-few-thoughts-on-decentralization,CRITICAL,301 /post/a-few-thoughts-on-decentralization → /blog/a-few-thoughts-on-decentralization
+/post/a-quick-guide-to-crypto-apps-exchanges-january-2024-edition,/blog/a-quick-guide-to-crypto-apps-exchanges-january-2024-edition,CRITICAL,301 /post/a-quick-guide-to-crypto-apps-exchanges-january-2024-edition → /blog/a-quick-guide-to-crypto-apps-exchanges-january-2024-edition
+/post/ai-is-reshaping-drug-discovery-and-the-fda-is-onboard,/blog/ai-is-reshaping-drug-discovery-and-the-fda-is-onboard,CRITICAL,301 /post/ai-is-reshaping-drug-discovery-and-the-fda-is-onboard → /blog/ai-is-reshaping-drug-discovery-and-the-fda-is-onboard
+/post/bitcoin-101-basic-concepts-everyone-must-know,/blog/bitcoin-101-basic-concepts-everyone-must-know,CRITICAL,301 /post/bitcoin-101-basic-concepts-everyone-must-know → /blog/bitcoin-101-basic-concepts-everyone-must-know
+/post/bitcoin-the-almost-millionaires-of-starcraft,/blog/bitcoin-the-almost-millionaires-of-starcraft,CRITICAL,301 /post/bitcoin-the-almost-millionaires-of-starcraft → /blog/bitcoin-the-almost-millionaires-of-starcraft
+/post/blockchain-ai-convergence-a-powerful-synergy,/blog/blockchain-ai-convergence-a-powerful-synergy,CRITICAL,301 /post/blockchain-ai-convergence-a-powerful-synergy → /blog/blockchain-ai-convergence-a-powerful-synergy
+/post/blockchain-ai-convergence-make-ai-trustworthy,/blog/blockchain-ai-convergence-make-ai-trustworthy,CRITICAL,301 /post/blockchain-ai-convergence-make-ai-trustworthy → /blog/blockchain-ai-convergence-make-ai-trustworthy
+/post/blockchain-and-the-film-industry-decentralized-pictures,/blog/blockchain-and-the-film-industry-decentralized-pictures,CRITICAL,301 /post/blockchain-and-the-film-industry-decentralized-pictures → /blog/blockchain-and-the-film-industry-decentralized-pictures
+/post/build-your-dream-team-top-ai-tools-for-2025-success,/blog/build-your-dream-team-top-ai-tools-for-2025-success,CRITICAL,301 /post/build-your-dream-team-top-ai-tools-for-2025-success → /blog/build-your-dream-team-top-ai-tools-for-2025-success
+/post/changing-the-lens-on-the-future-of-crypto-latams-promising-future,/blog/changing-the-lens-on-the-future-of-crypto-latams-promising-future,CRITICAL,301 /post/changing-the-lens-on-the-future-of-crypto-latams-promising-future → /blog/changing-the-lens-on-the-future-of-crypto-latams-promising-future
+/post/choosing-the-right-sprint-product-discovery-vs-discovery-sprint-vs-design-sprint,/blog/choosing-the-right-sprint-product-discovery-vs-discovery-sprint-vs-design-sprint,CRITICAL,301 /post/choosing-the-right-sprint-product-discovery-vs-discovery-sprint-vs-design-sprint → /blog/choosing-the-right-sprint-product-discovery-vs-discovery-sprint-vs-design-sprint
+/post/crypto-hacks-surge-in-april-2025-a-wake-up-call-for-blockchain-security-and-consulting,/blog/crypto-hacks-surge-in-april-2025-a-wake-up-call-for-blockchain-security-and-consulting,CRITICAL,301 /post/crypto-hacks-surge-in-april-2025-a-wake-up-call-for-blockchain-security-and-consulting → /blog/crypto-hacks-surge-in-april-2025-a-wake-up-call-for-blockchain-security-and-consulting
+/post/decentralized-oracles,/blog/decentralized-oracles,CRITICAL,301 /post/decentralized-oracles → /blog/decentralized-oracles
+/post/decentralizing-the-music-industry,/blog/decentralizing-the-music-industry,CRITICAL,301 /post/decentralizing-the-music-industry → /blog/decentralizing-the-music-industry
+/post/ethereum-calendar-for-the-rest-of-2024,/blog/ethereum-calendar-for-the-rest-of-2024,CRITICAL,301 /post/ethereum-calendar-for-the-rest-of-2024 → /blog/ethereum-calendar-for-the-rest-of-2024
+/post/exploring-dencun-ethereums-latest-breakthrough,/blog/exploring-dencun-ethereums-latest-breakthrough,CRITICAL,301 /post/exploring-dencun-ethereums-latest-breakthrough → /blog/exploring-dencun-ethereums-latest-breakthrough
+/post/from-fintech-to-wall-street,/blog/from-fintech-to-wall-street,CRITICAL,301 /post/from-fintech-to-wall-street → /blog/from-fintech-to-wall-street
+/post/from-web3-to-web5-or-how-i-learned-to-stop-worrying-and-embrace-true-decentralization,/blog/from-web3-to-web5-or-how-i-learned-to-stop-worrying-and-embrace-true-decentralization,CRITICAL,301 /post/from-web3-to-web5-or-how-i-learned-to-stop-worrying-and-embrace-true-decentralization → /blog/from-web3-to-web5-or-how-i-learned-to-stop-worrying-and-embrace-true-decentralization
+/post/goldman-sachs-bets-big-on-ai-and-blockchain,/blog/goldman-sachs-bets-big-on-ai-and-blockchain,CRITICAL,301 /post/goldman-sachs-bets-big-on-ai-and-blockchain → /blog/goldman-sachs-bets-big-on-ai-and-blockchain
+/post/how-hard-is-it-to-become-a-blockchain-developer,/blog/how-hard-is-it-to-become-a-blockchain-developer,CRITICAL,301 /post/how-hard-is-it-to-become-a-blockchain-developer → /blog/how-hard-is-it-to-become-a-blockchain-developer
+/post/how-real-world-assets-are-reshaping-decentralized-finance,/blog/how-real-world-assets-are-reshaping-decentralized-finance,CRITICAL,301 /post/how-real-world-assets-are-reshaping-decentralized-finance → /blog/how-real-world-assets-are-reshaping-decentralized-finance
+/post/how-to-hire-remote-software-developers-a-smart-guide-for-growing-teams,/blog/how-to-hire-remote-software-developers-a-smart-guide-for-growing-teams,CRITICAL,301 /post/how-to-hire-remote-software-developers-a-smart-guide-for-growing-teams → /blog/how-to-hire-remote-software-developers-a-smart-guide-for-growing-teams
+/post/how-we-built-ndax,/blog/how-we-built-ndax,CRITICAL,301 /post/how-we-built-ndax → /blog/how-we-built-ndax
+/post/hypothetical-sprint-cutting-exchange-latency-by-40-in-7-days,/blog/hypothetical-sprint-cutting-exchange-latency-by-40-in-7-days,CRITICAL,301 /post/hypothetical-sprint-cutting-exchange-latency-by-40-in-7-days → /blog/hypothetical-sprint-cutting-exchange-latency-by-40-in-7-days
+/post/key-insights-to-build-a-real-web3-product-that-works,/blog/key-insights-to-build-a-real-web3-product-that-works,CRITICAL,301 /post/key-insights-to-build-a-real-web3-product-that-works → /blog/key-insights-to-build-a-real-web3-product-that-works
+/post/marketing-web-3,/blog/web3-marketing-strategies,CRITICAL,301 /post/marketing-web-3 → /blog/web3-marketing-strategies
+/post/meta-bets-big-on-superintelligence-what-it-means-for-the-future-of-ai,/blog/meta-bets-big-on-superintelligence-what-it-means-for-the-future-of-ai,CRITICAL,301 /post/meta-bets-big-on-superintelligence-what-it-means-for-the-future-of-ai → /blog/meta-bets-big-on-superintelligence-what-it-means-for-the-future-of-ai
+/post/optimize-your-sales-with-a-multi-agent-ai-system,/blog/optimize-your-sales-with-a-multi-agent-ai-system,CRITICAL,301 /post/optimize-your-sales-with-a-multi-agent-ai-system → /blog/optimize-your-sales-with-a-multi-agent-ai-system
+/post/quick-guide-the-best-crypto-staking-platforms,/blog/quick-guide-the-best-crypto-staking-platforms,CRITICAL,301 /post/quick-guide-the-best-crypto-staking-platforms → /blog/quick-guide-the-best-crypto-staking-platforms
+/post/real-world-assets-(rwas)-explained,/blog/real-world-assets-rwas-explained,CRITICAL,301 /post/real-world-assets-(rwas)-explained → /blog/real-world-assets-rwas-explained
+/post/ripple-drops-200m-on-rail-to-dominate-the-future-of-stablecoin-payments,/blog/ripple-drops-200m-on-rail-to-dominate-the-future-of-stablecoin-payments,CRITICAL,301 /post/ripple-drops-200m-on-rail-to-dominate-the-future-of-stablecoin-payments → /blog/ripple-drops-200m-on-rail-to-dominate-the-future-of-stablecoin-payments
+/post/save-time-with-a-smart-contract-audit-checklist,/blog/smart-contract-audit-checklist,CRITICAL,301 /post/save-time-with-a-smart-contract-audit-checklist → /blog/smart-contract-audit-checklist
+/post/simply-put-what-are-memecoins,/blog/what-are-memecoins,CRITICAL,301 /post/simply-put-what-are-memecoins → /blog/what-are-memecoins
+/post/simply-put-what-is-blockchain,/blog/simply-put-what-is-blockchain,CRITICAL,301 /post/simply-put-what-is-blockchain → /blog/simply-put-what-is-blockchain
+/post/the-2025-ai-playbook-roadmap-to-scale-your-startup-with-artificial-intelligence,/blog/the-2025-ai-playbook-roadmap-to-scale-your-startup-with-artificial-intelligence,CRITICAL,301 /post/the-2025-ai-playbook-roadmap-to-scale-your-startup-with-artificial-intelligence → /blog/the-2025-ai-playbook-roadmap-to-scale-your-startup-with-artificial-intelligence
+/post/the-future-of-ai-agents-in-business-why-40-projects-will-fail-by-2027,/blog/the-future-of-ai-agents-in-business-why-40-projects-will-fail-by-2027,CRITICAL,301 /post/the-future-of-ai-agents-in-business-why-40-projects-will-fail-by-2027 → /blog/the-future-of-ai-agents-in-business-why-40-projects-will-fail-by-2027
+/post/the-future-of-ai-software-engineering-automation-tools-and-the-road-ahead,/blog/the-future-of-ai-software-engineering-automation-tools-and-the-road-ahead,CRITICAL,301 /post/the-future-of-ai-software-engineering-automation-tools-and-the-road-ahead → /blog/the-future-of-ai-software-engineering-automation-tools-and-the-road-ahead
+/post/the-new-era-of-blockchain-and-web3-in-2025,/blog/the-new-era-of-blockchain-and-web3-in-2025,CRITICAL,301 /post/the-new-era-of-blockchain-and-web3-in-2025 → /blog/the-new-era-of-blockchain-and-web3-in-2025
+/post/the-role-of-smart-contracts-in-defi,/blog/the-role-of-smart-contracts-in-defi,CRITICAL,301 /post/the-role-of-smart-contracts-in-defi → /blog/the-role-of-smart-contracts-in-defi
+/post/the-top-5-web3-marketing-agencies-for-your-web3-business,/blog/the-top-5-web3-marketing-agencies-for-your-web3-business,CRITICAL,301 /post/the-top-5-web3-marketing-agencies-for-your-web3-business → /blog/the-top-5-web3-marketing-agencies-for-your-web3-business
+/post/top-ai-powered-tools-for-nft-creation,/blog/top-ai-powered-tools-for-nft-creation,CRITICAL,301 /post/top-ai-powered-tools-for-nft-creation → /blog/top-ai-powered-tools-for-nft-creation
+/post/u-s-banks-enter-the-crypto-arena-what-it-means-for-blockchain-consulting-fintech-development,/blog/u-s-banks-enter-the-crypto-arena-what-it-means-for-blockchain-consulting-fintech-development,CRITICAL,301 /post/u-s-banks-enter-the-crypto-arena-what-it-means-for-blockchain-consulting-fintech-development → /blog/u-s-banks-enter-the-crypto-arena-what-it-means-for-blockchain-consulting-fintech-development
+/post/understanding-and-deploying-ai-agents,/blog/understanding-and-deploying-ai-agents,CRITICAL,301 /post/understanding-and-deploying-ai-agents → /blog/understanding-and-deploying-ai-agents
+/post/upgrading-customer-service-with-a-whatsapp-bot,/blog/upgrading-customer-service-with-a-whatsapp-bot,CRITICAL,301 /post/upgrading-customer-service-with-a-whatsapp-bot → /blog/upgrading-customer-service-with-a-whatsapp-bot
+/post/vibe-coding-hype-help-or-hazard,/blog/vibe-coding-hype-help-or-hazard,CRITICAL,301 /post/vibe-coding-hype-help-or-hazard → /blog/vibe-coding-hype-help-or-hazard
+/post/wallet-connections,/blog/wallet-connections,CRITICAL,301 /post/wallet-connections → /blog/wallet-connections
+/post/web2-web3-migration-guide-for-fintech-the-first-90-days,/blog/web2-to-web3-fintech,CRITICAL,301 /post/web2-web3-migration-guide-for-fintech-the-first-90-days → /blog/web2-to-web3-fintech
+/post/we’re-now-an-aws-partner,/blog/aws-select-partner,CRITICAL,301 /post/we’re-now-an-aws-partner → /blog/aws-select-partner
+/post/what-are-blockchain-protocols-and-why-are-they-so-important,/blog/what-are-blockchain-protocols-and-why-are-they-so-important,CRITICAL,301 /post/what-are-blockchain-protocols-and-why-are-they-so-important → /blog/what-are-blockchain-protocols-and-why-are-they-so-important
+/post/what-web3-protocols-need-in-2025,/blog/what-web3-protocols-need-in-2025,CRITICAL,301 /post/what-web3-protocols-need-in-2025 → /blog/what-web3-protocols-need-in-2025
+/post/white-label-crypto-exchange-solutions,/blog/white-label-crypto-exchange-solutions,CRITICAL,301 /post/white-label-crypto-exchange-solutions → /blog/white-label-crypto-exchange-solutions
+/post/why-metamask-embedded-wallets-are-a-game-changer-for-web3-onboarding,/blog/why-metamask-embedded-wallets-are-a-game-changer-for-web3-onboarding,CRITICAL,301 /post/why-metamask-embedded-wallets-are-a-game-changer-for-web3-onboarding → /blog/why-metamask-embedded-wallets-are-a-game-changer-for-web3-onboarding
+/post/zero-knowledge-rollups-for-rwas-architecture-costs-pitfalls,/blog/zero-knowledge-rollups-for-rwas-architecture-costs-pitfalls,CRITICAL,301 /post/zero-knowledge-rollups-for-rwas-architecture-costs-pitfalls → /blog/zero-knowledge-rollups-for-rwas-architecture-costs-pitfalls
+/privacy-policy,/privacy-policy,OK,Path idéntico en el build nuevo
+/product-discovery,/product-discovery,OK,Path idéntico en el build nuevo
+/staff-augmentation,/staff-augmentation,OK,Path idéntico en el build nuevo
+/terms-and-conditions,/terms-and-conditions,OK,Path idéntico en el build nuevo
