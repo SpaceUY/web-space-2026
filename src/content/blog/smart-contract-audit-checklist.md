@@ -7,7 +7,7 @@ category: Blockchain Trends
 tags: ["smart-contracts"]
 readTime: 8
 cover: "/images/content/8avQhh2xnXVeHKr5gw0tR54o3Q.webp"
-metatitle: "Smart Contract Audit Checklist: Save Time | SpaceDev"
+metatitle: "Smart Contract Audit Checklist: Save Time & Avoid Risk"
 ---
 
 Most smart contract audits are slower than they need to be. Not because auditors are slow, but because the code arrives in a state that wastes the first week clarifying instead of reviewing. Here's the checklist we ask every BlockAudit client to run through before kickoff.

@@ -39,7 +39,7 @@ gallery:
   - "/images/case-studies/genba/gallery/gallery4.png"
   - "/images/case-studies/genba/gallery/gallery5.png"
   - "/images/case-studies/genba/gallery/gallery6.png"
-metatitle: "Genba Case Study: Factory Automation Platform MVP | SpaceDev"
+metatitle: "Genba: Factory Automation MVP Built for Manufacturing"
 metadescription: "SpaceDev ran a discovery sprint and built Genba's Paretto palletizing platform in two months, letting factory operators configure robotic workflows code-free."
 ---
 

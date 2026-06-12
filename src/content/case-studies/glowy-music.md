@@ -1,4 +1,5 @@
 ---
+metatitle: "Glowy Music: Web2 Streaming Platform Development"
 name: "Glowy Music"
 tagline: "Connecting music fans with artists, events, and the industry they love."
 category: Web2

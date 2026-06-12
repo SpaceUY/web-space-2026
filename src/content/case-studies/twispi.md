@@ -1,4 +1,5 @@
 ---
+metatitle: "Twispi: Social Discovery App Development Case Study"
 name: "Twispi"
 tagline: "An all-in-one HR and financial wellness platform built for the modern workforce in Mexico."
 category: Web2

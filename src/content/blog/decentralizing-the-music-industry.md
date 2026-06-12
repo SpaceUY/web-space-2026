@@ -1,4 +1,5 @@
 ---
+metatitle: "Decentralizing the Music Industry with Blockchain"
 title: "Decentralizing the Music Industry"
 description: "Blockchain technology has the potential to address the many issues affecting the current music industry by providing greater transparency and more equitable terms in royalty distribution."
 publishedAt: 2024-08-14

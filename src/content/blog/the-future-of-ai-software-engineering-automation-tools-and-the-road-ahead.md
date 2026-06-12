@@ -7,7 +7,7 @@ category: AI
 tags: ["ai"]
 readTime: 3
 cover: "/images/content/c4SpYpXNEIPEN7vUedA03v3VZg.webp"
-metatitle: "AI Software Engineering: Tools & the Road Ahead | SpaceDev"
+metatitle: "AI Software Engineering: Automation Tools & the Road Ahead"
 metadescription: "AI is transforming software engineering in 2025: AI-driven dev platforms, autonomous coding agents, and the automation tools reshaping how engineers build."
 ---
 

@@ -1,4 +1,5 @@
 ---
+metatitle: "Wallet Connections in Web3: How They Work"
 title: "Wallet Connections"
 description: "As web3 ecosystems continue to grow and evolve, digital wallets have become indispensable to interact with decentralized applications (dApps). This article explores wallet types, web3 libraries, and SDKs for seamless connection."
 publishedAt: 2023-06-06

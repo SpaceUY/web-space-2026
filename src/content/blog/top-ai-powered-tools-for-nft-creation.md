@@ -1,4 +1,5 @@
 ---
+metatitle: "Top AI-Powered Tools for NFT Creation in 2025"
 title: "Top AI-Powered Tools for NFT Creation"
 description: "The intersection between art and the digital world has been irrevocably changed by NFTs. Learn about the best AI tools for creating digital assets and how to mint your first AI-generated NFT."
 publishedAt: 2024-04-18

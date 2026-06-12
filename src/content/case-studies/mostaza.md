@@ -1,4 +1,5 @@
 ---
+metatitle: "Mostaza: Restaurant Tech Platform Development Case Study"
 name: "Mostaza"
 tagline: "Bringing Web3-powered financial tools to everyday users across Latin America."
 category: Web3

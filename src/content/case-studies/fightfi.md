@@ -44,7 +44,7 @@ gallery:
   - "/images/case-studies/fightfi/gallery/gallery3.png"
   - "/images/case-studies/fightfi/gallery/gallery4.webp"
   - "/images/case-studies/fightfi/gallery/gallery5.webp"
-metatitle: "FightFI Case Study: GameFi dApp on Aptos | SpaceDev"
+metatitle: "FightFi: GameFi dApp Built on Aptos Blockchain"
 metadescription: "SpaceDev built FightFI's gamified Web3 platform on Aptos: dApp development with NFT rewards, smart contracts, wallet auth, and real-time fan leaderboards."
 ---
 

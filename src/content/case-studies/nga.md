@@ -41,7 +41,7 @@ gallery:
   - "/images/case-studies/nga/gallery/gallery4.png"
   - "/images/case-studies/nga/gallery/gallery5.webp"
   - "/images/case-studies/nga/gallery/gallery6.webp"
-metatitle: "NGA Case Study: EdTech Learning Platform & App | SpaceDev"
+metatitle: "NGA: EdTech Learning Platform & Mobile App Development"
 metadescription: "SpaceDev built NGA's EdTech platform with the Acton School of Business: React Native app, website, and real-time sync backend serving 26 interactive courses."
 ---
 

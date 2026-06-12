@@ -38,7 +38,7 @@ gallery:
   - "/images/case-studies/iaffirm/gallery/gallery3.png"
   - "/images/case-studies/iaffirm/gallery/gallery4.png"
   - "/images/case-studies/iaffirm/gallery/gallery5.webp"
-metatitle: "iAffirm Case Study: AI Mental Wellness Web App | SpaceDev"
+metatitle: "iAffirm: AI Mental Wellness Web App Development"
 metadescription: "SpaceDev built iAffirm's AI integration and product foundation: personalized affirmations, visualizations, and guided meditations with Python and Nest.js."
 ---
 

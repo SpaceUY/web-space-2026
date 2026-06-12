@@ -1,4 +1,5 @@
 ---
+metatitle: "Vibe Coding: Hype, Help, or Hazard for Developers?"
 title: "Vibe Coding: Hype, Help, or Hazard?"
 description: "A new buzzword is spreading across engineering teams, hackathons, and overcrowded techy Discords: vibe coding. Depending on who you ask, it's either the most exciting thing to happen to software development since Git, or the beginning of the end for programming quality as we know it."
 publishedAt: 2025-05-15

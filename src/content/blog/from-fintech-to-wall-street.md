@@ -1,4 +1,5 @@
 ---
+metatitle: "From Fintech to Wall Street: The Crypto Shift"
 title: "From Fintech to Wall Street"
 description: "When a blockchain-native lender makes headlines on Wall Street, founders and investors should pay attention. Figure Technology Solutions' IPO filing signals a new era for blockchain in mainstream capital markets."
 publishedAt: 2025-08-22

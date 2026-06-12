@@ -15,7 +15,7 @@ takeaways:
   - Community participation becomes your competitive advantage in decentralized spaces.
   - On-chain data provides behavioral insights unavailable in traditional platforms.
   - Minimum viable products must balance smart contract security, usability, and credibility.
-metatitle: "Key Insights to Build a Web3 Product That Works | SpaceDev"
+metatitle: "Key Insights to Build a Real Web3 Product That Works"
 metadescription: "Building a real Web3 product takes more than slapping blockchain on a pitch deck. The core insights to lock in before you write a single line of code."
 ---
 

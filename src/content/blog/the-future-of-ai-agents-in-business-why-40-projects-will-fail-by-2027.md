@@ -13,7 +13,7 @@ takeaways:
   - Organizations are shifting toward measured, incremental deployments rather than large-scale automation.
   - Cross-functional collaboration and governance frameworks are essential before implementation.
   - Success requires realistic planning, not rapid experimentation.
-metatitle: "The Future of AI Agents: Why Projects Fail by 2027"
+metatitle: "The Future of AI Agents: Why 40% of Projects Fail"
 metadescription: "Agentic AI is booming, yet Gartner predicts many agentic AI projects will be scrapped by 2027. What separates AI agents that deliver from those that fail."
 ---
 

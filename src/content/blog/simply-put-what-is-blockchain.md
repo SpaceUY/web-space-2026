@@ -1,4 +1,5 @@
 ---
+metatitle: "Simply Put: What is Blockchain? A Beginner's Guide"
 title: "Simply Put: What is Blockchain?"
 description: "Although people often associate it with bitcoin and cryptocurrency, blockchain is a flexible technology with a vast potential. Here's a clear-eyed introduction to what it is and why it matters."
 publishedAt: 2023-03-20

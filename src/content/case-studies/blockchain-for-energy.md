@@ -1,4 +1,5 @@
 ---
+metatitle: "Blockchain For Energy (B4E): Hedera DLT Case Study"
 name: "Blockchain For Energy (B4E)"
 tagline: "Transforming the energy industry through collaborative innovation and blockchain technology."
 category: Web3

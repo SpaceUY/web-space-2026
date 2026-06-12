@@ -7,7 +7,7 @@ category: AI
 tags: ["ai", "product-growth"]
 cover: "/images/content/3mGvxkRKscJFyBNytRzWDrsyg.webp"
 readTime: 6
-metatitle: "Multi-Agent AI Systems to Optimize Sales | SpaceDev"
+metatitle: "Multi-Agent AI Systems to Optimize Sales Pipelines"
 metadescription: "Boost sales and customer service with a multi-agent AI system: autonomous agents that automate every stage of your sales cycle and lift conversions."
 ---
 

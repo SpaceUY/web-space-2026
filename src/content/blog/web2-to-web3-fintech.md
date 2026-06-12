@@ -1,4 +1,5 @@
 ---
+metatitle: "Web2 to Web3 Migration Guide for Fintech Teams"
 title: "Web2 → Web3 Migration Guide for Fintech"
 description: "A practical migration path for fintechs that want to bring blockchain into production without breaking compliance, performance, or user experience."
 publishedAt: 2025-10-20
