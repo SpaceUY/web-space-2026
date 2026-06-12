@@ -41,6 +41,11 @@
       "permanent": true
     },
     {
+      "source": "/post/we're-now-an-aws-partner",
+      "destination": "/blog/aws-select-partner",
+      "permanent": true
+    },
+    {
       "source": "/post/:slug*",
       "destination": "/blog/:slug*",
       "permanent": true
