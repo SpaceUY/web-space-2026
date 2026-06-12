@@ -43,7 +43,7 @@ gallery:
   - "/images/case-studies/piggygpt/gallery/gallery4.webp"
   - "/images/case-studies/piggygpt/gallery/gallery5.png"
   - "/images/case-studies/piggygpt/gallery/gallery6.png"
-metatitle: "PiggyGPT Case Study: AI DeFi Trading Platform | SpaceDev"
+metatitle: "PiggyGPT: AI-Driven DeFi Trading Platform Development"
 metadescription: "SpaceDev built PiggyGPT's AI-powered DeFi trading assistant for the EVM ecosystem: Telegram trading, cross-chain swaps, and wallets for 10,000+ testnet users."
 ---
 

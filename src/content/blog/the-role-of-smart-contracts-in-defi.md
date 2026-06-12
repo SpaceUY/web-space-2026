@@ -13,7 +13,7 @@ takeaways:
   - DeFi security breaches exceeded $3.1 billion in 2025, with access-control flaws responsible for roughly 59% of total losses.
   - Audited protocols experienced 94% fewer hacks. Pre-launch security review is the single highest-ROI decision a DeFi team makes.
   - ZK proofs and AI-driven contract logic are redefining what's architecturally possible in 2026.
-metatitle: "Smart Contracts in DeFi: How They Power Web3 | SpaceDev"
+metatitle: "Smart Contracts in DeFi: How They Power Web3 Protocols"
 metadescription: "Smart contracts power every DeFi protocol. How they work, the types behind lending, DEXs and governance, and why security audits are non-negotiable."
 ---
 

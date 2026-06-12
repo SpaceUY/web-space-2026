@@ -41,7 +41,7 @@ gallery:
   - "/images/case-studies/gallery/gallery/gallery3.webp"
   - "/images/case-studies/gallery/gallery/gallery4.webp"
   - "/images/case-studies/gallery/gallery/gallery5.png"
-metatitle: "Gallery Case Study: NFT Art Marketplace Platform | SpaceDev"
+metatitle: "Gallery: NFT Art Marketplace Platform Development"
 metadescription: "SpaceDev delivered Gallery's NFT platform in five months: Solidity smart contracts, NestJS API, and React frontend making crypto art easy to collect and trade."
 ---
 

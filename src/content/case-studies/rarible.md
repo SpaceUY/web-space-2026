@@ -1,4 +1,5 @@
 ---
+metatitle: "Rarible: NFT Marketplace Development & Protocol Work"
 name: "Rarible"
 tagline: "The NFT Company. OG Marketplace. NFT infrastructure for builders. Vertical marketplaces for brands."
 category: Web3

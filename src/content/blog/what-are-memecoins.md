@@ -1,4 +1,5 @@
 ---
+metatitle: "What Are Memecoins in Crypto? A Plain-English Guide"
 title: "What Are Memecoins in Crypto?"
 description: "A clear-eyed look at memecoins: what they are, why they keep working, what risks they carry, and how they fit (or don't) into a serious Web3 portfolio."
 publishedAt: 2026-01-11

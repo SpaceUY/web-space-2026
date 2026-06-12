@@ -41,7 +41,7 @@ gallery:
   - "/images/case-studies/apebond/gallery/gallery3.webp"
   - "/images/case-studies/apebond/gallery/gallery4.png"
   - "/images/case-studies/apebond/gallery/gallery5.png"
-metatitle: "ApeBond: Solana DeFi Development Case Study | SpaceDev"
+metatitle: "ApeBond: Solana DeFi Development & Protocol Integration"
 metadescription: "SpaceDev expanded ApeBond's on-chain OTC marketplace to Solana, building a Rust program, TypeScript SDK, and cross-chain DeFi frontend with audit support."
 ---
 

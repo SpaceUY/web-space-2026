@@ -231,7 +231,7 @@ export const dappData: ServicePageData = {
 
 export const banksData: ServicePageData = {
   seo: {
-    title: "Blockchain for Banks & Financial Institutions | SpaceDev",
+    title: "Blockchain Development for Banks & Financial Institutions",
     description: "Compliant blockchain and tokenization solutions for banks, fintechs, and asset managers. Programmable money, settlement, and digital asset custody.",
   },
   eyebrow: "Sub-service · Blockchain",
@@ -258,7 +258,7 @@ export const banksData: ServicePageData = {
 
 export const smartContractData: ServicePageData = {
   seo: {
-    title: "Smart Contract Development Services | SpaceDev",
+    title: "Smart Contract Development, Audit-Ready & Production-Grade",
     description: "Audited, gas-optimized smart contracts on Ethereum, Aptos, Solana and other ecosystems. From token standards to complex DeFi protocols.",
   },
   eyebrow: "Sub-service · Blockchain",
@@ -344,7 +344,7 @@ export const realEstateTokData: ServicePageData = {
 
 export const tokenizationData: ServicePageData = {
   seo: {
-    title: "Asset Tokenization Development Services | SpaceDev",
+    title: "Asset Tokenization Development Services for Web3 Projects",
     description: "Tokenize real-world assets: real estate, commodities, securities, and fixed income. Issuance, lifecycle, custody, and secondary markets, end to end.",
   },
   eyebrow: "Sub-service · Blockchain",

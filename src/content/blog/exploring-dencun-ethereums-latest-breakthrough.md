@@ -7,7 +7,7 @@ category: "Blockchain Trends"
 tags: ["web3-infrastructure"]
 cover: "/images/content/VBWL0xqiCNsme8WFULlHgc2YMhs.webp"
 readTime: 4
-metatitle: "Ethereum's Dencun Upgrade Explained: Scalability Wins"
+metatitle: "Ethereum's Dencun Upgrade: Scalability Explained"
 metadescription: "Ethereum's Dencun upgrade marks a major milestone for scalability and efficiency, cutting congestion and transaction fees for users and developers alike."
 ---
 
