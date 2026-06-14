@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-label="Kubernetes">
+  <rect width="48" height="48" rx="10" fill="#fff"/>
+  <path d="M24 9.5l11.3 5.4 2.8 12.2-7.8 9.8H17.7l-7.8-9.8 2.8-12.2L24 9.5Z" fill="#326CE5"/>
+  <g stroke="#fff" stroke-width="1.6" fill="#fff">
+    <circle cx="24" cy="24" r="3.2" fill="none"/>
+    <path stroke-linecap="round" d="M24 13v5.5M24 35v-5.5M33.5 18.5l-5 3M14.5 29.5l5-3M33.5 29.5l-5-3M14.5 18.5l5 3"/>
+  </g>
+</svg>
