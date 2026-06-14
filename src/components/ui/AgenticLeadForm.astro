@@ -19,6 +19,10 @@ const ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${PO
 ---
 
 <form class={`agentic-lead-form alf-${tone} ${className}`} data-endpoint={ENDPOINT} novalidate>
+  <!-- HubSpot requires these two fields on the shared form; sent as hidden defaults -->
+  <input type="hidden" name="what_do_you_need_help_with_" value="Build a product" />
+  <input type="hidden" name="how_did_you_find_us_" value="Other" />
+
   <div class="alf-row">
     <div class="alf-field">
       <label>Name <span class="alf-req">*</span></label>
