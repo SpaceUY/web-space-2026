@@ -5,6 +5,7 @@ import SectionHeading from "../components/ui/SectionHeading.astro";
 import FeatureCard from "../components/ui/FeatureCard.astro";
 import FAQ from "../components/ui/FAQ.astro";
 import AgenticLeadForm from "../components/ui/AgenticLeadForm.astro";
+import QuoteReveal from "../components/ui/QuoteReveal.astro";
 import AnimatedCounter from "../components/ui/AnimatedCounter.astro";
 import { SITE } from "../lib/seo";
 
@@ -17,9 +18,9 @@ const SEO_DESC =
 
 // Client logos shown under the hero
 const heroLogos = [
-  { src: "/images/clients/ulta.svg", alt: "Ulta Beauty" },
-  { src: "/images/clients/prose.svg", alt: "Prose" },
-  { src: "/images/clients/drata.svg", alt: "Drata" },
+  { src: "/images/clients/ulta-white.svg", alt: "Ulta Beauty" },
+  { src: "/images/clients/prose-white.svg", alt: "Prose" },
+  { src: "/images/clients/drata-white.svg", alt: "Drata" },
 ];
 
 const stats = [
@@ -58,7 +59,7 @@ const cases = [
   {
     client: "Prose",
     tag: "DTC Beauty",
-    logo: "/images/clients/prose.svg",
+    logo: "/images/clients/prose-white.svg",
     challenge:
       "Prose needed AI-first data infrastructure to support business decisions at scale. The data team was bottlenecked and lacked dedicated AI engineering capacity.",
     solution:
@@ -72,7 +73,7 @@ const cases = [
   {
     client: "Ulta Beauty",
     tag: "Retail Enterprise",
-    logo: "/images/clients/ulta.svg",
+    logo: "/images/clients/ulta-white.svg",
     challenge:
       "[Challenge placeholder — confirm with account manager: the enterprise problem Ulta needed solved.]",
     solution:
@@ -86,7 +87,7 @@ const cases = [
   {
     client: "Drata",
     tag: "Compliance SaaS",
-    logo: "/images/clients/drata.svg",
+    logo: "/images/clients/drata-white.svg",
     challenge:
       "[Challenge placeholder — confirm with account manager. SpaceDev has a 4+ year partnership with Drata.]",
     solution:
@@ -224,9 +225,9 @@ const jsonLd = [
           <!-- Client logos -->
           <div class="mt-10">
             <p class="text-xs font-ui uppercase tracking-[0.18em] text-sd-text-muted/70 mb-4">Trusted by teams at</p>
-            <div class="flex flex-wrap items-center gap-3">
+            <div class="flex flex-wrap items-center gap-x-9 gap-y-5">
               {heroLogos.map((l) => (
-                <img src={l.src} alt={l.alt} width="64" height="64" loading="eager" class="w-16 h-16 rounded-xl object-contain" />
+                <img src={l.src} alt={l.alt} height="28" loading="eager" class="h-7 w-auto object-contain opacity-85" />
               ))}
             </div>
           </div>
@@ -281,7 +282,7 @@ const jsonLd = [
   </section>
 
   <!-- ============ CASE STUDIES (Challenge / Solution / Impact) ============ -->
-  <section id="case-studies" class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
+  <section id="case-studies" class="scroll-mt-24 py-20 md:py-28" style="background: var(--sd-purple-deep);">
     <div class="sd-container">
       <SectionHeading
         eyebrow="Proof"
@@ -294,7 +295,7 @@ const jsonLd = [
         {cases.map((c) => (
           <article class="rounded-3xl border border-white/10 bg-white/[0.03] p-7 md:p-10" data-animate>
             <div class="flex items-center gap-4 mb-8">
-              <img src={c.logo} alt={c.client} width="56" height="56" loading="lazy" class="w-14 h-14 rounded-xl object-contain shrink-0" />
+              <img src={c.logo} alt={c.client} height="28" loading="lazy" class="h-7 w-auto object-contain shrink-0" />
               <span class="text-xs font-ui uppercase tracking-[0.15em] text-sd-purple-200">{c.tag}</span>
             </div>
             <div class="grid md:grid-cols-3 gap-8 md:gap-10">
@@ -324,8 +325,27 @@ const jsonLd = [
       <p class="mt-6 text-xs text-sd-text-muted/60 italic">
         Metrics shown in brackets are placeholders — confirm with account managers before publishing.
       </p>
+
+      <!-- Awards / recognition -->
+      <div class="mt-14 flex flex-wrap items-center justify-center gap-8 md:gap-12" data-animate>
+        <div class="flex items-center gap-2 text-white">
+          <span class="text-2xl font-display">5.0</span>
+          <span class="text-sd-green text-lg tracking-tight">★★★★★</span>
+          <span class="text-sm text-sd-text-muted ml-1">on Clutch</span>
+        </div>
+        <img src="/images/clutch-2026-top-blockchain.png" alt="Top Company on Clutch 2026" width="84" height="84" loading="lazy" class="h-16 w-auto object-contain" />
+        <img src="/images/clutch-2026-top-ethereum.png" alt="Top Ethereum Company on Clutch 2026" width="84" height="84" loading="lazy" class="h-16 w-auto object-contain" />
+        <img src="/images/content/aBdWHMkZEsQNlbGeQBO4XJATg8.svg" alt="Forbes Technology Council Member" width="120" height="64" loading="lazy" class="h-14 w-auto object-contain" />
+      </div>
     </div>
   </section>
+
+  <!-- ============ TESTIMONIAL (verified Clutch review) ============ -->
+  <QuoteReveal
+    text="SpaceDev has been an exceptional long-term partner. Their team integrated seamlessly with ours and delivered production-grade software consistently across multiple years of rapid growth."
+    authors={{ name: "CTO, Drata", role: "★★★★★ · Verified review on Clutch" }}
+    tone="dark"
+  />
 
   <!-- ============ MID FORM CTA ============ -->
   <section class="bg-sd-dark py-16 md:py-20 border-y border-white/5">
@@ -376,6 +396,24 @@ const jsonLd = [
           </div>
         ))}
       </div>
+
+      <!-- Enterprise trust row -->
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4" data-animate>
+        {[
+          { t: "You own all IP", d: "Code and models are yours from day one." },
+          { t: "NDA on request", d: "We sign before the first technical call." },
+          { t: "Security-first", d: "Least-privilege access, SOC 2-aligned practices." },
+          { t: "US-aligned hours", d: "Real-time overlap with your team, daily." },
+        ].map((i) => (
+          <div class="rounded-xl border border-white/10 bg-sd-dark-2 p-5">
+            <div class="flex items-center gap-2 mb-1.5">
+              <svg class="text-sd-green shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <h3 class="text-sm font-display text-white">{i.t}</h3>
+            </div>
+            <p class="text-xs text-sd-text-muted leading-relaxed">{i.d}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -423,7 +461,7 @@ const jsonLd = [
   </section>
 
   <!-- ============ MAIN FORM CTA ============ -->
-  <section id="book" class="py-20 md:py-28" style="background: var(--sd-gradient-hero);">
+  <section id="book" class="scroll-mt-24 py-20 md:py-28" style="background: var(--sd-gradient-hero);">
     <div class="sd-container">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div data-animate>

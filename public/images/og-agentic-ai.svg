@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0.17" stop-color="#4a397c"/>
+      <stop offset="1.05" stop-color="#191429"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(960 180) rotate(120) scale(420)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#673ae4" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#673ae4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- wordmark -->
+  <text x="80" y="120" font-family="Geist, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#ffffff">SPACE<tspan fill="#8572bc">DEV</tspan></text>
+
+  <!-- eyebrow -->
+  <text x="80" y="250" font-family="Saira, sans-serif" font-size="24" letter-spacing="6" fill="#b9aee0">AI TRANSFORMATION CONSULTING</text>
+
+  <!-- headline -->
+  <text font-family="Geist, sans-serif" font-size="74" font-weight="600" fill="#ffffff">
+    <tspan x="80" y="350">Agentic AI Development</tspan>
+    <tspan x="80" y="430">Pods for Enterprise</tspan>
+  </text>
+
+  <!-- subline -->
+  <text x="80" y="510" font-family="Open Sans, sans-serif" font-size="30" fill="#cfc7ea">Dedicated offshore AI teams. LLM, agents, RAG &amp; data — shipped to production.</text>
+
+  <!-- chips -->
+  <g font-family="Saira, sans-serif" font-size="22" fill="#ffffff">
+    <rect x="80" y="548" width="220" height="44" rx="22" fill="#ffffff" fill-opacity="0.1"/>
+    <text x="104" y="576">LLM Integration</text>
+    <rect x="316" y="548" width="190" height="44" rx="22" fill="#ffffff" fill-opacity="0.1"/>
+    <text x="340" y="576">Agentic AI</text>
+    <rect x="522" y="548" width="240" height="44" rx="22" fill="#ffffff" fill-opacity="0.1"/>
+    <text x="546" y="576">AI Staff Augmentation</text>
+  </g>
+</svg>
