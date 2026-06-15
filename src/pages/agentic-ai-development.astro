@@ -134,17 +134,17 @@ const steps = [
 
 // Tech stack (icons live in /public/images/icons)
 const techStack = [
-  { img: "/images/icons/icon-python.svg", label: "Python" },
-  { img: "/images/icons/icon-langchain.svg", label: "LangChain" },
-  { img: "/images/icons/icon-openai.svg", label: "OpenAI" },
-  { img: "/images/icons/icon-claude.svg", label: "Claude" },
-  { img: "/images/icons/icon-aws.svg", label: "AWS" },
-  { img: "/images/icons/icon-gcp.svg", label: "Google Cloud" },
-  { img: "/images/icons/icon-looker.svg", label: "Looker" },
-  { img: "/images/icons/icon-dbt.svg", label: "dbt" },
-  { img: "/images/icons/icon-airflow.svg", label: "Airflow" },
-  { img: "/images/icons/icon-kafka.svg", label: "Kafka" },
-  { img: "/images/icons/icon-kubernetes.svg", label: "Kubernetes" },
+  { img: "/images/icons/Python_Software.png", label: "Python" },
+  { img: "/images/icons/icon-langchain.png", label: "LangChain" },
+  { img: "/images/icons/OpenAI_Symbol.svg", label: "OpenAI" },
+  { img: "/images/icons/claude.png", label: "Claude" },
+  { img: "/images/icons/aws.svg", label: "AWS" },
+  { img: "/images/icons/Logo-google-cloud-icon-vector-PNG.jpeg", label: "Google Cloud" },
+  { img: "/images/icons/Looker.jpeg", label: "Looker" },
+  { img: "/images/icons/Data Build Tool.png", label: "dbt" },
+  { img: "/images/icons/apache-airflow.png", label: "Airflow" },
+  { img: "/images/icons/kafka.svg", label: "Kafka" },
+  { img: "/images/icons/Kubernetes_idda6T8Ya6_0.svg", label: "Kubernetes" },
 ];
 
 const faqs = [
@@ -202,11 +202,11 @@ const jsonLd = [
 ];
 ---
 
-<BaseLayout title={SEO_TITLE} description={SEO_DESC} jsonLd={jsonLd} breadcrumbs={false}>
+<BaseLayout title={SEO_TITLE} description={SEO_DESC} jsonLd={jsonLd}>
   <!-- ============ HERO (form above the fold on desktop) ============ -->
   <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
     <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 18% 28%, var(--sd-purple), transparent 50%), radial-gradient(circle at 85% 70%, var(--sd-purple-300), transparent 42%);"></div>
-    <div class="relative sd-container pt-32 pb-14 md:pt-36 md:pb-20">
+    <div class="relative sd-container pt-36 pb-14 md:pt-40 md:pb-20">
       <div class="grid md:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-12 items-center">
         <!-- Copy -->
         <div data-animate>
@@ -448,7 +448,9 @@ const jsonLd = [
       <div class="flex flex-wrap justify-center gap-x-10 gap-y-8 max-w-4xl mx-auto">
         {techStack.map((t) => (
           <div class="flex flex-col items-center gap-3 w-20">
-            <img src={t.img} alt={t.label} width="56" height="56" loading="lazy" class="w-12 h-12 md:w-14 md:h-14" />
+            <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white flex items-center justify-center p-2.5 shadow-md">
+              <img src={t.img} alt={t.label} width="56" height="56" loading="lazy" class="w-full h-full object-contain" />
+            </div>
             <span class="text-xs font-ui uppercase tracking-widest text-sd-text-muted text-center leading-tight">{t.label}</span>
           </div>
         ))}
