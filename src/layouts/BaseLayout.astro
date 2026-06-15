@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import SEOHead from "../components/seo/SEOHead.astro";
 import JsonLD from "../components/seo/JsonLD.astro";
+import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import { organizationJsonLd, SITE } from "../lib/seo";
@@ -19,6 +20,8 @@ interface Props {
   articleSection?: string;
   footerMarquee?: string;
   footerMarqueeTheme?: "light" | "dark";
+  /** Pass false to suppress auto breadcrumbs (use on pages that render their own inside the hero) */
+  breadcrumbs?: false;
 }
 
 const {
@@ -34,7 +37,27 @@ const {
   articleSection,
   footerMarquee,
   footerMarqueeTheme,
+  breadcrumbs: breadcrumbsProp,
 } = Astro.props;
+
+// Auto-generate breadcrumb items from URL path (e.g. /our-work → Home > Our Work)
+const autoCrumbs: Array<{ label: string; href?: string }> = [];
+if (breadcrumbsProp !== false) {
+  const segments = Astro.url.pathname.split("/").filter(Boolean);
+  if (segments.length > 0) {
+    autoCrumbs.push({ label: "Home", href: "/" });
+    let acc = "";
+    segments.forEach((seg, i) => {
+      acc += "/" + seg;
+      const label = seg
+        .split("-")
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ");
+      autoCrumbs.push(i < segments.length - 1 ? { label, href: acc } : { label });
+    });
+  }
+}
+const showAutoBreadcrumbs = autoCrumbs.length > 1;
 ---
 
 <!doctype html>
@@ -118,7 +141,14 @@ const {
 
     <Header />
 
-    <main id="main-content" class="flex-1">
+    <main id="main-content" class="flex-1 relative">
+      {showAutoBreadcrumbs && (
+        <div class="absolute top-[72px] left-0 right-0 z-20 pointer-events-none">
+          <div class="mx-auto max-w-[1440px] px-6 md:px-10 pt-5 pointer-events-auto">
+            <Breadcrumbs items={autoCrumbs} visible={true} />
+          </div>
+        </div>
+      )}
       <slot />
     </main>
 
@@ -128,6 +158,32 @@ const {
       import { initScrollAnimations } from "../lib/animations";
       initScrollAnimations();
       document.addEventListener("astro:page-load", initScrollAnimations);
+    </script>
+
+    <!-- Conversion tracking: book_call_click -->
+    <script is:inline>
+      (function () {
+        function trackBookCall(url) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: "book_call_click", meeting_url: url || "" });
+          if (typeof gtag === "function") {
+            gtag("event", "book_call_click", url ? { meeting_url: url } : {});
+          }
+        }
+
+        // Clicks on any link to meetings.hubspot.com (site-wide)
+        document.addEventListener("click", function (e) {
+          var link = e.target.closest("a[href*='meetings.hubspot.com']");
+          if (link) trackBookCall(link.getAttribute("href"));
+        }, true);
+
+        // HubSpot meetings embed: fires when booking is successfully completed
+        window.addEventListener("message", function (e) {
+          if (e.data && e.data.meetingBookSucceeded) {
+            trackBookCall("");
+          }
+        });
+      })();
     </script>
   </body>
 </html>
