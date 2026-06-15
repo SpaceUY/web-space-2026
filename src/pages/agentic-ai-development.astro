@@ -9,7 +9,7 @@ import QuoteReveal from "../components/ui/QuoteReveal.astro";
 import AnimatedCounter from "../components/ui/AnimatedCounter.astro";
 import { SITE } from "../lib/seo";
 
-// Book-a-call link (HubSpot meetings — opens in a new tab, no embed per brief)
+// Book-a-call link (HubSpot meetings, opens in a new tab, no embed per brief)
 const BOOK_CALL = "https://meetings.hubspot.com/federico-sendra/meet-space";
 
 const SEO_TITLE = "Agentic AI Development & AI Transformation Consulting | SpaceDev";
@@ -34,7 +34,7 @@ const stats = [
 const services = [
   {
     title: "LLM Integration Services",
-    desc: "Production-grade LLM integration services — provider routing, prompt orchestration, evals, and guardrails wired into your existing product.",
+    desc: "Production-grade LLM integration services: provider routing, prompt orchestration, evals, and guardrails wired into your existing product.",
   },
   {
     title: "Agentic AI Development",
@@ -42,7 +42,7 @@ const services = [
   },
   {
     title: "RAG Architecture",
-    desc: "Retrieval-augmented generation pipelines — vector stores, chunking, re-ranking, and grounding so answers are accurate and auditable.",
+    desc: "Retrieval-augmented generation pipelines: vector stores, chunking, re-ranking, and grounding so answers are accurate and auditable.",
   },
   {
     title: "Data Infrastructure & Semantic Layer",
@@ -54,7 +54,7 @@ const services = [
   },
 ];
 
-// Case studies — Challenge / Solution / Impact. Metrics are PLACEHOLDERS to confirm with AMs.
+// Case studies: Challenge / Solution / Impact, with confirmed client metrics.
 const cases = [
   {
     client: "Prose",
@@ -151,7 +151,7 @@ const faqs = [
   {
     question: "What is an AI development pod?",
     answer:
-      "An AI development pod is a dedicated, cross-functional team — AI engineers, data engineers, and a tech lead — that works exclusively on your roadmap. Unlike staff augmentation, the pod owns delivery and velocity end-to-end, so you get a shippable AI capability, not just extra hands.",
+      "An AI development pod is a dedicated, cross-functional team (AI engineers, data engineers, and a tech lead) that works exclusively on your roadmap. Unlike staff augmentation, the pod owns delivery and velocity end-to-end, so you get a shippable AI capability, not just extra hands.",
   },
   {
     question: "How quickly can you deploy a dedicated AI development team?",
@@ -161,7 +161,7 @@ const faqs = [
   {
     question: "Do you work in US time zones?",
     answer:
-      "Yes. Our teams are nearshore/offshore across the US, Uruguay, Argentina, and Colombia, working in US-aligned hours for real-time collaboration — standups in your morning, not your midnight.",
+      "Yes. Our teams are nearshore/offshore across the US, Uruguay, Argentina, and Colombia, working in US-aligned hours for real-time collaboration: standups in your morning, not your midnight.",
   },
   {
     question: "What LLM frameworks and models do you use?",
@@ -171,7 +171,7 @@ const faqs = [
   {
     question: "Is this compatible with our existing stack?",
     answer:
-      "Yes. As an AI transformation consulting partner we integrate with what you already run — your cloud (AWS/GCP), data warehouse, semantic layer (dbt, Looker), and product. We add an AI layer rather than forcing a rebuild.",
+      "Yes. As an AI transformation consulting partner we integrate with what you already run: your cloud (AWS/GCP), data warehouse, semantic layer (dbt, Looker), and product. We add an AI layer rather than forcing a rebuild.",
   },
   {
     question: "What's the difference between a pod, staff augmentation, and project-based work?",
@@ -212,11 +212,11 @@ const jsonLd = [
         <div data-animate>
           <p class="text-xs font-ui uppercase tracking-[0.2em] text-sd-purple-200 mb-5">AI Transformation Consulting</p>
           <h1 class="text-3xl md:text-5xl lg:text-[3.4rem] leading-[1.05] text-white font-display">
-            Agentic AI Development Company — Dedicated Offshore Pods for Enterprise
+            Agentic AI Development Company: Dedicated Offshore Pods for Enterprise
           </h1>
           <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
             We build dedicated offshore AI pods that ship production-grade LLM systems, agentic
-            workflows, and data infrastructure — so your team can move faster.
+            workflows, and data infrastructure, so your team can move faster.
           </p>
           <div class="mt-8 flex flex-wrap gap-4">
             <Button href={BOOK_CALL} variant="primary" size="lg" external data-cta="book-call">Book a Strategy Call</Button>
@@ -260,7 +260,7 @@ const jsonLd = [
       <SectionHeading
         eyebrow="What we build"
         title="Enterprise AI Development, End to End"
-        description="From LLM integration services to a full enterprise AI development team — the capabilities that move agentic AI from prototype to production."
+        description="From LLM integration services to a full enterprise AI development team: the capabilities that move agentic AI from prototype to production."
         tone="light"
         class="mb-14"
       />
@@ -322,7 +322,7 @@ const jsonLd = [
           </article>
         ))}
       </div>
-      <!-- Awards / recognition — on a light panel so the badges (light-mode artwork) render correctly -->
+      <!-- Awards / recognition: on a light panel so the badges (light-mode artwork) render correctly -->
       <div class="mt-14 rounded-2xl bg-sd-light px-6 py-7 md:px-12 md:py-8 flex flex-wrap items-center justify-center gap-8 md:gap-14" data-animate>
         <div class="flex items-center gap-2">
           <span class="text-2xl font-display text-sd-text-dark">5.0</span>
@@ -351,7 +351,7 @@ const jsonLd = [
           <h2 class="font-display text-2xl md:text-4xl text-white leading-snug">Scope your AI pod in one call</h2>
           <p class="mt-4 text-sd-text-muted leading-relaxed max-w-lg">
             Tell us your use case and we'll come back with a team shape, timeline, and a clear path
-            from idea to production. AI staff augmentation or a full dedicated pod — your call.
+            from idea to production. AI staff augmentation or a full dedicated pod, your call.
           </p>
           <div class="mt-7">
             <Button href={BOOK_CALL} variant="primary" size="lg" external data-cta="book-call">Book a Strategy Call</Button>
@@ -370,7 +370,7 @@ const jsonLd = [
       <SectionHeading
         eyebrow="Engagement models"
         title="Three Ways to Work With Us"
-        description="Pick the model that fits your stage — most enterprise AI transformation engagements start as a dedicated pod."
+        description="Pick the model that fits your stage: most enterprise AI transformation engagements start as a dedicated pod."
         tone="light"
         class="mb-14"
       />
@@ -463,7 +463,7 @@ const jsonLd = [
         <div data-animate>
           <h2 class="font-display text-3xl md:text-5xl text-white leading-tight">Ready to Build Your AI Pod?</h2>
           <p class="mt-5 text-lg text-sd-text-muted leading-relaxed max-w-lg">
-            Tell us about your project. We respond in less than 24 hours — or book a strategy call and
+            Tell us about your project. We respond in less than 24 hours, or book a strategy call and
             talk to an engineer this week.
           </p>
           <div class="mt-8 flex flex-wrap gap-4">

@@ -25,7 +25,7 @@
   </text>
 
   <!-- subline -->
-  <text x="80" y="510" font-family="Open Sans, sans-serif" font-size="30" fill="#cfc7ea">Dedicated offshore AI teams. LLM, agents, RAG &amp; data — shipped to production.</text>
+  <text x="80" y="510" font-family="Open Sans, sans-serif" font-size="30" fill="#cfc7ea">Dedicated offshore AI teams. LLM, agents, RAG &amp; data, shipped to production.</text>
 
   <!-- chips -->
   <g font-family="Saira, sans-serif" font-size="22" fill="#ffffff">
