@@ -322,16 +322,16 @@ const jsonLd = [
           </article>
         ))}
       </div>
-      <!-- Awards / recognition -->
-      <div class="mt-14 flex flex-wrap items-center justify-center gap-8 md:gap-12" data-animate>
-        <div class="flex items-center gap-2 text-white">
-          <span class="text-2xl font-display">5.0</span>
-          <span class="text-sd-green text-lg tracking-tight">★★★★★</span>
-          <span class="text-sm text-sd-text-muted ml-1">on Clutch</span>
+      <!-- Awards / recognition — on a light panel so the badges (light-mode artwork) render correctly -->
+      <div class="mt-14 rounded-2xl bg-sd-light px-6 py-7 md:px-12 md:py-8 flex flex-wrap items-center justify-center gap-8 md:gap-14" data-animate>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-display text-sd-text-dark">5.0</span>
+          <span class="text-lg tracking-tight" style="color:#FF3D2E">★★★★★</span>
+          <span class="text-sm text-sd-text-gray ml-1">on Clutch</span>
         </div>
-        <img src="/images/clutch-2026-top-blockchain.png" alt="Top Company on Clutch 2026" width="84" height="84" loading="lazy" class="h-16 w-auto object-contain" />
-        <img src="/images/clutch-2026-top-ethereum.png" alt="Top Ethereum Company on Clutch 2026" width="84" height="84" loading="lazy" class="h-16 w-auto object-contain" />
-        <img src="/images/content/aBdWHMkZEsQNlbGeQBO4XJATg8.svg" alt="Forbes Technology Council Member" width="120" height="64" loading="lazy" class="h-14 w-auto object-contain" />
+        <img src="/images/clutch-2026-top-blockchain.png" alt="Top Company on Clutch 2026" width="84" height="84" loading="lazy" class="h-20 w-auto object-contain" />
+        <img src="/images/clutch-2026-top-ethereum.png" alt="Top Ethereum Company on Clutch 2026" width="84" height="84" loading="lazy" class="h-20 w-auto object-contain" />
+        <img src="/images/content/aBdWHMkZEsQNlbGeQBO4XJATg8.svg" alt="Forbes Technology Council Member" width="120" height="72" loading="lazy" class="h-16 w-auto object-contain" />
       </div>
     </div>
   </section>
