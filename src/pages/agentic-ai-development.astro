@@ -1,0 +1,507 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import FeatureCard from "../components/ui/FeatureCard.astro";
+import FAQ from "../components/ui/FAQ.astro";
+import AgenticLeadForm from "../components/ui/AgenticLeadForm.astro";
+import QuoteReveal from "../components/ui/QuoteReveal.astro";
+import AnimatedCounter from "../components/ui/AnimatedCounter.astro";
+import { SITE } from "../lib/seo";
+
+// Book-a-call link (HubSpot meetings, opens in a new tab, no embed per brief)
+const BOOK_CALL = "https://meetings.hubspot.com/federico-sendra/meet-space";
+
+const SEO_TITLE = "Agentic AI Development & AI Transformation Consulting | SpaceDev";
+const SEO_DESC =
+  "SpaceDev builds dedicated AI engineering pods for enterprise teams. LLM integration, agentic AI, RAG pipelines. Offshore talent, US-aligned. Get a quote.";
+
+// Client logos shown under the hero
+const heroLogos = [
+  { src: "/images/clients/ulta-white.svg", alt: "Ulta Beauty" },
+  { src: "/images/clients/prose-white.svg", alt: "Prose" },
+  { src: "/images/clients/drata-white.svg", alt: "Drata" },
+];
+
+const stats = [
+  { value: 7, suffix: "", label: "Years building software" },
+  { value: 160, suffix: "+", label: "Products shipped" },
+  { value: 70, suffix: "+", label: "Engineers on staff" },
+  { value: 4, suffix: "", label: "Countries, US-aligned hours" },
+];
+
+// What we build
+const services = [
+  {
+    title: "LLM Integration Services",
+    desc: "Production-grade LLM integration services: provider routing, prompt orchestration, evals, and guardrails wired into your existing product.",
+  },
+  {
+    title: "Agentic AI Development",
+    desc: "We're an agentic AI development company: multi-step agents, tool use, and autonomous workflows that act on your systems, not just chat.",
+  },
+  {
+    title: "RAG Architecture",
+    desc: "Retrieval-augmented generation pipelines: vector stores, chunking, re-ranking, and grounding so answers are accurate and auditable.",
+  },
+  {
+    title: "Data Infrastructure & Semantic Layer",
+    desc: "The foundation agentic AI needs: pipelines, a governed semantic layer, and BI integration so models reason over trustworthy data.",
+  },
+  {
+    title: "AI Staff Augmentation",
+    desc: "AI staff augmentation and a dedicated AI development pod: offshore AI developers embedded in your team, shipping in your stack and timezone.",
+  },
+];
+
+// Case studies: Challenge / Solution / Impact, with confirmed client metrics.
+const cases = [
+  {
+    client: "Prose",
+    tag: "DTC Beauty",
+    logo: "/images/clients/prose-white.svg",
+    challenge:
+      "Prose needed AI-first data infrastructure to support business decisions at scale. The data team was bottlenecked and lacked dedicated AI engineering capacity.",
+    solution:
+      "SpaceDev deployed a dedicated offshore AI pod that built a governed semantic layer, integrated Looker MCP + Claude, and shipped a live beta in weeks.",
+    impact: [
+      "73% faster time-to-insight for the data team",
+      "Live AI beta shipped in 6 weeks",
+      "60% reduction in manual analysis time",
+    ],
+  },
+  {
+    client: "Ulta Beauty",
+    tag: "Retail Enterprise",
+    logo: "/images/clients/ulta-white.svg",
+    challenge:
+      "Ulta Beauty wanted to lift in-store customer engagement across its national retail footprint, and needed engineering capacity to ship the experience into both its web and mobile apps quickly.",
+    solution:
+      "SpaceDev built and shipped the customer-facing feature into Ulta's web and mobile apps, then supported the rollout across its retail network.",
+    impact: [
+      "40% increase in in-store customer engagement",
+      "Deployed across 1,300+ retail locations",
+      "Feature adopted in web and mobile app within 3 months",
+    ],
+  },
+  {
+    client: "Drata",
+    tag: "Compliance SaaS",
+    logo: "/images/clients/drata-white.svg",
+    challenge:
+      "As Drata scaled through hypergrowth, it needed to rebuild its cross-platform compliance agent and add senior engineering capacity that could integrate with its team for the long haul.",
+    solution:
+      "SpaceDev embedded a dedicated team that rebuilt the cross-platform compliance agent (macOS, Linux, Windows) and has partnered with Drata for 4+ years.",
+    impact: [
+      "4+ year ongoing engineering partnership",
+      "Rebuilt cross-platform agent (macOS, Linux, Windows)",
+      "Partner through $2B valuation milestone",
+    ],
+  },
+];
+
+// Hiring models
+const models = [
+  {
+    name: "Dedicated AI Pod",
+    tagline: "A full cross-functional AI team, owned end-to-end.",
+    points: ["AI engineers + data + lead", "We own delivery & velocity", "Pod ready in ~2 weeks"],
+    highlight: true,
+  },
+  {
+    name: "AI Staff Augmentation",
+    tagline: "Offshore AI developers embedded in your team.",
+    points: ["You manage, we staff", "Scale up or down fast", "Your stack, your process"],
+    highlight: false,
+  },
+  {
+    name: "Project-Based",
+    tagline: "Fixed scope, fixed outcome, clear deliverable.",
+    points: ["Defined scope & milestones", "Best for discrete builds", "Predictable delivery"],
+    highlight: false,
+  },
+];
+
+// Process
+const steps = [
+  { n: "01", t: "Discovery", d: "We map your goals, data, and use cases, and define success metrics.", when: "Week 1" },
+  { n: "02", t: "Architecture", d: "We design the LLM, agent, and data architecture for your stack.", when: "Week 1–2" },
+  { n: "03", t: "Pod Assembly", d: "Your dedicated AI development pod is staffed and onboarded.", when: "Pod ready in 2 weeks" },
+  { n: "04", t: "Build", d: "Iterative sprints shipping production-grade AI, reviewed weekly.", when: "First sprint, week 3" },
+  { n: "05", t: "Deploy", d: "We ship to production with evals, monitoring, and guardrails.", when: "Ongoing" },
+  { n: "06", t: "Support & Scale", d: "We maintain, optimize, and scale the team as you grow.", when: "Ongoing" },
+];
+
+// Tech stack (icons live in /public/images/icons)
+const techStack = [
+  { img: "/images/icons/icon-python.svg", label: "Python" },
+  { img: "/images/icons/icon-langchain.svg", label: "LangChain" },
+  { img: "/images/icons/icon-openai.svg", label: "OpenAI" },
+  { img: "/images/icons/icon-claude.svg", label: "Claude" },
+  { img: "/images/icons/icon-aws.svg", label: "AWS" },
+  { img: "/images/icons/icon-gcp.svg", label: "Google Cloud" },
+  { img: "/images/icons/icon-looker.svg", label: "Looker" },
+  { img: "/images/icons/icon-dbt.svg", label: "dbt" },
+  { img: "/images/icons/icon-airflow.svg", label: "Airflow" },
+  { img: "/images/icons/icon-kafka.svg", label: "Kafka" },
+  { img: "/images/icons/icon-kubernetes.svg", label: "Kubernetes" },
+];
+
+const faqs = [
+  {
+    question: "What is an AI development pod?",
+    answer:
+      "An AI development pod is a dedicated, cross-functional team (AI engineers, data engineers, and a tech lead) that works exclusively on your roadmap. Unlike staff augmentation, the pod owns delivery and velocity end-to-end, so you get a shippable AI capability, not just extra hands.",
+  },
+  {
+    question: "How quickly can you deploy a dedicated AI development team?",
+    answer:
+      "Most dedicated AI pods are assembled and onboarded within two weeks, with the first production sprint starting in week three. Because our offshore AI developers are on staff (not recruited per project), there's no multi-month hiring cycle.",
+  },
+  {
+    question: "Do you work in US time zones?",
+    answer:
+      "Yes. Our teams are nearshore/offshore across the US, Uruguay, Argentina, and Colombia, working in US-aligned hours for real-time collaboration: standups in your morning, not your midnight.",
+  },
+  {
+    question: "What LLM frameworks and models do you use?",
+    answer:
+      "Our LLM integration services span OpenAI, Anthropic Claude, and open models, orchestrated with LangChain and custom frameworks. For agentic AI development we build tool-use agents, RAG pipelines, and evaluation harnesses tailored to your stack.",
+  },
+  {
+    question: "Is this compatible with our existing stack?",
+    answer:
+      "Yes. As an AI transformation consulting partner we integrate with what you already run: your cloud (AWS/GCP), data warehouse, semantic layer (dbt, Looker), and product. We add an AI layer rather than forcing a rebuild.",
+  },
+  {
+    question: "What's the difference between a pod, staff augmentation, and project-based work?",
+    answer:
+      "A dedicated AI development pod is a full team we run for you. AI staff augmentation places offshore AI developers inside your team under your management. Project-based work delivers a fixed scope. Most enterprise AI transformation engagements start as a pod.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Agentic AI Development & AI Transformation Consulting",
+    serviceType: "Agentic AI development company",
+    provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    areaServed: ["United States", "Latin America"],
+    description: SEO_DESC,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout title={SEO_TITLE} description={SEO_DESC} jsonLd={jsonLd} breadcrumbs={false}>
+  <!-- ============ HERO (form above the fold on desktop) ============ -->
+  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
+    <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 18% 28%, var(--sd-purple), transparent 50%), radial-gradient(circle at 85% 70%, var(--sd-purple-300), transparent 42%);"></div>
+    <div class="relative sd-container pt-32 pb-14 md:pt-36 md:pb-20">
+      <div class="grid md:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-12 items-center">
+        <!-- Copy -->
+        <div data-animate>
+          <p class="text-xs font-ui uppercase tracking-[0.2em] text-sd-purple-200 mb-5">AI Transformation Consulting</p>
+          <h1 class="text-3xl md:text-5xl lg:text-[3.4rem] leading-[1.05] text-white font-display">
+            Agentic AI Development Company: Dedicated Offshore Pods for Enterprise
+          </h1>
+          <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
+            We build dedicated offshore AI pods that ship production-grade LLM systems, agentic
+            workflows, and data infrastructure, so your team can move faster.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <Button href={BOOK_CALL} variant="primary" size="lg" external data-cta="book-call">Book a Strategy Call</Button>
+            <Button href="#case-studies" variant="outline-light" size="lg">See Our Work</Button>
+          </div>
+          <!-- Client logos -->
+          <div class="mt-10">
+            <p class="text-xs font-ui uppercase tracking-[0.18em] text-sd-text-muted/70 mb-4">Trusted by teams at</p>
+            <div class="flex flex-wrap items-center gap-x-9 gap-y-5">
+              {heroLogos.map((l) => (
+                <img src={l.src} alt={l.alt} height="28" loading="eager" class="h-7 w-auto object-contain opacity-85" />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Lead form card -->
+        <div class="rounded-3xl bg-white p-6 md:p-8 shadow-2xl shadow-black/30" data-animate id="hero-form">
+          <h2 class="font-display text-xl md:text-2xl text-sd-text-dark mb-1">Get a project quote</h2>
+          <p class="text-sm text-sd-text-gray mb-6">Tell us what you're building. We reply in under 24 hours.</p>
+          <AgenticLeadForm tone="light" buttonLabel="Get a quote" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="bg-sd-dark border-b border-white/5 py-12 md:py-16">
+    <div class="sd-container">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((s) => (
+          <AnimatedCounter value={s.value} suffix={s.suffix} label={s.label} size="sm" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES / WHAT WE BUILD ============ -->
+  <section class="bg-sd-dark py-20 md:py-28">
+    <div class="sd-container">
+      <SectionHeading
+        eyebrow="What we build"
+        title="Enterprise AI Development, End to End"
+        description="From LLM integration services to a full enterprise AI development team: the capabilities that move agentic AI from prototype to production."
+        tone="light"
+        class="mb-14"
+      />
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {services.map((s, i) => (
+          <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-7 transition-colors duration-300 hover:bg-sd-purple/15" data-animate>
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-sd-purple/15 text-sd-purple-300 font-display mb-5">{String(i + 1).padStart(2, "0")}</span>
+            <h3 class="font-display text-xl text-white mb-3">{s.title}</h3>
+            <p class="text-sm text-sd-text-muted leading-relaxed">{s.desc}</p>
+          </div>
+        ))}
+        <!-- CTA card -->
+        <div class="rounded-2xl p-7 flex flex-col justify-between" style="background: var(--sd-gradient-hero);" data-animate>
+          <h3 class="font-display text-xl text-white leading-snug">Need a dedicated AI development pod?</h3>
+          <Button href="#book" variant="primary" class="mt-6 self-start">Build your pod</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CASE STUDIES (Challenge / Solution / Impact) ============ -->
+  <section id="case-studies" class="scroll-mt-24 py-20 md:py-28" style="background: var(--sd-purple-deep);">
+    <div class="sd-container">
+      <SectionHeading
+        eyebrow="Proof"
+        title="AI Pods That Shipped Real Outcomes"
+        description="How our dedicated AI teams turned enterprise bottlenecks into production systems."
+        tone="light"
+        class="mb-14"
+      />
+      <div class="flex flex-col gap-6">
+        {cases.map((c) => (
+          <article class="rounded-3xl border border-white/10 bg-white/[0.03] p-7 md:p-10" data-animate>
+            <div class="flex items-center gap-4 mb-8">
+              <img src={c.logo} alt={c.client} height="28" loading="lazy" class="h-7 w-auto object-contain shrink-0" />
+              <span class="text-xs font-ui uppercase tracking-[0.15em] text-sd-purple-200">{c.tag}</span>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 md:gap-10">
+              <div>
+                <p class="text-xs font-ui uppercase tracking-[0.18em] text-sd-text-muted/70 mb-3">Challenge</p>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{c.challenge}</p>
+              </div>
+              <div>
+                <p class="text-xs font-ui uppercase tracking-[0.18em] text-sd-text-muted/70 mb-3">Solution</p>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{c.solution}</p>
+              </div>
+              <div>
+                <p class="text-xs font-ui uppercase tracking-[0.18em] text-sd-green mb-3">Impact</p>
+                <ul class="space-y-2.5">
+                  {c.impact.map((m) => (
+                    <li class="flex items-start gap-2.5 text-sm text-white leading-snug">
+                      <span class="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-sd-green"></span>
+                      <span>{m}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <!-- Awards / recognition: on a light panel so the badges (light-mode artwork) render correctly -->
+      <div class="mt-14 rounded-2xl bg-sd-light px-6 py-7 md:px-12 md:py-8 flex flex-wrap items-center justify-center gap-8 md:gap-14" data-animate>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-display text-sd-text-dark">5.0</span>
+          <span class="text-lg tracking-tight" style="color:#FF3D2E">★★★★★</span>
+          <span class="text-sm text-sd-text-gray ml-1">on Clutch</span>
+        </div>
+        <img src="/images/clutch-2026-top-blockchain.png" alt="Top Company on Clutch 2026" width="84" height="84" loading="lazy" class="h-20 w-auto object-contain" />
+        <img src="/images/clutch-2026-top-ethereum.png" alt="Top Ethereum Company on Clutch 2026" width="84" height="84" loading="lazy" class="h-20 w-auto object-contain" />
+        <img src="/images/content/aBdWHMkZEsQNlbGeQBO4XJATg8.svg" alt="Forbes Technology Council Member" width="120" height="72" loading="lazy" class="h-16 w-auto object-contain" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIAL (verified Clutch review) ============ -->
+  <QuoteReveal
+    text="SpaceDev has been an exceptional long-term partner. Their team integrated seamlessly with ours and delivered production-grade software consistently across multiple years of rapid growth."
+    authors={{ name: "CTO, Drata", role: "★★★★★ · Verified review on Clutch" }}
+    tone="dark"
+  />
+
+  <!-- ============ MID FORM CTA ============ -->
+  <section class="bg-sd-dark py-16 md:py-20 border-y border-white/5">
+    <div class="sd-container">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div data-animate>
+          <h2 class="font-display text-2xl md:text-4xl text-white leading-snug">Scope your AI pod in one call</h2>
+          <p class="mt-4 text-sd-text-muted leading-relaxed max-w-lg">
+            Tell us your use case and we'll come back with a team shape, timeline, and a clear path
+            from idea to production. AI staff augmentation or a full dedicated pod, your call.
+          </p>
+          <div class="mt-7">
+            <Button href={BOOK_CALL} variant="primary" size="lg" external data-cta="book-call">Book a Strategy Call</Button>
+          </div>
+        </div>
+        <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-6 md:p-8" data-animate>
+          <AgenticLeadForm tone="dark" buttonLabel="Request a quote" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HIRING MODELS ============ -->
+  <section class="bg-sd-dark py-20 md:py-28">
+    <div class="sd-container">
+      <SectionHeading
+        eyebrow="Engagement models"
+        title="Three Ways to Work With Us"
+        description="Pick the model that fits your stage: most enterprise AI transformation engagements start as a dedicated pod."
+        tone="light"
+        class="mb-14"
+      />
+      <div class="grid gap-6 md:grid-cols-3">
+        {models.map((m) => (
+          <div class={`rounded-2xl p-8 flex flex-col ${m.highlight ? "border-2 border-sd-purple bg-sd-purple/10" : "border border-white/10 bg-sd-dark-2"}`} data-animate>
+            {m.highlight && <span class="self-start text-[11px] font-ui uppercase tracking-widest text-sd-purple-200 bg-sd-purple/20 rounded-full px-3 py-1 mb-4">Most popular</span>}
+            <h3 class="font-display text-2xl text-white mb-2">{m.name}</h3>
+            <p class="text-sm text-sd-text-muted mb-6 leading-relaxed">{m.tagline}</p>
+            <ul class="space-y-3 mb-8">
+              {m.points.map((p) => (
+                <li class="flex items-start gap-2.5 text-sm text-sd-text-muted">
+                  <svg class="mt-0.5 shrink-0 text-sd-purple-300" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+            <Button href="#book" variant={m.highlight ? "primary" : "outline-light"} class="mt-auto self-start">Let's talk</Button>
+          </div>
+        ))}
+      </div>
+
+      <!-- Enterprise trust row -->
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4" data-animate>
+        {[
+          { t: "You own all IP", d: "Code and models are yours from day one." },
+          { t: "NDA on request", d: "We sign before the first technical call." },
+          { t: "Security-first", d: "Least-privilege access, SOC 2-aligned practices." },
+          { t: "US-aligned hours", d: "Real-time overlap with your team, daily." },
+        ].map((i) => (
+          <div class="rounded-xl border border-white/10 bg-sd-dark-2 p-5">
+            <div class="flex items-center gap-2 mb-1.5">
+              <svg class="text-sd-green shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <h3 class="text-sm font-display text-white">{i.t}</h3>
+            </div>
+            <p class="text-xs text-sd-text-muted leading-relaxed">{i.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+    <div class="sd-container">
+      <SectionHeading
+        eyebrow="How it works"
+        title="From Discovery to Production in Weeks"
+        tone="light"
+        class="mb-14"
+      />
+      <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {steps.map((s) => (
+          <li class="rounded-2xl border border-white/10 bg-white/[0.03] p-6" data-animate>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-display text-2xl text-sd-purple-300">{s.n}</span>
+              <span class="text-[11px] font-ui uppercase tracking-widest text-sd-green">{s.when}</span>
+            </div>
+            <h3 class="font-display text-lg text-white mb-2">{s.t}</h3>
+            <p class="text-sm text-sd-text-muted leading-relaxed">{s.d}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ TECH STACK ============ -->
+  <section class="relative bg-sd-dark py-20 md:py-28 border-t border-white/5 overflow-hidden">
+    <div class="absolute inset-0 sd-dot-grid"></div>
+    <div class="relative sd-container">
+      <div class="text-center max-w-2xl mx-auto mb-14" data-animate>
+        <h2 class="section-title text-white mb-5">The Stack We Build On</h2>
+        <p class="text-sd-text-muted leading-relaxed">Battle-tested tools for LLM integration, agentic AI, and the data infrastructure underneath.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-x-10 gap-y-8 max-w-4xl mx-auto">
+        {techStack.map((t) => (
+          <div class="flex flex-col items-center gap-3 w-20">
+            <img src={t.img} alt={t.label} width="56" height="56" loading="lazy" class="w-12 h-12 md:w-14 md:h-14" />
+            <span class="text-xs font-ui uppercase tracking-widest text-sd-text-muted text-center leading-tight">{t.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MAIN FORM CTA ============ -->
+  <section id="book" class="scroll-mt-24 py-20 md:py-28" style="background: var(--sd-gradient-hero);">
+    <div class="sd-container">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div data-animate>
+          <h2 class="font-display text-3xl md:text-5xl text-white leading-tight">Ready to Build Your AI Pod?</h2>
+          <p class="mt-5 text-lg text-sd-text-muted leading-relaxed max-w-lg">
+            Tell us about your project. We respond in less than 24 hours, or book a strategy call and
+            talk to an engineer this week.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <Button href={BOOK_CALL} variant="secondary" size="lg" external data-cta="book-call">Book a Strategy Call</Button>
+          </div>
+          <div class="mt-10 space-y-2 text-sm text-sd-text-muted">
+            <p>info@spacedev.io</p>
+            <p>Miami · Montevideo · Buenos Aires · Medellín</p>
+          </div>
+        </div>
+        <div class="rounded-3xl bg-white p-6 md:p-8 shadow-2xl shadow-black/30" data-animate>
+          <h3 class="font-display text-xl md:text-2xl text-sd-text-dark mb-1">Start your AI project</h3>
+          <p class="text-sm text-sd-text-gray mb-6">Dedicated pod, staff augmentation, or fixed scope.</p>
+          <AgenticLeadForm tone="light" buttonLabel="Get a quote" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="bg-sd-dark py-20 md:py-32 border-t border-white/5">
+    <div class="sd-container">
+      <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+        <h2 class="section-title text-white md:sticky md:top-32">Frequently Asked Questions</h2>
+        <div class="rounded-2xl overflow-hidden px-6 md:px-8 bg-white/5">
+          <FAQ items={faqs} tone="dark" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // GA4 / GTM event when a "Book a Strategy Call" CTA is clicked
+  document.querySelectorAll('a[href*="meetings.hubspot.com"]').forEach((el) => {
+    el.addEventListener("click", () => {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({ event: "book_call_click", form_location: "agentic-ai-landing" });
+    });
+  });
+</script>

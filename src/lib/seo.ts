@@ -5,7 +5,6 @@ export const SITE = {
   defaultDescription:
     "SpaceDev is a blockchain development company offering web and mobile app development, and IT staff augmentation services for scalable growth.",
   email: "info@spacedev.io",
-  phone: "+1-754-249-6595",
   social: {
     twitter: "https://x.com/SpaceDevUy",
     linkedin: "https://www.linkedin.com/company/spacedev-uy/",
@@ -35,7 +34,6 @@ export const organizationJsonLd = {
   logo: `${SITE.url}/images/logo/spacedev-logo.svg`,
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: SITE.phone,
     email: SITE.email,
     contactType: "customer service",
   },

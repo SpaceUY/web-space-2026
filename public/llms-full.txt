@@ -85,7 +85,7 @@ Smart contract audit and blockchain security: static and manual analysis, formal
 
 ## Contact
 
-- Email: info@spacedev.io · Careers: people@spacedev.io · Phone: +1 754-249-6595
+- Email: info@spacedev.io · Careers: people@spacedev.io
 - Offices: 25 SW 9th St, Miami FL (USA) · Cornelio Cantera 2857, Montevideo (Uruguay) · El Salvador 5707, Buenos Aires (Argentina) · Carrera 30 # 7AA-207, Medellín (Colombia)
 - Book a call: https://meetings.hubspot.com/federico-sendra/meet-space
 - Social: https://x.com/SpaceDevUy · https://www.linkedin.com/company/spacedev-uy/ · https://www.instagram.com/spacedev.io · https://clutch.co/profile/spacedev

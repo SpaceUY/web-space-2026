@@ -1,0 +1,186 @@
+---
+/**
+ * Lead-capture form for the Agentic AI landing.
+ * Instance-safe: can be rendered multiple times on one page (hero + mid + final).
+ * Posts to HubSpot, shows inline success, and pushes a `generate_lead` GA4 event.
+ *
+ * tone: "light" (white card, for the gradient hero) | "dark" (for dark CTA bands)
+ */
+interface Props {
+  tone?: "light" | "dark";
+  buttonLabel?: string;
+  class?: string;
+}
+const { tone = "light", buttonLabel = "Get a quote", class: className = "" } = Astro.props;
+
+const PORTAL_ID = "22632737";
+const FORM_ID = "acdc5149-7c32-48f4-9137-ab4212538377";
+const ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
+---
+
+<form class={`agentic-lead-form alf-${tone} ${className}`} data-endpoint={ENDPOINT} novalidate>
+  <!-- HubSpot requires these two fields on the shared form; sent as hidden defaults -->
+  <input type="hidden" name="what_do_you_need_help_with_" value="Build a product" />
+  <input type="hidden" name="how_did_you_find_us_" value="Other" />
+
+  <div class="alf-row">
+    <div class="alf-field">
+      <label>Name <span class="alf-req">*</span></label>
+      <input name="firstname" type="text" autocomplete="name" required placeholder="Your name" />
+    </div>
+    <div class="alf-field">
+      <label>Company <span class="alf-req">*</span></label>
+      <input name="company_or_linkedin_profile" type="text" autocomplete="organization" required placeholder="Company name" />
+    </div>
+  </div>
+  <div class="alf-field">
+    <label>Work email <span class="alf-req">*</span></label>
+    <input name="email" type="email" autocomplete="email" required placeholder="you@company.com" />
+  </div>
+  <div class="alf-field">
+    <label>What are you building? <span class="alf-req">*</span></label>
+    <textarea name="message" rows="3" required placeholder="Tell us about your AI project, team size, and timeline…"></textarea>
+  </div>
+
+  <p class="alf-error" aria-live="polite" hidden>Something went wrong. Please try again or email info@spacedev.io.</p>
+
+  <button type="submit" class="alf-submit">
+    <span class="alf-label">{buttonLabel}</span>
+    <svg class="alf-spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="display:none">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2.5" stroke-dasharray="31.4" stroke-dashoffset="10" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <p class="alf-fineprint">We respond in less than 24 hours. No spam.</p>
+
+  <div class="alf-success" hidden>
+    <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 20l6 6 10-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h3>Thanks, message received.</h3>
+    <p>A SpaceDev engineer will reply within 1 business day.</p>
+  </div>
+</form>
+
+<style>
+  .agentic-lead-form { display: flex; flex-direction: column; gap: 1rem; }
+  .alf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 520px) { .alf-row { grid-template-columns: 1fr; } }
+  .alf-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .agentic-lead-form label { font-size: 12px; font-family: var(--font-body, sans-serif); letter-spacing: 0.01em; }
+  .alf-req { color: #673ae4; }
+
+  .agentic-lead-form input,
+  .agentic-lead-form textarea {
+    font-family: var(--font-body, sans-serif);
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 0.7rem 0.85rem;
+    outline: none;
+    width: 100%;
+    resize: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  /* light card (hero) */
+  .alf-light label { color: #4e5052; }
+  .alf-light input, .alf-light textarea {
+    background: #fff; border: 1px solid #e8e8e8; color: #141414;
+  }
+  .alf-light input::placeholder, .alf-light textarea::placeholder { color: #aaa; }
+  .alf-light input:focus, .alf-light textarea:focus { border-color: #673ae4; }
+  .alf-light .alf-fineprint { color: #858585; }
+  .alf-light .alf-success { color: #673ae4; }
+  .alf-light .alf-success h3 { color: #141414; }
+  .alf-light .alf-success p { color: #4e5052; }
+
+  /* dark (CTA bands) */
+  .alf-dark label { color: rgba(255,255,255,0.65); }
+  .alf-dark input, .alf-dark textarea {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); color: #fff;
+  }
+  .alf-dark input::placeholder, .alf-dark textarea::placeholder { color: rgba(255,255,255,0.35); }
+  .alf-dark input:focus, .alf-dark textarea:focus { border-color: #8572bc; background: rgba(255,255,255,0.1); }
+  .alf-dark .alf-fineprint { color: rgba(255,255,255,0.5); }
+  .alf-dark .alf-success { color: #00ffb2; }
+  .alf-dark .alf-success h3 { color: #fff; }
+  .alf-dark .alf-success p { color: rgba(255,255,255,0.6); }
+
+  .alf-submit {
+    margin-top: 0.25rem; width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.9rem 1rem; border-radius: 9999px;
+    background: #673ae4; color: #fff; font-size: 15px; font-weight: 500;
+    font-family: var(--font-body, sans-serif); border: none; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .alf-submit:hover { background: #4a397c; }
+  .alf-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .alf-spinner { animation: alf-spin 0.8s linear infinite; }
+  @keyframes alf-spin { to { transform: rotate(360deg); } }
+
+  .alf-fineprint { font-size: 12px; text-align: center; }
+  .alf-error {
+    font-size: 13px; color: #f87171; padding: 0.6rem 0.85rem;
+    background: rgba(248,113,113,0.08); border-radius: 8px; border: 1px solid rgba(248,113,113,0.2);
+  }
+  .alf-success {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    gap: 0.6rem; padding: 1.5rem 1rem;
+  }
+  .alf-success h3 { font-size: 1.15rem; font-family: var(--font-display, sans-serif); }
+  .alf-success p { font-size: 13px; }
+</style>
+
+<script>
+  // Wires every instance of the lead form on the page (Astro emits this once).
+  document.querySelectorAll<HTMLFormElement>("form.agentic-lead-form").forEach((form) => {
+    const endpoint = form.dataset.endpoint ?? "";
+    const submit = form.querySelector<HTMLButtonElement>(".alf-submit");
+    const label = form.querySelector<HTMLElement>(".alf-label");
+    const spinner = form.querySelector<HTMLElement>(".alf-spinner");
+    const errorEl = form.querySelector<HTMLElement>(".alf-error");
+    const success = form.querySelector<HTMLElement>(".alf-success");
+    const origLabel = label?.textContent ?? "Get a quote";
+    const fields = Array.from(form.querySelectorAll<HTMLElement>(".alf-field, .alf-error, .alf-submit, .alf-fineprint"));
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      if (submit) submit.disabled = true;
+      if (label) label.textContent = "Sending…";
+      if (spinner) spinner.style.display = "block";
+      if (errorEl) errorEl.hidden = true;
+
+      const data = new FormData(form);
+      const payload = Array.from(data.entries())
+        .filter(([, v]) => v !== "")
+        .map(([name, value]) => ({ name, value: String(value) }));
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fields: payload,
+            context: { pageUri: window.location.href, pageName: document.title },
+          }),
+        });
+        if (!res.ok) throw new Error();
+
+        // GA4 / GTM conversion event
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({ event: "generate_lead", form_location: "agentic-ai-landing" });
+
+        fields.forEach((el) => (el.hidden = true));
+        if (success) success.hidden = false;
+      } catch {
+        if (errorEl) errorEl.hidden = false;
+        if (submit) submit.disabled = false;
+        if (label) label.textContent = origLabel;
+        if (spinner) spinner.style.display = "none";
+      }
+    });
+  });
+</script>
