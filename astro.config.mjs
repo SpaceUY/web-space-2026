@@ -30,6 +30,7 @@ const caseDates = contentDates('./src/content/case-studies');
 // https://astro.build/config
 export default defineConfig({
   site: 'https://spacedev.io',
+  trailingSlash: 'never',
   vite: {
     plugins: [tailwindcss()],
   },
