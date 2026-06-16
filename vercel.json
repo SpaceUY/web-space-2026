@@ -2,6 +2,26 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/meet-fede",
+      "destination": "https://meetings.hubspot.com/federico-sendra",
+      "permanent": false
+    },
+    {
+      "source": "/meet-fede/",
+      "destination": "https://meetings.hubspot.com/federico-sendra",
+      "permanent": false
+    },
+    {
+      "source": "/meet-juan",
+      "destination": "https://meetings.hubspot.com/juan-manuel-sobral",
+      "permanent": false
+    },
+    {
+      "source": "/meet-juan/",
+      "destination": "https://meetings.hubspot.com/juan-manuel-sobral",
+      "permanent": false
+    },
+    {
       "source": "/:path+/",
       "destination": "/:path+",
       "permanent": true
