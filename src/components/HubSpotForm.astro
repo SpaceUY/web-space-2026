@@ -31,6 +31,13 @@ const {
             formId: formId,
             region: region,
             target: "#" + targetId,
+            onFormSubmitted: function () {
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({ event: "generate_lead" });
+              if (typeof gtag === "function") {
+                gtag("event", "generate_lead");
+              }
+            },
           });
         }
       };

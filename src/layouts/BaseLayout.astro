@@ -161,5 +161,25 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
       initScrollAnimations();
       document.addEventListener("astro:page-load", initScrollAnimations);
     </script>
+
+    <!-- Conversion tracking: book_call_click -->
+    <script is:inline>
+      (function () {
+        function trackBookCall(url) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: "book_call_click", meeting_url: url || "" });
+          if (typeof gtag === "function") {
+            gtag("event", "book_call_click", url ? { meeting_url: url } : {});
+          }
+        }
+        document.addEventListener("click", function (e) {
+          var link = e.target.closest("a[href*='meetings.hubspot.com']");
+          if (link) trackBookCall(link.getAttribute("href"));
+        }, true);
+        window.addEventListener("message", function (e) {
+          if (e.data && e.data.meetingBookSucceeded) trackBookCall("");
+        });
+      })();
+    </script>
   </body>
 </html>
