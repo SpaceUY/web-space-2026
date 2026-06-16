@@ -1,115 +1,441 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Button from "../components/ui/Button.astro";
-import { mediaItems } from "../data/media-items";
 import { SITE } from "../lib/seo";
 
-const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric" });
+const SEO_TITLE = "SpaceDev in the Media | Forbes, Academic Publications & Interviews";
+const SEO_DESC = "SpaceDev's Federico Sendra and Juan Manuel Sobral featured in Forbes Tech Council, Frontiers in Blockchain, CriptoNoticias and video interviews. Press coverage and publications.";
+
+interface ContentItem {
+  title: string;
+  date: string;
+  url: string;
+  authors?: string[];
+  description: string;
+  quote?: string;
+  source: "Forbes" | "Frontiers" | "CriptoNoticias";
+  tag: string;
+}
+
+interface VideoItem {
+  title: string;
+  date: string;
+  url: string;
+  person?: string;
+  description: string;
+  videoId: string;
+  source: string;
+}
+
+const contentItems: ContentItem[] = [
+  {
+    title: "Decentralized Identity (DID): The Missing Layer for Institutional Blockchain Adoption",
+    date: "Jun 2026",
+    url: "https://www.forbes.com/councils/forbestechcouncil/2026/06/16/decentralized-identity-did-the-missing-layer-for-institutional-blockchain-adoption/",
+    authors: ["Federico Sendra"],
+    description: "On why decentralized identity is the missing piece for institutional blockchain adoption.",
+    quote: "DID isn't a magic replacement for compliance, KYC, enterprise IAM or government ID. It's a way to make verified trust more portable, and it's also what blockchain has been missing at the institutional level: the bridge between decentralized infrastructure and real-world obligations.",
+    source: "Forbes",
+    tag: "Blockchain",
+  },
+  {
+    title: "Sobral: la regulacion de criptomonedas en Uruguay mata a las startups",
+    date: "May 2026",
+    url: "https://www.criptonoticias.com/regulacion/sobral-regulacion-criptomonedas-uruguay-mata-startups/",
+    authors: ["Juan Manuel Sobral"],
+    description: "El CTO de SpaceDev analiza el impacto de la regulacion cripto en Uruguay y el ecosistema de startups blockchain.",
+    source: "CriptoNoticias",
+    tag: "Blockchain",
+  },
+  {
+    title: "Gold and Ancient Value in a Wireless Age",
+    date: "Apr 2026",
+    url: "https://www.forbes.com/councils/forbestechcouncil/2026/04/23/gold-and-ancient-value-in-a-wireless-age/",
+    authors: ["Federico Sendra"],
+    description: "On RWA tokenization and the enduring logic of hard assets in a digital economy.",
+    source: "Forbes",
+    tag: "Blockchain",
+  },
+  {
+    title: "Multivocal Literature Review of Software Architectures for Blockchain Networks",
+    date: "Mar 2026",
+    url: "https://www.frontiersin.org/journals/blockchain/articles/10.3389/fbloc.2026.1781539/full",
+    authors: ["Juan Manuel Sobral", "Mario De los Santos", "Martin Solari", "Santiago Matalonga"],
+    description: "Peer-reviewed research published in Frontiers in Blockchain, Volume 9.",
+    source: "Frontiers",
+    tag: "Research",
+  },
+  {
+    title: "LATAM 2026: Where I'd Put My Attention If I Were Starting Over",
+    date: "Feb 2026",
+    url: "https://www.forbes.com/councils/forbestechcouncil/2026/02/11/latam-2026-where-id-put-my-attention-if-i-were-starting-over/",
+    authors: ["Federico Sendra"],
+    description: "The next phase in Latin America will be defined by those who build systems people rely on daily.",
+    source: "Forbes",
+    tag: "LATAM",
+  },
+  {
+    title: "AI Agents and Corporate Optimization",
+    date: "Dec 2025",
+    url: "https://www.forbes.com/councils/forbestechcouncil/2025/12/02/ai-agents-and-corporate-optimization/",
+    authors: ["Federico Sendra"],
+    description: "What integrating AI agents into real business workflows actually looks like and what works.",
+    source: "Forbes",
+    tag: "AI",
+  },
+  {
+    title: "2025 Business Trends and How AI Is Shaping Them",
+    date: "Oct 2025",
+    url: "https://www.forbes.com/councils/forbestechcouncil/2025/10/08/2025-business-trends-and-how-ai-is-shaping-them/",
+    authors: ["Federico Sendra"],
+    description: "2025 is the year AI shifts from optional to structural. A breakdown of the trends that matter.",
+    source: "Forbes",
+    tag: "AI",
+  },
+  {
+    title: "When the Bots Pick Up the Phone: AI and Customer Service",
+    date: "Aug 2025",
+    url: "https://www.forbes.com/councils/forbestechcouncil/2025/08/05/when-the-bots-pick-up-the-phone-ai-and-customer-service/",
+    authors: ["Federico Sendra"],
+    description: "Companies that succeed with AI in customer service do their homework first.",
+    source: "Forbes",
+    tag: "AI",
+  },
+  {
+    title: "How Generative AI Is Reshaping Development",
+    date: "Jun 2025",
+    url: "https://www.forbes.com/councils/forbestechcouncil/2025/06/26/how-generative-ai-is-reshaping-development/",
+    authors: ["Federico Sendra"],
+    description: "GenAI is forcing a rethink of engineering, from code generation to system design.",
+    source: "Forbes",
+    tag: "AI",
+  },
+  {
+    title: "AI's Role in Creating a More Utopian Future",
+    date: "Apr 2025",
+    url: "https://www.forbes.com/councils/forbestechcouncil/2025/04/24/ais-role-in-creating-a-more-utopian-future/",
+    authors: ["Federico Sendra"],
+    description: "AI should be shaped as a partner in building a more sustainable, human-centered world.",
+    source: "Forbes",
+    tag: "AI",
+  },
+  {
+    title: "How Public Speaking Transforms Leadership",
+    date: "Feb 2025",
+    url: "https://www.forbes.com/councils/forbestechcouncil/2025/02/19/how-public-speaking-transforms-leadership/",
+    authors: ["Federico Sendra"],
+    description: "Being in the public eye makes a real difference in how you lead and how your company is perceived.",
+    source: "Forbes",
+    tag: "Leadership",
+  },
+];
+
+const videoItems: VideoItem[] = [
+  {
+    title: "BSG2024: Estado Actual de Blockchain y Web3",
+    date: "2024",
+    url: "https://www.youtube.com/watch?v=lJuBZCMJcqs&t=355s",
+    person: "Juan Manuel Sobral",
+    description: "Que protocolos tienen traccion real y hacia donde va la industria.",
+    videoId: "lJuBZCMJcqs",
+    source: "YouTube · 2024",
+  },
+  {
+    title: "Crypto for Dummies",
+    date: "2024",
+    url: "https://www.youtube.com/watch?v=_H9Cg6MXLsE&t=2781s",
+    person: "Juan Manuel Sobral",
+    description: "Como funciona crypto y Web3 para audiencias no tecnicas.",
+    videoId: "_H9Cg6MXLsE",
+    source: "YouTube · 2024",
+  },
+  {
+    title: "Por que la tecnologia blockchain es importante para las empresas",
+    date: "2024",
+    url: "https://www.youtube.com/watch?v=jm0DN38MeGo&t=209s",
+    person: "Federico Sendra",
+    description: "Casos de uso reales y como evaluar si blockchain aplica a tu negocio.",
+    videoId: "jm0DN38MeGo",
+    source: "YouTube · 2024",
+  },
+  {
+    title: "La importancia de BLOCKCHAIN",
+    date: "2024",
+    url: "https://www.youtube.com/watch?v=ZHWGmxvzgW4",
+    description: "Fundamentos tecnicos, impacto en industrias clave y perspectivas de adopcion.",
+    videoId: "ZHWGmxvzgW4",
+    source: "YouTube · 2024",
+  },
+  {
+    title: "Software made in Uruguay: insercion internacional",
+    date: "2024",
+    url: "https://www.youtube.com/watch?v=T2fFXoDgqzw&t=3260s",
+    description: "Panel sobre la industria de software uruguaya y su proyeccion internacional.",
+    videoId: "T2fFXoDgqzw",
+    source: "YouTube · 2024",
+  },
+  {
+    title: "Empresarios de Aca: Federico Sendra, CEO SpaceDev",
+    date: "Sep 2023",
+    url: "https://www.youtube.com/watch?v=79AUoXd80Fo&t=266s",
+    person: "Federico Sendra",
+    description: "SpaceDev, blockchain y el ecosistema tech de Uruguay.",
+    videoId: "79AUoXd80Fo",
+    source: "YouTube · Sep 2023",
+  },
+];
+
+const badge: Record<string, { label: string; logo?: string; color: string; bg: string; border: string }> = {
+  Forbes:         { label: "Forbes Tech Council", logo: "/images/icons/forbes.png",              color: "#92650a", bg: "rgba(201,168,76,0.15)", border: "rgba(146,101,10,0.4)"  },
+  Frontiers:      { label: "Frontiers",           logo: "/images/icons/logo_frontiers_grey.png", color: "#6d28d9", bg: "rgba(109,40,217,0.10)", border: "rgba(109,40,217,0.3)"  },
+  CriptoNoticias: { label: "CriptoNoticias",      logo: "/images/icons/Criptonoticias.webp",     color: "#0e7490", bg: "rgba(14,116,144,0.10)", border: "rgba(14,116,144,0.35)" },
+  YouTube:        { label: "YouTube",             logo: "/images/icons/Youtube-logo.png",        color: "#dc2626", bg: "rgba(220,38,38,0.08)",  border: "rgba(220,38,38,0.2)"  },
+};
+
+const featuredForbes = contentItems[0]; // Jun 2026 Forbes
+const featuredCripto = contentItems[1]; // May 2026 CriptoNoticias
+const rest = contentItems.slice(2);
 
 const pageJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: "SpaceDev in the Media",
-  description: "Explore SpaceDev's journey from hackathons to keynote speeches at global events.",
+  description: SEO_DESC,
   url: `${SITE.url}/spacedev-in-the-media`,
 };
 ---
 
-<BaseLayout
-  title="SpaceDev in the Media: Events, Press & Speaking"
-  description="Explore SpaceDev's journey from hackathons to keynote speeches at global events. Discover the milestones that shaped our path and join us for what's next!"
-  jsonLd={pageJsonLd}
->
-  <!-- HERO -->
-  <section class="relative overflow-hidden min-h-[80vh] flex flex-col justify-center" style="background-color: var(--sd-dark-hero);">
-    <img
-      src="/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.webp"
-      alt=""
-      aria-hidden="true"
-      loading="eager"
-      class="absolute inset-0 w-full h-full object-cover object-center"
-    />
-    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(10,6,20,0.88) 25%, rgba(50,30,90,0.45) 65%, rgba(10,6,20,0.75) 100%), linear-gradient(to bottom, rgba(10,6,20,0.2) 0%, rgba(10,6,20,0.85) 100%);"></div>
-    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-36 pb-16 md:pt-40 md:pb-20 w-full">
-      <div class="max-w-3xl" data-animate>
-        <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-display leading-[1.05]">
-          SpaceDev in the Media
-        </h1>
-        <p class="mt-4 text-xl md:text-2xl text-white/60 font-display font-light">
-          Curious about the events we've been part of?
-        </p>
-        <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed font-body">
-          Navigate with us through the different paths the universe has led us on: from hackathons and press releases to keynote speeches at international events. We did it all, and we want to share it with you!
+<BaseLayout title={SEO_TITLE} description={SEO_DESC} jsonLd={[pageJsonLd]}>
+
+  <!-- HERO — dark, full bleed -->
+  <section class="relative overflow-hidden min-h-[55vh] flex flex-col justify-center">
+    <img src="/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.webp" alt="" aria-hidden="true" loading="eager" class="absolute inset-0 w-full h-full object-cover object-center" />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(10,6,20,0.96) 40%, rgba(50,30,90,0.5) 70%, rgba(10,6,20,0.85) 100%), linear-gradient(to bottom, rgba(10,6,20,0.1) 0%, rgba(10,6,20,0.95) 100%);"></div>
+    <div class="relative sd-container pt-36 pb-16 md:pt-40 md:pb-20">
+      <div class="max-w-2xl" data-animate>
+        <p class="text-xs font-ui uppercase tracking-[0.2em] text-sd-purple-200 mb-5">Press & Publications</p>
+        <h1 class="text-4xl md:text-5xl lg:text-[3.2rem] leading-[1.05] text-white font-display">SpaceDev in the Media</h1>
+        <p class="mt-5 text-lg text-white/70 max-w-xl leading-relaxed">
+          Federico Sendra and Juan Manuel Sobral contribute to Forbes Tech Council, peer-reviewed journals, and specialized media on AI, blockchain, and software engineering.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- MEDIA GRID -->
-  <section class="bg-sd-light py-16 md:py-24">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {mediaItems.map((item) => (
-          <article
-            class="group flex flex-col rounded-2xl overflow-hidden bg-white border border-sd-gray-border shadow-sm hover:shadow-[0_8px_32px_rgba(103,58,228,0.12)] hover:border-sd-purple/30 hover:-translate-y-1 transition-all duration-300"
-            data-animate
-          >
-            <a href={`/spacedev-in-the-media/${item.slug}`} class="block overflow-hidden">
-              <div class="relative aspect-[16/10] bg-sd-dark-2">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  decoding="async"
-                  class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+  <!-- LOGO STRIP — transition dark to light -->
+  <div style="background: #fff; border-bottom: 1px solid #e8e8e8;">
+    <div class="sd-container py-8">
+      <div class="flex flex-wrap items-center gap-x-12 gap-y-5">
+        <p class="text-xs font-ui uppercase tracking-[0.18em] shrink-0" style="color: #bbbbbb;">As seen in</p>
+        <img src="/images/icons/forbes.png" alt="Forbes Tech Council" class="h-8 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+        <span class="w-px h-6 hidden sm:block" style="background: #e8e8e8;"></span>
+        <img src="/images/icons/logo_frontiers_grey.png" alt="Frontiers in Blockchain" class="h-6 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+        <span class="w-px h-6 hidden sm:block" style="background: #e8e8e8;"></span>
+        <img src="/images/icons/Criptonoticias.webp" alt="CriptoNoticias" class="h-6 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+        <span class="w-px h-6 hidden sm:block" style="background: #e8e8e8;"></span>
+        <img src="/images/icons/Youtube-logo.png" alt="YouTube" class="h-5 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHT SECTION -->
+  <section class="py-20 md:py-28" style="background: #fafafa;">
+    <div class="sd-container">
+
+      <!-- SECTION HEADER -->
+      <div class="mb-10" data-animate>
+        <h2 class="font-display text-2xl md:text-3xl" style="color: #141414;">Coverage & Publications</h2>
+        <p class="mt-2 text-sm" style="color: #858585;">Articles, research and press. Newest first.</p>
+      </div>
+
+      <!-- HERO CARDS — two highlights side by side -->
+      <div class="grid md:grid-cols-2 gap-4 mb-6" data-animate>
+
+        {/* Forbes highlight — Federico Sendra */}
+        {(() => {
+          const item = featuredForbes;
+          const b = badge[item.source];
+          return (
+            <a href={item.url} target="_blank" rel="noopener noreferrer"
+              class="group flex flex-col rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
+              style="background: #fff; border: 1px solid #e8e8e8; box-shadow: 0 2px 12px rgba(0,0,0,0.06);"
+              onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.12)'; this.style.borderColor='#d0d0d0'"
+              onmouseout="this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'; this.style.borderColor='#e8e8e8'"
+            >
+              <div class="relative h-52 overflow-hidden" style="background: #f0f0f0;">
+                <img src="/images/content/federico-sendra-forbes-jun2026.webp" alt="Federico Sendra"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div class="flex flex-col justify-between gap-4 p-7 flex-1">
+                <div>
+                  <div class="mb-4">
+                    <img src={b.logo} alt={b.label} class="h-8 object-contain max-w-[160px]" />
+                  </div>
+                  <h3 class="font-display text-xl leading-snug mb-3" style="color: #141414;">{item.title}</h3>
+                  {item.quote && (
+                    <blockquote class="border-l-2 pl-3" style={`border-color: ${b.color};`}>
+                      <p class="text-sm italic leading-relaxed" style="color: #4e5052;">"{item.quote}"</p>
+                    </blockquote>
+                  )}
+                </div>
+                <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
+                  <div>
+                    <p class="text-sm font-medium" style="color: #141414;">Federico Sendra</p>
+                    <p class="text-xs mt-0.5" style="color: #aaaaaa;">{item.date}</p>
+                  </div>
+                  <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${b.color};`}>Read ↗</span>
+                </div>
               </div>
             </a>
-            <div class="flex flex-col flex-1 p-6">
-              <div class="flex flex-wrap gap-2 mb-4">
-                {item.tags.map((tag) => (
-                  <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] uppercase tracking-wider font-ui bg-sd-light-2 text-sd-purple border border-sd-purple/20">
-                    {tag}
-                  </span>
-                ))}
+          );
+        })()}
+
+        {/* CriptoNoticias highlight — Juan Manuel Sobral */}
+        {(() => {
+          const item = featuredCripto;
+          const b = badge[item.source];
+          return (
+            <a href={item.url} target="_blank" rel="noopener noreferrer"
+              class="group flex flex-col rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
+              style="background: #fff; border: 1px solid #e8e8e8; box-shadow: 0 2px 12px rgba(0,0,0,0.06);"
+              onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.12)'; this.style.borderColor='#d0d0d0'"
+              onmouseout="this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'; this.style.borderColor='#e8e8e8'"
+            >
+              <div class="relative h-52 overflow-hidden" style="background: #f0f0f0;">
+                <img src="/images/content/juan-manuel-sobral-criptonoticias-may2026.jpg" alt="Juan Manuel Sobral"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
               </div>
-              <a href={`/spacedev-in-the-media/${item.slug}`} class="flex flex-col flex-1">
-                <h2 class="font-display text-xl text-sd-text-dark group-hover:text-sd-purple transition-colors leading-snug mb-3">
-                  {item.title}
-                </h2>
-                <p class="text-sm text-sd-text-gray font-body leading-relaxed flex-1">
-                  {item.highlight}
-                </p>
-              </a>
-              <div class="mt-6 pt-4 border-t border-sd-gray-border flex items-center justify-between">
-                <div class="text-xs text-sd-text-gray font-body">
-                  <time datetime={item.date.toISOString()}>{dateFmt.format(item.date)}</time>
-                  <span class="mx-1.5" aria-hidden="true">·</span>
-                  <span>{item.location}</span>
+              <div class="flex flex-col justify-between gap-4 p-7 flex-1">
+                <div>
+                  <div class="mb-4">
+                    <img src={b.logo} alt={b.label} class="h-8 object-contain max-w-[180px]" />
+                  </div>
+                  <h3 class="font-display text-xl leading-snug mb-3" style="color: #141414;">{item.title}</h3>
+                  <p class="text-sm leading-relaxed" style="color: #858585;">{item.description}</p>
                 </div>
-                <a href={`/spacedev-in-the-media/${item.slug}`} class="text-xs text-sd-purple font-ui hover:underline">
-                  Read more →
-                </a>
+                <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
+                  <div>
+                    <p class="text-sm font-medium" style="color: #141414;">Juan Manuel Sobral</p>
+                    <p class="text-xs mt-0.5" style="color: #aaaaaa;">{item.date}</p>
+                  </div>
+                  <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${b.color};`}>Read ↗</span>
+                </div>
               </div>
-            </div>
-          </article>
-        ))}
+            </a>
+          );
+        })()}
+
       </div>
+
+      <!-- GRID -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20" data-animate>
+        {rest.map((item) => {
+          const b = badge[item.source];
+          const isFrontiers = item.source === "Frontiers";
+          return (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-col gap-4 p-6 rounded-2xl hover:-translate-y-1 transition-all duration-300"
+              style="background: #fff; border: 1px solid #e8e8e8; box-shadow: 0 1px 6px rgba(0,0,0,0.04);"
+              onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.10)'; this.style.borderColor='#d0d0d0'"
+              onmouseout="this.style.boxShadow='0 1px 6px rgba(0,0,0,0.04)'; this.style.borderColor='#e8e8e8'"
+            >
+              <!-- Logo row -->
+              <div class="flex items-center justify-between gap-2">
+                {b.logo
+                  ? <img src={b.logo} alt={b.label} class="h-9 object-contain max-w-[160px]" />
+                  : <span class="text-[11px] font-ui font-bold uppercase tracking-widest px-2.5 py-1 rounded-md" style={`color: ${b.color}; background: ${b.bg}; border: 1px solid ${b.border};`}>{b.label}</span>
+                }
+                <span class="text-[10px] font-ui" style="color: #aaaaaa;">{item.date}</span>
+              </div>
+              <!-- Title -->
+              <p class="font-display text-base leading-snug flex-1 transition-colors" style="color: #141414;">
+                {item.title}
+              </p>
+              <!-- Description -->
+              <p class="text-sm leading-relaxed" style="color: #858585;">
+                {item.description}
+              </p>
+              <!-- Authors -->
+              <div class="flex items-center justify-between pt-3" style="border-top: 1px solid #f0f0f0;">
+                <div class="flex flex-col gap-0.5">
+                  {isFrontiers ? (
+                    <p class="text-xs leading-relaxed" style="color: #4e5052;">
+                      {item.authors?.join(", ")}
+                    </p>
+                  ) : (
+                    <p class="text-xs" style="color: #4e5052;">{item.authors?.[0]}</p>
+                  )}
+                </div>
+                <span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity shrink-0" style={`color: ${b.color};`}>↗</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- VIDEOS -->
+      <div class="mb-20" data-animate>
+        <h2 class="font-display text-2xl md:text-3xl mb-2" style="color: #141414;">Interviews & Talks</h2>
+        <p class="text-sm mb-10" style="color: #858585;">Video interviews, conference talks and panels.</p>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {videoItems.map((item) => (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-col rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
+              style="background: #fff; border: 1px solid #e8e8e8; box-shadow: 0 1px 6px rgba(0,0,0,0.04);"
+              onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.10)'; this.style.borderColor='#d0d0d0'"
+              onmouseout="this.style.boxShadow='0 1px 6px rgba(0,0,0,0.04)'; this.style.borderColor='#e8e8e8'"
+            >
+              <div class="relative aspect-video overflow-hidden">
+                <img
+                  src={`https://img.youtube.com/vi/${item.videoId}/mqdefault.jpg`}
+                  alt={item.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <span class="w-12 h-12 rounded-full flex items-center justify-center border-2 border-white/80 text-white text-sm pl-1 group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-200" style="background: rgba(0,0,0,0.5);">▶</span>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2 p-5 flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <img src="/images/icons/Youtube-logo.png" alt="YouTube" class="h-5 object-contain" />
+                  {item.person && <span class="text-[11px] font-ui" style="color: #858585;">{item.person}</span>}
+                  <span class="ml-auto text-[11px] font-ui" style="color: #aaaaaa;">{item.date}</span>
+                </div>
+                <p class="font-display text-sm leading-snug flex-1 transition-colors" style="color: #141414;">{item.title}</p>
+                <p class="text-xs leading-relaxed" style="color: #858585;">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="rounded-2xl p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8" style="background: linear-gradient(135deg, #191429 0%, #312652 100%); border: 1px solid rgba(103,58,228,0.3);" data-animate>
+        <div class="max-w-xl">
+          <p class="text-xs font-ui uppercase tracking-[0.18em] text-sd-purple-200 mb-3">Press inquiries</p>
+          <h3 class="font-display text-2xl md:text-3xl text-white mb-3">Journalists & media</h3>
+          <p class="leading-relaxed text-white/65">
+            For interview requests, quotes, or media assets, reach out directly. Federico Sendra and Juan Manuel Sobral are available for comment on AI, blockchain, and Latin American tech.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a href="mailto:info@spacedev.io" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-ui text-sm font-medium text-white hover:-translate-y-0.5 transition-all duration-200" style="background: var(--sd-purple);">
+            info@spacedev.io
+          </a>
+          <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-ui text-sm font-medium border border-white/25 text-white/75 hover:text-white hover:border-white/40 hover:-translate-y-0.5 transition-all duration-200">
+            Contact page →
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="bg-white py-16 md:py-20 border-t border-sd-gray-border">
-    <div class="mx-auto max-w-[1440px] px-6 md:px-10 text-center" data-animate>
-      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple font-ui mb-4">Get Involved</p>
-      <h2 class="font-display text-3xl md:text-5xl text-sd-text-dark mb-6">Hey you!</h2>
-      <p class="text-lg text-sd-text-gray font-body max-w-xl mx-auto mb-8">
-        Hosting an event and want SpaceDev involved? Email us and we'll reply ASAP!
-      </p>
-      <Button href="mailto:marketing@spacedev.io" variant="primary" size="lg">
-        marketing@spacedev.io
-      </Button>
-    </div>
-  </section>
 </BaseLayout>
