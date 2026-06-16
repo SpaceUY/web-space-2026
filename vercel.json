@@ -22,6 +22,16 @@
       "permanent": false
     },
     {
+      "source": "/meet-lucas",
+      "destination": "https://meetings.hubspot.com/lsilva14",
+      "permanent": false
+    },
+    {
+      "source": "/meet-lucas/",
+      "destination": "https://meetings.hubspot.com/lsilva14",
+      "permanent": false
+    },
+    {
       "source": "/:path+/",
       "destination": "/:path+",
       "permanent": true
