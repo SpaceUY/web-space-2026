@@ -1,5 +1,11 @@
 {
+  "trailingSlash": false,
   "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "permanent": true
+    },
     {
       "source": "/post/marketing-web-3",
       "destination": "/blog/web3-marketing-strategies",
