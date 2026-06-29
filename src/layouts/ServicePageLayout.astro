@@ -44,11 +44,7 @@ const featured = data.caseStudySlugs ? getCaseStudies(data.caseStudySlugs) : [];
 const relatedPosts = data.relatedTags && data.relatedTags.length > 0
   ? (await getCollection("blog", ({ data: p }) => !p.draft))
       .filter((p) => p.data.tags.some((t: string) => data.relatedTags!.includes(t)))
-      .sort((a, b) => {
-        const scoreA = a.data.tags.filter((t: string) => data.relatedTags!.includes(t)).length;
-        const scoreB = b.data.tags.filter((t: string) => data.relatedTags!.includes(t)).length;
-        return scoreB - scoreA || b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf();
-      })
+      .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
       .slice(0, 3)
   : [];
 
@@ -617,6 +613,23 @@ const serviceJsonLd = {
   <slot name="post-whyus" />
 
   <!-- RELATED ARTICLES FROM BLOG -->
+  <!-- FAQ -->
+  {data.faqs && data.faqs.length > 0 && (
+    <section class={`py-20 md:py-32 ${data.caseStudiesTone === "light" ? "bg-sd-light border-t border-sd-gray-border" : "bg-sd-dark border-t border-white/5"}`}>
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <h2 class={`section-title md:sticky md:top-32 ${data.caseStudiesTone === "light" ? "text-sd-text-dark" : "text-white"}`}>
+            Frequently Asked Questions
+          </h2>
+          <div class={`rounded-2xl overflow-hidden px-6 md:px-8 ${data.caseStudiesTone === "light" ? "bg-[#f2f2f2]" : "bg-white/5"}`}>
+            <FAQ items={data.faqs} tone={data.caseStudiesTone === "light" ? "light" : "dark"} />
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- RELATED ARTICLES FROM BLOG -->
   {relatedPosts.length > 0 && (
     <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
       <div class="sd-container">
@@ -662,22 +675,6 @@ const serviceJsonLd = {
               </div>
             </a>
           ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- FAQ -->
-  {data.faqs && data.faqs.length > 0 && (
-    <section class={`py-20 md:py-32 ${data.caseStudiesTone === "light" ? "bg-sd-light border-t border-sd-gray-border" : "bg-sd-dark border-t border-white/5"}`}>
-      <div class="sd-container">
-        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
-          <h2 class={`section-title md:sticky md:top-32 ${data.caseStudiesTone === "light" ? "text-sd-text-dark" : "text-white"}`}>
-            Frequently Asked Questions
-          </h2>
-          <div class={`rounded-2xl overflow-hidden px-6 md:px-8 ${data.caseStudiesTone === "light" ? "bg-[#f2f2f2]" : "bg-white/5"}`}>
-            <FAQ items={data.faqs} tone={data.caseStudiesTone === "light" ? "light" : "dark"} />
-          </div>
         </div>
       </div>
     </section>
