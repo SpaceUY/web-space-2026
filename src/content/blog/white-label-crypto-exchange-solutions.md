@@ -5,7 +5,7 @@ description: "With the constant evolution and growing acceptance of blockchain-r
 publishedAt: 2023-04-29
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["fintech", "web3-infrastructure"]
+tags: ["fintech", "web3-infrastructure", "blockchain-basics"]
 readTime: 4
 cover: "/images/content/W9x6IOdCW0t4rCATB3Ze7voDiLI.png"
 takeaways:

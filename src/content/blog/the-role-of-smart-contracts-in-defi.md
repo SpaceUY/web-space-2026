@@ -4,7 +4,7 @@ description: "Smart contracts are the engine behind every DeFi protocol. This gu
 publishedAt: 2026-05-15
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["smart-contracts", "defi"]
+tags: ["smart-contracts", "defi", "blockchain"]
 readTime: 5
 cover: "/images/content/bVD0R0iXQ8QzvTTXdhaxjxRR8.webp"
 takeaways:

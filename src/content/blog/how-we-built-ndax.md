@@ -4,7 +4,7 @@ description: "Frowning upon the mention of 'blockchain' might be a thing of the 
 publishedAt: 2023-05-02
 author: juan-manuel-sobral
 category: "Product Development"
-tags: ["fintech", "smart-contracts"]
+tags: ["fintech", "smart-contracts", "blockchain-basics", "web3-infrastructure"]
 cover: "/images/content/k9VyKGh5tqD9B5xLFRFXoVDVm44.webp"
 readTime: 3
 metatitle: "How We Built NDAX, Canada's Biggest Crypto Exchange"

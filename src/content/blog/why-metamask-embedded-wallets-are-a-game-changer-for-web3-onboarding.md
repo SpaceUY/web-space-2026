@@ -4,7 +4,7 @@ description: "At SpaceDev, we spend our days helping teams bring ambitious Web3 
 publishedAt: 2025-07-04
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["fintech", "blockchain-basics"]
+tags: ["fintech", "blockchain-basics", "web3-infrastructure"]
 readTime: 7
 cover: "/images/content/RVMvAqis5lvyDbQre8vqzsh7BT8.webp"
 takeaways:

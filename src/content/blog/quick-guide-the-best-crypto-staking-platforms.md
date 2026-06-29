@@ -4,7 +4,7 @@ description: "Staking is all about leveraging blockchain technology to offer inv
 publishedAt: 2024-03-06
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["defi", "fintech"]
+tags: ["defi", "fintech", "blockchain-basics"]
 cover: "/images/content/kCetyET6H0EvLGrRcVOTSUfAfqo.webp"
 readTime: 3
 takeaways:

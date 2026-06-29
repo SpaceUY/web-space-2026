@@ -4,7 +4,7 @@ description: "Tokenized real-world assets (RWAs) are no longer fringe crypto con
 publishedAt: 2025-10-07
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["web3-infrastructure", "defi", "rwa"]
+tags: ["web3-infrastructure", "defi", "rwa", "smart-contracts", "layer1"]
 readTime: 10
 cover: "/images/content/ISwpOm131QIqCH8MFaadZ9zSvus.webp"
 takeaways:

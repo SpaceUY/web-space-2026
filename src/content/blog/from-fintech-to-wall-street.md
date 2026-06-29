@@ -5,7 +5,7 @@ description: "When a blockchain-native lender makes headlines on Wall Street, fo
 publishedAt: 2025-08-22
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["fintech", "defi"]
+tags: ["fintech", "defi", "blockchain", "institutional"]
 readTime: 4
 cover: "/images/content/uLuHSBzzLiHci62DaepeOWAGlU.webp"
 takeaways:
