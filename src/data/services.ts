@@ -188,7 +188,7 @@ export const dappData: ServicePageData = {
   },
   eyebrow: "Sub-service · Blockchain",
   title: "DApp Development Services",
-  description: "",
+  description: "We design, build, and scale decentralized applications that are secure, production-ready, and aligned with real business goals. Our team combines solid Web2 engineering with advanced Web3 capabilities.",
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   process: {
@@ -349,7 +349,7 @@ export const tokenizationData: ServicePageData = {
   },
   eyebrow: "Sub-service · Blockchain",
   title: "Asset Tokenization Development Services",
-  description: "",
+  description: "We build production-grade platforms to tokenize real-world assets: real estate, commodities, securities, and fixed income. From issuance and lifecycle management to custody and secondary markets, end to end.",
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   footerMarqueeTheme: "dark",
