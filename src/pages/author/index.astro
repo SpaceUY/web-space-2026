@@ -35,32 +35,32 @@ const authorsWithCount = authors.map((author) => ({
         {authorsWithCount.map((author) => (
           <a
             href={`/author/${author.slug}`}
-            class="group flex flex-col rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04] hover:border-sd-purple/50 hover:-translate-y-1 transition-all duration-200"
+            class="group flex flex-col items-center rounded-2xl border border-white/10 bg-white/[0.04] hover:border-sd-purple/50 hover:-translate-y-1 transition-all duration-200 p-8 text-center"
           >
-            <div class="h-48 overflow-hidden bg-sd-dark-2 shrink-0">
-              {author.coverImage ? (
+            <div class="w-32 h-32 rounded-full overflow-hidden ring-4 ring-white/10 group-hover:ring-sd-purple/40 transition-all duration-200 mb-5 shrink-0">
+              {author.avatar ? (
                 <img
-                  src={author.coverImage}
+                  src={author.avatar}
                   alt={author.name}
                   loading="lazy"
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                  width="128"
+                  height="128"
+                  class="w-full h-full object-cover object-top"
                 />
               ) : (
                 <div class={`w-full h-full flex items-center justify-center bg-gradient-to-br ${author.avatarGradient}`}>
-                  <span class="text-white text-4xl font-display font-semibold">{author.initials}</span>
+                  <span class="text-white text-3xl font-display font-semibold">{author.initials}</span>
                 </div>
               )}
             </div>
-            <div class="p-6">
-              <p class="text-[10px] uppercase tracking-[0.18em] text-sd-purple-300 font-ui mb-1">{author.role}</p>
-              <h2 class="font-display font-semibold text-xl text-white mb-3 group-hover:text-sd-purple-300 transition-colors">
-                {author.name}
-              </h2>
-              <p class="text-sm text-sd-text-muted leading-relaxed line-clamp-3">{author.bio}</p>
-              <p class="mt-4 text-xs text-sd-text-muted">
-                {author.postCount} {author.postCount === 1 ? "article" : "articles"}
-              </p>
-            </div>
+            <p class="text-[10px] uppercase tracking-[0.18em] text-sd-purple-300 font-ui mb-1">{author.role}</p>
+            <h2 class="font-display font-semibold text-xl text-white mb-3 group-hover:text-sd-purple-300 transition-colors">
+              {author.name}
+            </h2>
+            <p class="text-sm text-sd-text-muted leading-relaxed line-clamp-3 mb-4">{author.bio}</p>
+            <p class="text-xs text-sd-text-muted mt-auto">
+              {author.postCount} {author.postCount === 1 ? "article" : "articles"}
+            </p>
           </a>
         ))}
       </div>
