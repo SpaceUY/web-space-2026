@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE } from "../lib/seo";
+import { mediaItems } from "../data/media-items";
 
 const SEO_TITLE = "SpaceDev in the Media | Forbes, Academic Publications & Interviews";
 const SEO_DESC = "SpaceDev's Federico Sendra and Juan Manuel Sobral featured in Forbes Tech Council, Frontiers in Blockchain, CriptoNoticias and video interviews. Press coverage and publications.";
@@ -435,6 +436,53 @@ const pageJsonLd = {
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- EVENTS & APPEARANCES -->
+  <section class="bg-sd-light py-16 md:py-24 border-t border-sd-gray-border">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3 font-ui" data-animate>Events & Appearances</p>
+      <h2 class="font-display text-3xl md:text-4xl text-sd-text-dark mb-10 md:mb-14" data-animate>SpaceDev out in the world</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {mediaItems.map((item) => {
+          const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short" });
+          return (
+            <a
+              href={`/spacedev-in-the-media/${item.slug}`}
+              class="group flex flex-col rounded-2xl overflow-hidden bg-white border border-sd-gray-border hover:border-sd-purple/30 hover:shadow-[0_8px_32px_rgba(103,58,228,0.10)] hover:-translate-y-1 transition-all duration-300"
+              data-animate
+            >
+              <div class="relative aspect-[16/10] overflow-hidden bg-sd-dark-2">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+              </div>
+              <div class="flex flex-col flex-1 p-5">
+                <div class="flex flex-wrap gap-1.5 mb-3">
+                  {item.tags.map((tag) => (
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-ui bg-sd-purple/8 text-sd-purple border border-sd-purple/15">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h3 class="font-display text-base md:text-lg text-sd-text-dark group-hover:text-sd-purple transition-colors leading-snug flex-1">
+                  {item.title}
+                </h3>
+                <p class="mt-2 text-sm text-sd-text-gray leading-relaxed line-clamp-2 font-body">{item.highlight}</p>
+                <div class="mt-4 pt-4 border-t border-sd-gray-border flex items-center justify-between text-xs text-sd-text-muted font-ui">
+                  <span>{dateFmt.format(item.date)}</span>
+                  <span>{item.location}</span>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
     </div>
   </section>
 
