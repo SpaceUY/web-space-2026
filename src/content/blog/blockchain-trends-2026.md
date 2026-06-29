@@ -4,7 +4,7 @@ description: "From institutional adoption to RWA tokenization and AI convergence
 publishedAt: 2026-06-02
 author: federico-sendra
 category: Blockchain Trends
-tags: ["blockchain", "web3", "defi", "rwa", "institutional"]
+tags: ["blockchain", "web3", "defi", "rwa", "institutional", "tokenization"]
 readTime: 10
 cover: "/images/content/blockchain-trends-2026-cover.png"
 metatitle: "Blockchain Trends 2026: What's Actually Reshaping the Industry This Year"
