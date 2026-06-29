@@ -56,10 +56,57 @@ const metrics      = entry.data.metrics;
 const clutchReview = entry.data.clutchReview;
 const hasRichContent =
   !!summary || objectives.length > 0 || deliverables.length > 0 || !!outcome || gallery.length > 0;
+
+const serviceLinks: Record<string, string> = {
+  "Product Discovery":               "/product-discovery",
+  "Product Development":             "/innovative-web-and-mobile-solutions",
+  "Product Engineering":             "/innovative-web-and-mobile-solutions",
+  "Product Strategy":                "/product-discovery",
+  "Product Management":              "/product-discovery",
+  "Full-Stack Engineering":          "/innovative-web-and-mobile-solutions",
+  "Full-stack Engineering":          "/innovative-web-and-mobile-solutions",
+  "Frontend":                        "/innovative-web-and-mobile-solutions",
+  "Frontend Development":            "/innovative-web-and-mobile-solutions",
+  "Frontend Engineering":            "/innovative-web-and-mobile-solutions",
+  "Backend":                         "/innovative-web-and-mobile-solutions",
+  "Backend Development":             "/innovative-web-and-mobile-solutions",
+  "Backend Engineering":             "/innovative-web-and-mobile-solutions",
+  "Backend Architecture":            "/innovative-web-and-mobile-solutions",
+  "Mobile App":                      "/innovative-web-and-mobile-solutions",
+  "Mobile Development":              "/innovative-web-and-mobile-solutions",
+  "Mobile Development (React Native)": "/innovative-web-and-mobile-solutions",
+  "Mobile Engineering":              "/innovative-web-and-mobile-solutions",
+  "Cross-Platform Desktop":          "/innovative-web-and-mobile-solutions",
+  "UX/UI":                           "/innovative-web-and-mobile-solutions",
+  "UX/UI Design":                    "/innovative-web-and-mobile-solutions",
+  "AI Integration":                  "/innovative-web-and-mobile-solutions",
+  "Smart Contract Development":      "/blockchain-development-services/smart-contract-development",
+  "Smart Contract Engineering":      "/blockchain-development-services/smart-contract-development",
+  "Smart Contracts":                 "/blockchain-development-services/smart-contract-development",
+  "dApp Engineering":                "/blockchain-development-services/dapp-development",
+  "Web3 Architecture":               "/blockchain-development-services/dapp-development",
+  "Blockchain Infrastructure":       "/blockchain-development-services",
+  "DeFi Development":                "/blockchain-development-services/blockchain-for-defi-finance",
+  "Bridge Development":              "/blockchain-development-services/dapp-development",
+  "Multi-Chain Architecture":        "/blockchain-development-services/layer-1-blockchain-development",
+  "SDK Development":                 "/blockchain-development-services/dapp-development",
+  "SDK Engineering":                 "/blockchain-development-services/dapp-development",
+  "SDK & Tooling":                   "/blockchain-development-services/dapp-development",
+  "Staff Augmentation":              "/staff-augmentation",
+  "Infrastructure & DevOps":         "/staff-augmentation",
+  "Compliance":                      "/blockaudit-smart-contract-and-blockchain-security",
+  "Audit Tooling":                   "/blockaudit-smart-contract-and-blockchain-security",
+  "Audit Collaboration":             "/blockaudit-smart-contract-and-blockchain-security",
+};
 ---
 
 <BaseLayout
-  breadcrumbs={false}
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Our Work", href: "/our-work" },
+    { label: entry.data.name },
+  ]}
+  breadcrumbTone="dark"
   title={entry.data.metatitle ?? `${entry.data.name} — Case Study | SpaceDev`}
   description={entry.data.metadescription ?? entry.data.tagline}
   ogImage={heroImage}
@@ -76,15 +123,17 @@ const hasRichContent =
         <!-- Text — always first in DOM (top on mobile, left on desktop) -->
         <div>
           <div data-animate>
-            <Badge tone="outline" class="mb-5 whitespace-nowrap">{entry.data.category} · Case Study</Badge>
+            <Badge tone="outline" class="mb-5 whitespace-nowrap">Case Study</Badge>
             <h1 class="text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mt-4">{entry.data.name}</h1>
           </div>
           <p class="mt-4 text-base sm:text-xl text-white/80 leading-snug" data-animate>{entry.data.tagline}</p>
-          {entry.data.services.length > 0 && (
+          {entry.data.services.filter((s) => serviceLinks[s]).length > 0 && (
             <ul class="mt-6 flex flex-wrap gap-2" data-animate>
-              {entry.data.services.map((s) => (
-                <li class="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs text-white/80 border border-white/20">
-                  {s}
+              {entry.data.services.filter((s) => serviceLinks[s]).map((s) => (
+                <li>
+                  <a href={serviceLinks[s]} class="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs text-white/80 border border-white/20 hover:bg-white/20 hover:text-white transition-colors">
+                    {s}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -174,7 +223,9 @@ const hasRichContent =
               <div>
                 <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Services</h3>
                 <ul class="space-y-2 text-sm text-white">
-                  {entry.data.services.map((s) => <li>{s}</li>)}
+                  {entry.data.services.filter((s) => serviceLinks[s]).map((s) => (
+                    <li><a href={serviceLinks[s]} class="hover:text-sd-purple-300 transition-colors">{s}</a></li>
+                  ))}
                 </ul>
               </div>
             )}
@@ -340,7 +391,9 @@ const hasRichContent =
             <div>
               <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Services</h3>
               <ul class="space-y-2 text-sm text-white">
-                {entry.data.services.map((s) => <li>{s}</li>)}
+                {entry.data.services.filter((s) => serviceLinks[s]).map((s) => (
+                  <li><a href={serviceLinks[s]} class="hover:text-sd-purple-300 transition-colors">{s}</a></li>
+                ))}
               </ul>
             </div>
           )}

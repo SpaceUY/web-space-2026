@@ -87,7 +87,7 @@ const featuredAuthor = getAuthor(featured.data.author);
             </p>
             {featuredAuthor && (
               <div class="flex items-center justify-between flex-wrap gap-4">
-                <AuthorAvatar author={featuredAuthor} size="sm" showRole tone="light" />
+                <AuthorAvatar author={featuredAuthor} size="xl" showRole tone="light" />
                 <Button href={`/blog/${featured.id}`} variant="dark">Read article →</Button>
               </div>
             )}

@@ -4,7 +4,7 @@ description: "Real World Assets are physical or traditional financial assets tha
 publishedAt: 2025-03-04
 author: juan-manuel-sobral
 category: Blockchain Trends
-tags: ["defi", "fintech"]
+tags: ["defi", "fintech", "rwa", "tokenization"]
 readTime: 5
 cover: "/images/content/fO7SfBQPl5ZyUbWpE80AgCxQ9Co.webp"
 metatitle: "Real-World Assets (RWAs): Types, Benefits, Examples"

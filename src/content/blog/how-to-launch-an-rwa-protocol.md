@@ -4,7 +4,7 @@ description: "A founder's guide to launching a real-world asset protocol in 2026
 publishedAt: 2026-06-10
 author: juan-manuel-sobral
 category: Blockchain Trends
-tags: ["rwa", "defi", "blockchain", "smart-contracts", "tokenization"]
+tags: ["rwa", "tokenization", "defi"]
 readTime: 12
 cover: "/images/content/rwa-protocol-cover.png"
 metatitle: "How to Launch an RWA Protocol: A Founder's Guide to Tokenizing Real-World Assets in 2026"

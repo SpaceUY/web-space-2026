@@ -37,8 +37,8 @@ const personJsonLd = {
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
-    <div class="relative mx-auto max-w-[1100px] px-6 md:px-10 py-20 md:py-28">
-      <div class="grid gap-10 md:grid-cols-[auto_1fr] md:items-center">
+    <div class="relative mx-auto max-w-[1100px] px-6 md:px-10 pt-32 pb-24 md:pt-44 md:pb-32">
+      <div class="grid gap-12 md:gap-16 md:grid-cols-[auto_1fr] md:items-center">
         {author.coverImage ? (
           <img
             src={author.coverImage}
@@ -46,21 +46,21 @@ const personJsonLd = {
             width="320"
             height="320"
             loading="eager"
-            class="w-40 md:w-64 h-40 md:h-64 rounded-2xl object-cover border border-white/10 shrink-0"
+            class="w-44 md:w-72 h-44 md:h-72 rounded-2xl object-cover object-top border border-white/10 shrink-0"
           />
         ) : (
           <AuthorAvatar author={author} size="lg" showName={false} />
         )}
         <div>
-          <Badge tone="purple" class="mb-3">{author.role}</Badge>
-          <h1 class="text-4xl md:text-6xl text-white">{author.name}</h1>
-          <p class="mt-6 text-lg text-sd-text-muted max-w-2xl leading-relaxed">{author.bio}</p>
+          <Badge tone="purple" class="mb-4">{author.role}</Badge>
+          <h1 class="text-4xl md:text-6xl text-white leading-tight">{author.name}</h1>
+          <p class="mt-6 text-lg text-sd-text-muted max-w-xl leading-relaxed">{author.bio}</p>
           {author.social?.linkedin && (
             <a
               href={author.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-6 inline-flex items-center gap-2 text-sm text-sd-purple-300 hover:text-sd-purple-300"
+              class="mt-8 inline-flex items-center gap-2 text-sm text-sd-purple-300 hover:text-white transition-colors"
             >
               Connect on LinkedIn
               <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3h6m0 0v6m0-6L3 9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>

@@ -4,7 +4,7 @@ description: "The future of traditional banking is becoming increasingly intertw
 publishedAt: 2025-05-14
 author: federico-sendra
 category: Blockchain Trends
-tags: ["fintech", "smart-contracts"]
+tags: ["fintech", "smart-contracts", "blockchain", "compliance", "institutional"]
 readTime: 4
 cover: "/images/content/J8qCLvFdZOivyDaLs0dELBR2r0.webp"
 takeaways:

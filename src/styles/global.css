@@ -306,6 +306,13 @@
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes sd-scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50%       { transform: translateY(6px); opacity: 0.8; }
+}
+.sd-scroll-bounce {
+  animation: sd-scroll-bounce 1.6s ease-in-out infinite;
+}
 @keyframes sd-marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }

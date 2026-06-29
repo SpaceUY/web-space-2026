@@ -2,6 +2,8 @@
 dist/
 # generated types
 .astro/
+# marketing brain (nunca subir a GitHub)
+.marketing/
 
 # dependencies
 node_modules/

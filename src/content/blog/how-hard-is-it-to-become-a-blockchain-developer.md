@@ -4,7 +4,7 @@ description: "One of the rarest events in tech is finding yourself in a static p
 publishedAt: 2024-04-11
 author: federico-sendra
 category: "Blockchain Trends"
-tags: ["product-growth", "blockchain-basics"]
+tags: ["product-growth", "blockchain-basics", "blockchain"]
 cover: "/images/content/eGC3vJH4dLUVuXBOVdkGVL066FE.webp"
 readTime: 4
 metatitle: "How Hard Is It to Become a Blockchain Developer? | SpaceDev"

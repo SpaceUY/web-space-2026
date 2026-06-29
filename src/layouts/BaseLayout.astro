@@ -20,8 +20,8 @@ interface Props {
   articleSection?: string;
   footerMarquee?: string;
   footerMarqueeTheme?: "light" | "dark";
-  /** Pass false to suppress auto breadcrumbs (use on pages that render their own inside the hero) */
-  breadcrumbs?: false;
+  /** Pass false to suppress breadcrumbs, or an array to override with custom items */
+  breadcrumbs?: false | Array<{ label: string; href?: string }>;
   /** "dark" (default) = white text for dark heroes. "light" = dark text for light heroes */
   breadcrumbTone?: "dark" | "light";
 }
@@ -43,9 +43,11 @@ const {
   breadcrumbTone = "dark",
 } = Astro.props;
 
-// Auto-generate breadcrumb items from URL path (e.g. /our-work → Home > Our Work)
+// Custom items take priority; otherwise auto-generate from URL path
 const autoCrumbs: Array<{ label: string; href?: string }> = [];
-if (breadcrumbsProp !== false) {
+if (Array.isArray(breadcrumbsProp)) {
+  autoCrumbs.push(...breadcrumbsProp);
+} else if (breadcrumbsProp !== false) {
   const segments = Astro.url.pathname.split("/").filter(Boolean);
   if (segments.length > 0) {
     autoCrumbs.push({ label: "Home", href: "/" });

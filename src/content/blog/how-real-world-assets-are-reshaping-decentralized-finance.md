@@ -4,7 +4,7 @@ description: "Decentralized finance has been evolving with striking speed. DeFi 
 publishedAt: 2026-02-09
 author: juan-manuel-sobral
 category: "Blockchain Trends"
-tags: ["defi", "fintech"]
+tags: ["defi", "fintech", "rwa", "tokenization"]
 readTime: 6
 cover: "/images/content/44cWuGIUHol9zdssx9kSFMjtBs.png"
 metatitle: "RWA in DeFi Explained: Real World Assets on Blockchain"

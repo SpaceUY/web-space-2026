@@ -4,7 +4,7 @@ description: "Whether public or private, well established or brand new, every bl
 publishedAt: 2025-03-19
 author: federico-sendra
 category: Blockchain Trends
-tags: ["web3-infrastructure", "blockchain-basics"]
+tags: ["web3-infrastructure", "blockchain-basics", "blockchain", "layer1"]
 readTime: 4
 cover: "/images/content/eGC3vJH4dLUVuXBOVdkGVL066FE.webp"
 metatitle: "Blockchain Protocols Explained: Why They Matter | SpaceDev"
