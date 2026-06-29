@@ -1,7 +1,12 @@
 ---
 interface NavItem { label: string; href: string }
-interface Props { expertise: NavItem[]; about: NavItem[]; explore: NavItem[] }
-const { expertise, about, explore } = Astro.props;
+interface Props {
+  blockchainItems: NavItem[];
+  otherExpertise: NavItem[];
+  industries: NavItem[];
+  about: NavItem[];
+}
+const { blockchainItems, otherExpertise, industries, about } = Astro.props;
 ---
 
 <div
@@ -28,21 +33,50 @@ const { expertise, about, explore } = Astro.props;
   </div>
 
   <nav class="px-6 py-8" aria-label="Mobile">
+
+    <!-- Our Expertise accordion -->
     <details class="border-b border-white/10 py-4">
       <summary class="flex items-center justify-between cursor-pointer text-lg text-white">
         Our Expertise
         <svg width="14" height="14" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </summary>
+      <div class="mt-4 pl-2">
+        <!-- Blockchain section -->
+        <a href="/blockchain-development-services" class="flex items-center justify-between py-2 text-white text-base font-medium">
+          Blockchain Development
+          <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <ul class="pl-3 mb-3 space-y-1">
+          {blockchainItems.map((item) => (
+            <li><a href={item.href} class="block py-1.5 text-sd-text-muted hover:text-white text-sm">{item.label}</a></li>
+          ))}
+        </ul>
+        <div class="border-t border-white/10 my-3"></div>
+        <!-- Other services -->
+        <ul class="space-y-2">
+          {otherExpertise.map((item) => (
+            <li><a href={item.href} class="block py-2 text-sd-text-muted hover:text-white">{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    </details>
+
+    <!-- Industries accordion -->
+    <details class="border-b border-white/10 py-4">
+      <summary class="flex items-center justify-between cursor-pointer text-lg text-white">
+        Industries
+        <svg width="14" height="14" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
       <ul class="mt-4 space-y-3 pl-2">
-        {expertise.map((item) => (
+        {industries.map((item) => (
           <li><a href={item.href} class="block py-2 text-sd-text-muted hover:text-white">{item.label}</a></li>
         ))}
       </ul>
     </details>
 
     <a href="/our-work" class="block border-b border-white/10 py-5 text-lg text-white">Our Work</a>
-    <a href="/careers" class="block border-b border-white/10 py-5 text-lg text-white">Careers</a>
 
+    <!-- About accordion -->
     <details class="border-b border-white/10 py-4">
       <summary class="flex items-center justify-between cursor-pointer text-lg text-white">
         About
@@ -55,17 +89,7 @@ const { expertise, about, explore } = Astro.props;
       </ul>
     </details>
 
-    <details class="border-b border-white/10 py-4">
-      <summary class="flex items-center justify-between cursor-pointer text-lg text-white">
-        Explore
-        <svg width="14" height="14" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </summary>
-      <ul class="mt-4 space-y-3 pl-2">
-        {explore.map((item) => (
-          <li><a href={item.href} class="block py-2 text-sd-text-muted hover:text-white">{item.label}</a></li>
-        ))}
-      </ul>
-    </details>
+    <a href="/blog" class="block border-b border-white/10 py-5 text-lg text-white">Blog</a>
 
     <a
       href="/contact"

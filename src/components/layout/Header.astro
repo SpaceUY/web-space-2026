@@ -1,26 +1,38 @@
 ---
 import MobileMenu from "./MobileMenu.astro";
 
-const expertise = [
-  { label: "Advanced Blockchain Development",     href: "/blockchain-development-services" },
-  { label: "Innovative Web & Mobile Development", href: "/innovative-web-and-mobile-solutions" },
-  { label: "IT Staff Augmentation",               href: "/staff-augmentation" },
-  { label: "Agentic AI Development",              href: "/agentic-ai-development" },
-  { label: "Product Discovery",                   href: "/product-discovery" },
-  { label: "BlockAudit: Blockchain Security",     href: "/blockaudit-smart-contract-and-blockchain-security" },
+const blockchainItems = [
+  { label: "Smart Contract Development",  href: "/blockchain-development-services/smart-contract-development" },
+  { label: "Asset Tokenization",          href: "/blockchain-development-services/asset-tokenization" },
+  { label: "dApp Development",            href: "/blockchain-development-services/dapp-development" },
+  { label: "Decentralized Identity",      href: "/blockchain-development-services/decentralized-identity" },
+  { label: "Blockchain for Banks",        href: "/blockchain-development-services/blockchain-for-banks" },
+  { label: "Blockchain Partner",          href: "/blockchain-development-services/blockchain-partner" },
+  { label: "Layer-1 Development",         href: "/blockchain-development-services/layer-1-blockchain-development" },
+];
+
+const otherExpertise = [
+  { label: "Innovative Web & Mobile",     href: "/innovative-web-and-mobile-solutions" },
+  { label: "IT Staff Augmentation",       href: "/staff-augmentation" },
+  { label: "Agentic AI Development",      href: "/agentic-ai-development" },
+  { label: "Product Discovery",           href: "/product-discovery" },
+  { label: "BlockAudit: Blockchain Security", href: "/blockaudit-smart-contract-and-blockchain-security" },
+];
+
+const industries = [
+  { label: "Energy",                  href: "/blockchain-development-services/industry/energy" },
+  { label: "Healthcare",              href: "/blockchain-development-services/industry/healthcare" },
+  { label: "Real Estate",             href: "/blockchain-development-services/asset-tokenization/real-estate" },
+  { label: "Supply Chain & Logistics", href: "/blockchain-development-services/industry/supply-chain-and-logistics" },
+  { label: "Finance & Fintech",       href: "/blockchain-development-services/industry/finance-and-fintech" },
 ];
 
 const about = [
-  { label: "About Us",             href: "/about-us" },
-  { label: "FAQs",                 href: "/faqs" },
-  { label: "Events Calendar",      href: "/events-calendar" },
-  { label: "Space in the Media",   href: "/spacedev-in-the-media" },
-];
-
-const explore = [
-  { label: "Blog",           href: "/blog" },
-  { label: "Newsletter",     href: "/newsletter" },
-  { label: "Digital Library", href: "/digital-library" },
+  { label: "About Us",           href: "/about-us" },
+  { label: "FAQs",               href: "/faqs" },
+  { label: "Events Calendar",    href: "/events-calendar" },
+  { label: "Space in the Media", href: "/spacedev-in-the-media" },
+  { label: "Careers",            href: "/careers" },
 ];
 ---
 
@@ -41,16 +53,55 @@ const explore = [
 
     <nav class="hidden md:flex items-center" aria-label="Primary">
       <div class="rounded-full px-2 flex items-center gap-1" style="background: rgba(240,240,240,0.92); border: 1px solid rgba(200,200,200,0.5);">
+
+        <!-- Our Expertise -->
         <div class="relative group">
           <button class="flex items-center gap-1.5 px-5 py-[4px] text-[20px] font-normal text-sd-text-dark group-hover:bg-sd-purple group-hover:text-white transition-colors rounded-full" aria-haspopup="true" aria-expanded="false">
             Our Expertise
             <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <ul class="bg-sd-purple-mid rounded-xl p-2 min-w-[320px] shadow-xl">
-              {expertise.map((item) => (
+            <div class="bg-sd-purple-mid rounded-xl p-3 min-w-[340px] shadow-xl">
+              <!-- Blockchain section -->
+              <a href="/blockchain-development-services" class="flex items-center justify-between px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors text-[15px] font-medium mb-1">
+                Blockchain Development
+                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <ul class="pl-3 mb-2">
+                {blockchainItems.map((item) => (
+                  <li>
+                    <a href={item.href} class="block px-3 py-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors text-[14px] whitespace-nowrap">
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div class="border-t border-white/10 my-2"></div>
+              <!-- Other services -->
+              <ul>
+                {otherExpertise.map((item) => (
+                  <li>
+                    <a href={item.href} class="block px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors text-[15px] whitespace-nowrap">
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Industries -->
+        <div class="relative group">
+          <button class="flex items-center gap-1.5 px-5 py-[4px] text-[20px] font-normal text-sd-text-dark group-hover:bg-sd-purple group-hover:text-white transition-colors rounded-full" aria-haspopup="true" aria-expanded="false">
+            Industries
+            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <ul class="bg-sd-purple-mid rounded-xl p-2 min-w-[240px] shadow-xl">
+              {industries.map((item) => (
                 <li>
-                  <a href={item.href} class="block px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors text-[16px] whitespace-nowrap py-[6px]">
+                  <a href={item.href} class="block px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors text-[16px] py-[6px]">
                     {item.label}
                   </a>
                 </li>
@@ -60,8 +111,8 @@ const explore = [
         </div>
 
         <a href="/our-work" class="px-5 py-[4px] text-[20px] font-normal text-sd-text-dark hover:text-sd-purple transition-colors rounded-full">Our Work</a>
-        <a href="/careers" class="px-5 py-[4px] text-[20px] font-normal text-sd-text-dark hover:text-sd-purple transition-colors rounded-full">Careers</a>
 
+        <!-- About -->
         <div class="relative group">
           <button class="flex items-center gap-1.5 px-5 py-[4px] text-[20px] font-normal text-sd-text-dark group-hover:bg-sd-purple group-hover:text-white transition-colors rounded-full" aria-haspopup="true" aria-expanded="false">
             About
@@ -80,23 +131,7 @@ const explore = [
           </div>
         </div>
 
-        <div class="relative group">
-          <button class="flex items-center gap-1.5 px-5 py-[4px] text-[20px] font-normal text-sd-text-dark group-hover:bg-sd-purple group-hover:text-white transition-colors rounded-full" aria-haspopup="true" aria-expanded="false">
-            Explore
-            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <ul class="bg-sd-purple-mid rounded-xl p-2 min-w-[220px] shadow-xl">
-              {explore.map((item) => (
-                <li>
-                  <a href={item.href} class="block px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors text-[16px] py-[6px]">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <a href="/blog" class="px-5 py-[4px] text-[20px] font-normal text-sd-text-dark hover:text-sd-purple transition-colors rounded-full">Blog</a>
       </div>
     </nav>
 
@@ -124,7 +159,7 @@ const explore = [
   </div>
 
 </header>
-<MobileMenu expertise={expertise} about={about} explore={explore} />
+<MobileMenu blockchainItems={blockchainItems} otherExpertise={otherExpertise} industries={industries} about={about} />
 
 <script>
   const toggle = document.querySelector<HTMLButtonElement>("[data-mobile-menu-toggle]");
@@ -137,7 +172,6 @@ const explore = [
     requestAnimationFrame(() => { menu.style.opacity = "1"; });
     toggle.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
-    // Keep header visible while menu is open
     header?.style.setProperty("transform", "translateY(0)");
   }
   function closeMenu() {
@@ -154,15 +188,12 @@ const explore = [
     if (e.key === "Escape" && menu && !menu.classList.contains("hidden")) closeMenu();
   });
 
-  // Hide on scroll down, show on scroll up
   const header = document.getElementById("site-header");
   let lastY = 0;
-  const THRESHOLD = 80; // px past the top before hide/show kicks in
+  const THRESHOLD = 80;
 
   window.addEventListener("scroll", () => {
-    // Don't hide header while mobile menu is open
     if (menu && menu.style.display === "block") return;
-
     const currentY = window.scrollY;
     if (currentY <= THRESHOLD) {
       header?.style.setProperty("transform", "translateY(0)");
