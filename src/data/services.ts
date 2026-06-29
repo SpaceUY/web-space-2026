@@ -13,6 +13,7 @@ export interface ServicePageData {
   /** Hero */
   eyebrow: string;
   title: string;
+  titleHtml?: string;
   subtitle?: string;
   description: string;
   primaryCta?: { label: string; href: string; external?: boolean };
@@ -470,6 +471,7 @@ export const energyData: ServicePageData = {
   },
   eyebrow: "Industry · Energy",
   title: "Blockchain Development for the Energy Sector",
+  titleHtml: "Blockchain Development for<br>the Energy Sector",
   description: "SpaceDev builds blockchain infrastructure for energy companies, utilities, and renewable energy platforms that need to modernize how they trade, track, and settle energy transactions. From peer-to-peer energy trading platforms to tokenized renewable energy certificates, we deliver the technical architecture to make it work at scale.",
   primaryCta: { label: "Discuss Your Energy Project", href: "/contact" },
   compactHeroTitle: true,
