@@ -101,6 +101,11 @@ const serviceLinks: Record<string, string> = {
 ---
 
 <BaseLayout
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Our Work", href: "/our-work" },
+    { label: entry.data.name },
+  ]}
   breadcrumbTone="dark"
   title={entry.data.metatitle ?? `${entry.data.name} — Case Study | SpaceDev`}
   description={entry.data.metadescription ?? entry.data.tagline}
