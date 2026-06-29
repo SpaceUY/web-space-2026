@@ -101,7 +101,7 @@ const serviceLinks: Record<string, string> = {
 ---
 
 <BaseLayout
-  breadcrumbs={false}
+  breadcrumbTone="light"
   title={entry.data.metatitle ?? `${entry.data.name} — Case Study | SpaceDev`}
   description={entry.data.metadescription ?? entry.data.tagline}
   ogImage={heroImage}
@@ -118,7 +118,7 @@ const serviceLinks: Record<string, string> = {
         <!-- Text — always first in DOM (top on mobile, left on desktop) -->
         <div>
           <div data-animate>
-            <Badge tone="outline" class="mb-5 whitespace-nowrap">{entry.data.category} · Case Study</Badge>
+            <Badge tone="outline" class="mb-5 whitespace-nowrap">Case Study</Badge>
             <h1 class="text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mt-4">{entry.data.name}</h1>
           </div>
           <p class="mt-4 text-base sm:text-xl text-white/80 leading-snug" data-animate>{entry.data.tagline}</p>
