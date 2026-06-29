@@ -50,6 +50,7 @@ const breadcrumbJsonLd = {
   title={`${tag.label} Articles & Insights | SpaceDev Blog`}
   description={`Articles about ${tag.description.toLowerCase()}. Practical insights from the SpaceDev engineering team.`}
   jsonLd={breadcrumbJsonLd}
+  noindex={true}
 >
   <!-- HEADER -->
   <section class="relative overflow-hidden py-24 md:py-32" style="background: var(--sd-gradient-hero);">
@@ -71,7 +72,7 @@ const breadcrumbJsonLd = {
         #{tag.label}
       </h1>
       <p class="text-white/60 text-lg max-w-xl" data-animate>
-        {tag.description} — {tagPosts.length} {tagPosts.length === 1 ? "article" : "articles"}
+        {tag.description}. {tagPosts.length} {tagPosts.length === 1 ? "article" : "articles"}
       </p>
     </div>
   </section>

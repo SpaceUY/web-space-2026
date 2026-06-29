@@ -63,6 +63,9 @@ export interface ServicePageData {
   /** Final CTA */
   finalCta?: { eyebrow?: string; title: string; description?: string; buttonLabel: string; buttonHref: string; external?: boolean };
 
+  /** Blog tag slugs used to surface related articles at the bottom of the page */
+  relatedTags?: string[];
+
   /** Use a smaller font size for the H1 when the title is very long */
   compactHeroTitle?: boolean;
 
@@ -90,6 +93,7 @@ export const blockchainData: ServicePageData = {
   title: "Blockchain Development Services Built for Real Business Outcomes",
   description:
     "SpaceDev is a custom blockchain development company that takes products from concept to mainnet. We combine web3 engineering, product strategy, and embedded security so your blockchain investment actually delivers.",
+  relatedTags: ["blockchain-basics", "web3-infrastructure", "smart-contracts", "blockchain"],
   primaryCta: { label: "Get in touch", href: "/contact" },
   secondaryCta: { label: "See case studies", href: "/our-work" },
 
@@ -190,6 +194,7 @@ export const dappData: ServicePageData = {
   eyebrow: "Sub-service · Blockchain",
   title: "DApp Development Services",
   description: "We design, build, and scale decentralized applications that are secure, production-ready, and aligned with real business goals. Our team combines solid Web2 engineering with advanced Web3 capabilities.",
+  relatedTags: ["web3-infrastructure", "defi", "smart-contracts"],
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   process: {
@@ -238,6 +243,7 @@ export const banksData: ServicePageData = {
   eyebrow: "Sub-service · Blockchain",
   title: "Blockchain Infrastructure for Banks",
   description: "We integrate directly into your core banking solution through a seamless, plug-and-play approach that enhances capabilities without disrupting existing systems.",
+  relatedTags: ["fintech", "institutional", "smart-contracts"],
   primaryCta: { label: "Talk to our team", href: "/contact" },
 
 
@@ -265,6 +271,7 @@ export const smartContractData: ServicePageData = {
   eyebrow: "Sub-service · Blockchain",
   title: "Smart Contract Development",
   description: "Secure, gas-efficient smart contracts engineered to scale. We design, build, test, and audit production contracts for token issuers, DeFi protocols, marketplaces, and DAOs.",
+  relatedTags: ["smart-contracts", "defi", "web3-infrastructure"],
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   finalCta: {
@@ -290,6 +297,7 @@ export const partnerData: ServicePageData = {
   eyebrow: "Sub-service · Blockchain",
   title: "A Blockchain Partner for Agencies",
   description: "Your clients want Web3 experiences, tokenized loyalty, on-chain verification, and wallet-based onboarding, but building those capabilities in-house is expensive and risky. SpaceDev works with agencies as a blockchain partner so you can expand what you sell, protect your margins, and ship with confidence.",
+  relatedTags: ["web3-infrastructure", "product-growth"],
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   finalCta: {
@@ -310,6 +318,7 @@ export const decentralizedIdentityData: ServicePageData = {
   eyebrow: "Sub-service · Blockchain",
   title: "Decentralized Identity Development Services",
   description: "Decentralized identity (DID) helps organizations verify people, accounts, and credentials without forcing users to hand over more data than necessary. SpaceDev designs and builds DID solutions that work in the real world: scalable identity experiences, secure integrations, and production-ready operations.",
+  relatedTags: ["web3-infrastructure", "blockchain-basics"],
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   footerMarqueeTheme: "dark",
@@ -330,6 +339,7 @@ export const realEstateTokData: ServicePageData = {
   eyebrow: "Sub-service · Asset Tokenization",
   title: "Real Estate Tokenization Development Services",
   description: "SpaceDev helps real estate companies, proptech platforms, and investment firms design, build, and launch tokenized property platforms built for real operations, not proof-of-concept demos.",
+  relatedTags: ["rwa", "defi"],
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   footerMarqueeTheme: "dark",
@@ -351,6 +361,7 @@ export const tokenizationData: ServicePageData = {
   eyebrow: "Sub-service · Blockchain",
   title: "Asset Tokenization Development Services",
   description: "We build production-grade platforms to tokenize real-world assets: real estate, commodities, securities, and fixed income. From issuance and lifecycle management to custody and secondary markets, end to end.",
+  relatedTags: ["rwa", "defi", "tokenization"],
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   footerMarqueeTheme: "dark",
@@ -375,6 +386,7 @@ export const defiFinanceData: ServicePageData = {
   eyebrow: "Industry · Finance and Fintech",
   title: "DeFi Development Services for the Next Generation of Decentralized Finance",
   description: "SpaceDev builds production-grade DeFi applications, smart contract systems, and tokenized financial infrastructure for startups and enterprises ready to operate at the frontier of web3 finance. From protocol architecture to post-launch security, we cover the full DeFi development lifecycle.",
+  relatedTags: ["defi", "fintech", "smart-contracts"],
   primaryCta: { label: "Start Your DeFi Project", href: "/contact" },
   secondaryCta: { label: "Talk to a DeFi Engineer", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
   compactHeroTitle: true,
@@ -408,6 +420,7 @@ export const supplyChainData: ServicePageData = {
   eyebrow: "Industry · Supply Chain & Logistics",
   title: "Blockchain Solutions for Logistics, Freight, and Supply Chain Operations",
   description: "Supply chains break at the handoffs, where data moves between carriers, customs authorities, warehouses, and buyers. SpaceDev builds blockchain-based logistics and supply chain platforms that replace fragmented multi-party coordination with shared, tamper-proof infrastructure built for production.",
+  relatedTags: ["web3-infrastructure", "blockchain-basics"],
   primaryCta: { label: "Talk to Our Logistics Blockchain Team", href: "/contact" },
   compactHeroTitle: true,
 
@@ -440,6 +453,7 @@ export const healthcareData: ServicePageData = {
   eyebrow: "Industry · Healthcare",
   title: "Blockchain Development for the Healthcare Industry",
   description: "SpaceDev builds blockchain solutions for healthcare companies that need to secure patient data, automate clinical workflows, and create interoperable health records across providers, payers, and systems, without compromising compliance or performance.",
+  relatedTags: ["ai", "blockchain-basics", "compliance"],
   primaryCta: { label: "Start Your Healthcare Project", href: "/contact" },
   compactHeroTitle: true,
 
@@ -473,6 +487,7 @@ export const energyData: ServicePageData = {
   title: "Blockchain Development for the Energy Sector",
   titleHtml: "Blockchain Development for<br>the Energy Sector",
   description: "SpaceDev builds blockchain infrastructure for energy companies, utilities, and renewable energy platforms that need to modernize how they trade, track, and settle energy transactions. From peer-to-peer energy trading platforms to tokenized renewable energy certificates, we deliver the technical architecture to make it work at scale.",
+  relatedTags: ["web3-infrastructure", "rwa"],
   primaryCta: { label: "Discuss Your Energy Project", href: "/contact" },
   compactHeroTitle: true,
 
@@ -536,6 +551,7 @@ export const layer1Data: ServicePageData = {
   eyebrow: "Blockchain Development",
   title: "Custom Layer 1 Blockchain Development, From Protocol Design to Mainnet",
   description: "Building a Layer 1 is one of the most technically demanding projects in Web3. SpaceDev builds custom Layer 1 blockchain networks for protocols, enterprises, and product teams that need sovereign chain infrastructure: covering the full cycle from protocol design to mainnet launch.",
+  relatedTags: ["blockchain", "layer1", "web3-infrastructure"],
   primaryCta: { label: "Talk to Our L1 Blockchain Development Team", href: "/contact" },
 
   footerMarqueeTheme: "dark",
@@ -568,6 +584,7 @@ export const webMobileData: ServicePageData = {
   title: "Innovative Web & Mobile Development",
   description:
     "Your digital product is more than software; it represents your brand in motion. SpaceDev builds web, mobile, and software solutions that fuse together engineering precision with strong design and strategy to perform, engage, and evolve with your users.",
+  relatedTags: ["product-growth", "ai"],
   heroVariant: "light",
   primaryCta: { label: "Get in touch", href: "/contact" },
   secondaryCta: { label: "See case studies", href: "/our-work" },
@@ -670,6 +687,7 @@ export const staffAugData: ServicePageData = {
   title: "IT Staff Augmentation Services",
   description:
     "Access pre-vetted engineers, designers, and specialists who integrate effortlessly with your existing setup. Scale your project without the weight of long hiring cycles or overhead costs.",
+  relatedTags: ["product-growth"],
   primaryCta: { label: "Get in touch", href: "/contact" },
   secondaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
 
@@ -745,6 +763,7 @@ export const productDiscoveryData: ServicePageData = {
   eyebrow: "Product Discovery",
   title: "Product Discovery",
   description: "We transform your project ideas into tangible success!",
+  relatedTags: ["product-growth"],
   primaryCta: { label: "Get in touch", href: "/contact" },
   secondaryCta: { label: "Book a discovery call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
 
@@ -768,6 +787,7 @@ export const blockAuditData: ServicePageData = {
   title: "BlockAudit: Smart Contract & Blockchain Security",
   description:
     "Security is vital. Our expert smart contract audit ensures safe deployment, monitoring upgrade and management of Ethereum applications for startups and enterprises.",
+  relatedTags: ["smart-contracts", "defi"],
   primaryCta: { label: "Get in touch", href: "/contact" },
   secondaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
 
