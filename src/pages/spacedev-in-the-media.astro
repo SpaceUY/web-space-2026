@@ -454,12 +454,23 @@ const pageJsonLd = {
               data-animate
             >
               <div class="relative aspect-[16/10] overflow-hidden bg-sd-dark-2">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div class="w-full h-full" style="background: linear-gradient(135deg, #191429 0%, #312652 60%, #4a397c 100%);">
+                    <div class="flex items-center justify-center h-full">
+                      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-30">
+                        <circle cx="24" cy="24" r="22" stroke="white" stroke-width="2"/>
+                        <path d="M18 24L22 28L30 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                )}
                 <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
               </div>
               <div class="flex flex-col flex-1 p-5">

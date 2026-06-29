@@ -48,7 +48,7 @@ const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: item.title,
-  image: `${SITE.url}${item.image}`,
+  image: item.image ? `${SITE.url}${item.image}` : `${SITE.url}/images/og-default.png`,
   datePublished: item.date.toISOString(),
   author: { "@type": "Organization", name: SITE.name, url: SITE.url },
   publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
@@ -62,7 +62,7 @@ const articleJsonLd = {
     { label: "Space in the Media", href: "/spacedev-in-the-media" },
     { label: item.title },
   ]}
-  breadcrumbTone="light"
+  breadcrumbTone="dark"
   title={item.seoTitle ?? `${item.title} | SpaceDev in the Media`}
   description={item.seoDescription ?? item.highlight}
   jsonLd={articleJsonLd}
@@ -73,13 +73,6 @@ const articleJsonLd = {
       <div class="grid md:grid-cols-[1fr_420px] lg:grid-cols-[1fr_520px] gap-10 md:gap-16 items-center">
 
         <div data-animate>
-          <div class="flex flex-wrap gap-2 mb-5">
-            {item.tags.map((tag) => (
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] uppercase tracking-wider font-ui bg-white/10 text-white/80 border border-white/15">
-                {tag}
-              </span>
-            ))}
-          </div>
           <h1 class="text-3xl md:text-5xl text-white font-display leading-tight mb-5">
             {item.title}
           </h1>
@@ -90,14 +83,27 @@ const articleJsonLd = {
           </p>
         </div>
 
-        <div class="hidden md:block rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]" data-animate>
-          <img
-            src={item.image}
-            alt={item.title}
-            loading="eager"
-            class="w-full h-full object-cover"
-          />
-        </div>
+        {item.youtubeId ? (
+          <div class="hidden md:block rounded-2xl overflow-hidden shadow-2xl aspect-video" data-animate>
+            <iframe
+              src={`https://www.youtube.com/embed/${item.youtubeId}`}
+              title={item.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+              class="w-full h-full"
+            />
+          </div>
+        ) : item.image ? (
+          <div class="hidden md:block rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]" data-animate>
+            <img
+              src={item.image}
+              alt={item.title}
+              loading="eager"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        ) : null}
 
       </div>
     </div>
