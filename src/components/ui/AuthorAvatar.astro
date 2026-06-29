@@ -13,10 +13,10 @@ interface Props {
 const { author, size = "md", showName = true, showRole = false, tone = "dark", class: className = "" } = Astro.props;
 
 const sizes = {
-  sm: { wrapper: "w-8 h-8",   text: "text-xs",  name: "text-xs",  role: "text-[10px]" },
-  md: { wrapper: "w-10 h-10", text: "text-sm",  name: "text-sm",  role: "text-xs" },
-  lg: { wrapper: "w-14 h-14", text: "text-lg",  name: "text-base", role: "text-sm" },
-  xl: { wrapper: "w-12 h-12", text: "text-xl",  name: "text-sm",  role: "text-xs" },
+  sm: { wrapper: "w-8 h-8",   px: 64,  text: "text-xs",  name: "text-xs",  role: "text-[10px]" },
+  md: { wrapper: "w-10 h-10", px: 80,  text: "text-sm",  name: "text-sm",  role: "text-xs" },
+  lg: { wrapper: "w-14 h-14", px: 112, text: "text-lg",  name: "text-base", role: "text-sm" },
+  xl: { wrapper: "w-16 h-16", px: 128, text: "text-xl",  name: "text-sm",  role: "text-xs" },
 };
 const s = sizes[size];
 ---
@@ -26,8 +26,8 @@ const s = sizes[size];
     <img
       src={author.avatar}
       alt={`${author.name} portrait`}
-      width="96"
-      height="96"
+      width={s.px}
+      height={s.px}
       loading="lazy"
       class={`${s.wrapper} rounded-full object-cover shrink-0 border border-white/10`}
     />
