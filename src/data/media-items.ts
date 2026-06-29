@@ -285,7 +285,7 @@ In summary, Bitcoin Energy Summit 2024 was an internationally prestigious platfo
     highlight: "CTO Juan Manuel Sobral on RWA use cases and tokenized art",
     seoDescription:
       "SpaceDev CTO Juan Manuel Sobral joined a panel on real-world asset use cases at the Blockchain Crypto Holidays conference in Montevideo, discussing tokenized art and Sygnum Bank's Picasso.",
-    image: "",
+    image: "/images/content/blockchain-crypto-holidays-2023.png",
     body: `On December 14, Juan Manuel Sobral (CTO, SpaceDev) participated in a panel on real-world asset (RWA) use cases at the Blockchain and Crypto Holiday Conference in Montevideo — described as "a notably lucrative and controversial area of blockchain."
 
 The panel was moderated by Pamela Gonzalez Perilli (Web3 Pro) and also featured Valentin Jaremtchuk (WIN Investments, sports tokenization) and Fedor Bogorodskiy (Streampay, CrossFi and digital payments).
@@ -303,7 +303,7 @@ RWAs represent one of the fastest-growing areas of Web3, bridging traditional fi
     highlight: "CTO Juan Manuel Sobral keynote on the future of blockchain wallets",
     seoDescription:
       "SpaceDev CTO Juan Manuel Sobral spoke at GX30 — the largest tech and innovation event in Latin America — on shaping the future of blockchain wallets.",
-    image: "",
+    image: "/images/content/gx30-genexus-2023.png",
     body: `GX30 was the 30th edition of the GeneXus Meeting, the first under the "GeneXus by Globant" brand following Globant's acquisition of GeneXus. Held November 28-30 at the Radisson Hotel Convention Center in Montevideo, it drew approximately 3,500 attendees from across Latin America and beyond, making it one of the most important technology, innovation, and business events in the region.
 
 The conference covered topics including AI, super apps, legacy modernization, DevOps, digital transformation, and blockchain.
@@ -321,7 +321,7 @@ The event was a great opportunity to connect with technologists from across LATA
     highlight: "SpaceDev IT Partner sponsor, CEO in conversation with Stefanini CEO",
     seoDescription:
       "SpaceDev participated as IT Partner sponsor at the CUTI Business Forum 2023, with CEO Federico Sendra in a Q&A alongside Guilherme Stefanini of Stefanini Brasil.",
-    image: "",
+    image: "/images/content/cuti-business-forum-2023.png",
     body: `The CUTI Business Forum (CBF2023) is the annual event where the Uruguayan IT ecosystem meets. Organized by CUTI (Camara Uruguaya de Tecnologias de la Informacion), the 2023 edition featured 12 talks and 16 workshops spanning blockchain, networking in the USA, AgriTech, and more.
 
 SpaceDev participated as an IT Partner sponsor at the event — a recognition of the company's standing within Uruguay's tech community.
@@ -339,7 +339,7 @@ SpaceDev's involvement in events like CUTI Business Forum reflects the company's
     highlight: "CTO on RWA panel at the 7th edition of Blockchain Summit LATAM",
     seoDescription:
       "SpaceDev CTO Juan Manuel Sobral joined a panel on real-world assets at the Blockchain Summit LATAM 2023 in Bogota, Colombia, discussing tokenization and digital art.",
-    image: "",
+    image: "/images/content/blockchain-summit-latam-colombia-2023.png",
     body: `The 7th edition of Blockchain Summit LATAM took place October 4-6, 2023 at the Agora Convention Center in Bogota, Colombia. The event brought together over 2,000 in-person attendees, 5,000+ virtual participants, and 130+ speakers to discuss financial services, banking, government, tokenization, gaming, DeFi, NFTs, metaverse, and Web3.
 
 SpaceDev's CTO, Juan Manuel Sobral, took the stage in a panel on Real-World Asset (RWA) use cases, moderated by Pamela Gonzalez Perilli (Lead Blockchain Developer, Web3 Pro). He was joined by Valentin Jaremtchuk (co-CEO, WIN Investments) and Fedor Bogorodskiy (CEO, Streampay).
@@ -358,7 +358,7 @@ Blockchain Summit LATAM is one of the most important regional blockchain confere
     seoTitle: "Federico Sendra on Why Blockchain Matters for Businesses",
     seoDescription:
       "SpaceDev CEO Federico Sendra explains why blockchain technology matters for businesses in an interview with YouTube channel Empresarios de Aca.",
-    image: "",
+    image: "/images/content/federico-sendra-interview-2023.png",
     youtubeId: "jm0DN38MeGo",
     body: `Federico Sendra, CEO and co-founder of SpaceDev, was interviewed by Tatiana Cortazza, host of the YouTube channel "Empresarios de Aca," on September 2, 2023.
 
@@ -377,7 +377,7 @@ A blockchain evangelist and Stanford/ORT graduate, Federico has spent years help
     highlight: "CTO Juan Manuel Sobral keynote on the future of Ethereum wallets",
     seoDescription:
       "SpaceDev CTO Juan Manuel Sobral delivered a keynote at Ethereum Argentina 2023 on blockchain wallets: types, security, and accessibility for everyday users.",
-    image: "",
+    image: "/images/content/ethereum-argentina-2023.jpg",
     youtubeId: "0ZllEEaVkq0",
     body: `Ethereum Argentina 2023 was one of the region's most important blockchain events, bringing together 110 international speakers, 20 technical workshops, around 30 sponsors, and over 3,000 attendees in Buenos Aires.
 
@@ -399,7 +399,7 @@ Ethereum Argentina reinforced that LATAM is a serious player in the global Web3 
     seoTitle: "SpaceDev Places Top 3 at WeaveDB Hackathon 2023",
     seoDescription:
       "SpaceDev finished in the top 3 at the WeaveDB 2023 Hackathon, competing against 30 global teams and becoming the only Latin American company to reach the podium.",
-    image: "",
+    image: "/images/content/weavedb-hackathon-2023.png",
     body: `In July 2023, SpaceDev competed in the WeaveDB LTD 2023 Hackathon against 30 teams from around the world — and finished in the top 3.
 
 More than a great result, this was a milestone: SpaceDev was the only Latin American company to reach the podium in a global competition focused on one of Web3's most innovative data infrastructure layers.
@@ -419,7 +419,7 @@ This hackathon result is part of a broader pattern: SpaceDev consistently shows 
     highlight: "CTO spoke at Uruguay's inaugural IT Builders conference",
     seoDescription:
       "SpaceDev CTO Juan Manuel Sobral presented Blockchain: Uncovering What's Inside the Box at IT Builders 2023, Uruguay's inaugural tech conference with 2,000+ participants.",
-    image: "",
+    image: "/images/content/it-builders-2023.jpg",
     body: `IT Builders 2023 was Uruguay's inaugural IT conference, drawing 2,000+ participants across topics including AI, data analytics, innovation, digital transformation, communication, and gender equality in tech.
 
 Notable speakers included Lisandro Dorfman (Dashboards and KPIs), Guillermo Treister (AI in Business), and Diego Delgado (Async Communication at Scale). The event also recognized Ethereum Uruguay for their community knowledge-sharing work.
@@ -437,7 +437,7 @@ IT Builders established itself as an important gathering point for Uruguay's tec
     highlight: "Tech talk on private key recovery alongside The Graph and Chainlink",
     seoDescription:
       "SpaceDev presented In Search of the Enigma: How to Recover Your Private Key at Ethereum Uruguay's April Onboarding Month alongside The Graph and Chainlink.",
-    image: "",
+    image: "/images/content/ethereum-uruguay-onboarding-2023.jpg",
     body: `Ethereum Uruguay ran an Onboarding Month campaign throughout April 2023, culminating in a live event on April 26 at Cowork Sinergia Faro in Montevideo.
 
 SpaceDev contributed a tech talk titled "In Search of the Enigma: How to Recover Your Private Key" — a deep dive into the cryptographic mechanisms behind private key recovery, covering the technology, the education, and the community context that makes self-custody both powerful and approachable.
@@ -456,7 +456,7 @@ SpaceDev has been a close partner of Ethereum Uruguay since the community's earl
     seoTitle: "Federico Sendra, CEO of SpaceDev, Interviewed by El Pais Uruguay",
     seoDescription:
       "El Pais journalist Antonio Larronda interviewed SpaceDev CEO Federico Sendra about his book recommendation for entrepreneurs and his approach to building strategic networks.",
-    image: "",
+    image: "/images/content/federico-sendra-elpais-2023.png",
     body: `On February 10, 2023, El Pais journalist [Antonio Larronda](https://www.linkedin.com/in/antonio-larronda) interviewed Federico Sendra, CEO and co-founder of SpaceDev, for the newspaper's entrepreneurship series.
 
 The focus: Sendra's book recommendation for entrepreneurs. His pick was "How to Be a Power Connector" by [Judy Robinett](https://www.linkedin.com/in/judyrobinett) — a guide to building strategic networks that create real results.
