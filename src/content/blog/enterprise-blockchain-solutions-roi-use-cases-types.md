@@ -4,7 +4,7 @@ description: "A practical 2026 guide to enterprise blockchain: real ROI data, B2
 publishedAt: 2026-05-19
 author: federico-sendra
 category: Blockchain Trends
-tags: ["blockchain", "enterprise", "web3", "defi", "compliance", "smart-contracts"]
+tags: ["enterprise", "compliance", "blockchain"]
 readTime: 9
 cover: "/images/content/enterprise-blockchain-cover.png"
 metatitle: "Enterprise Blockchain Solutions in 2026: ROI, Use Cases and Types Explained"
