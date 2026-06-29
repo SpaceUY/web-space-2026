@@ -18,23 +18,6 @@ export interface Author {
 
 export const authors: Author[] = [
   {
-    slug: "diego-priliac",
-    name: "Diego Priliac",
-    role: "COO",
-    bio: "Diego leads operations at SpaceDev, building the systems and culture that turn talented engineers into a high-performing team. He believes the difference between good and great products is the operating system around the people who build them.",
-    initials: "DP",
-    avatarGradient: "from-sd-purple to-sd-purple-2",
-    avatar: "/images/content/Ase2If5CJXH4BrNWxKF0JciqjUE.png",
-    coverImage: "/images/content/Ase2If5CJXH4BrNWxKF0JciqjUE.png",
-    gallery: [
-      { src: "/images/content/YxwLtoX3RaoAbsRSfm7BHL1xtKI.webp", alt: "Diego Priliac speaking about operations at a SpaceDev All Hands." },
-      { src: "/images/content/jqHHiOTVsHa4ioIxPxCULv2gUg.webp", alt: "Diego Priliac in conversation with team leads." },
-      { src: "/images/content/pVs0fAmc6Gp2davy0dgkOslc1c.webp", alt: "Diego Priliac at a leadership offsite." },
-      { src: "/images/content/sZeLM1jDYxCoaqnWcDNpUxjsw.webp", alt: "Diego Priliac with the SpaceDev operations team." },
-    ],
-    social: { linkedin: "https://www.linkedin.com/in/dpriliac/" },
-  },
-  {
     slug: "federico-sendra",
     name: "Federico Sendra",
     role: "CEO & Co-founder",
@@ -69,6 +52,23 @@ export const authors: Author[] = [
       { src: "/images/content/pGiXYozQ3mE4cilNOItfe2L2fUA.svg", alt: "SpaceDev co-founder signature illustration." },
     ],
     social: { linkedin: "https://www.linkedin.com/in/juanmsobral/" },
+  },
+  {
+    slug: "diego-priliac",
+    name: "Diego Priliac",
+    role: "COO",
+    bio: "Diego leads operations at SpaceDev, building the systems and culture that turn talented engineers into a high-performing team. He believes the difference between good and great products is the operating system around the people who build them.",
+    initials: "DP",
+    avatarGradient: "from-sd-purple to-sd-purple-2",
+    avatar: "/images/content/Ase2If5CJXH4BrNWxKF0JciqjUE.png",
+    coverImage: "/images/content/Ase2If5CJXH4BrNWxKF0JciqjUE.png",
+    gallery: [
+      { src: "/images/content/YxwLtoX3RaoAbsRSfm7BHL1xtKI.webp", alt: "Diego Priliac speaking about operations at a SpaceDev All Hands." },
+      { src: "/images/content/jqHHiOTVsHa4ioIxPxCULv2gUg.webp", alt: "Diego Priliac in conversation with team leads." },
+      { src: "/images/content/pVs0fAmc6Gp2davy0dgkOslc1c.webp", alt: "Diego Priliac at a leadership offsite." },
+      { src: "/images/content/sZeLM1jDYxCoaqnWcDNpUxjsw.webp", alt: "Diego Priliac with the SpaceDev operations team." },
+    ],
+    social: { linkedin: "https://www.linkedin.com/in/dpriliac/" },
   },
 ];
 
