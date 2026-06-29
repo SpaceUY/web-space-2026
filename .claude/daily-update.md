@@ -62,3 +62,18 @@ Developer: Vero
 - [10:00] Reescrito Header.astro con nueva estructura de nav: Our Expertise (mega-dropdown), Industries, Our Work, About, Blog — Header.astro
 - [10:00] Reescrito MobileMenu.astro con accordions <details>/<summary> para cada sección — MobileMenu.astro
 - [10:30] Fix ts(18047): renombrado el → node dentro del if para preservar narrowing en closures — src/pages/index.astro
+- [11:00] Related articles sort changed to pure date DESC (newest first) — src/layouts/ServicePageLayout.astro
+- [11:15] Narrowed blog post tags for 3 catch-all posts to be topic-specific — src/content/blog/
+- [11:30] Redesigned relatedTags per money page to use narrow specific tags — src/data/services.ts
+- [12:00] Created /author/ index page listing all authors with circular avatars — src/pages/author/index.astro
+- [12:15] Fixed author hero breadcrumb collision, increased padding and photo size — src/pages/author/[slug].astro
+- [12:30] Linked About Us team cards to author profile pages — src/pages/about-us.astro
+- [12:45] Redesigned author index cards with circular avatars, better layout — src/pages/author/index.astro
+- [13:00] Reordered authors array: CEO (Federico) → CTO (Juan Manuel) → COO (Diego) — src/data/authors.ts
+- [13:15] Fixed pixelated author avatar in blog featured post (size="xl") — src/pages/blog/index.astro
+- [13:30] Added ISO certification logo to footer below Contact Us (156px) — src/components/layout/Footer.astro
+- [14:00] Case study service tags: mapped to money page URLs, unmapped tags omitted — src/pages/case-study/[...slug].astro
+- [14:30] Case studies: breadcrumbs enabled (tone light), hero badge changed to "Case Study" only (category moved to meta bar) — src/pages/case-study/[...slug].astro
+- [15:30] Restored 9 SpaceDev events to in-the-media page: data file, detail pages with photos, events grid section — src/data/media-items.ts, src/pages/spacedev-in-the-media/
+- [16:55] Added 10 new 2023 media events (Blockchain Summit x2, GX30, CUTI, WeaveDB, IT Builders, Eth Argentina, Eth Uruguay, Federico interviews) — src/data/media-items.ts
+- [16:55] Detail page: YouTube embed + gradient fallback when no image; index cards: gradient placeholder for imageless items — src/pages/spacedev-in-the-media/[slug].astro, spacedev-in-the-media.astro
