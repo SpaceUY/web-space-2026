@@ -83,3 +83,5 @@ Developer: Vero
 
 - [10:35] Created /blockchain-development-services/industry/real-estate — use cases table, benefits, tech stack, process, related services, FAQs — real-estate.astro, services.ts
 - [10:35] Created /blockchain-development-services/industry/compliance-web3 — infrastructure table, use cases, regulatory frameworks, tech stack, 4-step process — compliance-web3.astro, services.ts
+- [10:50] Added Real Estate and Web3 Compliance to Industries navbar dropdown — Header.astro
+- [11:30] Added isometric pixel-building SMIL animation to Real Estate industry hero — IndustryHeroAnim.astro (fixed width:0 CSS scoping bug, switched to inline styles)
