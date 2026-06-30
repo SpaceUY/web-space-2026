@@ -851,3 +851,68 @@ export const blockAuditData: ServicePageData = {
   footerMarquee: "Smart contract audits that protect your future.",
   footerMarqueeTheme: "dark",
 };
+
+/* ============================================================
+   INDUSTRY · REAL ESTATE
+   ============================================================ */
+export const realEstateData: ServicePageData = {
+  seo: {
+    title: "Blockchain Development for Real Estate | PropTech & Web3 Solutions | SpaceDev",
+    description: "Blockchain development services for real estate companies: smart contracts, tokenization platforms, property registries, and DeFi mortgage solutions. Let's build.",
+  },
+  eyebrow: "Industry · Real Estate",
+  title: "Blockchain Development Services for Real Estate Companies",
+  description: "SpaceDev builds blockchain solutions for real estate firms, proptech platforms, and investment vehicles that need more than a pilot. We cover the full stack, from smart contract architecture to investor-facing platforms, with a delivery model built around your business constraints.",
+  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  compactHeroTitle: true,
+  relatedTags: ["rwa", "tokenization"],
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What blockchain services do real estate companies typically need?", answer: "Most real estate blockchain projects involve some combination of smart contract development, token issuance infrastructure, investor portals, compliance controls, and payment rails. The right scope depends on whether you are tokenizing a single asset, building a marketplace, or replacing legacy title management infrastructure." },
+    { question: "Is blockchain legally compliant for real estate transactions?", answer: "Compliance is built at the contract level, not assumed. We implement on-chain transfer restrictions, KYC/AML integrations, and accreditation checks that reflect the legal framework your advisors define. Regulatory requirements vary by jurisdiction and asset type, which is why every engagement starts with a Discovery Sprint." },
+    { question: "What is the difference between a tokenized real estate platform and a property registry on blockchain?", answer: "A tokenized platform represents ownership or economic rights as tradeable digital tokens. A property registry focuses on immutable, auditable title records without necessarily creating liquid instruments. Many platforms combine both layers." },
+    { question: "How long does it take to build a blockchain platform for real estate?", answer: "A focused MVP can be ready in 8 to 12 weeks. Full platforms with compliance infrastructure, investor portals, and payment integrations require a scoping phase first. Product Discovery gives you accurate timelines before any commitment." },
+  ],
+
+  finalCta: {
+    title: "Build Your Real Estate Blockchain Platform with SpaceDev",
+    description: "SpaceDev brings blockchain development expertise for real estate companies that need production-grade systems, not demos. From architecture to launch, we are with you at every step.",
+    buttonLabel: "Talk to our blockchain team",
+    buttonHref: "/contact",
+  },
+};
+
+/* ============================================================
+   INDUSTRY · WEB3 COMPLIANCE
+   ============================================================ */
+export const complianceWeb3Data: ServicePageData = {
+  seo: {
+    title: "Web3 Compliance Development Services | KYC, AML & Regulatory Infrastructure | SpaceDev",
+    description: "Build compliant Web3 products from day one. SpaceDev develops on-chain KYC/AML, transfer restriction engines, decentralized identity, and regulatory-ready smart contracts.",
+  },
+  eyebrow: "Industry · Compliance",
+  title: "Web3 Compliance Development Services for Regulated Blockchain Products",
+  description: "SpaceDev builds the technical compliance infrastructure that Web3 projects need to operate in regulated markets. KYC/AML integrations, on-chain transfer restrictions, decentralized identity systems, and regulatory-ready smart contracts, engineered from day one, not retrofitted after launch.",
+  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  compactHeroTitle: true,
+  relatedTags: ["compliance", "smart-contracts"],
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What is Web3 compliance infrastructure?", answer: "It refers to the technical systems that enforce regulatory requirements at the protocol and contract level — KYC/AML integrations, transfer restrictions, transaction monitoring, and audit trails built into the blockchain product itself, not managed externally after the fact." },
+    { question: "Is KYC/AML required for DeFi platforms?", answer: "Regulatory exposure depends on jurisdiction and product type. FATF guidance classifies many DeFi interfaces as VASPs subject to AML obligations. Building compliant DeFi infrastructure from day one is significantly less costly than retrofitting it under regulatory pressure." },
+    { question: "What is the difference between on-chain and off-chain compliance?", answer: "Off-chain compliance relies on front-end controls and centralized databases. On-chain compliance enforces rules directly in the smart contract, so restrictions cannot be bypassed by interacting with the contract directly. For regulated token platforms, on-chain enforcement is the technically defensible standard." },
+    { question: "What token standards support compliance controls?", answer: "ERC-1400 and ERC-3643 (T-REX) are the primary security token standards used for compliant issuance. They support transfer restrictions, investor allowlists, forced transfers for regulatory action, and token recovery mechanisms." },
+    { question: "Do you provide legal or regulatory advice?", answer: "No. SpaceDev builds the technical infrastructure. We work alongside your legal and compliance advisors to implement the controls they define, correctly, at the contract and system level." },
+  ],
+
+  finalCta: {
+    title: "Build Your Web3 Compliance Infrastructure with SpaceDev",
+    description: "Compliance built into your product from the start is a competitive advantage, not just a legal obligation. Talk to our team about what your regulatory environment requires and how we build it.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "/contact",
+  },
+};
