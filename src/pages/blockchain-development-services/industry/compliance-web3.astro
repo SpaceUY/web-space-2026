@@ -1,0 +1,225 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import { complianceWeb3Data } from "../../../data/services";
+
+const infrastructure = [
+  { layer: "On-chain KYC/AML integration",       covers: "Identity verification, wallet screening, sanctioned address blocking" },
+  { layer: "Transfer restriction engines",        covers: "Allowlists, investor accreditation checks, jurisdictional controls enforced at contract level" },
+  { layer: "Decentralized identity (DID / SSI)",  covers: "Self-sovereign identity, verifiable credentials, zero-knowledge proof verification" },
+  { layer: "Regulatory-ready smart contracts",    covers: "ERC-1400, ERC-3643 (T-REX), pausing, blacklisting, and upgrade logic" },
+  { layer: "Transaction monitoring infrastructure", covers: "On-chain behavioral analysis, KYT (Know Your Transaction) integrations" },
+  { layer: "Governance and audit trails",         covers: "On-chain voting records, treasury controls, auditable activity logs" },
+  { layer: "FATF Travel Rule compliance",         covers: "Originator/beneficiary data transmission for qualifying transfers" },
+];
+
+const useCases = [
+  {
+    title: "Compliance Infrastructure for DeFi Platforms",
+    body: "DeFi protocols handling payments, lending, or liquidity pools face direct AML exposure. We build compliant DeFi architecture with wallet risk scoring, sanctioned address filtering, and transaction monitoring that operates without breaking decentralization.",
+  },
+  {
+    title: "Regulatory-Ready Security Token Platforms",
+    body: "Security token issuance requires transfer restrictions, accreditation checks, and investor allowlists enforced at the smart contract level, not as a front-end suggestion. We implement ERC-1400 and ERC-3643 (T-REX) standards used across compliant token platforms globally.",
+  },
+  {
+    title: "KYC/AML Onboarding for Web3 Applications",
+    body: "We integrate identity providers, wallet screening tools, and risk-scoring APIs into Web3 onboarding flows. The result is a compliant user onboarding experience that satisfies FATF and local VASP requirements without creating friction that kills conversion.",
+  },
+  {
+    title: "Decentralized Identity and Verifiable Credentials",
+    body: "For platforms that need privacy-preserving compliance, we build DID and SSI systems using verifiable credentials and zero-knowledge proofs. Users verify identity once and share selectively, without exposing personal data to every protocol they interact with.",
+  },
+  {
+    title: "On-Chain Governance with Auditable Controls",
+    body: "DAOs and tokenized funds operating in regulated environments need governance infrastructure that produces auditable records, enforces access controls, and satisfies fiduciary reporting requirements. We build the on-chain architecture your legal team can actually defend.",
+  },
+];
+
+const frameworks = [
+  { framework: "FATF / Travel Rule", scope: "AML obligations for VASPs, originator/beneficiary data transmission" },
+  { framework: "MiCA (EU)",          scope: "Crypto-asset service provider requirements across European markets" },
+  { framework: "SEC / US securities law", scope: "Token classification, accredited investor controls, transfer restrictions" },
+  { framework: "GDPR / data privacy", scope: "Off-chain data handling, minimization in KYC flows" },
+  { framework: "FINRA / FinCEN",     scope: "US-based AML program requirements for digital asset businesses" },
+];
+
+const techStack = [
+  { layer: "Identity and KYC Providers",       items: "Jumio, Onfido, Sumsub, Persona, custom integrations" },
+  { layer: "Wallet Screening and AML",         items: "Chainalysis, Elliptic, TRM Labs, on-chain scoring APIs" },
+  { layer: "Token Standards",                  items: "ERC-1400, ERC-3643 (T-REX), ERC-20 with access controls" },
+  { layer: "Decentralized Identity",           items: "W3C DIDs, Verifiable Credentials, zk-SNARKs, Polygon ID" },
+  { layer: "Smart Contract Infrastructure",    items: "Solidity, Hardhat, Foundry, OpenZeppelin AccessControl, upgradeable proxy patterns" },
+];
+
+const process = [
+  { number: "01", title: "Compliance Scoping",       body: "We map your regulatory obligations, jurisdiction, user base, and token model before any architecture decisions are made. This phase defines what compliance layers are required and how they interact with your product logic." },
+  { number: "02", title: "Architecture and Build",   body: "Compliance is embedded into the contract and backend layer during development, not bolted on afterward. Every transfer restriction, identity check, and audit mechanism is part of the core system design." },
+  { number: "03", title: "Security Review and Audit", body: "Before any compliant platform goes live, we apply structured security review across smart contracts and backend services. When deeper assurance is required, BlockAudit provides independent smart contract audits and pre-launch hardening." },
+  { number: "04", title: "Post-Launch Monitoring and Updates", body: "Regulatory requirements evolve. We provide ongoing engineering support to update compliance logic as frameworks like MiCA, FATF Travel Rule, and US digital asset regulation continue to develop." },
+];
+
+const related = [
+  { title: "Smart Contract Development",     description: "Audited contracts with access controls, pausing, and upgrade logic",     href: "/blockchain-development-services/smart-contract-development" },
+  { title: "Decentralized Identity",         description: "DID, SSI, and verifiable credential systems",                            href: "/blockchain-development-services/decentralized-identity" },
+  { title: "dApp Development",              description: "Compliant onboarding flows and investor portals",                        href: "/blockchain-development-services/dapp-development" },
+  { title: "BlockAudit: Blockchain Security", description: "Independent smart contract audits before production",                  href: "/blockaudit-smart-contract-and-blockchain-security" },
+  { title: "Asset Tokenization",            description: "Security token issuance with built-in compliance controls",              href: "/blockchain-development-services/asset-tokenization" },
+];
+---
+
+<ServicePageLayout data={complianceWeb3Data}>
+  <div slot="pre-process">
+
+    <!-- ① Compliance Infrastructure Table -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">What Web3 Compliance Infrastructure We Build</h2>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-2/5">Compliance Layer</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-3/5">What It Covers</th>
+              </tr>
+            </thead>
+            <tbody>
+              {infrastructure.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.layer}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.covers}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="flex flex-col gap-4 md:hidden">
+          {infrastructure.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-2">{row.layer}</h3>
+              <p class="text-sm text-sd-text-muted">{row.covers}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ② Use Cases -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Compliance Use Cases We Cover Across Web3 Verticals</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          {useCases.map((uc) => (
+            <div class="rounded-2xl p-8 bg-white/5 border border-white/10 hover:border-sd-purple/50 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{uc.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{uc.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ Regulatory Frameworks -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Regulatory Frameworks Our Compliance Builds Address</h2>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Framework</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-2/3">Scope</th>
+              </tr>
+            </thead>
+            <tbody>
+              {frameworks.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm align-top">{row.framework}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.scope}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="flex flex-col gap-4 md:hidden">
+          {frameworks.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-2">{row.framework}</h3>
+              <p class="text-sm text-sd-text-muted">{row.scope}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-10 text-sm text-sd-text-muted max-w-2xl" data-animate>
+          We build technical infrastructure. Regulatory interpretation is the role of your legal advisors. Our job is to implement what they define, correctly and at the contract level.
+        </p>
+      </div>
+    </section>
+
+    <!-- ④ Tech Stack -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Compliance Tech Stack We Work With</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" data-animate>
+          {techStack.map((t) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10">
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{t.layer}</p>
+              <p class="text-sm text-white leading-relaxed">{t.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ Process -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">How We Approach Web3 Compliance Development Projects</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {process.map((step) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <p class="text-3xl font-display text-sd-purple-300 mb-4">{step.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{step.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{step.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ Related Services -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Compliant Web3 Products</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {related.map((r) => (
+            <a href={r.href} class="group rounded-2xl p-6 bg-white/5 border border-white/10 hover:border-sd-purple/50 hover:bg-sd-purple/10 transition-all duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-2 group-hover:text-sd-purple-200 transition-colors">{r.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{r.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

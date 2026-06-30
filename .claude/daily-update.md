@@ -77,3 +77,9 @@ Developer: Vero
 - [15:30] Restored 9 SpaceDev events to in-the-media page: data file, detail pages with photos, events grid section — src/data/media-items.ts, src/pages/spacedev-in-the-media/
 - [16:55] Added 10 new 2023 media events (Blockchain Summit x2, GX30, CUTI, WeaveDB, IT Builders, Eth Argentina, Eth Uruguay, Federico interviews) — src/data/media-items.ts
 - [16:55] Detail page: YouTube embed + gradient fallback when no image; index cards: gradient placeholder for imageless items — src/pages/spacedev-in-the-media/[slug].astro, spacedev-in-the-media.astro
+
+Date: 2026-06-30
+Developer: Vero
+
+- [10:35] Created /blockchain-development-services/industry/real-estate — use cases table, benefits, tech stack, process, related services, FAQs — real-estate.astro, services.ts
+- [10:35] Created /blockchain-development-services/industry/compliance-web3 — infrastructure table, use cases, regulatory frameworks, tech stack, 4-step process — compliance-web3.astro, services.ts
