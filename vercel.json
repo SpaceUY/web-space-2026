@@ -2,6 +2,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/case-study/:slug*",
+      "destination": "/our-work/:slug*",
+      "permanent": true
+    },
+    {
       "source": "/meet-fede",
       "destination": "https://meetings.hubspot.com/federico-sendra",
       "permanent": false

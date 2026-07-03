@@ -1,0 +1,519 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import CTA from "../../components/ui/CTA.astro";
+import AnimatedCounter from "../../components/ui/AnimatedCounter.astro";
+import { SITE } from "../../lib/seo";
+import "../../styles/prose.css";
+
+export async function getStaticPaths() {
+  const studies = await getCollection("case-studies");
+  return studies.map((entry, idx) => {
+    // Prefer same-category studies for "Continue Reading"
+    const sameCategory = studies.filter(
+      (s) => s.id !== entry.id && s.data.category === entry.data.category
+    );
+    const next     = sameCategory[idx % sameCategory.length] ?? studies[(idx + 1) % studies.length];
+    const nextNext = sameCategory[(idx + 1) % sameCategory.length] ?? studies[(idx + 2) % studies.length];
+    return { params: { slug: entry.id }, props: { entry, next, nextNext } };
+  });
+}
+
+const { entry, next, nextNext } = Astro.props;
+const { Content } = await render(entry);
+
+// All case studies use the SpaceDev brand hero gradient
+const gradient = ""; // unused — hero uses --sd-gradient-hero via inline style
+
+const csJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: entry.data.name,
+  description: entry.data.tagline,
+  url: `${SITE.url}/case-study/${entry.id}`,
+  about: entry.data.industry,
+  creator: { "@type": "Organization", name: SITE.name, url: SITE.url },
+  ...(entry.data.client && { author: { "@type": "Organization", name: entry.data.client } }),
+};
+
+
+const meta: { label: string; value?: string | number }[] = [
+  { label: "Industry",  value: entry.data.industry  },
+  { label: "Category",  value: entry.data.category  },
+  { label: "Duration",  value: entry.data.duration  },
+  { label: "Year",      value: entry.data.year      },
+].filter((m) => m.value !== undefined);
+
+const heroImage   = entry.data.heroImage;
+const summary     = entry.data.summary;
+const objectives  = entry.data.objectives ?? [];
+const deliverables = entry.data.deliverables ?? [];
+const outcome      = entry.data.outcome;
+const gallery      = (entry.data.gallery ?? []).slice(0, 8);
+const galleryType  = entry.data.galleryType ?? "desktop";
+const metrics      = entry.data.metrics;
+const clutchReview = entry.data.clutchReview;
+const hasRichContent =
+  !!summary || objectives.length > 0 || deliverables.length > 0 || !!outcome || gallery.length > 0;
+
+const serviceLinks: Record<string, string> = {
+  "Product Discovery":               "/product-discovery",
+  "Product Development":             "/innovative-web-and-mobile-solutions",
+  "Product Engineering":             "/innovative-web-and-mobile-solutions",
+  "Product Strategy":                "/product-discovery",
+  "Product Management":              "/product-discovery",
+  "Full-Stack Engineering":          "/innovative-web-and-mobile-solutions",
+  "Full-stack Engineering":          "/innovative-web-and-mobile-solutions",
+  "Frontend":                        "/innovative-web-and-mobile-solutions",
+  "Frontend Development":            "/innovative-web-and-mobile-solutions",
+  "Frontend Engineering":            "/innovative-web-and-mobile-solutions",
+  "Backend":                         "/innovative-web-and-mobile-solutions",
+  "Backend Development":             "/innovative-web-and-mobile-solutions",
+  "Backend Engineering":             "/innovative-web-and-mobile-solutions",
+  "Backend Architecture":            "/innovative-web-and-mobile-solutions",
+  "Mobile App":                      "/innovative-web-and-mobile-solutions",
+  "Mobile Development":              "/innovative-web-and-mobile-solutions",
+  "Mobile Development (React Native)": "/innovative-web-and-mobile-solutions",
+  "Mobile Engineering":              "/innovative-web-and-mobile-solutions",
+  "Cross-Platform Desktop":          "/innovative-web-and-mobile-solutions",
+  "UX/UI":                           "/innovative-web-and-mobile-solutions",
+  "UX/UI Design":                    "/innovative-web-and-mobile-solutions",
+  "AI Integration":                  "/innovative-web-and-mobile-solutions",
+  "Smart Contract Development":      "/blockchain-development-services/smart-contract-development",
+  "Smart Contract Engineering":      "/blockchain-development-services/smart-contract-development",
+  "Smart Contracts":                 "/blockchain-development-services/smart-contract-development",
+  "dApp Engineering":                "/blockchain-development-services/dapp-development",
+  "Web3 Architecture":               "/blockchain-development-services/dapp-development",
+  "Blockchain Infrastructure":       "/blockchain-development-services",
+  "DeFi Development":                "/blockchain-development-services/blockchain-for-defi-finance",
+  "Bridge Development":              "/blockchain-development-services/dapp-development",
+  "Multi-Chain Architecture":        "/blockchain-development-services/layer-1-blockchain-development",
+  "SDK Development":                 "/blockchain-development-services/dapp-development",
+  "SDK Engineering":                 "/blockchain-development-services/dapp-development",
+  "SDK & Tooling":                   "/blockchain-development-services/dapp-development",
+  "Staff Augmentation":              "/staff-augmentation",
+  "Infrastructure & DevOps":         "/staff-augmentation",
+  "Compliance":                      "/blockaudit-smart-contract-and-blockchain-security",
+  "Audit Tooling":                   "/blockaudit-smart-contract-and-blockchain-security",
+  "Audit Collaboration":             "/blockaudit-smart-contract-and-blockchain-security",
+};
+---
+
+<BaseLayout
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Our Work", href: "/our-work" },
+    { label: entry.data.name },
+  ]}
+  breadcrumbTone="dark"
+  title={entry.data.metatitle ?? `${entry.data.name} — Case Study | SpaceDev`}
+  description={entry.data.metadescription ?? entry.data.tagline}
+  ogImage={heroImage}
+  ogType="article"
+  jsonLd={csJsonLd}
+>
+  <!-- HERO — stacked on mobile, two-col on desktop -->
+  <section class="relative overflow-hidden bg-[#0d0c17]">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, rgba(103,58,228,0.28) 0%, rgba(74,57,124,0.12) 45%, transparent 72%);"></div>
+
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 pt-24 pb-12 sm:pt-36 sm:pb-24">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-16 items-start">
+
+        <!-- Text — always first in DOM (top on mobile, left on desktop) -->
+        <div>
+          <div data-animate>
+            <Badge tone="outline" class="mb-5 whitespace-nowrap">Case Study</Badge>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mt-4">{entry.data.name}</h1>
+          </div>
+          <p class="mt-4 text-base sm:text-xl text-white/80 leading-snug" data-animate>{entry.data.tagline}</p>
+          {entry.data.services.filter((s) => serviceLinks[s]).length > 0 && (
+            <ul class="mt-6 flex flex-wrap gap-2" data-animate>
+              {entry.data.services.filter((s) => serviceLinks[s]).map((s) => (
+                <li>
+                  <a href={serviceLinks[s]} class="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs text-white/80 border border-white/20 hover:bg-white/20 hover:text-white transition-colors">
+                    {s}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <!-- Cover image — below text on mobile, right col on desktop -->
+        {heroImage && (
+          <div data-animate class="w-full flex items-center justify-center" style="filter: drop-shadow(0 0 60px rgba(255,255,255,0.35)) drop-shadow(0 0 120px rgba(255,255,255,0.15));">
+            <img
+              src={heroImage}
+              alt={`${entry.data.name} — featured visual`}
+              loading="eager"
+              fetchpriority="high"
+              class="block"
+              style="width: 125%; max-width: none; margin-left: -12.5%;"
+            />
+          </div>
+        )}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS BAND (only if defined) -->
+  {metrics && metrics.length > 0 && (
+    <section class="bg-[#0d0c17] border-b border-white/5 py-12 sm:py-16">
+      <div class="mx-auto max-w-[1200px] px-6 sm:px-10">
+        <div class={`grid grid-cols-2 sm:grid-cols-${Math.min(metrics.length, 4)} gap-8 sm:gap-12`}>
+          {metrics.map((m) => {
+            // Parse "160+", "5.0", "Multi-year" etc into numeric + suffix
+            const match = String(m.value).match(/^(\d+(?:\.\d+)?)(.*)$/);
+            const num    = match ? parseFloat(match[1]) : null;
+            const suffix = match ? match[2] : "";
+            return num !== null
+              ? <AnimatedCounter value={num} suffix={suffix} label={m.label} size="sm" />
+              : (
+                <div class="text-center" data-animate>
+                  <p class="text-3xl md:text-4xl font-display text-white leading-none">{m.value}</p>
+                  <p class="mt-3 text-sd-text-muted text-[10px] uppercase tracking-[0.18em]">{m.label}</p>
+                </div>
+              );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- META BAR -->
+  <section class="bg-sd-dark py-8 border-b border-white/5">
+    <div class="mx-auto max-w-[1200px] px-6 sm:px-10">
+      <dl class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
+        {meta.map((m) => (
+          <div>
+            <dt class="text-[10px] uppercase tracking-[0.2em] text-sd-text-muted mb-1">{m.label}</dt>
+            <dd class="text-sm text-white">{m.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  {hasRichContent ? (
+    <>
+      <!-- SUMMARY / OVERVIEW -->
+      {summary && (
+        <section class="bg-sd-light py-14 sm:py-24">
+          <div class="mx-auto max-w-[1100px] px-6 sm:px-10 grid gap-6 sm:gap-10 sm:grid-cols-3">
+            <div class="sm:col-span-1">
+              <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Overview</p>
+              <h2 class="text-2xl sm:text-4xl text-sd-dark leading-tight">About {entry.data.client ?? entry.data.name}</h2>
+            </div>
+            <p class="sm:col-span-2 text-base sm:text-xl text-sd-text-gray leading-relaxed">{summary}</p>
+          </div>
+        </section>
+      )}
+
+      <!-- CHALLENGE / SOLUTION (markdown body) -->
+      <section class="bg-sd-dark py-14 sm:py-24">
+        <div class="mx-auto max-w-[1200px] px-6 sm:px-10 grid gap-10 sm:grid-cols-3">
+          <article class="sd-prose sd-prose-dark sm:col-span-2 min-w-0">
+            <Content />
+          </article>
+
+          <aside class="space-y-8 sm:sticky sm:top-24 sm:self-start border-t border-white/10 pt-8 sm:border-0 sm:pt-0">
+            {entry.data.services.length > 0 && (
+              <div>
+                <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Services</h3>
+                <ul class="space-y-2 text-sm text-white">
+                  {entry.data.services.filter((s) => serviceLinks[s]).map((s) => (
+                    <li><a href={serviceLinks[s]} class="hover:text-sd-purple-300 transition-colors">{s}</a></li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {entry.data.techStack.length > 0 && (
+              <div class="border-t border-white/10 pt-8">
+                <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Tech Stack</h3>
+                <ul class="flex flex-wrap gap-2">
+                  {entry.data.techStack.map((t) => (
+                    <li class="inline-flex items-center px-3 py-1 rounded-full border border-white/15 text-xs text-sd-text-muted">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </aside>
+        </div>
+      </section>
+
+      <!-- OBJECTIVES -->
+      {objectives.length > 0 && (
+        <section class="bg-sd-light-2 py-14 sm:py-24">
+          <div class="mx-auto max-w-[1100px] px-6 sm:px-10">
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple mb-3">Objectives</p>
+            <h2 class="text-2xl sm:text-4xl text-sd-dark mb-8 sm:mb-10 leading-tight">What we set out to do</h2>
+            <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {objectives.map((o, i) => (
+                <li class="bg-white rounded-2xl p-5 sm:p-6 border border-sd-gray-border">
+                  <span class="block text-xs font-mono text-sd-purple mb-3">0{i + 1}</span>
+                  <p class="text-sd-text-gray leading-relaxed text-sm sm:text-base">{o}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      <!-- DELIVERABLES -->
+      {deliverables.length > 0 && (
+        <section class="bg-sd-dark py-14 sm:py-24">
+          <div class="mx-auto max-w-[1100px] px-6 sm:px-10">
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-3">What we delivered</p>
+            <h2 class="text-2xl sm:text-4xl text-white mb-8 sm:mb-10 leading-tight">Solutions shipped</h2>
+            <ul class="space-y-3">
+              {deliverables.map((d) => (
+                <li class="flex gap-4 bg-white/[0.03] rounded-xl p-5 sm:p-6 border border-white/10">
+                  <span class="shrink-0 w-2 h-2 mt-1.5 rounded-full bg-sd-purple-300"></span>
+                  <p class="text-white/85 leading-relaxed text-sm sm:text-base">{d}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      <!-- GALLERY — scroll-hijacked horizontal pan -->
+      {gallery.length >= 4 && (
+        <!--
+          Pin wrapper: taller than 100vh so the page has scroll "room" to spend.
+          Height is set by JS once image dimensions are known.
+        -->
+        <div id="cs-gallery-pin" class="relative bg-sd-dark">
+
+          <!--
+            Sticky section: stays locked to the top of the viewport while the
+            user scrolls through the pin wrapper. JS drives scrollLeft on the
+            track based on how far into the pin we've scrolled.
+          -->
+          <section
+            id="cs-gallery-section"
+            class="bg-sd-dark sticky top-0 overflow-hidden flex flex-col justify-start pt-16 md:pt-24"
+            style="height: 100svh;"
+          >
+            {/* Heading */}
+            <div class="mx-auto max-w-[1100px] px-6 md:px-10 mb-8 w-full">
+              <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Gallery</p>
+              <h2 class="text-3xl md:text-4xl text-white leading-tight">A closer look</h2>
+            </div>
+
+            {/* Scroll track — no snap, JS drives scrollLeft */}
+            <div
+              id="cs-gallery-track"
+              class="cs-gallery-scroll flex gap-3 md:gap-5 overflow-x-hidden pl-6 md:pl-10"
+            >
+              {gallery.map((src, i) => (
+                <figure
+                  class="shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-[#0d0c17]"
+                  style={galleryType === "mobile"
+                    ? "width: clamp(75px, 21vw, 318px); aspect-ratio: 9/16;"
+                    : "width: clamp(300px, 58vw, 600px); aspect-ratio: 3/2;"}
+                >
+                  <img
+                    src={src}
+                    alt={`${entry.data.name} — ${galleryType === "mobile" ? "screen" : "visual"} ${i + 1}`}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    class="w-full h-full object-cover"
+                  />
+                </figure>
+              ))}
+              {/* Trailing spacer */}
+              <div class="shrink-0 w-6 md:w-10" aria-hidden="true"></div>
+            </div>
+          </section>
+
+        </div>
+      )}
+
+      <!-- CLUTCH REVIEW (only if defined and has real text) -->
+      {clutchReview?.text && (
+        <section class="bg-sd-light-2 py-16 md:py-24 border-y border-sd-gray-border">
+          <div class="mx-auto max-w-[800px] px-6 md:px-10 text-center">
+            <div class="flex justify-center gap-1 mb-8">
+              {Array.from({ length: clutchReview.stars }).map(() => (
+                <svg width="22" height="22" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+            <blockquote>
+              <p class="text-xl md:text-2xl text-sd-text-dark leading-relaxed font-display font-light italic mb-8">
+                "{clutchReview.text}"
+              </p>
+              <footer class="flex flex-col sm:flex-row items-center justify-center gap-3 text-sm">
+                <span class="text-sd-text-gray">— {clutchReview.reviewer}</span>
+                <a
+                  href={clutchReview.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 text-sd-purple hover:text-sd-purple-2 font-semibold transition-colors"
+                >
+                  Verified on Clutch
+                  <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true">
+                    <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </footer>
+            </blockquote>
+          </div>
+        </section>
+      )}
+
+      <!-- OUTCOME (dramatic version) -->
+      {outcome && (
+        <section class="relative overflow-hidden py-24 md:py-36" style="background: var(--sd-purple-deep);">
+          <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 0%, rgba(103,58,228,0.4) 0%, transparent 65%);"></div>
+          <div class="relative mx-auto max-w-[900px] px-6 md:px-10 text-center">
+            <p class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-6">The Outcome</p>
+            <p class="text-2xl md:text-3xl lg:text-4xl text-white leading-snug font-display font-light">
+              {outcome}
+            </p>
+          </div>
+        </section>
+      )}
+    </>
+  ) : (
+    <!-- DEFAULT BODY (no rich content yet) -->
+    <section class="bg-sd-dark py-14 sm:py-24">
+      <div class="mx-auto max-w-[1200px] px-6 sm:px-10 grid gap-10 sm:grid-cols-3">
+        <article class="sd-prose sd-prose-dark sm:col-span-2 min-w-0">
+          <Content />
+        </article>
+
+        <aside class="space-y-8 sm:sticky sm:top-24 sm:self-start border-t border-white/10 pt-8 sm:border-0 sm:pt-0">
+          {entry.data.services.length > 0 && (
+            <div>
+              <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Services</h3>
+              <ul class="space-y-2 text-sm text-white">
+                {entry.data.services.filter((s) => serviceLinks[s]).map((s) => (
+                  <li><a href={serviceLinks[s]} class="hover:text-sd-purple-300 transition-colors">{s}</a></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {entry.data.techStack.length > 0 && (
+            <div class="border-t border-white/10 pt-8">
+              <h3 class="text-xs uppercase tracking-[0.2em] text-sd-purple-300 mb-4">Tech Stack</h3>
+              <ul class="flex flex-wrap gap-2">
+                {entry.data.techStack.map((t) => (
+                  <li class="inline-flex items-center px-3 py-1 rounded-full border border-white/15 text-xs text-sd-text-muted">{t}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </aside>
+      </div>
+    </section>
+  )}
+
+  <!-- UP NEXT — two cards -->
+  <section class="bg-sd-dark border-t border-white/5 py-14 sm:py-24">
+    <div class="mx-auto max-w-[1200px] px-6 sm:px-10">
+      <p class="text-xs uppercase tracking-[0.2em] text-sd-text-muted mb-6 sm:mb-8">Continue Reading</p>
+      <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
+        {[next, nextNext].map((study) => (
+          <a
+            href={`/case-study/${study.id}`}
+            class="group bg-white/[0.03] rounded-2xl p-8 border border-white/10 hover:border-sd-purple/40 hover:bg-white/[0.05] transition-all"
+          >
+            <span class="text-[10px] uppercase tracking-wider text-sd-text-muted">{study.data.category} · Case Study</span>
+            <h3 class="text-2xl md:text-3xl text-white group-hover:text-sd-purple-300 transition-colors mt-2 leading-tight">
+              {study.data.name}
+            </h3>
+            <p class="mt-3 text-sm text-sd-text-muted leading-relaxed line-clamp-2">{study.data.tagline}</p>
+            <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sd-purple group-hover:gap-3 transition-all">
+              Read case study
+              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M3 7h8m0 0L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Have a similar project in mind?"
+    description="Tell us about your product. We'll show you the fastest path forward."
+    buttons={[{ label: "Start a project", href: "/contact" }]}
+    variant="dark"
+  />
+</BaseLayout>
+
+<style>
+  /* Hero two-column layout */
+  .cs-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 640px) {
+    .cs-hero-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
+  }
+
+  .cs-hero-image img {
+    width: 100%;
+    border-radius: 1rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  /* Gallery scroll track: overflow hidden (JS drives scrollLeft, no visible bar) */
+  .cs-gallery-scroll { scrollbar-width: none; }
+  .cs-gallery-scroll::-webkit-scrollbar { display: none; }
+</style>
+
+<script>
+  // ── GALLERY SCROLL HIJACK ──────────────────────────────────────────────────
+  // Vertical page scroll is redirected to horizontal image panning while the
+  // sticky gallery section is in view. Once images are fully scrolled, the
+  // page scroll continues normally.
+
+  const pin   = document.getElementById("cs-gallery-pin");
+  const track = document.getElementById("cs-gallery-track");
+
+  if (pin && track) {
+    // Set pin height = viewport height + full horizontal scroll distance.
+    // This gives the page exactly enough "virtual" vertical scroll space to
+    // translate 1:1 into horizontal movement on the track.
+    const setHeight = () => {
+      const maxH = track.scrollWidth - track.clientWidth;
+      pin.style.height = window.innerHeight + maxH + "px";
+    };
+
+    // Re-calculate once all images have loaded (scrollWidth may change)
+    if (document.readyState === "complete") {
+      setHeight();
+    } else {
+      window.addEventListener("load", setHeight, { once: true });
+      setHeight(); // best-effort run immediately (cached images)
+    }
+    window.addEventListener("resize", setHeight);
+
+    // On every page scroll: map how far into the pin we've scrolled → scrollLeft
+    const onScroll = () => {
+      const pinTop    = pin.getBoundingClientRect().top;
+      const scrolledIn = Math.max(0, -pinTop);          // 0 until pin top hits viewport top
+      const maxScroll  = track.scrollWidth - track.clientWidth;
+      track.scrollLeft  = Math.min(scrolledIn, maxScroll);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+</script>
