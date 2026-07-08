@@ -10,7 +10,7 @@ const { caseStudy: c, class: className = "" } = Astro.props;
 ---
 
 <a
-  href={`/case-study/${c.slug}`}
+  href={`/our-work/${c.slug}`}
   data-category={c.industry ?? c.category}
   class={`spotlight-card relative overflow-hidden rounded-2xl block ${className}`.trim()}
   style="background: #14101F; height: 340px; box-shadow: 0 1px 2px rgba(0,0,0,.04); transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s cubic-bezier(.2,.7,.3,1); text-decoration: none;"

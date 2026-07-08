@@ -44,7 +44,7 @@ const jsonLd = {
     <nav aria-label="Breadcrumb" class={className}>
 
       {/* Mobile — "← Parent" back link, no pills */}
-      <div class="sm:hidden">
+      <div class="md:hidden">
         {parent?.href ? (
           <a
             href={parent.href}
@@ -63,7 +63,7 @@ const jsonLd = {
       </div>
 
       {/* Desktop — pill with full path */}
-      <div class={`hidden sm:inline-flex items-center rounded-full border px-4 py-2 backdrop-blur-sm ${pillBg}`}>
+      <div class={`hidden md:inline-flex items-center rounded-full border px-4 py-2 backdrop-blur-sm ${pillBg}`}>
         <ol class="flex items-center gap-0">
           {items.map((c, idx) => (
             <li class="inline-flex items-center">

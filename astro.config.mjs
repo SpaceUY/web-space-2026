@@ -48,7 +48,7 @@ export default defineConfig({
 
       // lastmod from content frontmatter (blog posts and case studies)
       const blogMatch = url.match(/\/blog\/([^/]+)\/?$/);
-      const caseMatch = url.match(/\/case-study\/([^/]+)\/?$/);
+      const caseMatch = url.match(/\/our-work\/([^/]+)\/?$/);
       const lastmod =
         (blogMatch && blogDates[blogMatch[1]]) ||
         (caseMatch && caseDates[caseMatch[1]]) ||
@@ -74,7 +74,7 @@ export default defineConfig({
         return { ...item, priority: 0.7, changefreq: 'weekly' };
       }
       // Case studies — relatively stable
-      if (url.includes('/case-study/') || url.includes('/our-work')) {
+      if (url.includes('/our-work')) {
         return { ...item, priority: 0.7, changefreq: 'monthly' };
       }
       // Default for everything else
