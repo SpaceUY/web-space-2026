@@ -42,7 +42,8 @@ export default defineConfig({
       !page.endsWith('/privacy-policy/') &&
       !page.endsWith('/coming-soon/') &&
       !page.endsWith('/ui-kit/') &&
-      !page.includes('/post/'),
+      !page.includes('/post/') &&
+      !page.includes('/blog/tag/'),
     serialize(item) {
       const url = item.url;
 
