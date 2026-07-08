@@ -225,6 +225,13 @@ export const dappData: ServicePageData = {
 
   footerMarqueeTheme: "dark",
 
+  faqs: [
+    { question: "What is a dApp?", answer: "A dApp (decentralized application) is software that runs on a blockchain instead of a centralized server, using smart contracts for its core logic. Unlike traditional apps, no single party controls the backend or can unilaterally change the rules." },
+    { question: "How long does dApp development take?", answer: "Most dApp MVPs are production-ready in 8 to 12 weeks. Complex dApps with custom protocol logic or multi-chain support typically require a scoping phase first, defined during Product Discovery." },
+    { question: "Which blockchains do you build dApps on?", answer: "Ethereum and other EVM-compatible chains (Polygon, Arbitrum, Base, Optimism), Solana, and Aptos, depending on your performance, cost, and ecosystem requirements." },
+    { question: "Do you audit the smart contracts behind the dApp?", answer: `Yes. Every dApp we build can go through an independent audit from <a href="/blockaudit-smart-contract-and-blockchain-security" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">BlockAudit</a>, our dedicated blockchain security division, before mainnet launch.` },
+  ],
+
   finalCta: {
     title: "Let's Build Your Decentralized Application",
     description: "If you're looking for a reliable partner for dApp development services, custom decentralized application development, or blockchain dApp development, SpaceDev is ready to help.",
@@ -246,8 +253,12 @@ export const banksData: ServicePageData = {
   relatedTags: ["compliance", "institutional"],
   primaryCta: { label: "Talk to our team", href: "/contact" },
 
-
-
+  faqs: [
+    { question: "What blockchain solutions do you build for banks?", answer: "Tokenized deposits, programmable payment rails, digital asset custody, and settlement infrastructure that integrates with existing core banking systems rather than replacing them." },
+    { question: "Can this integrate with our existing core banking system?", answer: "Yes. We design a plug-and-play integration layer so blockchain capabilities (tokenization, settlement, custody) sit alongside your current core banking stack instead of requiring a rebuild." },
+    { question: "How do you handle compliance and regulatory requirements?", answer: "Compliance requirements (KYC/AML, custody rules, reporting) are scoped during a discovery phase specific to your jurisdiction before any architecture decisions are made." },
+    { question: "Do you support permissioned as well as public blockchains?", answer: "Yes. Depending on regulatory and privacy requirements, we build on permissioned/consortium chains or public networks like Ethereum, selecting the right fit during the discovery phase." },
+  ],
 
 
   finalCta: {
@@ -273,6 +284,13 @@ export const smartContractData: ServicePageData = {
   description: "Secure, gas-efficient smart contracts engineered to scale. We design, build, test, and audit production contracts for token issuers, DeFi protocols, marketplaces, and DAOs.",
   relatedTags: ["smart-contracts"],
   primaryCta: { label: "Get in touch", href: "/contact" },
+
+  faqs: [
+    { question: "What languages do you write smart contracts in?", answer: "Solidity for Ethereum and EVM-compatible chains, Rust for Solana, and Move for Aptos and Sui, chosen based on your target network." },
+    { question: "How long does smart contract development take?", answer: "A single-purpose contract (token, staking, escrow) typically takes 4 to 8 weeks including testing. Multi-contract systems like DeFi protocols run 10 to 16 weeks. Timelines are confirmed during scoping, before development starts." },
+    { question: "Do you audit the smart contracts you build?", answer: `Yes. Every production contract goes through internal review and can be independently audited by <a href="/blockaudit-smart-contract-and-blockchain-security" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">BlockAudit</a>, our dedicated blockchain security division, before mainnet deployment.` },
+    { question: "What tooling do you use for smart contract development?", answer: "Foundry and Hardhat for testing and deployment, OpenZeppelin for audited base contracts, and The Graph for indexing on-chain data." },
+  ],
 
   finalCta: {
     title: "Let's Build Secure Smart Contracts",
@@ -323,6 +341,13 @@ export const decentralizedIdentityData: ServicePageData = {
 
   footerMarqueeTheme: "dark",
 
+  faqs: [
+    { question: "What is decentralized identity (DID)?", answer: "A DID is a self-sovereign digital identity standard that lets a person or organization prove who they are, or verify a credential, without a central authority holding or controlling that data." },
+    { question: "How is DID different from traditional login systems?", answer: "Traditional logins store credentials in a central database that can be breached or misused. DID uses cryptographic proofs and verifiable credentials, so users control what they share and with whom, and no single database holds everyone's identity data." },
+    { question: "What can I build with decentralized identity infrastructure?", answer: "Wallet-based onboarding, KYC flows that don't store raw documents, verifiable credentials for professional certifications, and access control systems that don't rely on passwords." },
+    { question: "How long does a DID implementation take?", answer: "A focused DID integration into an existing product typically takes 6 to 10 weeks. Full identity infrastructure builds vary based on the number of credential types and integrations required, scoped during discovery." },
+  ],
+
   finalCta: {
     title: "Build decentralized identity experiences that improve onboarding, privacy, and trust without sacrificing usability.",
     buttonLabel: "Talk to our blockchain team",
@@ -365,6 +390,13 @@ export const tokenizationData: ServicePageData = {
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What assets can be tokenized?", answer: "Real estate, commodities, securities, fixed income instruments, and other real-world assets (RWA), by representing legal or economic rights to the asset as tokens on a blockchain." },
+    { question: "How does asset tokenization improve liquidity?", answer: "Tokenization allows fractional ownership and secondary trading of assets that are normally illiquid, such as real estate or private credit, letting investors buy and sell smaller positions instead of requiring a full-asset transaction." },
+    { question: "What's involved in a tokenization platform build?", answer: "Token issuance and lifecycle management, custody infrastructure, KYC/investor onboarding, and secondary market functionality, integrated end to end rather than built as separate systems." },
+    { question: "How do you handle regulatory compliance for tokenized securities?", answer: "Compliance requirements (accredited investor checks, transfer restrictions, jurisdiction-specific rules) are scoped during a discovery phase before any architecture decisions, since they directly shape the token standard and custody design." },
+  ],
 
   finalCta: {
     title: "Build a tokenization platform designed for real operations.",
@@ -841,6 +873,13 @@ export const blockAuditData: ServicePageData = {
     tone: "dark",
     tools: ["ethereum", "solana", "solidity", "rust", "wagmi", "hardhat", "ethers", "openzeppelin"],
   },
+
+  faqs: [
+    { question: "What does a smart contract audit actually check?", answer: `Business logic correctness, access control, reentrancy and other known vulnerability classes, and gas efficiency. Our review process follows the vulnerability categories documented in the <a href="https://owasp.org/www-project-smart-contract-top-10/" target="_blank" rel="noopener noreferrer" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">OWASP Smart Contract Top 10</a>.` },
+    { question: "Do you follow public security standards?", answer: `Yes. Our audit methodology is grounded in established references, including <a href="https://ethereum.org/en/developers/docs/smart-contracts/security/" target="_blank" rel="noopener noreferrer" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Ethereum's own smart contract security guidelines</a> and the <a href="https://csrc.nist.gov/projects/blockchain" target="_blank" rel="noopener noreferrer" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">NIST blockchain research program</a>, rather than an internal checklist alone.` },
+    { question: "How long does a smart contract audit take?", answer: "A single-contract audit typically takes 1 to 2 weeks. Multi-contract systems or complex DeFi protocols run 3 to 6 weeks depending on scope, confirmed during the assessment phase." },
+    { question: "What happens after the audit is delivered?", answer: "You get a detailed report with findings, severity ratings, and remediation guidance. We also set up ongoing monitoring with OpenZeppelin Defender so new vulnerabilities are caught after launch, not just at the point-in-time of the audit." },
+  ],
 
   finalCta: {
     title: "Smart contract audits protect your future. Stay secure.",
