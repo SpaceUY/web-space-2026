@@ -90,6 +90,21 @@
       "source": "/post/:slug*",
       "destination": "/blog/:slug*",
       "permanent": true
+    },
+    {
+      "source": "/blockchain-and-web-3",
+      "destination": "/blockchain-development-services",
+      "permanent": true
+    },
+    {
+      "source": "/dapp-development",
+      "destination": "/blockchain-development-services/dapp-development",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-for-banks",
+      "destination": "/blockchain-development-services/blockchain-for-banks",
+      "permanent": true
     }
   ]
 }
