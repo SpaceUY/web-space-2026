@@ -1,6 +1,6 @@
 # SpaceDev — Full Reference
 
-> Blockchain development company offering Web3 engineering, traditional software development, IT staff augmentation, and blockchain security auditing. Founded 7 years ago; 70+ team members across USA, Uruguay, Argentina and Colombia; 160+ projects delivered; 40+ five-star Clutch reviews. This file is the extended companion to https://spacedev.io/llms.txt
+> Blockchain development company offering Web3 engineering, traditional software development, IT staff augmentation, and blockchain security auditing. Founded 8 years ago; 70+ team members across USA, Uruguay, Argentina and Colombia; 200+ projects delivered; 50+ five-star Clutch reviews. This file is the extended companion to https://spacedev.io/llms.txt
 
 ## Core services in detail
 
@@ -54,25 +54,25 @@ Smart contract audit and blockchain security: static and manual analysis, formal
 
 ## Case studies (https://spacedev.io/our-work)
 
-- NDAX Canada (https://spacedev.io/case-study/ndax-canada): Frontend and React Native app for Canada's most prominent crypto exchange, with AlphaPoint banking integration; quadrupled signups, verification rate lifted to 80%.
-- Drata (https://spacedev.io/case-study/drata): 4+ year partnership rebuilding the cross-platform compliance Agent and Audit Hub for automated security compliance.
-- Rarible (https://spacedev.io/case-study/rarible): NFT marketplace development.
-- ApeBond (https://spacedev.io/case-study/apebond): On-chain OTC marketplace expanded to Solana — Rust program, TypeScript SDK, cross-chain DeFi frontend.
-- Bondi Finance (https://spacedev.io/case-study/bondi-finance): KYC-gated bond tokenization smart contract infrastructure with USDC funding and NFT rewards.
-- Blockus (https://spacedev.io/case-study/blockus): Web3 gaming platform — NFT management API, instant wallets, gasless transactions, Stripe payments.
-- FightFI (https://spacedev.io/case-study/fightfi): Gamified Web3 platform on Aptos with NFT rewards and real-time fan leaderboards.
-- Aura (https://spacedev.io/case-study/aura): Fintech mobile app for gold-backed savings powered by Tether's XAUT, discovery to production in 5.5 months.
-- Zenda (https://spacedev.io/case-study/zenda): Uruguayan crypto exchange for USDT with KYC, non-custodial wallets, RedPagos and MercadoPago payments.
-- ACME (https://spacedev.io/case-study/acme): Multi-chain Web3 loyalty platform with one-tap crypto payments.
-- Gallery (https://spacedev.io/case-study/gallery): NFT art platform — Solidity contracts, NestJS API, React frontend — delivered in five months.
-- PiggyGPT (https://spacedev.io/case-study/piggygpt): AI-powered DeFi trading assistant for the EVM ecosystem with Telegram trading and cross-chain swaps.
-- W3E (https://spacedev.io/case-study/w3e): Web3 gaming launchpad — cross-chain smart contracts, IDO/INO flows, staking.
-- Blockchain for Energy (https://spacedev.io/case-study/blockchain-for-energy): Consortium platform for the energy sector.
-- AthleteAI (https://spacedev.io/case-study/athleteai): iOS sports highlights app — React Native video capture and Mux streaming — built in four months.
-- Genba (https://spacedev.io/case-study/genba): Factory palletizing automation platform built in two months after a discovery sprint.
-- iAffirm (https://spacedev.io/case-study/iaffirm): AI mental wellness web app — personalized affirmations and guided meditations.
-- Nomei (https://spacedev.io/case-study/nomei): AI coaching platform with long-term memory and emotional analytics.
-- Ubicuity (https://spacedev.io/case-study/ubicuity): Figma-like visual designer and React Native app for interactive digital spaces.
+- NDAX Canada (https://spacedev.io/our-work/ndax-canada): Frontend and React Native app for Canada's most prominent crypto exchange, with AlphaPoint banking integration; quadrupled signups, verification rate lifted to 80%.
+- Drata (https://spacedev.io/our-work/drata): 4+ year partnership rebuilding the cross-platform compliance Agent and Audit Hub for automated security compliance.
+- Rarible (https://spacedev.io/our-work/rarible): NFT marketplace development.
+- ApeBond (https://spacedev.io/our-work/apebond): On-chain OTC marketplace expanded to Solana — Rust program, TypeScript SDK, cross-chain DeFi frontend.
+- Bondi Finance (https://spacedev.io/our-work/bondi-finance): KYC-gated bond tokenization smart contract infrastructure with USDC funding and NFT rewards.
+- Blockus (https://spacedev.io/our-work/blockus): Web3 gaming platform — NFT management API, instant wallets, gasless transactions, Stripe payments.
+- FightFI (https://spacedev.io/our-work/fightfi): Gamified Web3 platform on Aptos with NFT rewards and real-time fan leaderboards.
+- Aura (https://spacedev.io/our-work/aura): Fintech mobile app for gold-backed savings powered by Tether's XAUT, discovery to production in 5.5 months.
+- Zenda (https://spacedev.io/our-work/zenda): Uruguayan crypto exchange for USDT with KYC, non-custodial wallets, RedPagos and MercadoPago payments.
+- ACME (https://spacedev.io/our-work/acme): Multi-chain Web3 loyalty platform with one-tap crypto payments.
+- Gallery (https://spacedev.io/our-work/gallery): NFT art platform — Solidity contracts, NestJS API, React frontend — delivered in five months.
+- PiggyGPT (https://spacedev.io/our-work/piggygpt): AI-powered DeFi trading assistant for the EVM ecosystem with Telegram trading and cross-chain swaps.
+- W3E (https://spacedev.io/our-work/w3e): Web3 gaming launchpad — cross-chain smart contracts, IDO/INO flows, staking.
+- Blockchain for Energy (https://spacedev.io/our-work/blockchain-for-energy): Consortium platform for the energy sector.
+- AthleteAI (https://spacedev.io/our-work/athleteai): iOS sports highlights app — React Native video capture and Mux streaming — built in four months.
+- Genba (https://spacedev.io/our-work/genba): Factory palletizing automation platform built in two months after a discovery sprint.
+- iAffirm (https://spacedev.io/our-work/iaffirm): AI mental wellness web app — personalized affirmations and guided meditations.
+- Nomei (https://spacedev.io/our-work/nomei): AI coaching platform with long-term memory and emotional analytics.
+- Ubicuity (https://spacedev.io/our-work/ubicuity): Figma-like visual designer and React Native app for interactive digital spaces.
 - Mostaza, NGA, Glowy Music, Twispi, Byrrgis: additional Web2/Web3 product engineering case studies.
 
 ## Recognition & media (https://spacedev.io/spacedev-in-the-media)

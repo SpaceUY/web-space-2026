@@ -120,8 +120,16 @@ const breadcrumbJsonLd = {
           <div class="flex items-center gap-2 text-sm text-sd-text-gray">
             <span aria-hidden="true">·</span>
             <time datetime={post.data.publishedAt.toISOString()}>
-              {dateFmt.format(post.data.publishedAt)}
+              Published {dateFmt.format(post.data.publishedAt)}
             </time>
+            {post.data.updatedAt && post.data.updatedAt.getTime() !== post.data.publishedAt.getTime() && (
+              <>
+                <span aria-hidden="true">·</span>
+                <time datetime={post.data.updatedAt.toISOString()}>
+                  Updated {dateFmt.format(post.data.updatedAt)}
+                </time>
+              </>
+            )}
             <span aria-hidden="true">·</span>
             <span>{post.data.readTime} min read</span>
           </div>
