@@ -57,11 +57,11 @@ Implementation costs range from $300,000 to $1 million for targeted use cases, w
 
 Financial services and supply chain make up about 60% of live deployments globally. But it's worth examining what real production deployments in these sectors look like beyond market statistics.
 
-In energy, the core challenge is creating a transparent, auditable record of renewable energy certificates that multiple counterparties can trust without a central operator. SpaceDev built exactly this kind of infrastructure in our [Blockchain for Energy](/case-study/blockchain-for-energy) engagement, where on-chain certificate management replaced a fragmented, paper-dependent process.
+In energy, the core challenge is creating a transparent, auditable record of renewable energy certificates that multiple counterparties can trust without a central operator. SpaceDev built exactly this kind of infrastructure in our [Blockchain for Energy](/our-work/blockchain-for-energy) engagement, where on-chain certificate management replaced a fragmented, paper-dependent process.
 
-In DeFi and fintech infrastructure, the challenge shifts toward building financial primitives that are composable, auditable, and capable of handling real capital at scale. Our work with [Bondi Finance](/case-study/bondi-finance) addressed this directly, building on-chain bond infrastructure that brings fixed-income instruments into the decentralized finance ecosystem.
+In DeFi and fintech infrastructure, the challenge shifts toward building financial primitives that are composable, auditable, and capable of handling real capital at scale. Our work with [Bondi Finance](/our-work/bondi-finance) addressed this directly, building on-chain bond infrastructure that brings fixed-income instruments into the decentralized finance ecosystem.
 
-On the exchange and trading side, [NDAX Canada](/case-study/ndax-canada), one of Canada's regulated cryptocurrency exchanges, required production-grade infrastructure capable of handling institutional trading volume with the compliance requirements of a regulated financial entity.
+On the exchange and trading side, [NDAX Canada](/our-work/ndax-canada), one of Canada's regulated cryptocurrency exchanges, required production-grade infrastructure capable of handling institutional trading volume with the compliance requirements of a regulated financial entity.
 
 ## Public vs. Private Chain: Making the Right Call
 
@@ -69,7 +69,7 @@ The most common strategic mistake in enterprise blockchain projects is defaultin
 
 The decision framework comes down to three questions:
 
-**Who are your counterparties, and do you have legal relationships with all of them?** If yes, a permissioned network likely makes sense. If your product needs to interoperate with unknown third parties or public DeFi protocols, you need public chain exposure. Our work on [ApeBond](/case-study/apebond) and [Rarible](/case-study/rarible) involved public chain deployments precisely because composability with the broader ecosystem was a product requirement, not just a nice-to-have.
+**Who are your counterparties, and do you have legal relationships with all of them?** If yes, a permissioned network likely makes sense. If your product needs to interoperate with unknown third parties or public DeFi protocols, you need public chain exposure. Our work on [ApeBond](/our-work/apebond) and [Rarible](/our-work/rarible) involved public chain deployments precisely because composability with the broader ecosystem was a product requirement, not just a nice-to-have.
 
 **What does your regulatory environment require?** Data residency, GDPR, HIPAA, and financial services regulations in various jurisdictions constrain what can be stored on a public chain. Private chains with configurable privacy are often the only viable path for regulated industries.
 

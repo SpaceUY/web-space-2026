@@ -31,7 +31,7 @@ const csJsonLd = {
   "@type": "CreativeWork",
   name: entry.data.name,
   description: entry.data.tagline,
-  url: `${SITE.url}/case-study/${entry.id}`,
+  url: `${SITE.url}/our-work/${entry.id}`,
   about: entry.data.industry,
   creator: { "@type": "Organization", name: SITE.name, url: SITE.url },
   ...(entry.data.client && { author: { "@type": "Organization", name: entry.data.client } }),
@@ -419,7 +419,7 @@ const serviceLinks: Record<string, string> = {
       <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
         {[next, nextNext].map((study) => (
           <a
-            href={`/case-study/${study.id}`}
+            href={`/our-work/${study.id}`}
             class="group bg-white/[0.03] rounded-2xl p-8 border border-white/10 hover:border-sd-purple/40 hover:bg-white/[0.05] transition-all"
           >
             <span class="text-[10px] uppercase tracking-wider text-sd-text-muted">{study.data.category} · Case Study</span>

@@ -105,6 +105,41 @@
       "source": "/blockchain-for-banks",
       "destination": "/blockchain-development-services/blockchain-for-banks",
       "permanent": true
+    },
+    {
+      "source": "/case-study-deprecated/:slug*",
+      "destination": "/our-work/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/case-study-old/:slug*",
+      "destination": "/our-work/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-old",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/product-discovery-deprecated",
+      "destination": "/product-discovery",
+      "permanent": true
+    },
+    {
+      "source": "/events-calendar-2026",
+      "destination": "/events-calendar",
+      "permanent": true
+    },
+    {
+      "source": "/events-calendar-2",
+      "destination": "/events-calendar",
+      "permanent": true
     }
   ]
 }
