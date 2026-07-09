@@ -394,7 +394,9 @@ const pageJsonLd = {
             >
               <div class="relative aspect-video overflow-hidden">
                 <img
-                  src={`https://img.youtube.com/vi/${item.videoId}/mqdefault.jpg`}
+                  src={`https://img.youtube.com/vi/${item.videoId}/maxresdefault.jpg`}
+                  onload={`if(this.naturalWidth<=120){this.onload=null;this.src='https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg'}`}
+                  onerror={`this.onerror=null;this.src='https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg'`}
                   alt={item.title}
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
