@@ -137,7 +137,7 @@ const featuredAuthor = getAuthor(featured.data.author);
                   {post.data.cover && (
                     <img
                       src={post.data.cover}
-                      alt=""
+                      alt={post.data.title}
                       loading="lazy"
                       decoding="async"
                       class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
