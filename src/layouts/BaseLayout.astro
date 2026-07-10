@@ -44,6 +44,20 @@ const {
 } = Astro.props;
 
 // Custom items take priority; otherwise auto-generate from URL path
+// Set of real static routes, so auto-breadcrumbs never link an
+// intermediate segment that has no page of its own (e.g. /blog/tag).
+// Built at compile time from the pages directory; dynamic routes ([...])
+// are excluded since they are always leaf pages, never intermediate crumbs.
+const pageFiles = import.meta.glob("/src/pages/**/*.astro");
+const realRoutes = new Set(
+  Object.keys(pageFiles)
+    .filter((p) => !p.includes("["))
+    .map((p) =>
+      p.replace("/src/pages", "").replace(/\/index\.astro$/, "").replace(/\.astro$/, "")
+    )
+    .map((p) => (p === "" ? "/" : p))
+);
+
 const autoCrumbs: Array<{ label: string; href?: string }> = [];
 if (Array.isArray(breadcrumbsProp)) {
   autoCrumbs.push(...breadcrumbsProp);
@@ -58,7 +72,10 @@ if (Array.isArray(breadcrumbsProp)) {
         .split("-")
         .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
         .join(" ");
-      autoCrumbs.push(i < segments.length - 1 ? { label, href: acc } : { label });
+      // Only link an intermediate crumb when its path is a real page;
+      // the last crumb is never linked.
+      const linkable = i < segments.length - 1 && realRoutes.has(acc);
+      autoCrumbs.push(linkable ? { label, href: acc } : { label });
     });
   }
 }
