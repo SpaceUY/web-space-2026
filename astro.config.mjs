@@ -36,14 +36,24 @@ export default defineConfig({
   },
   adapter: vercel(),
   integrations: [sitemap({
-    filter: (page) =>
-      !page.endsWith('/404') &&
-      !page.endsWith('/terms-and-conditions/') &&
-      !page.endsWith('/privacy-policy/') &&
-      !page.endsWith('/coming-soon/') &&
-      !page.endsWith('/ui-kit/') &&
-      !page.includes('/post/') &&
-      !page.includes('/blog/tag/'),
+    filter: (page) => {
+      // Normalize: site uses trailingSlash 'never', so compare paths without
+      // a trailing slash (the old endsWith('/x/') checks never matched the
+      // real no-slash URLs, leaking noindex pages into the sitemap).
+      const path = new URL(page).pathname.replace(/\/+$/, "") || "/";
+      const excluded = [
+        "/404",
+        "/terms-and-conditions",
+        "/privacy-policy",
+        "/coming-soon",
+        "/ui-kit",
+        "/blockchain-development-services/industry",
+      ];
+      if (excluded.includes(path)) return false;
+      if (path.includes("/post/")) return false;
+      if (path.includes("/blog/tag")) return false;
+      return true;
+    },
     serialize(item) {
       const url = item.url;
 
