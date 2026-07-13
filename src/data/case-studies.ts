@@ -53,15 +53,6 @@ export const caseStudies: CaseStudy[] = [
     services: ["Product Discovery", "Product Development", "Mobile"],
   },
   {
-    slug: "nomei", name: "Nomei",
-    featured: true,
-    tagline: "AI-native personal development platform with memory, coaching, and enterprise-grade safeguarding.",
-    category: "Web2", industry: "Wellness & AI", accent: "purple",
-    image: "/images/case-studies/nomei/nomei_.png",
-    highlight: "Multi-LLM AI",
-    services: ["Product Development", "AI Engineering"],
-  },
-  {
     slug: "drata", name: "Drata",
     featured: false,
     tagline: "On a mission to build trust across the cloud.",
