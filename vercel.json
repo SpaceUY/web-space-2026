@@ -2,6 +2,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/our-work/nomei",
+      "destination": "/our-work",
+      "permanent": true
+    },
+    {
+      "source": "/case-study/nomei",
+      "destination": "/our-work",
+      "permanent": true
+    },
+    {
       "source": "/case-study/:slug*",
       "destination": "/our-work/:slug*",
       "permanent": true
