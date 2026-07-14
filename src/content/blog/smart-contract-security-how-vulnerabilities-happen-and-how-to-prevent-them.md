@@ -4,7 +4,7 @@ description: "Smart contract security audit guide: reentrancy, flash loans, orac
 publishedAt: 2026-07-14
 author: juan-manuel-sobral
 category: Blockchain Trends
-tags: ["smart-contracts", "security", "audit"]
+tags: ["smart-contracts"]
 readTime: 13
 cover: "/images/content/smart-contract-security/cover.png"
 metatitle: "Smart Contract Security: Vulnerabilities & Prevention"
