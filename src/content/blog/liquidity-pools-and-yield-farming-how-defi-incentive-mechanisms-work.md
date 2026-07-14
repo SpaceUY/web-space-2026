@@ -4,7 +4,7 @@ description: "How liquidity pools and yield farming work in DeFi: AMM mechanics,
 publishedAt: 2026-07-14
 author: juan-manuel-sobral
 category: Blockchain Trends
-tags: ["defi", "liquidity", "yield-farming"]
+tags: ["defi"]
 readTime: 11
 cover: "/images/content/liquidity-pools-yield-farming/cover.png"
 metatitle: "Liquidity Pools & Yield Farming in DeFi Explained"
