@@ -1,7 +1,7 @@
 ---
 title: "Liquidity Pools and Yield Farming: How DeFi Incentive Mechanisms Work"
 description: "How liquidity pools and yield farming work in DeFi: AMM mechanics, impermanent loss, token emissions, and what sustainable protocol incentive design actually looks like."
-publishedAt: 2026-07-14
+publishedAt: 2026-06-26
 author: federico-sendra
 category: Blockchain Trends
 tags: ["defi"]

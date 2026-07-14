@@ -1,7 +1,7 @@
 ---
 title: "DePIN and Decentralized AI: How Physical Infrastructure Is Being Put On-Chain"
 description: "DePIN explained: how decentralized physical infrastructure networks work, why AI compute is driving growth, and what Akash, Render, Bittensor, and Aethir actually do."
-publishedAt: 2026-07-14
+publishedAt: 2026-07-01
 author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["ai", "web3-infrastructure"]

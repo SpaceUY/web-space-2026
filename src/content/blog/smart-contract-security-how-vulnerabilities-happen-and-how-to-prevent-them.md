@@ -1,7 +1,7 @@
 ---
 title: "Smart Contract Security: How Vulnerabilities Happen and How to Prevent Them"
 description: "Smart contract security audit guide: reentrancy, flash loans, oracle manipulation, access control flaws, and what a real audit covers. With 2025 loss data."
-publishedAt: 2026-07-14
+publishedAt: 2026-06-17
 author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["smart-contracts"]
