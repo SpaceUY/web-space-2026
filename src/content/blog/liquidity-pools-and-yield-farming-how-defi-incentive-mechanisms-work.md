@@ -29,8 +29,6 @@ The price at any given moment is determined by the ratio of tokens in the pool, 
 
 This mechanism has one important implication: as trades move the ratio further from equilibrium, the price impact per unit grows. Large trades against shallow pools produce significant slippage. That is why liquidity depth matters operationally, not just as a vanity metric.
 
-![Two paired tokens balanced inside a shared pool, representing an automated market maker.](/images/content/liquidity-pools-yield-farming/illustration-liquidity-pool.png)
-
 ## LP Tokens and Pool Shares
 
 When you deposit into a pool, you receive LP tokens representing your proportional share of the total liquidity. Someone depositing $1,000 each of ETH and USDC in Uniswap gains LP tokens denoting their share, which can increase in value if trading fees accumulate. Those LP tokens can be redeemed at any time for the underlying assets plus accrued fees, or staked in other protocols to earn additional rewards, which is where yield farming begins.
