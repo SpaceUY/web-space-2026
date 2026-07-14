@@ -4,7 +4,7 @@ description: "DePIN explained: how decentralized physical infrastructure network
 publishedAt: 2026-07-14
 author: juan-manuel-sobral
 category: Blockchain Trends
-tags: ["depin", "ai", "infrastructure", "blockchain"]
+tags: ["ai", "web3-infrastructure"]
 readTime: 12
 cover: "/images/content/depin-decentralized-ai/cover.png"
 metatitle: "DePIN & Decentralized AI: Infrastructure On-Chain"
