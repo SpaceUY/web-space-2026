@@ -4,7 +4,7 @@ import { SITE } from "../lib/seo";
 import { mediaItems } from "../data/media-items";
 
 const SEO_TITLE = "SpaceDev in the Media | Forbes, Academic Publications & Interviews";
-const SEO_DESC = "SpaceDev's Federico Sendra and Juan Manuel Sobral featured in Forbes Tech Council, Frontiers in Blockchain, CriptoNoticias and video interviews. Press coverage and publications.";
+const SEO_DESC = "SpaceDev's Federico Sendra and Juan Manuel Sobral featured in Forbes Tech Council, Frontiers in Blockchain, CriptoNoticias, Medium and video interviews. Press coverage and publications.";
 
 interface ContentItem {
   title: string;
@@ -13,7 +13,7 @@ interface ContentItem {
   authors?: string[];
   description: string;
   quote?: string;
-  source: "Forbes" | "Frontiers" | "CriptoNoticias";
+  source: "Forbes" | "Frontiers" | "CriptoNoticias" | "Medium";
   tag: string;
 }
 
@@ -28,6 +28,16 @@ interface VideoItem {
 }
 
 const contentItems: ContentItem[] = [
+  {
+    title: "Product Discovery for Full-Stack vs. Blockchain Projects",
+    date: "Jul 2026",
+    url: "https://medium.com/@jmsobral/product-discovery-for-full-stack-vs-blockchain-projects-2ab7a671cdae",
+    authors: ["Juan Manuel Sobral"],
+    description: "On why blockchain product discovery introduces a different layer of questions than conventional software discovery, from custody to governance to irreversible transactions.",
+    quote: "At SpaceDev, we've seen how early decisions around smart contract development, wallet flows and dApp development can determine whether a product remains simple and adaptable or becomes unnecessarily difficult to use and maintain.",
+    source: "Medium",
+    tag: "Product Discovery",
+  },
   {
     title: "Decentralized Identity (DID): The Missing Layer for Institutional Blockchain Adoption",
     date: "Jun 2026",
@@ -181,11 +191,12 @@ const badge: Record<string, { label: string; logo?: string; color: string; bg: s
   Frontiers:      { label: "Frontiers",           logo: "/images/icons/logo_frontiers_grey.png", color: "#6d28d9", bg: "rgba(109,40,217,0.10)", border: "rgba(109,40,217,0.3)"  },
   CriptoNoticias: { label: "CriptoNoticias",      logo: "/images/icons/Criptonoticias.webp",     color: "#0e7490", bg: "rgba(14,116,144,0.10)", border: "rgba(14,116,144,0.35)" },
   YouTube:        { label: "YouTube",             logo: "/images/icons/Youtube-logo.png",        color: "#dc2626", bg: "rgba(220,38,38,0.08)",  border: "rgba(220,38,38,0.2)"  },
+  Medium:         { label: "Medium",              logo: "/images/icons/Medium-logo.png",         color: "#000000", bg: "rgba(0,0,0,0.06)",      border: "rgba(0,0,0,0.18)"     },
 };
 
-const featuredForbes = contentItems[0]; // Jun 2026 Forbes
-const featuredCripto = contentItems[1]; // May 2026 CriptoNoticias
-const rest = contentItems.slice(2);
+const featuredMedium = contentItems[0]; // Jul 2026 Medium
+const featuredForbes = contentItems[1]; // Jun 2026 Forbes
+const rest = contentItems.slice(2); // includes May 2026 CriptoNoticias, no longer featured
 
 const pageJsonLd = {
   "@context": "https://schema.org",
@@ -213,18 +224,22 @@ const pageJsonLd = {
     </div>
   </section>
 
-  <!-- LOGO STRIP — transition dark to light -->
+  <!-- LOGO STRIP — transition dark to light, continuous marquee -->
   <div style="background: #fff; border-bottom: 1px solid #e8e8e8;">
-    <div class="sd-container py-8">
-      <div class="flex flex-wrap items-center gap-x-12 gap-y-5">
-        <p class="text-xs font-ui uppercase tracking-[0.18em] shrink-0" style="color: #bbbbbb;">As seen in</p>
-        <img src="/images/icons/forbes.png" alt="Forbes Tech Council" class="h-8 object-contain opacity-70 hover:opacity-100 transition-opacity" />
-        <span class="w-px h-6 hidden sm:block" style="background: #e8e8e8;"></span>
-        <img src="/images/icons/logo_frontiers_grey.png" alt="Frontiers in Blockchain" class="h-6 object-contain opacity-70 hover:opacity-100 transition-opacity" />
-        <span class="w-px h-6 hidden sm:block" style="background: #e8e8e8;"></span>
-        <img src="/images/icons/Criptonoticias.webp" alt="CriptoNoticias" class="h-6 object-contain opacity-70 hover:opacity-100 transition-opacity" />
-        <span class="w-px h-6 hidden sm:block" style="background: #e8e8e8;"></span>
-        <img src="/images/icons/Youtube-logo.png" alt="YouTube" class="h-5 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+    <div class="sd-container py-8 flex items-center gap-x-10">
+      <p class="text-xs font-ui uppercase tracking-[0.18em] shrink-0" style="color: #bbbbbb;">As seen in</p>
+      <div class="sd-marquee-wrapper flex-1 min-w-0">
+        <div class="sd-marquee">
+          {[0, 1].map((setIndex) => (
+            <div class="sd-marquee-set gap-12 pr-12" aria-hidden={setIndex === 1}>
+              <img src="/images/icons/forbes.png" alt="Forbes Tech Council" class="h-8 object-contain" />
+              <img src="/images/icons/logo_frontiers_grey.png" alt="Frontiers in Blockchain" class="h-6 object-contain" />
+              <img src="/images/icons/Criptonoticias.webp" alt="CriptoNoticias" class="h-6 object-contain" />
+              <img src="/images/icons/Youtube-logo.png" alt="YouTube" class="h-5 object-contain" />
+              <img src="/images/icons/Medium-logo.png" alt="Medium" class="h-6 object-contain" />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </div>
@@ -241,6 +256,45 @@ const pageJsonLd = {
 
       <!-- HERO CARDS — two highlights side by side -->
       <div class="grid md:grid-cols-2 gap-4 mb-6" data-animate>
+
+        {/* Medium highlight, Juan Manuel Sobral */}
+        {(() => {
+          const item = featuredMedium;
+          const b = badge[item.source];
+          return (
+            <a href={item.url} target="_blank" rel="noopener noreferrer"
+              class="group flex flex-col rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
+              style="background: #fff; border: 1px solid #e8e8e8; box-shadow: 0 2px 12px rgba(0,0,0,0.06);"
+              onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.12)'; this.style.borderColor='#d0d0d0'"
+              onmouseout="this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'; this.style.borderColor='#e8e8e8'"
+            >
+              <div class="relative h-52 overflow-hidden" style="background: #f0f0f0;">
+                <img src="/images/content/juan-manuel-sobral-medium-jul2026.webp" alt="Product discovery for full-stack vs. blockchain projects"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div class="flex flex-col justify-between gap-4 p-7 flex-1">
+                <div>
+                  <div class="mb-4">
+                    <img src={b.logo} alt={b.label} class="h-8 object-contain max-w-[160px]" />
+                  </div>
+                  <h3 class="font-display text-xl leading-snug mb-3" style="color: #141414;">{item.title}</h3>
+                  {item.quote && (
+                    <blockquote class="border-l-2 pl-3" style={`border-color: ${b.color};`}>
+                      <p class="text-sm italic leading-relaxed" style="color: #4e5052;">"{item.quote}"</p>
+                    </blockquote>
+                  )}
+                </div>
+                <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
+                  <div>
+                    <p class="text-sm font-medium" style="color: #141414;">Juan Manuel Sobral</p>
+                    <p class="text-xs mt-0.5" style="color: #aaaaaa;">{item.date}</p>
+                  </div>
+                  <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${b.color};`}>Read ↗</span>
+                </div>
+              </div>
+            </a>
+          );
+        })()}
 
         {/* Forbes highlight — Federico Sendra */}
         {(() => {
@@ -260,45 +314,6 @@ const pageJsonLd = {
               <div class="flex flex-col justify-between gap-4 p-7 flex-1">
                 <div>
                   <div class="mb-4">
-                    <img src={b.logo} alt={b.label} class="h-8 object-contain max-w-[160px]" />
-                  </div>
-                  <h3 class="font-display text-xl leading-snug mb-3" style="color: #141414;">{item.title}</h3>
-                  {item.quote && (
-                    <blockquote class="border-l-2 pl-3" style={`border-color: ${b.color};`}>
-                      <p class="text-sm italic leading-relaxed" style="color: #4e5052;">"{item.quote}"</p>
-                    </blockquote>
-                  )}
-                </div>
-                <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
-                  <div>
-                    <p class="text-sm font-medium" style="color: #141414;">Federico Sendra</p>
-                    <p class="text-xs mt-0.5" style="color: #aaaaaa;">{item.date}</p>
-                  </div>
-                  <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${b.color};`}>Read ↗</span>
-                </div>
-              </div>
-            </a>
-          );
-        })()}
-
-        {/* CriptoNoticias highlight — Juan Manuel Sobral */}
-        {(() => {
-          const item = featuredCripto;
-          const b = badge[item.source];
-          return (
-            <a href={item.url} target="_blank" rel="noopener noreferrer"
-              class="group flex flex-col rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
-              style="background: #fff; border: 1px solid #e8e8e8; box-shadow: 0 2px 12px rgba(0,0,0,0.06);"
-              onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.12)'; this.style.borderColor='#d0d0d0'"
-              onmouseout="this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'; this.style.borderColor='#e8e8e8'"
-            >
-              <div class="relative h-52 overflow-hidden" style="background: #f0f0f0;">
-                <img src="/images/content/juan-manuel-sobral-criptonoticias-may2026.jpg" alt="Juan Manuel Sobral"
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-              </div>
-              <div class="flex flex-col justify-between gap-4 p-7 flex-1">
-                <div>
-                  <div class="mb-4">
                     <img src={b.logo} alt={b.label} class="h-8 object-contain max-w-[180px]" />
                   </div>
                   <h3 class="font-display text-xl leading-snug mb-3" style="color: #141414;">{item.title}</h3>
@@ -306,7 +321,7 @@ const pageJsonLd = {
                 </div>
                 <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
                   <div>
-                    <p class="text-sm font-medium" style="color: #141414;">Juan Manuel Sobral</p>
+                    <p class="text-sm font-medium" style="color: #141414;">Federico Sendra</p>
                     <p class="text-xs mt-0.5" style="color: #aaaaaa;">{item.date}</p>
                   </div>
                   <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${b.color};`}>Read ↗</span>
