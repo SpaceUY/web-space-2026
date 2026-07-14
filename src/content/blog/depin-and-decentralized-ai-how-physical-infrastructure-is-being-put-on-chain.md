@@ -67,7 +67,7 @@ GPU infrastructure is expected to grow from $10 billion in 2025 to $77 billion i
 
 That gap creates the opening for decentralized compute networks to aggregate underutilized GPU capacity from independent operators, gaming rigs, rendering farms, and edge devices, and route it to AI teams that need it.
 
-![Distributed GPUs from many locations feeding compute into a central AI workload.](/images/content/depin-decentralized-ai/illustration-ai-compute.png)
+![A large AI model powered by streams of energy converging from many small separate compute sources.](/images/content/depin-decentralized-ai/illustration-ai-compute.png)
 
 ### Projects worth understanding
 
