@@ -1,0 +1,153 @@
+---
+/**
+ * HeroParticles — vanilla canvas particle grid (no React).
+ * Dots start scattered and drifting; when the cursor enters the hero they
+ * spring into an organized grid. On leave they scatter again.
+ * Sits absolutely inside a `relative` hero section: layered above the
+ * background, below the (relative) hero content. pointer-events: none so it
+ * never blocks buttons; the hover state is driven from the parent section.
+ *
+ * Props:
+ *   gap      — spacing of the organized grid in px. Default 44.
+ *   dotSize  — dot diameter in px. Default 2.5.
+ *   opacity  — global alpha so text stays readable. Default 0.22.
+ *   colors   — comma-separated hex colors mixed across dots. Default white + green.
+ */
+interface Props {
+  gap?: number;
+  dotSize?: number;
+  opacity?: number;
+  colors?: string;
+}
+const {
+  gap = 49,
+  dotSize = 2.5,
+  opacity = 0.22,
+  colors = "#ffffff,#00ffb2",
+} = Astro.props;
+---
+
+<canvas
+  class="hero-particles pointer-events-none absolute inset-0 h-full w-full"
+  data-gap={gap}
+  data-size={dotSize}
+  data-opacity={opacity}
+  data-colors={colors}
+  aria-hidden="true"
+></canvas>
+
+<script>
+  function initHeroParticles(canvas: HTMLCanvasElement) {
+    const ctx = canvas.getContext("2d")!;
+    const host = canvas.parentElement!;
+    if (!ctx || !host) return;
+
+    const gap = Number(canvas.dataset.gap) || 44;
+    const dotSize = Number(canvas.dataset.size) || 2.5;
+    const opacity = Number(canvas.dataset.opacity) || 0.35;
+    const colorStr = canvas.dataset.colors || "#ffffff,#00ffb2";
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+
+    // Resolve the palette to an array of "r,g,b" strings
+    const probe = document.createElement("canvas").getContext("2d")!;
+    const palette = colorStr.split(",").map((c) => {
+      probe.fillStyle = c.trim();
+      const m = probe.fillStyle.match(/#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/i);
+      return m
+        ? `${parseInt(m[1], 16)},${parseInt(m[2], 16)},${parseInt(m[3], 16)}`
+        : "255,255,255";
+    });
+
+    let W = 0, H = 0;
+    let particles: {
+      hx: number; hy: number;   // organized grid home
+      sx: number; sy: number;   // scattered anchor
+      x: number; y: number; vx: number; vy: number;
+      phase: number; ph2: number; rgb: string;
+    }[] = [];
+    // organized ramps 0 → 1 on hover, back to 0 on leave (smooth transition)
+    let organized = 0;
+    let hovering = false;
+
+    // deterministic pseudo-random so layout is stable across resizes
+    function rand(seed: number) {
+      const s = Math.sin(seed * 12.9898) * 43758.5453;
+      return s - Math.floor(s);
+    }
+
+    function build() {
+      particles = [];
+      const cols = Math.floor(W / gap);
+      const rows = Math.floor(H / gap);
+      const offX = (W - cols * gap) / 2 + gap / 2;
+      const offY = (H - rows * gap) / 2 + gap / 2;
+      let i = 0;
+      for (let r = 0; r <= rows; r++) {
+        for (let c = 0; c <= cols; c++) {
+          const hx = offX + c * gap;
+          const hy = offY + r * gap;
+          const sx = rand(i + 1) * W;
+          const sy = rand(i + 99) * H;
+          particles.push({
+            hx, hy, sx, sy, x: sx, y: sy, vx: 0, vy: 0,
+            phase: (c + r) * 0.6, ph2: rand(i + 7) * Math.PI * 2,
+            rgb: palette[Math.floor(rand(i + 3) * palette.length)],
+          });
+          i++;
+        }
+      }
+    }
+
+    function resize() {
+      const rect = host.getBoundingClientRect();
+      W = Math.round(rect.width);
+      H = Math.round(rect.height);
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      build();
+    }
+
+    let t = 0;
+    function frame() {
+      requestAnimationFrame(frame);
+      if (!particles.length) return;
+      if (!reduce) t += 0.01;
+      // ease organized toward hover target
+      const target = hovering ? 1 : 0;
+      organized += (target - organized) * 0.06;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const rad = (dotSize * dpr) / 2;
+      const o = organized;
+      for (const p of particles) {
+        // scattered target: loose wandering around the random anchor
+        const wx = p.sx + (reduce ? 0 : Math.cos(t + p.ph2) * 22);
+        const wy = p.sy + (reduce ? 0 : Math.sin(t * 0.8 + p.ph2) * 22);
+        // organized target: grid home with a tiny breathing drift
+        const gx = p.hx + (reduce ? 0 : Math.cos(t + p.phase) * 3);
+        const gy = p.hy + (reduce ? 0 : Math.sin(t * 0.9 + p.phase) * 3);
+        const tx = wx + (gx - wx) * o;
+        const ty = wy + (gy - wy) * o;
+        p.vx = (p.vx + (tx - p.x) * 0.06) * 0.82;
+        p.vy = (p.vy + (ty - p.y) * 0.06) * 0.82;
+        p.x += p.vx;
+        p.y += p.vy;
+        ctx.fillStyle = `rgba(${p.rgb},${opacity})`;
+        ctx.beginPath();
+        ctx.arc(p.x * dpr, p.y * dpr, rad, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    resize();
+    frame();
+
+    // Hover on the whole hero organizes the grid (canvas is pointer-events:none)
+    host.addEventListener("mouseenter", () => { hovering = true; });
+    host.addEventListener("mouseleave", () => { hovering = false; });
+    window.addEventListener("resize", resize);
+  }
+
+  document.querySelectorAll<HTMLCanvasElement>(".hero-particles").forEach(initHeroParticles);
+</script>

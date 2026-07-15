@@ -9,6 +9,7 @@ import CTA from "../components/ui/CTA.astro";
 import CaseStudyCard from "../components/ui/CaseStudyCard.astro";
 import { type ServicePageData, getCaseStudies } from "../data/services";
 import QuoteReveal from "../components/ui/QuoteReveal.astro";
+import HeroParticles from "../components/ui/HeroParticles.astro";
 import FeatureCard from "../components/ui/FeatureCard.astro";
 
 const techIconMap: Record<string, { label: string; img: string }> = {
@@ -131,6 +132,7 @@ const serviceJsonLd = {
   ) : (
   <section class="relative overflow-hidden min-h-[80vh]" style="background: var(--sd-gradient-hero);">
     <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 20% 30%, var(--sd-purple), transparent 50%), radial-gradient(circle at 80% 70%, var(--sd-purple-300), transparent 40%);"></div>
+    {data.heroParticles && <HeroParticles />}
     <div class="relative sd-container pt-36 pb-16 md:pt-40 md:pb-20">
       <div class={data.heroImage ? "grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center" : ""}>
         <div class="max-w-4xl" data-animate>

@@ -106,11 +106,12 @@ const processSteps = [
         <div class="flex flex-col items-center gap-10 mb-10">
           <div class="flex justify-center gap-12 md:gap-16">
             {[
-              { label: "Ethereum",             img: "/images/networks/ethereum-dark.svg" },
-              { label: "EVM-compatible chains",img: "/images/networks/ethereum-dark.svg" },
-              { label: "Polygon",              img: "/images/networks/polygon-dark.svg"  },
+              { label: "Ethereum", img: "/images/networks/ethereum-dark.svg" },
+              { label: "Polygon",  img: "/images/networks/polygon-dark.svg"  },
+              { label: "Solana",   img: "/images/networks/solana-dark.svg"   },
+              { label: "Hedera",   img: "/images/networks/hedera_dark.svg"   },
             ].map((n, i) => {
-              const floatClass = ["sd-float-1","sd-float-2","sd-float-3"][i];
+              const floatClass = ["sd-float-1","sd-float-2","sd-float-3","sd-float-4"][i];
               return (
                 <div class={`flex flex-col items-center gap-3 ${floatClass}`}>
                   <img src={n.img} alt={n.label} width={80} height={80} class="w-16 h-16 md:w-20 md:h-20" />
@@ -121,10 +122,12 @@ const processSteps = [
           </div>
           <div class="flex justify-center gap-12 md:gap-16">
             {[
-              { label: "Layer 2", img: "/images/networks/layer2-dark.svg" },
-              { label: "BNB Chain",                            img: "/images/networks/BNB-dark.svg"    },
+              { label: "Aptos",     img: "/images/networks/aptos_dark.svg"    },
+              { label: "Layer 2",   img: "/images/networks/layer2-dark.svg"   },
+              { label: "BNB Chain", img: "/images/networks/BNB-dark.svg"      },
+              { label: "Other EVM-compatible chains", img: "/images/networks/ethereum-dark.svg" },
             ].map((n, i) => {
-              const floatClass = ["sd-float-4","sd-float-2"][i];
+              const floatClass = ["sd-float-2","sd-float-1","sd-float-3","sd-float-4"][i];
               return (
                 <div class={`flex flex-col items-center gap-3 ${floatClass}`}>
                   <img src={n.img} alt={n.label} width={80} height={80} class="w-16 h-16 md:w-20 md:h-20" />

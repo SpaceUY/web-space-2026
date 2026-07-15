@@ -72,6 +72,9 @@ export interface ServicePageData {
   /** Optional hero illustration shown to the right of the hero copy */
   heroImage?: { src: string; alt: string; width?: number; height?: number };
 
+  /** Optional decorative canvas particle grid in the dark hero. */
+  heroParticles?: boolean;
+
   /** Optional illustration rendered above the offers grid */
   offersIllustration?: { src: string; alt: string };
 }
@@ -283,6 +286,7 @@ export const smartContractData: ServicePageData = {
   title: "Smart Contract Development",
   description: "Secure, gas-efficient smart contracts engineered to scale. We design, build, test, and audit production contracts for token issuers, DeFi protocols, marketplaces, and DAOs.",
   relatedTags: ["smart-contracts"],
+  heroParticles: true,
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   faqs: [
