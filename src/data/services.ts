@@ -72,6 +72,9 @@ export interface ServicePageData {
   /** Optional hero illustration shown to the right of the hero copy */
   heroImage?: { src: string; alt: string; width?: number; height?: number };
 
+  /** Optional decorative canvas particle grid in the dark hero. */
+  heroParticles?: boolean;
+
   /** Optional illustration rendered above the offers grid */
   offersIllustration?: { src: string; alt: string };
 }
@@ -283,6 +286,7 @@ export const smartContractData: ServicePageData = {
   title: "Smart Contract Development",
   description: "Secure, gas-efficient smart contracts engineered to scale. We design, build, test, and audit production contracts for token issuers, DeFi protocols, marketplaces, and DAOs.",
   relatedTags: ["smart-contracts"],
+  heroParticles: true,
   primaryCta: { label: "Get in touch", href: "/contact" },
 
   faqs: [
@@ -419,6 +423,7 @@ export const defiFinanceData: ServicePageData = {
   title: "DeFi Development Services for the Next Generation of Decentralized Finance",
   description: "SpaceDev builds production-grade DeFi applications, smart contract systems, and tokenized financial infrastructure for startups and enterprises ready to operate at the frontier of web3 finance. From protocol architecture to post-launch security, we cover the full DeFi development lifecycle.",
   relatedTags: ["defi"],
+  heroParticles: true,
   primaryCta: { label: "Start Your DeFi Project", href: "/contact" },
   secondaryCta: { label: "Talk to a DeFi Engineer", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
   compactHeroTitle: true,
@@ -453,6 +458,7 @@ export const supplyChainData: ServicePageData = {
   title: "Blockchain Solutions for Logistics, Freight, and Supply Chain Operations",
   description: "Supply chains break at the handoffs, where data moves between carriers, customs authorities, warehouses, and buyers. SpaceDev builds blockchain-based logistics and supply chain platforms that replace fragmented multi-party coordination with shared, tamper-proof infrastructure built for production.",
   relatedTags: ["blockchain", "enterprise"],
+  heroParticles: true,
   primaryCta: { label: "Talk to Our Logistics Blockchain Team", href: "/contact" },
   compactHeroTitle: true,
 
@@ -486,6 +492,7 @@ export const healthcareData: ServicePageData = {
   title: "Blockchain Development for the Healthcare Industry",
   description: "SpaceDev builds blockchain solutions for healthcare companies that need to secure patient data, automate clinical workflows, and create interoperable health records across providers, payers, and systems, without compromising compliance or performance.",
   relatedTags: ["ai"],
+  heroParticles: true,
   primaryCta: { label: "Start Your Healthcare Project", href: "/contact" },
   compactHeroTitle: true,
 
@@ -520,6 +527,7 @@ export const energyData: ServicePageData = {
   titleHtml: "Blockchain Development for<br>the Energy Sector",
   description: "SpaceDev builds blockchain infrastructure for energy companies, utilities, and renewable energy platforms that need to modernize how they trade, track, and settle energy transactions. From peer-to-peer energy trading platforms to tokenized renewable energy certificates, we deliver the technical architecture to make it work at scale.",
   relatedTags: ["rwa"],
+  heroParticles: true,
   primaryCta: { label: "Discuss Your Energy Project", href: "/contact" },
   compactHeroTitle: true,
 
@@ -552,6 +560,7 @@ export const stablecoinData: ServicePageData = {
   eyebrow: "DeFi · Stablecoins",
   title: "Custom Stablecoin Development for Payments, DeFi, and Enterprise Settlement",
   description: "A stablecoin is only as good as the system built around it. SpaceDev builds custom stablecoin solutions for fintech companies, DeFi protocols, payment platforms, and enterprises that need programmable, stable digital currency infrastructure: from initial architecture through production launch.",
+  heroParticles: true,
   primaryCta: { label: "Talk to Our Stablecoin Development Team", href: "/contact" },
   compactHeroTitle: true,
 
@@ -906,6 +915,7 @@ export const realEstateData: ServicePageData = {
   secondaryCta: { label: "See our work", href: "/our-work" },
   compactHeroTitle: true,
   relatedTags: ["rwa", "tokenization"],
+  heroParticles: true,
   footerMarqueeTheme: "dark",
 
   faqs: [
@@ -938,6 +948,7 @@ export const complianceWeb3Data: ServicePageData = {
   secondaryCta: { label: "See our work", href: "/our-work" },
   compactHeroTitle: true,
   relatedTags: ["compliance", "smart-contracts"],
+  heroParticles: true,
   footerMarqueeTheme: "dark",
 
   faqs: [
