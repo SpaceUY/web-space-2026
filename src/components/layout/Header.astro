@@ -63,20 +63,24 @@ const about = [
           </button>
           <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
             <div class="bg-sd-purple-mid rounded-xl p-3 min-w-[340px] shadow-xl">
-              <!-- Blockchain section -->
-              <a href="/blockchain-development-services" class="flex items-center justify-between px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors text-[15px] font-medium mb-1">
-                Blockchain Development
-                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-              <ul class="pl-3 mb-2">
-                {blockchainItems.map((item) => (
-                  <li>
-                    <a href={item.href} class="block px-3 py-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors text-[14px] whitespace-nowrap">
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <!-- Blockchain section — nested flyout, shows sub-items on hover only -->
+              <div class="relative group/bc mb-1">
+                <a href="/blockchain-development-services" class="flex items-center justify-between px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors text-[15px] font-medium">
+                  Blockchain Development
+                  <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <div class="absolute left-full top-0 pl-2 opacity-0 invisible group-hover/bc:opacity-100 group-hover/bc:visible transition-all duration-200">
+                  <ul class="bg-sd-purple-mid rounded-xl p-3 min-w-[260px] shadow-xl">
+                    {blockchainItems.map((item) => (
+                      <li>
+                        <a href={item.href} class="block px-3 py-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors text-[14px] whitespace-nowrap">
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
               <div class="border-t border-white/10 my-2"></div>
               <!-- Other services -->
               <ul>
