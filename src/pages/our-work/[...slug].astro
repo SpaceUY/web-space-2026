@@ -35,6 +35,15 @@ const csJsonLd = {
   about: entry.data.industry,
   creator: { "@type": "Organization", name: SITE.name, url: SITE.url },
   ...(entry.data.client && { author: { "@type": "Organization", name: entry.data.client } }),
+  ...(entry.data.clutchReview && {
+    review: {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: entry.data.clutchReview.stars, bestRating: 5 },
+      author: { "@type": "Person", name: entry.data.clutchReview.reviewer },
+      reviewBody: entry.data.clutchReview.text,
+      publisher: { "@type": "Organization", name: "Clutch", url: entry.data.clutchReview.url },
+    },
+  }),
 };
 
 

@@ -58,6 +58,7 @@ const serviceJsonLd = {
   description: data.description,
   provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
   areaServed: "Worldwide",
+  ...(data.updatedAt && { dateModified: data.updatedAt }),
 };
 ---
 

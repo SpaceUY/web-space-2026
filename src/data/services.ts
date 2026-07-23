@@ -10,6 +10,8 @@ export interface ServiceStep { number: string; title: string; description: strin
 export interface ServicePageData {
   /** SEO */
   seo: { title: string; description: string };
+  /** Last real content update, used as dateModified in the page's Service schema. Format: "YYYY-MM-DD". Only set when the page was actually edited. */
+  updatedAt?: string;
   /** Hero */
   eyebrow: string;
   title: string;
@@ -282,6 +284,7 @@ export const smartContractData: ServicePageData = {
     title: "Smart Contract Development, Audit-Ready & Production-Grade",
     description: "Audited, gas-optimized smart contracts on Ethereum, Aptos, Solana and other ecosystems. From token standards to complex DeFi protocols.",
   },
+  updatedAt: "2026-07-15",
   eyebrow: "Sub-service · Blockchain",
   title: "Smart Contract Development",
   description: "Secure, gas-efficient smart contracts engineered to scale. We design, build, test, and audit production contracts for token issuers, DeFi protocols, marketplaces, and DAOs.",
@@ -419,6 +422,7 @@ export const defiFinanceData: ServicePageData = {
     title: "DeFi Development Services for Decentralized Finance | SpaceDev",
     description: "SpaceDev builds production-grade DeFi applications, smart contract systems, and tokenized financial infrastructure. Full DeFi development lifecycle from protocol architecture to post-launch security.",
   },
+  updatedAt: "2026-07-15",
   eyebrow: "Industry · Finance and Fintech",
   title: "DeFi Development Services for the Next Generation of Decentralized Finance",
   description: "SpaceDev builds production-grade DeFi applications, smart contract systems, and tokenized financial infrastructure for startups and enterprises ready to operate at the frontier of web3 finance. From protocol architecture to post-launch security, we cover the full DeFi development lifecycle.",
@@ -454,6 +458,7 @@ export const supplyChainData: ServicePageData = {
     title: "Blockchain Solutions for Logistics and Supply Chain | SpaceDev",
     description: "Blockchain-based supply chain traceability, freight payment automation, product provenance, cold chain monitoring, and trade document digitization, built by SpaceDev for logistics operators, 3PLs, and manufacturers.",
   },
+  updatedAt: "2026-07-15",
   eyebrow: "Industry · Supply Chain & Logistics",
   title: "Blockchain Solutions for Logistics, Freight, and Supply Chain Operations",
   description: "Supply chains break at the handoffs, where data moves between carriers, customs authorities, warehouses, and buyers. SpaceDev builds blockchain-based logistics and supply chain platforms that replace fragmented multi-party coordination with shared, tamper-proof infrastructure built for production.",
@@ -488,6 +493,7 @@ export const healthcareData: ServicePageData = {
     title: "Blockchain Development for the Healthcare Industry | SpaceDev",
     description: "HIPAA-aligned blockchain solutions for health records, claims automation, pharmaceutical tracking, and clinical data interoperability, built by SpaceDev for healthcare companies, payers, and life sciences.",
   },
+  updatedAt: "2026-07-15",
   eyebrow: "Industry · Healthcare",
   title: "Blockchain Development for the Healthcare Industry",
   description: "SpaceDev builds blockchain solutions for healthcare companies that need to secure patient data, automate clinical workflows, and create interoperable health records across providers, payers, and systems, without compromising compliance or performance.",
@@ -522,6 +528,7 @@ export const energyData: ServicePageData = {
     title: "Blockchain Development for the Energy Sector | SpaceDev",
     description: "Custom blockchain infrastructure for energy trading platforms, REC tokenization, carbon credit tracking, and smart contract automation, built by SpaceDev for energy companies, utilities, and renewable energy developers.",
   },
+  updatedAt: "2026-07-15",
   eyebrow: "Industry · Energy",
   title: "Blockchain Development for the Energy Sector",
   titleHtml: "Blockchain Development for<br>the Energy Sector",
@@ -557,6 +564,7 @@ export const stablecoinData: ServicePageData = {
     title: "Custom Stablecoin Development for Payments, DeFi, and Enterprise Settlement | SpaceDev",
     description: "SpaceDev builds custom stablecoin solutions for fintech companies, DeFi protocols, payment platforms, and enterprises: fiat-backed, crypto-collateralized, algorithmic, and hybrid stablecoin infrastructure from architecture through production launch.",
   },
+  updatedAt: "2026-07-15",
   eyebrow: "DeFi · Stablecoins",
   title: "Custom Stablecoin Development for Payments, DeFi, and Enterprise Settlement",
   description: "A stablecoin is only as good as the system built around it. SpaceDev builds custom stablecoin solutions for fintech companies, DeFi protocols, payment platforms, and enterprises that need programmable, stable digital currency infrastructure: from initial architecture through production launch.",
@@ -908,6 +916,7 @@ export const realEstateData: ServicePageData = {
     title: "Blockchain Development for Real Estate | PropTech & Web3 Solutions | SpaceDev",
     description: "Blockchain development services for real estate companies: smart contracts, tokenization platforms, property registries, and DeFi mortgage solutions. Let's build.",
   },
+  updatedAt: "2026-07-15",
   eyebrow: "Industry · Real Estate",
   title: "Blockchain Development Services for Real Estate Companies",
   description: "SpaceDev builds blockchain solutions for real estate firms, proptech platforms, and investment vehicles that need more than a pilot. We cover the full stack, from smart contract architecture to investor-facing platforms, with a delivery model built around your business constraints.",
@@ -941,6 +950,7 @@ export const complianceWeb3Data: ServicePageData = {
     title: "Web3 Compliance Development Services | KYC, AML & Regulatory Infrastructure | SpaceDev",
     description: "Build compliant Web3 products from day one. SpaceDev develops on-chain KYC/AML, transfer restriction engines, decentralized identity, and regulatory-ready smart contracts.",
   },
+  updatedAt: "2026-07-15",
   eyebrow: "Industry · Compliance",
   title: "Web3 Compliance Development Services for Regulated Blockchain Products",
   description: "SpaceDev builds the technical compliance infrastructure that Web3 projects need to operate in regulated markets. KYC/AML integrations, on-chain transfer restrictions, decentralized identity systems, and regulatory-ready smart contracts, engineered from day one, not retrofitted after launch.",
