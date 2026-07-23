@@ -25,6 +25,8 @@ interface VideoItem {
   description: string;
   videoId: string;
   source: string;
+  /** Real upload date from YouTube (ISO 8601), used for VideoObject schema */
+  uploadDate: string;
 }
 
 const contentItems: ContentItem[] = [
@@ -149,15 +151,17 @@ const videoItems: VideoItem[] = [
     description: "Que protocolos tienen traccion real y hacia donde va la industria.",
     videoId: "lJuBZCMJcqs",
     source: "YouTube · 2024",
+    uploadDate: "2024-12-06T10:09:01-08:00",
   },
   {
     title: "Crypto for Dummies",
-    date: "2024",
+    date: "Nov 2025",
     url: "https://www.youtube.com/watch?v=_H9Cg6MXLsE&t=2781s",
     person: "Juan Manuel Sobral",
     description: "Como funciona crypto y Web3 para audiencias no tecnicas.",
     videoId: "_H9Cg6MXLsE",
-    source: "YouTube · 2024",
+    source: "YouTube · Nov 2025",
+    uploadDate: "2025-11-13T03:43:01-08:00",
   },
   {
     title: "La importancia de BLOCKCHAIN",
@@ -166,6 +170,7 @@ const videoItems: VideoItem[] = [
     description: "Fundamentos tecnicos, impacto en industrias clave y perspectivas de adopcion.",
     videoId: "ZHWGmxvzgW4",
     source: "YouTube · 2024",
+    uploadDate: "2023-06-22T08:21:18-07:00",
   },
   {
     title: "Software made in Uruguay: insercion internacional",
@@ -174,6 +179,7 @@ const videoItems: VideoItem[] = [
     description: "Panel sobre la industria de software uruguaya y su proyeccion internacional.",
     videoId: "T2fFXoDgqzw",
     source: "YouTube · 2024",
+    uploadDate: "2023-11-14T08:42:59-08:00",
   },
   {
     title: "Empresarios de Aca: Federico Sendra, CEO SpaceDev",
@@ -183,6 +189,7 @@ const videoItems: VideoItem[] = [
     description: "SpaceDev, blockchain y el ecosistema tech de Uruguay.",
     videoId: "79AUoXd80Fo",
     source: "YouTube · Sep 2023",
+    uploadDate: "2023-09-01T16:59:00-07:00",
   },
 ];
 
@@ -205,9 +212,20 @@ const pageJsonLd = {
   description: SEO_DESC,
   url: `${SITE.url}/spacedev-in-the-media`,
 };
+
+const videoJsonLd = videoItems.map((v) => ({
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: v.title,
+  description: v.description,
+  thumbnailUrl: `https://img.youtube.com/vi/${v.videoId}/hqdefault.jpg`,
+  uploadDate: v.uploadDate,
+  embedUrl: `https://www.youtube.com/embed/${v.videoId}`,
+  contentUrl: v.url,
+}));
 ---
 
-<BaseLayout title={SEO_TITLE} description={SEO_DESC} jsonLd={[pageJsonLd]}>
+<BaseLayout title={SEO_TITLE} description={SEO_DESC} jsonLd={[pageJsonLd, ...videoJsonLd]}>
 
   <!-- HERO — dark, full bleed -->
   <section class="relative overflow-hidden min-h-[55vh] flex flex-col justify-center">

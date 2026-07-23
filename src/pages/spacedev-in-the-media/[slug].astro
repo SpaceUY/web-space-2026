@@ -54,6 +54,23 @@ const articleJsonLd = {
   publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/spacedev-in-the-media/${item.slug}` },
 };
+
+// Real upload dates fetched from YouTube's own page metadata (not invented)
+const youtubeUploadDates: Record<string, string> = {
+  jm0DN38MeGo: "2023-09-02T15:06:15-07:00",
+  "0ZllEEaVkq0": "2023-08-19T14:17:05-07:00",
+};
+
+const videoJsonLd = item.youtubeId && {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: item.title,
+  description: item.seoDescription ?? item.highlight,
+  thumbnailUrl: `https://img.youtube.com/vi/${item.youtubeId}/hqdefault.jpg`,
+  uploadDate: youtubeUploadDates[item.youtubeId] ?? item.date.toISOString(),
+  embedUrl: `https://www.youtube.com/embed/${item.youtubeId}`,
+  contentUrl: `https://www.youtube.com/watch?v=${item.youtubeId}`,
+};
 ---
 
 <BaseLayout
@@ -65,7 +82,7 @@ const articleJsonLd = {
   breadcrumbTone="dark"
   title={item.seoTitle ?? `${item.title} | SpaceDev in the Media`}
   description={item.seoDescription ?? item.highlight}
-  jsonLd={articleJsonLd}
+  jsonLd={videoJsonLd ? [articleJsonLd, videoJsonLd] : articleJsonLd}
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background: linear-gradient(135deg, #191429 0%, #312652 100%);">
