@@ -1,6 +1,6 @@
 # SpaceDev — Full Reference
 
-> Blockchain development company offering Web3 engineering, traditional software development, IT staff augmentation, and blockchain security auditing. Founded 8 years ago; 70+ team members across USA, Uruguay, Argentina and Colombia; 200+ projects delivered; 50+ five-star Clutch reviews. This file is the extended companion to https://spacedev.io/llms.txt
+> Blockchain development company offering Web3 engineering, traditional software development, IT staff augmentation, and blockchain security auditing. Founded 8 years ago; 70+ team members across USA, Uruguay, Argentina, Colombia and Mexico; 200+ projects delivered; 50+ five-star Clutch reviews. This file is the extended companion to https://spacedev.io/llms.txt
 
 ## Core services in detail
 
