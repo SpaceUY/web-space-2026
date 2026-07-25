@@ -43,6 +43,8 @@ export const organizationJsonLd = {
     { "@type": "PostalAddress", addressLocality: "Buenos Aires", addressCountry: "AR" },
     { "@type": "PostalAddress", addressLocality: "Medellín", addressCountry: "CO" },
   ],
+  // sameAs is the supported way to point Google at third-party profiles
+  // (including Clutch) without claiming the ratings as our own markup.
   sameAs: [
     SITE.social.linkedin,
     SITE.social.twitter,
@@ -50,9 +52,11 @@ export const organizationJsonLd = {
     SITE.social.clutch,
     SITE.social.crunchbase,
   ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5",
-    reviewCount: "50",
-  },
+  // NOTE: no aggregateRating here on purpose. A rating an organization publishes
+  // about itself is a "self-serving review" under Google's rules: pages using
+  // Organization markup for reviews the reviewed entity controls are ineligible
+  // for the star review feature, and Search Console reports the item as invalid.
+  // See https://developers.google.com/search/docs/appearance/structured-data/review-snippet
+  // The 50+ five-star Clutch rating stays visible in page content and links to
+  // the Clutch profile, which is the supported way to show third-party proof.
 };
