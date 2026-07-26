@@ -26,6 +26,14 @@ const { Content } = await render(entry);
 // All case studies use the SpaceDev brand hero gradient
 const gradient = ""; // unused — hero uses --sd-gradient-hero via inline style
 
+// NOTE: do not add Review/AggregateRating structured data here. The Clutch
+// testimonial is a review of SpaceDev published on SpaceDev's own site, which
+// Google classifies as a "self-serving review": pages using Organization (or
+// any subtype) markup for reviews the reviewed entity controls are ineligible
+// for the star review feature, and Search Console flags it as invalid.
+// See https://developers.google.com/search/docs/appearance/structured-data/review-snippet
+// The testimonial stays visible in the page body and links out to Clutch,
+// which is the supported way to surface third-party social proof.
 const csJsonLd = {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
@@ -35,15 +43,6 @@ const csJsonLd = {
   about: entry.data.industry,
   creator: { "@type": "Organization", name: SITE.name, url: SITE.url },
   ...(entry.data.client && { author: { "@type": "Organization", name: entry.data.client } }),
-  ...(entry.data.clutchReview && {
-    review: {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: entry.data.clutchReview.stars, bestRating: 5 },
-      author: { "@type": "Person", name: entry.data.clutchReview.reviewer },
-      reviewBody: entry.data.clutchReview.text,
-      publisher: { "@type": "Organization", name: "Clutch", url: entry.data.clutchReview.url },
-    },
-  }),
 };
 
 
