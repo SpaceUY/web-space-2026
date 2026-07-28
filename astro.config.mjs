@@ -27,6 +27,12 @@ function contentDates(dir) {
 const blogDates = contentDates('./src/content/blog');
 const caseDates = contentDates('./src/content/case-studies');
 
+// Static pages with no frontmatter date: set by hand, and only updated when
+// this page's actual visible content changes (not on every deploy).
+const manualLastmod = {
+  '/faqs': '2026-07-28',
+};
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://spacedev.io',
@@ -56,6 +62,7 @@ export default defineConfig({
     },
     serialize(item) {
       const url = item.url;
+      const path = new URL(url).pathname.replace(/\/+$/, "") || "/";
 
       // lastmod from content frontmatter (blog posts and case studies)
       const blogMatch = url.match(/\/blog\/([^/]+)\/?$/);
@@ -63,6 +70,7 @@ export default defineConfig({
       const lastmod =
         (blogMatch && blogDates[blogMatch[1]]) ||
         (caseMatch && caseDates[caseMatch[1]]) ||
+        manualLastmod[path] ||
         undefined;
       if (lastmod) item = { ...item, lastmod };
 
