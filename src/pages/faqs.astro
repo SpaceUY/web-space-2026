@@ -7,7 +7,7 @@ const faqs = [
     number: "01",
     question: "Do you offer free consultation?",
     answer:
-      "Yes, we offer a free 45-minute consultation to understand your needs and how we can support your project. Just click the Get in Touch button to book your call.",
+      'Yes, we offer a free 45-minute consultation to understand your needs and how we can support your project. Just click <a href="/contact">Get in Touch</a> to book your call.',
   },
   {
     number: "02",
@@ -19,7 +19,7 @@ const faqs = [
     number: "03",
     question: "What kind of services do you offer?",
     answer:
-      "Five core services: Blockchain Development, Web & Mobile Development, IT Staff Augmentation, Product Discovery, and BlockAudit (smart contract security). All under one roof, with the same team across discovery, build, and run.",
+      'Five core services: <a href="/blockchain-development-services">Blockchain Development</a>, <a href="/innovative-web-and-mobile-solutions">Web & Mobile Development</a>, <a href="/staff-augmentation">IT Staff Augmentation</a>, <a href="/product-discovery">Product Discovery</a>, and <a href="/blockaudit-smart-contract-and-blockchain-security">BlockAudit</a> (smart contract security). All under one roof, with the same team across discovery, build, and run.',
   },
   {
     number: "04",
@@ -31,27 +31,39 @@ const faqs = [
     number: "05",
     question: "Which Blockchain Tech-Stack do we use?",
     answer:
-      "Solidity (EVM ecosystems including Ethereum, Polygon, Arbitrum, Base, Optimism), Rust (Solana, Aptos), and Move (Aptos, Sui). Tooling: Foundry, Hardhat, OpenZeppelin, The Graph, OpenZeppelin Defender for monitoring.",
+      'Solidity (EVM ecosystems including Ethereum, Polygon, Arbitrum, Base, Optimism), Rust (Solana, Aptos), and Move (Aptos, Sui). Tooling: Foundry, Hardhat, OpenZeppelin, The Graph, OpenZeppelin Defender for monitoring. See our <a href="/blockchain-development-services/smart-contract-development">smart contract development</a> page for the full process.',
   },
   {
     number: "06",
     question: "What is an MVP?",
     answer:
-      "An MVP (Minimum Viable Product) is the smallest version of your product that delivers real value to a real user. It's not a prototype, not a demo: it's a shippable product designed to learn from market feedback as fast and cheaply as possible.",
+      'An MVP (Minimum Viable Product) is the smallest version of your product that delivers real value to a real user. It\'s not a prototype, not a demo: it\'s a shippable product designed to learn from market feedback as fast and cheaply as possible. Our <a href="/product-discovery">Product Discovery</a> engagement is where we scope an MVP before writing production code.',
   },
   {
     number: "07",
     question: "In simple words, what does the Discovery Sprint include?",
     answer:
-      "A structured 1–4 week engagement where we validate the business case, define the scope, design the user experience, choose the tech stack, and produce a prioritized roadmap, all before writing production code. The output is a build-ready plan.",
+      'A structured 1–4 week engagement where we validate the business case, define the scope, design the user experience, choose the tech stack, and produce a prioritized roadmap, all before writing production code. The output is a build-ready plan. Full breakdown on our <a href="/product-discovery">Product Discovery</a> page.',
   },
   {
     number: "08",
     question: "In simple words, what's the difference between IT Staff Augmentation vs. Consulting and Development Services.",
     answer:
-      "Staff Augmentation embeds engineers into your team, processes, and codebase; you manage the work and own everything they ship. Consulting / Development Services means SpaceDev owns the project end-to-end: discovery, design, build, ship, and support. Different models for different stages of a company's needs.",
+      'Staff Augmentation embeds engineers into your team, processes, and codebase; you manage the work and own everything they ship. Consulting / Development Services means SpaceDev owns the project end-to-end: discovery, design, build, ship, and support. Different models for different stages of a company\'s needs. See how our <a href="/staff-augmentation">IT Staff Augmentation</a> model works.',
   },
 ];
+
+const stripHtml = (html: string) => html.replace(/<[^>]+>/g, "");
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: stripHtml(item.answer) },
+  })),
+};
 
 const engagementModels = [
   {
@@ -82,6 +94,7 @@ const engagementModels = [
 <BaseLayout
   title="FAQs: Blockchain & Web3 Development, Common Questions"
   description="Answers to common questions about SpaceDev's blockchain and software development services, rates, processes, and how we work with clients worldwide."
+  jsonLd={faqJsonLd}
 >
   <!-- HERO -->
   <section class="relative overflow-hidden min-h-[80vh] flex flex-col justify-center" style="background-color: var(--sd-dark-hero);">
@@ -111,27 +124,31 @@ const engagementModels = [
       <div class="divide-y divide-sd-gray-border border-t border-sd-gray-border" id="faq-list">
         {faqs.map((item) => (
           <div class="sd-faq-item" data-open="false">
-            <button
-              type="button"
-              class="w-full flex items-start gap-6 py-8 text-left group"
-              aria-expanded="false"
-            >
-              <span class="shrink-0 font-display text-4xl md:text-5xl text-sd-text-dark leading-none w-16">
-                {item.number}
-              </span>
-              <span class="flex-1 font-display text-xl md:text-2xl text-sd-text-dark leading-snug pt-1">
-                {item.question}
-              </span>
-              <span class="shrink-0 w-10 h-10 flex items-center justify-center rounded-full border border-sd-gray-border text-sd-text-dark group-hover:border-sd-text-dark transition-colors mt-1 sd-faq-icon">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 5L8 11L14 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-            </button>
+            <h2 class="m-0">
+              <button
+                type="button"
+                class="w-full flex items-start gap-6 py-8 text-left group"
+                aria-expanded="false"
+              >
+                <span class="shrink-0 font-display text-4xl md:text-5xl text-sd-text-dark leading-none w-16">
+                  {item.number}
+                </span>
+                <span class="flex-1 font-display text-xl md:text-2xl text-sd-text-dark leading-snug pt-1">
+                  {item.question}
+                </span>
+                <span class="shrink-0 w-10 h-10 flex items-center justify-center rounded-full border border-sd-gray-border text-sd-text-dark group-hover:border-sd-text-dark transition-colors mt-1 sd-faq-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 5L8 11L14 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </button>
+            </h2>
             <div class="sd-faq-answer overflow-hidden max-h-0 transition-all duration-300">
-              <p class="pb-8 pl-22 text-base md:text-lg text-sd-text-gray leading-relaxed max-w-[800px]" style="padding-left: 5.5rem;">
-                {item.answer}
-              </p>
+              <p
+                class="pb-8 pl-22 text-base md:text-lg text-sd-text-gray leading-relaxed max-w-[800px] [&_a]:text-sd-purple [&_a]:underline [&_a]:hover:no-underline"
+                style="padding-left: 5.5rem;"
+                set:html={item.answer}
+              />
             </div>
           </div>
         ))}

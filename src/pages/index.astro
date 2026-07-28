@@ -56,16 +56,17 @@ const I_GRADUATION = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg
 const I_ENERGY = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 0 L 3 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(14.25 12.75)"/><path d="M 0 0 L 0 3" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(15.75 11.25)"/><path d="M 0 0 L 3 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(6.75 12.75)"/><path d="M 0.75 10.5 C 0.336 10.5 0 10.164 0 9.75 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 18.75 0 C 19.164 0 19.5 0.336 19.5 0.75 L 19.5 9.75 C 19.5 10.164 19.164 10.5 18.75 10.5 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(2.25 7.5)"/><path d="M 0 3 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 3.75 0 C 4.164 0 4.5 0.336 4.5 0.75 L 4.5 3" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(5.25 4.5)"/><path d="M 0 3 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 3.75 0 C 4.164 0 4.5 0.336 4.5 0.75 L 4.5 3" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(14.25 4.5)"/></svg>`;
 const I_ROCKET = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 10.417 6.833 C 12.667 4.583 12.807 1.907 12.737 0.713 C 12.713 0.337 12.413 0.037 12.037 0.013 C 10.843 -0.057 8.168 0.082 5.917 2.333 L 0 8.25 L 4.5 12.75 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(7.5 3.75)"/><path d="M 9.749 0 L 3.969 0 C 3.77 0 3.58 0.079 3.439 0.219 L 0.219 3.44 C 0.019 3.641 -0.051 3.938 0.039 4.207 C 0.129 4.476 0.363 4.672 0.644 4.712 L 4.499 5.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3.001 6.75)"/><path d="M 5.25 0 L 5.25 5.78 C 5.25 5.978 5.171 6.169 5.031 6.309 L 1.81 9.53 C 1.609 9.73 1.312 9.8 1.043 9.71 C 0.774 9.62 0.578 9.386 0.538 9.105 L 0 5.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(12 11.25)"/><path d="M 5.115 2.473 C 4.752 3.269 3.53 5.115 0 5.115 C 0 1.585 1.846 0.363 2.642 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(3.75 15.135)"/></svg>`;
 const I_HOUSE = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 2.25 11.25 L 12 3 L 21.75 11.25" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M 4.5 9.75 L 4.5 21 L 19.5 21 L 19.5 9.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M 9.75 21 L 9.75 15.75 L 14.25 15.75 L 14.25 21" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>`;
+const I_SHIELD = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 12 22 C 12 22 20 18 20 12 L 20 5 L 12 2 L 4 5 L 4 12 C 4 18 12 22 12 22 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>`;
 
 const industries = [
   { name: "Finance and Fintech",          slug: "finance-and-fintech",          icon: I_BUILDING,   desc: "SpaceDev helps financial institutions and fintech startups build secure, scalable products that enhance transparency and automation.\nFrom DeFi platforms and payment gateways to traditional fintech systems, tokenized assets, and digital wallets, we simplify complexity and drive financial innovation." },
-  { name: "Gaming and NFTs",              slug: "gaming-and-nfts",              icon: I_CHAT,       desc: "Our team builds NFT ecosystems, web3 gaming platforms, and play-to-earn models that merge creativity with blockchain-backed ownership.\nWe deliver immersive experiences with secure smart contracts and scalable infrastructure.",       href: "/coming-soon" },
+  { name: "Web3 Compliance",              slug: "compliance-web3",              icon: I_SHIELD,     desc: "We build regulatory-ready infrastructure for DeFi, security tokens, and Web3 platforms: on-chain KYC/AML, ERC-1400 and ERC-3643 transfer restrictions, and decentralized identity.\nOur architecture is designed to satisfy FATF, MiCA, and SEC requirements without breaking decentralization." },
   { name: "Healthcare and Life Sciences", slug: "healthcare",                   icon: I_HEART,      desc: "We help healthcare providers ensure data integrity, secure patient identity management, and traceable medical supply chains.\nOur solutions prioritize compliance, security, and seamless interoperability." },
   { name: "Supply Chain and Logistics",   slug: "supply-chain-and-logistics",   icon: I_TRUCK,      desc: "We build solutions that bring real-time visibility, tracking, and trust to global logistics.\nOur systems reduce fraud, enhance traceability, and simplify auditing at every stage." },
-  { name: "Real Estate and PropTech",     slug: "real-estate-and-proptech",     icon: I_HOUSE,      desc: "We can create tokenized property solutions, automated contract workflows, and secure ownership records that streamline property transactions and investment management.",                                                                     href: "/coming-soon" },
-  { name: "Education and EdTech",         slug: "education-and-edtech",         icon: I_GRADUATION, desc: "SpaceDev supports educational platforms with digital learning systems, decentralized certification, and blockchain credentials that enhance authenticity and accessibility.",                                                                 href: "/coming-soon" },
+  { name: "Real Estate and PropTech",     slug: "real-estate",                  icon: I_HOUSE,      desc: "We can create tokenized property solutions, automated contract workflows, and secure ownership records that streamline property transactions and investment management." },
   { name: "Energy",                       slug: "energy",                       icon: I_ENERGY,     desc: "We help leading energy companies enhance data integrity, collaboration, and operational visibility. Our solutions support exploration and production through automated reporting, streamlined joint ventures, and improved efficiency across the oil and gas value chain." },
-  { name: "Startups and Emerging Ventures", slug: "startups-and-emerging-ventures", icon: I_ROCKET, desc: "We help founders turn ideas into products through Product Discovery, MVP development, and rapid prototyping.\nWhether entering Web3 or scaling a SaaS, our team delivers the strategy, speed, and structure to grow.",                   href: "/coming-soon" },
+  { name: "Education and EdTech",         slug: "education-and-edtech",         icon: I_GRADUATION, desc: "SpaceDev supports educational platforms with digital learning systems, decentralized certification, and blockchain credentials that enhance authenticity and accessibility.",                                                                 linked: false },
+  { name: "Startups and Emerging Ventures", slug: "startups-and-emerging-ventures", icon: I_ROCKET, desc: "We help founders turn ideas into products through Product Discovery, MVP development, and rapid prototyping.\nWhether entering Web3 or scaling a SaaS, our team delivers the strategy, speed, and structure to grow.",                   linked: false },
 ];
 ---
 
@@ -240,15 +241,23 @@ const industries = [
         <h2 class="text-4xl md:text-6xl text-sd-text-dark font-display leading-tight tracking-tight">Blockchain Development for Fintech, DeFi & Web3 Startups</h2>
       </div>
       <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {industries.map(ind => (
-          <a href={ind.href ?? `/blockchain-development-services/industry/${ind.slug}`} class="group block bg-sd-light-2 rounded-2xl p-7 border border-sd-gray-border hover:border-sd-purple/30 hover:bg-sd-purple/5 transition-colors duration-300" data-animate>
-            <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
-              <Fragment set:html={ind.icon} />
-            </div>
-            <h3 class="text-base font-display text-sd-text-dark mb-2 group-hover:text-sd-purple transition-colors">{ind.name}</h3>
-            <p class="text-sm text-sd-text-gray leading-relaxed whitespace-pre-line">{ind.desc}</p>
-          </a>
-        ))}
+        {industries.map(ind => {
+          const cardClass = "group block bg-sd-light-2 rounded-2xl p-7 border border-sd-gray-border transition-colors duration-300";
+          const content = (
+            <>
+              <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={ind.icon} />
+              </div>
+              <h3 class="text-base font-display text-sd-text-dark mb-2 group-hover:text-sd-purple transition-colors">{ind.name}</h3>
+              <p class="text-sm text-sd-text-gray leading-relaxed whitespace-pre-line">{ind.desc}</p>
+            </>
+          );
+          return ind.linked === false ? (
+            <div class={cardClass} data-animate>{content}</div>
+          ) : (
+            <a href={`/blockchain-development-services/industry/${ind.slug}`} class={`${cardClass} hover:border-sd-purple/30 hover:bg-sd-purple/5`} data-animate>{content}</a>
+          );
+        })}
       </div>
     </div>
   </section>
