@@ -76,7 +76,8 @@ const industries = [
   jsonLd={websiteJsonLd}
 >
   <!-- HERO (dark) -->
-  <section class="bg-sd-dark min-h-[100dvh] -mt-[72px] flex flex-col justify-end items-start relative overflow-hidden">
+  <!-- Height stops short of the viewport so the client logos below peek above the fold -->
+  <section class="bg-sd-dark min-h-[76dvh] sm:min-h-[86dvh] -mt-[72px] pt-[72px] flex flex-col justify-end items-start relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.18) 0%, transparent 65%);"></div>
 
     <div class="relative w-full px-6 pb-10 sm:pb-14">
@@ -120,6 +121,9 @@ const industries = [
 
   <!-- CLIENT LOGOS MARQUEE — exact pixel sizes from spacedev.io Framer CSS -->
   <section class="bg-sd-light overflow-hidden">
+    <p class="pt-8 text-center text-xs font-ui uppercase tracking-[0.18em] text-sd-text-gray">
+      Trusted by
+    </p>
     <div class="sd-marquee-wrapper">
       <div class="sd-marquee">
         <!-- Set 1 — eager so dimensions are known before animation starts -->
