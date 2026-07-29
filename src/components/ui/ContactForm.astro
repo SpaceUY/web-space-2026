@@ -39,31 +39,32 @@ const sourceOptions = [
     <input id="cf-email" name="email" type="email" autocomplete="email" required placeholder=" " />
   </div>
 
-  <!-- What do you need help with? -->
-  <div class="form-field">
-    <label for="cf-help">What do you need help with? <span class="required">*</span></label>
-    <div class="select-wrap">
-      <select id="cf-help" name="what_do_you_need_help_with_" required>
-        <option value="" disabled selected>Please select</option>
-        {helpOptions.map(o => <option value={o}>{o}</option>)}
-      </select>
-      <svg class="select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-        <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
+  <!-- What do you need help with? / How did you find us? -->
+  <div class="form-row">
+    <div class="form-field">
+      <label for="cf-help">What do you need help with? <span class="required">*</span></label>
+      <div class="select-wrap">
+        <select id="cf-help" name="what_do_you_need_help_with_" required>
+          <option value="" disabled selected>Please select</option>
+          {helpOptions.map(o => <option value={o}>{o}</option>)}
+        </select>
+        <svg class="select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+          <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
     </div>
-  </div>
 
-  <!-- How did you find us? -->
-  <div class="form-field">
-    <label for="cf-source">How did you find us? <span class="required">*</span></label>
-    <div class="select-wrap">
-      <select id="cf-source" name="how_did_you_find_us_" required>
-        <option value="" disabled selected>Please select</option>
-        {sourceOptions.map(o => <option value={o}>{o}</option>)}
-      </select>
-      <svg class="select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-        <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
+    <div class="form-field">
+      <label for="cf-source">How did you find us? <span class="required">*</span></label>
+      <div class="select-wrap">
+        <select id="cf-source" name="how_did_you_find_us_" required>
+          <option value="" disabled selected>Please select</option>
+          {sourceOptions.map(o => <option value={o}>{o}</option>)}
+        </select>
+        <svg class="select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+          <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
     </div>
   </div>
 
@@ -76,7 +77,7 @@ const sourceOptions = [
   <!-- Message -->
   <div class="form-field">
     <label for="cf-message">Message <span class="required">*</span></label>
-    <textarea id="cf-message" name="message" rows="4" required placeholder="I need support with..."></textarea>
+    <textarea id="cf-message" name="message" rows="3" required placeholder="I need support with..."></textarea>
   </div>
 
   <!-- Error message -->
@@ -102,9 +103,15 @@ const sourceOptions = [
 </div>
 
 <style>
-  form { display: flex; flex-direction: column; gap: 1.5rem; }
+  form { display: flex; flex-direction: column; gap: 1rem; }
 
-  .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-field { display: flex; flex-direction: column; gap: 0.375rem; }
+
+  /* Two selects share a row from tablet up; stacked on mobile */
+  .form-row { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  @media (min-width: 1000px) {
+    .form-row { grid-template-columns: 1fr 1fr; }
+  }
 
   label {
     font-size: 13px;
