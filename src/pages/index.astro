@@ -25,27 +25,30 @@ const accentByCategory: Record<string, string> = {
   "Techy Trends": "from-sd-purple to-sd-purple-300",
 };
 
-// Client logos — exact pixel dimensions from spacedev.io Framer CSS
-// full174: SVGs are 174×174 with FAFAFA background baked in (render as-is)
-// natural: rendered at exact pixel dimensions inside a 174px cell
-const clientLogos = [
-  { src: "/images/clients/apple.png",         alt: "Apple",        w: 62,  h: 74,  full: false },
-  { src: "/images/clients/acton_academy.png", alt: "Acton Academy",w: 118, h: 44,  full: false },
-  { src: "/images/clients/microsoft.svg",     alt: "Microsoft",    w: 174, h: 174, full: true  },
-  { src: "/images/clients/drata.svg",         alt: "Drata",        w: 174, h: 174, full: true  },
-  { src: "/images/clients/prose.svg",         alt: "prose",        w: 174, h: 174, full: true  },
-  { src: "/images/clients/ulta.svg",          alt: "ULTA Beauty",  w: 174, h: 174, full: true  },
-  { src: "/images/clients/scotia.svg",        alt: "Scotiabank",   w: 174, h: 174, full: true  },
-  { src: "/images/clients/utec.svg",          alt: "UTEC",         w: 174, h: 174, full: true  },
-  { src: "/images/clients/samsonite.svg",     alt: "Samsonite",    w: 174, h: 174, full: true  },
-  { src: "/images/clients/blockus.svg",       alt: "Blockus",      w: 174, h: 174, full: true  },
-  { src: "/images/clients/ute.png",           alt: "UTE",          w: 110, h: 50,  full: false },
-  { src: "/images/clients/orange.svg",        alt: "Orange",       w: 174, h: 174, full: true  },
-  { src: "/images/clients/d_local.svg",       alt: "dLocal",       w: 174, h: 174, full: true  },
-  { src: "/images/clients/schwarzkopf.svg",   alt: "Schwarzkopf",  w: 174, h: 174, full: true  },
-  { src: "/images/clients/rarible.svg",       alt: "Rarible",      w: 133, h: 31,  full: false },
-  { src: "/images/clients/ufc.svg",           alt: "UFC Strike",   w: 145, h: 22,  full: false },
-] as const;
+// White-only versions for the in-hero strip (dark bg, no baked FAFAFA background).
+// Orange has no white asset yet — omitted until one is provided.
+// `scale` is an optical adjustment, not a measurement: bold/condensed wordmarks
+// (Rarible, UFC, Samsonite, Blockus, Drata) read heavier than thin ones (Schwarzkopf,
+// UTEC, prose, Scotiabank, d_local) at the exact same pixel height, so each logo is
+// tuned by eye against the rest of the set until they read as one consistent weight.
+const clientLogosWhite: { src: string; alt: string; scale?: number }[] = [
+  { src: "/images/clients-white/apple.svg",         alt: "Apple" },
+  { src: "/images/clients-white/acton_academy.svg", alt: "Acton Academy" },
+  { src: "/images/clients-white/microsoft.svg",      alt: "Microsoft",    scale: 0.95 },
+  { src: "/images/clients-white/drata.svg",          alt: "Drata",        scale: 0.78 },
+  { src: "/images/clients-white/prose.svg",          alt: "prose",        scale: 1.2 },
+  { src: "/images/clients-white/ulta.svg",           alt: "ULTA Beauty" },
+  { src: "/images/clients-white/scotia.svg",         alt: "Scotiabank",   scale: 1.1 },
+  { src: "/images/clients-white/utec.svg",           alt: "UTEC",         scale: 1.25 },
+  { src: "/images/clients-white/samsonite.svg",      alt: "Samsonite",    scale: 0.8 },
+  { src: "/images/clients-white/blockus.svg",        alt: "Blockus",      scale: 0.82 },
+  { src: "/images/clients-white/ute.svg",            alt: "UTE",          scale: 1.05 },
+  { src: "/images/clients-white/d_local.svg",        alt: "dLocal",       scale: 1.15 },
+  { src: "/images/clients-white/schwarzkopf.svg",    alt: "Schwarzkopf",  scale: 1.4 },
+  { src: "/images/clients-white/rarible.svg",        alt: "Rarible",      scale: 0.72 },
+  { src: "/images/clients-white/ufc.svg",            alt: "UFC Strike",   scale: 0.75 },
+  { src: "/images/clients-white/orange.png",         alt: "Orange" },
+];
 
 // Industry SVG icons — white stroke, for use on purple bg circles
 const I_BUILDING = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:100%;height:100%"><path d="M 0 3 C 0 1.343 1.343 0 3 0 C 4.657 0 6 1.343 6 3 C 6 4.657 4.657 6 3 6 C 1.343 6 0 4.657 0 3 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(9 9)"/><path d="M 0 12 L 0 0 L 21 0 L 21 12 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1.5 6)"/><path d="M 3.75 3.75 C 1.83 3.425 0.325 1.92 0 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(18.75 6)"/><path d="M 0 3.75 C 0.325 1.83 1.83 0.325 3.75 0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(18.75 14.25)"/><path d="M 0 0 C 1.92 0.325 3.425 1.83 3.75 3.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1.5 14.25)"/><path d="M 3.75 0 C 3.425 1.92 1.92 3.425 0 3.75" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1.5 6)"/></svg>`;
@@ -76,21 +79,45 @@ const industries = [
   jsonLd={websiteJsonLd}
 >
   <!-- HERO (dark) -->
-  <!-- Height stops short of the viewport so the client logos below peek above the fold -->
-  <section class="bg-sd-dark min-h-[76dvh] sm:min-h-[86dvh] -mt-[72px] pt-[72px] flex flex-col justify-end items-start relative overflow-hidden">
+  <!-- Stops short of the full viewport so the next section peeks and invites scrolling
+       (NN/g: avoid full-screen hero content). Bottom-aligned on mobile to avoid dead
+       space above the title, centred from 1000px where there's more room. -->
+  <section class="bg-sd-dark min-h-[84dvh] sm:min-h-[92dvh] -mt-[72px] pt-[160px] flex flex-col justify-end sm:justify-center items-start relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.18) 0%, transparent 65%);"></div>
 
-    <div class="relative w-full px-6 pb-10 sm:pb-14">
-      <p class="hero-line hero-line-1 text-[clamp(28px,8vw,80px)] text-white font-display leading-none tracking-tight">
+    <div class="sd-container relative pb-14 sm:pb-16">
+      <p class="hero-line hero-line-1 text-[clamp(34px,9.4vw,64px)] text-white font-display leading-[1.08] tracking-tight">
         <span class="whitespace-nowrap">Finally: Your&#160;<span style="display:inline-block; overflow:hidden; vertical-align:bottom; line-height:1.05;"><span id="rotating-word" class="text-white" style="display:inline-block;">Flexible</span></span></span><br/>
         Tech Partner.
       </p>
-      <h1 class="hero-line hero-line-2 mt-6 sm:mt-16 text-base sm:text-lg md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
+      <h1 class="hero-line hero-line-2 mt-10 sm:mt-14 text-lg sm:text-xl md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
         Blockchain Development Company & Web3 Software Partner
       </h1>
-      <p class="hero-line hero-line-3 mt-4 text-sm sm:text-base md:text-lg text-white/80 max-w-2xl leading-relaxed font-body font-light">
+      <p class="hero-line hero-line-3 mt-6 text-[15px] sm:text-base md:text-lg text-white/80 max-w-2xl leading-relaxed font-body font-light">
         SpaceDev builds custom <strong class="font-semibold text-white">Web3</strong> and <strong class="font-semibold text-white">blockchain</strong> solutions, from <strong class="font-semibold text-white">dApps</strong> and <strong class="font-semibold text-white">smart contracts</strong> to <strong class="font-semibold text-white">DeFi</strong> and token infrastructure, for startups, fintechs and enterprises that need a technical partner with real depth.
       </p>
+
+      <!-- Trusted-by strip: inside the hero so there's no light/dark seam at the fold.
+           Matches the white logo strip on agentic-ai-development.astro. -->
+      <div class="hero-line hero-line-4 mt-28 sm:mt-40">
+        <p class="text-xs font-ui uppercase tracking-[0.18em] text-sd-text-muted/70 mb-5">
+          Trusted by
+        </p>
+        <div class="sd-marquee-wrapper hero-marquee-wrapper">
+          <div class="sd-marquee">
+            <div class="sd-marquee-set">
+              {clientLogosWhite.map((c) => (
+                <img src={c.src} alt={c.alt} loading="eager" style={`height:${28 * (c.scale ?? 1)}px`} class="w-auto object-contain opacity-85 shrink-0" />
+              ))}
+            </div>
+            <div class="sd-marquee-set" aria-hidden="true">
+              {clientLogosWhite.map((c) => (
+                <img src={c.src} alt="" loading="lazy" style={`height:${28 * (c.scale ?? 1)}px`} class="w-auto object-contain opacity-85 shrink-0" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -113,40 +140,25 @@ const industries = [
     .hero-line-1 { animation-delay: 0.2s; }
     .hero-line-2 { animation-delay: 0.65s; }
     .hero-line-3 { animation-delay: 1.0s; }
+    .hero-line-4 { animation-delay: 1.35s; }
 
     @media (prefers-reduced-motion: reduce) {
       .hero-line { animation: none; }
     }
-  </style>
 
-  <!-- CLIENT LOGOS MARQUEE — exact pixel sizes from spacedev.io Framer CSS -->
-  <section class="bg-sd-light overflow-hidden">
-    <p class="pt-8 text-center text-xs font-ui uppercase tracking-[0.18em] text-sd-text-gray">
-      Trusted by
-    </p>
-    <div class="sd-marquee-wrapper">
-      <div class="sd-marquee">
-        <!-- Set 1 — eager so dimensions are known before animation starts -->
-        <div class="sd-marquee-set">
-          {clientLogos.map((c) => c.full
-            ? <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="eager" class="shrink-0 block" />
-            : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
-                <img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="eager" class="block" />
-              </div>
-          )}
-        </div>
-        <!-- Set 2 — duplicate for seamless loop -->
-        <div class="sd-marquee-set" aria-hidden="true">
-          {clientLogos.map((c) => c.full
-            ? <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="shrink-0 block" />
-            : <div class="w-[174px] h-[174px] flex items-center justify-center shrink-0 bg-sd-light">
-                <img src={c.src} alt="" width={c.w} height={c.h} loading="lazy" class="block" />
-              </div>
-          )}
-        </div>
-      </div>
-    </div>
-  </section>
+    /* Tighter spacing on mobile: 40px between logos eats 10% of a 375px viewport */
+    .hero-marquee-wrapper .sd-marquee-set,
+    .hero-marquee-wrapper .sd-marquee { gap: 1.5rem; }
+    @media (min-width: 1000px) {
+      .hero-marquee-wrapper .sd-marquee-set,
+      .hero-marquee-wrapper .sd-marquee { gap: 2.5rem; }
+    }
+    /* 32s keeps the strip at ~79px/s, inside the 40-80px/s legible range */
+    .hero-marquee-wrapper .sd-marquee { animation-duration: 32s; }
+    /* Let users stop the motion to read a logo */
+    .hero-marquee-wrapper:hover .sd-marquee,
+    .hero-marquee-wrapper:focus-within .sd-marquee { animation-play-state: paused; }
+  </style>
 
   <!-- KEY TAKEAWAYS (light): concise summary block for scanability and AI extraction -->
   <section class="bg-sd-light py-14 border-b border-sd-gray-border">
