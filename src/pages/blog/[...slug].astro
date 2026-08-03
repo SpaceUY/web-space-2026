@@ -280,6 +280,14 @@ const breadcrumbJsonLd = {
 </BaseLayout>
 
 <script>
+  // ── Wrap tables so wide ones scroll horizontally instead of overflowing ──
+  document.querySelectorAll<HTMLTableElement>(".sd-prose table").forEach((table) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "sd-table-scroll";
+    table.parentNode?.insertBefore(wrapper, table);
+    wrapper.appendChild(table);
+  });
+
   // ── TOC active heading tracking (window scroll) ───────────────────────
   const tocLinks = document.querySelectorAll<HTMLAnchorElement>("#sd-toc .sd-toc-link");
   const articleHeadings = Array.from(

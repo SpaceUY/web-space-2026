@@ -160,7 +160,10 @@
 }
 
 /* ── Images ────────────────────────────────────────────────────────────────── */
-.sd-prose img { border-radius: 10px; display: block; margin: 2em 0; }
+/* width:100% + height:auto means every content image fills the prose column
+   at every breakpoint — never narrower-than-container-and-left-stuck, no
+   horizontal centering needed because there's no leftover space to be off-center in. */
+.sd-prose img { display: block; width: 100%; height: auto; margin: 2em 0; }
 
 .sd-prose p:has(> img:only-child) {
   margin: 1.5em 0;
@@ -173,10 +176,18 @@
 .sd-prose hr { border: none; border-top: 1px solid #e8e8e8; margin: 3em 0; }
 
 /* ── Tables ────────────────────────────────────────────────────────────────── */
+/* Wrapped in .sd-table-scroll by a small script in [...slug].astro so wide
+   tables scroll horizontally on narrow screens instead of overflowing the page. */
+.sd-table-scroll {
+  margin: 2em 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .sd-prose table {
   width: 100%;
+  min-width: 480px;
   border-collapse: collapse;
-  margin: 2em 0;
+  margin: 0;
   font-size: 0.9375em;
   line-height: 1.6;
 }

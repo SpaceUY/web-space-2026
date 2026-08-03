@@ -37,7 +37,7 @@ const about = [
 ];
 ---
 
-<header id="site-header" class="sticky top-0 z-50 bg-sd-dark/95 backdrop-blur-md border-b border-white/10 transition-transform duration-300">
+<header id="site-header" class="sticky top-0 z-50 bg-sd-dark/95 backdrop-blur-md border-b border-white/10 transition-transform duration-300" style="will-change: transform;">
   <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
 
   <div class="mx-auto max-w-[1440px] px-6 md:px-10 h-[72px] flex items-center justify-between gap-8">
@@ -201,11 +201,11 @@ const about = [
     if (menu && menu.style.display === "block") return;
     const currentY = window.scrollY;
     if (currentY <= THRESHOLD) {
-      header?.style.setProperty("transform", "translateY(0)");
+      header?.style.setProperty("transform", "translate3d(0,0,0)");
     } else if (currentY > lastY) {
-      header?.style.setProperty("transform", "translateY(-100%)");
+      header?.style.setProperty("transform", "translate3d(0,-100%,0)");
     } else {
-      header?.style.setProperty("transform", "translateY(0)");
+      header?.style.setProperty("transform", "translate3d(0,0,0)");
     }
     lastY = currentY;
   }, { passive: true });

@@ -30,6 +30,8 @@ It's worth separating this from blockchain design in the general sense. Blockcha
 
 ## Blockchain regulation in the US: who regulates what?
 
+![New York City financial district skyscrapers](/images/content/blockchain-compliance-regulators.png)
+
 The US uses overlapping regulators, not a single crypto authority. Knowing which one owns your activity is the first compliance decision.
 
 | Regulator | Owns | Relevant to you if |
@@ -55,6 +57,8 @@ The same release also addressed mining and staking directly, but as a separate q
 The classification is the starting point for crypto compliance in the US, because it decides which regulator and rulebook apply. One caveat matters: this is interpretive guidance, not statute. The broader CLARITY Act that would lock these boundaries into law had not passed the full Senate as of mid-2026, so good-faith classification reduces risk but does not eliminate it.
 
 ## What are the four types of blockchain, and why compliance treats them differently
+
+![Stack of colored hardcover books](/images/content/blockchain-compliance-network-types.png)
 
 This matters more for compliance than most technical overviews suggest, because the network type decides how much control you have over who can transact.
 
@@ -90,6 +94,8 @@ The GENIUS Act is the clearest new obligation. It creates the first federal fram
 
 ## How does the GENIUS Act affect your blockchain product?
 
+![A stablecoin anchored inside a reserve vault, balanced 1:1](/images/content/blockchain-compliance-stablecoin-reserves.png)
+
 The GENIUS Act affects you if you issue, distribute, or settle in a payment stablecoin. If your product only accepts a third-party stablecoin like USDC, the direct obligations sit with the issuer, but your integration still inherits their compliance posture. If you mint your own, you become the regulated party.
 
 The law does one decisive thing: it prohibits anyone other than a permitted payment stablecoin issuer from issuing a payment stablecoin in the US. That turns "launch a stablecoin" into a licensing decision, not just an engineering one. Permitted-issuer status runs through a bank subsidiary, a federal OCC charter, or a qualifying state regime.
@@ -122,6 +128,8 @@ Industry opposition came from a different angle entirely. In November 2025, the 
 None of this changes what's already law. It does mean the implementing rules due in the second half of 2026 are being written while these disagreements are still live, which is exactly why the design-for-the-strictest-version approach above is the safer bet. A rule that ends up friendlier to decentralized issuers than the current statute suggests wouldn't hurt a product built to the stricter standard, but a rule that tightens further could genuinely break a product that assumed the loosest possible reading.
 
 ## Web3 regulatory compliance by design
+
+![A compliance lock embedded directly inside a blockchain node](/images/content/blockchain-compliance-by-design.png)
 
 The most reliable way to pass web3 regulatory compliance is to enforce it in code, not in a policy document. On a blockchain, the controls can live at the protocol level:
 
