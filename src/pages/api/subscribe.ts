@@ -2,8 +2,8 @@ import type { APIRoute } from "astro";
 
 export const prerender = false;
 
-// Brevo list ID — update when confirmed
-const BREVO_LIST_ID = 2; // TODO: replace with actual list ID from Brevo → Contacts → Lists
+// Brevo list ID — confirmed against Brevo → Contacts → Lists
+const BREVO_LIST_ID = 3;
 
 export const POST: APIRoute = async ({ request }) => {
   const { email, name } = await request.json();
