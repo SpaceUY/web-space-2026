@@ -52,7 +52,10 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const err = await res.json().catch(() => ({}));
-  console.error("Brevo error:", err);
+  // Logged server-side only — Brevo's message can name the calling IP, and a 401
+  // here usually means Brevo's authorised-IP restriction is blocking the caller
+  // (see https://app.brevo.com/security/authorised_ips), not a bad key.
+  console.error("Brevo error:", res.status, err);
   return new Response(JSON.stringify({ error: "Subscription failed" }), {
     status: 500,
     headers: { "Content-Type": "application/json" },
