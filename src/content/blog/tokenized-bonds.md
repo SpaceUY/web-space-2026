@@ -9,6 +9,27 @@ readTime: 20
 cover: "/images/content/tokenized-bonds-cover.png"
 metatitle: "Tokenized Bonds: How On-Chain Fixed Income Actually Works"
 metadescription: "How on-chain fixed income actually works: tokenized bonds, T+0 settlement, automated coupons, and where the 2026 US regulatory picture stands."
+faqs:
+  - question: "Are tokenized bonds legal in the US?"
+    answer: "Yes. A bond on a blockchain is still a security under federal law, and the SEC confirmed in 2026 that tokenizing it does not change the rules that apply."
+  - question: "Tokenized bond vs crypto bond, what is the difference?"
+    answer: "A tokenized bond is a regulated debt security placed on-chain. A \"crypto bond\" is usually a debt-like instrument native to a protocol, without the same legal protections."
+  - question: "Do tokenized bonds settle faster?"
+    answer: "They can. T+2 for traditional bonds versus minutes for on-chain delivery-versus-payment, but only with a compliant on-chain cash leg."
+  - question: "What is the difference between DvP and RvP?"
+    answer: "They're the same atomic settlement described from opposite sides of the trade. DvP is the buyer's view, cash out and security in at the same instant. RvP is the seller's view, the security only moves once payment lands. Both exist to eliminate principal risk, the chance that one side delivers and the other doesn't."
+  - question: "Do you still need a custodian?"
+    answer: "Often yes, especially for investors and secondary trading. Native issuance removes some intermediaries from primary issuance, but custody, key management, and regulated venues still play a role, and a bank or fund manager still has to decide who holds the keys and how that's insured."
+  - question: "Can tokenized bonds be traded on secondary markets?"
+    answer: "Increasingly, but liquidity is thin and trading frequently requires a regulated venue. Most of the volume so far is issuance and redemption at the primary level, not active day-to-day trading between unrelated investors."
+  - question: "What is an on-chain fund?"
+    answer: "A traditional, regulated fund whose share ownership is recorded and transferred on a blockchain instead of through a conventional transfer agent. BlackRock's BUIDL, Franklin Templeton's BENJI, and Ondo Finance's OUSG are the largest examples, together holding several billion dollars in tokenized Treasury and money-market exposure."
+  - question: "Who actually buys tokenized bonds and Treasuries?"
+    answer: "Bank and corporate treasury desks looking for yield-bearing, fast-settling short-term exposure, crypto-native funds and DAOs holding tokenized Treasuries as collateral, and increasingly investors accessing exposure indirectly through an onchain fund rather than buying a bond directly."
+  - question: "Will XRP be used to tokenize assets?"
+    answer: "It already is, on a smaller scale than Ethereum. XRP Ledger hosts tokenized Treasuries from issuers including Ondo Finance, OpenEden Digitals, and Zeconomy, and that segment grew roughly eightfold over the past year."
+  - question: "Can on-chain bond data be manipulated?"
+    answer: "The ledger record itself is very hard to alter once confirmed, that's what distributed validation is for. The real risk sits in the smart contract logic layered on top, transfer rules, oracles, upgrade mechanisms, which is exactly why independent security auditing stays necessary even on an immutable ledger."
 ---
 
 ## Key Takeaways

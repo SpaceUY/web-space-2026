@@ -15,7 +15,7 @@ const recentPosts = (await getCollection("blog"))
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
   .slice(0, 3);
 
-const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric" });
+const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 const accentByCategory: Record<string, string> = {
   "Blockchain Trends": "from-sd-purple to-sd-purple-2",
   "Web2 Trends": "from-sd-purple-300 to-sd-purple",

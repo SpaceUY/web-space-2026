@@ -8,9 +8,15 @@ interface Props {
   showRole?: boolean;
   tone?: "dark" | "light";
   class?: string;
+  /** Override the name's text size class for this instance only, without affecting the shared size presets. */
+  nameClass?: string;
+  /** Override the role's text size class for this instance only, without affecting the shared size presets. */
+  roleClass?: string;
+  /** Override the avatar's wrapper size class (width/height) for this instance only, without affecting the shared size presets. */
+  avatarClass?: string;
 }
 
-const { author, size = "md", showName = true, showRole = false, tone = "dark", class: className = "" } = Astro.props;
+const { author, size = "md", showName = true, showRole = false, tone = "dark", class: className = "", nameClass, roleClass, avatarClass } = Astro.props;
 
 const sizes = {
   sm: { wrapper: "w-8 h-8",   px: 64,  text: "text-xs",  name: "text-xs",  role: "text-[10px]" },
@@ -29,11 +35,11 @@ const s = sizes[size];
       width={s.px}
       height={s.px}
       loading="lazy"
-      class={`${s.wrapper} rounded-full object-cover object-top shrink-0 border border-white/10`}
+      class={`${avatarClass ?? s.wrapper} rounded-full object-cover object-top shrink-0 border border-white/10`}
     />
   ) : (
     <div
-      class={`${s.wrapper} rounded-full bg-gradient-to-br ${author.avatarGradient} flex items-center justify-center font-display font-semibold text-white shrink-0`}
+      class={`${avatarClass ?? s.wrapper} rounded-full bg-gradient-to-br ${author.avatarGradient} flex items-center justify-center font-display font-semibold text-white shrink-0`}
       aria-hidden="true"
     >
       <span class={s.text}>{author.initials}</span>
@@ -41,8 +47,8 @@ const s = sizes[size];
   )}
   {showName && (
     <div class="leading-tight">
-      <p class={`${s.name} ${tone === "light" ? "text-sd-text-dark" : "text-white"}`}>{author.name}</p>
-      {showRole && <p class={`${s.role} ${tone === "light" ? "text-sd-text-gray" : "text-sd-text-muted"}`}>{author.role}</p>}
+      <p class={`${nameClass ?? s.name} ${tone === "light" ? "text-sd-text-dark" : "text-white"}`}>{author.name}</p>
+      {showRole && <p class={`${roleClass ?? s.role} ${tone === "light" ? "text-sd-text-gray" : "text-sd-text-muted"}`}>{author.role}</p>}
     </div>
   )}
 </div>

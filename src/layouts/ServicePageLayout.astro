@@ -49,7 +49,7 @@ const relatedPosts = data.relatedTags && data.relatedTags.length > 0
       .slice(0, 3)
   : [];
 
-const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric" });
+const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
