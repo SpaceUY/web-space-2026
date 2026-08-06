@@ -10,7 +10,7 @@ export function getStaticPaths() {
 
 const { item } = Astro.props;
 
-const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric" });
+const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
 
 function renderBody(text: string): string {
   return text

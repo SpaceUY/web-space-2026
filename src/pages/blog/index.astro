@@ -14,7 +14,7 @@ const allCategories = ["All", ...new Set(allPosts.map((p) => p.data.category))];
 const countByCategory = (cat: string) =>
   cat === "All" ? allPosts.length - 1 : allPosts.slice(1).filter((p) => p.data.category === cat).length;
 
-const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric" });
+const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 const accentByCategory: Record<string, string> = {
   "Blockchain Trends": "from-sd-purple to-sd-purple-2",
   "Web2 Trends": "from-sd-purple-300 to-sd-purple",

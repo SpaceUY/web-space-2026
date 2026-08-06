@@ -192,12 +192,12 @@
   line-height: 1.6;
 }
 .sd-prose th {
-  background: #f5f5f5;
+  background: transparent;
   color: #111;
   font-weight: 600;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   padding: 0.75em 1em;
-  border-bottom: 2px solid #e0e0e0;
+  border-bottom: 1px solid #d9d9d9;
   text-align: left;
 }
 .sd-prose td {
@@ -248,7 +248,7 @@
 
 .sd-prose-dark hr { border-top-color: rgba(255, 255, 255, 0.10); }
 
-.sd-prose-dark th { background: rgba(255,255,255,0.06); color: #fff; border-bottom-color: rgba(255,255,255,0.12); }
+.sd-prose-dark th { background: transparent; color: #fff; border-bottom-color: rgba(255,255,255,0.18); }
 .sd-prose-dark td { color: rgba(255,255,255,0.78); border-bottom-color: rgba(255,255,255,0.07); }
 
 .sd-prose-dark p:has(> img:only-child) { border-bottom-color: rgba(255,255,255,0.10); }

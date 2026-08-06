@@ -472,7 +472,7 @@ const videoJsonLd = videoItems.map((v) => ({
       <h2 class="font-display text-3xl md:text-4xl text-sd-text-dark mb-10 md:mb-14" data-animate>SpaceDev out in the world</h2>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {mediaItems.map((item) => {
-          const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short" });
+          const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", timeZone: "UTC" });
           return (
             <a
               href={`/spacedev-in-the-media/${item.slug}`}

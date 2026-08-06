@@ -9,6 +9,27 @@ readTime: 19
 cover: "/images/content/Blockchain_Compliance_in_the_US.png"
 metatitle: "Blockchain Compliance in the US: 2026 Builder's Guide"
 metadescription: "What blockchain compliance in the US requires in 2026: SEC-CFTC taxonomy, GENIUS Act rules, AML, licensing, and compliant-by-design architecture."
+faqs:
+  - question: "Is crypto legal in the US in 2026?"
+    answer: "Yes. Crypto is legal. Stablecoins have a dedicated federal law, and other assets fall under existing securities and commodities rules through an SEC-CFTC split."
+  - question: "What is Trump's new crypto law?"
+    answer: "It's the GENIUS Act, the federal stablecoin law President Trump signed on July 18, 2025. It's the most significant piece of federal crypto legislation to date, creating the first dedicated framework for payment stablecoins."
+  - question: "Are stablecoins regulated now?"
+    answer: "Yes. The GENIUS Act creates a federal framework requiring permitted-issuer status, 1:1 reserves, and audited monthly disclosures."
+  - question: "Who is against the GENIUS Act?"
+    answer: "Opposition came from more than one direction. Senators Josh Hawley and Rand Paul voted against it on the Republican side, Hawley over concerns about ceding power to large tech companies. Senator Elizabeth Warren led Democratic opposition, citing a lack of safeguards against presidential conflicts of interest and a carve-out for large tech firms. Separately, the venture firm a16z has lobbied Treasury to exempt decentralized stablecoins from the permitted-issuer rule entirely."
+  - question: "Is the GENIUS Act good or bad for crypto?"
+    answer: "It depends who you ask, and both views have real substance. Supporters argue it gives the industry the legal certainty it's lacked for years, which is what let stablecoin issuance move from a gray area into regulated infrastructure. Critics argue it locks in an advantage for banks and large, well-capitalized issuers, makes life harder for decentralized or algorithmic stablecoin models, and raises unresolved questions about conflicts of interest at the top of government. Both of those things can be true at once."
+  - question: "Do I need a money transmitter license?"
+    answer: "Usually yes if you move fiat. Most states require one, plus FinCEN MSB registration. New York's BitLicense is the strictest regime, and this applies to crypto exchanges just as much as it applies to a standalone product moving fiat on and off a blockchain."
+  - question: "What is the IRS minimum for crypto reporting?"
+    answer: "There isn't one flat number. Standard broker reporting of gross proceeds has no general minimum. A $600 per-year threshold applies specifically to payment processors handling digital assets, and a $10,000 annual aggregation threshold applies to qualified stablecoins under the optional reporting method."
+  - question: "Does tokenizing an asset change its compliance?"
+    answer: "No. Tokenizing a security keeps it a security. The SEC confirmed in 2026 that format does not change the rules that apply."
+  - question: "What are the four types of blockchain?"
+    answer: "Public, private, consortium, and hybrid. The type matters for compliance because it decides how much control you have by default over who can transact, public chains need compliance added on top, private and consortium chains have it built into who can join."
+  - question: "Is DeFi regulated?"
+    answer: "Partly. Rules apply where there is an identifiable issuer or intermediary. Fully decentralized, peer-to-peer protocols without one remain a regulatory gap."
 ---
 
 ## Key Takeaways

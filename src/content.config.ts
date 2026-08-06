@@ -27,6 +27,8 @@ const blog = defineCollection({
     metatitle: z.string().optional(),
     /** Override the meta description shown in search results (140–160 chars recommended) */
     metadescription: z.string().optional(),
+    /** Structured duplicate of the post's FAQ section, used to emit FAQPage JSON-LD. Keep in sync with the "Frequently asked questions" H2 in the body. */
+    faqs: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
   }),
 });
 

@@ -16,7 +16,7 @@ const posts = allPosts
   .filter((p) => p.data.author === author.slug)
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 
-const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric" });
+const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 
 const personJsonLd = {
   "@context": "https://schema.org",
