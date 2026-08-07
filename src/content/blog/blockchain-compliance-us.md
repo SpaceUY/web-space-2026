@@ -30,16 +30,14 @@ faqs:
     answer: "Public, private, consortium, and hybrid. The type matters for compliance because it decides how much control you have by default over who can transact, public chains need compliance added on top, private and consortium chains have it built into who can join."
   - question: "Is DeFi regulated?"
     answer: "Partly. Rules apply where there is an identifiable issuer or intermediary. Fully decentralized, peer-to-peer protocols without one remain a regulatory gap."
+takeaways:
+  - "Blockchain compliance is the set of securities, AML, licensing, tax, and sanctions obligations that apply to a blockchain product, plus the controls you build in to meet them."
+  - "2025 and 2026 shifted the US from regulation by enforcement to written rules. A March 2026 SEC-CFTC release sorted crypto assets into five categories and moved 16 major tokens under CFTC oversight."
+  - "Stablecoins now have a dedicated federal law, the GENIUS Act, signed by President Trump on July 18, 2025, with issuer rules due by July 18, 2026."
+  - "Federal clarity does not remove state obligations. Most firms still need state money-transmitter licenses plus FinCEN registration, and New York's BitLicense remains the strictest."
+  - "The GENIUS Act passed with real opposition on both sides of the aisle, and the fight over its implementing rules is still active in 2026."
+  - "The winning approach is compliant by design: KYC, transfer restrictions, and sanctions screening enforced in code from day one, not bolted on later."
 ---
-
-## Key Takeaways
-
-- Blockchain compliance is the set of securities, AML, licensing, tax, and sanctions obligations that apply to a blockchain product, plus the controls you build in to meet them.
-- 2025 and 2026 shifted the US from regulation by enforcement to written rules. A March 2026 SEC-CFTC release sorted crypto assets into five categories and moved 16 major tokens under CFTC oversight.
-- Stablecoins now have a dedicated federal law, the GENIUS Act, signed by President Trump on July 18, 2025, with issuer rules due by July 18, 2026.
-- Federal clarity does not remove state obligations. Most firms still need state money-transmitter licenses plus FinCEN registration, and New York's BitLicense remains the strictest.
-- The GENIUS Act passed with real opposition on both sides of the aisle, and the fight over its implementing rules is still active in 2026.
-- The winning approach is compliant by design: KYC, transfer restrictions, and sanctions screening enforced in code from day one, not bolted on later.
 
 Through 2025 and into 2026, US digital-asset policy moved from courtroom enforcement to published frameworks. For a compliance officer, CFO, or CTO shipping a blockchain product, the practical question is no longer whether cryptocurrency is legal. It is which obligations apply to your specific asset, and how to build them into the blockchain technology itself rather than layering them on afterward. Many teams are also past the proofs-of-concept stage and moving into production, which is exactly when unclear compliance obligations stop being a legal footnote and start being a real cost on the roadmap.
 

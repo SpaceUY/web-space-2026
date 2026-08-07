@@ -26,16 +26,14 @@ faqs:
     answer: "GS1 EPCIS is the widely adopted standard, now at version 2.0 with added support for JSON, web-based identifiers, and IoT sensor data. It defines what event data is captured, while blockchain defines how it is stored and shared."
   - question: "What companies are using blockchain or IoT for supply chain traceability?"
     answer: "IBM Food Trust, still active with members including Wakefern and Smithfield, De Beers's Tracr for diamond provenance, and VeChain, which powers Walmart China's food traceability and BMW's vehicle parts passport. Maersk and IBM's TradeLens is the well-known counterexample: the technology worked, but it shut down in 2023 after failing to get enough of the shipping industry to join."
+takeaways:
+  - "Blockchain supply chain traceability records the movement and history of goods on a shared, tamper-evident ledger, so trading partners see the same version of who did what, where, and when."
+  - "Blockchain rarely works alone. It sits on top of the GS1 EPCIS standard for capturing events and usually pairs with IoT sensors and oracles to connect physical goods to on-chain records."
+  - "The biggest limitation is the garbage-in problem: the ledger guarantees a record was not altered, not that it was true when entered."
+  - "The other way these projects fail has nothing to do with data: Maersk and IBM shut down TradeLens in 2023 after failing to get enough of the industry to join, a reminder that a shared ledger is only as useful as the number of partners actually using it."
+  - "Most serious deployments are hybrid: event details stay in an off-chain repository, and only hashes or key fields go on-chain, for scale and privacy."
+  - "Adoption is being pushed by regulation, including the EU Digital Product Passport, the EU Deforestation Regulation, the EU Battery Regulation's mineral-sourcing rules, and the US FDA food traceability rule (FSMA 204)."
 ---
-
-## Key Takeaways
-
-- Blockchain supply chain traceability records the movement and history of goods on a shared, tamper-evident ledger, so trading partners see the same version of who did what, where, and when.
-- Blockchain rarely works alone. It sits on top of the GS1 EPCIS standard for capturing events and usually pairs with IoT sensors and oracles to connect physical goods to on-chain records.
-- The biggest limitation is the garbage-in problem: the ledger guarantees a record was not altered, not that it was true when entered.
-- The other way these projects fail has nothing to do with data: Maersk and IBM shut down TradeLens in 2023 after failing to get enough of the industry to join, a reminder that a shared ledger is only as useful as the number of partners actually using it.
-- Most serious deployments are hybrid: event details stay in an off-chain repository, and only hashes or key fields go on-chain, for scale and privacy.
-- Adoption is being pushed by regulation, including the EU Digital Product Passport, the EU Deforestation Regulation, the EU Battery Regulation's mineral-sourcing rules, and the US FDA food traceability rule (FSMA 204).
 
 For a COO or head of innovation, blockchain traceability is often oversold as a fix for every supply chain management problem. It is not. Used well, it removes a specific pain: the lack of a single, trusted record shared across partners who do not trust each other. Used badly, it just puts unreliable data on a fancier database, or worse, a shared ledger that nobody outside your own company ever joins. The difference is in how you capture data and who actually shows up to use it, not where you store it.
 
@@ -183,35 +181,35 @@ These rules require companies to prove, in near real time, who did what, where, 
 
 ## Frequently asked questions
 
-**What is blockchain supply chain traceability?**
+### What is blockchain supply chain traceability?
 
 It is recording a product's journey on a shared, tamper-evident ledger so all authorized partners see the same verified history of events.
 
-**Does blockchain guarantee the data is accurate?**
+### Does blockchain guarantee the data is accurate?
 
 No. It guarantees a record was not altered after being written. Accuracy at the point of entry depends on sensors, tags, and validation, not the ledger.
 
-**Is blockchain better than a normal database for this?**
+### Is blockchain better than a normal database for this?
 
 Only when multiple parties who do not trust each other need one shared record. A single company controlling the whole chain often does not need it.
 
-**What are the four types of blockchain?**
+### What are the four types of blockchain?
 
 Public, private, consortium, and hybrid. Most commercial supply chain deployments use consortium or hybrid models, since they need known, vetted participants rather than fully open or fully closed access.
 
-**How does blockchain connect to physical goods?**
+### How does blockchain connect to physical goods?
 
 Through IoT sensors, NFC or RFID tags, and oracles that bind a physical item to its digital record and feed real-world data on-chain.
 
-**Is a blockchain oracle the same as Oracle, the software company?**
+### Is a blockchain oracle the same as Oracle, the software company?
 
 No, and this is a common mix-up in search results. A blockchain oracle is infrastructure that feeds external data into a smart contract. Oracle Corporation is an unrelated enterprise software company with its own separate IoT and supply chain products.
 
-**Which standard should traceability data follow?**
+### Which standard should traceability data follow?
 
 GS1 EPCIS is the widely adopted standard, now at version 2.0 with added support for JSON, web-based identifiers, and IoT sensor data. It defines what event data is captured, while blockchain defines how it is stored and shared.
 
-**What companies are using blockchain or IoT for supply chain traceability?**
+### What companies are using blockchain or IoT for supply chain traceability?
 
 IBM Food Trust, still active with members including Wakefern and Smithfield, De Beers's Tracr for diamond provenance, and VeChain, which powers Walmart China's food traceability and BMW's vehicle parts passport. Maersk and IBM's TradeLens is the well-known counterexample: the technology worked, but it shut down in 2023 after failing to get enough of the shipping industry to join.
 

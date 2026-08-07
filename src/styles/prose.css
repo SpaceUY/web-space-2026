@@ -205,6 +205,14 @@
   border-bottom: 1px solid #ececec;
   color: #1a1a1a;
 }
+
+/* Phones: the 480px min-width forces horizontal scroll even for simple
+   2-3 column tables on a narrow screen — drop it, shrink text and padding
+   so tables fit without scrolling wherever the content allows it. */
+@media (max-width: 640px) {
+  .sd-prose table { min-width: 0; font-size: 0.8125em; }
+  .sd-prose th, .sd-prose td { padding: 0.5em 0.65em; }
+}
 .sd-prose tr:last-child td { border-bottom: none; }
 
 /* ─────────────────────────────────────────────────────────────────────────────

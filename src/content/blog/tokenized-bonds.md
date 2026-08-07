@@ -30,16 +30,14 @@ faqs:
     answer: "It already is, on a smaller scale than Ethereum. XRP Ledger hosts tokenized Treasuries from issuers including Ondo Finance, OpenEden Digitals, and Zeconomy, and that segment grew roughly eightfold over the past year."
   - question: "Can on-chain bond data be manipulated?"
     answer: "The ledger record itself is very hard to alter once confirmed, that's what distributed validation is for. The real risk sits in the smart contract logic layered on top, transfer rules, oracles, upgrade mechanisms, which is exactly why independent security auditing stays necessary even on an immutable ledger."
+takeaways:
+  - "A tokenized bond is a debt security issued and recorded on a blockchain, where the token is the register of ownership instead of an entry in a central securities depository."
+  - "The issuer benefit is operational, not ideological: faster settlement, automated coupons, fewer intermediaries, and a wider investor base."
+  - "Settlement is the headline. Traditional bonds settle in T+2. On-chain delivery-versus-payment can settle in minutes when a compliant cash leg exists."
+  - "In the US, tokenizing a bond does not change its legal status. The SEC confirmed in 2026 that a blockchain-based security is still a security."
+  - "The real constraint is secondary-market liquidity and on-chain cash, not the technology. Most tokenized bonds are still held to maturity."
+  - "Commercial banks are now issuers, not just infrastructure providers. Goldman Sachs, HSBC, and Société Générale have all brought digital bonds to market, and DTCC is preparing production-scale Treasury tokenization for the second half of 2026."
 ---
-
-## Key Takeaways
-
-- A tokenized bond is a debt security issued and recorded on a blockchain, where the token is the register of ownership instead of an entry in a central securities depository.
-- The issuer benefit is operational, not ideological: faster settlement, automated coupons, fewer intermediaries, and a wider investor base.
-- Settlement is the headline. Traditional bonds settle in T+2. On-chain delivery-versus-payment can settle in minutes when a compliant cash leg exists.
-- In the US, tokenizing a bond does not change its legal status. The SEC confirmed in 2026 that a blockchain-based security is still a security.
-- The real constraint is secondary-market liquidity and on-chain cash, not the technology. Most tokenized bonds are still held to maturity.
-- Commercial banks are now issuers, not just infrastructure providers. Goldman Sachs, HSBC, and Société Générale have all brought digital bonds to market, and DTCC is preparing production-scale Treasury tokenization for the second half of 2026.
 
 Fixed income is the largest asset class moving on-chain. Debt led tokenized securities adoption in 2025, ahead of equities and funds, because bonds are easier to value, regulate, and use as collateral in capital markets than most other financial instruments, including a share of stock or a fund position. That's also why the institutions moving fastest, HSBC, Goldman Sachs, Société Générale, and DTCC, are all fixed income players first. For a CFO or head of innovation, the useful question is not whether the tech works, but what actually changes for an issuer, what still doesn't, and where friction remains between the pilot stage and something a treasury team can rely on every quarter.
 
