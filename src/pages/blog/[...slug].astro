@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AuthorAvatar from "../../components/ui/AuthorAvatar.astro";
+import NewsletterForm from "../../components/ui/NewsletterForm.astro";
 import { getAuthor } from "../../data/authors";
 import { getBlogTag } from "../../data/blog-tags";
 import { SITE } from "../../lib/seo";
@@ -29,6 +30,7 @@ const relatedPosts = allPosts
   .slice(0, 3);
 
 const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 4);
+let currentTocParent: string | null = null;
 
 // metatitle: use custom field if set, otherwise fall back to "title | SpaceDev Blog"
 const pageTitle = post.data.metatitle ?? `${post.data.title} | SpaceDev Blog`;
@@ -95,14 +97,40 @@ const breadcrumbJsonLd = {
 >
 
   <!-- ─── ARTICLE LAYOUT ──────────────────────────────────────────────────
-       Normal page scroll — title visible from the top.
-       LEFT  → scrolls with page (back, title, meta, body)
-       RIGHT → sticky sidebar (TOC + CTA)
+       Three columns, like Cloudflare's blog: a narrow far-left gutter, the
+       article in the middle, sticky TOC + CTA on the right.
+       FAR LEFT → tags, static, own column
+       CENTER   → scrolls with page (back, title, meta, body)
+       RIGHT    → sticky sidebar (TOC + CTA)
   ────────────────────────────────────────────────────────────────────── -->
-  <div class="flex bg-white min-h-screen">
+  <div class="bg-white min-h-screen">
+  <div class="flex max-w-[1360px] mx-auto">
 
-    <!-- ── LEFT COLUMN: normal page scroll ───────────────────────────── -->
-    <div class="flex-1 min-w-0 px-10 md:px-16 pt-10 pb-20">
+    <!-- ── FAR LEFT COLUMN: tags (own column from md: up, matching the TOC's
+         own breakpoint — below that there's no room for a 3rd column, so a
+         fallback row renders above the title instead, mobile/tablet only) ── -->
+    {(post.data.tags?.length ?? 0) > 0 && (
+      <div
+        class="hidden md:flex w-[180px] flex-shrink-0 flex-col gap-2 pt-10 pb-10 pl-6 self-start"
+        style="position: sticky; top: 68px;"
+        data-sidebar-sync
+      >
+        {post.data.tags!.map((tag) => {
+          const tagData = getBlogTag(tag);
+          return (
+            <a
+              href={`/blog/tag/${tag}`}
+              class="inline-flex items-center px-3 py-1 rounded-full border border-sd-gray-border text-xs text-sd-text-gray whitespace-nowrap hover:border-sd-purple/40 hover:text-sd-purple hover:bg-sd-purple/5 transition-colors self-start"
+            >
+              #{tagData?.label ?? tag}
+            </a>
+          );
+        })}
+      </div>
+    )}
+
+    <!-- ── CENTER COLUMN: normal page scroll ───────────────────────────── -->
+    <div class="flex-1 min-w-0 px-10 md:px-12 pt-10 pb-20">
 
       <!-- Header: breadcrumb · title · meta -->
       <div class="mb-7">
@@ -115,6 +143,8 @@ const breadcrumbJsonLd = {
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Blog
         </a>
+
+
         <h1 id="article-title" class="font-display text-3xl md:text-4xl lg:text-5xl text-sd-text-dark leading-tight" style="font-weight: 400; letter-spacing: -0.02em;">
           {post.data.title}
         </h1>
@@ -169,7 +199,7 @@ const breadcrumbJsonLd = {
       </article>
 
       {(post.data.tags?.length ?? 0) > 0 && (
-        <div class="mt-12 pt-8 border-t border-sd-gray-border flex flex-wrap gap-2">
+        <div class="md:hidden mt-10 pt-8 border-t border-sd-gray-border flex flex-wrap gap-2">
           {post.data.tags!.map((tag) => {
             const tagData = getBlogTag(tag);
             return (
@@ -186,7 +216,11 @@ const breadcrumbJsonLd = {
 
     </div>
 
-    <!-- ── RIGHT COLUMN: sticky TOC + CTA ──────────────────────────── -->
+    <!-- ── RIGHT COLUMN: one static sticky block (TOC + CTA), exactly like
+         before. Sub-items (depth > 2) are collapsed by default and only
+         reveal for the section currently being read, so a post with many
+         H3s (e.g. an FAQ block) never grows tall enough to push the CTA
+         down — the CTA never moves, never disappears. ── -->
     {tocHeadings.length > 0 && (
       <aside
         class="hidden md:block w-[360px] flex-shrink-0 self-start"
@@ -195,34 +229,46 @@ const breadcrumbJsonLd = {
       >
         <div class="px-6 pt-10 pb-10 flex flex-col gap-6">
           <!-- TOC -->
-          <div class="rounded-2xl bg-[#f7f7f8] p-5">
+          <div>
             <p class="text-[10px] uppercase tracking-[0.2em] font-ui text-sd-text-gray mb-4">
               In this article
             </p>
-            <nav aria-label="Table of contents">
-              <ul id="sd-toc" class="flex flex-col gap-0.5">
-                {tocHeadings.map((h) => (
-                  <li style={`padding-left: ${(h.depth - 2) * 10}px`}>
-                    <a
-                      href={`#${h.slug}`}
-                      class="sd-toc-link flex items-center px-3 py-1.5 rounded-lg text-[12px] leading-snug text-sd-text-dark hover:text-sd-purple hover:bg-sd-purple/5 transition-colors duration-150"
-                      data-heading={h.slug}
+            <nav aria-label="Table of contents" class="relative">
+              <div class="absolute left-0 top-0 bottom-0 w-px bg-sd-gray-border" aria-hidden="true"></div>
+              <div
+                id="sd-toc-progress"
+                class="absolute left-0 top-0 w-px bg-sd-purple"
+                style="height: 0px; transition: height 200ms ease, top 200ms ease;"
+                aria-hidden="true"
+              ></div>
+              <ul id="sd-toc" class="flex flex-col gap-3 pl-4">
+                {tocHeadings.map((h) => {
+                  if (h.depth === 2) currentTocParent = h.slug;
+                  const parent = h.depth === 2 ? null : currentTocParent;
+                  return (
+                    <li
+                      data-parent={parent}
+                      class={parent ? "hidden" : ""}
+                      style={`padding-left: ${(h.depth - 2) * 12}px`}
                     >
-                      {h.text}
-                    </a>
-                  </li>
-                ))}
+                      <a
+                        href={`#${h.slug}`}
+                        class="sd-toc-link block text-[11px] leading-snug text-sd-text-gray hover:text-sd-purple transition-colors duration-150"
+                        data-heading={h.slug}
+                      >
+                        {h.text}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
           </div>
 
-          <!-- CTA — 24px gap via gap-6 on the parent flex column -->
+          <!-- CTA -->
           <div class="rounded-2xl p-5" style="background: var(--sd-gradient-hero);">
-            <p class="font-display text-white font-semibold text-[15px] leading-snug mb-1.5">
-              Talk to a Blockchain Developer
-            </p>
-            <p class="text-white/85 text-xs leading-relaxed mb-4">
-              No sales pitch. Just a real conversation about your project.
+            <p class="font-display text-white font-semibold text-[15px] leading-snug mb-4">
+              Have a project in mind?
             </p>
             <a
               href="/contact"
@@ -235,6 +281,7 @@ const breadcrumbJsonLd = {
       </aside>
     )}
 
+  </div>
   </div>
 
   <!-- ─── RELATED POSTS ────────────────────────────────────────────────── -->
@@ -288,6 +335,19 @@ const breadcrumbJsonLd = {
     </section>
   )}
 
+  <!-- ─── NEWSLETTER ───────────────────────────────────────────────────── -->
+  <section class="bg-sd-dark py-14 md:py-16">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <h2 class="font-display text-2xl md:text-3xl text-white mb-6" style="font-weight: 400;">
+        Get more like this in your inbox
+      </h2>
+      <div class="max-w-md">
+        <NewsletterForm compact />
+        <p class="mt-3 text-xs text-white/40">No spam. Unsubscribe in one click anytime.</p>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
 
 <script>
@@ -299,11 +359,39 @@ const breadcrumbJsonLd = {
     wrapper.appendChild(table);
   });
 
+  // ── Sidebar top offset follows the header's own hide-on-scroll (mirrors
+  // Header.astro's THRESHOLD/lastY logic) so the sidebar's sticky offset
+  // collapses to a small margin instead of leaving a gap where the now
+  // hidden header used to be. ──
+  const stickyColumns = document.querySelectorAll<HTMLElement>(
+    'aside[aria-label="Article sidebar"], [data-sidebar-sync]'
+  );
+  if (stickyColumns.length) {
+    let sidebarLastY = 0;
+    const SIDEBAR_THRESHOLD = 80;
+    stickyColumns.forEach((el) => { el.style.transition = "top 300ms ease"; });
+    window.addEventListener(
+      "scroll",
+      () => {
+        const currentY = window.scrollY;
+        const headerHidden = currentY > SIDEBAR_THRESHOLD && currentY > sidebarLastY;
+        stickyColumns.forEach((el) => { el.style.top = headerHidden ? "20px" : "68px"; });
+        sidebarLastY = currentY;
+      },
+      { passive: true }
+    );
+  }
+
   // ── TOC active heading tracking (window scroll) ───────────────────────
   const tocLinks = document.querySelectorAll<HTMLAnchorElement>("#sd-toc .sd-toc-link");
   const articleHeadings = Array.from(
     document.querySelectorAll<HTMLElement>(".sd-prose h2, .sd-prose h3, .sd-prose h4")
   );
+
+  const tocProgress = document.getElementById("sd-toc-progress");
+  const tocList = document.getElementById("sd-toc");
+
+  const tocItems = document.querySelectorAll<HTMLLIElement>("#sd-toc li");
 
   if (tocLinks.length && articleHeadings.length) {
     let activeId = "";
@@ -311,11 +399,29 @@ const breadcrumbJsonLd = {
     const activate = (id: string) => {
       if (id === activeId) return;
       activeId = id;
+
+      const activeLink = Array.from(tocLinks).find((l) => l.dataset.heading === id);
+      const activeLi = activeLink?.closest("li");
+      // A top-level (depth 2) item has no data-parent, so its own id is the section; a
+      // sub-item's section is whatever top-level heading it's nested under.
+      const activeSection = activeLi?.dataset.parent ?? id;
+
       tocLinks.forEach((link) => {
-        const active = link.dataset.heading === id;
-        link.classList.toggle("!text-sd-purple", active);
-        link.classList.toggle("!bg-sd-purple/5", active);
+        link.classList.toggle("!text-sd-purple", link.dataset.heading === id);
       });
+
+      tocItems.forEach((li) => {
+        const parent = li.dataset.parent;
+        if (!parent) return; // top-level items always stay visible
+        li.classList.toggle("hidden", parent !== activeSection);
+      });
+
+      if (activeLink && tocProgress && tocList) {
+        const listTop = tocList.getBoundingClientRect().top;
+        const linkRect = activeLink.getBoundingClientRect();
+        const filledHeight = linkRect.top + linkRect.height / 2 - listTop;
+        tocProgress.style.height = `${Math.max(filledHeight, 0)}px`;
+      }
     };
 
     const getActiveId = (): string => {

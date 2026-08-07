@@ -66,7 +66,8 @@ if (Array.isArray(breadcrumbsProp)) {
   if (segments.length > 0) {
     autoCrumbs.push({ label: "Home", href: "/" });
     let acc = "";
-    segments.forEach((seg, i) => {
+    for (let i = 0; i < segments.length; i++) {
+      const seg = segments[i];
       acc += "/" + seg;
       const label = seg
         .split("-")
@@ -74,9 +75,15 @@ if (Array.isArray(breadcrumbsProp)) {
         .join(" ");
       // Only link an intermediate crumb when its path is a real page;
       // the last crumb is never linked.
-      const linkable = i < segments.length - 1 && realRoutes.has(acc);
+      const isLast = i === segments.length - 1;
+      const linkable = !isLast && realRoutes.has(acc);
       autoCrumbs.push(linkable ? { label, href: acc } : { label });
-    });
+      // A dead intermediate segment (no real page, not the last segment,
+      // e.g. "tag" in /blog/tag/compliance) means every segment after it
+      // is a leaf value the page's own heading already shows — stop
+      // instead of repeating it as a redundant final crumb.
+      if (!linkable && !isLast) break;
+    }
   }
 }
 const showAutoBreadcrumbs = autoCrumbs.length > 1;
