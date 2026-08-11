@@ -14,6 +14,8 @@ export interface Author {
   /** Optional gallery of additional photos (speaking, posts, etc.) */
   gallery?: { src: string; alt: string }[];
   social?: { linkedin?: string; twitter?: string; github?: string };
+  /** Expertise topics, used for the Person schema's knowsAbout field */
+  knowsAbout?: string[];
 }
 
 export const authors: Author[] = [
@@ -34,6 +36,7 @@ export const authors: Author[] = [
       { src: "/images/content/uLuHSBzzLiHci62DaepeOWAGlU.webp", alt: "Federico Sendra at SpaceDev All Hands 2024." },
     ],
     social: { linkedin: "https://www.linkedin.com/in/fsendra/" },
+    knowsAbout: ["Web3 Product Strategy", "Blockchain Development", "Startup Engineering Leadership"],
   },
   {
     slug: "juan-manuel-sobral",
@@ -52,6 +55,7 @@ export const authors: Author[] = [
       { src: "/images/content/pGiXYozQ3mE4cilNOItfe2L2fUA.svg", alt: "SpaceDev co-founder signature illustration." },
     ],
     social: { linkedin: "https://www.linkedin.com/in/juanmsobral/" },
+    knowsAbout: ["Smart Contract Development", "Decentralized Protocols", "Blockchain Security"],
   },
   {
     slug: "diego-priliac",
@@ -69,6 +73,7 @@ export const authors: Author[] = [
       { src: "/images/content/sZeLM1jDYxCoaqnWcDNpUxjsw.webp", alt: "Diego Priliac with the SpaceDev operations team." },
     ],
     social: { linkedin: "https://www.linkedin.com/in/dpriliac/" },
+    knowsAbout: ["Engineering Operations", "Team Building", "Software Delivery Management"],
   },
 ];
 

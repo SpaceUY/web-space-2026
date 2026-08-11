@@ -487,6 +487,23 @@ const serviceJsonLd = {
     </section>
   )}
 
+  <!-- CASE STUDIES FALLBACK: no caseStudySlugs configured for this page, so
+       there's no specific case study to point to — link to the full
+       portfolio instead of showing something that doesn't correspond. -->
+  {featured.length === 0 && (
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container flex flex-col items-start gap-6" data-animate>
+        <div class="max-w-2xl">
+          <h2 class="section-title text-white mb-4">Real Work, Real Results</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            Explore our portfolio to see the engineering behind the platforms we've shipped.
+          </p>
+        </div>
+        <Button href="/our-work" variant="outline-light" size="lg">See Our Work</Button>
+      </div>
+    </section>
+  )}
+
   <!-- MID CTA (between case studies and benefits) -->
   {data.midCta && (
     <section class={`pb-14 md:pb-20 ${data.caseStudiesTone === "light" ? "" : "bg-sd-dark"}`} style={data.caseStudiesTone === "light" ? "background: #EDEDED;" : ""}>

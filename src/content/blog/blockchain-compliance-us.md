@@ -2,6 +2,7 @@
 title: "Blockchain Compliance in the US: What Builders Actually Need in 2026"
 description: "What blockchain compliance in the US requires in 2026: SEC-CFTC taxonomy, GENIUS Act rules, AML, licensing, and compliant-by-design architecture."
 publishedAt: 2026-07-31
+updatedAt: 2026-08-06
 author: federico-sendra
 category: Blockchain Trends
 tags: ["compliance", "institutional", "blockchain", "enterprise"]

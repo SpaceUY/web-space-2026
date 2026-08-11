@@ -2,6 +2,7 @@
 title: "Tokenized Bonds: How On-Chain Fixed Income Actually Works"
 description: "How on-chain fixed income actually works: tokenized bonds, T+0 settlement, automated coupons, and where the 2026 US regulatory picture stands."
 publishedAt: 2026-07-31
+updatedAt: 2026-08-06
 author: federico-sendra
 category: Blockchain Trends
 tags: ["rwa", "tokenization", "defi", "compliance", "institutional"]
