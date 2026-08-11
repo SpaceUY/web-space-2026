@@ -26,6 +26,8 @@ const personJsonLd = {
   description: author.bio,
   url: `${SITE.url}/author/${author.slug}`,
   worksFor: { "@type": "Organization", name: SITE.name, url: SITE.url },
+  ...(author.avatar && { image: `${SITE.url}${author.avatar}` }),
+  ...(author.knowsAbout && { knowsAbout: author.knowsAbout }),
   ...(author.social?.linkedin && { sameAs: [author.social.linkedin] }),
 };
 ---

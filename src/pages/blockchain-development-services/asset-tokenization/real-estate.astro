@@ -2,7 +2,16 @@
 import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
 import Button from "../../../components/ui/Button.astro";
 import FeatureCard from "../../../components/ui/FeatureCard.astro";
+import CaseStudyCard from "../../../components/ui/CaseStudyCard.astro";
 import { realEstateTokData } from "../../../data/services";
+import { caseStudies } from "../../../data/case-studies";
+
+// No case study is a real-estate deal specifically, so this shows our closest
+// track record instead — tokenized value and regulated financial products —
+// rather than overstating relevance to a project we haven't shipped.
+const tokenizationCases = caseStudies.filter((c) =>
+  ["apebond", "bondi-finance", "ndax-canada"].includes(c.slug)
+);
 
 const tokenStructures = [
   {
@@ -333,7 +342,26 @@ const relatedServices = [
       </div>
     </section>
 
-    <!-- ⑧ Related Services -->
+    <!-- Case Studies -->
+    {tokenizationCases.length > 0 && (
+      <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+        <div class="sd-container">
+          <div class="max-w-2xl mb-14" data-animate>
+            <h2 class="section-title text-white mb-4">Our Track Record in Tokenized Value</h2>
+            <p class="text-sd-text-muted leading-relaxed">
+              We haven't shipped a real estate deal yet, but this is the same engineering: tokenized value and regulated financial products, live in production.
+            </p>
+          </div>
+          <div class="grid gap-[18px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+            {tokenizationCases.map((c) => (
+              <CaseStudyCard caseStudy={c} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Related Services -->
     <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
       <div class="sd-container">
         <div class="max-w-2xl mb-12" data-animate>
