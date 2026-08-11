@@ -292,6 +292,10 @@ export const smartContractData: ServicePageData = {
   heroParticles: true,
   primaryCta: { label: "Get in touch", href: "/contact" },
 
+  caseStudySlugs: ["rarible", "apebond", "bondi-finance", "blockus"],
+  caseStudiesTitle: "Smart Contracts We've Shipped",
+  caseStudiesDescription: "Real contracts, in production, for real clients.",
+
   faqs: [
     { question: "What languages do you write smart contracts in?", answer: "Solidity for Ethereum and EVM-compatible chains, Rust for Solana, and Move for Aptos and Sui, chosen based on your target network." },
     { question: "How long does smart contract development take?", answer: "A single-purpose contract (token, staking, escrow) typically takes 4 to 8 weeks including testing. Multi-contract systems like DeFi protocols run 10 to 16 weeks. Timelines are confirmed during scoping, before development starts." },

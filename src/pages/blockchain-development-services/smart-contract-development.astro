@@ -2,13 +2,7 @@
 import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
 import Button from "../../components/ui/Button.astro";
 import FeatureCard from "../../components/ui/FeatureCard.astro";
-import CaseStudyCard from "../../components/ui/CaseStudyCard.astro";
 import { smartContractData } from "../../data/services";
-import { caseStudies } from "../../data/case-studies";
-
-const smartContractCases = caseStudies.filter((c) =>
-  ["rarible", "apebond", "bondi-finance", "blockus"].includes(c.slug)
-);
 
 const services = [
   { number: "01", title: "Custom Smart Contract Development",    description: "We build contracts tailored to your tokenomics, business logic, and deployment requirements. Never copy-paste templates." },
@@ -229,25 +223,6 @@ const processSteps = [
         </p>
       </div>
     </section>
-
-    <!-- Case Studies -->
-    {smartContractCases.length > 0 && (
-      <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
-        <div class="sd-container">
-          <div class="max-w-2xl mb-14" data-animate>
-            <h2 class="section-title text-white mb-4">Smart Contracts We've Shipped</h2>
-            <p class="text-sd-text-muted leading-relaxed">
-              Real contracts, in production, for real clients.
-            </p>
-          </div>
-          <div class="grid gap-[18px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-            {smartContractCases.map((c) => (
-              <CaseStudyCard caseStudy={c} />
-            ))}
-          </div>
-        </div>
-      </section>
-    )}
 
   </div>
 </ServicePageLayout>
