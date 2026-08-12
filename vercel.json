@@ -24,6 +24,11 @@
   ],
   "redirects": [
     {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
+    },
+    {
       "source": "/our-work/nomei",
       "destination": "/our-work",
       "permanent": true

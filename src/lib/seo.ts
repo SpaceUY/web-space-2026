@@ -30,6 +30,8 @@ export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: SITE.name,
+  description: SITE.defaultDescription,
+  foundingDate: "2015",
   url: SITE.url,
   logo: `${SITE.url}/images/logo/spacedev-logo.svg`,
   contactPoint: {
