@@ -31,23 +31,27 @@ const accentByCategory: Record<string, string> = {
 // (Rarible, UFC, Samsonite, Blockus, Drata) read heavier than thin ones (Schwarzkopf,
 // UTEC, prose, Scotiabank, d_local) at the exact same pixel height, so each logo is
 // tuned by eye against the rest of the set until they read as one consistent weight.
-const clientLogosWhite: { src: string; alt: string; scale?: number }[] = [
-  { src: "/images/clients-white/apple.svg",         alt: "Apple" },
-  { src: "/images/clients-white/acton_academy.svg", alt: "Acton Academy" },
-  { src: "/images/clients-white/microsoft.svg",      alt: "Microsoft",    scale: 0.95 },
-  { src: "/images/clients-white/drata.svg",          alt: "Drata",        scale: 0.78 },
-  { src: "/images/clients-white/prose.svg",          alt: "prose",        scale: 1.2 },
-  { src: "/images/clients-white/ulta.svg",           alt: "ULTA Beauty" },
-  { src: "/images/clients-white/scotia.svg",         alt: "Scotiabank",   scale: 1.1 },
-  { src: "/images/clients-white/utec.svg",           alt: "UTEC",         scale: 1.25 },
-  { src: "/images/clients-white/samsonite.svg",      alt: "Samsonite",    scale: 0.8 },
-  { src: "/images/clients-white/blockus.svg",        alt: "Blockus",      scale: 0.82 },
-  { src: "/images/clients-white/ute.svg",            alt: "UTE",          scale: 1.05 },
-  { src: "/images/clients-white/d_local.svg",        alt: "dLocal",       scale: 1.15 },
-  { src: "/images/clients-white/schwarzkopf.svg",    alt: "Schwarzkopf",  scale: 1.4 },
-  { src: "/images/clients-white/rarible.svg",        alt: "Rarible",      scale: 0.72 },
-  { src: "/images/clients-white/ufc.svg",            alt: "UFC Strike",   scale: 0.75 },
-  { src: "/images/clients-white/orange.png",         alt: "Orange" },
+// `ratio` = each logo's real intrinsic width/height (from its own SVG/PNG
+// dimensions), used to render explicit width/height attrs below so the
+// browser reserves layout space before the image loads (no CLS), instead
+// of computing width from height only after decode.
+const clientLogosWhite: { src: string; alt: string; scale?: number; ratio: number }[] = [
+  { src: "/images/clients-white/apple.svg",         alt: "Apple",        ratio: 201 / 238 },
+  { src: "/images/clients-white/acton_academy.svg", alt: "Acton Academy", ratio: 473 / 166 },
+  { src: "/images/clients-white/microsoft.svg",      alt: "Microsoft",    scale: 0.95, ratio: 77 / 17 },
+  { src: "/images/clients-white/drata.svg",          alt: "Drata",        scale: 0.78, ratio: 70 / 15 },
+  { src: "/images/clients-white/prose.svg",          alt: "prose",        scale: 1.2,  ratio: 74 / 26 },
+  { src: "/images/clients-white/ulta.svg",           alt: "ULTA Beauty", ratio: 70 / 30 },
+  { src: "/images/clients-white/scotia.svg",         alt: "Scotiabank",   scale: 1.1,  ratio: 78 / 15 },
+  { src: "/images/clients-white/utec.svg",           alt: "UTEC",         scale: 1.25, ratio: 71 / 51 },
+  { src: "/images/clients-white/samsonite.svg",      alt: "Samsonite",    scale: 0.8,  ratio: 85 / 13 },
+  { src: "/images/clients-white/blockus.svg",        alt: "Blockus",      scale: 0.82, ratio: 95.36 / 18.68 },
+  { src: "/images/clients-white/ute.svg",            alt: "UTE",          scale: 1.05, ratio: 69 / 31 },
+  { src: "/images/clients-white/d_local.svg",        alt: "dLocal",       scale: 1.15, ratio: 90.72 / 21.12 },
+  { src: "/images/clients-white/schwarzkopf.svg",    alt: "Schwarzkopf",  scale: 1.4,  ratio: 73 / 32 },
+  { src: "/images/clients-white/rarible.svg",        alt: "Rarible",      scale: 0.72, ratio: 76 / 18 },
+  { src: "/images/clients-white/ufc.svg",            alt: "UFC Strike",   scale: 0.75, ratio: 83 / 13 },
+  { src: "/images/clients-white/orange.png",         alt: "Orange",       ratio: 1109 / 1109 },
 ];
 
 // Industry SVG icons — white stroke, for use on purple bg circles
@@ -109,12 +113,12 @@ const industries = [
           <div class="sd-marquee">
             <div class="sd-marquee-set">
               {clientLogosWhite.map((c) => (
-                <img src={c.src} alt={c.alt} loading="eager" style={`height:${28 * (c.scale ?? 1)}px`} class="w-auto object-contain opacity-85 shrink-0" />
+                <img src={c.src} alt={c.alt} loading="eager" width={Math.round(28 * (c.scale ?? 1) * c.ratio)} height={Math.round(28 * (c.scale ?? 1))} style={`height:${28 * (c.scale ?? 1)}px`} class="w-auto object-contain opacity-85 shrink-0" />
               ))}
             </div>
             <div class="sd-marquee-set" aria-hidden="true">
               {clientLogosWhite.map((c) => (
-                <img src={c.src} alt="" loading="lazy" style={`height:${28 * (c.scale ?? 1)}px`} class="w-auto object-contain opacity-85 shrink-0" />
+                <img src={c.src} alt="" loading="lazy" width={Math.round(28 * (c.scale ?? 1) * c.ratio)} height={Math.round(28 * (c.scale ?? 1))} style={`height:${28 * (c.scale ?? 1)}px`} class="w-auto object-contain opacity-85 shrink-0" />
               ))}
             </div>
           </div>

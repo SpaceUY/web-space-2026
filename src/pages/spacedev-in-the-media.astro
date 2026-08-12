@@ -15,6 +15,8 @@ interface ContentItem {
   quote?: string;
   source: "Forbes" | "Frontiers" | "CriptoNoticias" | "Medium";
   tag: string;
+  /** Only used by the two featured hero cards (contentItems[0] and [1]) */
+  image?: string;
 }
 
 interface VideoItem {
@@ -31,6 +33,17 @@ interface VideoItem {
 
 const contentItems: ContentItem[] = [
   {
+    title: "Why Enterprise AI Is Starting to Look Like an Ecosystem",
+    date: "Aug 2026",
+    url: "https://medium.com/@jmsobral/why-enterprise-ai-is-starting-to-look-like-an-ecosystem-eb19fe5d3be7",
+    authors: ["Juan Manuel Sobral"],
+    description: "On why enterprise AI is moving past the 'which model is best' debate and into a multi-model ecosystem, with different tools handling different parts of the stack.",
+    quote: "Different tools gradually settle into different parts of the stack.",
+    source: "Medium",
+    tag: "AI",
+    image: "/images/content/juan-manuel-sobral-medium-aug2026.webp",
+  },
+  {
     title: "Product Discovery for Full-Stack vs. Blockchain Projects",
     date: "Jul 2026",
     url: "https://medium.com/@jmsobral/product-discovery-for-full-stack-vs-blockchain-projects-2ab7a671cdae",
@@ -39,6 +52,7 @@ const contentItems: ContentItem[] = [
     quote: "At SpaceDev, we've seen how early decisions around smart contract development, wallet flows and dApp development can determine whether a product remains simple and adaptable or becomes unnecessarily difficult to use and maintain.",
     source: "Medium",
     tag: "Product Discovery",
+    image: "/images/content/juan-manuel-sobral-medium-jul2026.webp",
   },
   {
     title: "Decentralized Identity (DID): The Missing Layer for Institutional Blockchain Adoption",
@@ -49,6 +63,7 @@ const contentItems: ContentItem[] = [
     quote: "DID isn't a magic replacement for compliance, KYC, enterprise IAM or government ID. It's a way to make verified trust more portable, and it's also what blockchain has been missing at the institutional level: the bridge between decentralized infrastructure and real-world obligations.",
     source: "Forbes",
     tag: "Blockchain",
+    image: "/images/content/federico-sendra-forbes-jun2026.webp",
   },
   {
     title: "Sobral: la regulacion de criptomonedas en Uruguay mata a las startups",
@@ -201,9 +216,11 @@ const badge: Record<string, { label: string; logo?: string; color: string; bg: s
   Medium:         { label: "Medium",              logo: "/images/icons/Medium-logo.png",         color: "#000000", bg: "rgba(0,0,0,0.06)",      border: "rgba(0,0,0,0.18)"     },
 };
 
-const featuredMedium = contentItems[0]; // Jul 2026 Medium
-const featuredForbes = contentItems[1]; // Jun 2026 Forbes
-const rest = contentItems.slice(2); // includes May 2026 CriptoNoticias, no longer featured
+// contentItems must stay sorted newest-first: the featured hero cards are
+// always the 2 most recent items, whatever their source. Nothing below this
+// point should assume a specific source ends up in either slot.
+const [featured1, featured2] = contentItems;
+const rest = contentItems.slice(2);
 
 const pageJsonLd = {
   "@context": "https://schema.org",
@@ -275,9 +292,9 @@ const videoJsonLd = videoItems.map((v) => ({
       <!-- HERO CARDS — two highlights side by side -->
       <div class="grid md:grid-cols-2 gap-4 mb-6" data-animate>
 
-        {/* Medium highlight, Juan Manuel Sobral */}
+        {/* Medium highlight */}
         {(() => {
-          const item = featuredMedium;
+          const item = featured1;
           const b = badge[item.source];
           return (
             <a href={item.url} target="_blank" rel="noopener noreferrer"
@@ -287,7 +304,7 @@ const videoJsonLd = videoItems.map((v) => ({
               onmouseout="this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'; this.style.borderColor='#e8e8e8'"
             >
               <div class="relative h-52 overflow-hidden" style="background: #f0f0f0;">
-                <img src="/images/content/juan-manuel-sobral-medium-jul2026.webp" alt="Product discovery for full-stack vs. blockchain projects"
+                <img src={item.image} alt={item.title}
                   class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div class="flex flex-col justify-between gap-4 p-7 flex-1">
@@ -304,7 +321,7 @@ const videoJsonLd = videoItems.map((v) => ({
                 </div>
                 <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
                   <div>
-                    <p class="text-sm font-medium" style="color: #141414;">Juan Manuel Sobral</p>
+                    <p class="text-sm font-medium" style="color: #141414;">{item.authors?.[0]}</p>
                     <p class="text-xs mt-0.5" style="color: #aaaaaa;">{item.date}</p>
                   </div>
                   <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${b.color};`}>Read ↗</span>
@@ -314,9 +331,9 @@ const videoJsonLd = videoItems.map((v) => ({
           );
         })()}
 
-        {/* Forbes highlight — Federico Sendra */}
+        {/* Forbes highlight */}
         {(() => {
-          const item = featuredForbes;
+          const item = featured2;
           const b = badge[item.source];
           return (
             <a href={item.url} target="_blank" rel="noopener noreferrer"
@@ -326,7 +343,7 @@ const videoJsonLd = videoItems.map((v) => ({
               onmouseout="this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'; this.style.borderColor='#e8e8e8'"
             >
               <div class="relative h-52 overflow-hidden" style="background: #f0f0f0;">
-                <img src="/images/content/federico-sendra-forbes-jun2026.webp" alt="Federico Sendra"
+                <img src={item.image} alt={item.authors?.[0]}
                   class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div class="flex flex-col justify-between gap-4 p-7 flex-1">
@@ -339,7 +356,7 @@ const videoJsonLd = videoItems.map((v) => ({
                 </div>
                 <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
                   <div>
-                    <p class="text-sm font-medium" style="color: #141414;">Federico Sendra</p>
+                    <p class="text-sm font-medium" style="color: #141414;">{item.authors?.[0]}</p>
                     <p class="text-xs mt-0.5" style="color: #aaaaaa;">{item.date}</p>
                   </div>
                   <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${b.color};`}>Read ↗</span>

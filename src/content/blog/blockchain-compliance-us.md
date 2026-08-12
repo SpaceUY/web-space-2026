@@ -56,10 +56,10 @@ The US uses overlapping regulators, not a single crypto authority. Knowing which
 
 | Regulator | Owns | Relevant to you if |
 |---|---|---|
-| SEC | Digital securities | Your token is an investment contract or tokenized security |
-| CFTC | Digital commodities and spot markets | You touch BTC, ETH, or other commodity-class tokens |
-| FinCEN (Treasury) | AML and Bank Secrecy Act | You accept, transmit, or custody value for others |
-| OCC | Bank crypto activity | You are a bank custodying or settling digital assets |
+| [SEC](https://www.sec.gov) | Digital securities | Your token is an investment contract or tokenized security |
+| [CFTC](https://www.cftc.gov) | Digital commodities and spot markets | You touch BTC, ETH, or other commodity-class tokens |
+| [FinCEN](https://www.fincen.gov) (Treasury) | AML and Bank Secrecy Act | You accept, transmit, or custody value for others |
+| [OCC](https://www.occ.gov) | Bank crypto activity | You are a bank custodying or settling digital assets |
 | State regulators | Money transmission | You move fiat, most states plus NY BitLicense |
 
 A single product often touches three or four of these at once. A tokenized fund can be an SEC matter for the security, a FinCEN matter for onboarding, and a state matter for the cash leg. A crypto exchange listing multiple asset types can touch all five in the same afternoon, one token might be a security, another a commodity, and the fiat rails are a state and FinCEN matter regardless of which token moves through them.
@@ -106,7 +106,7 @@ Most obligations do not depend on the taxonomy. If you move value, they apply.
 | MSB registration + state money transmitter | Moving fiat | FinCEN registration plus state licenses |
 | OFAC sanctions screening | Any user or wallet | Screen and block sanctioned addresses |
 | 1099-DA tax reporting | US customers | Report digital-asset transactions |
-| Stablecoin rules (GENIUS Act) | Issuing a payment stablecoin | Permitted-issuer status, 1:1 reserves, audited disclosures |
+| Stablecoin rules ([GENIUS Act](https://www.congress.gov/bill/119th-congress/senate-bill/1582)) | Issuing a payment stablecoin | Permitted-issuer status, 1:1 reserves, audited disclosures |
 
 The anti-money laundering (AML) program is the one every product needs regardless of what it's built on top of, because it attaches to moving value, not to a specific token type. The 1099-DA row is worth a precise note, since it's easy to get the number wrong: there is no single flat dollar minimum that exempts small transactions across the board. Brokers report gross proceeds on digital asset sales starting January 1, 2025, with no general de minimis threshold. A $600 per-year, per-customer threshold does exist, but only for payment processors handling digital assets (PDAP), and a separate $10,000 annual aggregation threshold applies to qualified stablecoins under the optional reporting method. If your product mixes stablecoin payments and other digital-asset activity, you're likely tracking two different thresholds, not one.
 

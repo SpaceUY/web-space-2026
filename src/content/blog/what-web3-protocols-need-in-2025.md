@@ -52,7 +52,7 @@ Example: Polygon Labs has an internal dev evangelism team dedicated to maintaini
 
 Web3 protocols live or die by adoption. The best partnerships help unlock impactful projects.
 
-- [Aave](https://aave.com/) or [Curve](https://www.curve.finance/dex/) rely on partners for [smart contract audits](/blog/smart-contract-audit-checklist), bug bounties, and real-time vulnerability monitoring. These measures are no longer optional: hacks have cost DeFi over **$3.8B** in 2022 alone.
+- [Aave](https://aave.com/) or [Curve](https://www.curve.finance/dex/) rely on partners for [smart contract audits](/blog/smart-contract-audit-checklist), bug bounties, and real-time vulnerability monitoring. These measures are no longer optional: [hacks have cost DeFi over **$3.1B** in 2022 alone](https://www.chainalysis.com/blog/2023-crypto-crime-report-introduction/).
 
 - Projects like [Unstoppable Domains](https://unstoppabledomains.com/) and [ENS](https://ens.domains/) require integration across wallets, browsers, and mobile platforms.
 
@@ -106,7 +106,7 @@ Reliability isn't sexy, but it's vital. Protocols expect partners to deliver:
 - Automated **node scaling** during traffic spikes.
 - **Detailed logging** and **incident post-mortems**.
 
-Use case: when [Arbitrum](https://arbitrum.io/) had downtime in early 2023, protocols that had monitoring and failover support were able to continue service without user impact.
+Use case: when [Arbitrum](https://arbitrum.io/) had [downtime in early 2023](https://www.banklesstimes.com/news/2023/01/31/arbitrum-suffers-its-second-outage-blames-hardware-failure/), protocols that had monitoring and failover support were able to continue service without user impact.
 
 ## Tokenomics & Analytics
 

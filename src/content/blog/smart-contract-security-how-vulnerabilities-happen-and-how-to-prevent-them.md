@@ -72,7 +72,7 @@ OpenZeppelin's ReentrancyGuard is the standard implementation. What teams miss i
 
 Flash loans allow anyone to borrow large amounts of capital within a single transaction, with no collateral, as long as repayment happens in the same block. Attackers use this to execute oracle manipulation, AMM liquidity pool draining, and arbitrage exploits across platforms. The flash loan itself isn't the vulnerability. It's the amplifier that turns a small pricing flaw into a protocol-draining event.
 
-Beanstalk, for example, was exploited because its governance contract had no protection against flash loans. The attacker borrowed enough to gain a 78% supermajority in a single transaction and passed a proposal that drained protocol funds.
+Beanstalk, for example, was exploited because its governance contract had no protection against flash loans. The attacker borrowed enough to gain a [78% supermajority](https://www.certik.com/blog/revisiting-beanstalk-farms-exploit) in a single transaction and passed a proposal that drained protocol funds.
 
 ### Oracle Manipulation
 
@@ -140,7 +140,7 @@ Hardware wallets for deployment keys, multisig for admin functions, proper secre
 
 ### A Note on OpenZeppelin Defender
 
-OpenZeppelin's Defender platform was a good attempt at addressing exactly these operational gaps: it brought together on-chain monitoring, managed relayers (so private keys never had to sit in application infrastructure), access control management, and deployment pipelines under one roof. Most teams were either skipping these entirely or building them ad hoc. Defender made it easier to do them properly. It's now being phased out, new sign-ups closed June 2025 and the platform shuts down fully in July 2026, with OpenZeppelin migrating the core tools to open source.
+OpenZeppelin's Defender platform was a good attempt at addressing exactly these operational gaps: it brought together on-chain monitoring, managed relayers (so private keys never had to sit in application infrastructure), access control management, and deployment pipelines under one roof. Most teams were either skipping these entirely or building them ad hoc. Defender made it easier to do them properly. It's now being [phased out](https://www.openzeppelin.com/news/doubling-down-on-open-source-and-phasing-out-defender), new sign-ups closed June 2025 and the platform shuts down fully in July 2026, with OpenZeppelin migrating the core tools to open source.
 
 The platform is going away, but the problems it solved aren't. Monitoring for suspicious on-chain activity, managing who holds what admin keys, and keeping deployment workflows auditable are still unsolved for most teams. They don't require a specific platform to address, but they do require intentional decisions, not afterthoughts.
 
@@ -208,7 +208,7 @@ On-chain monitoring tools like OpenZeppelin Defender, Tenderly, or Forta track u
 
 ### Bug bounties
 
-A well-scoped bug bounty program extends the audit surface to a global pool of security researchers. Immunefi is the standard platform for Web3 bounties. Payout tiers should reflect the actual severity classification used in the audit, with critical-level payouts meaningful enough to attract serious researchers.
+A well-scoped bug bounty program extends the audit surface to a global pool of security researchers. [Immunefi](https://immunefi.com) is the standard platform for Web3 bounties. Payout tiers should reflect the actual severity classification used in the audit, with critical-level payouts meaningful enough to attract serious researchers.
 
 ### Upgrade hygiene
 

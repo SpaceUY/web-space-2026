@@ -14,7 +14,7 @@ metadescription: "A founder's guide to launching a real-world asset protocol in 
 ## Key Takeaways
 
 - Launching an RWA protocol in 2026 is primarily a legal and compliance engineering challenge, not just a technical one.
-- The on-chain RWA market exceeded $35 billion in late 2025 and is projected to reach $2 trillion by 2030, creating a real commercial opportunity.
+- The on-chain RWA market exceeded [$35 billion](https://app.rwa.xyz/) in late 2025 and is projected to reach [$2 trillion by 2030](https://www.mckinsey.com/industries/financial-services/our-insights/from-ripples-to-waves-the-transformational-power-of-tokenizing-assets), creating a real commercial opportunity.
 - Chain selection is a strategic decision: public chains offer composability and liquidity; permissioned chains offer compliance control. Most serious platforms use a hybrid model.
 - Token standards matter. ERC-3643 and ERC-7518 are the emerging defaults for compliant, institutional-grade RWA issuance.
 - Smart contract security audit is non-negotiable before mainnet. A single exploit can destroy investor trust and trigger regulatory consequences.
@@ -23,7 +23,7 @@ metadescription: "A founder's guide to launching a real-world asset protocol in 
 
 ## The RWA Opportunity Is Real. So Is the Complexity.
 
-The numbers are hard to ignore. The on-chain RWA market surpassed $35 billion by late 2025, growing from roughly $5 billion in 2022. BlackRock, JPMorgan, Franklin Templeton and Fidelity are not experimenting anymore. They are running production infrastructure. Coinbase is pursuing SEC approval to trade tokenized equities 24/7. Republic sold tokenized economic rights in pre-IPO shares. The DTCC announced it would tokenize DTC-custodied assets on Hyperledger Besu in the second half of 2026.
+The numbers are hard to ignore. The on-chain RWA market surpassed $35 billion by late 2025, growing from roughly [$5 billion in 2022](https://www.coindesk.com/business/2025/06/26/real-world-asset-tokenization-market-has-grown-almost-fivefold-in-3-years). BlackRock, JPMorgan, Franklin Templeton and Fidelity are not experimenting anymore. They are running production infrastructure. Coinbase is [pursuing SEC approval to trade tokenized equities 24/7](https://www.coindesk.com/business/2025/06/17/coinbase-seeks-sec-approval-to-offer-tokenized-stock-trading). [Republic sold tokenized economic rights in pre-IPO shares](https://www.cnbc.com/2025/06/25/blockchain-investing-startup-republic-to-allow-users-to-buy-tokenized-spacex-shares.html). [The DTCC announced it would tokenize DTC-custodied assets on the Canton Network](https://www.canton.network/canton-network-press-releases/dtcc-and-digital-asset-partner-to-tokenize-dtc-custodied-u.s.-treasury-securities-on-the-canton-network) in the second half of 2026.
 
 If you are a founder evaluating whether to build an RWA protocol, the market signal is clear. The question is not whether real-world asset tokenization works. It is whether you understand what it actually takes to build a protocol that survives legal scrutiny, retains institutional users and generates durable liquidity. Most projects that have failed in this category did not fail because of bad technology. They failed because they underestimated the compliance surface, misread the liquidity problem or built a token when they needed to build a platform.
 
@@ -33,7 +33,7 @@ This guide covers the full stack: asset selection, legal structure, chain archit
 
 The first and most consequential decision in any RWA protocol is what you are tokenizing and why a digital representation creates meaningful value over the existing non-tokenized version. This sounds obvious, but it is where a significant number of projects go wrong. The appeal of the category can obscure whether a specific asset actually benefits from tokenization.
 
-The assets with the clearest tokenization thesis in 2026 are those that combine high underlying value, low current liquidity and meaningful investor demand for fractional or 24/7 access. Private credit is currently the largest category, with active on-chain private credit exceeding $18.9 billion as of November 2025. Tokenized U.S. Treasuries represent over $9 billion. Real estate, commodities and tokenized funds are also established categories.
+The assets with the clearest tokenization thesis in 2026 are those that combine high underlying value, low current liquidity and meaningful investor demand for fractional or 24/7 access. Private credit is currently the largest category, with [active on-chain private credit exceeding $18.9 billion as of November 2025](https://app.rwa.xyz/private-credit). [Tokenized U.S. Treasuries represent over $9 billion](https://app.rwa.xyz/treasuries). Real estate, commodities and tokenized funds are also established categories.
 
 Before committing to a protocol architecture, answer these questions with evidence, not assumptions:
 
@@ -49,7 +49,7 @@ RWA tokenization is as much a legal engineering exercise as a technical one. Thi
 
 The standard vehicle for institutional-grade RWA issuance is a Special Purpose Vehicle (SPV), typically structured in a jurisdiction with established tokenization law. The SPV holds the underlying asset, and token holders represent beneficial ownership or a defined economic interest in the SPV. This structure keeps assets off the operating company balance sheet, provides insolvency protection for token holders and creates the legal separation that regulated custodians require.
 
-Jurisdiction selection directly determines the compliance pathway. Delaware LLCs with sub-entities remain the primary structure for U.S.-targeted offerings to accredited investors under Regulation D. Singapore's Variable Capital Company framework has been used by Franklin Templeton for its tokenized money market fund. The UAE and Cayman Islands remain preferred for internationally distributed products. By 2026, a single unrestricted token "for everyone everywhere" is no longer viable. You must define your target investor types and jurisdictions before issuing, and structure the legal entity accordingly.
+Jurisdiction selection directly determines the compliance pathway. Delaware LLCs with sub-entities remain the primary structure for U.S.-targeted offerings to accredited investors under Regulation D. [Singapore's Variable Capital Company framework has been used by Franklin Templeton](https://fintechnews.sg/111265/wealthtech/franklin-templeton-tokenised-fund-singapore/) for its tokenized money market fund. The UAE and Cayman Islands remain preferred for internationally distributed products. By 2026, a single unrestricted token "for everyone everywhere" is no longer viable. You must define your target investor types and jurisdictions before issuing, and structure the legal entity accordingly.
 
 The most expensive mistake at this stage is treating legal review as a final-step compliance check. Get written legal opinions in each target market, confirm which regulatory classification applies to your token, and establish the custody and reporting framework before any capital is raised or tokens are issued.
 
@@ -69,13 +69,13 @@ The token standard you select determines what your smart contract can and cannot
 
 The two standards that have emerged as serious options for compliant RWA token development in 2026 are ERC-3643 (T-REX) and ERC-7518.
 
-**ERC-3643**, also known as T-REX, was designed by Tokeny and has been adopted by projects including Societe Generale's tokenized bond issuance. It includes an on-chain identity registry, modular compliance rules and fine-grained transfer controls that can enforce jurisdiction-based restrictions at the contract level.
+**[ERC-3643](https://www.erc3643.org/)**, also known as T-REX, was designed by [Tokeny](https://tokeny.com/erc3643/) and has been adopted by projects including [Societe Generale's tokenized bond issuance](https://www.societegenerale.com/en/news/newsroom/societe-generale-issued-first-covered-bond-security-token-public-blockchain). It includes an on-chain identity registry, modular compliance rules and fine-grained transfer controls that can enforce jurisdiction-based restrictions at the contract level.
 
 **ERC-7518** extends this model with more flexible compliance hooks and is gaining adoption in projects that need to manage more complex regulatory scenarios across multiple jurisdictions.
 
 The critical design principle for RWA smart contracts is that compliance logic should be programmable and embedded in the contract, not managed through external off-chain processes. This means the contract itself enforces KYC status checks before transfers, restricts token movement to whitelisted addresses, handles forced transfers in cases of legal requirements and provides oracle-connected NAV updates for fund tokens.
 
-Oracle integration is a related architectural requirement that founders frequently underestimate. Any RWA token whose value depends on an off-chain data source, whether NAV, price feed, yield rate or occupancy data, needs a reliable oracle layer. Chainlink's Proof of Reserve is the most widely deployed solution for this in institutional RWA contexts. Designing the oracle failure mode before launch is as important as designing the happy path.
+Oracle integration is a related architectural requirement that founders frequently underestimate. Any RWA token whose value depends on an off-chain data source, whether NAV, price feed, yield rate or occupancy data, needs a reliable oracle layer. [Chainlink's Proof of Reserve](https://chain.link/proof-of-reserve) is the most widely deployed solution for this in institutional RWA contexts. Designing the oracle failure mode before launch is as important as designing the happy path.
 
 ## Step 5: Audit Before Mainnet. No Exceptions.
 
