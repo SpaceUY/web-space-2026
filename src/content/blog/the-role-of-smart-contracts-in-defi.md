@@ -27,7 +27,7 @@ The Ethereum Virtual Machine (EVM) made this deployable at scale in 2015, creati
 
 ## The Main Contract Types Powering DeFi
 
-**Lending and borrowing contracts** manage collateral, set interest rates algorithmically, and execute liquidations automatically when ratios fall below defined thresholds. Aave alone locks approximately $20.38 billion in smart contracts. No human approves a single loan.
+**Lending and borrowing contracts** manage collateral, set interest rates algorithmically, and execute liquidations automatically when ratios fall below defined thresholds. [Aave alone locks approximately $20.38 billion](https://defillama.com/protocol/aave) in smart contracts. No human approves a single loan.
 
 **AMM contracts** replace order books with liquidity pools priced by formula (x*y=k in Uniswap's original design). Every swap, every fee distribution, every liquidity event happens through contract execution.
 

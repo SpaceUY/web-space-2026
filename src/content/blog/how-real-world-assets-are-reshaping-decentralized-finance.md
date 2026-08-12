@@ -45,19 +45,19 @@ Blockchain by itself can't enforce legal ownership, but it can provide transpare
 
 ## Relevant Use Cases
 
-In 2024, BlackRock launched BUIDL, a tokenized fund on Ethereum that provides exposure to U.S. Treasury bills and cash management instruments, using Securitize as the on-chain issuance and compliance layer. The fund distributes yield on-chain while relying on traditional custody and asset management off-chain.
+In 2024, BlackRock launched [BUIDL](https://www.nasdaq.com/press-release/blackrock-launches-its-first-tokenized-fund-buidl-on-the-ethereum-network-2024-03-20), a tokenized fund on Ethereum that provides exposure to U.S. Treasury bills and cash management instruments, using Securitize as the on-chain issuance and compliance layer. The fund distributes yield on-chain while relying on traditional custody and asset management off-chain.
 
-Protocols like Ondo Finance offer similar access through products such as OUSG and USDY, which gives tokenized exposure to short-term U.S. government securities and yield-bearing instruments within a regulated framework. These tokens are increasingly used by DAOs and crypto treasuries as alternatives to idle stablecoin balances.
+Protocols like [Ondo Finance](https://ondo.finance/) offer similar access through products such as OUSG and USDY, which gives tokenized exposure to short-term U.S. government securities and yield-bearing instruments within a regulated framework. These tokens are increasingly used by DAOs and crypto treasuries as alternatives to idle stablecoin balances.
 
-MakerDAO has integrated real-world collateral through dedicated RWA vaults that hold assets like short-term bonds and structured credit instruments. These contribute to the backing of DAI and generate revenue for the protocol.
+[MakerDAO](https://makerdao.com/) has integrated real-world collateral through dedicated RWA vaults that hold assets like short-term bonds and structured credit instruments. These contribute to the backing of DAI and generate revenue for the protocol.
 
-Centrifuge enables businesses to tokenize invoices, receivables, and credit facilities, which are then financed by on-chain liquidity pools. Investors earn yield from repayment streams tied to real commercial activity, while borrowers access capital without relying solely on traditional banks.
+[Centrifuge](https://centrifuge.io/) enables businesses to tokenize invoices, receivables, and credit facilities, which are then financed by on-chain liquidity pools. Investors earn yield from repayment streams tied to real commercial activity, while borrowers access capital without relying solely on traditional banks.
 
-Protocols like Goldfinch and Maple Finance operate in a similar space, facilitating undercollateralized or institutionally structured lending to companies and funds, with risk assessment handled through governance and off-chain due diligence.
+Protocols like [Goldfinch](https://www.goldfinch.finance/) and [Maple Finance](https://maple.finance/) operate in a similar space, facilitating undercollateralized or institutionally structured lending to companies and funds, with risk assessment handled through governance and off-chain due diligence.
 
-Platforms such as RealT tokenize residential rental properties, allowing token holders to receive a share of rental income paid out in stablecoins. Ownership is structured through legal entities that hold the property, while tokens represent economic rights to cash flows. On the fixed income side, startups like Bondi Finance are working to bring emerging market bonds on-chain, removing the capital minimums that have historically kept retail investors out of this asset class.
+Platforms such as [RealT](https://realt.co/) tokenize residential rental properties, allowing token holders to receive a share of rental income paid out in stablecoins. Ownership is structured through legal entities that hold the property, while tokens represent economic rights to cash flows. On the fixed income side, startups like Bondi Finance are working to bring emerging market bonds on-chain, removing the capital minimums that have historically kept retail investors out of this asset class.
 
-Tokenized gold products, such as PAX Gold (PAXG), represent ownership of physical gold bars held in custody, allowing users to gain exposure to commodities while remaining within blockchain-based systems.
+Tokenized gold products, such as [PAX Gold](https://www.paxos.com/pax-gold) (PAXG), represent ownership of physical gold bars held in custody, allowing users to gain exposure to commodities while remaining within blockchain-based systems.
 
 ## Real Impact
 
@@ -73,7 +73,7 @@ Real World Assets introduce sources of return that follow economic rules rather 
 
 At the same time, they introduce dependencies on custodians, administrators, and legal systems. Accurate reporting and reliable data feeds become central to system integrity.
 
-On top of that, regulators and global agencies are paying attention. Authorities such as the International Organization of Securities Commissions have warned that tokenization can create new risks around investor understanding and counterparty exposure.
+On top of that, regulators and global agencies are paying attention. Authorities such as the [International Organization of Securities Commissions](https://www.iosco.org/library/pubdocs/pdf/IOSCOPD809.pdf) have warned that tokenization can create new risks around investor understanding and counterparty exposure.
 
 These realities don't negate the promise of RWAs, but they underscore why transparency, sound legal structuring, and clear disclosures are essential.
 

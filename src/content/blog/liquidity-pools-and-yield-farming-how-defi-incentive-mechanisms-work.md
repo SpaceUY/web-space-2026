@@ -61,9 +61,9 @@ The practical calculation before entering any LP position is: expected annual fe
 
 ## Concentrated Liquidity: From Uniswap v3 to v4
 
-Uniswap v3 introduced concentrated liquidity, letting LPs deploy capital within a chosen price range instead of spreading it from zero to infinity. Focusing capital between $1,800 and $2,200 for ETH/USDC earns fees at a much higher rate while the price stays in range. The trade-off: out-of-range positions earn zero fees and amplify impermanent loss, so capital efficiency and IL risk rise together.
+[Uniswap v3 introduced concentrated liquidity](https://docs.uniswap.org/concepts/protocol/concentrated-liquidity), letting LPs deploy capital within a chosen price range instead of spreading it from zero to infinity. Focusing capital between $1,800 and $2,200 for ETH/USDC earns fees at a much higher rate while the price stays in range. The trade-off: out-of-range positions earn zero fees and amplify impermanent loss, so capital efficiency and IL risk rise together.
 
-Uniswap v4 keeps that model, the math is unchanged, but wraps it in hooks: external smart contracts that run at set points in a pool's lifecycle. This turns a fixed-function AMM into a programmable one, with three practical gains for LPs: automated rebalancing and auto-compounding on-chain, dynamic fees that adjust to volatility instead of fixed tiers, and custom liquidity curves matched to the asset pair.
+Uniswap v4 keeps that model, the math is unchanged, but wraps it in [hooks](https://docs.uniswap.org/contracts/v4/concepts/hooks): external smart contracts that run at set points in a pool's lifecycle. This turns a fixed-function AMM into a programmable one, with three practical gains for LPs: automated rebalancing and auto-compounding on-chain, dynamic fees that adjust to volatility instead of fixed tiers, and custom liquidity curves matched to the asset pair.
 
 | Aspect | Uniswap v3 | Uniswap v4 |
 |---|---|---|

@@ -22,7 +22,7 @@ AI and blockchain are often discussed as separate technology bets. In 2026, that
 
 Modern AI systems encounter three persistent enterprise obstacles: unclear data provenance, limited transparency regarding model behavior, and concentrated control of computation and distribution.
 
-These concerns carry practical weight. An AI model trained on corrupted or unverified information produces flawed outputs at scale with apparent confidence. The 2010 Flash Crash demonstrates this principle: autonomous trading algorithms operating independently without shared data integrity created feedback loops erasing approximately 1,000 stock market points in minutes. The issue wasn't the AI itself but the absence of verified, shared truth between systems.
+These concerns carry practical weight. An AI model trained on corrupted or unverified information produces flawed outputs at scale with apparent confidence. The [2010 Flash Crash](https://www.sec.gov/news/studies/2010/marketevents-report.pdf) demonstrates this principle: autonomous trading algorithms operating independently without shared data integrity created feedback loops erasing approximately 1,000 stock market points in minutes. The issue wasn't the AI itself but the absence of verified, shared truth between systems.
 
 Blockchain solves this structurally. By creating tamper-resistant records of data lineage, model updates, and agent actions, blockchain anchors provenance and accountability in ways that centralized databases cannot.
 

@@ -31,7 +31,7 @@ What makes a network "layer 1" isn't a marketing designation. It's a structural 
 
 ## The Core Trade-Off Every L1 Has to Make
 
-The challenge with base-layer blockchains is what the space calls the blockchain trilemma, a concept popularized by Ethereum's Vitalik Buterin. The three properties in tension are:
+The challenge with base-layer blockchains is what the space calls the blockchain trilemma, a concept popularized by Ethereum's [Vitalik Buterin](https://vitalik.eth.limo/general/2021/04/07/sharding.html). The three properties in tension are:
 
 - **Security:** Resistance to attacks and manipulation
 - **Decentralization:** No single entity controls the network
@@ -45,7 +45,7 @@ Understanding this trade-off is not academic. It directly shapes what you can re
 
 Rather than listing every chain, here are the ones that matter most for teams making build-or-integrate decisions right now:
 
-**Ethereum** remains the reference point. Its developer ecosystem, tooling maturity, and institutional adoption are unmatched. The shift to proof-of-stake and the rollout of EIP-4844 have meaningfully improved cost efficiency for L2 transactions that settle on Ethereum.
+**Ethereum** remains the reference point. Its developer ecosystem, tooling maturity, and institutional adoption are unmatched. The shift to proof-of-stake and the rollout of [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) have meaningfully improved cost efficiency for L2 transactions that settle on Ethereum.
 
 **Solana** has recovered strongly and continues to attract high-throughput applications, particularly in DeFi, gaming, and consumer-facing products that require near-instant confirmation. Its architecture uses a combination of proof-of-history and proof-of-stake.
 

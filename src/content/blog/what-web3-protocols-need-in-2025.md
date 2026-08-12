@@ -106,7 +106,7 @@ Reliability isn't sexy, but it's vital. Protocols expect partners to deliver:
 - Automated **node scaling** during traffic spikes.
 - **Detailed logging** and **incident post-mortems**.
 
-Use case: when [Arbitrum](https://arbitrum.io/) had downtime in early 2023, protocols that had monitoring and failover support were able to continue service without user impact.
+Use case: when [Arbitrum](https://arbitrum.io/) had [downtime in early 2023](https://www.banklesstimes.com/news/2023/01/31/arbitrum-suffers-its-second-outage-blames-hardware-failure/), protocols that had monitoring and failover support were able to continue service without user impact.
 
 ## Tokenomics & Analytics
 
