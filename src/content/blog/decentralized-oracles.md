@@ -23,19 +23,15 @@ Uses extend to gaming event verification, supply chain authentication tracking, 
 
 ## Oracle Classification
 
-**Hardware oracles:** Physical devices retrieving real-world data.
-
-**Software oracles:** More versatile but vulnerable to corruption.
-
-**Consensus oracles:** Network nodes validating data integrity.
-
-**Blockchain-based oracles:** Direct blockchain operation ensuring transparency.
-
-**Human oracles:** Subjective judgment validation, particularly useful for prediction market arbitration.
-
-**Centralized oracles:** Single-entity management offering speed but introducing single-point-of-failure risks.
-
-**Decentralized oracles:** Multi-node networks preventing tampering through distributed verification.
+| Oracle Type | Description |
+|---|---|
+| Hardware oracles | Physical devices retrieving real-world data |
+| Software oracles | More versatile but vulnerable to corruption |
+| Consensus oracles | Network nodes validating data integrity |
+| Blockchain-based oracles | Direct blockchain operation ensuring transparency |
+| Human oracles | Subjective judgment validation, particularly useful for prediction market arbitration |
+| Centralized oracles | Single-entity management offering speed but introducing single-point-of-failure risk |
+| Decentralized oracles | Multi-node networks preventing tampering through distributed verification |
 
 ## Importance in DeFi
 

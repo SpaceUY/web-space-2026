@@ -13,6 +13,17 @@ metadescription: "Real-world assets (RWAs) bring physical and financial assets o
 
 Real World Assets are physical or traditional financial assets that are increasingly being represented on blockchain networks. This tokenization process improves liquidity, accessibility, transparency, and efficiency in asset trading. Below is a detailed look at different types of RWAs and how they are being digitized and used in the modern financial ecosystem.
 
+## RWA Types at a Glance
+
+| Asset Type | Example Platforms | Main Challenge |
+|---|---|---|
+| Real Estate | RealT, RedSwan | Legal/regulatory uncertainty around property tokenization |
+| Commodities | Tether Gold (XAUT), Paxos Gold (PAXG), AuraGold | Verifying the physical asset actually backs the token |
+| Stocks & Bonds | Ondo Finance | Compliance with securities laws |
+| Luxury Goods | Masterworks, Courtyard.io | Subjective valuation of art and collectibles |
+| Intellectual Property | Royal.io, Opulous | Enforcing proper royalty distribution |
+| Infrastructure & Energy | Sun Exchange, WePower | High upfront capital requirements |
+
 ## Real Estate RWAs: Tokenized Property and Land
 
 Real estate includes residential properties, commercial buildings, land, and real estate investment trusts (REITs). Traditionally, these assets have been illiquid, meaning they take a long time to sell and require significant capital.

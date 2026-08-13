@@ -19,6 +19,34 @@ Forget bloated org charts and endless hiring cycles. Today, you can build a **hi
 
 Here's how to build a lean, AI-powered team that handles everything from marketing to operations. We're breaking it down role by role, with the best tools in the game.
 
+## The AI Dream Team at a Glance
+
+| Role | Tool | What It Does |
+|---|---|---|
+| Strategist | ChatGPT (Advanced Data Analysis) | Brainstorming, research summaries, quick business models |
+| Strategist | Lucidchart (AI) | Auto-generates strategy maps and org charts |
+| Strategist | Beautiful.AI | Data-driven presentations that adjust automatically |
+| Marketer | Jasper | Blog posts, product descriptions, ad copy on brand |
+| Marketer | Surfer SEO | Optimizes written content for search visibility |
+| Marketer | Midjourney / DALL·E 3 | Custom brand visuals and campaign graphics |
+| Marketer | LatelyAI | Turns long-form content into social posts |
+| Builder | Figma (Genius/Magician) | AI-assisted UI/UX design |
+| Builder | Uizard | Turns sketches or prompts into working mockups |
+| Builder | CodiumAI / GitHub Copilot | Writes, reviews, and tests code |
+| Salesperson | Apollo.io / Clay | Prospecting with AI-crafted cold outreach |
+| Salesperson | Lavender | AI coach for sales emails |
+| Salesperson | Regie.ai | Builds outbound sequences synced with your CRM |
+| Customer Success | Intercom (Fin AI) | Handles complex support conversations with context |
+| Customer Success | Zendesk AI | Routes and resolves tickets efficiently |
+| Customer Success | Tidio | Affordable chatbot for small teams |
+| Analyst | Polymer Search | Turns spreadsheets into searchable dashboards |
+| Analyst | Obviously.AI | No-code predictive analytics |
+| Analyst | Pecan AI | Forecasts and decision models |
+| Back Office | QuickBooks | Automates bookkeeping, tax prep, expense tracking |
+| Back Office | Notion AI | Manages docs, SOPs, and meeting notes |
+| Back Office | Deel | International hiring, compliance, and payroll |
+| Back Office | Genei | Summarizes reports and research |
+
 ## The Strategist: Your AI Co-Pilot for Planning and Decision-Making
 
 Use AI to map out business strategies, analyze markets, and surface insights you'd normally need a consultant (or ten) for.

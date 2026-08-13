@@ -11,7 +11,7 @@ metatitle: "AI in Drug Discovery: The FDA Is Onboard | SpaceDev"
 metadescription: "AI is becoming the new lab assistant in drug discovery, and the FDA is clearing the path: within three to five years, animal studies could be the exception."
 ---
 
-Drug development has long relied on animal testing to evaluate a compound's safety. But the process is slow, expensive, and often doesn't translate well to human outcomes. Now, the FDA is pushing for a pivot. Within three to five years, animal studies could become the exception, not the rule.
+Drug development has long relied on animal testing to evaluate a compound's safety. But the process is slow, expensive, and often doesn't translate well to human outcomes. Now, [the FDA is pushing for a pivot](https://www.fda.gov/news-events/press-announcements/fda-announces-plan-phase-out-animal-testing-requirement-monoclonal-antibodies-and-other-drugs). Within three to five years, animal studies could become the exception, not the rule.
 
 The agency laid out its vision in an April roadmap: computational models, AI-based platforms, and human cell simulations could replace many animal tests, particularly for monoclonal antibody drugs. The potential payoff? Faster timelines, cheaper development, and eventually, more affordable drugs.
 

@@ -70,9 +70,12 @@ Two cost categories require separate analysis:
 **Proof generation** (off-chain compute) depends on circuit size, proof system, and hardware. Recent research indicates costs declining from "tens of cents per proof in 2024 toward lower-tens of cents or below." Treat vendor claims as workload-specific and validate empirically.
 
 **Verification gas** (on-chain) scales primarily with proof system:
-- Groth16: approximately 200k gas for small public inputs
-- PLONK: typically 290k gas
-- STARKs: potentially millions of gas depending on scheme
+
+| Proof system | Typical verification gas |
+|---|---|
+| Groth16 | ~200k gas (small public inputs) |
+| PLONK | ~290k gas |
+| STARKs | Potentially millions of gas, depending on scheme |
 
 Express verification budgets in gas units before modeling cost bands across historical price ranges. Gas consumption remains stable for a given system; ETH and gas price volatility complicate projections.
 

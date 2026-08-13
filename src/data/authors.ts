@@ -13,7 +13,7 @@ export interface Author {
   coverImage?: string;
   /** Optional gallery of additional photos (speaking, posts, etc.) */
   gallery?: { src: string; alt: string }[];
-  social?: { linkedin?: string; twitter?: string; github?: string };
+  social?: { linkedin?: string; twitter?: string; github?: string; hashnode?: string; medium?: string };
   /** Expertise topics, used for the Person schema's knowsAbout field */
   knowsAbout?: string[];
 }
@@ -35,7 +35,11 @@ export const authors: Author[] = [
       { src: "/images/content/Uq2tE6OoZv8AxWxDvroCH8r0.webp", alt: "Federico Sendra leading a Web2-to-Web3 migration workshop." },
       { src: "/images/content/uLuHSBzzLiHci62DaepeOWAGlU.webp", alt: "Federico Sendra at SpaceDev All Hands 2024." },
     ],
-    social: { linkedin: "https://www.linkedin.com/in/fsendra/" },
+    social: {
+      linkedin: "https://www.linkedin.com/in/fsendra/",
+      twitter: "https://x.com/fede_sendra",
+      hashnode: "https://fsendra.hashnode.dev/",
+    },
     knowsAbout: ["Web3 Product Strategy", "Blockchain Development", "Startup Engineering Leadership"],
   },
   {
@@ -54,7 +58,11 @@ export const authors: Author[] = [
       { src: "/images/content/d3Ddsv9Vko4Mgi0ion6d7POiVc.webp", alt: "Juan Manuel Sobral discussing memecoins and tokenomics." },
       { src: "/images/content/pGiXYozQ3mE4cilNOItfe2L2fUA.svg", alt: "SpaceDev co-founder signature illustration." },
     ],
-    social: { linkedin: "https://www.linkedin.com/in/juanmsobral/" },
+    social: {
+      linkedin: "https://www.linkedin.com/in/juanmsobral/",
+      twitter: "https://x.com/juanmsobral",
+      medium: "https://medium.com/@jmsobral",
+    },
     knowsAbout: ["Smart Contract Development", "Decentralized Protocols", "Blockchain Security"],
   },
   {

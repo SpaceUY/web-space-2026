@@ -25,6 +25,14 @@ const mediaMentions = mediaItems
 
 const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 
+const sameAsLinks = [
+  author.social?.linkedin,
+  author.social?.twitter,
+  author.social?.medium,
+  author.social?.hashnode,
+  author.social?.github,
+].filter((url): url is string => Boolean(url));
+
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -35,7 +43,7 @@ const personJsonLd = {
   worksFor: { "@type": "Organization", name: SITE.name, url: SITE.url },
   ...(author.avatar && { image: `${SITE.url}${author.avatar}` }),
   ...(author.knowsAbout && { knowsAbout: author.knowsAbout }),
-  ...(author.social?.linkedin && { sameAs: [author.social.linkedin] }),
+  ...(sameAsLinks.length > 0 && { sameAs: sameAsLinks }),
 };
 ---
 
@@ -64,16 +72,29 @@ const personJsonLd = {
           <Badge tone="purple" class="mb-4">{author.role}</Badge>
           <h1 class="text-4xl md:text-6xl text-white leading-tight">{author.name}</h1>
           <p class="mt-6 text-lg text-sd-text-muted max-w-xl leading-relaxed">{author.bio}</p>
-          {author.social?.linkedin && (
-            <a
-              href={author.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-8 inline-flex items-center gap-2 text-sm text-sd-purple-300 hover:text-white transition-colors"
-            >
-              Connect on LinkedIn
-              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3h6m0 0v6m0-6L3 9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+          {sameAsLinks.length > 0 && (
+            <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              {[
+                { key: "linkedin", label: "LinkedIn" },
+                { key: "twitter", label: "X" },
+                { key: "medium", label: "Medium" },
+                { key: "hashnode", label: "Blog" },
+                { key: "github", label: "GitHub" },
+              ].map(({ key, label }) => {
+                const href = author.social?.[key as keyof typeof author.social];
+                return href ? (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sm text-sd-purple-300 hover:text-white transition-colors"
+                  >
+                    {label}
+                    <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3h6m0 0v6m0-6L3 9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                ) : null;
+              })}
+            </div>
           )}
         </div>
       </div>
@@ -81,35 +102,7 @@ const personJsonLd = {
   </section>
 
 
-  {mediaMentions.length > 0 && (
-    <section class="bg-sd-dark-2 py-16 md:py-20 border-b border-white/5">
-      <div class="mx-auto max-w-[1100px] px-6 md:px-10">
-        <h2 class="text-2xl md:text-3xl text-white mb-8">Speaking &amp; Media</h2>
-        <ul class="grid gap-4 md:grid-cols-2">
-          {mediaMentions.map((item) => (
-            <li>
-              <a
-                href={`/spacedev-in-the-media/${item.slug}`}
-                class="group flex flex-col gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] p-5 hover:border-sd-purple/50 transition-colors duration-200"
-              >
-                <p class="text-xs text-sd-text-muted">
-                  <time datetime={item.date.toISOString()}>{dateFmt.format(item.date)}</time>
-                  <span class="mx-1.5" aria-hidden="true">·</span>
-                  {item.location}
-                </p>
-                <h3 class="text-white text-base font-semibold leading-snug group-hover:text-sd-purple-300 transition-colors">
-                  {item.title}
-                </h3>
-                <p class="text-sm text-sd-text-muted">{item.highlight}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  )}
-
-  <!-- POSTS BY AUTHOR -->
+  <!-- POSTS BY AUTHOR — fresher content (includes 2026 posts) comes first -->
   <section class="bg-sd-dark py-16 md:py-24">
     <div class="mx-auto max-w-[1100px] px-6 md:px-10">
       <h2 class="text-2xl md:text-3xl text-white mb-10">Posts by {author.name}</h2>
@@ -151,29 +144,98 @@ const personJsonLd = {
             ))}
           </div>
 
-          {/* --- Rest as list --- */}
+          {/* --- Rest, behind a disclosure. All items still render server-side —
+               only the visibility is toggled, so crawlers that don't run JS
+               (most AI bots, per this site's own robots.txt allowlist) see
+               every post regardless of whether a human expands this. --- */}
           {posts.length > 3 && (
-            <ul class="divide-y divide-white/10">
-              {posts.slice(3).map((post) => (
-                <li>
-                  <a href={`/blog/${post.id}`} class="group flex flex-col md:flex-row md:items-center md:justify-between gap-3 py-5">
-                    <div class="md:max-w-2xl">
-                      <p class="text-[10px] uppercase tracking-[0.15em] text-sd-purple-300 mb-1.5">{post.data.category}</p>
-                      <h3 class="text-base md:text-lg text-white group-hover:text-sd-purple-300 transition-colors leading-snug">{post.data.title}</h3>
-                      <p class="mt-1 text-sm text-sd-text-muted line-clamp-1">{post.data.description}</p>
-                    </div>
-                    <p class="text-xs text-sd-text-muted shrink-0 flex items-center gap-2">
-                      <time datetime={post.data.publishedAt.toISOString()}>{dateFmt.format(post.data.publishedAt)}</time>
-                      <span aria-hidden="true">·</span>
-                      {post.data.readTime} min
-                    </p>
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <details class="group/more sd-author-more">
+              <summary class="cursor-pointer list-none inline-flex items-center gap-2 text-sm text-sd-purple-300 hover:text-white transition-colors mb-2">
+                Show {posts.length - 3} more post{posts.length - 3 === 1 ? "" : "s"}
+                <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" class="transition-transform group-open/more:rotate-180"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </summary>
+              <ul class="divide-y divide-white/10">
+                {posts.slice(3).map((post) => (
+                  <li>
+                    <a href={`/blog/${post.id}`} class="group flex flex-col md:flex-row md:items-center md:justify-between gap-3 py-5">
+                      <div class="md:max-w-2xl">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-sd-purple-300 mb-1.5">{post.data.category}</p>
+                        <h3 class="text-base md:text-lg text-white group-hover:text-sd-purple-300 transition-colors leading-snug">{post.data.title}</h3>
+                        <p class="mt-1 text-sm text-sd-text-muted line-clamp-1">{post.data.description}</p>
+                      </div>
+                      <p class="text-xs text-sd-text-muted shrink-0 flex items-center gap-2">
+                        <time datetime={post.data.publishedAt.toISOString()}>{dateFmt.format(post.data.publishedAt)}</time>
+                        <span aria-hidden="true">·</span>
+                        {post.data.readTime} min
+                      </p>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
           )}
         </>
       )}
     </div>
   </section>
+
+  {mediaMentions.length > 0 && (
+    <section class="bg-sd-dark-2 py-16 md:py-20 border-t border-white/5">
+      <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+        <h2 class="text-2xl md:text-3xl text-white mb-8">Speaking &amp; Media</h2>
+        <ul class="grid gap-4 md:grid-cols-2">
+          {mediaMentions.slice(0, 3).map((item) => (
+            <li>
+              <a
+                href={`/spacedev-in-the-media/${item.slug}`}
+                class="group flex flex-col gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] p-5 hover:border-sd-purple/50 transition-colors duration-200"
+              >
+                <p class="text-xs text-sd-text-muted">
+                  <time datetime={item.date.toISOString()}>{dateFmt.format(item.date)}</time>
+                  <span class="mx-1.5" aria-hidden="true">·</span>
+                  {item.location}
+                </p>
+                <h3 class="text-white text-base font-semibold leading-snug group-hover:text-sd-purple-300 transition-colors">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted">{item.highlight}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Rest, behind a disclosure — same reasoning as the posts list above:
+             all items are in the server-rendered HTML regardless of whether
+             this is expanded. */}
+        {mediaMentions.length > 3 && (
+          <details class="group/more sd-author-more mt-5">
+            <summary class="cursor-pointer list-none inline-flex items-center gap-2 text-sm text-sd-purple-300 hover:text-white transition-colors mb-4">
+              Show {mediaMentions.length - 3} more
+              <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" class="transition-transform group-open/more:rotate-180"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <ul class="grid gap-4 md:grid-cols-2">
+              {mediaMentions.slice(3).map((item) => (
+                <li>
+                  <a
+                    href={`/spacedev-in-the-media/${item.slug}`}
+                    class="group flex flex-col gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] p-5 hover:border-sd-purple/50 transition-colors duration-200"
+                  >
+                    <p class="text-xs text-sd-text-muted">
+                      <time datetime={item.date.toISOString()}>{dateFmt.format(item.date)}</time>
+                      <span class="mx-1.5" aria-hidden="true">·</span>
+                      {item.location}
+                    </p>
+                    <h3 class="text-white text-base font-semibold leading-snug group-hover:text-sd-purple-300 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p class="text-sm text-sd-text-muted">{item.highlight}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
+      </div>
+    </section>
+  )}
 </BaseLayout>

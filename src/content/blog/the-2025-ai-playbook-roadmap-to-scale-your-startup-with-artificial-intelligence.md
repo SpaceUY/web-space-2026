@@ -29,6 +29,20 @@ The good news? You don't need a PhD in machine learning or a seven-figure budget
 
 Remember, there isn't a one-size-fits-all roadmap for startups. Every business has its own soul and needs, so this is meant to serve as a guide; take only what's necessary for the stage you're at right now.
 
+## The Roadmap and Its Costs, at a Glance
+
+| Step | Estimated Cost |
+|---|---|
+| Centralize and structure your data | $500–$3,000/month |
+| Compliance, privacy & security | $500–$5,000/month |
+| Personal productivity assistants | $20–$60/user/month |
+| Workflow automation | $30–$300/month |
+| AI-powered customer support | $50–$1,000/month |
+| AI co-workers (sales, dev, marketing copilots) | $100–$400/user/month |
+| Predictive AI | $2,000–$15,000/year |
+| Generative AI | $50–$500/month per seat; $5,000–$50,000/year for fine-tuned models |
+| AI-first culture and training | $500–$5,000/month |
+
 ## Chapter 1: Data Readiness
 
 Think of AI as a high-performance engine. Without fuel, your data, it goes nowhere. Yet, not all "fuel" is equal: messy, siloed, or low-quality data leads to poor predictions, biased outputs, and costly rework. The first step to AI success is building a clean, reliable, and accessible data foundation. This is where many startups succeed or fail.

@@ -72,6 +72,15 @@ If you're looking to design a user interface, build a feature, or improve an exi
 - Focus on tangible outputs like prototypes
 - Reduces the risk of building the wrong product
 
+## At a Glance: Product Discovery vs Discovery Sprint vs Design Sprint
+
+| | Product Discovery | Discovery Sprint | Design Sprint |
+|---|---|---|---|
+| **Duration** | Extensive, research-focused phase (no fixed length) | 1–2 weeks | 5 days |
+| **Best for** | Validating market demand before development begins | Quickly validating a specific idea or feature | Prototyping and testing a design-focused challenge |
+| **Key activity** | User research, competitive analysis | Ideation workshops, user interviews | Sketching, low-fidelity prototypes, user testing |
+| **Output** | Validated problem space and product direction | Fast go/no-go on a feature | A tested, validated prototype |
+
 ## Product Discovery vs Discovery Sprint vs Design Sprint: Which Method Fits Your Product Stage?
 
 - **Early in the product life cycle?** Start with **Product Discovery** to ensure you are creating the right product for the right market.

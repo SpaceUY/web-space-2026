@@ -48,6 +48,14 @@ Proof of stake networks penalize validators for misconduct through slashing mech
 
 Multiple staking pathways exist: digital wallet staking, decentralized finance services, direct protocol participation, or centralized exchange platforms; the latter benefits less technically experienced investors.
 
+| Platform | Type | Key Benefit | Key Drawback |
+|---|---|---|---|
+| Aave | Decentralized protocol | High yields, Nexus Mutual insurance | Modest yields, limited asset selection |
+| Lido | Liquid Ethereum staking | Keeps liquidity via stETH tokens | Adds smart contract/protocol risk on top of ETH staking |
+| Coinbase | Centralized exchange (since 2012) | Streamlined interface, robust security | Limited cryptocurrency options |
+| Binance | Centralized + non-custodial (since 2017) | Competitive annual rates, diverse assets | Geographic limitations, variable returns |
+| Kraken | Centralized, on-chain staking (since 2011) | Direct blockchain yields, minimized counterparty risk | Technical requirements, lock-up periods |
+
 ### Aave
 
 Aave's decentralized protocol enables staking AAVE tokens and supported assets including Ethereum and DAI. High yields and Nexus Mutual insurance appeal to decentralization-focused users, though platform yields remain relatively modest with limited asset selections.
