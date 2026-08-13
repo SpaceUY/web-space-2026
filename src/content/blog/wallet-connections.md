@@ -43,11 +43,13 @@ Both cold and hot wallets can be either custodial or non-custodial. A custodial 
 
 There are five main types of non-custodial wallets:
 
-- **Desktop wallets** are installed on a computer and offer high security because they store private keys locally. Examples include Exodus and Atomic Wallet.
-- **Mobile wallets** are installed on a mobile device and offer convenience and accessibility. They can be either hot (connected to the internet) or cold (offline). Examples include Trust Wallet and Mycelium.
-- **Hardware wallets** are physical devices that store private keys offline and are considered the most secure option for storing crypto assets. Examples include Trezor and Ledger.
-- **Paper wallets** are a form of cold storage where the private keys are printed on paper and stored offline. They offer a high level of security but can be vulnerable to physical damage or loss.
-- **Web wallets** are online wallets that allow users to access their crypto assets through a web browser. They are convenient but can be vulnerable to malicious behavior. Examples include MyEtherWallet and MetaMask.
+| Wallet Type | Description | Trade-off | Examples |
+|---|---|---|---|
+| Desktop | Installed on a computer, stores private keys locally | High security, less portable | Exodus, Atomic Wallet |
+| Mobile | Installed on a phone, hot or cold | Convenient and accessible | Trust Wallet, Mycelium |
+| Hardware | Physical device, keys stored offline | Most secure, less convenient | Trezor, Ledger |
+| Paper | Private keys printed and stored offline | High security, vulnerable to physical damage or loss | — |
+| Web | Online wallet accessed via browser | Convenient, vulnerable to malicious behavior | MyEtherWallet, MetaMask |
 
 Each type has its strengths and weaknesses. Users should carefully consider their needs and preferences when choosing a wallet.
 

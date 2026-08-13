@@ -21,12 +21,14 @@ Blockchain protocols solve key challenges in digital transactions: security, dec
 
 Not all blockchains are created equal. Here's a quick comparison of some of the most well-known protocols and their real-world applications:
 
-- **Ethereum (ETH)**: A leading smart contract platform known for its flexibility and strong developer ecosystem. Used for decentralized applications (dApps), NFTs, and DeFi platforms like Uniswap and Aave. Recently transitioned to Proof of Stake to enhance efficiency and reduce energy consumption.
-- **Bitcoin (BTC)**: The first blockchain protocol, focused on security and decentralization. Primarily used as a store of value and for digital payments. Companies like Tesla and MicroStrategy have invested heavily in Bitcoin as a financial asset.
-- **Hyperledger Fabric**: A permissioned blockchain designed for enterprise use, offering high customizability and security. Used by IBM Food Trust to improve transparency and traceability in global food supply chains.
-- **Solana (SOL)**: Known for its high-speed transactions and low fees, making it a popular choice for scalable applications. Used in DeFi platforms like Serum and NFT marketplaces such as Magic Eden.
-- **Polkadot (DOT)**: A multi-chain interoperability protocol that enables different blockchains to connect and communicate. Used by projects like Acala to create cross-chain DeFi solutions.
-- **Avalanche (AVAX)**: Designed for high throughput and low latency, making it ideal for DeFi and gaming applications. Used by Deloitte for improving disaster relief funding transparency.
+| Protocol | Key Strength | Primary Use Case | Notable Users |
+|---|---|---|---|
+| Ethereum (ETH) | Flexibility, strong developer ecosystem | dApps, NFTs, DeFi | Uniswap, Aave |
+| Bitcoin (BTC) | Security and decentralization | Store of value, digital payments | Tesla, MicroStrategy |
+| Hyperledger Fabric | High customizability and security (permissioned) | Enterprise supply chain transparency | IBM Food Trust |
+| Solana (SOL) | High-speed transactions, low fees | Scalable DeFi and NFT marketplaces | Serum, Magic Eden |
+| Polkadot (DOT) | Multi-chain interoperability | Cross-chain DeFi | Acala |
+| Avalanche (AVAX) | High throughput, low latency | DeFi and gaming | Deloitte (disaster relief funding) |
 
 Each protocol has strengths and trade-offs, making the selection process crucial for businesses looking to integrate decentralized technology.
 

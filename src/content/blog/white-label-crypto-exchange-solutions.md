@@ -41,6 +41,14 @@ In the preceding paragraphs, the principles, benefits and disadvantages pertaini
 
 **Devexperts**, which have worked in finance for the last 19 years, offer software services and a unique collection of components to build visual and profitable financial tools. One of the qualities that makes them stand out is that all of their products comply with the required laws, regulations and standards even before being launched to the market. The company's matching engine for exchanges can work with up to 500,000 transactions per sector, at least in theory – there is yet to be a use-case that has reached that number using it.
 
+| Provider | Max TPS | Key Feature | Open Source |
+|---|---|---|---|
+| AlphaPoint | Not disclosed | Liquidity solutions, customizable UI, broad API compatibility | No |
+| ChainUP | 50,000 | Comprehensive, adaptable suite of professional products | No |
+| B2Broker | 30,000 | WebSockets and REST API, no extra fees on the base model | No |
+| Devexperts | 500,000 (theoretical, unproven at scale) | Built-in regulatory compliance from launch | No |
+| OpenDAX | Not disclosed | API connectors, referral system, trading bots, analytics | Yes |
+
 All of the above charge an implementation cost, but there are open source alternatives in the market. **OpenDAX**, a hybrid software consisting of public and private libraries, is designed to build a fully-featured exchange service that facilitates the trading of digital assets, cryptocurrencies and security tokens. It's interesting to note that, just as with the aforementioned models, OpenDAX offers API connectors for payment systems and fiat gateways, multi-level referral system support, trading bots supported through API keys and a platform for analytics, risk control and staff activity reports.
 
 ## Discussion
