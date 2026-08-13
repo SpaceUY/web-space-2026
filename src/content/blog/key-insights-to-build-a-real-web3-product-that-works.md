@@ -23,6 +23,18 @@ Web3 isn't just a trend, it's a shift. But building a product in this space requ
 
 If you're thinking about building a Web3 product, whether it's a dApp, NFT marketplace, DAO tool, or a tokenized platform, here are the core insights you *must* lock in before you write a single line of code.
 
+## The 7 Insights at a Glance
+
+| # | Insight | The core move |
+|---|---|---|
+| 1 | UX still rules | Abstract away wallet/gas complexity with familiar Web2 patterns |
+| 2 | Wallets = identity and friction | Choose custodial vs. non-custodial deliberately, don't force connection upfront |
+| 3 | Choose the right chain | Prioritize your scalability needs over which chain is trendy |
+| 4 | Token ≠ product | Treat tokens as incentives, not the core mechanic |
+| 5 | Community is your moat | Build early on Discord/Lens/Farcaster with real governance tools |
+| 6 | On-chain data is public, use it | Mine behavioral insight with Dune, The Graph, or Covalent |
+| 7 | MVP = contract + frontend + trust | Prove the contract is secure, the UI is usable, and you're credible |
+
 ## 1. User Experience Still Rules, Even in Web3
 
 Web3 UX is notoriously clunky. Wallet pop-ups, gas fees, and confusing terminology kill adoption.
@@ -91,12 +103,15 @@ Your MVP needs to prove three things:
 Don't overbuild. Start simple. Launch early. Iterate fast.
 
 ## Tech Stack Quickfire: What You Might Need
-- **Frontend:** Next.js + Wagmi + RainbowKit
-- **Smart Contracts:** Solidity + Hardhat or Foundry
-- **Storage:** IPFS / Filecoin / Arweave
-- **APIs & Indexing:** The Graph / Alchemy / Moralis
-- **Governance:** Snapshot / Tally
-- **Auth & UX:** Web3Auth / Privy / Magic.link
+
+| Layer | Tools |
+|---|---|
+| Frontend | Next.js + Wagmi + RainbowKit |
+| Smart Contracts | Solidity + Hardhat or Foundry |
+| Storage | IPFS / Filecoin / Arweave |
+| APIs & Indexing | The Graph / Alchemy / Moralis |
+| Governance | Snapshot / Tally |
+| Auth & UX | Web3Auth / Privy / Magic.link |
 
 ## Final Take
 
