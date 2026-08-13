@@ -124,6 +124,16 @@
       "permanent": true
     },
     {
+      "source": "/post/circle-s-ipo-and-market-debut",
+      "destination": "/gone",
+      "permanent": true
+    },
+    {
+      "source": "/post/wall-street-meets-web3-jpmorgan-launches-token-on-base",
+      "destination": "/gone",
+      "permanent": true
+    },
+    {
       "source": "/post/:slug*",
       "destination": "/blog/:slug*",
       "permanent": true

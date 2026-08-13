@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+
+// Astro.response.status only takes effect on a page rendered per-request —
+// a statically prerendered page always ships as plain HTML with a 200,
+// silently ignoring this. This page must stay dynamic for the 410 to be real.
+export const prerender = false;
+
+// 410 Gone: for old URLs whose content was permanently removed and will
+// never come back, so search engines drop them from the index instead of
+// retrying forever the way they do with a 404.
+Astro.response.status = 410;
+Astro.response.statusText = "Gone";
+---
+
+<BaseLayout
+  title="410 — Content removed | SpaceDev"
+  description="This content has been permanently removed and is no longer available."
+  noindex
+  breadcrumbs={false}
+>
+  <section class="bg-sd-dark relative overflow-hidden min-h-screen -mt-[72px] flex items-center">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.18) 0%, transparent 65%);"></div>
+
+    <div class="relative mx-auto max-w-[900px] px-6 md:px-10 py-32 text-center" data-animate>
+      <p class="text-[8rem] md:text-[12rem] leading-none font-display text-white tracking-tight">410</p>
+      <h1 class="mt-2 text-3xl md:text-5xl text-white font-display">This content is gone</h1>
+      <p class="mt-6 text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
+        The article you're looking for was permanently removed. It won't come back at this address.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <Button href="/blog" variant="primary" size="lg">Browse the blog</Button>
+        <Button href="/" variant="outline-light" size="lg">Back to home</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
