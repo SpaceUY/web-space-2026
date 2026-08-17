@@ -124,26 +124,6 @@
       "permanent": true
     },
     {
-      "source": "/post/circle-s-ipo-and-market-debut",
-      "destination": "/gone",
-      "permanent": true
-    },
-    {
-      "source": "/post/wall-street-meets-web3-jpmorgan-launches-token-on-base",
-      "destination": "/gone",
-      "permanent": true
-    },
-    {
-      "source": "/post/jpmorgan-ventures-into-public-blockchain-what-it-means-for-u-s-businesses",
-      "destination": "/gone",
-      "permanent": true
-    },
-    {
-      "source": "/post/:slug*",
-      "destination": "/blog/:slug*",
-      "permanent": true
-    },
-    {
       "source": "/blockchain-and-web-3",
       "destination": "/blockchain-development-services",
       "permanent": true

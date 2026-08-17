@@ -46,3 +46,5 @@ AI isn't just disrupting drug development, it's redefining it. As computational 
 Faster. Cheaper. More humane.
 
 That's the future pharma is betting on.
+
+*This article is general information, not medical or regulatory advice. Confirm current FDA requirements with qualified counsel or the agency directly.*

@@ -217,4 +217,6 @@ IBM Food Trust, still active with members including Wakefern and Smithfield, De 
 
 Blockchain-enabled traceability succeeds when the design starts at the edge, where data enters, and treats the ledger as the shared record, not the solution, and when it starts with real commitment from the trading partners who'll actually have to use it. Align to GS1 and EPCIS 2.0 early, automate capture with sensors instead of manual entry, choose a hybrid or consortium model that keeps sensitive data private, and confirm partner buy-in before writing a line of code.
 
+*This article is general information, not legal or regulatory advice. Confirm your specific obligations with qualified counsel.*
+
 If you are evaluating traceability for a regulated or multi-party supply chain, our [supply chain and logistics blockchain services](/blockchain-development-services/industry/supply-chain-and-logistics) cover data capture, oracle integration, and hybrid architecture. You can [get in touch](/contact) to review your case.
