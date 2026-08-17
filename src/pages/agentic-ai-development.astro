@@ -180,6 +180,9 @@ const faqs = [
   },
 ];
 
+// FAQPage schema is NOT built here — the <FAQ> component rendered below
+// already emits it for the same `faqs` array. A second, hand-built copy
+// here would duplicate the block in the page's ld+json output.
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -189,15 +192,6 @@ const jsonLd = [
     provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
     areaServed: ["United States", "Latin America"],
     description: SEO_DESC,
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.question,
-      acceptedAnswer: { "@type": "Answer", text: f.answer },
-    })),
   },
 ];
 ---

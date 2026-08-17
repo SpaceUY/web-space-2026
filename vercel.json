@@ -134,6 +134,11 @@
       "permanent": true
     },
     {
+      "source": "/post/jpmorgan-ventures-into-public-blockchain-what-it-means-for-u-s-businesses",
+      "destination": "/gone",
+      "permanent": true
+    },
+    {
       "source": "/post/:slug*",
       "destination": "/blog/:slug*",
       "permanent": true
