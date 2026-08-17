@@ -23,7 +23,7 @@ export const mediaItems: MediaItem[] = [
     seoTitle: "SpaceDev Named a Summer 2026 Clutch Global Award Winner",
     seoDescription:
       "SpaceDev is a Summer 2026 Clutch Global Award winner in Blockchain, Smart Contract, and Metaverse Development, backed by a 5.0 rating across dozens of client reviews.",
-    image: "/images/content/spacedev-clutch-global-award-2026.png",
+    image: "/images/content/spacedev-clutch-global-award-2026.jpg",
     body: `Over the years, we've grown alongside a blockchain industry that has constantly reinvented itself, moving through cycles of experimentation, acceleration, correction and, increasingly, practical adoption. Our own work has expanded with it, from early-stage Web3 products to increasingly complex systems where architecture, security, business logic and user experience all have to work together.
 
 That makes this recognition especially meaningful. SpaceDev has been honored as a Summer 2026 Clutch Global Award winner in Blockchain Development, Smart Contract Development and Metaverse Development, categories that reflect different parts of the same technological landscape we've spent years exploring with our clients.
