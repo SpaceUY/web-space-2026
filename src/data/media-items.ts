@@ -14,6 +14,67 @@ export interface MediaItem {
 
 export const mediaItems: MediaItem[] = [
   {
+    slug: "spacedev-named-a-summer-2026-clutch-global-winner",
+    title: "SpaceDev Named a Summer 2026 Clutch Global Winner",
+    date: new Date("2026-08-17"),
+    location: "Remote",
+    tags: ["Recognition", "Blockchain", "Smart Contracts"],
+    highlight: "Global Award winner in Blockchain, Smart Contract, and Metaverse Development",
+    seoTitle: "SpaceDev Named a Summer 2026 Clutch Global Award Winner",
+    seoDescription:
+      "SpaceDev is a Summer 2026 Clutch Global Award winner in Blockchain, Smart Contract, and Metaverse Development, backed by a 5.0 rating across dozens of client reviews.",
+    image: "/images/content/spacedev-clutch-global-award-2026.png",
+    body: `Over the years, we've grown alongside a blockchain industry that has constantly reinvented itself, moving through cycles of experimentation, acceleration, correction and, increasingly, practical adoption. Our own work has expanded with it, from early-stage Web3 products to increasingly complex systems where architecture, security, business logic and user experience all have to work together.
+
+That makes this recognition especially meaningful. SpaceDev has been honored as a Summer 2026 Clutch Global Award winner in Blockchain Development, Smart Contract Development and Metaverse Development, categories that reflect different parts of the same technological landscape we've spent years exploring with our clients.
+
+[Clutch's Global Awards](https://clutch.co/profile/spacedev) recognize high-performing technology companies based on factors including verified client feedback, project outcomes, market presence and industry expertise.
+
+But for us, it goes beyond appearing on a list. Much of the work that eventually becomes a successful product happens far from public view, through design decisions, technical debates, changing requirements, difficult integrations and the gradual process of transforming an ambitious idea into something reliable enough to use in the real world.
+
+**Beyond the Node**
+
+The blockchain industry of 2026 looks very different from the one many of us entered years ago. Nowadays, technologies and ecosystems coexist and overlap in ways that require multi-faceted expertise.
+
+For example, smart contracts may contain the logic that governs transactions, ownership or incentives, but they still need secure architecture, thoughtful interfaces and integrations with systems that often live outside the blockchain entirely.
+
+The same is true of immersive and decentralized digital experiences. Technologies once grouped loosely under the "metaverse" label have gradually become part of a wider conversation around digital ownership, identity, persistent online environments and new forms of interaction. Many of the most interesting projects today sit somewhere between categories rather than comfortably inside one of them.
+
+**Recognition Built on Collaboration**
+
+What gives the Clutch Global Awards particular weight for us is the role that client feedback plays in the evaluation process. SpaceDev currently holds a 5.0 rating across dozens of reviews on the platform, representing collaborations with companies working across different industries, markets and stages of growth.
+
+Those reviews tell a story that no list of technologies could capture on its own. Software projects rarely unfold exactly as they were imagined at kickoff. Priorities change, new constraints appear, integrations reveal unexpected complications and ideas that seemed straightforward on paper become considerably more nuanced once engineering begins.
+
+The quality of a development partner often becomes clearest during those moments. Strong technical knowledge matters, but so does the ability to listen, adapt, challenge assumptions when necessary and remain closely aligned with the people building the product on the other side of the table.
+
+> "Every ambitious project begins with a certain amount of uncertainty. Our role is to bring the engineering experience, curiosity and collaboration needed to turn that uncertainty into something real. Being recognized across three categories is especially meaningful because it reflects both the technical range of our team and the trust our clients have placed in us along the way."
+
+*Juan Manuel Sobral, Co-Founder & CTO, SpaceDev*
+
+**An Industry Under Constant Change**
+
+The boundaries between different areas of technology are becoming increasingly porous. Blockchain infrastructure now intersects with artificial intelligence, digital identity, tokenized assets, financial automation and enterprise systems in ways that would have seemed considerably more experimental only a few years ago.
+
+AI agents, for example, are beginning to interact with wallets, smart contracts and financial applications. Real-world asset tokenization is creating new connections between traditional markets and programmable infrastructure. Verifiable credentials and decentralized identity are finding applications beyond purely crypto-native environments. At the same time, companies are becoming much more selective about where blockchain genuinely adds value.
+
+We see that as a healthy development. Mature technology should eventually become less interesting for what it is and more interesting for what it enables.
+
+That perspective influences how we approach projects today. Choosing the right architecture, protocol or smart contract design remains important, but those decisions always exist within a larger context. Security, usability, scalability, interoperability and long-term maintainability have to be considered from the beginning, particularly as Web3 applications become more deeply connected to real businesses and economic activity.
+
+**A Communal Milestone**
+
+Company awards naturally put a logo in the spotlight, but every project represents months or years of collaboration between developers, designers, managers, founders, product teams and stakeholders.
+
+That's why this recognition belongs as much to the people we've worked with as it does to SpaceDev.
+
+We're grateful to the clients who have trusted us with ambitious products, difficult challenges and ideas that didn't always come with obvious answers. Their willingness to collaborate closely with our team has helped us grow not only as engineers, but as partners capable of understanding the broader realities surrounding the technologies we build.
+
+The same gratitude goes to everyone at SpaceDev. The award reflects countless hours spent designing architectures, writing and reviewing code, testing systems, auditing smart contracts, solving unexpected problems and staying curious in an industry where the tools and assumptions can change remarkably quickly.
+
+There is still a great deal left to explore, and that's exactly what keeps the work interesting.`,
+  },
+  {
     slug: "hedera-ai-x-hackathon",
     title: "Hedera AI x Hackathon",
     date: new Date("2025-09-19"),
