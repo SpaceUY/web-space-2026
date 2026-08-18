@@ -1,3 +1,5 @@
+import { authors, type Author } from "./authors";
+
 export interface MediaItem {
   slug: string;
   title: string;
@@ -10,6 +12,18 @@ export interface MediaItem {
   body: string;
   seoDescription?: string;
   seoTitle?: string;
+}
+
+/**
+ * Authors this media item is actually about, derived by name match against
+ * title/highlight/body. Same heuristic the author page already uses to
+ * surface "Speaking & Media" credits, centralized here so both that page
+ * and the media item's own Article schema stay in sync automatically.
+ */
+export function getMentionedAuthors(item: MediaItem): Author[] {
+  return authors.filter(
+    (a) => item.title.includes(a.name) || item.highlight.includes(a.name) || item.body.includes(a.name)
+  );
 }
 
 export const mediaItems: MediaItem[] = [

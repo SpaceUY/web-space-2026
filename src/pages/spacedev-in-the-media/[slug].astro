@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Button from "../../components/ui/Button.astro";
-import { mediaItems } from "../../data/media-items";
+import { mediaItems, getMentionedAuthors } from "../../data/media-items";
 import { SITE } from "../../lib/seo";
 
 export function getStaticPaths() {
@@ -44,6 +44,8 @@ function renderBody(text: string): string {
 
 const bodyHtml = renderBody(item.body);
 
+const mentionedAuthors = getMentionedAuthors(item);
+
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -53,6 +55,13 @@ const articleJsonLd = {
   author: { "@type": "Organization", name: SITE.name, url: SITE.url },
   publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/spacedev-in-the-media/${item.slug}` },
+  ...(mentionedAuthors.length > 0 && {
+    mentions: mentionedAuthors.map((a) => ({
+      "@type": "Person",
+      name: a.name,
+      url: `${SITE.url}/author/${a.slug}`,
+    })),
+  }),
 };
 
 // Real upload dates fetched from YouTube's own page metadata (not invented)

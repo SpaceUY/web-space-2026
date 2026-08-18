@@ -33,7 +33,7 @@ const techIconMap: Record<string, { label: string; img: string }> = {
   golang:       { label: "Go",             img: "/images/icons/icon-golang.svg" },
   nextjs:       { label: "Next.js",        img: "/images/icons/icon-nextjs.svg" },
 };
-import { SITE } from "../lib/seo";
+import { organizationJsonLd } from "../lib/seo";
 
 interface Props {
   data: ServicePageData;
@@ -51,12 +51,14 @@ const relatedPosts = data.relatedTags && data.relatedTags.length > 0
 
 const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 
+const { "@context": _orgContext, ...providerJsonLd } = organizationJsonLd;
+
 const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: data.title,
   description: data.description,
-  provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+  provider: providerJsonLd,
   areaServed: "Worldwide",
   ...(data.updatedAt && { dateModified: data.updatedAt }),
 };

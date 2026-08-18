@@ -41,11 +41,17 @@ const pageDescription = post.data.metadescription ?? post.data.description;
 // at the root of the JSON-LD document, not on an embedded sub-entity.
 const { "@context": _organizationContext, ...publisherJsonLd } = organizationJsonLd;
 
+const wordCount = post.body
+  ? post.body.replace(/```[\s\S]*?```/g, " ").split(/\s+/).filter(Boolean).length
+  : undefined;
+
 const articleJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
   headline: post.data.title,
   description: post.data.description,
+  articleSection: post.data.category,
+  ...(wordCount && { wordCount }),
   datePublished: post.data.publishedAt.toISOString(),
   dateModified: (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
   author: {
