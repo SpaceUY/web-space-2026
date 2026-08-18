@@ -95,6 +95,7 @@ export const blockchainData: ServicePageData = {
       "SpaceDev is a custom blockchain development company that takes products from concept to mainnet. Web3 engineering, product strategy, and embedded security, all under one roof.",
   },
   eyebrow: "Advanced Blockchain Development",
+  compactHeroTitle: true,
   title: "Blockchain Development Services Built for Real Business Outcomes",
   description:
     "SpaceDev is a custom blockchain development company that takes products from concept to mainnet. We combine web3 engineering, product strategy, and embedded security so your blockchain investment actually delivers.",
@@ -602,6 +603,7 @@ export const layer1Data: ServicePageData = {
     description: "SpaceDev builds custom Layer 1 blockchain networks (Cosmos SDK, Substrate, EVM-compatible chains, and Avalanche subnets) from consensus design and tokenomics to mainnet launch and ecosystem tooling.",
   },
   eyebrow: "Blockchain Development",
+  compactHeroTitle: true,
   title: "Custom Layer 1 Blockchain Development, From Protocol Design to Mainnet",
   description: "Building a Layer 1 is one of the most technically demanding projects in Web3. SpaceDev builds custom Layer 1 blockchain networks for protocols, enterprises, and product teams that need sovereign chain infrastructure: covering the full cycle from protocol design to mainnet launch.",
   relatedTags: ["layer1"],
