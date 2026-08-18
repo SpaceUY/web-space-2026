@@ -63,7 +63,7 @@ Technological advances in 2025 are focused on the integrated application of zero
 
 The most significant driver of DePIN growth in 2024 and 2025 was not wireless connectivity or decentralized storage. It was GPU compute, pulled forward by demand from AI workloads.
 
-GPU infrastructure is expected to grow from $10 billion in 2025 to $77 billion in 2035. Data center GPUs have been sold out for several consecutive months, and the decentralized computing market is projected to increase from $9 billion in 2024 to $22 billion by 2035. The structural shortage isn't a temporary supply chain disruption, it is a consequence of AI training and inference demand outpacing the rate at which centralized data centers can be built.
+[GPU infrastructure is expected to grow from $10 billion in 2025 to $77 billion in 2035](https://www.precedenceresearch.com/ai-data-center-gpu-market). Data center GPUs have been sold out for several consecutive months, and the decentralized computing market is projected to increase from $9 billion in 2024 to $22 billion by 2035. The structural shortage isn't a temporary supply chain disruption, it is a consequence of AI training and inference demand outpacing the rate at which centralized data centers can be built.
 
 That gap creates the opening for decentralized compute networks to aggregate underutilized GPU capacity from independent operators, gaming rigs, rendering farms, and edge devices, and route it to AI teams that need it.
 
@@ -73,9 +73,9 @@ That gap creates the opening for decentralized compute networks to aggregate und
 
 **Render Network** is a decentralized GPU rendering platform that connects GPU owners with creators and developers who need computing power for 3D graphics, motion design, visual effects, and AI model training. Providers contribute idle GPU capacity and earn RENDER tokens based on jobs they process. Render has become one of the largest DePIN projects by market cap, driven by surging demand for distributed GPU resources as AI workloads have grown.
 
-**Akash Network** is a decentralized cloud computing marketplace designed for AI and data-heavy workloads, connecting enterprises and developers with idle GPU power worldwide at up to 80% lower cost than centralized providers like AWS or Google Cloud. Akash demonstrated 428% year-over-year growth in usage with utilization above 80% heading into 2026, which signals product-market fit rather than speculative capacity building.
+**Akash Network** is a decentralized cloud computing marketplace designed for AI and data-heavy workloads, connecting enterprises and developers with idle GPU power worldwide at [up to 80% lower cost than centralized providers like AWS or Google Cloud](https://akash.network/docs/getting-started/what-is-akash/). Akash [demonstrated 466% growth in deployments in 2025, maintaining a consistent 60% utilization rate for accelerated compute](https://akash.network/blog/akash-2025-year-in-review/), which signals product-market fit rather than speculative capacity building.
 
-**Aethir** stands out as the compute sector's revenue leader, reporting nearly $40 million in quarterly revenue in 2025 and delivering over 1.4 billion compute hours, linking businesses and developers to more than 435,000 GPU containers across 93 countries.
+**Aethir** stands out as the compute sector's revenue leader, [reporting nearly $40 million in quarterly revenue in 2025](https://aethir.com/blog-posts/aethirs-record-breaking-q3) and [delivering over 1.4 billion compute hours, linking businesses and developers to more than 435,000 GPU containers across 93 countries](https://aethir.com/blog-posts/ai-inference-in-2026-aethirs-decentralized-gpu-advantage).
 
 ## Bittensor: A Different Category
 
@@ -85,7 +85,7 @@ Bittensor is a decentralized blockchain network that creates an open marketplace
 
 Rather than supplying hardware, Bittensor creates an incentive layer where AI models compete based on measurable intelligence output, turning machine learning into an open marketplace instead of a closed research pipeline.
 
-The network has surpassed 128 active subnets, with the top three compute subnets reportedly achieving a combined $20 million ARR within three months of monetization. In February 2025, Bittensor transitioned to Dynamic TAO (dTAO), a market-driven system where each subnet has its own token and liquidity pool, allowing users to stake directly to the subnets they believe in.
+The network has [surpassed 128 active subnets](https://taostats.io/subnets), with [the top three compute subnets reportedly achieving a combined $20 million ARR within three months of monetization](https://www.unsupervised.capital/writing/bittensors-ai-compute-subnets-collectively-reach-20m-arr). In February 2025, Bittensor [transitioned to Dynamic TAO (dTAO)](https://www.bittensor.com/dtao-whitepaper), a market-driven system where each subnet has its own token and liquidity pool, allowing users to stake directly to the subnets they believe in.
 
 The subnet model is what makes Bittensor relevant to builders: each subnet is essentially a specialized AI service market, from LLM inference to data scraping to prediction markets, all governed by the same underlying incentive architecture.
 
@@ -109,7 +109,7 @@ The practical question for development teams isn't whether DePIN is directionall
 
 ### For AI inference
 
-Akash and Aethir offer APIs that closely mirror cloud provider interfaces. Deploying a containerized LLM inference endpoint on Akash uses SDL (Stack Definition Language), Akash's deployment configuration format, and looks operationally similar to deploying on AWS ECS. The cost difference is real: DePIN projects like Akash and Aethir provide enterprise-grade GPUs at 60-75% lower costs than AWS or Google Cloud. The reliability SLAs are still developing compared to hyperscalers.
+Akash and Aethir offer APIs that closely mirror cloud provider interfaces. Deploying a containerized LLM inference endpoint on Akash uses SDL (Stack Definition Language), Akash's deployment configuration format, and looks operationally similar to deploying on AWS ECS. The cost difference is real: DePIN projects like [Akash](https://akash.network/docs/getting-started/what-is-akash/) and [Aethir](https://aethir.com/blog-posts/gpu-demand-has-fragmented-understanding-the-new-compute-landscape) provide enterprise-grade GPUs at 60-75% lower costs than AWS or Google Cloud. The reliability SLAs are still developing compared to hyperscalers.
 
 ### For storage
 

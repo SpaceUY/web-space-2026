@@ -44,6 +44,9 @@ const {
 } = Astro.props;
 
 // Custom items take priority; otherwise auto-generate from URL path
+// Small words that stay lowercase in an auto-generated breadcrumb label
+// unless they open it (e.g. "finance-and-fintech" -> "Finance and Fintech").
+const BREADCRUMB_LOWERCASE_WORDS = new Set(["and", "of", "the", "for", "in"]);
 // Set of real static routes, so auto-breadcrumbs never link an
 // intermediate segment that has no page of its own (e.g. /blog/tag).
 // Built at compile time from the pages directory; dynamic routes ([...])
@@ -71,7 +74,9 @@ if (Array.isArray(breadcrumbsProp)) {
       acc += "/" + seg;
       const label = seg
         .split("-")
-        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .map((w, idx) =>
+          idx > 0 && BREADCRUMB_LOWERCASE_WORDS.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1)
+        )
         .join(" ");
       // Only link an intermediate crumb when its path is a real page;
       // the last crumb is never linked.

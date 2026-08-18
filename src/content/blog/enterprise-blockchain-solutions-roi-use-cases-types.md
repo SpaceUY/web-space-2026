@@ -33,7 +33,7 @@ The distinction from public chains isn't about which is "better." A B2B blockcha
 
 ## Where Enterprise Blockchain Generates Real ROI
 
-The global blockchain supply chain market reached $5.23 billion in 2026, with private blockchains leading enterprise adoption at 54.22% market share, reflecting requirements for permissioning, privacy, and governance. But the strongest ROI cases extend well beyond supply chain.
+The global blockchain supply chain market [reached $5.23 billion in 2026](https://www.thebusinessresearchcompany.com/report/blockchain-supply-chain-global-market-report), with private blockchains [leading enterprise adoption at 54.22% market share](https://www.globenewswire.com/news-release/2025/11/28/3195987/0/en/Blockchain-in-Supply-Chain-Market-to-Hit-USD-95-52-Billion-by-2033-Driven-by-Rising-Demand-for-Transparency-and-Traceability-SNS-Insider.html), reflecting requirements for permissioning, privacy, and governance. But the strongest ROI cases extend well beyond supply chain.
 
 **Multi-party reconciliation elimination.** In industries where two or more organizations maintain separate ledgers of the same transactions, reconciliation is a significant operational cost. When counterparties share a single source of truth, the reconciliation process shrinks from days to near-real-time, and the dispute surface area collapses.
 
@@ -91,7 +91,7 @@ Underdefined governance is the primary reason corporate blockchain projects stal
 
 ## Compliance in 2026: The Clearest Regulatory Landscape the Industry Has Had
 
-The regulatory picture has clarified meaningfully. MiCA is in full effect across EU member states, providing a coherent framework for crypto-asset service providers in European markets. The US has seen significant regulatory progress through 2025 and into 2026 on digital asset classification, stablecoin legislation, and tokenized securities frameworks. Singapore, UAE, and the UK continue to operate mature sandbox environments that allow blockchain-based financial products to reach production.
+The regulatory picture has clarified meaningfully. MiCA [is in full effect](https://eur-lex.europa.eu/EN/legal-content/summary/european-crypto-assets-regulation-mica.html) across EU member states, providing a coherent framework for crypto-asset service providers in European markets. The US has seen significant regulatory progress through 2025 and into 2026 on digital asset classification, stablecoin legislation, and tokenized securities frameworks. Singapore, UAE, and the UK continue to operate mature sandbox environments that allow blockchain-based financial products to reach production.
 
 For enterprise deployments that don't involve public token issuance, the compliance picture is generally more straightforward. A permissioned blockchain network used for internal record-keeping or B2B process automation is regulated primarily through the underlying business activity, not through crypto-specific frameworks.
 

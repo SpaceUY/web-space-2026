@@ -4,7 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Badge from "../../components/ui/Badge.astro";
 import CTA from "../../components/ui/CTA.astro";
 import AnimatedCounter from "../../components/ui/AnimatedCounter.astro";
-import { SITE } from "../../lib/seo";
+import { SITE, organizationJsonLd } from "../../lib/seo";
 import "../../styles/prose.css";
 
 export async function getStaticPaths() {
@@ -34,6 +34,8 @@ const gradient = ""; // unused — hero uses --sd-gradient-hero via inline style
 // See https://developers.google.com/search/docs/appearance/structured-data/review-snippet
 // The testimonial stays visible in the page body and links out to Clutch,
 // which is the supported way to surface third-party social proof.
+const { "@context": _orgContext, ...creatorJsonLd } = organizationJsonLd;
+
 const csJsonLd = {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
@@ -41,7 +43,9 @@ const csJsonLd = {
   description: entry.data.tagline,
   url: `${SITE.url}/our-work/${entry.id}`,
   about: { "@type": "Thing", name: entry.data.industry },
-  creator: { "@type": "Organization", name: SITE.name, url: SITE.url },
+  creator: creatorJsonLd,
+  ...(entry.data.heroImage && { image: `${SITE.url}${entry.data.heroImage}` }),
+  ...(entry.data.publishedAt && { datePublished: entry.data.publishedAt.toISOString().slice(0, 10) }),
   ...(entry.data.client && { author: { "@type": "Organization", name: entry.data.client } }),
 };
 
@@ -154,10 +158,12 @@ const serviceLinks: Record<string, string> = {
             <img
               src={heroImage}
               alt={`${entry.data.name} — featured visual`}
+              width="960"
+              height="720"
               loading="eager"
               fetchpriority="high"
               class="block"
-              style="width: 125%; max-width: none; margin-left: -12.5%;"
+              style="width: 125%; max-width: none; margin-left: -12.5%; height: auto;"
             />
           </div>
         )}

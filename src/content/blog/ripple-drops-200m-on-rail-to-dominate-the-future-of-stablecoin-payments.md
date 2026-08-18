@@ -20,7 +20,7 @@ When Ripple makes a move, the fintech world pays attention. This time, the San F
 
 Ripple's president, Monica Long, calls it *"a strategic leap to accelerate stablecoin and blockchain adoption in global payments."* Translation? Ripple wants to dominate the future of money movement, where stablecoins flow as seamlessly as dollars.
 
-The deal, slated to close in Q4 2025 pending regulatory sign-off, cements Ripple's aggressive growth-through-acquisition play. With Rail in the fold, Ripple's M&A tally climbs past **$3 billion**, a war chest deployed to fuse traditional finance with decentralized solutions.
+The deal [closed in December 2025](https://www.tradingview.com/news/u_today:43fabc501094b:0-ripple-wraps-up-acquisition-of-stablecoin-firm-rail/) after regulatory sign-off, cementing Ripple's aggressive growth-through-acquisition play. With Rail in the fold, Ripple's M&A tally climbed past **$3 billion**, a war chest deployed to fuse traditional finance with decentralized solutions.
 
 ## Why Rail Matters
 

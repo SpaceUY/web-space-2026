@@ -33,6 +33,13 @@ const sameAsLinks = [
   author.social?.github,
 ].filter((url): url is string => Boolean(url));
 
+const subjectOf = mediaMentions.map((item) => ({
+  "@type": "CreativeWork",
+  name: item.title,
+  url: `${SITE.url}/spacedev-in-the-media/${item.slug}`,
+  datePublished: item.date.toISOString().slice(0, 10),
+}));
+
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -44,6 +51,7 @@ const personJsonLd = {
   ...(author.avatar && { image: `${SITE.url}${author.avatar}` }),
   ...(author.knowsAbout && { knowsAbout: author.knowsAbout }),
   ...(sameAsLinks.length > 0 && { sameAs: sameAsLinks }),
+  ...(subjectOf.length > 0 && { subjectOf }),
 };
 ---
 

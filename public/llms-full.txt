@@ -71,7 +71,6 @@ Smart contract audit and blockchain security: static and manual analysis, formal
 - AthleteAI (https://spacedev.io/our-work/athleteai): iOS sports highlights app — React Native video capture and Mux streaming — built in four months.
 - Genba (https://spacedev.io/our-work/genba): Factory palletizing automation platform built in two months after a discovery sprint.
 - iAffirm (https://spacedev.io/our-work/iaffirm): AI mental wellness web app — personalized affirmations and guided meditations.
-- Nomei (https://spacedev.io/our-work/nomei): AI coaching platform with long-term memory and emotional analytics.
 - Ubicuity (https://spacedev.io/our-work/ubicuity): Figma-like visual designer and React Native app for interactive digital spaces.
 - Mostaza, NGA, Glowy Music, Twispi, Byrrgis: additional Web2/Web3 product engineering case studies.
 

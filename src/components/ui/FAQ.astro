@@ -38,7 +38,7 @@ const faqJsonLd = withJsonLd
   {items.map((item) => (
     <details class="group py-5 sd-faq-item" name="faq">
       <summary class={`flex items-center justify-between gap-6 cursor-pointer list-none ${questionColor}`}>
-        <span class="text-base md:text-lg font-medium pr-4 group-open:text-sd-purple-300 transition-colors">{item.question}</span>
+        <h3 class="m-0 text-base md:text-lg font-medium pr-4 group-open:text-sd-purple-300 transition-colors">{item.question}</h3>
         <span class={`shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full border ${borderColor} group-open:border-sd-purple-400/60 group-open:bg-sd-purple-600/20 ${iconColor} transition-all duration-200 group-open:rotate-45`} aria-hidden="true">
           <svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>

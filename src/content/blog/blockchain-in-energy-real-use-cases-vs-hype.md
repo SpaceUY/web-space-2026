@@ -29,7 +29,7 @@ faqs:
   - question: "Which company is leading in blockchain energy trading?"
     answer: "Power Ledger is the most visible named example, with its trading platform deployed commercially across Australia, India, Japan, Thailand, and the US, though the broader tokenization side of the market has more participants once you include REC and carbon platforms."
   - question: "Is XRP tokenizing real-world assets?"
-    answer: "Yes, broadly, though not specifically in energy so far. The XRP Ledger has grown its tokenized real-world assets to over $1.3 billion in 2026, mostly tokenized US Treasuries and stablecoins from issuers like Ondo Finance and Societe Generale, not renewable energy certificates or power assets."
+    answer: "Yes, broadly, though not specifically in energy so far. The XRP Ledger has grown its tokenized real-world assets to over $3 billion in 2026, mostly tokenized US Treasuries and stablecoins from issuers like Ondo Finance and Societe Generale, not renewable energy certificates or power assets."
   - question: "Can you tokenize your house?"
     answer: "Residential real estate tokenization exists as its own practice, but it's a different market from the energy asset tokenization covered here, which is about fractional ownership of solar farms, turbines, and storage installations, not personal homes."
 ---
@@ -68,7 +68,7 @@ Blockchain energy trading lets producers and consumers transact energy or its va
 
 The mechanism depends on trusted data from the physical world. Smart meters and [decentralized oracles](/blog/decentralized-oracles) feed generation and consumption data on-chain, and the contract executes against it. This is the same physical-to-digital challenge that shows up across energy and infrastructure, which is why [putting physical infrastructure on-chain](/blog/depin-and-decentralized-ai-how-physical-infrastructure-is-being-put-on-chain) is a related design problem.
 
-P2P trading is real, and it already has a named commercial operator: Power Ledger runs its xGrid and uGrid platforms for community and behind-the-meter energy trading across five countries. But its ceiling today is regulatory and structural, not technical. Grid operators, tariffs, and balancing responsibilities mean most working examples are microgrids, campuses, or defined communities, not open utility-scale markets. On profitability, the honest answer is modest, not dramatic: pilots generally report real but small savings or extra income for participating households, not a new income stream large enough to change the underlying economics of owning solar.
+P2P trading is real, and it already has a named commercial operator: Power Ledger runs its [xGrid](https://powerledger.io/platform-features/xgrid/) and uGrid platforms for community and behind-the-meter energy trading across five countries. But its ceiling today is regulatory and structural, not technical. Grid operators, tariffs, and balancing responsibilities mean most working examples are microgrids, campuses, or defined communities, not open utility-scale markets. On profitability, the honest answer is modest, not dramatic: pilots generally report real but small savings or extra income for participating households, not a new income stream large enough to change the underlying economics of owning solar.
 
 ## Energy tokenization: RECs, carbon credits, and assets
 
@@ -82,9 +82,9 @@ Energy tokenization converts energy certificates or physical assets into blockch
 | Carbon credit | 1 verified ton of CO2 offset | Trade verified emissions reductions |
 | Physical energy asset | Share of a solar farm, turbine, or battery | Fractional ownership and financing |
 
-Tokenized RECs and carbon credits add traceability and lower transaction cost to instruments whose traditional issuance is centralized and expensive. IEEE 3240.04, the standard for blockchain-based REC trading, was approved on December 10, 2025, and sits alongside two related standards from the same IEEE blockchain-in-energy family: 3240.01-2023 for green power identification, and the broader 2418.5-2025 guide for blockchain in power and energy systems. Together they're a real signal that this is moving from pilot to infrastructure, not just one standard in isolation.
+Tokenized RECs and carbon credits add traceability and lower transaction cost to instruments whose traditional issuance is centralized and expensive. [IEEE 3240.04](https://standards.ieee.org/ieee/3240.04/11493/), the standard for blockchain-based REC trading, was approved on December 10, 2025, and sits alongside two related standards from the same IEEE blockchain-in-energy family: [3240.01-2023](https://standards.ieee.org/ieee/3240.01/10960/) for green power identification, and the broader [2418.5-2025](https://standards.ieee.org/ieee/2418.5/11217/) guide for blockchain in power and energy systems. Together they're a real signal that this is moving from pilot to infrastructure, not just one standard in isolation.
 
-Pricing gives a sense of scale for that carbon credit row in the table above. There is no single price, and that's the point: the voluntary carbon market has split sharply by credit quality. Generic, low-quality avoidance credits trade under $5 a ton, high-rated verified credits average closer to $15, and technology-based removal credits like biochar or direct air capture command $150 to over $500 a ton. Corporate buyers blending a real portfolio typically land somewhere between $25 and $80 a ton. Carbon credits also still trade largely over-the-counter rather than on a single central exchange, which is part of why traceability is valuable, and part of why price varies so much from one deal to the next.
+Pricing gives a sense of scale for that carbon credit row in the table above. There is no single price, and that's the point: [the voluntary carbon market has split sharply by credit quality](https://www.ecosystemmarketplace.com/articles/sovcm-2025-finds-the-voluntary-carbon-market-in-transition-demand-holding-steady-as-turnover-stabilizes/). Generic, low-quality avoidance credits trade under $5 a ton, high-rated verified credits average closer to $15, and technology-based removal credits like biochar or direct air capture command $150 to over $500 a ton. [Corporate buyers blending a real portfolio typically land somewhere between $25 and $80 a ton](https://www.senken.io/academy/understanding-carbon-markets/carbon-credit-price). Carbon credits also still trade largely over-the-counter rather than on a single central exchange, which is part of why traceability is valuable, and part of why price varies so much from one deal to the next.
 
 One honest caveat: tokenizing a bad certificate does not make it good. If a carbon credit represents a weak or unverified offset, putting it on-chain preserves the flaw with more transparency. Verification quality at the source still matters, the same garbage-in limit that applies to any traceability system, and it's a big part of why credit prices vary as widely as they do.
 
@@ -102,7 +102,7 @@ The concrete pieces:
 - Vehicle-to-grid (V2G), where EVs sell stored power back to the grid or to peers.
 - Automated grid balancing, where smart contracts settle micro-transactions between participants.
 
-This is where the vision is strongest and the deployment is earliest. The technology can coordinate a decentralized grid, but the grid itself, its regulation, and its physical infrastructure are the slower-moving constraints. On the broader renewable picture that these pieces plug into, leadership looks different depending on how you measure it: China leads by a wide margin in absolute installed renewable capacity and generation, while a handful of smaller grids, Iceland and Norway among them, already get close to their entire electricity supply from renewable and hydro sources. Neither ranking is about blockchain; both are the backdrop DER and V2G systems are being built into.
+This is where the vision is strongest and the deployment is earliest. The technology can coordinate a decentralized grid, but the grid itself, its regulation, and its physical infrastructure are the slower-moving constraints. On the broader renewable picture that these pieces plug into, leadership looks different depending on how you measure it: [China leads by a wide margin in absolute installed renewable capacity and generation](https://www.irena.org/News/pressreleases/2025/Mar/Record-Breaking-Annual-Growth-in-Renewable-Power-Capacity), while [a handful of smaller grids, Iceland and Norway among them, already get close to their entire electricity supply from renewable and hydro sources](https://ourworldindata.org/electricity-mix). Neither ranking is about blockchain; both are the backdrop DER and V2G systems are being built into.
 
 ## Where blockchain in energy is still hype
 
@@ -154,11 +154,11 @@ Mostly private and consortium chains, because utilities need permissioning, priv
 
 ### Which company is leading in blockchain energy trading?
 
-Power Ledger is the most visible named example, with its trading platform deployed commercially across Australia, India, Japan, Thailand, and the US, though the broader tokenization side of the market has more participants once you include REC and carbon platforms.
+Power Ledger is the most visible named example, with [its trading platform deployed commercially across Australia, India, Japan, Thailand, and the US](https://powerledger.io/company/about/), though the broader tokenization side of the market has more participants once you include REC and carbon platforms.
 
 ### Is XRP tokenizing real-world assets?
 
-Yes, broadly, though not specifically in energy so far. The XRP Ledger has grown its tokenized real-world assets to over $1.3 billion in 2026, mostly tokenized US Treasuries and stablecoins from issuers like Ondo Finance and Societe Generale, not renewable energy certificates or power assets.
+Yes, broadly, though not specifically in energy so far. [The XRP Ledger has grown its tokenized real-world assets to over $3 billion in 2026](https://app.rwa.xyz/networks/xrp-ledger), mostly tokenized US Treasuries and stablecoins from issuers like Ondo Finance and Societe Generale, not renewable energy certificates or power assets.
 
 ### Can you tokenize your house?
 

@@ -4,6 +4,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
+import { rehypeImageDimensions } from './src/lib/rehype-image-dimensions.mjs';
 
 /**
  * Build a slug → lastmod map from content frontmatter so the sitemap can emit
@@ -39,6 +40,9 @@ export default defineConfig({
   trailingSlash: 'never',
   vite: {
     plugins: [tailwindcss()],
+  },
+  markdown: {
+    rehypePlugins: [rehypeImageDimensions],
   },
   adapter: vercel(),
   integrations: [sitemap({
