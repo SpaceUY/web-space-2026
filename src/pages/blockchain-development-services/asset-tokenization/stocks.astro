@@ -1,0 +1,211 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import FeatureCard from "../../../components/ui/FeatureCard.astro";
+import { stockTokenizationData } from "../../../data/services";
+
+const platformComponents = [
+  { title: "Equity token smart contracts", description: "ERC-3643 / ERC-1400 issuance contracts with transfer restrictions and lifecycle logic" },
+  { title: "On-chain cap table management", description: "Real-time ownership registry, corporate actions automation, shareholder records" },
+  { title: "KYC/AML and investor onboarding", description: "Accreditation checks, identity verification, jurisdictional transfer controls" },
+  { title: "Custody and wallet infrastructure", description: "Custodial and non-custodial models, hot/cold segregation, MPC wallet integrations" },
+  { title: "Dividend and corporate actions automation", description: "On-chain distribution of dividends, rights issues, stock splits, and proxy voting" },
+  { title: "Issuer and investor portals", description: "Dashboards, transfer requests, compliance reporting, and cap table views" },
+  { title: "Secondary market integrations", description: "ATS connectivity, DEX listing support, OTC desk infrastructure" },
+  { title: "Oracle integrations", description: "Chainlink Proof of Reserves, real-time price feeds, compliance data verification" },
+];
+
+const comparison = [
+  { row: "Underlying asset", spot: "Real shares held in regulated custody", synthetic: "No underlying share, price tracked via oracle" },
+  { row: "Investor rights", spot: "Voting rights, dividends, legal claim on shares", synthetic: "Economic exposure only, no shareholder rights" },
+  { row: "Regulatory classification", spot: "Security, subject to SEC / FINRA oversight", synthetic: "Varies, often derivative or complex financial product" },
+  { row: "Custody requirement", spot: "Registered custodian or broker-dealer required", synthetic: "No custody needed, oracle and smart contract sufficient" },
+  { row: "DeFi composability", spot: "Limited by compliance controls", synthetic: "High, can be used in lending, borrowing, perpetuals" },
+  { row: "Who builds this", spot: "Broker-dealers, fintechs, regulated issuers", synthetic: "DeFi protocols, crypto-native platforms" },
+  { row: "Standard used", spot: "ERC-3643, ERC-1400", synthetic: "ERC-20 with oracle integration" },
+];
+
+const complianceInfra = [
+  { title: "Transfer Restrictions Enforced at the Contract Level", description: "ERC-3643 (T-REX) enforces accreditation checks, jurisdictional restrictions, and investor allowlists directly in the smart contract. A transfer that does not meet the compliance criteria does not execute, regardless of who initiates it. This is the technical standard used by Securitize and Tokeny, and the platforms backing BlackRock and KKR tokenized funds." },
+  { title: "On-Chain KYC/AML and Investor Accreditation", description: "Every investor who holds tokenized equity must be verified before receiving a transfer. We integrate KYC/AML providers including Sumsub, Jumio, and Onfido into the onboarding flow, with accreditation status mapped to the on-chain identity layer." },
+  { title: "Forced Transfer and Token Recovery Mechanisms", description: "Regulated equity platforms require the ability to force transfer or freeze tokens in response to court orders, regulatory action, or investor offboarding. ERC-3643 includes these mechanisms natively." },
+  { title: "Proof of Reserves and Custody Verification", description: "For equity-backed token platforms, every token minted must correspond to a real share held in custody. We integrate Chainlink Proof of Reserves to provide on-chain verification of the custody backing ratio." },
+];
+
+const techStack = [
+  { label: "Token Standards", items: "ERC-3643 (T-REX), ERC-1400, ERC-20 with access controls" },
+  { label: "Networks", items: "Ethereum, Polygon, Solana (SPL Token-2022), Avalanche, Base" },
+  { label: "Smart Contract Infrastructure", items: "Solidity, Hardhat, Foundry, OpenZeppelin, upgradeable proxy patterns" },
+  { label: "Oracle and Data Infrastructure", items: "Chainlink Proof of Reserves, price feeds, Pyth Network for Solana" },
+  { label: "KYC/AML and Identity", items: "Sumsub, Jumio, Onfido, Polygon ID, W3C Verifiable Credentials" },
+  { label: "Custody Integrations", items: "Fireblocks MPC, Anchorage, Copper, Gnosis Safe multi-sig" },
+  { label: "Secondary Market", items: "ATS API integrations, DEX listing support, OTC desk infrastructure" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Token Model and Compliance Scoping", description: "We define the token model (equity-backed vs. synthetic), the regulatory framework your platform operates within, the custody structure, and the KYC/AML requirements before any architecture decisions are made. Our Product Discovery service covers this scoping phase as a standalone engagement." },
+  { number: "02", title: "Smart Contract Development", description: "We build the issuance contracts, transfer restriction logic, corporate actions mechanisms, and cap table registry using ERC-3643 or ERC-1400 depending on your requirements." },
+  { number: "03", title: "Compliance Infrastructure and KYC Integration", description: "We build the identity layer, investor onboarding flows, and on-chain allowlist management that your compliance team will operate day-to-day, plus admin tooling for manual overrides and regulatory reporting exports." },
+  { number: "04", title: "Custody and Oracle Integration", description: "We integrate the custody infrastructure appropriate to your model, including Proof of Reserves verification if you are building an equity-backed platform." },
+  { number: "05", title: "Investor Portal, Issuer Console, and Secondary Market", description: "We build the product layer: investor dashboards, issuer consoles for cap table management and corporate actions, and the integrations required for your tokens to be tradeable on your target venues." },
+  { number: "06", title: "Security Review and Pre-Launch Audit", description: "Every tokenized equity platform goes through structured security review before launch. Given the regulated nature of these systems, independent smart contract auditing through BlockAudit is strongly recommended." },
+];
+
+const relatedServices = [
+  { title: "Asset Tokenization", href: "/blockchain-development-services/asset-tokenization", description: "The parent service covering all asset classes: real estate, bonds, commodities, and securities" },
+  { title: "Bond Tokenization", href: "/blockchain-development-services/asset-tokenization/bonds", description: "Fixed-income issuance infrastructure with the same compliance standards" },
+  { title: "Smart Contract Development", href: "/blockchain-development-services/smart-contract-development", description: "Audited ERC-3643 and ERC-1400 contracts for equity issuance" },
+  { title: "Web3 Compliance Development", href: "/blockchain-development-services/industry/compliance-web3", description: "KYC/AML, transfer restrictions, and regulatory infrastructure" },
+];
+---
+
+<ServicePageLayout data={{ ...stockTokenizationData, seo: { ...stockTokenizationData.seo, description: "SpaceDev builds stock tokenization platforms: on-chain equity issuance, ERC-3643 smart contracts, compliance infrastructure, and secondary market systems. Let's build." } }}>
+  <div slot="pre-process">
+
+    <!-- Components -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">What we build</p>
+          <h2 class="section-title text-white">What a Stock Tokenization Platform Requires, and What We Build</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {platformComponents.map((item, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Two models comparison -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">The Two Tokenized Stock Models and When to Build Each</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            The architecture of a tokenized equity platform depends entirely on which model you are building. These are not interchangeable, and the wrong choice creates compliance exposure or liquidity problems that are expensive to fix post-launch.
+          </p>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/4"></th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8">Equity-Backed Spot Tokens</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4">Synthetic / Oracle-Priced Tokens</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.row}</td>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.spot}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.synthetic}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {comparison.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.row}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Equity-backed:</span> {row.spot}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Synthetic:</span> {row.synthetic}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-8 text-sm text-sd-text-muted border-l-2 border-sd-purple/50 pl-4" data-animate>
+          Most regulated financial companies need the equity-backed spot token model. DeFi-native projects typically build the synthetic model for permissionless access to equity price exposure. SpaceDev builds both, with the architecture driven by your regulatory environment and target user base.
+        </p>
+      </div>
+    </section>
+
+    <!-- Compliance infrastructure -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white">Key Compliance Infrastructure for Tokenized Stock Platforms</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {complianceInfra.map((t) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{t.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{t.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white">Stock Tokenization Tech Stack</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {techStack.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{row.label}</p>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{row.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery Process -->
+    <section class="py-20 md:py-32 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <div class="md:sticky md:top-32" data-animate>
+            <h2 class="section-title text-white mb-6">How We Approach Stock Tokenization Development Projects</h2>
+          </div>
+          <ol class="flex flex-col gap-6">
+            {deliverySteps.map((step) => (
+              <li>
+                <FeatureCard number={step.number} title={step.title} description={step.description} tone="dark" />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Stock Tokenization Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((service) => (
+            <a
+              href={service.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">{service.title}</h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{service.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

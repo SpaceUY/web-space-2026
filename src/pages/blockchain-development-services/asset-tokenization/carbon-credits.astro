@@ -1,0 +1,244 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import FeatureCard from "../../../components/ui/FeatureCard.astro";
+import { carbonCreditTokenizationData } from "../../../data/services";
+
+const platformComponents = [
+  { title: "Registry API integrations", description: "Verra VCS, Gold Standard, ACR, CAR, and national registry adapters" },
+  { title: "Carbon token smart contracts", description: "ERC-20, ERC-1155 with credit metadata, vintage year, project type, and certification standard" },
+  { title: "On-chain retirement mechanism", description: "Permanent burn function tied to registry retirement confirmation, with public proof of offset" },
+  { title: "MRV data infrastructure", description: "Measurement, Reporting, and Verification data pipelines from IoT, satellite feeds, and third-party verifiers" },
+  { title: "KYC/AML investor onboarding", description: "Identity verification, jurisdictional access controls, corporate buyer verification" },
+  { title: "Carbon marketplace development", description: "Order book or AMM-based trading, liquidity pools, pricing feeds, and settlement" },
+  { title: "ESG reporting and audit dashboard", description: "Scope 1, 2, and 3 emissions accounting, real-time offset tracking, regulatory disclosure exports" },
+  { title: "DeFi integrations", description: "Carbon-collateralized lending, liquidity pool setup, Toucan Protocol compatibility" },
+];
+
+const comparison = [
+  { row: "Regulatory basis", compliance: "Government-mandated (EU ETS, California Cap-and-Trade, RGGI)", voluntary: "Corporate net-zero commitments, ESG mandates" },
+  { row: "Credit standards", compliance: "Government-issued allowances (EUAs, CRTs, RGAs)", voluntary: "Verra VCS, Gold Standard, ACR, CAR, ART/TREES" },
+  { row: "Buyer type", compliance: "Regulated industries with legal emission limits", voluntary: "Corporations, asset managers, DeFi protocols" },
+  { row: "Registry", compliance: "National or regional government registries", voluntary: "Verra, Gold Standard, ACR, national voluntary registries" },
+  { row: "Token classification", compliance: "Often regulated financial instrument", voluntary: "Commodity in most jurisdictions (varies)" },
+  { row: "DeFi composability", compliance: "Highly restricted", voluntary: "Viable with proper integrity controls" },
+  { row: "Platform infrastructure", compliance: "Permissioned chains, government integration", voluntary: "Public chains (Ethereum, Polygon, Celo) preferred" },
+  { row: "Reference protocol", compliance: "Government-run trading systems", voluntary: "Toucan Protocol, C3 Protocol, KlimaDAO ecosystem" },
+];
+
+const carbonTypes = [
+  { title: "Project-Specific Carbon Tokens (ERC-1155)", description: "ERC-1155 multi-token contracts are the preferred standard for carbon credit tokenization because each credit batch from a specific project, vintage year, and certification standard can be represented as a distinct token type within a single contract, preserving granular provenance data while allowing efficient batch operations." },
+  { title: "Pooled Carbon Tokens (Toucan Protocol BCT/NCT Model)", description: "Pooled carbon tokens aggregate credits from multiple projects meeting a common quality threshold into a single fungible token. Toucan Protocol's Base Carbon Tonne (BCT) and Nature-based Carbon Tonne (NCT) demonstrated this model at scale on Polygon. We build custom pool contracts with configurable quality gates." },
+  { title: "Compliance Market Allowance Tokens", description: "For platforms operating in regulated compliance markets, we build permissioned token infrastructure representing government-issued allowances, requiring tighter access controls and government registry API integrations, often on permissioned blockchain infrastructure rather than public chains." },
+  { title: "Renewable Energy Certificates (RECs) and Green Attribute Tokens", description: "Carbon credit infrastructure frequently overlaps with Renewable Energy Certificate tokenization. We build platforms that handle both carbon offsets and RECs within the same infrastructure, with separate retirement mechanisms and provenance tracking for each instrument type." },
+];
+
+const techStack = [
+  { label: "Token Standards", items: "ERC-1155 (project-specific credits with metadata), ERC-20 (pooled fungible tokens), custom retirement extensions" },
+  { label: "Networks", items: "Polygon (Toucan Protocol compatibility), Celo (carbon-negative chain, ReFi ecosystem), Ethereum, Avalanche, permissioned Hyperledger Besu for compliance markets" },
+  { label: "Registry Integrations", items: "Verra VCS API, Gold Standard registry, ACR (American Carbon Registry), CAR (Climate Action Reserve), ART/TREES" },
+  { label: "Oracle and MRV Infrastructure", items: "Chainlink Data Feeds, Planet Labs satellite API, IoT data aggregation middleware, third-party verifier webhooks" },
+  { label: "DeFi and Protocol Integrations", items: "Toucan Protocol (BCT/NCT pool compatibility), C3 Protocol, KlimaDAO ecosystem, Uniswap V3 liquidity pools" },
+  { label: "Smart Contract Infrastructure", items: "Solidity, Hardhat, Foundry, OpenZeppelin, upgradeable proxy patterns, multi-sig admin controls" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Carbon Market Scoping and Registry Strategy", description: "We define your target market (compliance vs. voluntary), the certification standards your credits will use, the MRV methodology, the token model, and the applicable regulatory framework, involving your environmental consultants and legal advisors." },
+  { number: "02", title: "Registry Integration and MRV Pipeline", description: "We build the API integrations with your target carbon registries and the MRV data pipelines that connect physical project verification data to the token minting authorization system. Tokens are only mintable after registry confirmation is received." },
+  { number: "03", title: "Smart Contract Development", description: "We build the token contracts encoding credit provenance metadata, minting controls tied to registry confirmation, and the permanent burn-on-retirement mechanism. For pooled token models, we build the pool contract with configurable quality gates." },
+  { number: "04", title: "Marketplace and Trading Infrastructure", description: "We build or integrate the trading layer: order book or AMM-based carbon credit marketplace, pricing feeds, liquidity pool setup for pooled tokens, and settlement infrastructure, with Toucan Protocol compatibility for platforms targeting DeFi composability." },
+  { number: "05", title: "ESG Reporting and Corporate Buyer Tools", description: "We build the corporate buyer layer: retirement dashboards, Scope 1/2/3 emissions accounting, offset certificate generation with on-chain proof links, and regulatory disclosure exports formatted for CDP, GRI, and TCFD reporting requirements." },
+  { number: "06", title: "Security Review and Audit", description: "Carbon tokenization platforms are increasingly targets for greenwashing exploits and smart contract attacks. Every contract goes through structured security review, with BlockAudit providing independent audits focused on retirement mechanism and registry integration bypass risks." },
+];
+
+const relatedServices = [
+  { title: "Asset Tokenization", href: "/blockchain-development-services/asset-tokenization", description: "The parent service covering all RWA asset classes" },
+  { title: "Smart Contract Development", href: "/blockchain-development-services/smart-contract-development", description: "Audited ERC-1155 contracts with on-chain retirement and provenance metadata" },
+  { title: "Blockchain for Energy", href: "/blockchain-development-services/industry/energy", description: "Renewable energy certificate tokenization and green energy infrastructure" },
+  { title: "BlockAudit: Blockchain Security", href: "/blockaudit-smart-contract-and-blockchain-security", description: "Independent audits before any carbon platform goes live" },
+];
+---
+
+<ServicePageLayout data={{ ...carbonCreditTokenizationData, seo: { ...carbonCreditTokenizationData.seo, description: "Carbon credit tokenization: registry integration, on-chain retirement, MRV infrastructure, and voluntary carbon market systems. Build with SpaceDev." } }}>
+  <div slot="pre-process">
+
+    <!-- Components -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">What we deliver</p>
+          <h2 class="section-title text-white">Carbon Credit Tokenization Platform Components We Build</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {platformComponents.map((item, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Compliance vs Voluntary -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Compliance vs. Voluntary Carbon Markets: Two Different Architectures</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            The most common mistake in carbon credit platform development is treating compliance and voluntary markets as variations of the same product. They are not.
+          </p>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/4"></th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8">Compliance Carbon Markets</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4">Voluntary Carbon Markets (VCM)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.row}</td>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.compliance}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.voluntary}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {comparison.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.row}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Compliance:</span> {row.compliance}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Voluntary:</span> {row.voluntary}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-8 text-sm text-sd-text-muted border-l-2 border-sd-purple/50 pl-4" data-animate>
+          Most corporate platforms are building for the voluntary carbon market, where Verra VCS and Gold Standard credits dominate and blockchain tokenization has the most immediate product-market fit. Our
+          <a href="/product-discovery" class="text-sd-purple-300 hover:text-white transition-colors">Product Discovery</a>
+          process clarifies which market your platform targets before development begins.
+        </p>
+      </div>
+    </section>
+
+    <!-- Double counting -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mb-10" data-animate>
+          <h2 class="section-title text-white mb-4">The Double-Counting Problem and How On-Chain Retirement Solves It</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            The voluntary carbon market has a well-documented integrity problem. Credits have been counted multiple times, retired credits have been resold, and provenance has been falsified at significant scale. A
+            <a href="https://www.theguardian.com/environment/2023/jan/18/revealed-forest-carbon-offsets-biggest-provider-worthless-verra-audi-shell-gucci" target="_blank" rel="noopener noreferrer" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">2023 investigation by The Guardian, Die Zeit, and SourceMaterial</a>
+            found that more than 90% of Verra's rainforest offset credits analyzed may be worthless, a finding Verra has disputed. This is the structural problem that blockchain-based carbon tokenization is built to address.
+          </p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3 max-w-4xl">
+          <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+            <p class="text-2xl font-display text-sd-purple-300 mb-3">01</p>
+            <h3 class="text-base font-display font-semibold text-white mb-2">Registry-verified issuance</h3>
+            <p class="text-sm text-sd-text-muted leading-relaxed">Tokens are only minted against credits that have been verified and issued by Verra, Gold Standard, or an equivalent registry.</p>
+          </div>
+          <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+            <p class="text-2xl font-display text-sd-purple-300 mb-3">02</p>
+            <h3 class="text-base font-display font-semibold text-white mb-2">On-chain retirement with registry confirmation</h3>
+            <p class="text-sm text-sd-text-muted leading-relaxed">The token is permanently burned on-chain in the same transaction that triggers the retirement API call to the originating registry. The two events are atomic.</p>
+          </div>
+          <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+            <p class="text-2xl font-display text-sd-purple-300 mb-3">03</p>
+            <h3 class="text-base font-display font-semibold text-white mb-2">Immutable provenance metadata</h3>
+            <p class="text-sm text-sd-text-muted leading-relaxed">Every token carries on-chain metadata encoding the credit's project ID, vintage year, certification standard, and geographic origin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carbon token types -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white">Carbon Token Types and Standards We Work With</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {carbonTypes.map((t) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{t.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{t.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white">Carbon Credit Tokenization Tech Stack</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {techStack.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{row.label}</p>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{row.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery Process -->
+    <section class="py-20 md:py-32 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <div class="md:sticky md:top-32" data-animate>
+            <h2 class="section-title text-white mb-6">How We Build Carbon Credit Tokenization Platforms</h2>
+          </div>
+          <ol class="flex flex-col gap-6">
+            {deliverySteps.map((step) => (
+              <li>
+                <FeatureCard number={step.number} title={step.title} description={step.description} tone="dark" />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Carbon Credit Tokenization Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((service) => (
+            <a
+              href={service.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">{service.title}</h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{service.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

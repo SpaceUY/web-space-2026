@@ -114,7 +114,7 @@ export const blockchainData: ServicePageData = {
       { number: "03", title: "Decentralized Identity", description: "Self-sovereign identity solutions that give users full control over their data: secure, private, and interoperable across chains.", href: "/blockchain-development-services/decentralized-identity" },
       { number: "04", title: "Asset Tokenization", description: "Turn real-world assets into digital tokens, unlocking liquidity, fractional ownership, and new investment opportunities.", href: "/blockchain-development-services/asset-tokenization" },
       { number: "05", title: "Layer 1 Blockchain Development", description: "Fully customized, scalable networks ranging from Layer 1 protocols to private enterprise chains, secure and future-ready.", href: "/blockchain-development-services/layer-1-blockchain-development" },
-      { number: "06", title: "DAO Development", description: "On-chain governance models for transparent decision-making, voting systems, and efficient treasury management.", href: "/coming-soon" },
+      { number: "06", title: "DAO Development", description: "On-chain governance models for transparent decision-making, voting systems, and efficient treasury management.", href: "/blockchain-development-services/dao-development" },
     ],
   },
 
@@ -978,5 +978,241 @@ export const complianceWeb3Data: ServicePageData = {
     description: "Compliance built into your product from the start is a competitive advantage, not just a legal obligation. Talk to our team about what your regulatory environment requires and how we build it.",
     buttonLabel: "Talk to our team",
     buttonHref: "/contact",
+  },
+};
+
+/* ============================================================
+   DAO DEVELOPMENT
+   ============================================================ */
+export const daoDevelopmentData: ServicePageData = {
+  seo: {
+    title: "DAO Development Services | Custom On-Chain Governance & Smart Contracts | SpaceDev",
+    description: "SpaceDev builds custom DAO platforms with audited smart contracts, on-chain governance, treasury management, and tokenomics.",
+  },
+  eyebrow: "Sub-service · Blockchain",
+  compactHeroTitle: true,
+  title: "DAO Development Services for Organizations That Need Real On-Chain Governance",
+  description: "We design and develop custom DAO platforms with the governance architecture, smart contract infrastructure, and treasury management systems that decentralized organizations need to thrive. You get production-grade systems built around your specific governance model, not a generic template.",
+  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar", external: true },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  relatedTags: ["blockchain", "web3-infrastructure"],
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What does a DAO development service include?", answer: "A complete DAO development service includes governance smart contract design, token development, treasury management infrastructure, voting mechanism implementation, member portal development, security review, and post-launch support. The exact scope depends on whether the project needs a simple multi-signature governance structure or a full protocol DAO with on-chain execution." },
+    { question: "How long does it take to build a DAO?", answer: `A basic DAO with governance contracts and a member portal can be delivered in 6 to 10 weeks. Full protocol DAOs with custom voting systems, treasury automation, and dApp integration require a scoping phase first. Our <a href="/product-discovery" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Product Discovery</a> process gives you accurate timelines before any commitment.` },
+    { question: "What is the difference between on-chain and off-chain governance?", answer: "Off-chain governance uses tools like Snapshot for signaling, with a human or multi-sig executing the result. On-chain governance enforces proposals directly through smart contracts with no human intermediary in the execution path. Most production DAOs use a combination: off-chain signaling for low-stakes decisions and on-chain execution for treasury and parameter changes." },
+    { question: "Which blockchain networks do you build DAOs on?", answer: "We build on Ethereum, Polygon, Arbitrum, Optimism, Avalanche, and BNB Chain. Network selection depends on your community size, transaction cost tolerance, and ecosystem integrations." },
+    { question: "Can you audit an existing DAO's smart contracts?", answer: `Yes. <a href="/blockaudit-smart-contract-and-blockchain-security" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">BlockAudit</a> handles independent DAO smart contract audits, with specific focus on governance attack vectors including vote manipulation, flash loan governance attacks, proposal griefing, and treasury access exploits.` },
+    { question: "Can you integrate with existing governance tools like Tally or Gnosis Safe?", answer: "Yes. We build custom implementations and integrate with existing governance infrastructure including Tally, Gnosis Safe, Snapshot, and Governor Bravo, depending on what your governance model requires." },
+  ],
+
+  finalCta: {
+    title: "Getting governance right from day one can mean the difference between a DAO that operates effectively and one that stalls at its first contentious proposal.",
+    description: "Talk to our team about your governance model and the type of solution your project needs.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
+  },
+};
+
+/* ============================================================
+   WHITE LABEL CRYPTO EXCHANGE
+   ============================================================ */
+export const whiteLabelExchangeData: ServicePageData = {
+  seo: {
+    title: "White Label Crypto Exchange Development Services | Custom Trading Platforms | SpaceDev",
+    description: "SpaceDev builds custom white-label crypto exchange platforms with spot and derivatives trading, multi-chain support, KYC/AML, and liquidity integrations, all designed for a fast launch.",
+  },
+  eyebrow: "Sub-service · Blockchain",
+  compactHeroTitle: true,
+  title: "White Label Crypto Exchange Development Built for Speed, Security, and Scale",
+  description: "SpaceDev delivers custom white-label cryptocurrency exchange platforms for fintech companies, Web3 startups, and financial institutions that need a production-ready trading platform without spending 12 months building one from scratch. We develop the trading engine, order management system, compliance layer, and user-facing platform as one integrated product tailored to your business model, rather than a generic template with your logo added.",
+  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar", external: true },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  relatedTags: ["blockchain", "web3-infrastructure"],
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What is a white label crypto exchange?", answer: "A white label crypto exchange is a trading platform built and deployed under your brand, using either a pre-built software base or custom development. Pre-built solutions offer speed but limited control over architecture, security, and compliance logic. Custom-built white label platforms, like those SpaceDev delivers, give you full ownership of the codebase and the ability to evolve the product without depending on a third-party vendor." },
+    { question: "How long does it take to build a white label crypto exchange?", answer: `A production-ready MVP with core trading functionality can be delivered in 8 to 16 weeks depending on exchange type and compliance requirements. Full platforms with derivatives trading, institutional-grade infrastructure, and multi-jurisdiction compliance require a scoping phase first. Our <a href="/product-discovery" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Product Discovery</a> process gives you accurate timelines before any budget commitment.` },
+    { question: "What is the difference between a CEX and a DEX?", answer: "A centralized exchange (CEX) holds user funds in custody and relies on an off-chain matching engine for high-speed trading. A decentralized exchange (DEX) uses smart contracts for on-chain order matching or AMM logic, allowing users to retain custody of their assets. Many institutional-facing projects now use hybrid architectures that combine off-chain performance with the transparency of on-chain settlement." },
+    { question: "Do you provide liquidity for the exchange?", answer: "SpaceDev integrates your platform with liquidity providers and aggregator APIs, including Chainlink price feeds, 0x Protocol, and custom connections to market makers. We build the technical integration layer, while liquidity relationships remain governed by your commercial agreements." },
+    { question: "Do you support fiat on and off-ramps?", answer: "Yes. We integrate fiat gateway providers, stablecoin settlement rails, and banking connections into the exchange onboarding and withdrawal flow. The specific providers depend on your target markets and regulatory setup." },
+    { question: "Who owns the codebase after development?", answer: "You do. SpaceDev delivers a fully custom, client-owned codebase. There are no ongoing licensing fees, no vendor lock-in, and no dependency on our infrastructure to keep your exchange running." },
+  ],
+
+  finalCta: {
+    title: "Build Your Crypto Exchange Platform with SpaceDev",
+    description: "From architecture to production, SpaceDev has delivered exchange infrastructure that operates in real markets with real volume. Talk to our team about what your platform needs to launch and scale.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
+  },
+};
+
+/* ============================================================
+   CRYPTO TOKEN DEVELOPMENT
+   ============================================================ */
+export const cryptoTokenDevData: ServicePageData = {
+  seo: {
+    title: "Crypto Token Development Services | Custom Tokenomics & Smart Contracts | SpaceDev",
+    description: "SpaceDev builds custom crypto tokens with carefully designed tokenomics, audited smart contracts, and multi-chain deployment. Our team develops utility, governance, security, and DeFi tokens tailored to each project.",
+  },
+  eyebrow: "Sub-service · Blockchain",
+  compactHeroTitle: true,
+  title: "Crypto Token Development Services Built Around Your Business Model",
+  description: "SpaceDev designs and deploys custom cryptocurrency tokens for projects that need more than a contract built from a template. We cover the full token lifecycle: tokenomics design, smart contract development, multi-chain deployment, compliance controls, and post-launch support. Every token is developed around the specific role it plays within your product ecosystem.",
+  primaryCta: { label: "Book a call", href: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar", external: true },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  relatedTags: ["blockchain", "tokenization"],
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What is the difference between a coin and a token?", answer: "A coin operates on its own blockchain (Bitcoin, Ether). A crypto token is created on top of an existing blockchain using a smart contract, and depends on that network for transaction processing and security. Most projects build tokens rather than launching their own blockchain because it is faster, cheaper, and gives access to existing ecosystem liquidity and tooling." },
+    { question: "How long does custom crypto token development take?", answer: `A standard utility or governance token with vesting, minting, and burning mechanics can be deployed in 3 to 6 weeks, including security review. More complex tokens, such as stablecoins, security tokens with compliance controls, or DeFi tokens with multi-contract reward systems, require a scoping phase first. Our <a href="/product-discovery" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Product Discovery</a> process gives you accurate timelines before any commitment.` },
+    { question: "What makes a tokenomics model sustainable?", answer: "Sustainable tokenomics balances real demand for the token against its supply emission rate. Tokens that are only held for speculation collapse when sentiment shifts. Tokens with genuine utility demand, where users need the token to access the platform, participate in governance, or earn protocol rewards, create organic price support that does not depend on new buyer inflows." },
+    { question: "Which blockchain should I launch my token on?", answer: "Network selection depends on your target user base, transaction cost tolerance, and ecosystem integrations. Ethereum offers maximum credibility and DeFi composability. Solana offers high throughput and low fees. Polygon and Arbitrum offer EVM compatibility with L2 cost efficiency. We select the right network based on your product requirements, not a default preference." },
+    { question: "Do you audit the token smart contract before launch?", answer: `Yes. Internal security review is embedded in every token development engagement. For projects requiring independent third-party validation, <a href="/blockaudit-smart-contract-and-blockchain-security" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">BlockAudit</a> provides dedicated token smart contract audits before mainnet deployment.` },
+    { question: "Can you help with token listing on exchanges?", answer: "We support the technical requirements for both DEX liquidity pool setup and CEX listing readiness, including contract verification, metadata standards, and documentation. The commercial relationships with exchanges are your responsibility." },
+  ],
+
+  finalCta: {
+    title: "A well-designed token is a product asset. A poorly designed one is a liability that is hard to fix once it is live.",
+    description: "Talk to our team about your token model and what it needs to work in production.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
+  },
+};
+
+/* ============================================================
+   ASSET TOKENIZATION SUB-PAGES: Stocks, Gold, Bonds, Carbon Credits
+   ============================================================ */
+export const stockTokenizationData: ServicePageData = {
+  seo: {
+    title: "Stock Tokenization Development Services | Tokenized Equity Platforms | SpaceDev",
+    description: "SpaceDev builds stock tokenization platforms: on-chain equity issuance, ERC-3643 smart contracts, compliance infrastructure, and secondary market systems.",
+  },
+  eyebrow: "Sub-service · Asset Tokenization",
+  compactHeroTitle: true,
+  title: "Stock Tokenization Development Services for Equity Platforms Built to Operate in Real Markets",
+  description: "SpaceDev designs and builds tokenized stock platforms for fintech companies, broker-dealers, and capital markets infrastructure teams that need production-grade equity tokenization, not a proof of concept. We cover the full technical stack: on-chain equity issuance, compliant smart contracts, investor portals, and secondary market integrations.",
+  relatedTags: ["rwa", "tokenization"],
+  primaryCta: { label: "Get in touch", href: "/contact" },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What is stock tokenization?", answer: "Stock tokenization is the process of representing company shares as digital tokens on a blockchain. Each token corresponds to ownership rights, economic exposure, or both, depending on the model. Equity-backed tokens represent a direct claim on real shares held in regulated custody. Synthetic tokens track stock prices via oracle feeds without holding the underlying security." },
+    { question: "What is the difference between ERC-1400 and ERC-3643 for stock tokenization?", answer: "Both standards are designed for compliant security token issuance on Ethereum and EVM networks. ERC-1400 was the earlier standard developed by Polymath, providing a framework for transfer restrictions and document management. ERC-3643 (T-REX), developed by Tokeny, is now the more widely adopted standard among institutional-grade platforms: it is the foundation used by Securitize, which manages tokenized funds for BlackRock, Apollo, and KKR. Most new equity token platforms default to ERC-3643 today." },
+    { question: "Do tokenized stocks give holders the same rights as traditional shareholders?", answer: "It depends on the model. Issuer-sponsored tokens, where the company itself tokenizes its own shares, can convey the same voting rights, dividend entitlements, and legal claim as traditional shares. Third-party equity-backed tokens, issued by a platform holding shares in custody, typically provide economic exposure but not voting rights. Synthetic tokens provide neither, only price exposure." },
+    { question: "What regulatory approvals are needed to launch a tokenized stock platform?", answer: `Requirements vary by jurisdiction and model. In the US, equity-backed platforms typically require the issuer or token operator to be an SEC-registered transfer agent or work with one, and secondary trading may require an ATS license or broker-dealer registration. We build the technical infrastructure your legal team defines. We do not provide legal or regulatory advice. For regulatory guidance on tokenized securities, the <a href="https://www.sec.gov/about/crypto-task-force" target="_blank" rel="noopener noreferrer" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">SEC's Crypto Task Force</a> is a useful reference for US-based platforms.` },
+    { question: "Can tokenized stocks be traded on DeFi protocols?", answer: "Equity-backed tokens with compliance controls can be structured for DeFi composability while maintaining transfer restrictions. Platforms like Ondo Finance and xStocks (Backed Finance) have demonstrated this at scale, with tokens usable in liquidity pools on Solana. The technical implementation requires careful design of the compliance layer to allow DeFi interaction while still enforcing KYC/AML restrictions." },
+    { question: "How long does it take to build a tokenized stock platform?", answer: `A focused MVP with issuance contracts, KYC onboarding, and an investor portal can be ready in 10 to 16 weeks. Full platforms with custody integrations, corporate actions automation, and secondary market connectivity require a longer scoping phase first. Our <a href="/product-discovery" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Product Discovery</a> process gives you accurate timelines before any development commitment.` },
+  ],
+
+  finalCta: {
+    title: "Build Your Stock Tokenization Platform with SpaceDev",
+    description: "The infrastructure for on-chain equity markets is being built now, by NYSE, Nasdaq, BlackRock, and the development teams that support them. If your company is building in this space, the technical and compliance complexity is real, but it is solvable with the right partner.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
+  },
+};
+
+export const goldTokenizationData: ServicePageData = {
+  seo: {
+    title: "Gold Tokenization Development Services | Tokenized Gold Platforms | SpaceDev",
+    description: "SpaceDev builds gold tokenization platforms: vault-backed token issuance, Proof of Reserves, smart contracts, KYC/AML, and DeFi integrations. Custom, not templated.",
+  },
+  eyebrow: "Sub-service · Asset Tokenization",
+  compactHeroTitle: true,
+  title: "Gold Tokenization Development Services for Platforms Built on Real Custody Infrastructure",
+  description: "SpaceDev designs and builds gold tokenization platforms for bullion companies, commodity funds, fintech firms, and digital asset issuers that need a production-grade system, not a white-label template with your logo on it. We cover the full stack: token issuance contracts, vault custody integration, Proof of Reserves verification, KYC/AML onboarding, investor portals, and DeFi composability.",
+  relatedTags: ["rwa", "tokenization"],
+  primaryCta: { label: "Get in touch", href: "/contact" },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What is gold tokenization?", answer: "Gold tokenization is the process of representing ownership of physical gold as a digital token on a blockchain. Each token corresponds to a specific quantity of gold held in an institutional vault. Token holders can buy, sell, transfer, and in many cases redeem their tokens for physical gold or cash equivalent, without needing to store or transport physical bullion themselves." },
+    { question: "How does a gold-backed token maintain its 1:1 backing?", answer: "The platform mints tokens only when a corresponding quantity of gold is confirmed in custody, and burns tokens when gold is redeemed. Proof of Reserves systems, typically implemented via Chainlink PoR, provide on-chain verification that the total minted supply never exceeds the verified vault holdings. This confirmation is publicly accessible and auditable, unlike periodic third-party reports that can be manipulated or delayed." },
+    { question: "What is the difference between PAXG, XAUt, and a custom gold token platform?", answer: "PAX Gold (PAXG) and Tether Gold (XAUt) are pre-existing tokenized gold products operated by their respective issuers. Building a custom platform means you control the issuance, the custody arrangements, the fee structure, the redemption terms, and the DeFi integrations. The tradeoff is that you build liquidity from scratch rather than inheriting an established market. Custom platforms make sense for bullion dealers, commodity funds, and fintechs that want to offer gold tokenization under their own brand and operational model." },
+    { question: "Do gold tokens require regulatory approval?", answer: "This depends on jurisdiction and token structure. In the US, gold-backed tokens typically fall under CFTC commodity regulation rather than SEC securities oversight, unless structured to provide investment returns beyond price exposure. In the EU, the MiCA framework applies to asset-referenced tokens. In Singapore and the UAE, specific licensing applies to digital payment tokens backed by commodities. SpaceDev builds the technical infrastructure your legal advisors define. We do not provide regulatory or legal advice." },
+    { question: "Can tokenized gold be used in DeFi protocols?", answer: "Yes. DeFi-composable gold tokens can be used as collateral in lending protocols, traded in liquidity pools on decentralized exchanges, and bridged across chains for use in different ecosystems. The key architectural challenge is maintaining compliance controls on the primary issuance layer while allowing DeFi interactions on the secondary market. This is a design decision that must be made at the start of the project, not after launch." },
+    { question: "How long does it take to build a gold tokenization platform?", answer: `A focused MVP with token contracts, Proof of Reserves integration, basic KYC onboarding, and an investor portal can be delivered in 10 to 16 weeks. Full platforms with multi-chain deployment, DeFi integrations, and institutional-grade custody connectivity require a scoping phase first. Our <a href="/product-discovery" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Product Discovery</a> process gives you accurate timelines before any development commitment.` },
+  ],
+
+  finalCta: {
+    title: "Build Your Gold Tokenization Platform with SpaceDev",
+    description: "The infrastructure layer for tokenized precious metals is being built by serious financial companies, not speculative token issuers. If your organization has gold in custody and a clear distribution model, the technical architecture to bring it on-chain is well understood.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
+    external: true,
+  },
+};
+
+export const bondTokenizationData: ServicePageData = {
+  seo: {
+    title: "Bond Tokenization Development Services | Digital Bond Issuance Platforms | SpaceDev",
+    description: "SpaceDev builds bond tokenization platforms: on-chain issuance, automated coupon payments, T+0 settlement, ERC-1400 smart contracts, and KYC/AML infrastructure.",
+  },
+  eyebrow: "Sub-service · Asset Tokenization",
+  compactHeroTitle: true,
+  title: "Bond Tokenization Development Services for Digital Fixed-Income Platforms",
+  description: "SpaceDev designs and builds bond tokenization platforms for financial institutions, corporate issuers, and fintech companies that need production-grade infrastructure for digital bond issuance, not a SaaS subscription with limited customization. We cover the full bond lifecycle on-chain: issuance contracts, automated coupon payments, atomic settlement, compliance controls, investor portals, and secondary market integrations.",
+  relatedTags: ["rwa", "tokenization"],
+  primaryCta: { label: "Get in touch", href: "/contact" },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What is bond tokenization?", answer: "Bond tokenization is the process of representing a debt instrument as a digital token on a blockchain. The smart contract encodes the bond's terms, including face value, maturity date, coupon rate, and payment schedule, and automates execution of those terms without relying on manual processes or intermediaries. Token holders have the same economic rights as traditional bondholders: periodic interest payments and principal repayment at maturity." },
+    { question: "What is T+0 atomic settlement and why does it matter?", answer: "Traditional bond markets settle on T+2, meaning two business days pass between trade execution and final settlement, during which counterparty risk exists. Atomic settlement on a blockchain means the transfer of the bond token and the transfer of payment happen in the same transaction, simultaneously, with no window of counterparty exposure. This reduces systemic risk, frees up capital faster, and eliminates the reconciliation work that T+2 settlement requires." },
+    { question: "What is the difference between ERC-1400 and ERC-3643 for bond tokenization?", answer: "Both standards support compliant security token issuance on Ethereum and EVM networks. ERC-1400, developed by Polymath, provides a modular framework for transfer restrictions, document management, and forced transfers. ERC-3643 (T-REX), developed by Tokeny and used by Securitize for BlackRock and KKR tokenized products, is now the more widely adopted institutional standard. Most new bond tokenization platforms default to ERC-3643 for its broader ecosystem support and cleaner compliance architecture." },
+    { question: "Can tokenized bonds be used as collateral in DeFi protocols?", answer: "Increasingly, yes. Tokenized US Treasuries have been integrated into DeFi protocols as collateral assets, with Franklin Templeton's FOBXX and Ondo Finance's OUSG leading the way. DeFi-composable bond tokens require careful design of the compliance layer, specifically how transfer restrictions interact with smart contract-to-smart contract transfers in lending protocols. This is an architecture decision that must be made at the design stage." },
+    { question: "Do tokenized bonds require SEC registration?", answer: "Bond tokenization is a securities issuance in almost every jurisdiction. In the US, this means either SEC registration or an applicable exemption (Reg D for accredited investors, Reg A+ for smaller public offerings, Reg S for offshore issuances). The token is the security. The blockchain is the infrastructure. Your legal counsel determines which regulatory path applies to your specific issuance. SpaceDev builds the technical system that implements whatever compliance framework your advisors define." },
+    { question: "How long does it take to build a bond tokenization platform?", answer: `A focused MVP covering issuance contracts, coupon automation, KYC onboarding, and an investor portal can be delivered in 10 to 16 weeks. Full platforms with oracle integrations, variable-rate logic, multi-currency settlement, and secondary market connectivity require a scoping phase first. Our <a href="/product-discovery" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Product Discovery</a> process gives you accurate timelines and a technical blueprint before any development budget is committed.` },
+  ],
+
+  finalCta: {
+    title: "Build Your Bond Tokenization Platform with SpaceDev",
+    description: "The infrastructure for on-chain fixed-income markets is being built now, by institutions, by fintechs, and by the development teams they trust to execute correctly. The difference between a successful launch and a costly rebuild is almost always in the quality of the scoping and architecture decisions made before the first line of code.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
+    external: true,
+  },
+};
+
+export const carbonCreditTokenizationData: ServicePageData = {
+  seo: {
+    title: "Carbon Credit Tokenization Development Services | Blockchain Climate Platforms | SpaceDev",
+    description: "SpaceDev builds carbon credit tokenization platforms: registry integration, on-chain retirement, MRV infrastructure, ERC-1155 smart contracts, and voluntary carbon market systems.",
+  },
+  eyebrow: "Sub-service · Asset Tokenization",
+  compactHeroTitle: true,
+  title: "Carbon Credit Tokenization Development Services for Climate and Compliance Markets",
+  description: "SpaceDev designs and builds carbon credit tokenization platforms for project developers, climate fintechs, ESG investment vehicles, and compliance market operators that need production-grade blockchain infrastructure, not a generic template. We cover the full carbon credit lifecycle on-chain: registry integration, token issuance, MRV data verification, on-chain retirement, marketplace infrastructure, and ESG reporting systems.",
+  relatedTags: ["rwa", "tokenization"],
+  primaryCta: { label: "Get in touch", href: "/contact" },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  footerMarqueeTheme: "dark",
+
+  faqs: [
+    { question: "What is carbon credit tokenization?", answer: "Carbon credit tokenization is the process of representing a verified carbon offset, each equivalent to one metric ton of CO2 reduced, avoided, or sequestered, as a digital token on a blockchain. The token carries the credit's full provenance: project ID, vintage year, certification standard, and geographic origin. When a buyer retires the credit to offset emissions, the token is permanently burned on-chain and the retirement is recorded in the originating registry." },
+    { question: "What is the difference between a compliance carbon credit and a voluntary carbon credit?", answer: "Compliance carbon credits are government-issued allowances used by regulated industries to meet legally mandated emission limits (EU ETS, California Cap-and-Trade, RGGI). Voluntary carbon credits are certified by independent standards bodies like Verra or Gold Standard and purchased by companies pursuing net-zero commitments beyond legal requirements. The architecture, registry integrations, and regulatory treatment of a tokenization platform differ significantly depending on which market it serves." },
+    { question: "How does blockchain prevent double-counting of carbon credits?", answer: "By linking on-chain token retirement (burn) atomically with registry retirement confirmation. When a credit is retired, the smart contract calls the registry API, receives confirmation of the retirement record, and executes the token burn in the same transaction. No credit can be retired twice because the on-chain burn is permanent and the registry record is immutable." },
+    { question: "What is Toucan Protocol and do you support it?", answer: "Toucan Protocol is an open-source infrastructure layer on Polygon that allows Verra VCS carbon credits to be bridged on-chain as Base Carbon Tonnes (BCT) or Nature-based Carbon Tonnes (NCT). We build platforms with Toucan Protocol compatibility for projects that want to connect to the ReFi (regenerative finance) ecosystem and existing DeFi liquidity. We also build custom pool contracts for platforms that need different quality gates or credit classifications." },
+    { question: "What MRV standards does your platform support?", answer: "We build MRV infrastructure compatible with the major voluntary carbon market verification methodologies: Verra VCS (VM0007, VM0015, VM0042 for REDD+, improved forest management, and renewable energy), Gold Standard Certified Emission Reductions, ACR, and CAR methodologies. For compliance market platforms, we integrate with government-mandated reporting frameworks. The specific MRV methodology is determined by your environmental consultants and the project type." },
+    { question: "How long does it take to build a carbon credit tokenization platform?", answer: `A focused MVP covering registry integration, token contracts, on-chain retirement, and a basic marketplace can be delivered in 10 to 14 weeks. Full platforms with MRV data pipelines, ESG reporting systems, DeFi integrations, and multi-registry support require a scoping phase first. Our <a href="/product-discovery" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Product Discovery</a> process gives you accurate timelines before any development commitment.` },
+  ],
+
+  finalCta: {
+    title: "Build Your Carbon Credit Tokenization Platform with SpaceDev",
+    description: "The voluntary carbon market is under more scrutiny than at any point in its history. Platforms that cannot prove credit integrity at the infrastructure level will not survive that scrutiny. Talk to our team about your carbon credit portfolio, target market, and what your platform needs to launch with verifiable environmental integrity.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
+    external: true,
   },
 };

@@ -10,9 +10,12 @@ End-to-end blockchain development from concept to mainnet: DeFi platforms, dApps
 Specializations:
 - Smart Contract Development (https://spacedev.io/blockchain-development-services/smart-contract-development)
 - dApp Development (https://spacedev.io/blockchain-development-services/dapp-development)
-- Asset Tokenization (https://spacedev.io/blockchain-development-services/asset-tokenization) including Real Estate Tokenization (https://spacedev.io/blockchain-development-services/asset-tokenization/real-estate)
+- Asset Tokenization (https://spacedev.io/blockchain-development-services/asset-tokenization) including Real Estate (https://spacedev.io/blockchain-development-services/asset-tokenization/real-estate), Stocks (https://spacedev.io/blockchain-development-services/asset-tokenization/stocks), Gold (https://spacedev.io/blockchain-development-services/asset-tokenization/gold), Bonds (https://spacedev.io/blockchain-development-services/asset-tokenization/bonds), and Carbon Credits (https://spacedev.io/blockchain-development-services/asset-tokenization/carbon-credits)
 - Blockchain for Banks (https://spacedev.io/blockchain-development-services/blockchain-for-banks)
 - White-Label Blockchain Partner for agencies (https://spacedev.io/blockchain-development-services/blockchain-partner)
+- White Label Crypto Exchange Development: CEX, DEX and hybrid trading platforms (https://spacedev.io/blockchain-development-services/white-label-crypto-exchanges)
+- Crypto Token Development: tokenomics, utility, governance, security and DeFi tokens (https://spacedev.io/blockchain-development-services/crypto-token-development)
+- DAO Development: on-chain governance, treasury management, voting mechanisms (https://spacedev.io/blockchain-development-services/dao-development)
 - Decentralized Identity / DID (https://spacedev.io/blockchain-development-services/decentralized-identity)
 - Layer 1 Blockchain Development with Cosmos SDK, Substrate, EVM chains, Avalanche subnets (https://spacedev.io/blockchain-development-services/layer-1-blockchain-development)
 

@@ -1,0 +1,217 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import FeatureCard from "../../../components/ui/FeatureCard.astro";
+import { goldTokenizationData } from "../../../data/services";
+
+const platformComponents = [
+  { title: "Gold-backed token smart contracts", description: "ERC-20 with minting/burning tied to vault confirmations, transfer controls, and redemption logic" },
+  { title: "Proof of Reserves integration", description: "Chainlink PoR adapter connecting vault API to on-chain supply verification" },
+  { title: "Vault custody integration", description: "API connections to institutional vault providers for real-time holding data" },
+  { title: "KYC/AML investor onboarding", description: "Identity verification, wallet screening, jurisdictional access controls" },
+  { title: "Minting and redemption workflows", description: "Automated issuance on deposit confirmation, burn-on-redemption with vault release logic" },
+  { title: "Investor and issuer portals", description: "Holding dashboards, redemption requests, reserve audit views, transaction history" },
+  { title: "DeFi protocol integrations", description: "Listing on DEXs, collateral use in lending protocols, liquidity pool setup" },
+  { title: "Cross-chain bridge infrastructure", description: "Multi-chain token availability across Ethereum, Solana, Polygon, and BNB Chain" },
+];
+
+const infraSections = [
+  { title: "Vault Integration and Custody Verification", description: "The platform must maintain a live, verified connection between physical gold holdings and minted token supply. This requires API integration with your vault provider, automated data feeds that trigger minting and burning events, and a reconciliation layer that catches discrepancies before they hit the on-chain state. Reputable vault providers include Brinks, Malca-Amit, Loomis International, and specialist custodians in Switzerland, Singapore, and London." },
+  { title: "Proof of Reserves: On-Chain Verification That Investors Can Check", description: "A periodic audit report in PDF format is not enough for platforms competing with PAXG or XAUt. Chainlink Proof of Reserves provides cryptographically verifiable, on-chain confirmation that the token supply is backed by gold held in custody. We implement the Chainlink PoR adapter, the vault-side data feed, and the smart contract logic that pauses minting if reserves fall below the token supply threshold." },
+  { title: "Token Minting and Burning Tied to Physical Settlement", description: "Every minting event must be triggered by a confirmed gold deposit, and every redemption must trigger a vault release. We build the workflow automation layer that connects these events, including pending state management, partial redemption logic, and exception handling for vault processing delays." },
+  { title: "DeFi Composability Without Compromising Compliance", description: "Platforms like Ondo Finance and the xStocks model (Backed Finance) have demonstrated that compliant tokenized commodities can be DeFi-composable without removing transfer restrictions entirely. We design the compliance layer to allow DeFi interactions while maintaining KYC/AML controls on the primary issuance and redemption layer, an architecture decision made at the start, not retrofitted after launch." },
+];
+
+const tokenModels = [
+  { row: "Unit of backing", gram: "1 token = 1 gram of gold", ounce: "1 token = 1 troy ounce of gold", fractional: "1 token = fraction of 1 gram" },
+  { row: "Target audience", gram: "Retail and institutional", ounce: "Institutional, high-net-worth", fractional: "Micro-investors, emerging markets" },
+  { row: "Redemption complexity", gram: "Moderate", ounce: "Higher (physical bar minimums)", fractional: "High (aggregation required before redemption)" },
+  { row: "DeFi usability", gram: "Good", ounce: "Good", fractional: "Limited without aggregation layer" },
+  { row: "Examples", gram: "CACHE Gold (CGT)", ounce: "PAX Gold (PAXG), Tether Gold (XAUt)", fractional: "Custom platforms for retail access" },
+];
+
+const techStack = [
+  { label: "Token Standards", items: "ERC-20 (primary), ERC-1400 for regulated issuance, SPL Token-2022 for Solana" },
+  { label: "Networks", items: "Ethereum, Polygon, Avalanche, BNB Chain, Solana, Base" },
+  { label: "Smart Contract Infrastructure", items: "Solidity, Hardhat, Foundry, OpenZeppelin, upgradeable proxy patterns" },
+  { label: "Proof of Reserves", items: "Chainlink PoR, custom vault API adapters, on-chain reserve circuit breakers" },
+  { label: "Oracle and Price Feeds", items: "Chainlink XAU/USD price feed, Pyth Network for Solana, custom LBMA gold price integrations" },
+  { label: "KYC/AML and Identity", items: "Sumsub, Jumio, Onfido, wallet screening via Chainalysis or Elliptic" },
+  { label: "DeFi Integrations", items: "Uniswap V3/V4 liquidity pools, Aave and Compound collateral listings, cross-chain bridges via LayerZero or Wormhole" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Token Model and Custody Scoping", description: "We define the denomination structure, custody model, vault integration requirements, redemption mechanics, and regulatory framework before any architecture decisions are made, coordinating your legal advisors, vault provider, and compliance team." },
+  { number: "02", title: "Smart Contract Development", description: "We build the token contract with minting and burning logic tied to custody events, transfer controls appropriate to your compliance requirements, and circuit breaker mechanisms that pause issuance if reserve verification fails." },
+  { number: "03", title: "Proof of Reserves and Vault Integration", description: "We implement the Chainlink PoR adapter or custom reserve verification layer connected to your vault provider's API, covering real-time holding data, minting authorization logic, and public-facing reserve dashboards." },
+  { number: "04", title: "KYC/AML Onboarding and Compliance Controls", description: "We build the investor onboarding flow with identity verification, wallet screening, and jurisdictional access controls, handling different accreditation requirements across markets from day one." },
+  { number: "05", title: "Investor Portal, Issuer Console, and DeFi Integrations", description: "We build the product layer: investor dashboards with real-time gold price tracking, issuer consoles for minting authorization and redemption management, and the DeFi integrations required for your token to be usable beyond the primary platform." },
+  { number: "06", title: "Security Review and Audit", description: "Gold tokenization platforms are high-value targets. Every contract and integration goes through structured security review before launch, with BlockAudit available for independent validation focused on minting authorization bypasses and oracle manipulation attacks." },
+];
+
+const relatedServices = [
+  { title: "Asset Tokenization", href: "/blockchain-development-services/asset-tokenization", description: "The parent service covering all RWA asset classes" },
+  { title: "Smart Contract Development", href: "/blockchain-development-services/smart-contract-development", description: "Audited token contracts with minting, burning, and reserve circuit breaker logic" },
+  { title: "Web3 Compliance Development", href: "/blockchain-development-services/industry/compliance-web3", description: "KYC/AML, transfer restrictions, and jurisdictional compliance infrastructure" },
+  { title: "BlockAudit: Blockchain Security", href: "/blockaudit-smart-contract-and-blockchain-security", description: "Independent security audits before any gold tokenization platform goes live" },
+];
+---
+
+<ServicePageLayout data={{ ...goldTokenizationData, seo: { ...goldTokenizationData.seo, description: "Gold tokenization development: vault-backed token issuance, Proof of Reserves, smart contracts, and DeFi integrations. Custom, not templated. Build with SpaceDev." } }}>
+  <div slot="pre-process">
+
+    <!-- Components -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">What we deliver</p>
+          <h2 class="section-title text-white">What a Gold Tokenization Platform Requires, and What We Build</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {platformComponents.map((item, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Infrastructure detail -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">How Gold Tokenization Works at the Infrastructure Level</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            Most descriptions of gold tokenization stop at "physical gold in a vault equals a token on the blockchain." The operational reality is more complex, and the gaps between those two things are where most platform failures originate.
+          </p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {infraSections.map((t) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{t.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{t.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Token models comparison -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Gold Token Models: Choosing the Right Structure for Your Platform</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            Not all tokenized gold platforms are built the same way. The model you choose determines your custody requirements, regulatory exposure, and DeFi integration potential.
+          </p>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6"></th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6">Gram-Denominated</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6">Troy Ounce-Denominated</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4">Fractional Gold Tokens</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tokenModels.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-6 font-display font-semibold text-white text-sm leading-snug align-top">{row.row}</td>
+                  <td class="py-5 pr-6 text-sd-text-muted leading-relaxed align-top">{row.gram}</td>
+                  <td class="py-5 pr-6 text-sd-text-muted leading-relaxed align-top">{row.ounce}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.fractional}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {tokenModels.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.row}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Gram:</span> {row.gram}</p>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Troy ounce:</span> {row.ounce}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Fractional:</span> {row.fractional}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-8 text-sm text-sd-text-muted border-l-2 border-sd-purple/50 pl-4" data-animate>
+          The right denomination depends on your target user base, your vault provider's minimum lot sizes, and whether you intend to support physical redemption or cash-equivalent settlement. Our
+          <a href="/product-discovery" class="text-sd-purple-300 hover:text-white transition-colors">Product Discovery</a>
+          process maps these decisions before any development begins.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white">Gold Tokenization Tech Stack</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {techStack.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{row.label}</p>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{row.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery Process -->
+    <section class="py-20 md:py-32 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <div class="md:sticky md:top-32" data-animate>
+            <h2 class="section-title text-white mb-6">How We Build Gold Tokenization Platforms</h2>
+          </div>
+          <ol class="flex flex-col gap-6">
+            {deliverySteps.map((step) => (
+              <li>
+                <FeatureCard number={step.number} title={step.title} description={step.description} tone="dark" />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Gold Tokenization Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((service) => (
+            <a
+              href={service.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">{service.title}</h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{service.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

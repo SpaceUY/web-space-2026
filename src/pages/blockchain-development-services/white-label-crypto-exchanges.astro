@@ -1,0 +1,265 @@
+---
+import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
+import FeatureCard from "../../components/ui/FeatureCard.astro";
+import { whiteLabelExchangeData } from "../../data/services";
+
+const platformComponents = [
+  { title: "Trading engine", description: "Order matching, spot and derivatives logic, real-time price feeds" },
+  { title: "Order management system", description: "Limit, market, stop-loss, and advanced order types" },
+  { title: "Multi-chain wallet infrastructure", description: "Hot/cold wallet architecture, multi-sig, deposit and withdrawal processing" },
+  { title: "Liquidity integration", description: "Aggregator APIs, market maker connections, liquidity pool routing" },
+  { title: "KYC/AML onboarding", description: "Identity verification, wallet screening, accreditation controls" },
+  { title: "Admin and operations console", description: "User management, fee configuration, risk monitoring, reporting" },
+  { title: "Fiat gateway integrations", description: "Bank transfers, stablecoin settlement, payment processor connections" },
+  { title: "Mobile and web trading UI", description: "Responsive trading interface, portfolio dashboards, order history" },
+];
+
+const exchangeTypes = [
+  { title: "Centralized Exchange (CEX) Development", description: "Full centralized trading platform with a high-performance matching engine, order book management, user custody infrastructure, and admin controls. Designed for fintech companies and regulated financial institutions entering the digital asset market." },
+  { title: "Decentralized Exchange (DEX) Development", description: "On-chain exchange infrastructure built with automated market maker (AMM) logic or order book models deployed on Ethereum, Solana, or Layer 2 networks. Built for projects that need non-custodial trading without relying on centralized servers." },
+  { title: "Hybrid Exchange Development", description: "Off-chain order matching with on-chain settlement combines the speed of centralized infrastructure with the transparency and self-custody of on-chain execution, a model increasingly adopted by institutional-facing exchanges." },
+  { title: "Crypto Derivatives and Margin Trading Platforms", description: "Perpetuals, futures, and margin trading infrastructure for platforms serving experienced traders. Includes risk management engines, liquidation logic, funding rate mechanisms, and position tracking systems." },
+  { title: "P2P Exchange and OTC Trading Desk Development", description: "Peer-to-peer trading platforms with escrow smart contracts, reputation systems, dispute resolution logic, and multi-currency support for markets where direct buyer-seller matching is the primary model." },
+];
+
+const architecture = [
+  { label: "Matching Engine", items: "Custom high-performance engines, LMAX Disruptor architecture, Redis-based order books" },
+  { label: "Blockchain Networks", items: "Ethereum, Solana, Polygon, BNB Chain, Avalanche, Base, Arbitrum" },
+  { label: "Smart Contracts", items: "Solidity, Rust, Vyper, Uniswap V3/V4 fork customization, custom AMM logic" },
+  { label: "Wallet Infrastructure", items: "Hot/cold wallet segregation, multi-sig (Gnosis Safe), MPC wallet integrations" },
+  { label: "Liquidity", items: "Chainlink price feeds, 0x Protocol, custom liquidity aggregator APIs" },
+  { label: "Compliance Stack", items: "Chainalysis, Elliptic, Sumsub, Jumio, custom KYC/AML integration layer" },
+  { label: "Trading UI", items: "TradingView charting library, React, WebSocket real-time feeds, mobile-native apps" },
+];
+
+const comparison = [
+  { row: "Custody", cex: "Platform holds user funds", dex: "User self-custody", hybrid: "User self-custody with platform matching" },
+  { row: "Speed", cex: "High throughput, sub-millisecond", dex: "Limited by block times", hybrid: "High throughput off-chain, on-chain settlement" },
+  { row: "Compliance", cex: "Easier to implement KYC/AML", dex: "Harder to enforce identity", hybrid: "Configurable compliance at onboarding" },
+  { row: "Liquidity", cex: "Market maker relationships", dex: "AMM pools, liquidity mining", hybrid: "Combined model" },
+  { row: "Build complexity", cex: "High", dex: "Medium-High", hybrid: "Highest" },
+  { row: "Best for", cex: "Regulated fintechs, institutions", dex: "DeFi protocols, Web3 native", hybrid: "Institutional DeFi, regulated DEXs" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Exchange Architecture and Scoping", description: "We define exchange type, supported trading pairs, custody model, liquidity strategy, and compliance requirements. The output is an architecture document your technical and legal teams can approve before development begins." },
+  { number: "02", title: "Core Platform Development", description: "Matching engine, wallet infrastructure, order management, and trading UI built in parallel by specialized engineering teams. Milestone-based delivery with working demos at each stage." },
+  { number: "03", title: "Compliance and Liquidity Integration", description: "KYC/AML provider integration, fiat gateway connections, liquidity aggregator APIs, and transaction monitoring configured for your target jurisdictions and user base." },
+  { number: "04", title: "Security Review and Load Testing", description: "Structured security review across the trading engine, wallet infrastructure, and smart contracts. Load testing against projected transaction volumes before any public launch. Independent auditing available through BlockAudit." },
+  { number: "05", title: "Launch and Post-Production", description: "We handle deployment, monitoring setup, and ongoing engineering support as trading volume grows and regulatory requirements change." },
+];
+
+const stats = [
+  { value: "8-16 weeks", label: "MVP exchange platform delivery" },
+  { value: "Multi-chain", label: "Ethereum, Solana, Polygon, BNB Chain, and more" },
+  { value: "1 codebase", label: "You own it, we don't lock you into a SaaS subscription" },
+  { value: "50+ reviews", label: "5-star verified client ratings on Clutch and GoodFirms" },
+];
+
+const relatedServices = [
+  { title: "Smart Contract Development", href: "/blockchain-development-services/smart-contract-development", description: "On-chain settlement, AMM logic, and escrow contracts" },
+  { title: "dApp Development", href: "/blockchain-development-services/dapp-development", description: "Trading interfaces, wallet integrations, and user dashboards" },
+  { title: "Web3 Compliance Development", href: "/blockchain-development-services/industry/compliance-web3", description: "KYC/AML, transfer restrictions, and regulatory infrastructure" },
+  { title: "BlockAudit: Blockchain Security", href: "/blockaudit-smart-contract-and-blockchain-security", description: "Smart contract and platform security audits before launch" },
+];
+---
+
+<ServicePageLayout data={whiteLabelExchangeData}>
+  <div slot="pre-process">
+
+    <!-- Components -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">What we build</p>
+          <h2 class="section-title text-white">White Label Crypto Exchange Platform Components We Develop</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {platformComponents.map((item, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Types of Exchanges -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white">Types of Exchanges We Develop</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {exchangeTypes.map((t) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{t.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{t.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white">Exchange Architecture We Work With</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {architecture.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{row.label}</p>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{row.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CEX vs DEX vs Hybrid -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">CEX vs DEX vs Hybrid: Choosing the Right Exchange Model</h2>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6 w-1/6"></th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6 w-1/4">CEX</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6 w-1/4">DEX</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/4">Hybrid</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-6 font-display font-semibold text-white text-sm leading-snug align-top">{row.row}</td>
+                  <td class="py-5 pr-6 text-sd-text-muted leading-relaxed align-top">{row.cex}</td>
+                  <td class="py-5 pr-6 text-sd-text-muted leading-relaxed align-top">{row.dex}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.hybrid}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {comparison.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.row}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">CEX:</span> {row.cex}</p>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">DEX:</span> {row.dex}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Hybrid:</span> {row.hybrid}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-8 text-sm text-sd-text-muted border-l-2 border-sd-purple/50 pl-4" data-animate>
+          Choosing the wrong exchange architecture creates migration costs that dwarf the original development investment. Our
+          <a href="/product-discovery" class="text-sd-purple-300 hover:text-white transition-colors">Product Discovery</a>
+          process defines the right model for your business before a line of code is written.
+        </p>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section class="bg-sd-dark py-20 md:py-32 border-t border-white/5">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3" data-animate>Security</p>
+            <h2 class="section-title text-white mb-4" data-animate>Security Review and Load Testing Before Launch</h2>
+            <p class="text-sd-text-muted leading-relaxed" data-animate>
+              An exchange handles user funds directly. A vulnerability in the matching engine, wallet infrastructure, or smart contracts puts real money at risk.
+            </p>
+          </div>
+          <div class="flex flex-col gap-10">
+            <div class="flex flex-col gap-4" data-animate>
+              <h3 class="text-base font-display font-semibold text-white">Structured Security Review Across the Trading Stack</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">
+                Trading engine, wallet infrastructure, and smart contracts reviewed together with load testing against projected transaction volumes, before any public launch.
+              </p>
+            </div>
+            <div class="flex flex-col gap-4" data-animate>
+              <h3 class="text-base font-display font-semibold text-white">BlockAudit Support for Independent Auditing</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">
+                <a href="/blockaudit-smart-contract-and-blockchain-security" class="text-sd-purple-300 hover:text-white transition-colors">BlockAudit</a> provides independent smart contract audits, and our <a href="/staff-augmentation" class="text-sd-purple-300 hover:text-white transition-colors">IT Staff Augmentation</a> model places senior exchange engineers directly within your operations when you need to expand the team.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery Process -->
+    <section class="py-20 md:py-32 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <div class="md:sticky md:top-32" data-animate>
+            <h2 class="section-title text-white mb-6">How We Build White Label Crypto Exchange Platforms</h2>
+          </div>
+          <ol class="flex flex-col gap-6">
+            {deliverySteps.map((step) => (
+              <li>
+                <FeatureCard number={step.number} title={step.title} description={step.description} tone="dark" />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white">White Label Crypto Exchange Development by the Numbers</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((s) => (
+            <div class="text-center" data-animate>
+              <p class="text-3xl md:text-4xl font-display text-white leading-none">{s.value}</p>
+              <p class="mt-3 text-sd-text-muted text-[10px] uppercase tracking-[0.18em]">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Crypto Exchange Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((service) => (
+            <a
+              href={service.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">{service.title}</h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{service.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>
