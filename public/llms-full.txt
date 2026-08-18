@@ -27,13 +27,13 @@ Industry solutions:
 Custom software, web and mobile app development engineered for scale. Stack: TypeScript, React, Next.js, Node.js, Python, Go, React Native, Flutter, PostgreSQL, Redis, AWS, GCP, Vercel. Ships both React Native and native iOS/Android.
 
 ### IT Staff Augmentation (https://spacedev.io/staff-augmentation)
-Pre-vetted nearshore developers, designers and specialists from Latin America, ready in under 2 weeks. US-overlapping time zones. Process: 1) Identify Your Needs → 2) Candidate Screening → 3) Welcome Aboard → 4) Management & Scaling. Typical rates for staff augmentation: $60–120/hr depending on role and seniority.
+Pre-vetted nearshore developers, designers and specialists from Latin America, ready in under 2 weeks (most clients onboard their first hire within one week). US-overlapping time zones. Process: 1) Identify Your Needs → 2) Candidate Screening → 3) Welcome Aboard → 4) Management & Scaling. Roles: frontend, backend, and mobile engineers, DevOps, blockchain developers, QA, UI/UX designers, and project managers. Engagement models: full-time, part-time, or hourly, scalable up or down at any time. Typical rates: $60–120/hr depending on role and seniority.
 
 ### Product Discovery (https://spacedev.io/product-discovery)
-Strategy sprints, MVP definition, brand strategy, go-to-market planning, continuous discovery. A structured 1–4 week engagement that validates the business case, defines scope, designs UX, selects the tech stack and produces a prioritized, build-ready roadmap before writing production code.
+The standard first step on any custom development project: process and requirements mapping, prototyping, hypothesis validation, and product roadmap construction, so scope and cost are defined before development starts. Six sprint types tailored to project stage, each running 1 to 4 weeks depending on which fits. The entry-level sprint, Product Discovery & Vision Alignment, defines product vision, business objectives and user pain points, prioritizes hypotheses to validate, and produces Epic User Stories plus an initial Product Backlog. You are not locked into building with SpaceDev afterward; the deliverables are yours either way. If you do continue with SpaceDev, the cost of the Discovery engagement is credited against the development plan investment.
 
 ### BlockAudit (https://spacedev.io/blockaudit-smart-contract-and-blockchain-security)
-Smart contract audit and blockchain security: static and manual analysis, formal verification, post-launch monitoring. Detects vulnerabilities before deployment.
+Smart contract and blockchain security auditing: static and manual analysis, formal verification, and post-launch monitoring via OpenZeppelin Defender. Process: 1) Assessment → 2) Review → 3) Delivery (detailed vulnerability report with mitigation recommendations). Methodology grounded in the OWASP Smart Contract Top 10, Ethereum's own smart contract security guidelines, and the NIST blockchain research program, not an internal checklist alone. Covers both technical contract security and SECOPS (social-engineering and operational security review, since most hacks originate there rather than in the contract code itself). Networks and frameworks: Ethereum, Solana, Solidity, Rust, Hardhat, ethers.js, OpenZeppelin, Wagmi.
 
 ## Engagement models
 
