@@ -469,18 +469,6 @@ const serviceJsonLd = {
           )}
         </div>
         <div id="case-studies-zone" class="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- Custom cursor: rotating text ring -->
-          <div id="case-studies-cursor" class="pointer-events-none fixed z-50 opacity-0 transition-opacity duration-200" style="transform: translate(-50%, -50%); will-change: transform; width: 120px; height: 120px;">
-            <svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
-              <circle cx="60" cy="60" r="58" fill="white"/>
-              <defs>
-                <path id="cs-text-path" d="M60,60 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1-84,0"/>
-              </defs>
-              <text class="cs-spin-text" font-size="14" letter-spacing="0.8" fill="black" font-family="Saira, sans-serif">
-                <textPath href="#cs-text-path" textLength="264" lengthAdjust="spacing">VIEW PROJECT &#x2009;&#x2009;•&#x2009;&#x2009; VIEW PROJECT &#x2009;&#x2009;•&#x2009;&#x2009;</textPath>
-              </text>
-            </svg>
-          </div>
           {featured.map((c) => (
             <CaseStudyCard caseStudy={c} />
           ))}
@@ -741,42 +729,9 @@ const serviceJsonLd = {
 
   #cards-cursor-zone,
   #cards-cursor-zone * { cursor: none; }
-
-  #case-studies-zone,
-  #case-studies-zone *,
-  #case-studies-zone a,
-  #case-studies-zone a:hover { cursor: none !important; }
-
-  .cs-spin-text {
-    animation: cs-spin 9s linear infinite;
-    transform-origin: 60px 60px;
-  }
-  @keyframes cs-spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
 </style>
 
 <script>
-  // Case studies custom cursor
-  const csZone   = document.getElementById("case-studies-zone");
-  const csCursor = document.getElementById("case-studies-cursor");
-  if (csZone && csCursor) {
-    let csRaf: number;
-    window.addEventListener("mousemove", (e: MouseEvent) => {
-      cancelAnimationFrame(csRaf);
-      csRaf = requestAnimationFrame(() => {
-        csCursor.style.left = e.clientX + "px";
-        csCursor.style.top  = e.clientY + "px";
-        const rect   = csZone.getBoundingClientRect();
-        const inside = e.clientX >= rect.left && e.clientX <= rect.right &&
-                       e.clientY >= rect.top  && e.clientY <= rect.bottom;
-        csCursor.style.opacity        = inside ? "1" : "0";
-        document.body.style.cursor    = inside ? "none" : "";
-      });
-    });
-  }
-
   // What we build custom cursor
   const zone   = document.getElementById("cards-cursor-zone");
   const cursor = document.getElementById("cards-cursor");
