@@ -219,4 +219,6 @@ The ledger record itself is very hard to alter once confirmed, that's what distr
 
 A successful tokenized issuance is an infrastructure and compliance problem before it is a blockchain one. The issuers seeing real gains, from HSBC's Orion platform to Société Générale's first US digital bond, scoped the first deal around a use case the rails already support and built compliance into the token from day one. None of them treated the smart contract as an afterthought bolted onto a legal structure designed for paper; the token design, the transfer restrictions, and the audit came before the announcement, not after a problem showed up.
 
+*This article is general information, not investment, legal, or financial advice. Confirm your specific obligations with qualified counsel.*
+
 If you are evaluating a tokenized issuance, our [asset tokenization services](/blockchain-development-services/asset-tokenization) cover token design, smart contract development, and auditing. You can [book a technical scoping call](https://meetings.hubspot.com/federico-sendra/meet-space) to review your case.

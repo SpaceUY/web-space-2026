@@ -31,6 +31,11 @@ export const organizationJsonLd = {
   "@type": "Organization",
   name: SITE.name,
   description: SITE.defaultDescription,
+  // Disambiguates from the unrelated, defunct 1990s-2000s aerospace company
+  // of the same name (acquired by Sierra Nevada Corporation), which currently
+  // has no distinct Wikidata entry of its own.
+  disambiguatingDescription:
+    "SpaceDev is a software development and blockchain consulting company founded in 2015, headquartered across Miami, Montevideo, Buenos Aires and Medellin. Not to be confused with the historical aerospace company SpaceDev Inc., acquired by Sierra Nevada Corporation.",
   foundingDate: "2015",
   url: SITE.url,
   logo: `${SITE.url}/images/logo/spacedev-logo.svg`,

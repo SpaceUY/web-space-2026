@@ -1,0 +1,19 @@
+---
+// Catches every /post/<slug> URL not covered by an explicit slug-rename
+// redirect in vercel.json. Old, still-indexed /post/ links used to 308 to
+// /blog/<same-slug> unconditionally (via a vercel.json catch-all), which
+// 404s for any post that was ever removed or renamed -- a redirect chain
+// ending in a dead page instead of a clean signal that the content is gone.
+// This checks the real content collection at request time instead, so a
+// retired post can never again produce a broken redirect: it either sends
+// the visitor to the real post, or to /gone (410) if it truly doesn't exist.
+export const prerender = false;
+
+import { getCollection } from "astro:content";
+
+const { slug } = Astro.params;
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+const match = slug && posts.some((p) => p.id === slug);
+
+return Astro.redirect(match ? `/blog/${slug}` : "/gone", 308);
+---

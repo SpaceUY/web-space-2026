@@ -50,3 +50,5 @@ The OCC's announcement is more than regulatory reform; it's a signal. A signal t
 If you're a fintech startup, a traditional bank, or an investor-backed project navigating this new world, **the partner you choose today can define your trajectory tomorrow.**
 
 Want to build or scale your blockchain product? At SpaceDev, we turn bold ideas into regulated-ready, future-proof solutions.
+
+*This article is general information, not legal, financial, or investment advice. Confirm your specific obligations with qualified counsel.*

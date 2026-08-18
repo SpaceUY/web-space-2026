@@ -40,7 +40,7 @@ const csJsonLd = {
   name: entry.data.name,
   description: entry.data.tagline,
   url: `${SITE.url}/our-work/${entry.id}`,
-  about: entry.data.industry,
+  about: { "@type": "Thing", name: entry.data.industry },
   creator: { "@type": "Organization", name: SITE.name, url: SITE.url },
   ...(entry.data.client && { author: { "@type": "Organization", name: entry.data.client } }),
 };
