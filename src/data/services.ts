@@ -820,6 +820,12 @@ export const productDiscoveryData: ServicePageData = {
   primaryCta: { label: "Get in touch", href: "/contact" },
   secondaryCta: { label: "Book a discovery call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
 
+  faqs: [
+    { question: "How long does Product Discovery take?", answer: "Typically 1 to 4 weeks, depending on which of our six sprint types fits your stage: from process and requirements mapping to prototyping, hypothesis validation, and roadmap building. Discovery is the standard first step on any custom development project, and you come out of it with a validated product vision, a prioritized backlog, and a cost and timeline estimate, not a slide deck." },
+    { question: "Do we have to build with SpaceDev after Product Discovery?", answer: "No. You are not locked into working with us afterward, the deliverables are yours to take to any development team. If you do continue with SpaceDev, the cost of the Discovery engagement is deducted from your development plan investment." },
+    { question: "What if we already have a rough idea but no formal requirements?", answer: "That is the most common starting point. Product Discovery exists specifically to turn a rough idea into a validated, buildable scope, you do not need a spec document to start." },
+  ],
+
   finalCta: {
     title: "Not sure how Product Discovery fits your project?",
     description: "Connect with us to explore your options.",
