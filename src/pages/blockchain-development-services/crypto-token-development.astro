@@ -1,0 +1,202 @@
+---
+import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
+import FeatureCard from "../../components/ui/FeatureCard.astro";
+import { cryptoTokenDevData } from "../../data/services";
+
+const tokenServices = [
+  { title: "Tokenomics design and modeling", description: "Supply structure, emission schedule, vesting, distribution, and incentive mechanics" },
+  { title: "Utility token development", description: "Access, payment, and reward tokens for platform ecosystems" },
+  { title: "Governance token development", description: "Voting weight, delegation, and on-chain proposal execution" },
+  { title: "Security token development", description: "ERC-1400, ERC-3643, transfer restrictions, and accreditation controls" },
+  { title: "DeFi token development", description: "Staking, yield farming, liquidity pool incentives, and rebase logic" },
+  { title: "NFT and multi-token standards", description: "ERC-721, ERC-1155, and hybrid token models" },
+  { title: "Stablecoin development", description: "Fiat-backed, asset-backed, and algorithmic stability mechanisms" },
+  { title: "Token migration and upgrades", description: "Cross-chain bridges, token swaps, and contract upgrades without liquidity loss" },
+];
+
+const tokenTypes = [
+  { title: "Utility Token Development", description: "Utility tokens support access, payments, and reward mechanisms within a platform. When poorly designed, they can create incentives that make selling more attractive than holding. Before writing any contract code, we model the token's supply and demand dynamics to give it a clear, functional role." },
+  { title: "Governance Token Development", description: "Governance tokens give holders voting rights over protocol parameters, treasury allocation, and contract upgrades. Building governance token mechanics correctly requires thinking through attack vectors including vote buying, flash loan governance exploits, and low-participation quorum failures." },
+  { title: "Security Token Development", description: "Security tokens represent regulated financial instruments, equity, debt, or real asset ownership, on-chain. They require compliant issuance infrastructure, transfer restrictions enforced at the contract level, and KYC/AML integration from day one." },
+  { title: "DeFi Token Development", description: "DeFi tokens power staking, liquidity mining, yield distribution, and protocol incentives. The mechanics of emission curves, lock-up periods, and reward decay rates have a direct impact on your protocol's long-term TVL and token price stability." },
+  { title: "Stablecoin Development", description: "Custom stablecoin development for platforms that need low-volatility settlement, payment, or collateral instruments. We build fiat-backed, asset-backed, and hybrid stability mechanisms, along with the oracle integrations and reserve management logic each model requires." },
+  { title: "NFT and Multi-Token Development", description: "ERC-721 and ERC-1155 token development for gaming economies, digital collectibles, and real-world asset representation, with metadata standards, royalty logic, and marketplace compatibility built in from the start." },
+];
+
+const tokenomicsVariables = [
+  { variable: "Total supply and emission rate", determines: "Inflation pressure, dilution timeline, staking yields" },
+  { variable: "Vesting and cliff schedules", determines: "Team and investor alignment, sell pressure windows" },
+  { variable: "Liquidity allocation", determines: "DEX depth, price stability at launch, slippage for users" },
+  { variable: "Treasury allocation", determines: "Protocol runway, grant program capacity, emergency reserves" },
+  { variable: "Utility demand drivers", determines: "Whether users need the token to use the product, or just to speculate" },
+  { variable: "Burn and deflationary mechanics", determines: "Supply contraction under heavy usage, long-term scarcity" },
+];
+
+const networksStack = [
+  { label: "Ethereum and EVM Networks", items: "ERC-20 (fungible), ERC-721 (NFT), ERC-1155 (multi-token), ERC-1400 (security token), ERC-3643 / T-REX (compliant security token), ERC-4626 (tokenized vault)" },
+  { label: "Solana", items: "SPL Token standard, Metaplex for NFTs, Token-2022 with transfer hooks and confidential transfers" },
+  { label: "BNB Chain", items: "BEP-20, BEP-721, BEP-1155" },
+  { label: "Polygon, Arbitrum, Optimism, Base", items: "EVM-compatible standards with L2 gas optimization" },
+  { label: "Cross-chain and Bridging", items: "LayerZero OFT standard, Wormhole, custom bridge contracts for token migration" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Token Strategy and Tokenomics Design", description: "We define the token's role in your product ecosystem, model the supply and incentive mechanics, and produce a tokenomics document your team can validate before development starts. This phase is part of our Product Discovery service." },
+  { number: "02", title: "Smart Contract Development", description: "We write the token contract with the specific mechanics your tokenomics model requires: minting, burning, vesting, staking rewards, transfer restrictions, or governance delegation. No boilerplate contracts with parameters swapped out." },
+  { number: "03", title: "Security Review and Audit", description: "Every token contract goes through internal security review focused on overflow vulnerabilities, reentrancy risks, access control gaps, and economic attack vectors. For independent validation, BlockAudit provides dedicated audits before mainnet deployment." },
+  { number: "04", title: "Testnet Deployment and Integration Testing", description: "Full testnet deployment with integration testing across wallets, dApps, and exchange interfaces, testing contract behavior under edge cases, not just happy path scenarios." },
+  { number: "05", title: "Mainnet Deployment and Exchange Integration", description: "Mainnet deployment with wallet compatibility verification, DEX liquidity pool setup, and support for centralized exchange listing requirements, plus post-launch monitoring of contract interactions and on-chain token health metrics." },
+];
+
+const relatedServices = [
+  { title: "Smart Contract Development", href: "/blockchain-development-services/smart-contract-development", description: "The contract layer that governs every token mechanic" },
+  { title: "DAO Development", href: "/blockchain-development-services/dao-development", description: "Governance architecture for tokens with voting rights" },
+  { title: "Asset Tokenization", href: "/blockchain-development-services/asset-tokenization", description: "Security tokens and RWA tokenization infrastructure" },
+  { title: "BlockAudit: Blockchain Security", href: "/blockaudit-smart-contract-and-blockchain-security", description: "Independent smart contract audits before mainnet" },
+];
+---
+
+<ServicePageLayout data={cryptoTokenDevData}>
+  <div slot="pre-process">
+
+    <!-- Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">What we deliver</p>
+          <h2 class="section-title text-white">Crypto Token Development Services We Deliver</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {tokenServices.map((item, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Types of Tokens -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white">Types of Crypto Tokens We Develop</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {tokenTypes.map((t) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{t.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{t.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tokenomics -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Tokenomics Design: The Phase Most Teams Skip</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            The most common and expensive mistake in crypto token development is treating tokenomics as a marketing exercise rather than an economic design problem. SpaceDev approaches tokenomics design as a first-principles modeling exercise.
+          </p>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Tokenomics Variable</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-2/3">What It Determines</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tokenomicsVariables.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.variable}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.determines}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {tokenomicsVariables.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-2 leading-snug">{row.variable}</h3>
+              <p class="text-sm text-sd-text-muted">{row.determines}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Standards and Networks -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white">Token Standards and Networks We Work With</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2">
+          {networksStack.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{row.label}</p>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{row.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery Process -->
+    <section class="py-20 md:py-32 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <div class="md:sticky md:top-32" data-animate>
+            <h2 class="section-title text-white mb-6">How Our Crypto Token Development Process Works</h2>
+          </div>
+          <ol class="flex flex-col gap-6">
+            {deliverySteps.map((step) => (
+              <li>
+                <FeatureCard number={step.number} title={step.title} description={step.description} tone="dark" />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Token Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((service) => (
+            <a
+              href={service.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">{service.title}</h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{service.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

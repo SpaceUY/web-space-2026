@@ -1,0 +1,248 @@
+---
+import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
+import FeatureCard from "../../components/ui/FeatureCard.astro";
+import { daoDevelopmentData } from "../../data/services";
+
+const daoComponents = [
+  { title: "Governance smart contracts", description: "Proposal creation, quorum rules, voting mechanisms, execution logic" },
+  { title: "Governance token development", description: "Custom ERC-20 / ERC-721 tokens with voting weight and vesting schedules" },
+  { title: "Treasury management systems", description: "Multi-sig wallets, on-chain fund allocation, automated disbursements" },
+  { title: "Voting mechanism design", description: "Token-weighted, quadratic, conviction, and multi-sig governance models" },
+  { title: "DAO dApp and member portal", description: "Proposal dashboards, voting UI, member onboarding, activity history" },
+  { title: "On-chain access controls", description: "Role-based permissions, timelocks, emergency pause logic" },
+  { title: "Protocol integrations", description: "Snapshot, Tally, Gnosis Safe, Governor Bravo, and custom implementations" },
+];
+
+const daoTypes = [
+  {
+    title: "Protocol DAOs for DeFi Platforms",
+    description: "Protocol DAOs govern the key parameters of a DeFi system, including interest rates, fee structures, liquidity incentives, and contract upgrades. We build the complete governance stack, from Governor contracts and timelock controllers to on-chain execution, making parameter changes transparent and driven by the community.",
+  },
+  {
+    title: "Investment DAOs and Decentralized Venture Vehicles",
+    description: "Investment DAOs pool capital and make collective funding decisions through on-chain proposals and voting. We develop the treasury infrastructure, member contribution logic, and deal execution contracts that allow these organizations to operate without relying on a centralized fund manager.",
+  },
+  {
+    title: "Social and Community DAOs",
+    description: "For projects that need community-governed platforms, we build member portals, token-gated access systems, and contribution reward mechanisms that align participant incentives with the health of the community.",
+  },
+  {
+    title: "Service DAOs and Contributor Networks",
+    description: "Service DAOs coordinate distributed teams and compensate contributors through token rewards and milestone-based disbursements. We develop the smart contract layer that automates payments, tracks contributions, and enforces role-based access without manual administration.",
+  },
+  {
+    title: "Grant DAOs and Treasury Allocation Systems",
+    description: "For foundations and protocols running grant programs on-chain, we build proposal submission flows, reviewer voting systems, milestone-based fund releases, and a fully auditable disbursement history.",
+  },
+];
+
+const governanceModels = [
+  { model: "Token-weighted voting", how: "Voting power proportional to token holdings", bestFor: "Protocol DAOs, DeFi governance" },
+  { model: "Quadratic voting", how: "Diminishing returns per token to reduce whale influence", bestFor: "Community DAOs, grant programs" },
+  { model: "Conviction voting", how: "Continuous preference signaling, no binary proposal windows", bestFor: "Treasury allocation, protocol parameters" },
+  { model: "Multi-sig governance", how: "Fixed committee of signers required to execute decisions", bestFor: "Early-stage DAOs, investment vehicles" },
+  { model: "Delegated voting", how: "Token holders delegate voting power to representatives", bestFor: "Large-scale protocol governance" },
+];
+
+const techStack = [
+  { label: "Smart Contract Frameworks", items: "OpenZeppelin Governor, Governor Bravo, custom implementations in Solidity" },
+  { label: "Networks", items: "Ethereum, Polygon, Arbitrum, Optimism, Avalanche, BNB Chain" },
+  { label: "Treasury Infrastructure", items: "Gnosis Safe, on-chain multisig, custom treasury contracts" },
+  { label: "Governance Tooling", items: "Snapshot (off-chain signaling), Tally, custom on-chain voting interfaces" },
+  { label: "Token Standards", items: "ERC-20 with vote delegation (EIP-5805), ERC-721 for NFT-based membership" },
+  { label: "Access Control", items: "OpenZeppelin AccessControl, timelocks, role hierarchies, emergency pause" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Governance Design and Scoping", description: "Before writing code, we define your governance model: who can propose, who can vote, what quorum is required, how the treasury is controlled, and what happens when a proposal passes. This phase prevents the structural mistakes that require expensive migrations later. We offer this as part of our Product Discovery service." },
+  { number: "02", title: "Smart Contract Development and Testing", description: "We build governance contracts, treasury systems, and token infrastructure with automated testing and security reviews integrated throughout the process, rather than delivering a monolithic system at the end of the engagement." },
+  { number: "03", title: "Member Portal and dApp Integration", description: "We build or integrate the front-end layer, including proposal dashboards, voting interfaces, and member onboarding, so your community can participate without needing to interact with contracts directly." },
+  { number: "04", title: "Security Review and Audit", description: "Every DAO platform undergoes a structured security review before launch. For projects that need independent validation, BlockAudit provides smart contract audits focused on governance logic vulnerabilities such as vote manipulation, proposal griefing, and treasury exploits." },
+  { number: "05", title: "Post-Launch Support and Governance Evolution", description: "DAOs evolve. We provide ongoing engineering support for governance upgrades, parameter changes, and new module additions as your organization grows." },
+];
+
+const relatedServices = [
+  { title: "Smart Contract Development", href: "/blockchain-development-services/smart-contract-development", description: "The contract layer that enforces every governance rule" },
+  { title: "dApp Development", href: "/blockchain-development-services/dapp-development", description: "Member portals, voting interfaces, and proposal dashboards" },
+  { title: "BlockAudit: Blockchain Security", href: "/blockaudit-smart-contract-and-blockchain-security", description: "Independent audits focused on governance vulnerabilities" },
+  { title: "Asset Tokenization", href: "/blockchain-development-services/asset-tokenization", description: "Token design for investment DAOs and treasury vehicles" },
+];
+---
+
+<ServicePageLayout data={daoDevelopmentData}>
+  <div slot="pre-process">
+
+    <!-- Components -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">What we build</p>
+          <h2 class="section-title text-white">DAO Solutions We Provide</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {daoComponents.map((item, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Types of DAOs -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white">Types of DAOs Developed by Our Team</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {daoTypes.map((t) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{t.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{t.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Governance Models -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Governance Models We Implement</h2>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/4">Governance Model</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-2/5">How It Works</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/3">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              {governanceModels.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.model}</td>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.how}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.bestFor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {governanceModels.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{row.model}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">How it works:</span> {row.how}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Best for:</span> {row.bestFor}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-8 text-sm text-sd-text-muted border-l-2 border-sd-purple/50 pl-4" data-animate>
+          Choosing the wrong model creates participation problems that are difficult to fix without a disruptive migration. Our scoping process defines the right governance structure before architecture decisions are made.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white">DAO Development Tech Stack</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {techStack.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{row.label}</p>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{row.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section class="bg-sd-dark py-20 md:py-32 border-t border-white/5">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3" data-animate>Security</p>
+            <h2 class="section-title text-white mb-4" data-animate>Security Review Before Every DAO Launch</h2>
+            <p class="text-sd-text-muted leading-relaxed" data-animate>
+              A vulnerability in a governance contract or treasury module can be exploited to drain funds or hijack decisions. Every DAO platform we build goes through structured security review before launch.
+            </p>
+          </div>
+          <div class="flex flex-col gap-10">
+            <div class="flex flex-col gap-4" data-animate>
+              <h3 class="text-base font-display font-semibold text-white">Structured Security Review Across the Platform</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">
+                Governance contracts, treasury systems, and platform infrastructure reviewed with a focus on minimizing production risk before mainnet deployment.
+              </p>
+            </div>
+            <div class="flex flex-col gap-4" data-animate>
+              <h3 class="text-base font-display font-semibold text-white">BlockAudit Support for Deeper Assurance</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed">
+                When the project requires deeper validation, <a href="/blockaudit-smart-contract-and-blockchain-security" class="text-sd-purple-300 hover:text-white transition-colors">BlockAudit</a> (SpaceDev's dedicated security division) audits governance logic for vote manipulation, proposal griefing, and treasury exploits.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery Process -->
+    <section class="py-20 md:py-32 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <div class="md:sticky md:top-32" data-animate>
+            <h2 class="section-title text-white mb-6">How Our DAO Development Process Works</h2>
+          </div>
+          <ol class="flex flex-col gap-6">
+            {deliverySteps.map((step) => (
+              <li>
+                <FeatureCard number={step.number} title={step.title} description={step.description} tone="dark" />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for DAO Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((service) => (
+            <a
+              href={service.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">{service.title}</h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{service.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

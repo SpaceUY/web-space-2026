@@ -1,0 +1,206 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import FeatureCard from "../../../components/ui/FeatureCard.astro";
+import { bondTokenizationData } from "../../../data/services";
+
+const platformComponents = [
+  { title: "Bond issuance smart contracts", description: "ERC-1400 / ERC-3643 contracts encoding bond terms, maturity, coupon rate, and transfer restrictions" },
+  { title: "Automated coupon payment system", description: "On-chain interest distribution triggered by payment schedule, with stablecoin or fiat rail support" },
+  { title: "Atomic settlement infrastructure", description: "T+0 delivery-versus-payment (DvP) settlement with no counterparty risk" },
+  { title: "KYC/AML investor onboarding", description: "Identity verification, accreditation checks, jurisdictional transfer controls" },
+  { title: "Cap table and bondholder registry", description: "Real-time on-chain ownership records, corporate actions tracking, transfer history" },
+  { title: "Maturity and redemption logic", description: "Automated principal repayment at maturity, early redemption mechanics if applicable" },
+  { title: "Issuer and investor portals", description: "Bond dashboard, coupon history, bondholder management, compliance reporting" },
+  { title: "Secondary market integrations", description: "ATS connectivity, OTC desk infrastructure, DEX listing where permitted" },
+];
+
+const bondTypes = [
+  { title: "Corporate Bond Tokenization Platforms", description: "Tokenized corporate bonds allow companies to raise debt capital directly from a broader investor base, with lower minimum denominations, automated interest distribution, and a tamper-proof ownership registry. Siemens issued a real-world example of this: a €60 million digital bond on the Polygon public blockchain in February 2023, completed within two days instead of the traditional multi-week process. The infrastructure behind that kind of execution is what we build." },
+  { title: "Government and Municipal Bond Tokenization", description: "Sovereign and municipal bond tokenization brings public debt instruments on-chain with the transparency, accessibility, and settlement efficiency that traditional government securities markets lack. We build permissioned or hybrid issuance platforms appropriate to the regulatory environment of each jurisdiction." },
+  { title: "Green Bond and ESG Bond Tokenization Platforms", description: "Green bond tokenization adds on-chain traceability of capital allocation to environmental projects, giving investors verifiable proof that proceeds are deployed as committed. We build the token issuance layer alongside reporting infrastructure that tracks fund usage against stated ESG criteria." },
+  { title: "Tokenized US Treasury and Government Securities Platforms", description: "Tokenized US Treasury platforms give investors on-chain access to the returns of risk-free government debt. Franklin Templeton's FOBXX and Ondo Finance's OUSG have demonstrated strong product-market fit, part of a tokenized Treasury market that has grown well past $1 billion in on-chain AUM. We build custom platforms for institutions that want to offer this product under their own brand." },
+  { title: "Private Credit and Structured Debt Tokenization", description: "Private credit instruments, including term loans, trade finance receivables, and structured debt, can be tokenized to provide liquidity, fractional access, and programmatic servicing to asset classes that have historically been opaque and illiquid." },
+];
+
+const comparison = [
+  { row: "Settlement", traditional: "T+2 settlement with counterparty risk", tokenized: "T+0 atomic settlement, no counterparty risk" },
+  { row: "Coupon distribution", traditional: "Manual coupon distribution via paying agents", tokenized: "Automated on-chain coupon payments per schedule" },
+  { row: "Bondholder registry", traditional: "Paper or PDF bondholder registry", tokenized: "Real-time on-chain ownership registry" },
+  { row: "Minimum investment", traditional: "High minimum investment ($100K to $200K typical)", tokenized: "Fractional denominations ($1,000 or lower)" },
+  { row: "Investor access", traditional: "Limited to accredited or institutional investors", tokenized: "Configurable access, broader investor base where regulations permit" },
+  { row: "Reconciliation", traditional: "Manual reconciliation across custodians", tokenized: "Single source of truth on the blockchain" },
+  { row: "Issuance timeline", traditional: "Multi-week issuance process", tokenized: "Issuance in hours to days with smart contract deployment" },
+  { row: "Secondary market", traditional: "Opaque secondary market", tokenized: "Transparent on-chain transaction history" },
+];
+
+const techStack = [
+  { label: "Token Standards", items: "ERC-1400 (Polymath standard), ERC-3643 / T-REX (Tokeny standard), ERC-20 with access controls" },
+  { label: "Networks", items: "Ethereum, Polygon, Avalanche, Stellar, permissioned networks (Hyperledger Besu, R3 Corda) for private placements" },
+  { label: "Smart Contract Infrastructure", items: "Solidity, Hardhat, Foundry, OpenZeppelin, upgradeable proxy patterns" },
+  { label: "Oracle and Rate Data", items: "Chainlink Data Feeds (SOFR, benchmark rates), Proof of Reserve for asset-backed bonds, Pyth Network" },
+  { label: "Payment Rails", items: "USDC / USDT stablecoin coupon distribution, fiat off-ramp integrations, multi-currency settlement" },
+  { label: "KYC/AML and Identity", items: "Sumsub, Jumio, Onfido, wallet screening via Chainalysis or Elliptic, on-chain identity via Polygon ID" },
+  { label: "Secondary Market", items: "tZERO ATS integration, Securitize Markets connectivity, OTC desk API support, regulated DEX listing" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Bond Structure and Compliance Scoping", description: "Before any architecture decisions are made, we map the bond type, jurisdiction, legal structure, investor target, settlement currency, coupon structure, and applicable regulatory framework, involving your legal counsel and any trustee relationships." },
+  { number: "02", title: "Smart Contract Development", description: "We write the bond contract encoding all terms: face value, maturity date, coupon rate and payment schedule, transfer restrictions, investor allowlists, and forced transfer mechanisms. For variable-rate bonds, we integrate Chainlink oracle feeds for benchmark rate data." },
+  { number: "03", title: "Coupon Automation and Payment Rail Integration", description: "We build the automated coupon distribution system: smart contract-triggered payments on schedule, with support for stablecoin settlement and fiat off-ramp integrations for investors who need bank transfer receipt." },
+  { number: "04", title: "KYC/AML Onboarding and Investor Registry", description: "We build the investor onboarding flow with identity verification, accreditation checks, and jurisdictional access controls, plus the on-chain bondholder registry that serves as the authoritative ownership record." },
+  { number: "05", title: "Issuer Console, Investor Portal, and Secondary Market", description: "We build the product layer: issuer dashboards for bond lifecycle management, investor portals for coupon history and redemption requests, and the technical integrations required for your bonds to be tradeable on your target secondary venues." },
+  { number: "06", title: "Security Review and Pre-Launch Audit", description: "Bond tokenization platforms handle regulated financial instruments. Every contract and integration goes through structured security review before launch, with BlockAudit available for independent auditing focused on coupon manipulation and transfer restriction bypasses." },
+];
+
+const relatedServices = [
+  { title: "Asset Tokenization", href: "/blockchain-development-services/asset-tokenization", description: "The parent service covering all RWA asset classes" },
+  { title: "Stock Tokenization", href: "/blockchain-development-services/asset-tokenization/stocks", description: "Equity tokenization platforms with ERC-3643 and compliant issuance infrastructure" },
+  { title: "Smart Contract Development", href: "/blockchain-development-services/smart-contract-development", description: "Audited bond contracts with coupon automation, transfer restrictions, and maturity logic" },
+  { title: "BlockAudit: Blockchain Security", href: "/blockaudit-smart-contract-and-blockchain-security", description: "Independent audits before any bond tokenization platform goes live" },
+];
+---
+
+<ServicePageLayout data={{ ...bondTokenizationData, seo: { ...bondTokenizationData.seo, description: "SpaceDev builds bond tokenization platforms: on-chain issuance, automated coupon payments, T+0 settlement, and KYC/AML infrastructure." } }}>
+  <div slot="pre-process">
+
+    <!-- Components -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">What we deliver</p>
+          <h2 class="section-title text-white">Bond Tokenization Platform Components We Build</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {platformComponents.map((item, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Types -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white">Types of Tokenized Bond Platforms We Develop</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {bondTypes.map((t) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{t.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{t.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Traditional vs Tokenized -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Why Traditional Bond Infrastructure Is Being Replaced</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            The bond market's existing infrastructure was built for a different era. Understanding exactly what is being replaced helps clarify what a tokenized bond platform must deliver to be worth building.
+          </p>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/2">Traditional Bond Infrastructure</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4">Tokenized Bond Infrastructure</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.traditional}</td>
+                  <td class="py-5 text-white leading-relaxed align-top">{row.tokenized}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {comparison.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-sm text-sd-text-muted mb-2">{row.traditional}</p>
+              <p class="text-sm text-white font-medium">{row.tokenized}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white">Bond Tokenization Tech Stack</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {techStack.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{row.label}</p>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{row.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery Process -->
+    <section class="py-20 md:py-32 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <div class="md:sticky md:top-32" data-animate>
+            <h2 class="section-title text-white mb-6">How We Build Bond Tokenization Platforms</h2>
+          </div>
+          <ol class="flex flex-col gap-6">
+            {deliverySteps.map((step) => (
+              <li>
+                <FeatureCard number={step.number} title={step.title} description={step.description} tone="dark" />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Bond Tokenization Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((service) => (
+            <a
+              href={service.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">{service.title}</h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{service.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>
