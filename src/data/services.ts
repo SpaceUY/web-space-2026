@@ -329,6 +329,14 @@ export const partnerData: ServicePageData = {
   relatedTags: ["blockchain", "enterprise"],
   primaryCta: { label: "Get in touch", href: "/contact" },
 
+  faqs: [
+    { question: "What does 'white-label' mean in this partnership?", answer: "You keep full ownership of the client relationship and your brand. We can work fully behind the scenes under your name, or step in as a named technical partner when that adds credibility, your call on a per-project basis." },
+    { question: "How does this protect our margins?", answer: "You set your own client-facing pricing. We quote you a flat delivery cost per project scope, and the difference between that and what you charge your client is yours to keep." },
+    { question: "Will you ever contact our client directly without us?", answer: "No. All communication with your client goes through you unless you explicitly ask us to join a call as your technical partner. We do not solicit your clients for direct work." },
+    { question: "Do we need in-house blockchain expertise to bring you in?", answer: "No. We handle the technical scoping, architecture, and delivery. Your team stays focused on the client relationship and account strategy." },
+    { question: "How fast can you turn around a scope and quote for a client pitch?", answer: "For most blockchain projects, we can turn around a scoped estimate within 3 to 5 business days, fast enough to include in a client proposal." },
+  ],
+
   finalCta: {
     title: "Bring us in as your blockchain development partner for your next client build.",
     buttonLabel: "Book a call",
@@ -819,6 +827,12 @@ export const productDiscoveryData: ServicePageData = {
   relatedTags: ["product-growth"],
   primaryCta: { label: "Get in touch", href: "/contact" },
   secondaryCta: { label: "Book a discovery call", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
+
+  faqs: [
+    { question: "How long does Product Discovery take?", answer: "Typically 1 to 4 weeks, depending on which of our six sprint types fits your stage: from process and requirements mapping to prototyping, hypothesis validation, and roadmap building. Discovery is the standard first step on any custom development project, and you come out of it with a validated product vision, a prioritized backlog, and a cost and timeline estimate, not a slide deck." },
+    { question: "Do we have to build with SpaceDev after Product Discovery?", answer: "No. You are not locked into working with us afterward, the deliverables are yours to take to any development team. If you do continue with SpaceDev, the cost of the Discovery engagement is deducted from your development plan investment." },
+    { question: "What if we already have a rough idea but no formal requirements?", answer: "That is the most common starting point. Product Discovery exists specifically to turn a rough idea into a validated, buildable scope, you do not need a spec document to start." },
+  ],
 
   finalCta: {
     title: "Not sure how Product Discovery fits your project?",
