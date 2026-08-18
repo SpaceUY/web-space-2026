@@ -69,7 +69,7 @@ No se repite como hallazgo nuevo en esta ronda. Confirmado con fetch real contra
 
 ## Hallazgos — Severidad Alta
 
-### H1. Los créditos de charlas y prensa de los autores no están en el schema estructurado
+### H1. Los créditos de charlas y prensa de los autores no están en el schema estructurado — ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`)
 
 **Estado actual:** las páginas `/author/juan-manuel-sobral`, `/author/federico-sendra` muestran visualmente una sección "Speaking & Media" con apariciones reales y fechadas (ej. "Blockchain, Scandals & Transparency: CTO on $LIBRA", 2025-02-17). El `Person` JSON-LD de esas páginas no tiene ningún campo (`subjectOf` o similar) que enlace esas apariciones. El vínculo es puramente visual, no estructurado.
 
@@ -83,7 +83,7 @@ No se repite como hallazgo nuevo en esta ronda. Confirmado con fetch real contra
 
 ---
 
-### H2. Dos páginas de servicio de intención comercial alta no tienen ninguna sección de FAQ
+### H2. Dos páginas de servicio de intención comercial alta no tienen ninguna sección de FAQ — ⚠️ PARCIAL: Product Discovery ✅ implementado (rama `content/product-discovery-partner-faq`, con datos confirmados por el cliente). Blockchain Partner: decisión explícita de dejarlo en pausa por ahora, no implementado.
 
 **Estado actual:** en `src/data/services.ts`, `productDiscoveryData` (línea 811) y la página de White-Label Blockchain Partner (`partnerData`, línea 321) son las únicas dos páginas de servicio core sin array `faqs:`. Ambas aparecen listadas como servicios principales en `llms.txt`.
 
@@ -97,7 +97,7 @@ No se repite como hallazgo nuevo en esta ronda. Confirmado con fetch real contra
 
 ---
 
-### H3. Un post de blog presenta un precio de Bitcoin de 2024 como si fuera el precio actual
+### H3. Un post de blog presenta un precio de Bitcoin de 2024 como si fuera el precio actual — ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`)
 
 **Estado actual:** `/blog/bitcoin-101-basic-concepts-everyone-must-know` (publicado 2 de abril de 2024, sin campo `updatedAt`) contiene, hoy, esta frase textual: *"As of today, the price of one Bitcoin is hovering around $71K dollars, recovering strength from last week's retrace."* Verificado con fetch directo a producción el 18 de agosto de 2026: la frase sigue en tiempo presente, más de dos años después, sin ninguna nota de fecha junto al dato.
 
@@ -113,7 +113,7 @@ No se repite como hallazgo nuevo en esta ronda. Confirmado con fetch real contra
 
 ## Hallazgos — Severidad Media
 
-### M1. `llms.txt` y `llms-full.txt` tienen un dato factual incorrecto y un link muerto — con causa raíz identificada
+### M1. `llms.txt` y `llms-full.txt` tienen un dato factual incorrecto y un link muerto — con causa raíz identificada — ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`)
 
 **Estado actual:** `llms.txt` dice "Portfolio of 24 case studies". El conteo real, verificado en `/our-work` en vivo y en `src/content/case-studies/`, es **23**. `llms-full.txt` todavía lista *"Nomei (https://spacedev.io/our-work/nomei): AI coaching platform..."* — esa URL redirige (301) a `/our-work` genérico desde el commit `f5033fc` ("content: remove Nomei case study permanently", 2026-07-13). La causa exacta: el commit `b852664` (2026-07-08) sincronizó estos archivos cuando el conteo real era 24; cinco días después `f5033fc` bajó el conteo real a 23 y nadie volvió a tocar `llms*.txt`, que quedaron desincronizados desde entonces (más de un mes).
 
@@ -127,7 +127,7 @@ No se repite como hallazgo nuevo en esta ronda. Confirmado con fetch real contra
 
 ---
 
-### M2. El componente FAQ reutilizable no envuelve cada pregunta en un heading
+### M2. El componente FAQ reutilizable no envuelve cada pregunta en un heading — ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`)
 
 **Estado actual:** `src/components/ui/FAQ.astro` (líneas 34-40) renderiza cada pregunta dentro de `<summary><span>{item.question}</span></summary>`, sin ningún `<h2>`/`<h3>` propio. Este componente es el que usa el FAQ del home y la mayoría de páginas de servicio armadas con `ServicePageLayout.astro`. El JSON-LD `FAQPage` sí está bien (confirmado), pero eso solo cubre el camino de structured data — no el camino de extracción directa del HTML/DOM que también usan motores como Bing y Perplexity cuando no confían ciegamente en el schema.
 
@@ -141,7 +141,7 @@ No se repite como hallazgo nuevo en esta ronda. Confirmado con fetch real contra
 
 ---
 
-### M3. Solo 4 de 64 posts del blog usan el formato de FAQ ya probado y funcionando
+### M3. Solo 4 de 64 posts del blog usan el formato de FAQ ya probado y funcionando — ⏳ PENDIENTE (no priorizado todavía)
 
 **Estado actual:** el campo `faqs:` en el frontmatter (que genera automáticamente sección de preguntas con H3 real + JSON-LD `FAQPage`) solo está usado en 4 posts, todos de julio-agosto 2026.
 
@@ -155,7 +155,7 @@ No se repite como hallazgo nuevo en esta ronda. Confirmado con fetch real contra
 
 ---
 
-### M4. 7 de los 19 posts de 2026 (incluido el publicado hoy) citan datos fechados sin ningún link a la fuente
+### M4. 7 de los 19 posts de 2026 (incluido el publicado hoy) citan datos fechados sin ningún link a la fuente — ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`; de paso se corrigieron 3 errores factuales más: cifra de RWA de XRP desactualizada, cita mal atribuida a David Solomon, stats de crecimiento de Akash vencidas)
 
 **Estado actual:** la ronda 2 agregó fuentes primarias a 11 posts de 2026. Al contar links externos reales por post, 7 de los 19 posts de 2026 tienen cero links salientes, incluido el post publicado el mismo día de esta auditoría (`blockchain-in-energy-real-use-cases-vs-hype`, 2026-08-17), que afirma *"approved by the IEEE Standards Board on December 10, 2025"* sin ningún link a la fuente del estándar. Esto muestra que el gap no se resolvió con el tiempo: sugiere que no hay un checklist de publicación que fuerce el sourcing en contenido nuevo.
 
@@ -169,7 +169,7 @@ No se repite como hallazgo nuevo en esta ronda. Confirmado con fetch real contra
 
 ---
 
-### M5. Un post de 2025 con cifras fuertes quedó fuera del trabajo de sourcing de la ronda 2
+### M5. Un post de 2025 con cifras fuertes quedó fuera del trabajo de sourcing de la ronda 2 — ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`)
 
 **Estado actual:** `/blog/goldman-sachs-bets-big-on-ai-and-blockchain` (junio 2025) cita cifras específicas y verificables (46.000 empleados, $15.8B en M&A 2024) sin ningún link a fuente primaria — el mismo patrón que la ronda 2 corrigió en 11 posts de 2026, pero que no llegó a tocar en este post por ser de 2025.
 
@@ -200,7 +200,7 @@ No se repite como hallazgo nuevo en esta ronda. Confirmado con fetch real contra
 
 ---
 
-### M7. `Service.provider` y `CreativeWork.creator` usan una copia mínima de la Organization en vez del objeto completo
+### M7. `Service.provider` y `CreativeWork.creator` usan una copia mínima de la Organization en vez del objeto completo — ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`)
 
 **Estado actual:** las 20 páginas de servicio (vía `ServicePageLayout.astro`, línea 59) y los 23 case studies (`our-work/[...slug].astro`, línea 44) emiten `provider`/`creator` como `{"@type":"Organization","name":"SpaceDev","url":"https://spacedev.io"}` — solo 2 campos. El `Article.publisher` de los blog posts, en cambio, ya usa el objeto `Organization` completo (logo, sameAs, address, contactPoint, foundingDate, disambiguatingDescription) desde la ronda 2.
 
@@ -214,7 +214,7 @@ No se repite como hallazgo nuevo en esta ronda. Confirmado con fetch real contra
 
 ---
 
-### M8. Imagen hero de los 23 case studies sin `width`/`height`/`aspect-ratio` reservado
+### M8. Imagen hero de los 23 case studies sin `width`/`height`/`aspect-ratio` reservado — ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`)
 
 **Estado actual:** confirmado en el HTML crudo de `/our-work/ndax-canada`: la imagen hero (`loading="eager" fetchpriority="high"`) no tiene `width`/`height` como atributo ni el contenedor padre tiene `aspect-ratio` fijo. Se revisó también el resto de imágenes de la misma página (gallery, "keep reading") y esas sí tienen el espacio reservado vía CSS — no es un problema generalizado, es específico de esta imagen hero.
 
@@ -234,17 +234,17 @@ Se listan de forma más breve por ser de bajo impacto individual, todos con evid
 
 | # | Hallazgo | Veredicto | Archivo |
 |---|---|---|---|
-| B1 | "Engineers across 5 countries" (incluye México, remoto) nunca se aclara frente a las 4 oficinas físicas del schema/footer — el dato de fondo ya es correcto (commit `66e4f13`), solo falta una aclaración de copy | OPCIONAL | `src/pages/about-us.astro:212`, `public/llms.txt:30` |
-| B2 | Imágenes inline del cuerpo de blog posts sin `width`/`height` (evaluado un fix de `aspect-ratio` fijo en CSS, descartado por riesgo de distorsionar imágenes con relación de aspecto real distinta) | **Implementado**: rehype plugin (`src/lib/rehype-image-dimensions.mjs`) que lee las dimensiones reales de cada imagen en build time y las inyecta como atributos `width`/`height`, sin tocar el CSS existente | `astro.config.mjs`, `src/lib/rehype-image-dimensions.mjs` |
-| B3 | Bio de Diego Priliac sin créditos de charlas/prensa, a diferencia de sus 2 co-fundadores (solo si existe material real que agregar — no fabricar contenido) | OPCIONAL | `src/data/authors.ts` |
-| B4 | Frase-molde repetida ("built for real operations, not a demo/pilot") en 3 de 5 páginas de industria comparadas — sin contenido duplicado real, solo repetición de apertura | OPCIONAL | páginas de `blockchain-development-services/industry/` |
-| B5 | `CreativeWork` de case studies sin `image`/`datePublished`, aunque el dato ya existe en el frontmatter (`heroImage`, `publishedAt`) | OPCIONAL | `src/pages/our-work/[...slug].astro:37-46` |
-| B6 | `BreadcrumbList` capitaliza "And" en vez de mantenerlo en minúscula ("Finance And Fintech" en vez de "Finance and Fintech") | OPCIONAL | `src/layouts/BaseLayout.astro:72-75` |
+| B1 | "Engineers across 5 countries" (incluye México, remoto) nunca se aclara frente a las 4 oficinas físicas del schema/footer — el dato de fondo ya es correcto (commit `66e4f13`), solo falta una aclaración de copy | ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`) | `src/pages/about-us.astro:212`, `public/llms.txt:30` |
+| B2 | Imágenes inline del cuerpo de blog posts sin `width`/`height` (evaluado un fix de `aspect-ratio` fijo en CSS, descartado por riesgo de distorsionar imágenes con relación de aspecto real distinta) | ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`): rehype plugin (`src/lib/rehype-image-dimensions.mjs`) que lee las dimensiones reales de cada imagen en build time y las inyecta como atributos `width`/`height`, sin tocar el CSS existente | `astro.config.mjs`, `src/lib/rehype-image-dimensions.mjs` |
+| B3 | Bio de Diego Priliac sin créditos de charlas/prensa, a diferencia de sus 2 co-fundadores | 🔒 CERRADO: confirmado con el cliente que no hay material real adicional para agregar. No se fabrica contenido. | `src/data/authors.ts` |
+| B4 | Frase-molde repetida ("built for real operations, not a demo/pilot") en 3 de 5 páginas de industria comparadas — sin contenido duplicado real, solo repetición de apertura | DESCARTADO: es una decisión de voz de marca, no un bug técnico, se dejó fuera de esta ronda | páginas de `blockchain-development-services/industry/` |
+| B5 | `CreativeWork` de case studies sin `image`/`datePublished`, aunque el dato ya existe en el frontmatter (`heroImage`, `publishedAt`) | ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`) | `src/pages/our-work/[...slug].astro:37-46` |
+| B6 | `BreadcrumbList` capitaliza "And" en vez de mantenerlo en minúscula ("Finance And Fintech" en vez de "Finance and Fintech") | ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`) | `src/layouts/BaseLayout.astro:72-75` |
 | B7 | ~~Hub `/blockchain-development-services/industry/` sin schema~~ — **corregido al implementar**: ese archivo es un redirect 301 hacia `/blockchain-development-services#industries`, no una página de contenido. El listado real de industrias vive dentro de `/blockchain-development-services/index.astro`, que ya tiene su propio `Service` JSON-LD de página. Falso positivo del subagente, no se tocó nada. | NO RECOMENDADO (premisa incorrecta) | — |
-| B8 | Blog posts usan `@type: Article` en vez de `BlogPosting` (subtipo más preciso); faltan `articleSection`/`wordCount` ya disponibles en los datos | OPCIONAL | `src/pages/blog/[...slug].astro:46` |
-| B9 | `llms-full.txt` da mucho más detalle a Blockchain Development que a Staff Augmentation/BlockAudit/Product Discovery | OPCIONAL | `public/llms-full.txt` |
-| B10 | Sin canal de YouTube propio (el único "SpaceDev" en YouTube es un estudio de videojuegos ucraniano sin relación) | OPCIONAL (depende de producción de contenido, no es un fix de código) | — |
-| B11 | Guía de apps/exchanges "January 2024 Edition" y post sobre deal Ripple-Rail "pendiente Q4 2025" sin actualización, desactualizados en general (sin cifra puntual falsa como el caso de Bitcoin) | OPCIONAL | `src/content/blog/a-quick-guide-to-crypto-apps-exchanges-january-2024-edition.md`, `ripple-drops-200m-on-rail-to-dominate-the-future-of-stablecoin-payments.md` |
+| B8 | Blog posts usan `@type: Article` en vez de `BlogPosting` (subtipo más preciso); faltan `articleSection`/`wordCount` ya disponibles en los datos | ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`) | `src/pages/blog/[...slug].astro:46` |
+| B9 | `llms-full.txt` da mucho más detalle a Blockchain Development que a Staff Augmentation/BlockAudit/Product Discovery | ✅ IMPLEMENTADO (rama `fix/geo-audit-round-4-technical`), incluyendo la estructura real de sprints y términos comerciales de Product Discovery confirmados por el cliente | `public/llms-full.txt` |
+| B10 | Sin canal de YouTube propio (el único "SpaceDev" en YouTube es un estudio de videojuegos ucraniano sin relación) | 🔒 CERRADO por ahora: decisión explícita del cliente de no encararlo en esta ronda (es contenido/producción, no código) | — |
+| B11 | Guía de apps/exchanges "January 2024 Edition" y post sobre deal Ripple-Rail "pendiente Q4 2025" sin actualización, desactualizados en general (sin cifra puntual falsa como el caso de Bitcoin) | ⚠️ PARCIAL: el post de Ripple-Rail ✅ implementado (rama `fix/geo-audit-round-4-technical`, se verificó que el deal cerró en diciembre 2025 y se agregó la fuente). La guía de apps/exchanges de enero 2024 se dejó sin tocar a propósito, el título ya la fecha explícitamente. | `src/content/blog/a-quick-guide-to-crypto-apps-exchanges-january-2024-edition.md`, `ripple-drops-200m-on-rail-to-dominate-the-future-of-stablecoin-payments.md` |
 
 ---
 
@@ -302,33 +302,20 @@ El score más alto de la auditoría. JSON-LD válido y completo en los 6 tipos d
 
 ---
 
-## Quick Wins (esta semana)
+## Estado de implementación (actualizado tras la ronda de fixes)
 
-1. **[H3]** Agregar nota de fecha o actualizar el precio de Bitcoin en `bitcoin-101-basic-concepts-everyone-must-know.md` — 5 minutos, cambio de una frase.
-2. **[M1]** Corregir "24" → "23" case studies en `llms.txt` y borrar la línea de Nomei en `llms-full.txt` — 2 líneas.
-3. **[M2]** Envolver cada pregunta de `FAQ.astro` en un `<h3>` — un componente, se propaga a todo el sitio que lo usa.
-4. **[M8]** Agregar `width`/`height` a la imagen hero de `our-work/[...slug].astro` — una imagen, un archivo.
-5. **[H2]** Agregar FAQ a `product-discovery` y `blockchain-partner` en `services.ts` — contenido nuevo pero acotado (4-6 preguntas cada una).
+La gran mayoría de los hallazgos accionables ya está implementada, cada uno en su propia rama sin pushear todavía. Lo que queda realmente pendiente:
 
-## Plan de 30 días
+- [ ] **M3**: extender el campo `faqs:` a más posts de blog además de los 4 que ya lo tienen (no priorizado todavía, sin rama).
+- [ ] **H2 (Blockchain Partner)**: agregar FAQ a `/blockchain-development-services/blockchain-partner` — Product Discovery ya se hizo (rama `content/product-discovery-partner-faq`), Partner se dejó en pausa a pedido del cliente.
+- [ ] Actualizar la sección "PENDIENTE" del `CLAUDE.md` del proyecto: quitar `/digital-library`, `/events-calendar`, `/newsletter`, `/faqs`, `/spacedev-in-the-media` de la lista de contenido faltante (ya están completas) y las 7 páginas de servicio nuevas que se agregaron en esta ronda.
 
-### Semana 1: Correcciones de datos y componentes de bajo esfuerzo
-- [ ] H3, M1, M2, M8 (Quick Wins arriba)
-- [ ] M5: sourcing del post de Goldman Sachs
+Cerrado sin implementar, por decisión explícita (no son tareas abiertas):
+- **B4** (frase repetida en páginas de industria): es una decisión de voz de marca, no un bug.
+- **B10** (canal de YouTube): decisión de contenido/negocio, fuera de esta ronda.
+- **B3** (bio de Diego Priliac): confirmado con el cliente que no hay material real adicional para agregar.
 
-### Semana 2: Cobertura de FAQ y schema de entidad
-- [ ] H2: FAQ en product-discovery y blockchain-partner
-- [ ] M3: extender el campo `faqs:` a 8-10 posts de blog priorizados por intención de búsqueda
-- [ ] H1: `Person.subjectOf` + `Article.mentions` para créditos de autor
-- [ ] M7: unificar `Service.provider`/`CreativeWork.creator` con el `organizationJsonLd` completo
-
-### Semana 3: Sourcing
-- [ ] M4: agregar fuentes primarias a los 7 posts de 2026 sin links salientes
-
-### Semana 4: Pulido y cierre de bajo impacto
-- [ ] B1, B5, B6, B8 (según disponibilidad, ninguno es bloqueante; B7 se descartó, ver hallazgo corregido)
-- [ ] Actualizar la sección "PENDIENTE" del `CLAUDE.md` del proyecto: quitar `/digital-library`, `/events-calendar`, `/newsletter`, `/faqs`, `/spacedev-in-the-media` de la lista de contenido faltante (ya están completas)
-- [ ] Evaluar B10 (canal de YouTube) como decisión de contenido, no de código — fuera del alcance de un sprint de desarrollo
+Todo lo demás (H1, H3, M1, M2, M4, M5, M7, M8, B1, B2, B5, B6, B8, B9) está implementado. Ver el detalle de cada hallazgo arriba para la rama exacta.
 
 ---
 
