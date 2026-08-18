@@ -168,4 +168,4 @@ Residential real estate tokenization exists as its own practice, but it's a diff
 
 Blockchain in energy pays off when you target the mature use cases first, certificate tokenization, asset financing, and defined-community trading, and treat grid-scale ambitions as a longer horizon. The projects that work start with reliable metering data and a permissioned design, not with the ledger.
 
-If you are evaluating a blockchain energy project, our [energy blockchain services](/blockchain-development-services/industry/energy) cover tokenization, trading platforms, and oracle integration. See how we approached this in our [Blockchain For Energy (B4E)](/our-work/blockchain-for-energy) and [W3E](/our-work/w3e) work, or [book a technical scoping call](/contact).
+If you are evaluating a blockchain energy project, our [energy blockchain services](/blockchain-development-services/industry/energy) cover tokenization, trading platforms, and oracle integration. See how we approached this in our [Blockchain For Energy (B4E)](/our-work/blockchain-for-energy) work, or [book a technical scoping call](/contact).
