@@ -138,11 +138,11 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "mostaza", name: "Mostaza",
-    tagline: "Loyalty + ordering platform for QSR chain.",
-    category: "Web2", industry: "SaaS & Products", accent: "purple",
+    tagline: "Web3-powered financial tools for everyday users across Latin America.",
+    category: "Web3", industry: "SaaS & Products", accent: "purple",
     image: "/images/case-studies/mostaza/mostaza_.png",
-    highlight: "1M+ customers",
-    services: ["Mobile", "Loyalty", "Integrations"],
+    highlight: "Web3 fintech MVP",
+    services: ["Mobile", "Fintech", "Product Discovery"],
   },
   {
     slug: "glowy-music", name: "Glowy Music",
@@ -154,11 +154,11 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "piggygpt", name: "PiggyGPT",
-    tagline: "AI-powered personal finance assistant.",
-    category: "Web2", industry: "AI & Data", accent: "cyan",
+    tagline: "AI-powered trading for the EVM ecosystem, without the complexity.",
+    category: "Web3", industry: "AI & Data", accent: "cyan",
     image: "/images/case-studies/piggygpt/piggygpt_.png",
-    highlight: "AI + fintech",
-    services: ["AI/ML", "FinTech", "Mobile"],
+    highlight: "AI + DeFi",
+    services: ["AI/ML", "DeFi", "Product Development"],
   },
   {
     slug: "bondi-finance", name: "Bondi Finance",
@@ -186,11 +186,11 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "iaffirm", name: "iAffirm",
-    tagline: "Verified credentials on-chain.",
-    category: "Web3", industry: "Enterprise", accent: "cyan",
+    tagline: "Personalized affirmations and guided meditations, powered by AI.",
+    category: "Web2", industry: "AI & Data", accent: "cyan",
     image: "/images/case-studies/iaffirm/iaffirm_.webp",
-    highlight: "Verifiable IDs",
-    services: ["Identity", "Smart Contracts", "SDK"],
+    highlight: "AI wellness app",
+    services: ["AI/ML", "Product Development", "Backend"],
   },
   {
     slug: "acme", name: "ACME",
