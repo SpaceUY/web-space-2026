@@ -53,6 +53,7 @@ export default defineConfig({
       const path = new URL(page).pathname.replace(/\/+$/, "") || "/";
       const excluded = [
         "/404",
+        "/gone",
         "/terms-and-conditions",
         "/privacy-policy",
         "/coming-soon",

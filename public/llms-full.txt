@@ -45,7 +45,7 @@ Smart contract and blockchain security auditing: static and manual analysis, for
 
 ## Frequently asked questions
 
-**Do you offer free consultation?** Yes — a free 45-minute consultation to understand your needs and how we can support your project.
+**Do you offer free consultation?** Yes, a free 30-minute consultation to understand your needs and how we can support your project.
 
 **What are your rates?** Time & materials, fixed-scope, and dedicated-team pricing. Most staff augmentation engagements land in the $60–120/hr range; project pricing depends on scope.
 
