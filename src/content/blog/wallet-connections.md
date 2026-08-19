@@ -48,7 +48,7 @@ There are five main types of non-custodial wallets:
 | Desktop | Installed on a computer, stores private keys locally | High security, less portable | Exodus, Atomic Wallet |
 | Mobile | Installed on a phone, hot or cold | Convenient and accessible | Trust Wallet, Mycelium |
 | Hardware | Physical device, keys stored offline | Most secure, less convenient | Trezor, Ledger |
-| Paper | Private keys printed and stored offline | High security, vulnerable to physical damage or loss | — |
+| Paper | Private keys printed and stored offline | High security, vulnerable to physical damage or loss | N/A |
 | Web | Online wallet accessed via browser | Convenient, vulnerable to malicious behavior | MyEtherWallet, MetaMask |
 
 Each type has its strengths and weaknesses. Users should carefully consider their needs and preferences when choosing a wallet.
