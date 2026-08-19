@@ -5,7 +5,7 @@ publishedAt: 2026-01-14
 author: federico-sendra
 category: Techy Trends
 tags: ["product-growth", "web3-infrastructure"]
-readTime: 4
+readTime: 2
 cover: "/images/content/9feDkXRGNd52EakG0mP2Umo.webp"
 ---
 

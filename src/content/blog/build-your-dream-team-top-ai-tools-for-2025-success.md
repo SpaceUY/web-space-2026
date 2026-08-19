@@ -32,7 +32,7 @@ Here's how to build a lean, AI-powered team that handles everything from marketi
 | Marketer | LatelyAI | Turns long-form content into social posts |
 | Builder | Figma (Genius/Magician) | AI-assisted UI/UX design |
 | Builder | Uizard | Turns sketches or prompts into working mockups |
-| Builder | CodiumAI / GitHub Copilot | Writes, reviews, and tests code |
+| Builder | Qodo (formerly CodiumAI) / GitHub Copilot | Writes, reviews, and tests code |
 | Salesperson | Apollo.io / Clay | Prospecting with AI-crafted cold outreach |
 | Salesperson | Lavender | AI coach for sales emails |
 | Salesperson | Regie.ai | Builds outbound sequences synced with your CRM |
@@ -70,7 +70,7 @@ Speed up development cycles, test product ideas, and build faster.
 
 - **Figma (with AI plugins like Genius or Magician)**: Design UI/UX elements fast with AI assistance.
 - **Uizard**: Turn sketches or prompts into working web/app mockups.
-- **CodiumAI / GitHub Copilot**: Write, review, and test code with AI copilots that reduce dev time significantly.
+- **Qodo (formerly CodiumAI) / GitHub Copilot**: Write, review, and test code with AI copilots that reduce dev time significantly.
 
 ## The Salesperson: Scalable, Smart, and Tireless
 

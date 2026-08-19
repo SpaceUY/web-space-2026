@@ -6,7 +6,7 @@ publishedAt: 2023-06-06
 author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["blockchain-basics", "web3-infrastructure"]
-readTime: 3
+readTime: 9
 cover: "/images/content/hSDllB1d1JjC9oNH7hkkChHjq8.webp"
 takeaways:
   - Digital wallets are essential infrastructure for web3 ecosystems, enabling secure asset management and dApp interaction
@@ -107,7 +107,7 @@ Wherever the Connect Wallet button has to be used, it can be imported and the co
 
 The wallet is a critical component of the web3 ecosystem, allowing users to store, send and receive cryptocurrencies and other digital assets. While there are many approaches and technologies available for wallet connections in web3, these remain affected by security, usability and interoperability issues.
 
-Emerging technologies can help address some of those challenges. One is RainbowKit, a decentralized key management solution for web3 wallets which provides a secure and user-friendly way to manage keys, including those used for decentralized finance (DeFi) applications. While RainbowKit is still in the early stages of development, it has the potential to be a valuable tool in the ongoing efforts to improve the security and usability of web3 wallets.
+Emerging technologies can help address some of those challenges. One is RainbowKit, a decentralized key management solution for web3 wallets which provides a secure and user-friendly way to manage keys, including those used for decentralized finance (DeFi) applications. RainbowKit has matured into one of the standard wallet-connection toolkits for Ethereum, and it remains a valuable tool in the ongoing efforts to improve the security and usability of web3 wallets.
 
 ## References
 

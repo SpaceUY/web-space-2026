@@ -341,7 +341,7 @@ The book (in Spanish) can be downloaded after filling out a short form [here](ht
 
 This prominent event in the web3 universe, which attracted over 1,000 attendees, 120 speakers, 300 companies, and even members of the U.S. government, aimed to connect and address a highly relevant topic: how to use renewable energy to produce crypto.
 
-Congressman Byron Donald drew attention with his statement, "We are the new gold rush", referencing historical periods of intense migration toward areas and industries with great enrichment potential.
+Congressman Byron Donalds drew attention with his statement, "We are the new gold rush", referencing historical periods of intense migration toward areas and industries with great enrichment potential.
 
 It's crucial to implement the use of renewable energy for cryptocurrency production due to the high energy consumption associated with mining, especially for currencies like Bitcoin that rely on proof-of-work (PoW) algorithms. Sustainable practices can mitigate environmental impact by reducing greenhouse gas emissions and promoting a greener use of blockchain.
 

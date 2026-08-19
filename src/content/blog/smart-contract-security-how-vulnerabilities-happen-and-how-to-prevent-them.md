@@ -140,7 +140,7 @@ Hardware wallets for deployment keys, multisig for admin functions, proper secre
 
 ### A Note on OpenZeppelin Defender
 
-OpenZeppelin's Defender platform was a good attempt at addressing exactly these operational gaps: it brought together on-chain monitoring, managed relayers (so private keys never had to sit in application infrastructure), access control management, and deployment pipelines under one roof. Most teams were either skipping these entirely or building them ad hoc. Defender made it easier to do them properly. It's now being [phased out](https://www.openzeppelin.com/news/doubling-down-on-open-source-and-phasing-out-defender), new sign-ups closed June 2025 and the platform shuts down fully in July 2026, with OpenZeppelin migrating the core tools to open source.
+OpenZeppelin's Defender platform was a good attempt at addressing exactly these operational gaps: it brought together on-chain monitoring, managed relayers (so private keys never had to sit in application infrastructure), access control management, and deployment pipelines under one roof. Most teams were either skipping these entirely or building them ad hoc. Defender made it easier to do them properly. It's now being [phased out](https://www.openzeppelin.com/news/doubling-down-on-open-source-and-phasing-out-defender), new sign-ups closed June 2025 and the platform shut down fully in July 2026, with OpenZeppelin migrating the core tools to open source.
 
 The platform is going away, but the problems it solved aren't. Monitoring for suspicious on-chain activity, managing who holds what admin keys, and keeping deployment workflows auditable are still unsolved for most teams. They don't require a specific platform to address, but they do require intentional decisions, not afterthoughts.
 
@@ -161,7 +161,7 @@ Automated scanners, Slither, MythX, Echidna, are fast and consistent. They relia
 | Formal verification | Mathematically provable properties | Doesn't validate the spec itself | High, specialized |
 | Fuzzing (Echidna, Foundry) | Edge cases, unexpected input behavior | Requires invariant definitions upfront | Medium |
 
-Comprehensive smart contract audits in 2025 typically range between $25,000 and $150,000, depending on complexity. The variance reflects scope more than firm prestige: a 500-line ERC-20 and a cross-chain lending protocol with governance aren't the same engagement.
+Comprehensive smart contract audits in 2025 typically range between $15,000 and $80,000, depending on complexity. The variance reflects scope more than firm prestige: a 500-line ERC-20 and a cross-chain lending protocol with governance aren't the same engagement.
 
 A serious audit combines all four approaches. Automated tools run first to clear the obvious issues. Manual review then focuses on what scanners can't evaluate: the intended behavior, the economic assumptions, and the interaction surface with external protocols.
 

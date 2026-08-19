@@ -35,7 +35,7 @@ User-friendly interface and extensive cryptocurrency support, Binance is an idea
 
 ### NDAX
 
-NDAX was built to simplify cryptocurrency trading. Beginners can quickly buy and sell 30+ digital assets on an intuitive platform, while experienced or professional traders can take advantage of advanced features and trading tools.
+NDAX was built to simplify cryptocurrency trading. Beginners can quickly buy and sell 30+ digital assets on an intuitive platform, while experienced or professional traders can take advantage of advanced features and trading tools. Disclosure: [NDAX Canada](/our-work/ndax-canada) is a SpaceDev client; we built its frontend and mobile app.
 
 ### Coinbase
 

@@ -18,7 +18,7 @@ Real World Assets are physical or traditional financial assets that are increasi
 | Asset Type | Example Platforms | Main Challenge |
 |---|---|---|
 | Real Estate | RealT, RedSwan | Legal/regulatory uncertainty around property tokenization |
-| Commodities | Tether Gold (XAUT), Paxos Gold (PAXG), AuraGold | Verifying the physical asset actually backs the token |
+| Commodities | Tether Gold (XAUT), Paxos Gold (PAXG), Aura | Verifying the physical asset actually backs the token |
 | Stocks & Bonds | Ondo Finance | Compliance with securities laws |
 | Luxury Goods | Masterworks, Courtyard.io | Subjective valuation of art and collectibles |
 | Intellectual Property | Royal.io, Opulous | Enforcing proper royalty distribution |
@@ -57,7 +57,7 @@ Commodities include physical goods like:
 **Example:**
 - Tether Gold (XAUT): A token representing real gold stored in Switzerland.
 - Paxos Gold (PAXG): A gold-backed digital token that can be redeemed for physical gold.
-- AuraGold: A physical gold investment app.
+- [Aura](/our-work/aura): A gold-backed savings and investment app built by SpaceDev, powered by Tether's XAUT.
 
 **Challenges:**
 - Verifiability: How do users trust that the gold or oil backing the token is really there?
