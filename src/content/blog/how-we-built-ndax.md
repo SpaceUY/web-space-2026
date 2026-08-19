@@ -19,7 +19,7 @@ While comprehensive collaboration details appear in the case study, this article
 
 ### Frontend Architecture
 
-NDAX's user interface emphasizes both sophistication and accessibility. The platform utilizes NodeJS, Typescript, and Angular 6 as foundational technologies, creating an environment that "inspires trust, intuitiveness and allows even the most inexperienced beginners to use their wide array of features." Comprehensive testing ensured consistent cross-platform display.
+NDAX's user interface emphasizes both sophistication and accessibility. The platform utilizes NodeJS, Typescript, and Angular 8 as foundational technologies, creating an environment that "inspires trust, intuitiveness and allows even the most inexperienced beginners to use their wide array of features." Comprehensive testing ensured consistent cross-platform display.
 
 ### AlphaPoint Integration
 

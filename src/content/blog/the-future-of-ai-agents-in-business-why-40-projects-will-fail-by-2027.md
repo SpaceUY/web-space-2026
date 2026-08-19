@@ -5,7 +5,7 @@ publishedAt: 2025-07-04
 author: diego-priliac
 category: "AI"
 tags: ["ai", "product-growth"]
-readTime: 11
+readTime: 3
 cover: "/images/content/YxwLtoX3RaoAbsRSfm7BHL1xtKI.webp"
 takeaways:
   - Gartner forecasts over 40 agentic AI projects will be discontinued by 2027.

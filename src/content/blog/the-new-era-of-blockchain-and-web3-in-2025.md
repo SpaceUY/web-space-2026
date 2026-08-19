@@ -5,7 +5,7 @@ publishedAt: 2025-06-19
 author: federico-sendra
 category: Blockchain Trends
 tags: ["web3-infrastructure", "ai"]
-readTime: 9
+readTime: 3
 cover: ""
 takeaways:
   - AI and blockchain convergence is driving innovation in smart contracts and DeFi
