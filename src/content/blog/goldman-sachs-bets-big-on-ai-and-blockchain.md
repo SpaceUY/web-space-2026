@@ -29,7 +29,7 @@ It's not just about speed; it's a transformation in how work gets done.
 
 ## Digital Assets: Charting the Blockchain Frontier
 
-On June 10, Goldman Sachs released insight on ["Why digital asset adoption is accelerating."](https://www.goldmansachs.com/what-we-do/investment-banking/insights/articles/why-digital-asset-adoption-is-accelerating) They point to regulatory clarity, blockchain's ability to enhance transparency and risk management, and the rise of stablecoins. Platforms like AuraGold, an app for investing in physical gold, show how digital asset infrastructure can also power more accessible consumer investment experiences.
+On June 10, Goldman Sachs released insight on ["Why digital asset adoption is accelerating."](https://www.goldmansachs.com/what-we-do/investment-banking/insights/articles/why-digital-asset-adoption-is-accelerating) They point to regulatory clarity, blockchain's ability to enhance transparency and risk management, and the rise of stablecoins. Platforms like [Aura](/our-work/aura), a SpaceDev-built app for gold-backed savings and investment, show how digital asset infrastructure can also power more accessible consumer investment experiences.
 
 Importantly, Goldman highlights a surging deal flow: [digital asset M&A volumes jumped from $1 billion in 2019 to $15.8 billion in 2024](https://www.goldmansachs.com/what-we-do/investment-banking/insights/articles/why-digital-asset-adoption-is-accelerating). That's a fifteenfold increase in just five years, proof that blockchain and digital assets are no longer experimental, they're gaining real traction in traditional financial markets.
 
