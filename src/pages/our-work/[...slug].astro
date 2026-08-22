@@ -119,7 +119,7 @@ const serviceLinks: Record<string, string> = {
     { label: entry.data.name },
   ]}
   breadcrumbTone="dark"
-  title={entry.data.metatitle ?? `${entry.data.name} — Case Study | SpaceDev`}
+  title={entry.data.metatitle ?? `${entry.data.name}: Case Study | SpaceDev`}
   description={entry.data.metadescription ?? entry.data.tagline}
   ogImage={heroImage}
   ogType="article"
@@ -157,7 +157,7 @@ const serviceLinks: Record<string, string> = {
           <div data-animate class="w-full flex items-center justify-center" style="filter: drop-shadow(0 0 60px rgba(255,255,255,0.35)) drop-shadow(0 0 120px rgba(255,255,255,0.15));">
             <img
               src={heroImage}
-              alt={`${entry.data.name} — featured visual`}
+              alt={`${entry.data.name}: featured visual`}
               width="960"
               height="720"
               loading="eager"
@@ -331,7 +331,7 @@ const serviceLinks: Record<string, string> = {
                 >
                   <img
                     src={src}
-                    alt={`${entry.data.name} — ${galleryType === "mobile" ? "screen" : "visual"} ${i + 1}`}
+                    alt={`${entry.data.name}: ${galleryType === "mobile" ? "screen" : "visual"} ${i + 1}`}
                     loading={i === 0 ? "eager" : "lazy"}
                     class="w-full h-full object-cover"
                   />
@@ -361,7 +361,7 @@ const serviceLinks: Record<string, string> = {
                 "{clutchReview.text}"
               </p>
               <footer class="flex flex-col sm:flex-row items-center justify-center gap-3 text-sm">
-                <span class="text-sd-text-gray">— {clutchReview.reviewer}</span>
+                <span class="text-sd-text-gray">{clutchReview.reviewer}</span>
                 <a
                   href={clutchReview.url}
                   target="_blank"

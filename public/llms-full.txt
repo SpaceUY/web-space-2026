@@ -1,4 +1,4 @@
-# SpaceDev — Full Reference
+# SpaceDev: Full Reference
 
 > Blockchain development company offering Web3 engineering, traditional software development, IT staff augmentation, and blockchain security auditing. Founded 8 years ago; 70+ team members across USA, Uruguay, Argentina, Colombia and Mexico; 200+ projects delivered; 50+ five-star Clutch reviews. This file is the extended companion to https://spacedev.io/llms.txt
 
@@ -40,8 +40,8 @@ Smart contract and blockchain security auditing: static and manual analysis, for
 
 ## Engagement models
 
-1. **MVP Builder** — for clients needing to launch a top-quality MVP fast: Discovery Phase → Proposal Phase → MVP Build → Product Growth and Support.
-2. **IT Staff Augmentation** — flexible IT talent without permanent commitments: Identify Your Needs → Candidate Screening → Welcome Aboard → Management & Scaling.
+1. **MVP Builder**: for clients needing to launch a top-quality MVP fast: Discovery Phase → Proposal Phase → MVP Build → Product Growth and Support.
+2. **IT Staff Augmentation**: flexible IT talent without permanent commitments: Identify Your Needs → Candidate Screening → Welcome Aboard → Management & Scaling.
 
 ## Frequently asked questions
 
@@ -51,9 +51,9 @@ Smart contract and blockchain security auditing: static and manual analysis, for
 
 **What services do you offer?** Five core services: Blockchain Development, Web & Mobile Development, IT Staff Augmentation, Product Discovery, and BlockAudit (smart contract security).
 
-**What is an MVP?** The smallest version of your product that delivers real value to a real user — a shippable product designed to learn from market feedback as fast and cheaply as possible.
+**What is an MVP?** The smallest version of your product that delivers real value to a real user: a shippable product designed to learn from market feedback as fast and cheaply as possible.
 
-**Staff Augmentation vs. Development Services?** Staff Augmentation embeds engineers into your team and processes — you manage the work. Development Services means SpaceDev owns the project end-to-end: discovery, design, build, ship, support.
+**Staff Augmentation vs. Development Services?** Staff Augmentation embeds engineers into your team and processes: you manage the work. Development Services means SpaceDev owns the project end-to-end: discovery, design, build, ship, support.
 
 ## Case studies (https://spacedev.io/our-work)
 
@@ -79,7 +79,7 @@ Smart contract and blockchain security auditing: static and manual analysis, for
 
 ## Recognition & media (https://spacedev.io/spacedev-in-the-media)
 
-- 2nd place, Hedera AI x Hackathon — AI agent that audits smart contracts in real time.
+- 2nd place, Hedera AI x Hackathon: AI agent that audits smart contracts in real time.
 - Co-organized ETH Canal hackathon (Panama) with three SpaceDev speakers.
 - CTO Juan Manuel Sobral named among Uruguay's top 25 tech leaders (Experis ManpowerGroup).
 - CEO Federico Sendra keynoted "The Blockchain Revolution" at Google DevFest Montevideo.

@@ -8,9 +8,9 @@ export async function GET(context: APIContext) {
   );
 
   return rss({
-    title: "SpaceDev Blog — Practical articles from the engineering floor",
+    title: "SpaceDev Blog: Practical articles from the engineering floor",
     description:
-      "Web3, blockchain security, product discovery, AI — written by the people shipping the code.",
+      "Web3, blockchain security, product discovery, AI: written by the people shipping the code.",
     site: context.site!,
     items: posts.map((post) => ({
       title: post.data.title,
