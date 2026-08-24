@@ -50,7 +50,11 @@ metrics:
     label: "Blockchains supported"
   - value: "40K"
     label: "Daily active users"
-gallery: []
+gallery:
+  - "/images/case-studies/collector-crypt/gallery/gallery1.png"
+  - "/images/case-studies/collector-crypt/gallery/gallery2.png"
+  - "/images/case-studies/collector-crypt/gallery/gallery3.png"
+  - "/images/case-studies/collector-crypt/gallery/gallery4.png"
 metatitle: "Collector Crypt: Multichain NFT Trading Card Platform"
 metadescription: "SpaceDev built Collector Crypt's multichain platform: smart contracts, cross-chain bridge, P2P swaps, third-party integrations, and the Gacha mobile app."
 ---
@@ -61,7 +65,7 @@ Bringing a physical collectibles market on-chain meant solving problems most Web
 
 ## Our Approach
 
-SpaceDev works as part of Collector Crypt's product and engineering team across its multi-product ecosystem. We built the smart contracts powering the core vault-to-marketplace flow, developed the cross-chain bridge functionality that lets assets and activity move between supported networks, and shipped peer-to-peer swap functionality so collectors can trade directly with each other. We also led the integration work that keeps onboarding frictionless: embedded wallets and social login through Privy, fiat and crypto payments through Coinflow, and the vaulting and grading partnerships with PSA, PWCC, and ALT that keep every physical card authenticated and insured. Beyond the core platform, our team built the Gacha mobile app and continues to provide maintenance support on the gamified pack-opening product.
+SpaceDev works as part of Collector Crypt's product and engineering team across its multi-product ecosystem. We help build the smart contracts powering the core vault-to-marketplace flow, the cross-chain bridge functionality that lets assets and activity move between supported networks, and the peer-to-peer swap functionality that lets collectors trade directly with each other. We also help lead the integration work that keeps onboarding frictionless: embedded wallets and social login through Privy, fiat and crypto payments through Coinflow, and the vaulting and grading partnerships with PSA, PWCC, and ALT that keep every physical card authenticated and insured. Beyond the core platform, our team helps build the Gacha mobile app and continues to provide maintenance support on the gamified pack-opening product.
 
 ## Results
 

@@ -50,7 +50,7 @@ Finance & Fintech (DeFi), Gaming & NFTs, Healthcare, Supply Chain & Logistics, R
 ## Optional
 
 - [llms-full.txt](https://spacedev.io/llms-full.txt): Extended version of this file with detailed service descriptions, engagement models, FAQ answers and the full case study list.
-- [Our Work](https://spacedev.io/our-work): Portfolio of 23 case studies including NDAX Canada, Drata, Rarible, ApeBond, Bondi Finance, Blockus, FightFI, Aura, Zenda.
+- [Our Work](https://spacedev.io/our-work): Portfolio of 24 case studies including Collector Crypt, NDAX Canada, Drata, Rarible, ApeBond, Bondi Finance, Blockus, FightFI, Aura, Zenda.
 - [Blog](https://spacedev.io/blog): Articles on Web3, blockchain, AI, AR, product development and tech trends. RSS: https://spacedev.io/rss.xml
 - [Careers](https://spacedev.io/careers): Open remote roles across Web3, full-stack, mobile and blockchain engineering.
 - [Events Calendar](https://spacedev.io/events-calendar): International tech, finance, blockchain and AI events by month.

@@ -478,6 +478,28 @@ Para subir a Vercel Blob: dashboard de Vercel → Storage → Blob → Upload.
 
 ---
 
+## CHECKLIST: Agregar (o quitar) un case study
+
+Cada vez que se agrega o se remueve un case study hay que tocar **todos** estos puntos en la misma sesión. Esto no es opcional: el `GEO-AUDIT-REPORT.md` (hallazgo H) documenta que la última vez que cambió el conteo real, `llms.txt`/`llms-full.txt` quedaron desincronizados (23 vs 24) durante más de un mes sin que nadie lo notara, y que "Nomei" siguió listado en `llms-full.txt` con su URL ya redirigida (301) semanas después de borrarlo. Un LLM que lea el sitio ve exactamente esos archivos, así que un desfase ahí es un desfase real entre lo que ve una IA y lo que ve un humano.
+
+**Al agregar uno nuevo:**
+1. `src/content/case-studies/[slug].md` — contenido completo (frontmatter + secciones "The Challenge" / "Our Approach" / "Results")
+2. `src/data/case-studies.ts` — card para Our Work y home. Si va destacado en el home, tiene que tener `featured: true` **y** estar entre las primeras 3 posiciones del array con `featured: true` (el home solo muestra `featuredCaseStudies.slice(0, 3)`, en orden de aparición)
+3. `public/images/case-studies/[slug]/` — carpeta con hero (`[slug]_.png`, ~960×720) y `gallery/` (`gallery1.png`...`galleryN.png`, mínimo 4 para que se active la sección, ideal 3:2 tipo 1200×800)
+4. `public/llms.txt` — actualizar el conteo ("Portfolio of N case studies") y, si es un case study relevante, sumarlo a la lista de nombres
+5. `public/llms-full.txt` — agregar su bullet en "## Case studies" con descripción concreta + link + 1-2 stats reales verificables (nunca inventadas)
+6. `src/data/services.ts` — evaluar si el nuevo case study encaja en algún `caseStudySlugs` de una service page relacionada (`blockchainData`, `smartContractData`, `webMobileData`, etc.). Estas listas están topeadas en 4 ítems: si se agrega, hay que decidir con el dev cuál sacar, no asumirlo unilateralmente
+7. Sin em dashes en contenido nuevo (regla general del proyecto)
+8. Nunca inventar testimonios/reviews de Clutch que no existen (dejar `clutchReview` afuera si no hay uno real)
+9. Después de cada archivo tocado: `npx astro check` (0 errores) y `npx astro build` (build limpio)
+
+**Al remover uno:**
+- Repetir los pasos 4-5 en reversa: bajar el conteo en `llms.txt`, sacar el bullet de `llms-full.txt`
+- Confirmar que no quede referenciado en ningún `caseStudySlugs` de `services.ts`
+- Verificar que no quede ninguna URL vieja mencionada en `llms-full.txt` apuntando a una página que ahora redirige (301) o da 404
+
+---
+
 ## ESTADO DE BUILD
 
 - ✅ `npx astro check` — 0 errores, 0 warnings (solo ts(6133) ignorados)

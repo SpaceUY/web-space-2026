@@ -119,7 +119,7 @@ export const blockchainData: ServicePageData = {
     ],
   },
 
-  caseStudySlugs: ["blockchain-for-energy", "fightfi", "apebond", "rarible"],
+  caseStudySlugs: ["blockchain-for-energy", "fightfi", "collector-crypt", "rarible"],
   caseStudiesTitle: "Blockchain Development Projects We Are Proud Of",
   caseStudiesDescription: "SpaceDev has shipped production-grade blockchain applications for clients across energy, DeFi, gaming, and NFT infrastructure.",
   caseStudiesLink: { text: "Explore our work.", href: "/our-work" },
@@ -293,7 +293,7 @@ export const smartContractData: ServicePageData = {
   heroParticles: true,
   primaryCta: { label: "Get in touch", href: "/contact" },
 
-  caseStudySlugs: ["rarible", "apebond", "bondi-finance", "blockus"],
+  caseStudySlugs: ["rarible", "collector-crypt", "bondi-finance", "blockus"],
   caseStudiesTitle: "Smart Contracts We've Shipped",
   caseStudiesDescription: "Real contracts, in production, for real clients.",
 
