@@ -425,7 +425,6 @@
   .spotlight-card.mob-lit {
     box-shadow: 0 0 32px rgba(103,58,228,0.4), 0 0 0 1px rgba(172,147,242,0.25) !important;
   }
-  .hint-pill { display: none; }
 }
 
 /* ============================================================

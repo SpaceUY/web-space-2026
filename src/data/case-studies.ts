@@ -26,6 +26,15 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "collector-crypt", name: "Collector Crypt",
+    featured: true,
+    tagline: "Graded physical trading cards, vaulted and tokenized on-chain across five blockchains.",
+    category: "Web3", industry: "NFT & Gaming", accent: "mixed",
+    image: "/images/case-studies/collector-crypt/collector-crypt_.png",
+    highlight: "$1.6B+ volume",
+    services: ["Smart Contracts", "Cross-chain Bridge", "Mobile"],
+  },
+  {
     slug: "byrrgis", name: "Byrrgis",
     featured: true,
     tagline: "Non-custodial Web3 broker for cross-chain token trading.",
