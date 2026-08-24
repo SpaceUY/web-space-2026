@@ -66,9 +66,9 @@ const { caseStudy: c, class: className = "" } = Astro.props;
       >
         {c.name}
       </h3>
-      {c.services && c.services.length > 0 && (
-        <p class="text-[10px] font-mono tracking-[0.04em] mb-3" style="color: #C8B5FF;">
-          {c.services.join(" · ")}
+      {c.tagline && (
+        <p class="text-[13px] leading-snug mb-3 line-clamp-2" style="color: #C8B5FF;">
+          {c.tagline}
         </p>
       )}
       <div class="pt-3" style="border-top: 1px solid rgba(172,147,242,0.25);">
