@@ -7,6 +7,33 @@ export interface ServiceFaq { question: string; answer: string }
 export interface ServiceQuote { text: string; author: string; role: string; photo?: string; linkedin?: string }
 export interface ServiceStep { number: string; title: string; description: string }
 
+/** Agentic AI Development is a dedicated lead-gen landing page (custom layout, not ServicePageLayout), so its shape diverges from ServicePageData. */
+export interface AgenticAiOffer { title: string; description: string }
+export interface AgenticAiCaseStudy { client: string; tag: string; logo: string; challenge: string; solution: string; impact: string[] }
+export interface AgenticAiEngagementModel { name: string; tagline: string; points: string[]; highlight: boolean }
+export interface AgenticAiProcessStep { number: string; title: string; description: string; when: string }
+export interface AgenticAiTechStackItem { img: string; label: string }
+export interface AgenticAiStat { value: number; suffix: string; label: string }
+export interface AgenticAiLogo { src: string; alt: string }
+
+export interface AgenticAiPageData {
+  seo: { title: string; description: string };
+  serviceName: string;
+  serviceType: string;
+  bookCallHref: string;
+  heroEyebrow: string;
+  heroTitle: string;
+  heroDescription: string;
+  heroLogos: AgenticAiLogo[];
+  stats: AgenticAiStat[];
+  offers: AgenticAiOffer[];
+  caseStudies: AgenticAiCaseStudy[];
+  engagementModels: AgenticAiEngagementModel[];
+  process: AgenticAiProcessStep[];
+  techStack: AgenticAiTechStackItem[];
+  faqs: ServiceFaq[];
+}
+
 export interface ServicePageData {
   /** SEO */
   seo: { title: string; description: string };
@@ -1223,4 +1250,109 @@ export const carbonCreditTokenizationData: ServicePageData = {
     buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
     external: true,
   },
+};
+
+/* ============================================================
+   AGENTIC AI DEVELOPMENT — dedicated landing page
+   ============================================================ */
+export const agenticAiData: AgenticAiPageData = {
+  seo: {
+    title: "Agentic AI Development & AI Transformation Consulting | SpaceDev",
+    description:
+      "SpaceDev builds dedicated AI engineering pods for enterprise teams. LLM integration, agentic AI, RAG pipelines. Offshore talent, US-aligned. Get a quote.",
+  },
+  serviceName: "Agentic AI Development & AI Transformation Consulting",
+  serviceType: "Agentic AI development company",
+  bookCallHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
+
+  heroEyebrow: "AI Transformation Consulting",
+  heroTitle: "Agentic AI Development Company: Dedicated Offshore Pods for Enterprise",
+  heroDescription:
+    "We build dedicated offshore AI pods that ship production-grade LLM systems, agentic workflows, and data infrastructure, so your team can move faster.",
+
+  heroLogos: [
+    { src: "/images/clients/ulta-white.svg", alt: "Ulta Beauty" },
+    { src: "/images/clients/prose-white.svg", alt: "Prose" },
+    { src: "/images/clients/drata-white.svg", alt: "Drata" },
+  ],
+
+  stats: [
+    { value: 8, suffix: "", label: "Years building software" },
+    { value: 200, suffix: "+", label: "Products shipped" },
+    { value: 70, suffix: "+", label: "Engineers on staff" },
+    { value: 5, suffix: "", label: "Countries, US-aligned hours" },
+  ],
+
+  offers: [
+    { title: "LLM Integration Services", description: "Production-grade LLM integration services: provider routing, prompt orchestration, evals, and guardrails wired into your existing product." },
+    { title: "Agentic AI Development", description: "We're an agentic AI development company: multi-step agents, tool use, and autonomous workflows that act on your systems, not just chat." },
+    { title: "RAG Architecture", description: "Retrieval-augmented generation pipelines: vector stores, chunking, re-ranking, and grounding so answers are accurate and auditable." },
+    { title: "Data Infrastructure & Semantic Layer", description: "The foundation agentic AI needs: pipelines, a governed semantic layer, and BI integration so models reason over trustworthy data." },
+    { title: "AI Staff Augmentation", description: "AI staff augmentation and a dedicated AI development pod: offshore AI developers embedded in your team, shipping in your stack and timezone." },
+  ],
+
+  caseStudies: [
+    {
+      client: "Prose",
+      tag: "DTC Beauty",
+      logo: "/images/clients/prose-white.svg",
+      challenge: "Prose needed AI-first data infrastructure to support business decisions at scale. The data team was bottlenecked and lacked dedicated AI engineering capacity.",
+      solution: "SpaceDev deployed a dedicated offshore AI pod that built a governed semantic layer, integrated Looker MCP + Claude, and shipped a live beta in weeks.",
+      impact: ["73% faster time-to-insight for the data team", "Live AI beta shipped in 6 weeks", "60% reduction in manual analysis time"],
+    },
+    {
+      client: "Ulta Beauty",
+      tag: "Retail Enterprise",
+      logo: "/images/clients/ulta-white.svg",
+      challenge: "Ulta Beauty wanted to lift in-store customer engagement across its national retail footprint, and needed engineering capacity to ship the experience into both its web and mobile apps quickly.",
+      solution: "SpaceDev built and shipped the customer-facing feature into Ulta's web and mobile apps, then supported the rollout across its retail network.",
+      impact: ["40% increase in in-store customer engagement", "Deployed across 1,300+ retail locations", "Feature adopted in web and mobile app within 3 months"],
+    },
+    {
+      client: "Drata",
+      tag: "Compliance SaaS",
+      logo: "/images/clients/drata-white.svg",
+      challenge: "As Drata scaled through hypergrowth, it needed to rebuild its cross-platform compliance agent and add senior engineering capacity that could integrate with its team for the long haul.",
+      solution: "SpaceDev embedded a dedicated team that rebuilt the cross-platform compliance agent (macOS, Linux, Windows) and has partnered with Drata for 4+ years.",
+      impact: ["4+ year ongoing engineering partnership", "Rebuilt cross-platform agent (macOS, Linux, Windows)", "Partner through $2B valuation milestone"],
+    },
+  ],
+
+  engagementModels: [
+    { name: "Dedicated AI Pod", tagline: "A full cross-functional AI team, owned end-to-end.", points: ["AI engineers + data + lead", "We own delivery & velocity", "Pod ready in ~2 weeks"], highlight: true },
+    { name: "AI Staff Augmentation", tagline: "Offshore AI developers embedded in your team.", points: ["You manage, we staff", "Scale up or down fast", "Your stack, your process"], highlight: false },
+    { name: "Project-Based", tagline: "Fixed scope, fixed outcome, clear deliverable.", points: ["Defined scope & milestones", "Best for discrete builds", "Predictable delivery"], highlight: false },
+  ],
+
+  process: [
+    { number: "01", title: "Discovery", description: "We map your goals, data, and use cases, and define success metrics.", when: "Week 1" },
+    { number: "02", title: "Architecture", description: "We design the LLM, agent, and data architecture for your stack.", when: "Week 1–2" },
+    { number: "03", title: "Pod Assembly", description: "Your dedicated AI development pod is staffed and onboarded.", when: "Pod ready in 2 weeks" },
+    { number: "04", title: "Build", description: "Iterative sprints shipping production-grade AI, reviewed weekly.", when: "First sprint, week 3" },
+    { number: "05", title: "Deploy", description: "We ship to production with evals, monitoring, and guardrails.", when: "Ongoing" },
+    { number: "06", title: "Support & Scale", description: "We maintain, optimize, and scale the team as you grow.", when: "Ongoing" },
+  ],
+
+  techStack: [
+    { img: "/images/icons/Python_Software.png", label: "Python" },
+    { img: "/images/icons/icon-langchain.png", label: "LangChain" },
+    { img: "/images/icons/OpenAI_Symbol.svg", label: "OpenAI" },
+    { img: "/images/icons/claude.png", label: "Claude" },
+    { img: "/images/icons/aws.svg", label: "AWS" },
+    { img: "/images/icons/Logo-google-cloud-icon-vector-PNG.jpeg", label: "Google Cloud" },
+    { img: "/images/icons/Looker.jpeg", label: "Looker" },
+    { img: "/images/icons/Data Build Tool.png", label: "dbt" },
+    { img: "/images/icons/apache-airflow.png", label: "Airflow" },
+    { img: "/images/icons/kafka.svg", label: "Kafka" },
+    { img: "/images/icons/Kubernetes_idda6T8Ya6_0.svg", label: "Kubernetes" },
+  ],
+
+  faqs: [
+    { question: "What is an AI development pod?", answer: "An AI development pod is a dedicated, cross-functional team (AI engineers, data engineers, and a tech lead) that works exclusively on your roadmap. Unlike staff augmentation, the pod owns delivery and velocity end-to-end, so you get a shippable AI capability, not just extra hands." },
+    { question: "How quickly can you deploy a dedicated AI development team?", answer: "Most dedicated AI pods are assembled and onboarded within two weeks, with the first production sprint starting in week three. Because our offshore AI developers are on staff (not recruited per project), there's no multi-month hiring cycle." },
+    { question: "Do you work in US time zones?", answer: "Yes. Our teams are nearshore/offshore across the US, Uruguay, Argentina, Colombia, and Mexico, working in US-aligned hours for real-time collaboration: standups in your morning, not your midnight." },
+    { question: "What LLM frameworks and models do you use?", answer: "Our LLM integration services span OpenAI, Anthropic Claude, and open models, orchestrated with LangChain and custom frameworks. For agentic AI development we build tool-use agents, RAG pipelines, and evaluation harnesses tailored to your stack." },
+    { question: "Is this compatible with our existing stack?", answer: "Yes. As an AI transformation consulting partner we integrate with what you already run: your cloud (AWS/GCP), data warehouse, semantic layer (dbt, Looker), and product. We add an AI layer rather than forcing a rebuild." },
+    { question: "What's the difference between a pod, staff augmentation, and project-based work?", answer: "A dedicated AI development pod is a full team we run for you. AI staff augmentation places offshore AI developers inside your team under your management. Project-based work delivers a fixed scope. Most enterprise AI transformation engagements start as a pod." },
+  ],
 };
