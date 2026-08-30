@@ -2,6 +2,18 @@
   "trailingSlash": false,
   "headers": [
     {
+      "source": "/legal/whatsapp-privacy",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/legal/whatsapp-terms",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {

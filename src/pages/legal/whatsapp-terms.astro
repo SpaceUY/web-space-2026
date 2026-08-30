@@ -1,0 +1,246 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import { SITE } from "../../lib/seo";
+import "../../styles/prose.css";
+
+const effectiveDate = "August 30, 2026";
+const lastUpdated = "August 30, 2026";
+const email = SITE.email;
+---
+
+<BaseLayout
+  title="WhatsApp Business Platform Terms of Service | SpaceDev"
+  description="The terms that govern use of SpaceDev's WhatsApp Business Platform integration service, a Meta Tech Provider connection to the WhatsApp Cloud API."
+  noindex={true}
+  breadcrumbs={false}
+>
+  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
+    <div class="relative mx-auto max-w-[1100px] px-6 md:px-10 pt-36 pb-20 md:pt-40 md:pb-28">
+      <Badge tone="purple" class="mb-6">Legal</Badge>
+      <h1 class="text-4xl md:text-6xl text-white">WhatsApp Business Platform Terms of Service</h1>
+      <div class="mt-6 flex flex-col gap-1 text-sm text-sd-text-muted">
+        <p>Effective date: <time datetime="2026-08-30">{effectiveDate}</time></p>
+        <p>Last updated: <time datetime="2026-08-30">{lastUpdated}</time></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 md:py-24">
+    <div class="mx-auto max-w-3xl px-6 md:px-10">
+      <article class="sd-prose">
+        <h2>1. Agreement</h2>
+        <p>
+          These Terms govern your use of the WhatsApp Business Platform integration service (the "Service")
+          provided by SpaceDev S.A. ("SpaceDev", "we", "us"), a company registered in Uruguay with registered
+          office at Bulevar España 2253, Piso 9, Montevideo, Uruguay.
+        </p>
+        <p>
+          By using the Service you agree to these Terms. If you are agreeing on behalf of a company, you confirm
+          you have authority to bind it.
+        </p>
+        <p>
+          Our handling of data is described separately in our
+          <a href="/legal/whatsapp-privacy">Privacy Policy</a>.
+        </p>
+
+        <h2>2. What the Service does</h2>
+        <p>
+          SpaceDev is a Meta Tech Provider. The Service connects a business phone number to the WhatsApp Cloud
+          API through Meta's Embedded Signup, including in Coexistence mode, where the WhatsApp Business App on a
+          phone and the Cloud API operate in parallel on the same number.
+        </p>
+        <p>
+          The Service provisions and administers that connection. It does not send messages on your behalf, does
+          not provide an inbox or conversation interface, and does not route message traffic through our
+          infrastructure.
+        </p>
+
+        <h2>3. What the Service is not</h2>
+        <p>To avoid misunderstanding, the Service does not include:</p>
+        <ul>
+          <li>an inbox, CRM, shared mailbox or any conversation interface</li>
+          <li>a chatbot or flow builder</li>
+          <li>storage, forwarding or replay of message content</li>
+          <li>sending messages on your behalf</li>
+          <li>conversation analytics</li>
+          <li>message billing, credit wallets or resale of Meta messaging</li>
+          <li>synchronous support (see section 8)</li>
+        </ul>
+
+        <h2>4. Your account and eligibility</h2>
+        <p>
+          You must be at least 18 and legally able to enter into contracts. You are responsible for the accuracy
+          of the information you provide, for the security of your API credentials, and for all activity under
+          your account.
+        </p>
+        <p>
+          Notify us at <a href={`mailto:${email}`}>{email}</a> if you believe your credentials have been
+          compromised.
+        </p>
+
+        <h2>5. Your responsibilities</h2>
+        <p>You agree to:</p>
+        <ul>
+          <li>comply with the Meta Platform Terms, the WhatsApp Business Terms of Service, the WhatsApp Business Messaging Policy and Meta's Developer Policies</li>
+          <li>obtain and maintain any consent required to message the people you contact, under the law applicable to you and to them</li>
+          <li>operate and secure the webhook endpoint you configure, and the access tokens delivered to you</li>
+          <li>ensure that the WhatsApp Business Account and Meta Business Portfolio you connect belong to the business that sends the messages</li>
+          <li>not use the Service for unlawful purposes, spam, or content prohibited by Meta</li>
+        </ul>
+        <p>
+          You are responsible for your use of the WhatsApp Business Platform. We provision access; we do not
+          supervise how you use it.
+        </p>
+
+        <h3>Regulated data</h3>
+        <p>
+          If your messaging involves health, financial or other regulated categories of data, you are
+          responsible for determining whether WhatsApp is an appropriate channel under the law applicable to
+          you, and for obtaining any consent required. We do not assess this for you.
+        </p>
+
+        <h2>6. Relationship with Meta</h2>
+        <p>The Service depends on Meta's platform and is subject to it.</p>
+        <p>
+          <strong>Meta bills you directly for messaging.</strong> Under Meta's Tech Provider model we do not
+          receive a credit line and cannot mark up, resell or rebate WhatsApp conversation charges. You supply
+          your own payment method to Meta and pay Meta according to its published rates. Our fees, if any, cover
+          our software only and are billed separately.
+        </p>
+        <p>
+          Meta may change its platform, terms, pricing, eligibility criteria and feature availability at any
+          time. Meta may suspend or restrict accounts, phone numbers, templates or applications. We do not
+          control these decisions and are not responsible for them.
+        </p>
+        <p>
+          Coexistence eligibility is determined by Meta, based on factors including account tenure and messaging
+          quality. We cannot obtain it for an account Meta considers ineligible.
+        </p>
+
+        <h2>7. Platform risk</h2>
+        <p>We want this stated plainly rather than buried.</p>
+        <p>
+          The Service operates through a Meta application that SpaceDev owns. Permissions over connected WhatsApp
+          Business Accounts are held by that application. If Meta restricts, suspends or removes that
+          application, connected accounts may lose Cloud API access at the same time.
+        </p>
+        <p>
+          This risk is inherent to the Meta Tech Provider model and applies to every provider operating under
+          it. It is a reason to keep the exit path in section 12 available, and a reason not to treat any single
+          provider, including us, as a permanent dependency.
+        </p>
+
+        <h2>8. Support</h2>
+        <p>Support is deliberately limited, and priced accordingly.</p>
+        <ul>
+          <li><strong>Documentation is the support channel.</strong> We maintain written documentation covering setup, routing, error codes and troubleshooting.</li>
+          <li><strong>We do not provide email or chat support.</strong> Messages sent to us asking for setup assistance will be redirected to documentation.</li>
+          <li><strong>Bug reports</strong> are accepted asynchronously through our public issue tracker, with no service level commitment.</li>
+          <li><strong>A 30-minute call is available at USD 100.</strong> This is priced to discourage use. If you need one, we consider it a gap in our documentation and will write the missing page.</li>
+        </ul>
+        <p>No response time is guaranteed for any channel.</p>
+
+        <h2>9. Availability</h2>
+        <p>
+          The Service is provided on an "as available" basis. We do not commit to uptime, and we may perform
+          maintenance without notice.
+        </p>
+        <p>
+          We may modify or discontinue features. If we discontinue the Service entirely, we will give at least
+          <strong>90 days' notice</strong> and keep the exit path in section 12 operational throughout that
+          period.
+        </p>
+
+        <h2>10. Fees</h2>
+        <p>
+          Where fees apply, they are stated at signup and billed in advance. Fees are non-refundable except
+          where required by law.
+        </p>
+        <p>
+          Non-payment may result in suspension of your access to our API and dashboard.
+          <strong>Suspension for non-payment will not deactivate webhook routing for connections already
+          provisioned</strong>, so that businesses relying on those connections are not cut off because of a
+          billing dispute between you and us.
+        </p>
+        <p>We may change fees with 30 days' notice.</p>
+
+        <h2>11. Intellectual property</h2>
+        <p>
+          We retain all rights in the Service, our software and our documentation. You retain all rights in your
+          data, your endpoints and your WhatsApp Business Account.
+        </p>
+        <p>
+          You may use our documentation for your own integration work, including copying the prompt templates we
+          publish.
+        </p>
+
+        <h2>12. Termination and exit</h2>
+        <p>You may terminate at any time by disconnecting your connections and closing your account.</p>
+        <p>
+          We may terminate or suspend your access if you breach these Terms, if required by Meta, or if required
+          by law.
+        </p>
+        <p>
+          <strong>On termination, the WhatsApp Business Account, Meta Business Portfolio and phone number remain
+          yours.</strong> We remove our application's subscription to your account. We do not delete, transfer or
+          retain your WhatsApp Business Account. You may connect it to another provider or to your own Meta
+          application.
+        </p>
+        <p>
+          Procedures for doing so are published in our documentation and are available regardless of the reason
+          for termination, including non-payment.
+        </p>
+
+        <h2>13. Disclaimers</h2>
+        <p>
+          THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED,
+          INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+        </p>
+        <p>
+          We do not warrant that the Service will be uninterrupted or error-free, that Meta will approve any
+          account, number or template, or that any message will be delivered.
+        </p>
+
+        <h2>14. Limitation of liability</h2>
+        <p>
+          TO THE MAXIMUM EXTENT PERMITTED BY LAW, SPACEDEV WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL,
+          CONSEQUENTIAL OR PUNITIVE DAMAGES, OR FOR LOST PROFITS, REVENUE, DATA OR BUSINESS OPPORTUNITY.
+        </p>
+        <p>
+          OUR TOTAL AGGREGATE LIABILITY ARISING OUT OF OR RELATING TO THE SERVICE WILL NOT EXCEED THE GREATER OF
+          (A) THE FEES YOU PAID US IN THE TWELVE MONTHS PRECEDING THE EVENT GIVING RISE TO THE CLAIM, OR (B) USD
+          100.
+        </p>
+        <p>Nothing in these Terms excludes liability that cannot be excluded under applicable law.</p>
+
+        <h2>15. Indemnity</h2>
+        <p>
+          You will indemnify and hold harmless SpaceDev against claims, damages and reasonable costs arising from
+          your use of the Service, your messaging content, your breach of these Terms, or your breach of Meta's
+          terms or applicable law.
+        </p>
+
+        <h2>16. Changes</h2>
+        <p>
+          We may update these Terms. Material changes will be posted on this page with an updated date, and where
+          we have your contact details we will notify you. Continued use after a change constitutes acceptance.
+        </p>
+
+        <h2>17. Governing law</h2>
+        <p>
+          These Terms are governed by the laws of the Oriental Republic of Uruguay. The courts of Montevideo
+          have exclusive jurisdiction, without prejudice to any mandatory consumer protection rights you may have
+          where you reside.
+        </p>
+
+        <h2>18. Contact</h2>
+        <p>
+          SpaceDev S.A.<br />
+          Bulevar España 2253, Piso 9, Montevideo, Uruguay<br />
+          <a href={`mailto:${email}`}>{email}</a>
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
