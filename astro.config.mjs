@@ -56,6 +56,8 @@ export default defineConfig({
         "/gone",
         "/terms-and-conditions",
         "/privacy-policy",
+        "/legal/whatsapp-privacy",
+        "/legal/whatsapp-terms",
         "/coming-soon",
         "/ui-kit",
         "/blockchain-development-services/industry",
