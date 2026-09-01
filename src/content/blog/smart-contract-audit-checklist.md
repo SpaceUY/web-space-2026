@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["smart-contracts"]
 readTime: 2
-cover: "/images/content/8avQhh2xnXVeHKr5gw0tR54o3Q.webp"
+cover: "/images/content/smart-contract-audit-checklist/cover.webp"
 metatitle: "Smart Contract Audit Checklist: Save Time & Avoid Risk"
 ---
 

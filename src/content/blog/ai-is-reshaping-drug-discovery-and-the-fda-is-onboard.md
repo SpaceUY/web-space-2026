@@ -6,7 +6,7 @@ author: federico-sendra
 category: "AI"
 tags: ["ai"]
 readTime: 5
-cover: "/images/content/2kwBmFhPTlXfy8RM1iE5tRfmPfM.png"
+cover: "/images/content/ai-is-reshaping-drug-discovery-and-the-fda-is-onboard/cover.png"
 metatitle: "AI in Drug Discovery: The FDA Is Onboard | SpaceDev"
 metadescription: "AI is becoming the new lab assistant in drug discovery, and the FDA is clearing the path: within three to five years, animal studies could be the exception."
 ---

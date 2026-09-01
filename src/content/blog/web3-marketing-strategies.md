@@ -7,7 +7,7 @@ category: Blockchain Trends
 tags: ["product-growth", "web3-infrastructure"]
 readTime: 2
 metatitle: "Web3 Marketing Strategies: From Basic to Advanced"
-cover: "/images/content/hxho9VrUWQGx6HtGs0MBU04Ln1M.webp"
+cover: "/images/content/web3-marketing-strategies/cover.webp"
 metadescription: "Most Web3 marketing chases hype. Learn the strategies that compound: community, narrative, distribution, and product-led growth loops beyond bull markets."
 ---
 

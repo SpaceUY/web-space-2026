@@ -6,7 +6,7 @@ author: federico-sendra
 category: "AI"
 tags: ["ai", "product-growth"]
 readTime: 10
-cover: "/images/content/9X2GlCwcuQ6xnkjL24hYUhozU.webp"
+cover: "/images/content/the-2025-ai-playbook-roadmap-to-scale-your-startup-with-artificial-intelligence/cover.webp"
 takeaways:
   - AI adoption has shifted from competitive advantage to fundamental business necessity for startups in 2025.
   - "Success requires sequential implementation: data foundation, automation, product development, predictive and generative AI, then cultural integration."

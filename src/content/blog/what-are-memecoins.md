@@ -7,7 +7,7 @@ author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["blockchain-basics", "defi"]
 readTime: 2
-cover: "/images/content/d3Ddsv9Vko4Mgi0ion6d7POiVc.webp"
+cover: "/images/content/what-are-memecoins/cover.webp"
 takeaways:
   - Memecoins are ERC-20/SPL tokens whose value is cultural, not technological
   - Most go to zero; the survivors share virality, community longevity, and a one-sentence narrative

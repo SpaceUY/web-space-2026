@@ -5,7 +5,7 @@ publishedAt: 2024-03-06
 author: federico-sendra
 category: "Blockchain Trends"
 tags: ["defi", "fintech", "blockchain-basics"]
-cover: "/images/content/kCetyET6H0EvLGrRcVOTSUfAfqo.webp"
+cover: "/images/content/quick-guide-the-best-crypto-staking-platforms/cover.webp"
 readTime: 3
 takeaways:
   - Staking enables earning rewards by locking cryptocurrencies for set periods

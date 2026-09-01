@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["fintech", "blockchain-basics", "web3-infrastructure"]
 readTime: 7
-cover: "/images/content/RVMvAqis5lvyDbQre8vqzsh7BT8.webp"
+cover: "/images/content/why-metamask-embedded-wallets-are-a-game-changer-for-web3-onboarding/cover.webp"
 takeaways:
   - MetaMask Embedded Wallets eliminate traditional onboarding friction through social login integration.
   - Non-custodial wallets are created instantly without seed phrases or browser extensions.

@@ -6,7 +6,7 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["enterprise", "compliance", "blockchain"]
 readTime: 9
-cover: "/images/content/enterprise-blockchain-cover.png"
+cover: "/images/content/enterprise-blockchain-solutions-roi-use-cases-types/cover.png"
 metatitle: "Enterprise Blockchain Solutions in 2026: ROI, Use Cases and Types Explained"
 metadescription: "A practical 2026 guide to enterprise blockchain: real ROI data, B2B use cases by industry, public vs. private chain trade-offs, governance design, and compliance."
 ---

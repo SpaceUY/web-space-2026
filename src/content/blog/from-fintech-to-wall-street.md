@@ -7,7 +7,7 @@ author: federico-sendra
 category: "Blockchain Trends"
 tags: ["fintech", "defi", "blockchain", "institutional"]
 readTime: 4
-cover: "/images/content/uLuHSBzzLiHci62DaepeOWAGlU.webp"
+cover: "/images/content/from-fintech-to-wall-street/cover.webp"
 takeaways:
   - Figure Technology Solutions demonstrated a 22% revenue surge with $191 million in revenue and $29 million profit for H1 2025.
   - Blockchain infrastructure is transitioning from theoretical to practical applications in mainstream finance.

@@ -7,7 +7,7 @@ author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["blockchain-basics", "web3-infrastructure"]
 readTime: 4
-cover: "/images/content/GGG67bdz69DgCTI3JuvX59NA.webp"
+cover: "/images/content/decentralizing-the-music-industry/cover.webp"
 metadescription: "Blockchain can fix the music industry's biggest problems, bringing greater transparency and fairer royalty distribution to artists through Web3 technology."
 ---
 

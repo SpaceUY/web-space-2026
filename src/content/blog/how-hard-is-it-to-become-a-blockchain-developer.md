@@ -5,7 +5,7 @@ publishedAt: 2024-04-11
 author: federico-sendra
 category: "Blockchain Trends"
 tags: ["product-growth", "blockchain-basics", "blockchain"]
-cover: "/images/content/eGC3vJH4dLUVuXBOVdkGVL066FE.webp"
+cover: "/images/content/how-hard-is-it-to-become-a-blockchain-developer/cover.webp"
 readTime: 4
 metatitle: "How Hard Is It to Become a Blockchain Developer? | SpaceDev"
 metadescription: "An honest look at the path to becoming a blockchain developer: the learning curve, smart contract skills, career opportunities, and how to get started."

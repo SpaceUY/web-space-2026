@@ -5,7 +5,7 @@ publishedAt: 2023-04-07
 author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["web3-infrastructure", "blockchain-basics"]
-cover: "/images/content/FbmwPbUfDAa0q00EdQ3JbNrTpE.png"
+cover: "/images/content/from-web3-to-web5-or-how-i-learned-to-stop-worrying-and-embrace-true-decentralization/cover.png"
 readTime: 5
 takeaways:
   - Web5 combines Web2 and Web3 principles, prioritizing full decentralization with user data control

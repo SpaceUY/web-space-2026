@@ -7,7 +7,7 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["compliance", "institutional", "blockchain", "enterprise"]
 readTime: 19
-cover: "/images/content/Blockchain_Compliance_in_the_US.png"
+cover: "/images/content/blockchain-compliance-us/cover.png"
 metatitle: "Blockchain Compliance in the US: 2026 Builder's Guide"
 metadescription: "What blockchain compliance in the US requires in 2026: SEC-CFTC taxonomy, GENIUS Act rules, AML, licensing, and compliant-by-design architecture."
 faqs:

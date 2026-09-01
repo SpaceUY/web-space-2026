@@ -5,7 +5,7 @@ publishedAt: 2026-05-08
 author: federico-sendra
 category: "Blockchain Trends"
 tags: ["web3-infrastructure", "smart-contracts"]
-cover: "/images/content/00eqLdyrpfZBRz5DKemobh4kQU.webp"
+cover: "/images/content/decentralized-oracles/cover.webp"
 readTime: 4
 metatitle: "Decentralized Oracles: Why Smart Contracts Need Them"
 metadescription: "Decentralized oracles securely bring off-chain data onto the blockchain, powering smart contract execution across DeFi, insurance, and prediction markets."

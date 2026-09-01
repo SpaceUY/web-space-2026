@@ -6,7 +6,7 @@ author: federico-sendra
 category: Techy Trends
 tags: ["product-growth", "web3-infrastructure"]
 readTime: 2
-cover: "/images/content/9feDkXRGNd52EakG0mP2Umo.webp"
+cover: "/images/content/aws-select-partner/cover.webp"
 ---
 
 Today we're announcing that SpaceDev has been recognized as an **[AWS Select Partner](https://aws.amazon.com/partners/services-tiers)**. It's a milestone we're proud of, and one that reflects how seriously our team has invested in cloud infrastructure over the last few years.

@@ -6,7 +6,7 @@ author: diego-priliac
 category: Product Development
 tags: ["product-growth"]
 readTime: 6
-cover: "/images/content/pVs0fAmc6Gp2davy0dgkOslc1c.webp"
+cover: "/images/content/choosing-the-right-sprint-product-discovery-vs-discovery-sprint-vs-design-sprint/cover.webp"
 takeaways:
   - Product Discovery suits early-stage products requiring market validation
   - Discovery Sprints accelerate validation of specific features within 1-2 weeks

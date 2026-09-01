@@ -6,7 +6,7 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["web3-infrastructure"]
 readTime: 11
-cover: "/images/content/Sa5MlGeDLNgcFDmCL7kH7Q3TBgA.webp"
+cover: "/images/content/what-web3-protocols-need-in-2025/cover.webp"
 takeaways:
   - Web3 protocols now require decentralized yet reliable infrastructure with 99.9% uptime guarantees
   - "Developer talent must span multiple skills: Solidity, Rust, ZK proofs, and cross-chain deployment"

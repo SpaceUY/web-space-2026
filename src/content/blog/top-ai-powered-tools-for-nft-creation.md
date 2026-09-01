@@ -7,7 +7,7 @@ author: diego-priliac
 category: "AI"
 tags: ["nft-gaming", "ai"]
 readTime: 4
-cover: "/images/content/jqHHiOTVsHa4ioIxPxCULv2gUg.webp"
+cover: "/images/content/top-ai-powered-tools-for-nft-creation/cover.webp"
 takeaways:
   - AI democratizes NFT creation by making sophisticated art generation tools accessible to aspiring artists
   - Multiple platforms (DeepArt, Artbreeder, Runway ML, DALL·E 2) offer distinct approaches to generating artwork
