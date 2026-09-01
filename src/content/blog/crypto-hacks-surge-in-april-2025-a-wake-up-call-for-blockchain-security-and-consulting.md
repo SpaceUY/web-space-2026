@@ -6,7 +6,7 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["smart-contracts", "fintech"]
 readTime: 3
-cover: "/images/content/8avQhh2xnXVeHKr5gw0tR54o3Q.webp"
+cover: "/images/content/crypto-hacks-surge-in-april-2025-a-wake-up-call-for-blockchain-security-and-consulting/cover.webp"
 takeaways:
   - $357 million in losses across 18 crypto incidents in April 2025 (990% increase from March)
   - A social engineering scam resulted in 3,520 BTC (~$330.7 million) theft from a U.S. investor

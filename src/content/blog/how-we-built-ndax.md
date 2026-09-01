@@ -5,7 +5,7 @@ publishedAt: 2023-05-02
 author: juan-manuel-sobral
 category: "Product Development"
 tags: ["fintech", "smart-contracts", "blockchain-basics", "web3-infrastructure"]
-cover: "/images/content/k9VyKGh5tqD9B5xLFRFXoVDVm44.webp"
+cover: "/images/content/how-we-built-ndax/cover.webp"
 readTime: 3
 metatitle: "How We Built NDAX, Canada's Biggest Crypto Exchange"
 metadescription: "How SpaceDev built NDAX, Canada's most prominent crypto exchange: blockchain development meets traditional finance, regulation, and bank-grade security."

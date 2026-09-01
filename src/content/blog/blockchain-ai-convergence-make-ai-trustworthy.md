@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["ai", "smart-contracts"]
 readTime: 5
-cover: "/images/content/VUCXsmRvqZrSwTQ8z4LOaKzFRo.png"
+cover: "/images/content/blockchain-ai-convergence-make-ai-trustworthy/cover.png"
 takeaways:
   - AI systems depend on reliable training and operational data. Blockchain's immutability directly tackles data provenance challenges limiting enterprise AI adoption.
   - By early 2026, production systems enable AI decision-making, blockchain verification, and automatic payment execution using stablecoins and tokenized assets.

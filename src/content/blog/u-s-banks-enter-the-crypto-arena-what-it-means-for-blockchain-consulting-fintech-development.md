@@ -6,7 +6,7 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["fintech", "smart-contracts", "blockchain", "compliance", "institutional"]
 readTime: 4
-cover: "/images/content/J8qCLvFdZOivyDaLs0dELBR2r0.webp"
+cover: "/images/content/u-s-banks-enter-the-crypto-arena-what-it-means-for-blockchain-consulting-fintech-development/cover.webp"
 takeaways:
   - The OCC authorized U.S. national banks to offer crypto custody and trading services with third-party provider partnerships
   - Banks require customized blockchain solutions integrated with legacy systems for compliance and security

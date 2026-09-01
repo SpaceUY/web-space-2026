@@ -6,7 +6,7 @@ author: federico-sendra
 category: "Product Development"
 tags: ["fintech", "product-growth"]
 readTime: 11
-cover: "/images/content/00eqLdyrpfZBRz5DKemobh4kQU.webp"
+cover: "/images/content/hypothetical-sprint-cutting-exchange-latency-by-40-in-7-days/cover.webp"
 takeaways:
   - A 100ms delay can reduce order fill probability by up to 20% in electronic trading.
   - Software profiling often yields larger performance gains than hardware upgrades.

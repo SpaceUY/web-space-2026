@@ -6,7 +6,7 @@ author: federico-sendra
 category: "Web2 Trends"
 tags: ["product-growth", "web3-infrastructure"]
 readTime: 3
-cover: "/images/content/hxho9VrUWQGx6HtGs0MBU04Ln1M.webp"
+cover: "/images/content/the-top-5-web3-marketing-agencies-for-your-web3-business/cover.webp"
 metatitle: "Top 5 Web3 Marketing Agencies for Your Business | SpaceDev"
 metadescription: "Discover the top 5 Web3 marketing agencies specializing in blockchain, DeFi, and NFT promotion to help your Web3 business reach the right audience."
 ---

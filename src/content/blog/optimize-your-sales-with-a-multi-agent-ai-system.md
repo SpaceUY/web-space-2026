@@ -5,7 +5,7 @@ publishedAt: 2025-05-15
 author: juan-manuel-sobral
 category: AI
 tags: ["ai", "product-growth"]
-cover: "/images/content/3mGvxkRKscJFyBNytRzWDrsyg.webp"
+cover: "/images/content/optimize-your-sales-with-a-multi-agent-ai-system/cover.webp"
 readTime: 6
 metatitle: "Multi-Agent AI Systems to Optimize Sales Pipelines"
 metadescription: "Boost sales and customer service with a multi-agent AI system: autonomous agents that automate every stage of your sales cycle and lift conversions."

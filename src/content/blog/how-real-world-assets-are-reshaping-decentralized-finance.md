@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["defi", "fintech", "rwa", "tokenization"]
 readTime: 6
-cover: "/images/content/44cWuGIUHol9zdssx9kSFMjtBs.png"
+cover: "/images/content/how-real-world-assets-are-reshaping-decentralized-finance/cover.png"
 metatitle: "RWA in DeFi Explained: Real World Assets on Blockchain"
 takeaways:
   - RWAs bring traditional financial instruments including government bonds, private loans, and property into blockchain systems.

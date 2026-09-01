@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["blockchain", "enterprise", "compliance", "web3-infrastructure"]
 readTime: 14
-cover: "/images/content/blockchain-supply-chain-traceability-cover.png"
+cover: "/images/content/blockchain-supply-chain-traceability/cover.png"
 metatitle: "Blockchain Supply Chain Traceability: How It Works"
 metadescription: "Product traceability blockchain, explained: EPCIS event capture, IoT and oracles, where it breaks, and the 2026 regulations driving adoption."
 faqs:

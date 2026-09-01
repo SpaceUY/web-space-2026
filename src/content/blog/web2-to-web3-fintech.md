@@ -7,7 +7,7 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["fintech", "web3-infrastructure"]
 readTime: 3
-cover: "/images/content/Uq2tE6OoZv8AxWxDvroCH8r0.webp"
+cover: "/images/content/web2-to-web3-fintech/cover.webp"
 ---
 
 Most "Web2 to Web3 migration" content is written for greenfield startups. But the harder question (and the more common one) is: **how do you bring blockchain into a fintech that already has customers, regulators, and a P&L?** This is the playbook we use with our financial-services clients.

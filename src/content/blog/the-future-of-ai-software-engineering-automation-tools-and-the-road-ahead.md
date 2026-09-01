@@ -6,7 +6,7 @@ author: federico-sendra
 category: AI
 tags: ["ai"]
 readTime: 3
-cover: "/images/content/c4SpYpXNEIPEN7vUedA03v3VZg.webp"
+cover: "/images/content/the-future-of-ai-software-engineering-automation-tools-and-the-road-ahead/cover.webp"
 metatitle: "AI Software Engineering: Automation Tools & the Road Ahead"
 metadescription: "AI is transforming software engineering in 2025: AI-driven dev platforms, autonomous coding agents, and the automation tools reshaping how engineers build."
 ---

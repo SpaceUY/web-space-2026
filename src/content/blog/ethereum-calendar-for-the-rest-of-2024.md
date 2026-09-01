@@ -5,7 +5,7 @@ publishedAt: 2024-08-08
 author: federico-sendra
 category: "Blockchain Trends"
 tags: ["web3-infrastructure", "blockchain-basics", "ethereum"]
-cover: "/images/content/VBWL0xqiCNsme8WFULlHgc2YMhs.webp"
+cover: "/images/content/ethereum-calendar-for-the-rest-of-2024/cover.webp"
 readTime: 5
 metadescription: "From conferences and hackathons to workshops and meetups, here's your complete guide to Ethereum events for the rest of 2024 as the community keeps growing."
 ---

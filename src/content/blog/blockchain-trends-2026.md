@@ -6,7 +6,7 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["blockchain", "layer1"]
 readTime: 10
-cover: "/images/content/blockchain-trends-2026-cover.png"
+cover: "/images/content/blockchain-trends-2026/cover.png"
 metatitle: "Blockchain Trends 2026: What's Actually Reshaping the Industry This Year"
 metadescription: "From institutional adoption to RWA tokenization and AI convergence, a data-driven breakdown of the blockchain trends driving real decisions and budgets in 2026."
 ---

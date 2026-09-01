@@ -6,7 +6,7 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["web3-infrastructure", "ai"]
 readTime: 3
-cover: ""
+cover: "/images/content/the-new-era-of-blockchain-and-web3-in-2025/cover.png"
 takeaways:
   - AI and blockchain convergence is driving innovation in smart contracts and DeFi
   - Zero-Knowledge Proofs enable privacy and scalability improvements

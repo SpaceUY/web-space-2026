@@ -6,7 +6,7 @@ author: diego-priliac
 category: "Blockchain Trends"
 tags: ["fintech", "defi"]
 readTime: 4
-cover: "/images/content/uLuHSBzzLiHci62DaepeOWAGlU.webp"
+cover: "/images/content/ripple-drops-200m-on-rail-to-dominate-the-future-of-stablecoin-payments/cover.webp"
 takeaways:
   - Ripple acquired Canadian payment firm Rail for $200 million to accelerate stablecoin adoption.
   - Rail's platform connects digital assets to traditional fiat systems via API.

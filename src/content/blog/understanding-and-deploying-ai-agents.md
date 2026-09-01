@@ -7,7 +7,7 @@ author: federico-sendra
 category: AI
 tags: ["ai", "web3-infrastructure"]
 readTime: 8
-cover: "/images/content/c4SpYpXNEIPEN7vUedA03v3VZg.webp"
+cover: "/images/content/understanding-and-deploying-ai-agents/cover.webp"
 metadescription: "AI agents are redefining automation, autonomy, and digital interaction. Learn what AI agents are, how they work, and how to deploy them in your business."
 ---
 

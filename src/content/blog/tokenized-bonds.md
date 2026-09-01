@@ -7,7 +7,7 @@ author: federico-sendra
 category: Blockchain Trends
 tags: ["rwa", "tokenization", "defi", "compliance", "institutional"]
 readTime: 20
-cover: "/images/content/tokenized-bonds-cover.png"
+cover: "/images/content/tokenized-bonds/cover.png"
 metatitle: "Tokenized Bonds: How On-Chain Fixed Income Actually Works"
 metadescription: "How on-chain fixed income actually works: tokenized bonds, T+0 settlement, automated coupons, and where the 2026 US regulatory picture stands."
 faqs:

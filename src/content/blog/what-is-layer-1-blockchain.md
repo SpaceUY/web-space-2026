@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: Blockchain Trends
 tags: ["blockchain", "layer1", "ethereum", "solana", "web3"]
 readTime: 7
-cover: "/images/content/layer-1-blockchain-cover.png"
+cover: "/images/content/what-is-layer-1-blockchain/cover.png"
 metatitle: "What Is a Layer 1 Blockchain? Architecture, Examples & What Builders Need to Know"
 metadescription: "A clear breakdown of layer 1 blockchain, how it compares to layer 2, which networks lead in 2025, and what it means for teams building on-chain products."
 ---

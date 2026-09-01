@@ -7,7 +7,7 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["blockchain-basics", "web3-infrastructure"]
 readTime: 9
-cover: "/images/content/hSDllB1d1JjC9oNH7hkkChHjq8.webp"
+cover: "/images/content/wallet-connections/cover.webp"
 takeaways:
   - Digital wallets are essential infrastructure for web3 ecosystems, enabling secure asset management and dApp interaction
   - Multiple wallet connection approaches exist (browser extensions, mobile wallets, JavaScript libraries)
