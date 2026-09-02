@@ -12,6 +12,8 @@ export const SITE = {
     github: "https://github.com/SpaceUY",
     clutch: "https://clutch.co/profile/spacedev",
     crunchbase: "https://crunchbase.com/organization/spacedev",
+    awsPartner: "https://partners.amazonaws.com/partners/0010h00001kLtZRAA0/SpaceDev",
+    awsMarketplace: "https://aws.amazon.com/marketplace/pp/prodview-tkuck454u2bxa",
   },
 } as const;
 
@@ -60,6 +62,8 @@ export const organizationJsonLd = {
     SITE.social.github,
     SITE.social.clutch,
     SITE.social.crunchbase,
+    SITE.social.awsPartner,
+    SITE.social.awsMarketplace,
   ],
   // NOTE: no aggregateRating here on purpose. A rating an organization publishes
   // about itself is a "self-serving review" under Google's rules: pages using
