@@ -73,7 +73,7 @@ gallery:
 
 ## The Challenge
 
-The DeFi trading space has no shortage of competitors. Axiom, Universal, and others have carved out segments of the market, but none offer the full picture: a truly non-custodial, cross-chain broker with integrated audit tooling, advanced order types, and a mobile-first experience in a single, unified product.
+The DeFi trading space has no shortage of competitors. Axiom, GMGN.ai, and Padre.gg have carved out segments of the market, but none offer the full picture: a truly non-custodial, cross-chain broker with integrated audit tooling, advanced order types, and a mobile-first experience in a single, unified product.
 
 Byrrgis set out to build exactly that. The challenge was turning a complex multi-chain architecture (spanning multiple liquidity providers, real-time market data, on-chain smart contract audits, and async execution logic) into a trading experience that feels effortless for the end user.
 

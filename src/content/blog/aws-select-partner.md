@@ -23,4 +23,8 @@ Today we're announcing that SpaceDev has been recognized as an **[AWS Select Par
 
 A surprisingly large amount of Web3 infrastructure runs on traditional cloud: RPC nodes, indexers, monitoring, off-chain services. The boundary between "Web2 infrastructure" and "Web3 stack" is blurrier than it looks. Being an AWS partner sharpens our ability to ship secure, performant systems on both sides of that line.
 
+## Where to find us on AWS
+
+Our partner status is public on the [AWS Partner Solutions Finder](https://partners.amazonaws.com/partners/0010h00001kLtZRAA0/SpaceDev), where we're also listed as an Authorized Commercial Reseller. SpaceDev's professional services are also [available in AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-tkuck454u2bxa), for teams that want to procure our work through their existing AWS billing.
+
 If you're planning a cloud migration, a new product launch, or a Web3 platform that needs serious uptime, [let's talk](/contact).
