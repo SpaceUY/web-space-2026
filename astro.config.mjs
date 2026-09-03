@@ -4,6 +4,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
+import partytown from '@astrojs/partytown';
 import { rehypeImageDimensions } from './src/lib/rehype-image-dimensions.mjs';
 
 /**
@@ -45,7 +46,15 @@ export default defineConfig({
     rehypePlugins: [rehypeImageDimensions],
   },
   adapter: vercel(),
-  integrations: [sitemap({
+  integrations: [partytown({
+    // `forward` patches these globals on the main thread so calls made from our
+    // own code reach the worker. Both entries are required, not just one:
+    // BaseLayout, HubSpotForm, AgenticLeadForm and the agentic-ai page fire the
+    // book_call_click and generate_lead conversions through `dataLayer.push`
+    // *and* through `gtag(...)`. Without forwarding, those globals only exist
+    // inside the worker and every conversion is dropped silently.
+    config: { forward: ['dataLayer.push', 'gtag'] },
+  }), sitemap({
     filter: (page) => {
       // Normalize: site uses trailingSlash 'never', so compare paths without
       // a trailing slash (the old endsWith('/x/') checks never matched the

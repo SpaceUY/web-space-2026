@@ -138,8 +138,13 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
     <JsonLD data={organizationJsonLd} />
     {jsonLd && <JsonLD data={jsonLd} />}
 
-    <!-- Google Tag Manager -->
-    <script is:inline>
+    <!-- Google Tag Manager + GA4 — run inside a Partytown web worker.
+         These two have to move together: both write to window.dataLayer, so
+         splitting them across threads would leave two divergent dataLayers.
+         Clarity and HotJar/Contentsquare below are deliberately left on the
+         main thread: session replay reads the DOM continuously, and every DOM
+         read from a worker becomes a round-trip through Partytown's proxy. -->
+    <script type="text/partytown">
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -147,9 +152,8 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
       })(window,document,'script','dataLayer','GTM-WKM5KGV');
     </script>
 
-    <!-- Google Analytics 4 -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-J43N5T0K82"></script>
-    <script is:inline>
+    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-J43N5T0K82"></script>
+    <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
