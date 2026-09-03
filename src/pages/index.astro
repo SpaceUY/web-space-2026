@@ -601,7 +601,13 @@ const industries = [
   import { initScrollAnimations } from "../lib/animations";
   document.addEventListener("DOMContentLoaded", initScrollAnimations);
 
-  // Rotating word — slide up from below
+  // Rotating word — slide up from below.
+  // The rotation only starts once the page has loaded and the main thread is
+  // idle. This span lives inside the hero h1, which is the LCP element, and
+  // replacing its textContent counts as new content being painted: while the
+  // rotation ran during the initial render window it kept registering fresh
+  // LCP candidates every 2.4s, which pushed the measured LCP out to ~10s even
+  // though the hero actually paints in ~3.4s.
   const words = ["Fast", "Flexible", "Reliable"];
   let idx = 0;
   const el = document.getElementById("rotating-word");
@@ -629,7 +635,23 @@ const industries = [
       }, 290);
     }
 
-    setInterval(nextWord, 2400);
+    function startRotating() {
+      setInterval(nextWord, 2400);
+    }
+
+    function whenIdle() {
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(startRotating, { timeout: 3000 });
+      } else {
+        setTimeout(startRotating, 1500);
+      }
+    }
+
+    if (document.readyState === "complete") {
+      whenIdle();
+    } else {
+      window.addEventListener("load", whenIdle, { once: true });
+    }
   }
 
 
