@@ -140,10 +140,16 @@ const industries = [
         filter: blur(0);
       }
     }
-    .hero-line {
+    /* hero-line-1 (the title) is deliberately excluded from the entrance
+       animation: it is the LCP element, and the animation starts from
+       opacity 0, so the browser only counts it as painted once the 1.4s fade
+       finishes. That alone put a floor of ~2s on desktop LCP and ~3.4s on
+       throttled mobile. The rest of the hero keeps the staggered effect. */
+    .hero-line-2,
+    .hero-line-3,
+    .hero-line-4 {
       animation: hero-rise 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-    .hero-line-1 { animation-delay: 0.2s; }
     .hero-line-2 { animation-delay: 0.65s; }
     .hero-line-3 { animation-delay: 1.0s; }
     .hero-line-4 { animation-delay: 1.35s; }
