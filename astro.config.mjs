@@ -53,7 +53,13 @@ export default defineConfig({
     // book_call_click and generate_lead conversions through `dataLayer.push`
     // *and* through `gtag(...)`. Without forwarding, those globals only exist
     // inside the worker and every conversion is dropped silently.
-    config: { forward: ['dataLayer.push', 'gtag'] },
+    // `debug` defaults to true in dev and preview, and the debug runtime throws
+    // an async "Cannot read properties of undefined (reading 'apply')" whenever a
+    // forwarded gtag() call lands before the worker has defined gtag. Pinning it
+    // to false makes dev behave like production (where that error does not
+    // happen) and keeps the console clean. Flip it to true temporarily if you
+    // need Partytown's worker logs while debugging.
+    config: { forward: ['dataLayer.push', 'gtag'], debug: false },
   }), sitemap({
     filter: (page) => {
       // Normalize: site uses trailingSlash 'never', so compare paths without
