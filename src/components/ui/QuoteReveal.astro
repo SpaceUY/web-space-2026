@@ -21,7 +21,13 @@ const words = text.split(" ").map((w, i, arr) => i < arr.length - 1 ? w + " " : 
 const id = "qr-" + Math.random().toString(36).slice(2, 7);
 
 const bg        = tone === "dark" ? "bg-sd-dark"  : "bg-white";
-const dimColor  = tone === "dark" ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.15)";
+// Opacity of a word before the scroll reveal brightens it. It has to clear
+// WCAG's 3:1 minimum for large text against the section background, otherwise
+// axe flags every word in the quote: the previous 0.15 gave 1.55:1. The floor
+// differs per tone because white blends against #141414 and black against
+// white, which need 0.33 and 0.42 respectively to reach 3:1.
+const dimAlpha  = tone === "dark" ? 0.35 : 0.45;
+const dimColor  = tone === "dark" ? `rgba(255,255,255,${dimAlpha})` : `rgba(0,0,0,${dimAlpha})`;
 const fullColor = tone === "dark" ? "rgba(255,255,255,1)"    : "rgba(0,0,0,1)";
 const metaColor = tone === "dark" ? "var(--sd-text-muted)"   : "var(--sd-text-gray)";
 const nameColor = tone === "dark" ? "text-white"             : "text-sd-text-dark";
@@ -85,7 +91,7 @@ const nameColor = tone === "dark" ? "text-white"             : "text-sd-text-dar
   </div>
 </div>
 
-<script define:vars={{ id, dimColor, fullColor, startOffset }}>
+<script define:vars={{ id, dimAlpha, fullColor, startOffset }}>
   const section = document.getElementById(id);
   if (section) {
     const wordEls = section.querySelectorAll(".qr-word");
@@ -101,7 +107,7 @@ const nameColor = tone === "dark" ? "text-white"             : "text-sd-text-dar
         const end   = startOffset + ((i + 1) / total) * (0.55 - startOffset);
         const t     = Math.max(0, Math.min(1, (progress - start) / Math.max(end - start, 0.001)));
         // Interpolate between dim and full color
-        const alpha = 0.15 + t * 0.85;
+        const alpha = dimAlpha + t * (1 - dimAlpha);
         if (fullColor.includes("255,255,255")) {
           word.style.color = `rgba(255,255,255,${alpha.toFixed(3)})`;
         } else {
