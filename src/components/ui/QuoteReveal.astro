@@ -110,7 +110,17 @@ const nameColor = tone === "dark" ? "text-white"             : "text-sd-text-dar
       });
     };
 
-    window.addEventListener("scroll", update, { passive: true });
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
     update();
   }
 </script>
