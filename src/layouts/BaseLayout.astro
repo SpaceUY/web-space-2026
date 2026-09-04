@@ -147,14 +147,13 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
       })(window,document,'script','dataLayer','GTM-WKM5KGV');
     </script>
 
-    <!-- Google Analytics 4 -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-J43N5T0K82"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-J43N5T0K82');
-    </script>
+    <!-- Google Analytics 4 loads through the GTM container above, which fires
+         gtag.js for G-J43N5T0K82 itself. A second standalone gtag.js snippet
+         used to sit here and the production trace showed the same 177 KB file
+         being downloaded twice per page load (354 KB and ~250ms of main-thread
+         work), on top of the risk of double-counting pageviews. Do not re-add
+         it: to change GA4 configuration, edit the tag inside GTM-WKM5KGV.
+         Conversion events below push to dataLayer, so they still reach GA4. -->
 
     <!-- HotJar -->
     <script is:inline>
