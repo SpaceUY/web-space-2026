@@ -269,22 +269,48 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
       document.addEventListener("astro:page-load", initScrollAnimations);
     </script>
 
-    <!-- Conversion tracking: book_call_click -->
+    {/* Funnel tracking.
+
+        One delegated listener for every call to action on the site, rather than
+        one handler per button. The container this replaced took the opposite
+        approach and had 23 separate event tags named after individual buttons
+        (Home-getintouch-1, Blockchain-getintouch-3 and so on), which burns GA4's
+        500-event-name budget and means answering "how well does the blockchain
+        page convert" requires adding four numbers by hand. One event name with
+        parameters answers it with a filter.
+
+        cta_area is derived from the DOM rather than from markup we would have to
+        maintain across 68 CTAs, so it cannot drift out of sync. Pass data-cta on
+        an element to override it where a more specific name is worth having. */}
     <script is:inline>
       (function () {
-        /* These are two different things and used to be reported as one event,
-           which made the funnel unreadable: there was no way to tell a hundred
-           clicks on the calendar from three meetings actually booked. The click
-           is intent, the postMessage from HubSpot is the booking. */
+        function area(el) {
+          if (el.closest("header")) return "header";
+          if (el.closest("footer")) return "footer";
+          return "content";
+        }
+
         document.addEventListener("click", function (e) {
-          var link = e.target.closest("a[href*='meetings.hubspot.com']");
-          if (link) {
-            window.sdTrack("book_call_click", {
-              meeting_url: link.getAttribute("href") || "",
-              page_path: location.pathname
-            });
+          var link = e.target.closest("a[href]");
+          if (!link) return;
+          var href = link.getAttribute("href") || "";
+          var base = {
+            page_path: location.pathname,
+            cta_area: link.getAttribute("data-cta") || area(link),
+            cta_text: (link.textContent || "").trim().replace(/\s+/g, " ").slice(0, 60)
+          };
+
+          if (href.indexOf("meetings.hubspot.com") !== -1) {
+            base.meeting_url = href;
+            window.sdTrack("book_call_click", base);
+          } else if (href === "/contact" || href.indexOf("/contact?") === 0 || href.indexOf("/contact#") === 0) {
+            window.sdTrack("cta_click", base);
           }
         }, true);
+
+        /* The click above is intent. This is the outcome, and the two used to be
+           reported as the same event, so a hundred clicks and three bookings
+           looked identical in GA4. */
         window.addEventListener("message", function (e) {
           if (e.data && e.data.meetingBookSucceeded) {
             window.sdTrack("meeting_booked", { page_path: location.pathname });
