@@ -478,6 +478,21 @@ Para subir a Vercel Blob: dashboard de Vercel → Storage → Blob → Upload.
 
 ---
 
+## REGLA: mover o renombrar un archivo público es romper una URL
+
+**Si un archivo bajo `public/` cambia de ruta o de nombre, el redirect 301 va en `vercel.json` en el mismo commit.** No es opcional y no se deja para después.
+
+El motivo es que este error es invisible desde adentro. Cuando movés un asset y actualizás las referencias del código, el sitio sigue viéndose perfecto: `astro build` pasa, no hay links rotos, nadie se entera. Lo que se rompe es todo lo que apunta a la URL vieja y vive **afuera** del repo, donde no podemos arreglarlo: posts de LinkedIn ya publicados, mails enviados, perfiles externos, resultados indexados.
+
+Ya pasó dos veces y en septiembre 2026 hubo que repararlo a mano:
+
+- `0ebf63f` unificó las insignias en `public/images/badges/` y dejó 3 URLs muertas.
+- `e5aa16c` (PR 124) reorganizó los covers del blog en carpetas por post y dejó **25 URLs muertas**. Como el `cover` de un post es también su imagen de Open Graph, cada publicación en redes hecha antes de ese cambio quedó con la vista previa sin imagen.
+
+Para verificar qué URLs conoce Google y cuáles murieron: GA4 → Admin → Google tag → Tag diagnostics → Tag coverage, y exportar el CSV.
+
+---
+
 ## CHECKLIST: Agregar (o quitar) un case study
 
 Cada vez que se agrega o se remueve un case study hay que tocar **todos** estos puntos en la misma sesión. Esto no es opcional: el `GEO-AUDIT-REPORT.md` (hallazgo H) documenta que la última vez que cambió el conteo real, `llms.txt`/`llms-full.txt` quedaron desincronizados (23 vs 24) durante más de un mes sin que nadie lo notara, y que "Nomei" siguió listado en `llms-full.txt` con su URL ya redirigida (301) semanas después de borrarlo. Un LLM que lea el sitio ve exactamente esos archivos, así que un desfase ahí es un desfase real entre lo que ve una IA y lo que ve un humano.
