@@ -635,8 +635,11 @@ const industries = [
 
 
 <script>
-  import { initScrollAnimations } from "../lib/animations";
-  document.addEventListener("DOMContentLoaded", initScrollAnimations);
+  // Scroll animations are initialised by BaseLayout, which calls
+  // initScrollAnimations() on load and again on astro:page-load. Importing the
+  // module here as well made it a second entry point, so Astro emitted it as a
+  // shared chunk that BaseLayout's own script had to fetch after parsing:
+  // a second round trip for 467 bytes, sitting on the critical path.
 
   // Rotating word — slide the track up one slide at a time.
   // Every slide is already in the HTML, so this only ever sets a transform.

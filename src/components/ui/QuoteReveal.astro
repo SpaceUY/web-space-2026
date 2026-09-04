@@ -126,7 +126,26 @@ const nameColor = tone === "dark" ? "text-white"             : "text-sd-text-dar
       });
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
+    // Only listen while the section is anywhere near the viewport. update()
+    // reads getBoundingClientRect() after the previous frame wrote inline
+    // colours, which forces a style recalc and layout; running that on every
+    // scroll frame for a section far off screen was costing ~147ms of forced
+    // reflow per page load for no visual effect.
+    let listening = false;
+    const gate = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !listening) {
+          window.addEventListener("scroll", onScroll, { passive: true });
+          listening = true;
+          update();
+        } else if (!entry.isIntersecting && listening) {
+          window.removeEventListener("scroll", onScroll);
+          listening = false;
+        }
+      },
+      { rootMargin: "200px 0px" }
+    );
+    gate.observe(section);
     update();
   }
 </script>
