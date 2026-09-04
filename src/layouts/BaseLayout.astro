@@ -151,8 +151,24 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
          used to sit here and the production trace showed the same 177 KB file
          being downloaded twice per page load (354 KB and ~250ms of main-thread
          work), on top of the risk of double-counting pageviews. Do not re-add
-         it: to change GA4 configuration, edit the tag inside GTM-WKM5KGV.
-         Conversion events below push to dataLayer, so they still reach GA4. -->
+         the <script src> : to change GA4 configuration, edit the tag inside
+         GTM-WKM5KGV.
+
+         The three lines below are what that snippet was actually providing to
+         our own code, and they cost nothing. Reading the container shows it has
+         no trigger for the generate_lead or book_call_click dataLayer events we
+         push (its own generate_lead tag listens for "hubspot-form-success",
+         which nothing on this site emits), so the only path those conversions
+         have ever had into GA4 is the direct gtag() call in the handlers below.
+         That call needs a global gtag, and relying on the one gtag.js happens to
+         define when GTM loads it would make conversion tracking depend on an
+         implementation detail of a container nobody here can inspect. Defining
+         it ourselves is the same one-line queue push, guarded so it never
+         clobbers a real gtag. -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    </script>
 
     <!-- HotJar (account 5330235) used to load here. It came across with the Framer
          migration, nobody on the team was using its recordings, and it was by far
