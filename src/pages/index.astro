@@ -92,7 +92,7 @@ const industries = [
     <div class="sd-container relative pb-14 sm:pb-16">
       <h1>
         <div class="hero-line hero-line-1 text-[clamp(34px,9.4vw,64px)] text-white font-display leading-[1.08] tracking-tight">
-          <span class="whitespace-nowrap">Finally: Your&#160;<span style="display:inline-block; overflow:hidden; vertical-align:bottom; line-height:1.05;"><span id="rotating-word" class="text-white" style="display:inline-block;">Flexible</span></span></span><br/>
+          <span class="whitespace-nowrap">Finally: Your&#160;<span class="word-rotator"><span class="word-rotator-track" id="rotating-track"><span>Flexible</span><span>Reliable</span><span>Fast</span><span aria-hidden="true">Flexible</span></span></span></span><br/>
           Tech Partner.
         </div>
         <div class="hero-line hero-line-2 mt-10 sm:mt-14 text-lg sm:text-xl md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
@@ -156,6 +156,37 @@ const industries = [
 
     @media (prefers-reduced-motion: reduce) {
       .hero-line { animation: none; }
+    }
+
+    /* Rotating word. All four slides ship in the server-rendered HTML and the
+       rotation only moves the track with transform, so nothing new is ever
+       painted inside the h1. Rewriting textContent here (the previous
+       approach) registered a fresh LCP candidate every 2.4s and pushed the
+       measured LCP out to ~10.6s no matter how late the rotation started.
+       The track's last slide repeats the first one so the loop can snap back
+       to the top with the transition off, without a visible rewind. */
+    .word-rotator {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+      height: 1.05em;
+      line-height: 1.05;
+    }
+    .word-rotator-track {
+      display: flex;
+      flex-direction: column;
+      will-change: transform;
+    }
+    .word-rotator-track > span {
+      height: 1.05em;
+      line-height: 1.05;
+    }
+    .word-rotator-track.is-animating {
+      transition: transform 0.42s cubic-bezier(0.2, 0.7, 0.3, 1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .word-rotator-track.is-animating { transition: none; }
     }
 
     /* Tighter spacing on mobile: 40px between logos eats 10% of a 375px viewport */
@@ -604,60 +635,42 @@ const industries = [
 
 
 <script>
-  import { initScrollAnimations } from "../lib/animations";
-  document.addEventListener("DOMContentLoaded", initScrollAnimations);
+  // Scroll animations are initialised by BaseLayout, which calls
+  // initScrollAnimations() on load and again on astro:page-load. Importing the
+  // module here as well made it a second entry point, so Astro emitted it as a
+  // shared chunk that BaseLayout's own script had to fetch after parsing:
+  // a second round trip for 467 bytes, sitting on the critical path.
 
-  // Rotating word — slide up from below.
-  // The rotation only starts once the page has loaded and the main thread is
-  // idle. This span lives inside the hero h1, which is the LCP element, and
-  // replacing its textContent counts as new content being painted: while the
-  // rotation ran during the initial render window it kept registering fresh
-  // LCP candidates every 2.4s, which pushed the measured LCP out to ~10s even
-  // though the hero actually paints in ~3.4s.
-  const words = ["Fast", "Flexible", "Reliable"];
-  let idx = 0;
-  const el = document.getElementById("rotating-word");
-  if (el) {
-    const node = el;
-    const SLIDE = "cubic-bezier(0.2, 0.7, 0.3, 1)";
+  // Rotating word — slide the track up one slide at a time.
+  // Every slide is already in the HTML, so this only ever sets a transform.
+  // It must stay that way: this span lives inside the hero h1, which is the
+  // LCP element, and painting new text inside it registers a fresh LCP
+  // candidate. The earlier version rewrote textContent every 2.4s, which kept
+  // moving the measured LCP out to ~10.6s however late the rotation started.
+  const trackEl = document.getElementById("rotating-track");
+  if (trackEl) {
+    const track = trackEl;
+    // The last slide is a copy of the first, so `slides` is the real count.
+    const slides = track.children.length - 1;
+    let idx = 0;
 
     function nextWord() {
-      idx = (idx + 1) % words.length;
-      node.style.transition = `transform 0.28s ${SLIDE}, opacity 0.2s ease`;
-      node.style.transform  = "translateY(-110%)";
-      node.style.opacity    = "0";
+      idx += 1;
+      track.classList.add("is-animating");
+      track.style.transform = `translateY(-${idx * 1.05}em)`;
 
-      setTimeout(() => {
-        node.textContent      = words[idx];
-        node.style.transition = "none";
-        node.style.transform  = "translateY(110%)";
-        node.style.opacity    = "0";
-
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          node.style.transition = `transform 0.32s ${SLIDE}, opacity 0.22s ease`;
-          node.style.transform  = "translateY(0)";
-          node.style.opacity    = "1";
-        }));
-      }, 290);
-    }
-
-    function startRotating() {
-      setInterval(nextWord, 2400);
-    }
-
-    function whenIdle() {
-      if ("requestIdleCallback" in window) {
-        requestIdleCallback(startRotating, { timeout: 3000 });
-      } else {
-        setTimeout(startRotating, 1500);
+      // Landed on the duplicate: jump back to the real first slide with the
+      // transition off, so the loop reads as continuous.
+      if (idx === slides) {
+        setTimeout(() => {
+          track.classList.remove("is-animating");
+          idx = 0;
+          track.style.transform = "translateY(0)";
+        }, 430);
       }
     }
 
-    if (document.readyState === "complete") {
-      whenIdle();
-    } else {
-      window.addEventListener("load", whenIdle, { once: true });
-    }
+    setInterval(nextWord, 2400);
   }
 
 
