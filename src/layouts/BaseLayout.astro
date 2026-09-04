@@ -272,15 +272,23 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
     <!-- Conversion tracking: book_call_click -->
     <script is:inline>
       (function () {
-        function trackBookCall(url) {
-          window.sdTrack("book_call_click", url ? { meeting_url: url } : {});
-        }
+        /* These are two different things and used to be reported as one event,
+           which made the funnel unreadable: there was no way to tell a hundred
+           clicks on the calendar from three meetings actually booked. The click
+           is intent, the postMessage from HubSpot is the booking. */
         document.addEventListener("click", function (e) {
           var link = e.target.closest("a[href*='meetings.hubspot.com']");
-          if (link) trackBookCall(link.getAttribute("href"));
+          if (link) {
+            window.sdTrack("book_call_click", {
+              meeting_url: link.getAttribute("href") || "",
+              page_path: location.pathname
+            });
+          }
         }, true);
         window.addEventListener("message", function (e) {
-          if (e.data && e.data.meetingBookSucceeded) trackBookCall("");
+          if (e.data && e.data.meetingBookSucceeded) {
+            window.sdTrack("meeting_booked", { page_path: location.pathname });
+          }
         });
       })();
     </script>
