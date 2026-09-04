@@ -140,10 +140,16 @@ const industries = [
         filter: blur(0);
       }
     }
-    .hero-line {
+    /* hero-line-1 (the title) is deliberately excluded from the entrance
+       animation: it is the LCP element, and the animation starts from
+       opacity 0, so the browser only counts it as painted once the 1.4s fade
+       finishes. That alone put a floor of ~2s on desktop LCP and ~3.4s on
+       throttled mobile. The rest of the hero keeps the staggered effect. */
+    .hero-line-2,
+    .hero-line-3,
+    .hero-line-4 {
       animation: hero-rise 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-    .hero-line-1 { animation-delay: 0.2s; }
     .hero-line-2 { animation-delay: 0.65s; }
     .hero-line-3 { animation-delay: 1.0s; }
     .hero-line-4 { animation-delay: 1.35s; }
@@ -171,7 +177,7 @@ const industries = [
         <li class="text-sm text-sd-text-dark leading-relaxed"><strong class="font-semibold">Who we are:</strong> a blockchain development company and Web3 software partner, 8 years in business with 200+ projects delivered.</li>
         <li class="text-sm text-sd-text-dark leading-relaxed"><strong class="font-semibold">What we build:</strong> dApps (decentralized applications), smart contracts, DeFi (decentralized finance) infrastructure, and Web2 web/mobile platforms, under one team.</li>
         <li class="text-sm text-sd-text-dark leading-relaxed"><strong class="font-semibold">Differentiator:</strong> a dedicated security practice (BlockAudit) built into every engagement, not bolted on after launch.</li>
-        <li class="text-sm text-sd-text-dark leading-relaxed"><strong class="font-semibold">How to start:</strong> <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer" class="text-sd-purple hover:underline hover:underline-offset-4">book a free consultation</a>, we scope your project and recommend an engagement model within days.</li>
+        <li class="text-sm text-sd-text-dark leading-relaxed"><strong class="font-semibold">How to start:</strong> <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer" class="text-sd-purple underline underline-offset-4">book a free consultation</a>, we scope your project and recommend an engagement model within days.</li>
       </ul>
     </div>
   </section>
@@ -601,7 +607,13 @@ const industries = [
   import { initScrollAnimations } from "../lib/animations";
   document.addEventListener("DOMContentLoaded", initScrollAnimations);
 
-  // Rotating word — slide up from below
+  // Rotating word — slide up from below.
+  // The rotation only starts once the page has loaded and the main thread is
+  // idle. This span lives inside the hero h1, which is the LCP element, and
+  // replacing its textContent counts as new content being painted: while the
+  // rotation ran during the initial render window it kept registering fresh
+  // LCP candidates every 2.4s, which pushed the measured LCP out to ~10s even
+  // though the hero actually paints in ~3.4s.
   const words = ["Fast", "Flexible", "Reliable"];
   let idx = 0;
   const el = document.getElementById("rotating-word");
@@ -629,7 +641,23 @@ const industries = [
       }, 290);
     }
 
-    setInterval(nextWord, 2400);
+    function startRotating() {
+      setInterval(nextWord, 2400);
+    }
+
+    function whenIdle() {
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(startRotating, { timeout: 3000 });
+      } else {
+        setTimeout(startRotating, 1500);
+      }
+    }
+
+    if (document.readyState === "complete") {
+      whenIdle();
+    } else {
+      window.addEventListener("load", whenIdle, { once: true });
+    }
   }
 
 

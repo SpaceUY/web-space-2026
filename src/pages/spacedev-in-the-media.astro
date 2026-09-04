@@ -13,7 +13,7 @@ interface ContentItem {
   authors?: string[];
   description: string;
   quote?: string;
-  source: "Forbes" | "Frontiers" | "CriptoNoticias" | "Medium";
+  source: "Forbes" | "Frontiers" | "CriptoNoticias" | "Medium" | "Hedera";
   tag: string;
   /** Only used by the two featured hero cards (contentItems[0] and [1]) */
   image?: string;
@@ -32,6 +32,17 @@ interface VideoItem {
 }
 
 const contentItems: ContentItem[] = [
+  {
+    title: "SpaceDev is now a Community Partner in the Hedera Council",
+    date: "Sep 2026",
+    url: "https://hedera.com/blog/hedera-council-grows-partner-network-with-new-strategic-and-community-partners/",
+    authors: ["Hedera"],
+    description: "Hedera announces its new partners, with SpaceDev joining as a Community Partner after building the Blockchain for Energy (B4E) platform on Hedera.",
+    quote: "Joining the Hedera Council Community Partner Program feels like a natural milestone in a story SpaceDev has been writing for years.",
+    source: "Hedera",
+    tag: "Blockchain",
+    image: "/images/content/hedera-council-community-partner-sep2026.png",
+  },
   {
     title: "Why Enterprise AI Is Starting to Look Like an Ecosystem",
     date: "Aug 2026",
@@ -214,6 +225,7 @@ const badge: Record<string, { label: string; logo?: string; color: string; bg: s
   CriptoNoticias: { label: "CriptoNoticias",      logo: "/images/icons/Criptonoticias.webp",     color: "#0e7490", bg: "rgba(14,116,144,0.10)", border: "rgba(14,116,144,0.35)" },
   YouTube:        { label: "YouTube",             logo: "/images/icons/Youtube-logo.png",        color: "#dc2626", bg: "rgba(220,38,38,0.08)",  border: "rgba(220,38,38,0.2)"  },
   Medium:         { label: "Medium",              logo: "/images/icons/Medium-logo.png",         color: "#000000", bg: "rgba(0,0,0,0.06)",      border: "rgba(0,0,0,0.18)"     },
+  Hedera:         { label: "Hedera",              logo: "/images/networks/hedera_dark.svg",      color: "#5b2fd1", bg: "rgba(130,89,239,0.12)", border: "rgba(130,89,239,0.35)" },
 };
 
 // contentItems must stay sorted newest-first: the featured hero cards are
