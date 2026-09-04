@@ -189,6 +189,8 @@ const { compact = false } = Astro.props;
 
       if (!res.ok) throw new Error();
 
+      (window as any).sdTrack?.("newsletter_signup");
+
       form.hidden = true;
       success!.hidden = false;
     } catch {

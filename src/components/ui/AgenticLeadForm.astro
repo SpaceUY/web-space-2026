@@ -169,9 +169,10 @@ const ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${PO
         });
         if (!res.ok) throw new Error();
 
-        // GA4 / GTM conversion event
-        (window as any).dataLayer = (window as any).dataLayer || [];
-        (window as any).dataLayer.push({ event: "generate_lead", form_location: "agentic-ai-landing" });
+        // This used to push to dataLayer only, which reached nothing: the GTM
+        // container had no trigger for generate_lead, so the event stopped at
+        // the queue. sdTrack pushes to dataLayer and calls gtag, so it lands.
+        (window as any).sdTrack?.("generate_lead", { form_location: "agentic-ai-landing" });
 
         fields.forEach((el) => (el.hidden = true));
         if (success) success.hidden = false;
