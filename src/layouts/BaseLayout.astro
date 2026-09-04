@@ -112,13 +112,12 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
     <link rel="preload" href="/fonts/saira/saira-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/open-sans/open-sans-variable-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Preconnect: only for third-party origins loaded on every page (GTM, Clarity,
-         HotJar/Contentsquare). HubSpot form domains are page-specific (contact page
-         only) and are deliberately excluded to avoid wasting an early connection
-         on pages that never use them. -->
+    <!-- Preconnect: only GTM, which is the one third party that still loads during
+         the initial render. Clarity is deferred until after load or first
+         interaction, so an early connection to it would sit unused. HubSpot form
+         domains are page-specific (contact page only) and are deliberately
+         excluded to avoid wasting a connection on pages that never use them. -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.clarity.ms" crossorigin />
-    <link rel="preconnect" href="https://static.hj.contentsquare.net" crossorigin />
 
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="SpaceDev Blog" href="/rss.xml" />
@@ -155,24 +154,40 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
          it: to change GA4 configuration, edit the tag inside GTM-WKM5KGV.
          Conversion events below push to dataLayer, so they still reach GA4. -->
 
-    <!-- HotJar -->
-    <script is:inline>
-      (function(c,s,q,u,a,r,e){
-        c.hj=c.hj||function(){(c.hj.q=c.hj.q||[]).push(arguments)};
-        c._hjSettings={hjid:a};
-        r=s.getElementsByTagName('head')[0];
-        e=s.createElement('script');e.async=true;
-        e.src=q+c._hjSettings.hjid+u;
-        r.appendChild(e);
-      })(window,document,'https://static.hj.contentsquare.net/c/csq-','.js',5330235);
-    </script>
+    <!-- HotJar (account 5330235) used to load here. It came across with the Framer
+         migration, nobody on the team was using its recordings, and it was by far
+         the most expensive third party on the page: 1814ms of CPU and 174 KB,
+         served with no cache, against Clarity's 305ms and 25 KB for the same job.
+         Removed rather than deferred. Do not re-add it without deciding what it
+         gives you that Clarity does not. -->
 
-    <!-- Microsoft Clarity -->
-    <script is:inline type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    <!-- Microsoft Clarity — deferred.
+         Clarity records what a visitor does, so it has nothing to capture until
+         the visitor has done something. Loading it in the head made it compete
+         with the hero for the main thread during the initial render. The queue
+         stub stays inline so any clarity() call made before the script arrives is
+         buffered, and the script itself is fetched on the first interaction or
+         once the page has loaded and the main thread is idle, whichever is first. -->
+    <script is:inline>
+      (function (c, l, a, r, i) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        function load() {
+          if (c[a].__loaded) return;
+          c[a].__loaded = 1;
+          var t = l.createElement(r);
+          t.async = 1;
+          t.src = "https://www.clarity.ms/tag/" + i;
+          l.head.appendChild(t);
+        }
+        ["pointerdown", "keydown", "scroll"].forEach(function (evt) {
+          c.addEventListener(evt, load, { once: true, passive: true });
+        });
+        function whenIdle() {
+          if ("requestIdleCallback" in c) c.requestIdleCallback(load, { timeout: 4000 });
+          else setTimeout(load, 2000);
+        }
+        if (l.readyState === "complete") whenIdle();
+        else c.addEventListener("load", whenIdle, { once: true });
       })(window, document, "clarity", "script", "y0nhczcekt");
     </script>
   </head>
