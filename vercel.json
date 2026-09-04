@@ -4,13 +4,19 @@
     {
       "source": "/legal/whatsapp-privacy",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     },
     {
       "source": "/legal/whatsapp-terms",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     },
     {
@@ -20,9 +26,18 @@
           "key": "Strict-Transport-Security",
           "value": "max-age=63072000; includeSubDomains; preload"
         },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=()"
@@ -36,25 +51,37 @@
     {
       "source": "/_astro/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/fonts/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/images/(logo|icons|badges|clients-white)/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/images/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
       ]
     }
   ],
@@ -207,6 +234,236 @@
     {
       "source": "/events-calendar-2",
       "destination": "/events-calendar",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/about-us",
+      "permanent": true
+    },
+    {
+      "source": "/about-us/es",
+      "destination": "/about-us",
+      "permanent": true
+    },
+    {
+      "source": "/our-hubs",
+      "destination": "/about-us",
+      "permanent": true
+    },
+    {
+      "source": "/contacto",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms-and-conditions",
+      "permanent": true
+    },
+    {
+      "source": "/jobs",
+      "destination": "/careers",
+      "permanent": true
+    },
+    {
+      "source": "/careers/jobs",
+      "destination": "/careers",
+      "permanent": true
+    },
+    {
+      "source": "/work",
+      "destination": "/our-work",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/blockbound",
+      "destination": "/our-work",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/flexio",
+      "destination": "/our-work",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/blockchain-development-services",
+      "permanent": true
+    },
+    {
+      "source": "/what-we-do",
+      "destination": "/blockchain-development-services",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-and-web-3-0",
+      "destination": "/blockchain-development-services",
+      "permanent": true
+    },
+    {
+      "source": "/development-services/industry",
+      "destination": "/blockchain-development-services",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-services/blockchain-for-defi-finance",
+      "destination": "/blockchain-development-services/industry/finance-and-fintech",
+      "permanent": true
+    },
+    {
+      "source": "/discovery-sprint",
+      "destination": "/product-discovery",
+      "permanent": true
+    },
+    {
+      "source": "/web-and-mobile-development",
+      "destination": "/innovative-web-and-mobile-solutions",
+      "permanent": true
+    },
+    {
+      "source": "/images/clutch-2026-top-blockchain.png",
+      "destination": "/images/badges/clutch-top-blockchain-2026.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/clutch-2026-top-blockchain-latam.png",
+      "destination": "/images/badges/clutch-top-blockchain-latam-2026.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/clutch-2026-top-ethereum.png",
+      "destination": "/images/badges/clutch-top-ethereum-2026.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/2kwBmFhPTlXfy8RM1iE5tRfmPfM.png",
+      "destination": "/images/content/ai-is-reshaping-drug-discovery-and-the-fda-is-onboard/cover.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/3fuM3Z1MSowq1AA5jeBRovzFEFk.webp",
+      "destination": "/images/content/bitcoin-the-almost-millionaires-of-starcraft/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/44cWuGIUHol9zdssx9kSFMjtBs.png",
+      "destination": "/images/content/how-real-world-assets-are-reshaping-decentralized-finance/cover.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/50nXesZNFn34Yd4LegrcrmDpVic.webp",
+      "destination": "/images/content/upgrading-customer-service-with-a-whatsapp-bot/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/551gfTZfH8x4VlokOkb2lOOl4.webp",
+      "destination": "/images/content/goldman-sachs-bets-big-on-ai-and-blockchain/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/5SIjYNrqoXVAQqwdwdO9upLD84.webp",
+      "destination": "/images/content/vibe-coding-hype-help-or-hazard/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/Blockchain_Compliance_in_the_US.png",
+      "destination": "/images/content/blockchain-compliance-us/cover.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/DmHKXFBCvlA7Y9zmzYpBfOzzko.webp",
+      "destination": "/images/content/blockchain-ai-convergence-a-powerful-synergy/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/FbmwPbUfDAa0q00EdQ3JbNrTpE.png",
+      "destination": "/images/content/from-web3-to-web5-or-how-i-learned-to-stop-worrying-and-embrace-true-decentralization/cover.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/HnBRzRZKIvGkGHIfxiQev0lU2o0.webp",
+      "destination": "/images/content/how-to-hire-remote-software-developers-a-smart-guide-for-growing-teams/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/J8qCLvFdZOivyDaLs0dELBR2r0.webp",
+      "destination": "/images/content/u-s-banks-enter-the-crypto-arena-what-it-means-for-blockchain-consulting-fintech-development/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/JeQLv4bNGrE9UXUBQ7qTuS80hV4.webp",
+      "destination": "/images/content/simply-put-what-is-blockchain/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/RVMvAqis5lvyDbQre8vqzsh7BT8.webp",
+      "destination": "/images/content/why-metamask-embedded-wallets-are-a-game-changer-for-web3-onboarding/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/Sa5MlGeDLNgcFDmCL7kH7Q3TBgA.webp",
+      "destination": "/images/content/what-web3-protocols-need-in-2025/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/W9x6IOdCW0t4rCATB3Ze7voDiLI.png",
+      "destination": "/images/content/white-label-crypto-exchange-solutions/cover.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/ZYFCVOnAOkZaVXWFJg9sEbfiVzs.png",
+      "destination": "/images/content/a-few-thoughts-on-decentralization/cover.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/bVD0R0iXQ8QzvTTXdhaxjxRR8.webp",
+      "destination": "/images/content/the-role-of-smart-contracts-in-defi/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/blockchain-supply-chain-traceability-cover.png",
+      "destination": "/images/content/blockchain-supply-chain-traceability/cover.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/blockchain-trends-2026-cover.png",
+      "destination": "/images/content/blockchain-trends-2026/cover.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/enterprise-blockchain-cover.png",
+      "destination": "/images/content/enterprise-blockchain-solutions-roi-use-cases-types/cover.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/hSDllB1d1JjC9oNH7hkkChHjq8.webp",
+      "destination": "/images/content/wallet-connections/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/k9VyKGh5tqD9B5xLFRFXoVDVm44.webp",
+      "destination": "/images/content/how-we-built-ndax/cover.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/layer-1-blockchain-cover.png",
+      "destination": "/images/content/what-is-layer-1-blockchain/cover.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/rwa-protocol-cover.png",
+      "destination": "/images/content/how-to-launch-an-rwa-protocol/cover.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/content/tokenized-bonds-cover.png",
+      "destination": "/images/content/tokenized-bonds/cover.png",
       "permanent": true
     }
   ]
