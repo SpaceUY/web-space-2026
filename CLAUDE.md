@@ -30,7 +30,7 @@
 - `@media (prefers-reduced-motion: reduce)` aplicado
 
 **Layouts**
-- `src/layouts/BaseLayout.astro` — HTML shell con GTM (GTM-WKM5KGV), GA4 (G-J43N5T0K82), HotJar (5330235), View Transitions, fuentes
+- `src/layouts/BaseLayout.astro` — HTML shell con GTM (GTM-WKM5KGV, que carga GA4 por dentro), Clarity diferido, View Transitions, fuentes
 - `src/layouts/ServicePageLayout.astro` — layout reutilizable para páginas de servicio
 
 **Componentes UI (`src/components/ui/`)**
@@ -334,9 +334,23 @@ spacedev-assets/
 - Careers: `people@spacedev.io`
 
 ### Tracking
-- GTM: `GTM-WKM5KGV`
-- GA4: `G-J43N5T0K82`
-- HotJar: `5330235`
+
+Toda la medición vive en `BaseLayout.astro`, a la vista. **No hay Tag Manager**: agregar un tag nuevo es un PR, no un cambio en una consola.
+
+- GA4: `G-J43N5T0K82`, cargado con gtag.js directo
+- Clarity: `y0nhczcekt` — diferido hasta el load o la primera interacción
+- Apollo (ventas, identifica empresas que visitan): appId `66350bcafd19fc01c7bf1761` — diferido hasta el load
+
+**Todo evento de conversión se manda con `window.sdTrack(event, params)`**, definido en `BaseLayout`. Es global y no un módulo a propósito: los formularios viven en seis páginas distintas, y que varias importen el mismo módulo hace que Astro emita un chunk compartido que agrega un viaje de red (ver commit `4731879`).
+
+Eventos actuales: `generate_lead` (contacto y agentic), `newsletter_signup`, `book_call_click`.
+
+**Removidos en septiembre 2026, no volver a agregarlos sin releer esto:**
+
+- ~~GTM `GTM-WKM5KGV`~~ — nadie del equipo tenía acceso. Su fuente pública mostraba 29 tags de evento, de los cuales 23 disparaban con clases CSS del sitio pre-Framer inexistentes hoy, 4 eran conversiones de Google Ads sin campañas, y su listener de HubSpot esperaba un iframe que este sitio no embebe. Lo único vivo era cargar GA4 e inyectar Apollo, las dos cosas ahora están acá.
+- ~~snippet suelto de gtag.js conviviendo con GTM~~ — hacían que GA4 se bajara dos veces por página, 354 KB duplicados.
+- ~~HotJar `5330235`~~ — venía de Framer, nadie usaba las grabaciones, costaba 1814 ms de CPU y 174 KB contra 305 ms y 25 KB de Clarity haciendo lo mismo.
+- ~~`HubSpotForm.astro`~~ — no lo importaba ninguna página. Los formularios reales son `ContactForm`, `NewsletterForm` y `AgenticLeadForm`.
 
 ### Redes sociales
 - Twitter/X: `https://x.com/SpaceDevUy`

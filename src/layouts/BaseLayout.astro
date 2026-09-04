@@ -112,13 +112,11 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
     <link rel="preload" href="/fonts/saira/saira-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/open-sans/open-sans-variable-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Preconnect: only for third-party origins loaded on every page (GTM, Clarity,
-         HotJar/Contentsquare). HubSpot form domains are page-specific (contact page
-         only) and are deliberately excluded to avoid wasting an early connection
-         on pages that never use them. -->
+    {/* Preconnect: only googletagmanager.com, which serves gtag.js and is the
+         one third party still loading during the initial render. Clarity and
+         Apollo are both deferred until after load, so an early connection to
+         either would sit unused. */}
     <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.clarity.ms" crossorigin />
-    <link rel="preconnect" href="https://static.hj.contentsquare.net" crossorigin />
 
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="SpaceDev Blog" href="/rss.xml" />
@@ -138,56 +136,118 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
     <JsonLD data={organizationJsonLd} />
     {jsonLd && <JsonLD data={jsonLd} />}
 
-    <!-- Google Tag Manager -->
-    <script is:inline>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKM5KGV');
-    </script>
+    {/* Measurement lives here, in the repo, on purpose.
+         The GTM container GTM-WKM5KGV used to sit in this spot and load GA4 on
+         our behalf. It was removed in September 2026: nobody on the team had
+         access to it, and reading its public source showed it was 97% dead
+         weight. Of its 29 event tags, 23 fired on CSS classes from the
+         pre-Framer site that appear nowhere in the 181 pages this site builds,
+         4 were Google Ads conversions with no campaigns behind them, and its
+         one HubSpot listener waited for a form iframe this site does not embed.
+         The two things it genuinely did, loading GA4 and injecting Apollo, are
+         both below, in twenty lines that can be read and reviewed.
+
+         The trade-off is deliberate: adding a new tag is now a pull request
+         rather than a change in a console. That is the right shape for a static
+         site that deploys often, and it is what the container's own history
+         argues for, since the duplicate GA4 load and the dead triggers both
+         came from changes nobody could see. */}
 
     <!-- Google Analytics 4 -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-J43N5T0K82"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
       gtag('config', 'G-J43N5T0K82');
+
+      /* Single entry point for conversion tracking. Every form and CTA on the
+         site calls this and nothing else, so there is one place to look when a
+         conversion goes missing. It is a global rather than a module because
+         the forms live on six different pages: importing a shared module from
+         several entry points makes Astro emit a shared chunk that the page then
+         has to fetch on a second round trip, which is the exact regression
+         4731879 removed from the home page. */
+      window.sdTrack = function (event, params) {
+        params = params || {};
+        window.dataLayer.push(Object.assign({ event: event }, params));
+        gtag('event', event, params);
+      };
     </script>
 
-    <!-- HotJar -->
+    {/* Apollo website tracker — deferred.
+         Sales uses this to see which companies visit the site. It was injected
+         by the GTM container; it is here now so it is visible in the repo. It
+         identifies a visit from the page and the IP, so it loses nothing by
+         starting after load instead of competing with the hero for the main
+         thread. Bounces shorter than the idle callback go unrecorded, and those
+         are not leads. */}
     <script is:inline>
-      (function(c,s,q,u,a,r,e){
-        c.hj=c.hj||function(){(c.hj.q=c.hj.q||[]).push(arguments)};
-        c._hjSettings={hjid:a};
-        r=s.getElementsByTagName('head')[0];
-        e=s.createElement('script');e.async=true;
-        e.src=q+c._hjSettings.hjid+u;
-        r.appendChild(e);
-      })(window,document,'https://static.hj.contentsquare.net/c/csq-','.js',5330235);
+      (function () {
+        function loadApollo() {
+          var cacheBust = Math.random().toString(36).substring(7);
+          var s = document.createElement("script");
+          s.src = "https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=" + cacheBust;
+          s.async = true;
+          s.defer = true;
+          s.onload = function () {
+            if (window.trackingFunctions) {
+              window.trackingFunctions.onLoad({ appId: "66350bcafd19fc01c7bf1761" });
+            }
+          };
+          document.head.appendChild(s);
+        }
+        function whenIdle() {
+          if ("requestIdleCallback" in window) requestIdleCallback(loadApollo, { timeout: 3000 });
+          else setTimeout(loadApollo, 1500);
+        }
+        if (document.readyState === "complete") whenIdle();
+        else window.addEventListener("load", whenIdle, { once: true });
+      })();
+    </script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
     </script>
 
-    <!-- Microsoft Clarity -->
-    <script is:inline type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    {/* HotJar (account 5330235) used to load here. It came across with the Framer
+         migration, nobody on the team was using its recordings, and it was by far
+         the most expensive third party on the page: 1814ms of CPU and 174 KB,
+         served with no cache, against Clarity's 305ms and 25 KB for the same job.
+         Removed rather than deferred. Do not re-add it without deciding what it
+         gives you that Clarity does not. */}
+
+    {/* Microsoft Clarity — deferred.
+         Clarity records what a visitor does, so it has nothing to capture until
+         the visitor has done something. Loading it in the head made it compete
+         with the hero for the main thread during the initial render. The queue
+         stub stays inline so any clarity() call made before the script arrives is
+         buffered, and the script itself is fetched on the first interaction or
+         once the page has loaded and the main thread is idle, whichever is first. */}
+    <script is:inline>
+      (function (c, l, a, r, i) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        function load() {
+          if (c[a].__loaded) return;
+          c[a].__loaded = 1;
+          var t = l.createElement(r);
+          t.async = 1;
+          t.src = "https://www.clarity.ms/tag/" + i;
+          l.head.appendChild(t);
+        }
+        ["pointerdown", "keydown", "scroll"].forEach(function (evt) {
+          c.addEventListener(evt, load, { once: true, passive: true });
+        });
+        function whenIdle() {
+          if ("requestIdleCallback" in c) c.requestIdleCallback(load, { timeout: 4000 });
+          else setTimeout(load, 2000);
+        }
+        if (l.readyState === "complete") whenIdle();
+        else c.addEventListener("load", whenIdle, { once: true });
       })(window, document, "clarity", "script", "y0nhczcekt");
     </script>
   </head>
   <body class="min-h-screen flex flex-col bg-sd-dark text-white antialiased">
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-WKM5KGV"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"
-        title="Google Tag Manager"
-      ></iframe>
-    </noscript>
-
     <Header />
 
     <main id="main-content" class="flex-1 relative">
@@ -209,22 +269,52 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
       document.addEventListener("astro:page-load", initScrollAnimations);
     </script>
 
-    <!-- Conversion tracking: book_call_click -->
+    {/* Funnel tracking.
+
+        One delegated listener for every call to action on the site, rather than
+        one handler per button. The container this replaced took the opposite
+        approach and had 23 separate event tags named after individual buttons
+        (Home-getintouch-1, Blockchain-getintouch-3 and so on), which burns GA4's
+        500-event-name budget and means answering "how well does the blockchain
+        page convert" requires adding four numbers by hand. One event name with
+        parameters answers it with a filter.
+
+        cta_area is derived from the DOM rather than from markup we would have to
+        maintain across 68 CTAs, so it cannot drift out of sync. Pass data-cta on
+        an element to override it where a more specific name is worth having. */}
     <script is:inline>
       (function () {
-        function trackBookCall(url) {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: "book_call_click", meeting_url: url || "" });
-          if (typeof gtag === "function") {
-            gtag("event", "book_call_click", url ? { meeting_url: url } : {});
-          }
+        function area(el) {
+          if (el.closest("header")) return "header";
+          if (el.closest("footer")) return "footer";
+          return "content";
         }
+
         document.addEventListener("click", function (e) {
-          var link = e.target.closest("a[href*='meetings.hubspot.com']");
-          if (link) trackBookCall(link.getAttribute("href"));
+          var link = e.target.closest("a[href]");
+          if (!link) return;
+          var href = link.getAttribute("href") || "";
+          var base = {
+            page_path: location.pathname,
+            cta_area: link.getAttribute("data-cta") || area(link),
+            cta_text: (link.textContent || "").trim().replace(/\s+/g, " ").slice(0, 60)
+          };
+
+          if (href.indexOf("meetings.hubspot.com") !== -1) {
+            base.meeting_url = href;
+            window.sdTrack("book_call_click", base);
+          } else if (href === "/contact" || href.indexOf("/contact?") === 0 || href.indexOf("/contact#") === 0) {
+            window.sdTrack("cta_click", base);
+          }
         }, true);
+
+        /* The click above is intent. This is the outcome, and the two used to be
+           reported as the same event, so a hundred clicks and three bookings
+           looked identical in GA4. */
         window.addEventListener("message", function (e) {
-          if (e.data && e.data.meetingBookSucceeded) trackBookCall("");
+          if (e.data && e.data.meetingBookSucceeded) {
+            window.sdTrack("meeting_booked", { page_path: location.pathname });
+          }
         });
       })();
     </script>

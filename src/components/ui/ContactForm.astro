@@ -249,6 +249,12 @@ const sourceOptions = [
 
       if (!res.ok) throw new Error();
 
+      // The lead itself reaches HubSpot through the POST above whether or not
+      // this fires. What this adds is the attribution: until September 2026 the
+      // main contact form recorded nothing in GA4, so marketing could see that
+      // leads arrived but never which campaign or page produced them.
+      (window as any).sdTrack?.("generate_lead", { form_location: "contact" });
+
       form.hidden = true;
       if (success) success.hidden = false;
     } catch {
