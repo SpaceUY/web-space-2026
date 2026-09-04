@@ -600,6 +600,7 @@ export const stablecoinData: ServicePageData = {
   eyebrow: "DeFi · Stablecoins",
   title: "Custom Stablecoin Development for Payments, DeFi, and Enterprise Settlement",
   description: "A stablecoin is only as good as the system built around it. SpaceDev builds custom stablecoin solutions for fintech companies, DeFi protocols, payment platforms, and enterprises that need programmable, stable digital currency infrastructure: from initial architecture through production launch.",
+  relatedTags: ["fintech", "defi"],
   heroParticles: true,
   primaryCta: { label: "Talk to Our Stablecoin Development Team", href: "/contact" },
   compactHeroTitle: true,

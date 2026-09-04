@@ -49,6 +49,8 @@ Most teams do a hybrid: a provider for rails and ramps, plus a thin custom layer
 
 ## The stablecoin integration playbook
 
+![Fiat entering through an on-ramp, settling as stablecoins on a blockchain rail, and exiting through an off-ramp back to a company bank account](/images/content/stablecoin-integration/illustration-integration-flow.png)
+
 Work these six steps in order. Each one is a decision that constrains the next.
 
 ### 1. Choose the stablecoin and chains
@@ -103,6 +105,8 @@ A payments team can build all of the above and still fail the finance review if 
 | Provider dependence | Avoid single points of failure, plan for provider migration |
 
 ## What integration looks like in practice
+
+![A provider layer handling wallets, ramps and compliance underneath a company's own orchestration, treasury logic and controls](/images/content/stablecoin-integration/illustration-provider-vs-custom-layer.png)
 
 The realistic 2026 pattern is not a from-scratch crypto build. It is **adding stablecoin capability through infrastructure that handles the hard parts in the background.** Payment platforms are embedding stablecoin send, hold, and receive into accounts businesses already use, and treasury integrations increasingly run currency conversion, settlement, and compliance monitoring behind the scenes.
 
