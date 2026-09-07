@@ -92,7 +92,7 @@ const industries = [
     <div class="sd-container relative pb-14 sm:pb-16">
       <h1>
         <div class="hero-line hero-line-1 text-[clamp(34px,9.4vw,64px)] text-white font-display leading-[1.08] tracking-tight">
-          <span class="whitespace-nowrap">Finally: Your&#160;<span class="word-rotator"><span class="word-rotator-track" id="rotating-track"><span>Flexible</span><span>Reliable</span><span>Fast</span><span aria-hidden="true">Flexible</span></span></span></span><br/>
+          <span class="whitespace-nowrap">Finally: Your&#160;<span class="word-rotator"><span class="word-rotator-track" id="rotating-track"><span>Flexible</span><span aria-hidden="true">Reliable</span><span aria-hidden="true">Fast</span><span aria-hidden="true">Flexible</span></span></span></span><br/>
           Tech Partner.
         </div>
         <div class="hero-line hero-line-2 mt-10 sm:mt-14 text-lg sm:text-xl md:text-2xl text-white/75 font-body font-normal tracking-[-0.02em]">
@@ -164,7 +164,15 @@ const industries = [
        approach) registered a fresh LCP candidate every 2.4s and pushed the
        measured LCP out to ~10.6s no matter how late the rotation started.
        The track's last slide repeats the first one so the loop can snap back
-       to the top with the transition off, without a visible rewind. */
+       to the top with the transition off, without a visible rewind.
+
+       Every slide after the first carries aria-hidden. Shipping all four in the
+       DOM put all four in the accessibility tree, so the h1's accessible name
+       became "Finally: Your Flexible Reliable Fast Flexible Tech Partner." That
+       is what a screen reader announced and what Lighthouse reported as the LCP
+       element's text. Exposing only the first slide gives the heading one
+       stable, sensible name; a name that changed every 2.4s would be worse than
+       a fixed one, since the rotation is decorative. */
     .word-rotator {
       display: inline-block;
       overflow: hidden;
