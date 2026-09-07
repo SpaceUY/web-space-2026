@@ -30,7 +30,7 @@
 - `@media (prefers-reduced-motion: reduce)` aplicado
 
 **Layouts**
-- `src/layouts/BaseLayout.astro` — HTML shell con GTM (GTM-WKM5KGV), GA4 (G-J43N5T0K82), HotJar (5330235), View Transitions, fuentes
+- `src/layouts/BaseLayout.astro` — HTML shell con GTM (GTM-WKM5KGV, que carga GA4 por dentro), Clarity diferido, View Transitions, fuentes
 - `src/layouts/ServicePageLayout.astro` — layout reutilizable para páginas de servicio
 
 **Componentes UI (`src/components/ui/`)**
@@ -334,9 +334,10 @@ spacedev-assets/
 - Careers: `people@spacedev.io`
 
 ### Tracking
-- GTM: `GTM-WKM5KGV`
-- GA4: `G-J43N5T0K82`
-- HotJar: `5330235`
+- GTM: `GTM-WKM5KGV` — carga GA4 por dentro (tag `__googtag` en cada pageview). **No agregar un snippet suelto de gtag.js**: hasta septiembre 2026 convivían los dos y GA4 se bajaba dos veces por página (354 KB duplicados). Cualquier cambio de config de GA4 va adentro del contenedor.
+- GA4: `G-J43N5T0K82` (se carga vía GTM, no directo)
+- Clarity: `y0nhczcekt` — diferido hasta después del load o la primera interacción
+- ~~HotJar: `5330235`~~ — removido en septiembre 2026. Venía arrastrado de Framer, nadie usaba las grabaciones, y costaba 1814 ms de CPU y 174 KB contra 305 ms y 25 KB de Clarity haciendo lo mismo.
 
 ### Redes sociales
 - Twitter/X: `https://x.com/SpaceDevUy`
