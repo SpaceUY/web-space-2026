@@ -128,16 +128,22 @@ const industries = [
   </section>
 
   <style>
+    /* No filter: blur() here. It used to animate from blur(10px) to blur(0),
+       which PageSpeed flagged on exactly these three elements as non-composited
+       animations: blur cannot run on the compositor, so each frame repainted on
+       the main thread. Three large elements doing that, staggered to finish at
+       2.75s, sat right on top of the LCP window on a throttled mid-range phone,
+       where mobile measured 2,350ms of element render delay against desktop's
+       98. opacity and transform both composite, so the entrance still reads
+       without holding up the paint of the headline beside it. */
     @keyframes hero-rise {
       from {
         opacity: 0;
         transform: translateY(48px);
-        filter: blur(10px);
       }
       to {
         opacity: 1;
         transform: translateY(0);
-        filter: blur(0);
       }
     }
     /* hero-line-1 (the title) is deliberately excluded from the entrance
