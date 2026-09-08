@@ -125,4 +125,4 @@ Building a new DePIN network, rather than consuming an existing one, is a full b
 
 As of early 2025, the DePIN sector has 1,561 projects with a total market capitalization of approximately $30 billion, still in its early development phase. Most of those projects will not survive to operational maturity. The ones that will are those generating real demand from actual service consumers, not just recycling tokens between infrastructure providers and yield farmers.
 
-If you are evaluating whether DePIN infrastructure fits your product's technical requirements, or scoping a custom protocol that puts physical resources on-chain, [book a call](/contact) with SpaceDev's blockchain team to assess architecture before committing to a token model.
+If you are evaluating whether DePIN infrastructure fits your product's technical requirements, or scoping a custom protocol that puts physical resources on-chain, [book a call](https://meetings.hubspot.com/federico-sendra/meet-space) with SpaceDev's blockchain team to assess architecture before committing to a token model.

@@ -149,4 +149,4 @@ Increasingly. The EU's eIDAS 2.0 gives decentralized identity wallets legal stan
 
 Decentralized identity works when it is standards-based, keeps personal data off-chain, and starts with a concrete use case like reusable KYC rather than a universal identity ambition. Align to W3C DIDs and verifiable credentials, define your issuers and verifiers, and design for wallet recovery from the start.
 
-If you are evaluating a decentralized identity project, our [decentralized identity services](/blockchain-development-services/decentralized-identity) cover DID architecture, verifiable credential issuance, and reusable KYC. You can [book a technical scoping call](/contact) to review your case.
+If you are evaluating a decentralized identity project, our [decentralized identity services](/blockchain-development-services/decentralized-identity) cover DID architecture, verifiable credential issuance, and reusable KYC. You can [book a technical scoping call](https://meetings.hubspot.com/federico-sendra/meet-space) to review your case.
