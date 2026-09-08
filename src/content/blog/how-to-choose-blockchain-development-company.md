@@ -134,4 +134,4 @@ A firm brings security process, audit capability, and continuity. Individual hir
 
 Choosing a blockchain development company is a strategic decision, not a technical purchase. The partners worth your time can show you exactly where they have delivered in production, explain why they would approach your project the way they would, and stand behind the result once it is live.
 
-If you are in the evaluation stage, our [blockchain development services](/blockchain-development-services) span smart contract development, in-house security auditing, and full-cycle delivery, backed by production case studies. You can [book a technical scoping call](https://meetings.hubspot.com/federico-sendra/web-meetings-calendar) to talk through your requirements, not a pitch deck.
+If you are in the evaluation stage, our [blockchain development services](/blockchain-development-services) span smart contract development, in-house security auditing, and full-cycle delivery, backed by production case studies. You can [book a technical scoping call](https://meetings.hubspot.com/federico-sendra/meet-space) to talk through your requirements, not a pitch deck.
