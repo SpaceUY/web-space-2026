@@ -1,0 +1,37 @@
+---
+/**
+ * Outlets that republished a piece, shown as a link row at the bottom of its card.
+ *
+ * Laid out as normal inline text, not a flex row: flex gaps put space around the
+ * separators and pushed the row out of alignment with the author and date above
+ * it. `relative z-10` lifts it above the card's stretched-link overlay, which
+ * would otherwise swallow these clicks.
+ */
+interface Props {
+  items: { label: string; url: string }[];
+  /** Accent of the parent card's outlet, so the row reads as part of it */
+  color: string;
+}
+
+const { items, color } = Astro.props;
+---
+
+{items.length > 0 && (
+  <p class="relative z-10 pt-3 text-[11px] font-ui leading-relaxed" style="color: #aaaaaa;">
+    Also covered by{" "}
+    {items.map((item, index) => (
+      <>
+        {index > 0 && ", "}
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="whitespace-nowrap underline decoration-transparent hover:decoration-current underline-offset-2 transition-colors"
+          style={`color: ${color};`}
+        >
+          {item.label} ↗
+        </a>
+      </>
+    ))}
+  </p>
+)}

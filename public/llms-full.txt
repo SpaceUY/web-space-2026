@@ -80,6 +80,7 @@ Smart contract and blockchain security auditing: static and manual analysis, for
 
 ## Recognition & media (https://spacedev.io/spacedev-in-the-media)
 
+- Hedera Council Community Partner (September 2026), announced by Hedera after SpaceDev built the Blockchain for Energy (B4E) tokenization platform on Hedera: https://hedera.com/blog/hedera-council-grows-partner-network-with-new-strategic-and-community-partners/ Covered by KuCoin ("Hedera Council Adds WISeKey and SpaceDev to Expand Network", https://www.kucoin.com/news/flash/hedera-council-adds-wisekey-and-spacedev-to-expand-network) and Binance Square (https://www.binance.com/en/square/post/363118814200068).
 - 2nd place, Hedera AI x Hackathon: AI agent that audits smart contracts in real time.
 - Co-organized ETH Canal hackathon (Panama) with three SpaceDev speakers.
 - CTO Juan Manuel Sobral named among Uruguay's top 25 tech leaders (Experis ManpowerGroup).
