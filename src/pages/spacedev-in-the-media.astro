@@ -1,10 +1,53 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SyndicationRow from "../components/ui/SyndicationRow.astro";
 import { SITE } from "../lib/seo";
 import { mediaItems } from "../data/media-items";
 
 const SEO_TITLE = "SpaceDev in the Media | Forbes, Academic Publications & Interviews";
 const SEO_DESC = "SpaceDev's Federico Sendra and Juan Manuel Sobral featured in Forbes Tech Council, Frontiers in Blockchain, CriptoNoticias, Medium and video interviews. Press coverage and publications.";
+
+/**
+ * Single registry of every outlet this page can show. The cards, the video
+ * tiles and the "As seen in" strip all read from here, so adding an outlet is
+ * one entry and nothing downstream has to be kept in sync by hand.
+ *
+ * This used to be a `badge` record plus a hand-written list of <img> tags in
+ * the strip, which silently drifted: Hedera was added as a source and became
+ * the featured card without ever appearing in the strip.
+ */
+interface Outlet {
+  label: string;
+  logo: string;
+  /**
+   * Box height for the strip. These are NOT the same number on purpose: each
+   * file carries a different amount of transparent padding, so an identical
+   * box height renders a different amount of actual logo. Forbes at h-8 read
+   * 26px of ink while Hedera at h-6 read 18px, which is why Forbes and Medium
+   * looked oversized next to the rest.
+   *
+   * Each value is set so every wordmark lands at ~20px of ink. To retune after
+   * swapping a file, divide 20 by its ink-to-canvas height ratio (the alpha
+   * bounding box height over the full image height).
+   */
+  stripHeight: string;
+  color: string;
+  bg: string;
+  border: string;
+}
+
+const outlets = {
+  Forbes:           { label: "Forbes Tech Council", logo: "/images/icons/forbes.png",              stripHeight: "h-[25px]", color: "#92650a", bg: "rgba(201,168,76,0.15)", border: "rgba(146,101,10,0.4)"  },
+  Frontiers:        { label: "Frontiers",           logo: "/images/icons/logo_frontiers_grey.png", stripHeight: "h-5",      color: "#6d28d9", bg: "rgba(109,40,217,0.10)", border: "rgba(109,40,217,0.3)"  },
+  CriptoNoticias:   { label: "CriptoNoticias",      logo: "/images/icons/Criptonoticias.webp",     stripHeight: "h-6",      color: "#0e7490", bg: "rgba(14,116,144,0.10)", border: "rgba(14,116,144,0.35)" },
+  YouTube:          { label: "YouTube",             logo: "/images/icons/Youtube-logo.png",        stripHeight: "h-5",      color: "#dc2626", bg: "rgba(220,38,38,0.08)",  border: "rgba(220,38,38,0.2)"   },
+  Medium:           { label: "Medium",              logo: "/images/icons/Medium-logo.png",         stripHeight: "h-[21px]", color: "#000000", bg: "rgba(0,0,0,0.06)",      border: "rgba(0,0,0,0.18)"      },
+  Hedera:           { label: "Hedera",              logo: "/images/icons/hedera.png",              stripHeight: "h-[26px]", color: "#5b2fd1", bg: "rgba(130,89,239,0.12)", border: "rgba(130,89,239,0.35)" },
+  "Binance Square": { label: "Binance Square",      logo: "/images/icons/binance-square.png",      stripHeight: "h-5",      color: "#a97f0a", bg: "rgba(240,185,11,0.12)", border: "rgba(240,185,11,0.35)" },
+  KuCoin:           { label: "KuCoin",              logo: "/images/icons/kucoin.png",              stripHeight: "h-5",      color: "#0b9a74", bg: "rgba(11,154,116,0.10)", border: "rgba(11,154,116,0.3)"  },
+} satisfies Record<string, Outlet>;
+
+type OutletName = keyof typeof outlets;
 
 interface ContentItem {
   title: string;
@@ -13,10 +56,16 @@ interface ContentItem {
   authors?: string[];
   description: string;
   quote?: string;
-  source: "Forbes" | "Frontiers" | "CriptoNoticias" | "Medium" | "Hedera";
+  source: OutletName;
   tag: string;
   /** Only used by the two featured hero cards (contentItems[0] and [1]) */
   image?: string;
+  /**
+   * Outlets that republished this same piece. Rendered as a link row under the
+   * item's own card, never as separate cards: a pickup is the same story, and a
+   * duplicate card would take a featured slot away from the original.
+   */
+  syndication?: { outlet: OutletName; url: string }[];
 }
 
 interface VideoItem {
@@ -42,6 +91,10 @@ const contentItems: ContentItem[] = [
     source: "Hedera",
     tag: "Blockchain",
     image: "/images/content/hedera-council-community-partner-sep2026.png",
+    syndication: [
+      { outlet: "Binance Square", url: "https://www.binance.com/en/square/post/363118814200068" },
+      { outlet: "KuCoin", url: "https://www.kucoin.com/news/flash/hedera-council-adds-wisekey-and-spacedev-to-expand-network" },
+    ],
   },
   {
     title: "Why Enterprise AI Is Starting to Look Like an Ecosystem",
@@ -219,14 +272,24 @@ const videoItems: VideoItem[] = [
   },
 ];
 
-const badge: Record<string, { label: string; logo?: string; color: string; bg: string; border: string }> = {
-  Forbes:         { label: "Forbes Tech Council", logo: "/images/icons/forbes.png",              color: "#92650a", bg: "rgba(201,168,76,0.15)", border: "rgba(146,101,10,0.4)"  },
-  Frontiers:      { label: "Frontiers",           logo: "/images/icons/logo_frontiers_grey.png", color: "#6d28d9", bg: "rgba(109,40,217,0.10)", border: "rgba(109,40,217,0.3)"  },
-  CriptoNoticias: { label: "CriptoNoticias",      logo: "/images/icons/Criptonoticias.webp",     color: "#0e7490", bg: "rgba(14,116,144,0.10)", border: "rgba(14,116,144,0.35)" },
-  YouTube:        { label: "YouTube",             logo: "/images/icons/Youtube-logo.png",        color: "#dc2626", bg: "rgba(220,38,38,0.08)",  border: "rgba(220,38,38,0.2)"  },
-  Medium:         { label: "Medium",              logo: "/images/icons/Medium-logo.png",         color: "#000000", bg: "rgba(0,0,0,0.06)",      border: "rgba(0,0,0,0.18)"     },
-  Hedera:         { label: "Hedera",              logo: "/images/networks/hedera_dark.svg",      color: "#5b2fd1", bg: "rgba(130,89,239,0.12)", border: "rgba(130,89,239,0.35)" },
-};
+/**
+ * The "As seen in" strip is derived, never hand-listed: it is exactly the set of
+ * outlets that appear somewhere below, in first-appearance order. Adding an
+ * article, a pickup or a video puts that outlet's logo in the strip on its own.
+ */
+const asSeenIn = [
+  ...new Set<OutletName>([
+    ...contentItems.flatMap((item) => [
+      item.source,
+      ...(item.syndication?.map((s) => s.outlet) ?? []),
+    ]),
+    ...(videoItems.length > 0 ? (["YouTube"] as const) : []),
+  ]),
+].map((name) => outlets[name]);
+
+/** Card-ready pickups for SyndicationRow, with each label resolved from the registry. */
+const syndicationLinks = (item: ContentItem) =>
+  item.syndication?.map((pickup) => ({ label: outlets[pickup.outlet].label, url: pickup.url })) ?? [];
 
 // contentItems must stay sorted newest-first: the featured hero cards are
 // always the 2 most recent items, whatever their source. Nothing below this
@@ -279,11 +342,9 @@ const videoJsonLd = videoItems.map((v) => ({
         <div class="sd-marquee">
           {[0, 1].map((setIndex) => (
             <div class="sd-marquee-set gap-12 pr-12" aria-hidden={setIndex === 1}>
-              <img src="/images/icons/forbes.png" alt="Forbes Tech Council" class="h-8 object-contain" />
-              <img src="/images/icons/logo_frontiers_grey.png" alt="Frontiers in Blockchain" class="h-6 object-contain" />
-              <img src="/images/icons/Criptonoticias.webp" alt="CriptoNoticias" class="h-6 object-contain" />
-              <img src="/images/icons/Youtube-logo.png" alt="YouTube" class="h-5 object-contain" />
-              <img src="/images/icons/Medium-logo.png" alt="Medium" class="h-6 object-contain" />
+              {asSeenIn.map((outlet) => (
+                <img src={outlet.logo} alt={outlet.label} class={`${outlet.stripHeight} object-contain`} loading="lazy" />
+              ))}
             </div>
           ))}
         </div>
@@ -301,21 +362,27 @@ const videoJsonLd = videoItems.map((v) => ({
         <p class="mt-2 text-sm" style="color: #858585;">Articles, research and press. Newest first.</p>
       </div>
 
-      <!-- HERO CARDS — two highlights side by side -->
+      <!--
+        HERO CARDS — two highlights side by side.
+        The image boxes use a 16/9 ratio, not a fixed height: a fixed height only
+        ever matches one source ratio, so the card crops differently at every
+        breakpoint. These covers are title cards with the headline in the middle,
+        and a fixed height cut that headline in half on desktop.
+      -->
       <div class="grid md:grid-cols-2 gap-4 mb-6" data-animate>
 
         {/* Medium highlight */}
         {(() => {
           const item = featured1;
-          const b = badge[item.source];
+          const b = outlets[item.source];
           return (
-            <a href={item.url} target="_blank" rel="noopener noreferrer"
-              class="group flex flex-col rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
+            <article
+              class="group relative flex flex-col rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
               style="background: #fff; border: 1px solid #e8e8e8; box-shadow: 0 2px 12px rgba(0,0,0,0.06);"
               onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.12)'; this.style.borderColor='#d0d0d0'"
               onmouseout="this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'; this.style.borderColor='#e8e8e8'"
             >
-              <div class="relative h-52 overflow-hidden" style="background: #f0f0f0;">
+              <div class="relative aspect-[16/9] overflow-hidden" style="background: #f0f0f0;">
                 <img src={item.image} alt={item.title}
                   class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
               </div>
@@ -324,37 +391,42 @@ const videoJsonLd = videoItems.map((v) => ({
                   <div class="mb-4">
                     <img src={b.logo} alt={b.label} class="h-8 object-contain max-w-[160px]" />
                   </div>
-                  <h3 class="font-display text-xl leading-snug mb-3" style="color: #141414;">{item.title}</h3>
+                  <h3 class="font-display text-xl leading-snug mb-3" style="color: #141414;">
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" class="after:absolute after:inset-0">{item.title}</a>
+                  </h3>
                   {item.quote && (
                     <blockquote class="border-l-2 pl-3" style={`border-color: ${b.color};`}>
                       <p class="text-sm italic leading-relaxed" style="color: #4e5052;">"{item.quote}"</p>
                     </blockquote>
                   )}
                 </div>
-                <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
-                  <div>
-                    <p class="text-sm font-medium" style="color: #141414;">{item.authors?.[0]}</p>
-                    <p class="text-xs mt-0.5" style="color: #aaaaaa;">{item.date}</p>
+                <div>
+                  <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
+                    <div>
+                      <p class="text-sm font-medium" style="color: #141414;">{item.authors?.[0]}</p>
+                      <p class="text-xs mt-0.5" style="color: #aaaaaa;">{item.date}</p>
+                    </div>
+                    <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${b.color};`}>Read ↗</span>
                   </div>
-                  <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${b.color};`}>Read ↗</span>
+                  <SyndicationRow items={syndicationLinks(item)} color={b.color} />
                 </div>
               </div>
-            </a>
+            </article>
           );
         })()}
 
         {/* Forbes highlight */}
         {(() => {
           const item = featured2;
-          const b = badge[item.source];
+          const b = outlets[item.source];
           return (
-            <a href={item.url} target="_blank" rel="noopener noreferrer"
-              class="group flex flex-col rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
+            <article
+              class="group relative flex flex-col rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
               style="background: #fff; border: 1px solid #e8e8e8; box-shadow: 0 2px 12px rgba(0,0,0,0.06);"
               onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.12)'; this.style.borderColor='#d0d0d0'"
               onmouseout="this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'; this.style.borderColor='#e8e8e8'"
             >
-              <div class="relative h-52 overflow-hidden" style="background: #f0f0f0;">
+              <div class="relative aspect-[16/9] overflow-hidden" style="background: #f0f0f0;">
                 <img src={item.image} alt={item.authors?.[0]}
                   class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
               </div>
@@ -363,18 +435,23 @@ const videoJsonLd = videoItems.map((v) => ({
                   <div class="mb-4">
                     <img src={b.logo} alt={b.label} class="h-8 object-contain max-w-[180px]" />
                   </div>
-                  <h3 class="font-display text-xl leading-snug mb-3" style="color: #141414;">{item.title}</h3>
+                  <h3 class="font-display text-xl leading-snug mb-3" style="color: #141414;">
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" class="after:absolute after:inset-0">{item.title}</a>
+                  </h3>
                   <p class="text-sm leading-relaxed" style="color: #858585;">{item.description}</p>
                 </div>
-                <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
-                  <div>
-                    <p class="text-sm font-medium" style="color: #141414;">{item.authors?.[0]}</p>
-                    <p class="text-xs mt-0.5" style="color: #aaaaaa;">{item.date}</p>
+                <div>
+                  <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
+                    <div>
+                      <p class="text-sm font-medium" style="color: #141414;">{item.authors?.[0]}</p>
+                      <p class="text-xs mt-0.5" style="color: #aaaaaa;">{item.date}</p>
+                    </div>
+                    <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${b.color};`}>Read ↗</span>
                   </div>
-                  <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${b.color};`}>Read ↗</span>
+                  <SyndicationRow items={syndicationLinks(item)} color={b.color} />
                 </div>
               </div>
-            </a>
+            </article>
           );
         })()}
 
@@ -383,14 +460,15 @@ const videoJsonLd = videoItems.map((v) => ({
       <!-- GRID -->
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20" data-animate>
         {rest.map((item) => {
-          const b = badge[item.source];
+          const b = outlets[item.source];
           const isFrontiers = item.source === "Frontiers";
           return (
+            <div class="flex flex-col">
             <a
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-col gap-4 p-6 rounded-2xl hover:-translate-y-1 transition-all duration-300"
+              class="group flex flex-col flex-1 gap-4 p-6 rounded-2xl hover:-translate-y-1 transition-all duration-300"
               style="background: #fff; border: 1px solid #e8e8e8; box-shadow: 0 1px 6px rgba(0,0,0,0.04);"
               onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.10)'; this.style.borderColor='#d0d0d0'"
               onmouseout="this.style.boxShadow='0 1px 6px rgba(0,0,0,0.04)'; this.style.borderColor='#e8e8e8'"
@@ -425,6 +503,8 @@ const videoJsonLd = videoItems.map((v) => ({
                 <span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity shrink-0" style={`color: ${b.color};`}>↗</span>
               </div>
             </a>
+              <SyndicationRow items={syndicationLinks(item)} color={b.color} />
+            </div>
           );
         })}
       </div>
@@ -460,7 +540,7 @@ const videoJsonLd = videoItems.map((v) => ({
               </div>
               <div class="flex flex-col gap-2 p-5 flex-1">
                 <div class="flex items-center gap-2 flex-wrap">
-                  <img src="/images/icons/Youtube-logo.png" alt="YouTube" class="h-5 object-contain" />
+                  <img src={outlets.YouTube.logo} alt={outlets.YouTube.label} class="h-5 object-contain" />
                   {item.person && <span class="text-[11px] font-ui" style="color: #858585;">{item.person}</span>}
                   <span class="ml-auto text-[11px] font-ui" style="color: #aaaaaa;">{item.date}</span>
                 </div>
