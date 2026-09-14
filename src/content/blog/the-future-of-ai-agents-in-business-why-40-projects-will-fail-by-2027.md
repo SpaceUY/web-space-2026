@@ -1,6 +1,6 @@
 ---
-title: "The Future of AI Agents in Business: Why 40+ Projects Will Fail by 2027"
-description: "Artificial Intelligence continues to redefine how businesses operate, with Agentic AI emerging as one of the most ambitious frontiers. But Gartner forecasts that over 40 agentic AI projects will be discontinued by 2027."
+title: "The Future of AI Agents in Business: Why 40% of Projects Will Fail by 2027"
+description: "Artificial Intelligence continues to redefine how businesses operate, with Agentic AI emerging as one of the most ambitious frontiers. But Gartner forecasts that over 40% of agentic AI projects will be discontinued by 2027."
 publishedAt: 2025-07-04
 author: diego-priliac
 category: "AI"
@@ -8,7 +8,7 @@ tags: ["ai", "product-growth"]
 readTime: 3
 cover: "/images/content/the-future-of-ai-agents-in-business-why-40-projects-will-fail-by-2027/cover.webp"
 takeaways:
-  - Gartner forecasts over 40 agentic AI projects will be discontinued by 2027.
+  - Gartner forecasts over 40% of agentic AI projects will be discontinued by 2027.
   - Failures stem from scalability issues, technology immaturity, and misalignment with business objectives.
   - Organizations are shifting toward measured, incremental deployments rather than large-scale automation.
   - Cross-functional collaboration and governance frameworks are essential before implementation.
@@ -17,7 +17,7 @@ metatitle: "The Future of AI Agents: Why 40% of Projects Fail"
 metadescription: "Agentic AI is booming, yet Gartner predicts many agentic AI projects will be scrapped by 2027. What separates AI agents that deliver from those that fail."
 ---
 
-Artificial Intelligence continues to transform business operations, with Agentic AI emerging as a significant frontier. This technology performs tasks autonomously, makes independent decisions, and learns from environments. However, Gartner forecasts that "over 40 Agentic AI projects will be scrapped by 2027," signaling challenges ahead for heavy investors.
+Artificial Intelligence continues to transform business operations, with Agentic AI emerging as a significant frontier. This technology performs tasks autonomously, makes independent decisions, and learns from environments. However, Gartner forecasts that "over 40% of agentic AI projects will be canceled by 2027," signaling challenges ahead for heavy investors.
 
 ## Understanding Agentic AI: The Next Tech Frontier
 
@@ -29,11 +29,11 @@ Gartner defines Agentic AI as systems capable of autonomous, goal-driven behavio
 
 While many businesses experiment with Agentic AI for automation and optimization, Gartner cautions that initiatives may be premature. Technical, operational, and organizational readiness gaps mean expectations often exceed actual results.
 
-## Gartner's Prediction: Why 40+ Projects Will Be Abandoned by 2027
+## Gartner's Prediction: Why 40% of Projects Will Be Abandoned by 2027
 
 ### Summary of Gartner's Findings
 
-Gartner's 2025 analysis projects discontinuation of more than 40 Agentic AI projects by 2027. While the vision compels, enterprise execution faces substantial challenges.
+Gartner's 2025 analysis projects discontinuation of more than 40% of Agentic AI projects by 2027. While the vision compels, enterprise execution faces substantial challenges.
 
 ### Technical Barriers and Scalability Issues
 
@@ -67,7 +67,7 @@ Enterprises now reassess their Agentic AI approaches, shifting from bold, large-
 
 Systems capable of autonomous, goal-directed action without continuous human input, expected to drive long-term transformation while remaining in early operational maturity phases.
 
-**2. Why does Gartner predict 40+ projects will fail by 2027?**
+**2. Why does Gartner predict 40% of projects will fail by 2027?**
 
 Poor scalability, immature technology, business goal misalignment, and overly ambitious deployment strategies cause most failures.
 
