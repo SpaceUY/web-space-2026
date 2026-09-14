@@ -7,7 +7,7 @@ export const SITE = {
   email: "info@spacedev.io",
   social: {
     twitter: "https://x.com/SpaceDevUy",
-    linkedin: "https://www.linkedin.com/company/spacedev-uy/",
+    linkedin: "https://www.linkedin.com/company/spacedev-io/",
     instagram: "https://www.instagram.com/spacedev.io",
     github: "https://github.com/SpaceUY",
     clutch: "https://clutch.co/profile/spacedev",
@@ -38,8 +38,8 @@ export const organizationJsonLd = {
   // of the same name (acquired by Sierra Nevada Corporation), which currently
   // has no distinct Wikidata entry of its own.
   disambiguatingDescription:
-    "SpaceDev is a software development and blockchain consulting company founded in 2015, headquartered across Miami, Montevideo, Buenos Aires and Medellin. Not to be confused with the historical aerospace company SpaceDev Inc., acquired by Sierra Nevada Corporation.",
-  foundingDate: "2015",
+    "SpaceDev is a software development and blockchain consulting company founded in 2017, headquartered across Miami, Montevideo, Buenos Aires and Medellin. Not to be confused with the historical aerospace company SpaceDev Inc., acquired by Sierra Nevada Corporation.",
+  foundingDate: "2017",
   url: SITE.url,
   logo: `${SITE.url}/images/logo/spacedev-logo.svg`,
   contactPoint: {

@@ -1,6 +1,6 @@
 # SpaceDev: Full Reference
 
-> Blockchain development company offering Web3 engineering, traditional software development, IT staff augmentation, and blockchain security auditing. Founded 8 years ago; 70+ team members across USA, Uruguay, Argentina, Colombia and Mexico; 200+ projects delivered; 50+ five-star Clutch reviews. This file is the extended companion to https://spacedev.io/llms.txt
+> Blockchain development company offering Web3 engineering, traditional software development, IT staff augmentation, and blockchain security auditing. Founded in 2017; 70+ team members across USA, Uruguay, Argentina, Colombia and Mexico; 200+ projects delivered; 50+ five-star Clutch reviews. This file is the extended companion to https://spacedev.io/llms.txt
 
 ## Core services in detail
 
@@ -92,5 +92,5 @@ Smart contract and blockchain security auditing: static and manual analysis, for
 - Email: info@spacedev.io · Careers: people@spacedev.io
 - Offices: 25 SW 9th St, Miami FL (USA) · Cornelio Cantera 2857, Montevideo (Uruguay) · El Salvador 5707, Buenos Aires (Argentina) · Carrera 30 # 7AA-207, Medellín (Colombia)
 - Book a call: https://meetings.hubspot.com/federico-sendra/meet-space
-- Social: https://x.com/SpaceDevUy · https://www.linkedin.com/company/spacedev-uy/ · https://www.instagram.com/spacedev.io · https://clutch.co/profile/spacedev
+- Social: https://x.com/SpaceDevUy · https://www.linkedin.com/company/spacedev-io/ · https://www.instagram.com/spacedev.io · https://clutch.co/profile/spacedev
 - Blog RSS: https://spacedev.io/rss.xml
