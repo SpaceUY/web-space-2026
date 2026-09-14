@@ -32,9 +32,9 @@ Stablecoins crossed from crypto trading into mainstream payment infrastructure b
 
 ## Why enterprises are integrating stablecoins now
 
-Two things changed at once. **Regulation caught up**, with the GENIUS Act establishing a federal framework for payment stablecoins, and **infrastructure matured**, so companies no longer have to build from raw blockchain primitives.
+Two things changed at once. **Regulation caught up**, with the [GENIUS Act](https://www.congress.gov/bill/119th-congress/senate-bill/1582/text) establishing a federal framework for payment stablecoins, and **infrastructure matured**, so companies no longer have to build from raw blockchain primitives.
 
-The result is visible across the market. Payment networks and fintechs including Visa, Mastercard, Stripe, PayPal, Payoneer, and Kyriba have integrated or announced stablecoin rails, and the card networks are now building managed stablecoin platforms of their own. The pattern for enterprise stablecoin adoption is telling: it usually arrives **as a feature inside an existing payment product**, not as a separate crypto stack the customer has to run.
+The result is visible across the market. Payment networks and fintechs including Visa, Mastercard, Stripe, PayPal, [Payoneer](https://www.payoneer.com/press/payoneer-to-launch-stablecoin-capabilities-powered-by-bridge-bringing-secure-always-on-digital-money-to-global-businesses/), and [Kyriba](https://www.kyriba.com/news/kyriba-merge-stablecoin-payments-partnership/) have integrated or announced stablecoin rails, and the card networks are now building managed stablecoin platforms of their own. The pattern for enterprise stablecoin adoption is telling: it usually arrives **as a feature inside an existing payment product**, not as a separate crypto stack the customer has to run.
 
 The use cases that justify a build are concrete: **cross-border payouts, supplier settlement, treasury movement, and programmable payments** where money moves on conditions.
 
@@ -61,7 +61,7 @@ Pick the asset for liquidity, acceptance, and regulatory standing, and the chain
 | ----- | ----- | ----- |
 | USDC | Circle | Broad support, cross-chain transfer protocol |
 | USDT | Tether | Largest supply, widest availability |
-| PYUSD | PayPal | Consumer and merchant distribution |
+| PYUSD | Paxos, distributed by PayPal | Consumer and merchant distribution |
 | Bank and network-issued | Various | Emerging, backed by card networks and banks |
 
 Favor a stablecoin with **transparent reserves and clear regulatory status**, since that is what your compliance and finance teams will be asked to defend.
@@ -90,7 +90,7 @@ Finance needs stablecoin balances to behave like any other currency in their boo
 
 ### 6. Enforce compliance controls
 
-Compliance is a design input, not a final review. Stablecoin flows need **KYC at onboarding, transaction monitoring, sanctions screening, and Travel Rule handling**, and under the GENIUS Act, stablecoin issuers are treated as financial institutions with AML obligations. The [US blockchain compliance rules](/blog/blockchain-compliance-us) that apply here should be built into the flow from the start.
+Compliance is a design input, not a final review. Stablecoin flows need **KYC at onboarding, transaction monitoring, sanctions screening, and Travel Rule handling**, and under the [GENIUS Act](https://www.congress.gov/bill/119th-congress/senate-bill/1582/text), stablecoin issuers are treated as financial institutions with AML obligations. The [US blockchain compliance rules](/blog/blockchain-compliance-us) that apply here should be built into the flow from the start.
 
 ## The risk controls your CFO will ask about
 
