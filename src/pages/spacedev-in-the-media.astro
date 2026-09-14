@@ -317,7 +317,12 @@ const videoJsonLd = videoItems.map((v) => ({
 }));
 ---
 
-<BaseLayout title={SEO_TITLE} description={SEO_DESC} jsonLd={[pageJsonLd, ...videoJsonLd]}>
+<BaseLayout
+  title={SEO_TITLE}
+  description={SEO_DESC}
+  breadcrumbs={[{ label: "Home", href: "/" }, { label: "SpaceDev in the Media" }]}
+  jsonLd={[pageJsonLd, ...videoJsonLd]}
+>
 
   <!-- HERO — dark, full bleed -->
   <section class="relative overflow-hidden min-h-[55vh] flex flex-col justify-center">

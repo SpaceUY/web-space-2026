@@ -13,7 +13,7 @@ metadescription: "A practical 2026 guide to enterprise blockchain: real ROI data
 
 ## Key Takeaways
 
-- Enterprise blockchain has moved from pilot stage to production infrastructure. Gartner estimates that 25% of Global 2000 companies will run blockchain in production by end of 2026, up from 11% in 2024.
+- Enterprise blockchain has moved from pilot stage to production infrastructure, driven by clearer regulation and maturing tooling rather than speculative interest.
 - 41% of enterprise implementations now achieve positive ROI, concentrated in financial services, supply chain, and healthcare. The 59% that don't share a common cause: they started with the technology, not the business problem.
 - ROI typically starts to show within 12 to 18 months, driven by savings in reconciliation, reduced audits, and faster partner onboarding.
 - Public vs. private chain is a strategic decision, not a technical preference. The regulatory environment and counterparty trust model determine the right architecture.

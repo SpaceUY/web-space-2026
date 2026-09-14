@@ -5,6 +5,23 @@ import CTA from "../components/ui/CTA.astro";
 import QuoteReveal from "../components/ui/QuoteReveal.astro";
 import CaseStudyCard from "../components/ui/CaseStudyCard.astro";
 import { caseStudies } from "../data/case-studies";
+import { SITE } from "../lib/seo";
+
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "SpaceDev Our Work",
+  url: `${SITE.url}/our-work`,
+  isPartOf: { "@type": "WebSite", url: SITE.url, name: SITE.name },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: caseStudies.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${SITE.url}/our-work/${c.slug}`,
+    })),
+  },
+};
 
 const industries = ["DeFi & Crypto", "NFT & Gaming", "SaaS & Products", "AI & Data", "Enterprise"] as const;
 
@@ -41,6 +58,7 @@ const clientLogos = [
 <BaseLayout
   title="Our Work | SpaceDev: Selected case studies in Web3 and SaaS"
   description="Explore 20+ case studies from SpaceDev: blockchain platforms, NFT marketplaces, fintech, gaming, and enterprise SaaS shipped with our clients."
+  jsonLd={collectionJsonLd}
 >
 
   <!-- ── HERO ── -->
@@ -109,7 +127,7 @@ const clientLogos = [
           <AnimatedCounter value={200} suffix="+" label="Projects delivered" />
           <AnimatedCounter value={50}  suffix="+" label="Clutch reviews"     />
           <AnimatedCounter value={5}   suffix=".0" prefix="" label="Average Clutch rating ★★★★★" />
-          <AnimatedCounter value={8}   suffix="+"  label="Years in the market" />
+          <AnimatedCounter value={9}   suffix="+"  label="Years in the market" />
         </div>
       </div>
     </div>
