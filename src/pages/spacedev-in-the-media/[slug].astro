@@ -85,12 +85,14 @@ const videoJsonLd = item.youtubeId && {
 <BaseLayout
   breadcrumbs={[
     { label: "Home", href: "/" },
-    { label: "Space in the Media", href: "/spacedev-in-the-media" },
+    { label: "SpaceDev in the Media", href: "/spacedev-in-the-media" },
     { label: item.title },
   ]}
   breadcrumbTone="dark"
   title={item.seoTitle ?? `${item.title} | SpaceDev in the Media`}
   description={item.seoDescription ?? item.highlight}
+  ogType="article"
+  ogImage={item.image ?? "/images/og-default.png"}
   jsonLd={videoJsonLd ? [articleJsonLd, videoJsonLd] : articleJsonLd}
 >
   <!-- HERO -->
@@ -143,7 +145,7 @@ const videoJsonLd = item.youtubeId && {
   <!-- BACK + CTA -->
   <section class="bg-sd-light py-12 md:py-16 border-t border-sd-gray-border">
     <div class="mx-auto max-w-[1440px] px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
-      <Button href="/spacedev-in-the-media" variant="secondary">← Back to Space in the Media</Button>
+      <Button href="/spacedev-in-the-media" variant="secondary">← Back to SpaceDev in the Media</Button>
       <div class="text-center md:text-right">
         <p class="text-sm text-sd-text-gray font-body mb-3">Want SpaceDev at your next event?</p>
         <Button href="mailto:marketing@spacedev.io" variant="primary">Contact us</Button>

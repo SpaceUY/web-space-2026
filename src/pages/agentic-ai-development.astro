@@ -7,7 +7,7 @@ import FAQ from "../components/ui/FAQ.astro";
 import AgenticLeadForm from "../components/ui/AgenticLeadForm.astro";
 import QuoteReveal from "../components/ui/QuoteReveal.astro";
 import AnimatedCounter from "../components/ui/AnimatedCounter.astro";
-import { SITE } from "../lib/seo";
+import { organizationJsonLd } from "../lib/seo";
 import { agenticAiData } from "../data/services";
 
 const {
@@ -31,13 +31,14 @@ const {
 // FAQPage schema is NOT built here — the <FAQ> component rendered below
 // already emits it for the same `faqs` array. A second, hand-built copy
 // here would duplicate the block in the page's ld+json output.
+const { "@context": _orgContext, ...providerJsonLd } = organizationJsonLd;
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
     name: serviceName,
     serviceType: serviceType,
-    provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    provider: providerJsonLd,
     areaServed: ["United States", "Latin America"],
     description: seo.description,
   },
