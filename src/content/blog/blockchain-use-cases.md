@@ -84,6 +84,8 @@ That is the strongest number in this article, and it is worth being precise abou
 
 ## 4. Regulated crypto exchange infrastructure
 
+![NDAX, a regulated Canadian crypto exchange, where custody, KYC and AML pipelines, transaction monitoring and client asset segregation sit behind the trading interface](/images/content/blockchain-use-cases/blockchain-use-cases-04-regulated-exchange.webp)
+
 **The problem.** Running a compliant exchange in a regulated market is mostly not a trading problem. It is custody, KYC and AML pipelines, transaction monitoring, reporting obligations, and segregation of client assets, with a matching engine attached.
 
 **Why it belongs on this list.** Exchanges rarely appear on enterprise blockchain use case lists because they are treated as crypto-native rather than enterprise. That is a mistake. **A regulated exchange is the clearest example of blockchain infrastructure operating inside a national regulatory perimeter**, and the compliance architecture is the same one banks now need for tokenized products.
@@ -149,6 +151,8 @@ There is a cost most teams miss when they adopt this:
 **Projects:** [Blockus](/our-work/blockus), Web3 infrastructure for game studios; [W3E](/our-work/w3e), a gaming launchpad for IDO and INO participation; and [FightFi](/our-work/fightfi), a fight-fan engagement platform.
 
 ## 9. Digital ownership and marketplaces
+
+![Rarible, a community-owned NFT marketplace, where the durable part of the category turned out to be the marketplace infrastructure, the programmable royalties and the provable ownership rather than the speculation](/images/content/blockchain-use-cases/blockchain-use-cases-09-marketplaces.webp)
 
 **The problem.** Digital goods have no native scarcity or portability, and creators capture value only at the point of first sale.
 
