@@ -84,7 +84,7 @@ That is the strongest number in this article, and it is worth being precise abou
 
 ## 4. Regulated crypto exchange infrastructure
 
-![NDAX, a regulated Canadian crypto exchange, where custody, KYC and AML pipelines, transaction monitoring and client asset segregation sit behind the trading interface](/images/content/blockchain-use-cases/blockchain-use-cases-04-regulated-exchange.webp)
+![Four NDAX app screens: wallets with the portfolio value in Canadian dollars, an address book of verified contacts, buying ETH with CAD, and the ETH to CAD order book with open and filled orders](/images/content/blockchain-use-cases/blockchain-use-cases-04-regulated-exchange.webp)
 
 **The problem.** Running a compliant exchange in a regulated market is mostly not a trading problem. It is custody, KYC and AML pipelines, transaction monitoring, reporting obligations, and segregation of client assets, with a matching engine attached.
 
@@ -152,7 +152,7 @@ There is a cost most teams miss when they adopt this:
 
 ## 9. Digital ownership and marketplaces
 
-![Rarible, a community-owned NFT marketplace, where the durable part of the category turned out to be the marketplace infrastructure, the programmable royalties and the provable ownership rather than the speculation](/images/content/blockchain-use-cases/blockchain-use-cases-09-marketplaces.webp)
+![The Rarible marketplace on a laptop, headlined as an NFT marketplace that makes communities and brands happen in Web3, with collection artwork from several chains alongside](/images/content/blockchain-use-cases/blockchain-use-cases-09-marketplaces.webp)
 
 **The problem.** Digital goods have no native scarcity or portability, and creators capture value only at the point of first sale.
 
