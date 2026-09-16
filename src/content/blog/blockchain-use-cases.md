@@ -60,7 +60,7 @@ That is the strongest number in this article, and it is worth being precise abou
 
 ## 2. Blockchain for carbon records and verifiable energy claims
 
-![B4E Carbon tokenization screen showing a renewable energy certificate submitted for tokenization alongside its asset trading price history](/images/case-studies/blockchain-for-energy/gallery/gallery1.png)
+![B4E Carbon tokenization screen showing a renewable energy certificate submitted for tokenization alongside its asset trading price history](/images/content/blockchain-use-cases/02-carbon-records.png)
 
 **The problem.** Renewable energy certificates can be double counted, and voluntary carbon offsets have repeatedly been shown to represent reductions that did not occur. Both failures come from the same source: certificates issued and retired in systems that no external party can audit.
 
@@ -90,7 +90,7 @@ That is the strongest number in this article, and it is worth being precise abou
 
 ## 5. Real-world asset tokenization
 
-![Bondi Finance bond detail screen showing a tokenized corporate bond with its price history, face value, coupon rate and semiannual coupon schedule](/images/case-studies/bondi-finance/gallery/gallery1.webp)
+![Bondi Finance bond detail screen showing a tokenized corporate bond with its price history, face value, coupon rate and semiannual coupon schedule](/images/content/blockchain-use-cases/05-rwa-tokenization.png)
 
 **The problem.** Most valuable assets, meaning private credit, fixed income, funds and commodities, settle slowly through intermediaries, require large minimums, and are effectively illiquid between settlement dates.
 
@@ -106,7 +106,7 @@ Related services: [asset tokenization](/blockchain-development-services/asset-to
 
 ## 6. Blockchain provenance for physical goods
 
-![Collector Crypt landing page explaining its three steps: cards sent to secured insured vaults, authenticated and scanned, then linked to the owner's profile or wallet](/images/case-studies/collector-crypt/gallery/gallery1.png)
+![Collector Crypt landing page explaining its three steps: cards sent to secured insured vaults, authenticated and scanned, then linked to the owner's profile or wallet](/images/content/blockchain-use-cases/06-provenance.png)
 
 **The problem.** Authentication of physical collectibles depends on trust in a grader and in a chain of custody that is usually a paper certificate and a photograph.
 
@@ -118,7 +118,7 @@ Related services: [asset tokenization](/blockchain-development-services/asset-to
 
 ## 7. Chain abstraction and wallet infrastructure
 
-![Byrrgis trading terminal showing a token swap from ETH to LINK in a single panel, with estimated network fees and platform fee listed alongside the market data](/images/case-studies/byrrgis/gallery/gallery1.png)
+![Byrrgis trading terminal showing a token swap from ETH to LINK in a single panel, with estimated network fees and platform fee listed alongside the market data](/images/content/blockchain-use-cases/07-chain-abstraction.png)
 
 **The problem.** The single largest barrier to blockchain adoption is not throughput or cost. It is that using it requires managing seed phrases, holding a volatile gas token on every network, and understanding bridges.
 
