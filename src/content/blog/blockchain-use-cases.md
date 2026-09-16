@@ -6,7 +6,7 @@ author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["blockchain", "enterprise", "institutional"]
 readTime: 14
-cover: "/images/content/blockchain-use-cases/blockchain-use-cases-cover.png"
+cover: "/images/content/blockchain-use-cases/blockchain-use-cases-cover.webp"
 metatitle: "Blockchain Use Cases: What Actually Shipped, and What Didn't"
 metadescription: "Blockchain use cases that reached production, the projects behind each one, and an honest account of the categories that keep getting listed and keep not shipping."
 takeaways:
@@ -48,8 +48,6 @@ That is the filter for everything that follows.
 
 ## 1. Blockchain in commodity logistics and settlement
 
-![Industrial IoT sensors capturing volume and quality at the point of activity, committed on-chain so both counterparties read the same record](/images/content/blockchain-use-cases/blockchain-use-cases-01-commodity-logistics.png)
-
 **The problem.** Every hand-off in bulk commodity transport becomes a dispute. Volumes don't match between counterparties, paperwork lags the physical movement, and settlement drags for weeks while teams reconcile by hand. The root cause is that each party keeps its own records, so there is no shared account of what physically moved.
 
 **What blockchain changes.** Industrial IoT sensors capture volume, quality and movement at the point of activity, and that field data is committed on-chain where no counterparty can alter it afterwards. Both sides read the same record. Reconciliation stops being a job.
@@ -62,6 +60,8 @@ That is the strongest number in this article, and it is worth being precise abou
 
 ## 2. Blockchain for carbon records and verifiable energy claims
 
+![A completed B4E Carbon record linked to its source data and 127 supporting documents, above the registry lifecycle running from onboarding and data collection through independent verification to issuance, transfer and permanent retirement](/images/content/blockchain-use-cases/blockchain-use-cases-02-carbon-records.webp)
+
 **The problem.** Renewable energy certificates can be double counted, and voluntary carbon offsets have repeatedly been shown to represent reductions that did not occur. Both failures come from the same source: certificates issued and retired in systems that no external party can audit.
 
 **What blockchain changes.** Each certificate becomes a unique on-chain unit, issued once, transferred transparently, retired permanently, with provenance traceable from origin to retirement.
@@ -72,7 +72,7 @@ That is the strongest number in this article, and it is worth being precise abou
 
 ## 3. Blockchain for dollar access and stablecoin rails
 
-![Buying and selling dollars from a phone, with the fiat on and off ramps, the local banking relationships and the KYC hidden behind the interface](/images/content/blockchain-use-cases/blockchain-use-cases-03-dollar-access.png)
+![Three Zenda app screens: live quotes with buy and sell, choosing how much USDT to buy and paying by bank transfer, RedPagos or Mercado Pago, and picking which connected wallet to sell from](/images/content/blockchain-use-cases/blockchain-use-cases-03-dollar-access.webp)
 
 **The problem.** In much of Latin America, holding local currency is a losing position and accessing dollars through the banking system is slow, expensive or restricted. This is not a theoretical inefficiency; it is a daily one.
 
@@ -92,7 +92,7 @@ That is the strongest number in this article, and it is worth being precise abou
 
 ## 5. Real-world asset tokenization
 
-![A bond-like instrument brought on-chain, with its settlement and coupon distribution made programmable](/images/content/blockchain-use-cases/blockchain-use-cases-05-rwa-tokenization.png)
+![Bondi Finance showing a tokenized corporate bond with its price history, face value, coupon rate and semiannual coupon schedule, next to the panel for buying the bond token with USDC](/images/content/blockchain-use-cases/blockchain-use-cases-05-rwa-tokenization.webp)
 
 **The problem.** Most valuable assets, meaning private credit, fixed income, funds and commodities, settle slowly through intermediaries, require large minimums, and are effectively illiquid between settlement dates.
 
@@ -108,7 +108,7 @@ Related services: [asset tokenization](/blockchain-development-services/asset-to
 
 ## 6. Blockchain provenance for physical goods
 
-![A graded physical collectible held in a vault, with its authentication and custody record tied to an on-chain claim](/images/content/blockchain-use-cases/blockchain-use-cases-06-provenance.png)
+![The Collector Crypt marketplace listing graded trading cards by certification and grade, with slabbed physical cards overlaid to show that each listing is a vaulted item](/images/content/blockchain-use-cases/blockchain-use-cases-06-provenance.webp)
 
 **The problem.** Authentication of physical collectibles depends on trust in a grader and in a chain of custody that is usually a paper certificate and a photograph.
 
@@ -120,7 +120,7 @@ Related services: [asset tokenization](/blockchain-development-services/asset-to
 
 ## 7. Chain abstraction and wallet infrastructure
 
-![A cross-chain swap executed in a single signature, with the fee payable in a token the user already holds](/images/content/blockchain-use-cases/blockchain-use-cases-07-chain-abstraction.png)
+![The Byrrgis terminal with a token's market data, vetting score and live transactions on the left, and buy, sell and swap in a single panel on the right](/images/content/blockchain-use-cases/blockchain-use-cases-07-chain-abstraction.webp)
 
 **The problem.** The single largest barrier to blockchain adoption is not throughput or cost. It is that using it requires managing seed phrases, holding a volatile gas token on every network, and understanding bridges.
 
@@ -138,7 +138,7 @@ There is a cost most teams miss when they adopt this:
 
 ## 8. Blockchain in gaming and consumer onboarding
 
-![A player signing in and owning in-game assets without ever meeting a wallet setup flow, with the blockchain left as an implementation detail](/images/content/blockchain-use-cases/blockchain-use-cases-08-gaming-onboarding.png)
+![A fight fan engagement screen with a day streak, a points balance and quests to earn rewards, none of which asks the player to set up a wallet](/images/content/blockchain-use-cases/blockchain-use-cases-08-gaming-onboarding.webp)
 
 **The problem.** Game studios want digital ownership and player-driven economies. They do not want to become blockchain companies, and their players will not tolerate a wallet setup flow.
 
