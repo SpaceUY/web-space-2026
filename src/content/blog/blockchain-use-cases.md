@@ -62,8 +62,6 @@ That is the strongest number in this article, and it is worth being precise abou
 
 ## 2. Blockchain for carbon records and verifiable energy claims
 
-![Carbon and renewable energy certificates issued, transferred and retired as unique on-chain units](/images/content/blockchain-use-cases/blockchain-use-cases-02-carbon-records.png)
-
 **The problem.** Renewable energy certificates can be double counted, and voluntary carbon offsets have repeatedly been shown to represent reductions that did not occur. Both failures come from the same source: certificates issued and retired in systems that no external party can audit.
 
 **What blockchain changes.** Each certificate becomes a unique on-chain unit, issued once, transferred transparently, retired permanently, with provenance traceable from origin to retirement.
@@ -73,6 +71,8 @@ That is the strongest number in this article, and it is worth being precise abou
 **Project:** B4E Carbon, part of the same [B4E platform](/our-work/blockchain-for-energy).
 
 ## 3. Blockchain for dollar access and stablecoin rails
+
+![Buying and selling dollars from a phone, with the fiat on and off ramps, the local banking relationships and the KYC hidden behind the interface](/images/content/blockchain-use-cases/blockchain-use-cases-03-dollar-access.png)
 
 **The problem.** In much of Latin America, holding local currency is a losing position and accessing dollars through the banking system is slow, expensive or restricted. This is not a theoretical inefficiency; it is a daily one.
 
@@ -137,6 +137,8 @@ There is a cost most teams miss when they adopt this:
 **Project:** [Byrrgis](/our-work/byrrgis), a non-custodial multi-chain trading terminal executing swaps across Solana, Ethereum and BNB Chain in one signature, with gas payable in any major token. Further reading: [wallet connections](/blog/wallet-connections).
 
 ## 8. Blockchain in gaming and consumer onboarding
+
+![A player signing in and owning in-game assets without ever meeting a wallet setup flow, with the blockchain left as an implementation detail](/images/content/blockchain-use-cases/blockchain-use-cases-08-gaming-onboarding.png)
 
 **The problem.** Game studios want digital ownership and player-driven economies. They do not want to become blockchain companies, and their players will not tolerate a wallet setup flow.
 
