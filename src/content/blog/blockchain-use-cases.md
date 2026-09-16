@@ -48,8 +48,6 @@ That is the filter for everything that follows.
 
 ## 1. Blockchain in commodity logistics and settlement
 
-![Industrial storage tanks and pipelines at dusk, overlaid with thin lines of light tracing measurements between them](/images/content/blockchain-use-cases/illustration-shared-record.png)
-
 **The problem.** Every hand-off in bulk commodity transport becomes a dispute. Volumes don't match between counterparties, paperwork lags the physical movement, and settlement drags for weeks while teams reconcile by hand. The root cause is that each party keeps its own records, so there is no shared account of what physically moved.
 
 **What blockchain changes.** Industrial IoT sensors capture volume, quality and movement at the point of activity, and that field data is committed on-chain where no counterparty can alter it afterwards. Both sides read the same record. Reconciliation stops being a job.
@@ -61,6 +59,8 @@ That is the strongest number in this article, and it is worth being precise abou
 **Project:** [Blockchain For Energy (B4E)](/our-work/blockchain-for-energy), a member-led non-profit consortium serving the energy industry, based in Houston, with members including Chevron and Worley. The platform launched in 2023 as B4E Commodity Transport and [went live in production with an independent exploration and production company](https://b4e.net/solutions/logistics) in October 2024. Related services: [blockchain for supply chain and logistics](/blockchain-development-services/industry/supply-chain-and-logistics) and [blockchain for energy](/blockchain-development-services/industry/energy).
 
 ## 2. Blockchain for carbon records and verifiable energy claims
+
+![B4E Carbon tokenization screen showing a renewable energy certificate submitted for tokenization alongside its asset trading price history](/images/case-studies/blockchain-for-energy/gallery/gallery1.png)
 
 **The problem.** Renewable energy certificates can be double counted, and voluntary carbon offsets have repeatedly been shown to represent reductions that did not occur. Both failures come from the same source: certificates issued and retired in systems that no external party can audit.
 
@@ -90,7 +90,7 @@ That is the strongest number in this article, and it is worth being precise abou
 
 ## 5. Real-world asset tokenization
 
-![A gold bar and a stack of paper certificates dissolving into small illuminated blocks against a dark background](/images/content/blockchain-use-cases/illustration-tokenization-invisible.png)
+![Bondi Finance bond detail screen showing a tokenized corporate bond with its price history, face value, coupon rate and semiannual coupon schedule](/images/case-studies/bondi-finance/gallery/gallery1.webp)
 
 **The problem.** Most valuable assets, meaning private credit, fixed income, funds and commodities, settle slowly through intermediaries, require large minimums, and are effectively illiquid between settlement dates.
 
@@ -106,6 +106,8 @@ Related services: [asset tokenization](/blockchain-development-services/asset-to
 
 ## 6. Blockchain provenance for physical goods
 
+![Collector Crypt landing page explaining its three steps: cards sent to secured insured vaults, authenticated and scanned, then linked to the owner's profile or wallet](/images/case-studies/collector-crypt/gallery/gallery1.png)
+
 **The problem.** Authentication of physical collectibles depends on trust in a grader and in a chain of custody that is usually a paper certificate and a photograph.
 
 **What blockchain changes.** The grading and the custody record become an on-chain claim tied to a vaulted physical item, which means the asset can be traded without moving it and without re-verifying it at every hand-off.
@@ -115,6 +117,8 @@ Related services: [asset tokenization](/blockchain-development-services/asset-to
 **Project:** [Collector Crypt](/our-work/collector-crypt), graded physical trading cards, vaulted and tokenized across five blockchains.
 
 ## 7. Chain abstraction and wallet infrastructure
+
+![Byrrgis trading terminal showing a token swap from ETH to LINK in a single panel, with estimated network fees and platform fee listed alongside the market data](/images/case-studies/byrrgis/gallery/gallery1.png)
 
 **The problem.** The single largest barrier to blockchain adoption is not throughput or cost. It is that using it requires managing seed phrases, holding a volatile gas token on every network, and understanding bridges.
 
@@ -175,8 +179,6 @@ That is a narrower claim than "blockchain secures patient data," and it is the o
 The primitive is proven, though. Anchoring field data at the point of capture so counterparties cannot dispute it later is precisely what [B4E Logistics](https://b4e.net/solutions/logistics) does with IIoT sensors. The same architecture applied to clinical data is not a research question. It is an integration and incentives question. Related service: [blockchain for healthcare](/blockchain-development-services/industry/healthcare).
 
 ## The blockchain use cases that keep getting listed and keep not happening
-
-![Four separate groups of figures standing on isolated platforms, each holding one piece of an incomplete bridge](/images/content/blockchain-use-cases/illustration-coordination-failure.png)
 
 Four categories appear on nearly every blockchain use case list and have a poor delivery record. Naming them is more useful than repeating them.
 
