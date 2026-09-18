@@ -1,10 +1,143 @@
 # GEO Audit Report: SpaceDev
 
-**Última actualización:** 2026-09-14 (Ronda 8), ver resumen ejecutivo actual justo debajo. El resto del documento, a partir de "Historial de auditorías anteriores", queda como archivo de las Rondas 1-7 (útil para ver qué se investigó y descartó, para no repetirlo).
+**Última actualización:** 2026-09-18 (Ronda 9), ver resumen ejecutivo actual justo debajo. El resto del documento, a partir de "Historial de auditorías anteriores", queda como archivo de las Rondas 1-8 (útil para ver qué se investigó y descartó, para no repetirlo).
 
 ---
 
-## RONDA 8 (2026-09-14): resumen ejecutivo actual
+## RONDA 9 (2026-09-18): resumen ejecutivo actual
+
+**Metodología de esta ronda:** 5 subagentes en paralelo (AI Citability + Brand Authority, Technical, Schema, Content E-E-A-T, Platform Optimization), cada uno con regla de anclaje explícita. Primera corrida se cortó a mitad de camino por un rate limit de la cuenta (spend limit, HTTP 429); se relanzó completa en Sonnet 5 con presupuesto acotado por agente (sin sub-agentes anidados, verificaciones priorizadas). Baseline: 82/100 (2026-09-14, post-implementación del mismo día), tomado de `~/.geo-prospects/audits/spacedev.io-2026-09-14.json`.
+
+Cobertura: las 158 URLs del sitemap verificadas una por una por status HTTP, todo lo publicado desde el 14/9 auditado a fondo (post hub `/blog/blockchain-use-cases`, PR #135; artículo propio del Hedera Council y reorden de `/spacedev-in-the-media`, PR #136, mergeado el mismo día de esta auditoría), más reverificación en vivo de los hallazgos abiertos de la Ronda 8.
+
+### Overall GEO Score: 82/100 (Good), se mantiene igual que 2026-09-14
+
+| Categoría | Score 09-14 | Score hoy (09-18) | Por qué cambió |
+|---|---|---|---|
+| AI Citability | 79/100 | **81/100** | +2: el post nuevo `/blog/blockchain-use-cases` trae 6 FAQ autocontenidas y estadísticas con fuente nombrada (IMF vía "51 Insights", BlackRock BUIDL, datos propios de case studies), justo el patrón que la ronda anterior pedía como mejora. |
+| Brand Authority | 78/100 | **76/100** | -2, neto entre dos hallazgos que se cancelan parcialmente: se resolvió el hallazgo Alto que venía abierto (Hedera Council ahora tiene página propia, verificada en vivo, y presencia en `llms.txt`/`llms-full.txt`), pero se confirmó uno nuevo de severidad Alta que pesa más: 3 de 4 testimonios atribuidos a clientes vía Clutch en case studies no son verificables en Clutch real (ver R9-A1 más abajo). |
+| Content E-E-A-T | 77/100 | **75/100** | -2: mismo motivo que Brand Authority (R9-A1 pega directo en Trustworthiness), compensado parcialmente por la calidad alta de los 2 artículos nuevos (Experience y Authoritativeness fuertes, fuentes primarias reales enlazadas). |
+| Technical GEO | 95/100 | **95/100** | Se repite. Las 158 URLs del sitemap dieron 200 sin excepción, robots.txt y sitemap consistentes, SSR completo verificado en las páginas nuevas y viejas revisadas. Los 2 hallazgos Bajos que venían abiertos (CSP con dominios muertos de HubSpot, marquee del hero con `loading="eager"`) siguen exactamente igual. |
+| Schema & Structured Data | 98/100 | **98/100** | Se repite. 34 bloques JSON-LD revisados sobre 13 páginas, cero errores de sintaxis, `Organization` idéntico en las 11 páginas donde aparece, `foundingDate: "2017"` consistente. El único gap que impide llegar a 100 sigue siendo el mismo tipo (falta `citation`/`isBasedOn` en el `Article` del Hedera hacia la fuente que ya linkea en el cuerpo), no es nuevo. |
+| Platform Optimization | 70/100 | **72/100** | +2: corroboración externa independiente y verificable del Hedera Council (hedera.com, más prensa cripto de terceros como coinfomania.com y crypto-economy.com nombrando a SpaceDev), fuera del control editorial del sitio. Sube puntualmente ChatGPT (67→70) y Perplexity (60→62). Google Gemini (39) y Bing Copilot (59) se repiten, sin evidencia nueva que los mueva. |
+| **Overall GEO Score** | **82/100** | **81.7 → 82/100** | |
+
+**Rating: Good (75-89).** El score compuesto no se mueve, pero eso esconde el hallazgo más serio de esta ronda (R9-A1, abajo), que no pesa lo suficiente en el compuesto ponderado como para bajar el número, pero sí lo suficiente como para encabezar este reporte: es un riesgo de reputación y de exposición legal activo, no un ajuste de contenido.
+
+---
+
+## Hallazgos nuevos (Ronda 9)
+
+### Severidad Alta
+
+#### R9-A1. Tres de cuatro testimonios atribuidos a clientes vía Clutch no son verificables, y uno se etiqueta explícitamente como "Verified review on Clutch" siendo falso
+
+**Estado actual:** SpaceDev tiene un perfil real y activo en Clutch (`clutch.co/profile/spacedev`, 52 reviews, promedio 5.0, "Premier Verified", hoy en posición #2 del directorio `clutch.co/developers/blockchain`). De los 4 testimonios que el sitio atribuye a clientes reales vía Clutch, **solo uno es verificable**: Byrrgis (COO, review real del 7/10/2025, texto coincide palabra por palabra, `src/content/case-studies/byrrgis.md:61-62`). Los otros tres no aparecen en ningún review real de Clutch, ni bajo ese nombre de empresa ni bajo un rol compatible; las frases exactas solo existen en spacedev.io:
+
+- Blockus, "Co-founder, Blockus" → `src/content/case-studies/blockus.md:51`
+- Drata, "CTO, Drata" → `src/content/case-studies/drata.md:43`
+- Rarible, "Engineering Lead, Rarible" → `src/content/case-studies/rarible.md:50`
+
+Agravante confirmado en esta ronda: `src/pages/agentic-ai-development.astro:181-186` reutiliza la cita de Drata con el comentario de código `<!-- TESTIMONIAL (verified Clutch review) -->` y el label visible en pantalla **"★★★★★ · Verified review on Clutch"**. No es solo una cita no verificable, es una afirmación explícita de verificación que hoy es falsa.
+
+**Por qué es alta severidad:** si un sistema de IA (o una persona) recupera esta página y pregunta "¿qué dicen los clientes de SpaceDev en Clutch?", puede reproducir una cita atribuida a un cliente real (Drata, Blockus, Rarible) que esa empresa nunca publicó ahí. Es riesgo de reputación y de exposición legal, no un problema cosmético de SEO, y viola directamente la regla explícita del proyecto de nunca inventar testimonios de Clutch que no existen.
+
+**Estado deseado:** decisión del cliente entre dos caminos: (a) retirar el badge/atribución "Clutch" de esas 3 citas y dejarlas como testimonios internos sin atribución de plataforma, o (b) reemplazarlas por reviews reales verificables en `clutch.co/profile/spacedev` con link a la review exacta (como ya se hace con los testimonios de la home, que sí tienen `href` a IDs de review específicos, `src/pages/index.astro:449-452`). En cualquier caso, corregir de inmediato el label "Verified review on Clutch" en `agentic-ai-development.astro:181-186`, que es la afirmación más riesgosa de las dos.
+
+**Veredicto: NECESARIO, urgente.** Es el hallazgo que más pesa de toda la ronda, aunque no sea el que más mueve el score compuesto.
+
+**Archivos:** `src/content/case-studies/blockus.md:51`, `src/content/case-studies/drata.md:43`, `src/content/case-studies/rarible.md:50`, `src/pages/agentic-ai-development.astro:181-186`.
+
+**Decisión del cliente (2026-09-18, misma sesión):** Vero decidió dejarlo abierto y no priorizarlo por ahora ("no le daré importancia"). Queda documentado tal cual está, sin fix de código en esta ronda. Sigue siendo un hallazgo real y válido, no se descarta ni se recalifica su severidad; solo se registra que no hay una acción en curso. Si una ronda futura lo reencuentra, no es un hallazgo nuevo: es este mismo, seguir citando R9-A1, no re-priorizarlo como si fuera una sorpresa.
+
+---
+
+### Severidad Media
+
+#### R9-M1. `Article` del anuncio de Hedera sin `citation`/`isBasedOn` hacia la fuente que ya linkea en el cuerpo
+
+**Estado actual:** `/spacedev-in-the-media/spacedev-becomes-a-hedera-community-partner` emite un `Article` válido (`headline`, `image`, `datePublished`, `author`, `publisher`, `mentions`), pero sin `citation` ni `isBasedOn` pese a que el cuerpo de la página linkea dos veces a `hedera.com/blog/...`. Tampoco tiene `dateModified` ni `description`. El `BlogPosting` de `/blog/blockchain-use-cases` sí es un ejemplo completo (con `description`, `dateModified`, `speakable`), este artículo está por debajo de ese estándar interno.
+
+**Por qué importa:** `citation`/`isBasedOn` es la forma estándar de decirle a un sistema de IA "esta afirmación viene de esta fuente externa verificable", justo lo que un anuncio de partnership necesita para que se le atribuya correctamente.
+
+**Estado deseado:** agregar `citation` apuntando a las URLs de Hedera ya presentes en el cuerpo, más `dateModified` y `description`.
+
+**Veredicto: OPCIONAL** (no rompe nada, mejora precisión de atribución).
+
+**Archivo:** `src/pages/spacedev-in-the-media/[slug].astro` (template del `Article`).
+
+#### R9-M2. "50+ perfect 5-star ratings" no es exacto
+
+**Estado actual:** Clutch lista 52 reviews con promedio 5.0, pero al menos 2 tienen alguna categoría de rating por debajo de 5 (no son "perfect" en sentido estricto). La inconsistencia interna "40 vs 50+" que se había marcado en una ronda anterior ya no existe en el repo (verificado: `index.astro:441` y `about-us.astro:214,233` dicen los dos "50+"), así que eso queda cerrado.
+
+**Por qué importa:** "perfect" es una palabra absoluta y falsable; un sistema de IA que cruce esto contra Clutch puede marcarlo como inexacto.
+
+**Estado deseado:** cambiar "perfect 5-star ratings" por lenguaje exacto, por ejemplo "5.0-average rating on Clutch (52 reviews)".
+
+**Veredicto: OPCIONAL**, bajo esfuerzo.
+
+**Archivos:** `src/pages/index.astro:441`, `src/pages/about-us.astro:214,233`, `public/llms.txt`.
+
+#### R9-M3. 42 de los 70 posts del blog (61%) no citan ninguna fuente externa
+
+**Estado actual:** grep completo sobre `src/content/blog/` (69-70 archivos): 27 posts tienen al menos un link externo en el cuerpo, 42 no tienen ninguno. El post nuevo `/blog/blockchain-use-cases` es la excepción positiva (34 links internos, fuentes nombradas), no la norma.
+
+**Por qué importa:** sin fuente verificable, la mayoría del blog no le da a un lector ni a un sistema de IA forma de comprobar las afirmaciones contra una fuente primaria. No implica que el contenido sea falso, pero sí que no es verificable en un click.
+
+**Estado deseado:** no es un fix de una sesión; priorizar los posts con más tráfico o más antiguos para sumarles al menos 1-2 fuentes primarias, siguiendo el patrón que ya funciona en `blockchain-use-cases.md`.
+
+**Veredicto: OPCIONAL**, trabajo de mediano plazo, no bloqueante.
+
+#### R9-M4. Página `asset-tokenization/real-estate` sigue sin contenido FAQ (no solo sin schema)
+
+**Estado actual:** corrección sobre lo que decía la Ronda 8: no es que haya FAQ visible sin marcar, es que **no hay ninguna sección de preguntas y respuestas en el HTML**, ni hay campo `faqs` definido en `realEstateTokData` (`src/data/services.ts`). El `<FAQ items={data.faqs} .../>` del layout está condicionado a que el array exista, así que hoy simplemente no se renderiza.
+
+**Por qué importa:** es la única página de servicio core sin ese formato de alta citabilidad; si se agrega contenido, el `FAQPage` schema sale gratis porque el patrón ya está armado en el layout compartido.
+
+**Estado deseado:** decisión de contenido con el cliente: agregar 4-6 preguntas reales de tokenización inmobiliaria, o cerrar el hallazgo como "no aplica" en el próximo baseline.
+
+**Veredicto: OPCIONAL**, depende de una decisión de contenido, no es un bug.
+
+**Archivo:** `src/data/services.ts` (`realEstateTokData`).
+
+#### R9-M5 (reconfirmado, sin cambios). Cero visibilidad en búsquedas de comprador no-branded
+
+**Estado actual:** búsqueda en vivo hoy de "best blockchain development company for smart contracts": SpaceDev no aparece ni en resultados orgánicos ni en síntesis. Dominan DesignRush, Clutch, GoodFirms, Sortlist y competidores directos (Dev Technosys, Antier Solutions). Solo se verificó 1 de las 6 consultas del baseline por presupuesto; las otras 5 no se remidieron esta ronda.
+
+**Veredicto: NECESARIO**, no se resuelve con un commit, es outreach y contenido de mediano/largo plazo.
+
+---
+
+### Severidad Baja
+
+- **CSP con `forms.hubspot.com` y `forms.hscollectedforms.net` muertos** (`vercel.json:47`): reconfirmado, cero referencias en el código a esos dominios (los formularios reales postean a `api.hsforms.com`, correctamente permitido). Sin cambios desde Ronda 8. Veredicto: OPCIONAL, riesgo cero.
+- **Marquee del hero con `loading="eager"`**: reconfirmado, el set visible (16-17 logos) sigue eager; el set duplicado `aria-hidden` sí es lazy. Pendiente de aprobación del cliente desde Ronda 8, sin cambios.
+- **Fuentes nombradas pero no enlazadas:** la cita de Gartner en `the-future-of-ai-agents-in-business-why-40-projects-will-fail-by-2027.md` (líneas 2-3, 20, 36) es correcta en el dato ("over 40% of agentic AI projects... by end of 2027", verificado contra el comunicado real de Gartner del 25/6/2025) pero no lleva link a la fuente. Mismo patrón con "IMF data via 51 Insights" en `blockchain-use-cases.md:79,193`. Veredicto: OPCIONAL.
+- **Covers de blog en PNG pesado sin convertir a WebP:** reconfirmado, 600-640 KB cada uno en `public/images/content/*/cover.png`. Sin cambios desde Ronda 8.
+- **Artículos de "SpaceDev in the Media" sin autor humano visible:** el JSON-LD atribuye `author: Organization`, no una persona, pese a que el cuerpo cita a Juan Manuel Sobral en primera persona. Patrón consistente en todo ese formato de página, no específico del artículo de Hedera. Veredicto: OPCIONAL.
+- **39 posts viejos de Framer en 404:** reconfirmado (muestra: `/blog/why-your-code-should-be-as-simple-as-possible` sigue 404). Decisión ya tomada en rondas anteriores: se dejan. Sin cambios.
+
+### Info / reconfirmado sin cambios esta ronda
+
+- **Google Gemini (39/100):** colisión de entidad en Wikipedia/Wikidata sigue exactamente igual, reverificada en vivo hoy ("SpaceDev" en Wikipedia/Wikidata sigue resolviendo a la aeroespacial de Poway, California, disuelta/absorbida por Sierra Nevada Corporation). Causa raíz fuera del repo.
+- **`/.well-known/indexnow-key.txt` sigue en 404:** sin cambios respecto de rondas anteriores, impacto bajo (protocolo opcional de Bing/Yandex).
+- **"Top 5 Blockchain Companies worldwide by Clutch" (llms.txt):** verificado hoy como **cierto en este momento** (SpaceDev en posición #2 de `clutch.co/developers/blockchain`), aunque sigue siendo un directorio dinámico, no un premio otorgado; puede cambiar de posición sin aviso. Decisión del cliente de rondas anteriores de dejar la frase como está queda reforzada, no cuestionada.
+- **`CLAUDE.md` del proyecto desactualizado:** la sección de redes sociales todavía lista `linkedin.com/company/spacedev-uy/` como la URL "oficial", pero esa URL redirige (301) a `spacedev-io` desde la Ronda 8. El JSON-LD del sitio ya usa la URL correcta; es la documentación interna la que quedó vieja, no el sitio.
+
+## Confirmado sin problema esta ronda
+
+- **158/158 URLs del sitemap devuelven 200**, cero redirects, cero errores. `sitemap-0.xml` coincide 1 a 1 con robots.txt.
+- **Hedera Council resuelto de punta a punta:** página en vivo (200), en el sitemap, enlazada server-side desde `/spacedev-in-the-media` (primera en el orden), en `llms.txt` y `llms-full.txt`, con schema `Article` válido desde el día 1, sin regresiones.
+- **`Organization.sameAs`:** las 8 URLs responden 200 sin redirigir, incluido LinkedIn (`spacedev-io`), confirmado de nuevo.
+- **`foundingDate: "2017"`** consistente en todo el JSON-LD revisado.
+- **`privacy-policy.astro`** sigue sin mencionar GTM ni HotJar, sí menciona Clarity y Apollo.
+- **Cero `FAQPage` duplicado**, cero regresión de schema en el contenido nuevo.
+
+---
+
+## Historial de auditorías anteriores (Rondas 1-8)
+
+
 
 **Metodología de esta ronda:** 5 subagentes en paralelo (AI Citability, Brand Authority, Technical, Content E-E-A-T, Schema, Platform Optimization), cada uno con instrucción explícita de regla de anclaje (un sub-score solo se mueve con un hallazgo concreto y verificado, nunca por reevaluación desde cero) y de verificar todo contra el sitio en vivo o el archivo exacto del repo con línea, nunca contra supuestos. Baseline: el último score cerrado y reconciliado, 78/100 (2026-09-02), tomado de `~/.geo-prospects/audits/spacedev.io-2026-09-02.json` (la fuente que alimenta el dashboard de marketing), no de ningún número intermedio.
 
