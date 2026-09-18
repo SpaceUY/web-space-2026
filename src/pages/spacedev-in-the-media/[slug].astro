@@ -50,11 +50,19 @@ const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: item.title,
+  description: item.seoDescription ?? item.highlight,
   image: item.image ? `${SITE.url}${item.image}` : `${SITE.url}/images/og-default.png`,
   datePublished: item.date.toISOString(),
+  // No hay historial de ediciones sustantivas post-publicación por item todavía,
+  // así que dateModified coincide con datePublished en vez de omitirse.
+  dateModified: item.date.toISOString(),
   author: { "@type": "Organization", name: SITE.name, url: SITE.url },
   publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/spacedev-in-the-media/${item.slug}` },
+  ...(item.sourceUrl && {
+    citation: item.sourceUrl,
+    isBasedOn: item.sourceUrl,
+  }),
   ...(mentionedAuthors.length > 0 && {
     mentions: mentionedAuthors.map((a) => ({
       "@type": "Person",
