@@ -12,6 +12,14 @@ export interface MediaItem {
   body: string;
   seoDescription?: string;
   seoTitle?: string;
+  /**
+   * The external, third-party page this item is reporting on or citing as its
+   * primary source (a press release, an official announcement, etc). When set,
+   * the Article schema emits `citation`/`isBasedOn` pointing to it. Leave unset
+   * for items that are just SpaceDev's own coverage of an event with no single
+   * external announcement behind them.
+   */
+  sourceUrl?: string;
 }
 
 /**
@@ -37,6 +45,7 @@ export const mediaItems: MediaItem[] = [
     seoTitle: "SpaceDev Becomes a Hedera Community Partner",
     seoDescription:
       "Hedera named SpaceDev its eighth Community Partner, citing the Blockchain for Energy carbon tokenization platform we built on Hedera and our roots in Latin America.",
+    sourceUrl: "https://hedera.com/blog/hedera-council-grows-partner-network-with-new-strategic-and-community-partners/",
     image: "/images/content/spacedev-hedera-community-partner.jpg",
     body: `*The alliance builds on production work delivered on Hedera through Blockchain for Energy and opens a new chapter for SpaceDev within the ecosystem.*
 
