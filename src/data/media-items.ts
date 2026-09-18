@@ -28,6 +28,63 @@ export function getMentionedAuthors(item: MediaItem): Author[] {
 
 export const mediaItems: MediaItem[] = [
   {
+    slug: "spacedev-becomes-a-hedera-community-partner",
+    title: "SpaceDev Becomes a Hedera Community Partner",
+    date: new Date("2026-09-04"),
+    location: "Remote",
+    tags: ["Blockchain", "Recognition"],
+    highlight: "Eighth Community Partner in the Hedera Council, on the back of the Blockchain for Energy platform",
+    seoTitle: "SpaceDev Becomes a Hedera Community Partner",
+    seoDescription:
+      "Hedera named SpaceDev its eighth Community Partner, citing the Blockchain for Energy carbon tokenization platform we built on Hedera and our roots in Latin America.",
+    image: "/images/content/spacedev-hedera-community-partner.jpg",
+    body: `*The alliance builds on production work delivered on Hedera through Blockchain for Energy and opens a new chapter for SpaceDev within the ecosystem.*
+
+A carbon credit is only as trustworthy as the data, rules and verification process behind it. That premise sits at the heart of one of SpaceDev's most ambitious blockchain projects, and now also connects us more closely with the network where it was built.
+
+On September 4, Hedera [announced SpaceDev as its eighth Community Partner](https://hedera.com/blog/hedera-council-grows-partner-network-with-new-strategic-and-community-partners/), highlighting our work with **Blockchain for Energy (B4E)** and our roots in Latin America. The designation brings SpaceDev into a group created to contribute technical experience, use cases and regional perspectives to Hedera's continued development.
+
+**From Carbon Capture to Auditable On-Chain Assets**
+
+Carbon markets present exactly the kind of problem where blockchain has to prove its usefulness beyond moving tokens between wallets. Turning carbon-capture activity into an asset requires establishing where the underlying data came from, which rules govern its issuance, who verified it and whether every step can be audited later.
+
+Traditional processes can involve fragmented records, manual onboarding and reporting workflows that leave room for errors. Blockchain for Energy, a consortium of energy companies focused on technology and standards for the sector, set out to build a more reliable digital foundation for that process.
+
+SpaceDev [worked with B4E](https://spacedev.io/our-work/blockchain-for-energy) to develop a **production-grade tokenization platform on Hedera**, using Guardian to establish standardized policies around carbon-token issuance. We also replaced an onboarding process that previously required days of manual work with a self-service automated flow, while developing the backend services and integrations needed to keep issuance, custody and reporting synchronized across stakeholders.
+
+That distinction is important because the project goes further than simply putting an environmental asset on a blockchain. Guardian policies can translate methodology requirements into digital workflows that define roles, permissions, validation rules and the conditions under which an asset can be issued. The result is an infrastructure layer where provenance and policy enforcement become part of the asset itself.
+
+For B4E, that architecture turned carbon-capture initiatives into **auditable, policy-bound on-chain assets** and created a system that could accommodate new participants without returning to spreadsheets, PDFs and disconnected records. B4E later joined Hedera's governing body in June 2025 as part of its wider push to advance emissions reporting standards and verifiable environmental data.
+
+**Bringing Production Experience Into the Conversation**
+
+Hedera created its [Strategic and Community Partner programs](https://hedera.com/blog/hedera-council-expands-global-engagement-with-new-partnership-program/) in 2025 to broaden participation beyond the organizations responsible for the network's formal governance. The Community track was designed for startups, system integrators, advocacy groups and other organizations with active use cases or strategic relevance in areas such as tokenization, sustainability, identity and AI.
+
+That opens several doors for SpaceDev. The program includes access to working groups, ongoing ecosystem support and collaboration with organizations across the network, while participants can also contribute to **Hiero Improvement Proposals**, the process through which ideas and technical changes can be discussed within Hedera's open-source environment.
+
+For an engineering company, that creates an interesting feedback loop between building and contributing. Production systems expose questions that prototypes rarely encounter: how to translate business rules into software, connect decentralized infrastructure with existing systems, design for audits, handle onboarding at scale and leave clients with technology their own teams can maintain.
+
+Those lessons can now travel in both directions. SpaceDev gets closer access to the technical discussions shaping Hedera, while bringing experience gathered from actually implementing the technology in industries where reliability, traceability and compliance aren't optional features.
+
+**A Latin American Perspective in a Global Network**
+
+There is also a geographic dimension to the announcement. Hedera specifically presented SpaceDev's addition as part of its **expansion in Latin America**, pointing to our engineering work as well as our involvement in education, events and community initiatives across the region.
+
+SpaceDev began in Uruguay and has spent nearly a decade building software for organizations around the world. Blockchain became an increasingly important part of that trajectory, taking our teams into digital assets, smart contracts, DeFi infrastructure, tokenization and enterprise applications across industries with very different technical and business constraints.
+
+Bringing a Latin American company into this network is therefore about more than adding another country to a map. The region has developed its own concentration of blockchain talent, communities and companies experimenting with decentralized technology, often while solving problems that look very different from those encountered in more mature markets. Participating more closely in Hedera gives SpaceDev another bridge between that regional experience and a global technology ecosystem.
+
+As our CTO and co-founder Juan Manuel Sobral put it in Hedera's announcement:
+
+> "We grew from Uruguay with the conviction that world-class technology can be created in Latin America, and that technical excellence becomes even more meaningful when it's shared through education, community, and new opportunities."
+
+*Juan Manuel Sobral, Co-Founder & CTO, SpaceDev*
+
+It's a principle that has guided SpaceDev well beyond any single project or technology.
+
+Becoming a Hedera Community Partner gives that philosophy a new arena. After years of building blockchain products across industries, we now have another way to take what our engineers learn in production, share it with a wider technical community and bring some of what emerges there back into the products we build next.`,
+  },
+  {
     slug: "spacedev-named-a-summer-2026-clutch-global-winner",
     title: "SpaceDev Named a Summer 2026 Clutch Global Winner",
     date: new Date("2026-08-17"),
