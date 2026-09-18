@@ -11,7 +11,7 @@ metatitle: "Decentralized Oracles: Why Smart Contracts Need Them"
 metadescription: "Decentralized oracles securely bring off-chain data onto the blockchain, powering smart contract execution across DeFi, insurance, and prediction markets."
 ---
 
-Decentralized oracles function as critical infrastructure connecting blockchain systems to external information sources. They securely pipeline off-chain data into the blockchain and thus enable smart contract executions. These systems retrieve data from APIs, IoT devices, and other blockchains, operated by either third-party providers or the blockchain network itself.
+[Decentralized oracles](https://chain.link/education/blockchain-oracles) function as critical infrastructure connecting blockchain systems to external information sources. They securely pipeline off-chain data into the blockchain and thus enable smart contract executions. These systems retrieve data from APIs, IoT devices, and other blockchains, operated by either third-party providers or the blockchain network itself.
 
 These systems bridge on-chain and off-chain information, providing decentralized applications with access to real-world data and events that cannot be directly recorded on the blockchain. Applications include decentralized exchanges relying on accurate pricing, prediction markets, insurance contracts, and supply chain management. In the context of [smart contracts powering DeFi protocols](/blog/the-role-of-smart-contracts-in-defi), oracles are the layer that makes complex financial logic possible at all.
 
@@ -19,7 +19,7 @@ Security mechanisms involve staking tokens and consensus algorithms across multi
 
 ## Applications Beyond DeFi
 
-Uses extend to gaming event verification, supply chain authentication tracking, and insurance claim automation triggered by predefined events like flight cancellations or natural disasters.
+Uses extend to gaming event verification, supply chain authentication tracking, and [insurance claim automation triggered by predefined events like flight cancellations](https://etherisc.com/) or natural disasters.
 
 ## Oracle Classification
 

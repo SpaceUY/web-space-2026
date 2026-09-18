@@ -21,7 +21,7 @@ Let's break down what vibe coding really is, why it's exploding in popularity, a
 
 ## Just Vibin'
 
-Coined by Andrej Karpathy and featured in Steve Yegge's Revenge of the Junior Developer blog post, vibe coding is about "letting the AI do the work." You don't focus on syntax or structure; you just tell the AI what kind of functionality or result you're going for, and it handles the rest. With tools like ChatGPT, Replit Ghostwriter, and Cursor, entire apps can be built from prompts.
+Coined by [Andrej Karpathy](https://x.com/karpathy/status/1886192184808149383) and featured in Steve Yegge's [Revenge of the Junior Developer](https://sourcegraph.com/blog/revenge-of-the-junior-developer) blog post, vibe coding is about "letting the AI do the work." You don't focus on syntax or structure; you just tell the AI what kind of functionality or result you're going for, and it handles the rest. With tools like ChatGPT, Replit Ghostwriter, and Cursor, entire apps can be built from prompts.
 
 Some liken it to "no-code with code." You get the best of both worlds: human direction and machine execution. This approach is increasingly popular among junior developers, bootcamp grads, and solo founders constructing MVPs overnight.
 

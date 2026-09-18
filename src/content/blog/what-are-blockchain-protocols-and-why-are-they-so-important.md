@@ -25,10 +25,10 @@ Not all blockchains are created equal. Here's a quick comparison of some of the 
 |---|---|---|---|
 | Ethereum (ETH) | Flexibility, strong developer ecosystem | dApps, NFTs, DeFi | Uniswap, Aave |
 | Bitcoin (BTC) | Security and decentralization | Store of value, digital payments | Tesla, MicroStrategy |
-| Hyperledger Fabric | High customizability and security (permissioned) | Enterprise supply chain transparency | IBM Food Trust |
+| Hyperledger Fabric | High customizability and security (permissioned) | Enterprise supply chain transparency | [IBM Food Trust](https://www.ibm.com/products/food-trust) |
 | Solana (SOL) | High-speed transactions, low fees | Scalable DeFi and NFT marketplaces | Serum, Magic Eden |
 | Polkadot (DOT) | Multi-chain interoperability | Cross-chain DeFi | Acala |
-| Avalanche (AVAX) | High throughput, low latency | DeFi and gaming | Deloitte (disaster relief funding) |
+| Avalanche (AVAX) | High throughput, low latency | DeFi and gaming | [Deloitte (disaster relief funding)](https://medium.com/avalancheavax/deloitte-leverages-avalanche-to-improve-recoveries-from-natural-disasters-and-public-health-4fa3fd3644bf) |
 
 Each protocol has strengths and trade-offs, making the selection process crucial for businesses looking to integrate decentralized technology.
 

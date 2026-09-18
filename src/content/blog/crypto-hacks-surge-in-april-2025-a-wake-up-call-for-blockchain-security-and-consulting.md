@@ -15,9 +15,9 @@ metatitle: "Crypto Hacks Surge: A Blockchain Security Wake-Up Call"
 metadescription: "April 2025 saw $357 million lost across 18 crypto hacks, a 990% jump from March. Why smart contract audits and blockchain security are now non-negotiable."
 ---
 
-April 2025 marked a significant escalation in crypto-related cyberattacks, with **losses totaling approximately $357 million across 18 incidents**, a staggering **990% increase** compared to March.
+April 2025 marked a significant escalation in crypto-related cyberattacks, with **[losses totaling approximately $364 million](https://cointelegraph.com/news/crypto-losses-spike-1000-percent-april-with-top-5-crypto-hack-certik)**, a staggering **1,163% increase** compared to March, according to CertiK's Web3 security tracking.
 
-The most devastating case involved a **social engineering scam targeting an elderly U.S. investor**, who was tricked into sending **3,520 BTC (~$330.7 million)**, making it one of the largest crypto thefts ever recorded.
+The most devastating case involved a **social engineering scam targeting an elderly U.S. investor**, who was tricked into sending **[3,520 BTC (~$330.7 million)](https://cryptoslate.com/zachxbt-tracks-330m-bitcoin-stolen-in-social-engineering-scam-from-elderly-american/)**, making it one of the largest crypto thefts ever recorded.
 
 These events highlight a growing threat: many companies in the blockchain and fintech space still depend on surface-level protections like bug bounty programs and occasional pen tests, without a broader cybersecurity strategy.
 
@@ -35,7 +35,7 @@ From selecting the right custody solution to deploying hardened wallet architect
 
 ## Why Cybersecurity Must Lead the Fintech Conversation
 
-With over $357M lost in just one month, it's clear: the next big challenge for the fintech industry is cyber resilience.
+With over $364M lost in just one month, it's clear: the next big challenge for the fintech industry is cyber resilience.
 
 Startups and institutions alike must go beyond superficial safeguards and embrace cybersecurity frameworks designed for **decentralized environments**. The reputational and financial risks of neglecting this are now too high.
 

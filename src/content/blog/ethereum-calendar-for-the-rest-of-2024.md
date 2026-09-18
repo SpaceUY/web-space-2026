@@ -54,7 +54,7 @@ The blockchain community keeps growing with fresh events emerging worldwide. The
 - Website: https://www.ethtokyo.com/
 
 **🌐 ETHOnline (ETH Global): Aug 23, 2024**
-- Asynchronous hackathon with $225,000 in prizes
+- Asynchronous hackathon with [$200,000 in prizes](https://ethglobal.com/events/ethonline2024)
 - Pre-event workshops and team formation sessions
 - Worldwide participation
 - Website: https://ethglobal.com/events/ethonline2024
@@ -105,7 +105,7 @@ The blockchain community keeps growing with fresh events emerging worldwide. The
 - Website: https://www.ethsofia.com/
 
 **🇺🇸 ETH Global San Francisco: Oct 18, 2024**
-- $425,000 in total prizes
+- [$375,000 in total prizes](https://ethglobal.com/events/sanfrancisco2024)
 - Talks, workshops, networking opportunities
 - Location: Palace of Fine Arts, San Francisco
 - Website: https://ethglobal.com/events/sanfrancisco2024

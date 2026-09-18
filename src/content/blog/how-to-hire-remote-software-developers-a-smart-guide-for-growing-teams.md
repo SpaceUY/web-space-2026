@@ -31,11 +31,11 @@ Working remotely is no longer a compromise. It's become the strategic default fo
 
 If you're still wondering whether hiring remote software developers is the right move, consider this:
 
-"Over 80% of developers now work remotely or in hybrid models," according to the Stack Overflow Developer Survey 2024. This flexibility is not a perk anymore; it's an expectation.
+"Over 80% of developers now work remotely or in hybrid models," according to the [Stack Overflow Developer Survey 2024](https://survey.stackoverflow.co/2024/work). This flexibility is not a perk anymore; it's an expectation.
 
-The global developer community is also expanding rapidly. GitHub's Octoverse 2024 report highlights nearly "1 billion contributions to public repositories" last year, with fast-growing tech communities emerging in countries like India, Nigeria, and Brazil.
+The global developer community is also expanding rapidly. [GitHub's Octoverse 2024 report](https://github.blog/news-insights/octoverse/octoverse-2024/) highlights nearly "1 billion contributions to public repositories" last year, with fast-growing tech communities emerging in countries like India, Nigeria, and Brazil.
 
-At the same time, enterprises are investing heavily in modern development practices. McKinsey's 2024 Technology Trends Outlook reports that "31% of companies are actively scaling next-gen software development tools," accelerating their digital transformation strategies.
+At the same time, enterprises are investing heavily in modern development practices. [McKinsey's 2024 Technology Trends Outlook](https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-top-trends-in-tech-2024) reports that "31% of companies are actively scaling next-gen software development tools," accelerating their digital transformation strategies.
 
 These numbers show that remote work isn't going away, and the companies adapting fastest are gaining a competitive edge. SpaceDev helps you ride this wave with pre-vetted developers who understand global collaboration, agile development, and rapid delivery cycles.
 

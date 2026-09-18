@@ -62,7 +62,7 @@ Think of AI as a high-performance engine. Without fuel, your data, it goes nowhe
 
 ### Step 2: Compliance, Privacy & Security
 
-In 2025, regulators and customers are more vigilant than ever. GDPR (EU), CCPA (California), and SEC oversight for fintechs mean compliance isn't optional; it's a competitive advantage.
+In 2025, regulators and customers are more vigilant than ever. GDPR (EU), [CCPA](https://oag.ca.gov/privacy/ccpa) (California), and SEC oversight for fintechs mean compliance isn't optional; it's a competitive advantage.
 
 **Tools & Approaches:**
 - Data Governance: Collibra, Alation, or open-source tools like Apache Atlas.
@@ -71,7 +71,7 @@ In 2025, regulators and customers are more vigilant than ever. GDPR (EU), CCPA (
 
 **Business Impact:**
 - Builds trust with investors and customers, critical for sectors like **fintech** and **healthtech**.
-- Reduces the risk of fines that can cripple a startup (GDPR penalties can reach €20M or 4% of global turnover).
+- Reduces the risk of fines that can cripple a startup ([GDPR penalties can reach €20M or 4% of global turnover](https://gdpr-info.eu/issues/fines-penalties/)).
 
 **Estimated Cost:** $500–$5,000/month depending on scale and regulatory environment.
 
@@ -123,7 +123,7 @@ Automation isn't just about eliminating grunt work; it's about *augmenting teams
 
 **Tools & Approaches:**
 - Sales AI Copilots: Apollo.io AI, Gong AI, or Salesforce Einstein analyze calls and suggest next steps.
-- DevOps & Engineering: GitHub Copilot automates boilerplate, QA bots run tests.
+- DevOps & Engineering: [GitHub Copilot](https://github.com/features/copilot) automates boilerplate, QA bots run tests.
 - Marketing: Jasper or Copy.ai generate drafts, while MidJourney/Runway create design assets.
 
 **Business Impact:**

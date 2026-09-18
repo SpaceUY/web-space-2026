@@ -13,11 +13,11 @@ metadescription: "Meta is investing hundreds of billions in superintelligence an
 
 If there was ever any doubt that AI is the battleground of the future, Mark Zuckerberg just erased it.
 
-On July 14, Meta's CEO announced the company will pour **hundreds of billions of dollars** into building AI supercomputers capable of achieving *superintelligence*, a term typically reserved for science fiction and think tanks, not public corporate strategy. But this is no longer a theoretical conversation.
+On July 14, Meta's CEO [announced](https://www.threads.com/@zuck/post/DMF6tMAxkX8/) the company will pour **hundreds of billions of dollars** into building AI supercomputers capable of achieving *superintelligence*, a term typically reserved for science fiction and think tanks, not public corporate strategy. But this is no longer a theoretical conversation.
 
 ## Introducing Prometheus and Hyperion
 
-Meta's upcoming AI mega-clusters, *Prometheus* and *Hyperion*, are not just big. They're *continent-shifting*. The first will come online in 2026. The second could scale to **5 gigawatts of capacity**, occupying an area the size of a small city. These aren't just data centers; they're temples to the future of machine learning.
+Meta's upcoming AI mega-clusters, [*Prometheus* and *Hyperion*](https://www.threads.com/@zuck/post/DMF6uUgx9f9), are not just big. They're *continent-shifting*. The first will come online in 2026. The second could scale to **5 gigawatts of capacity**, occupying an area the size of a small city. These aren't just data centers; they're temples to the future of machine learning.
 
 This isn't Meta dabbling in AI. This is Meta *staking its entire future* on it.
 

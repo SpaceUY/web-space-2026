@@ -19,7 +19,7 @@ metadescription: "When Web3 faced criticism for not being truly decentralized, J
 
 When the term 'Web2' was coined in 1999, it described the then up-and-coming version of the internet we know today, which was transitioning from an almost hypertext-exclusive world to hosting multimedia content, social networks and information shared in real time. Soon, it became impossible to navigate without bumping into certain brands, corporations or services. Sometimes all they asked was a simple thing in exchange: your data. More than twenty years and several innovations later, tech referents are still debating how the internet will evolve beyond that.
 
-Just when Web3, which bases its infrastructure on blockchain technology, was gaining traction and major investments, dissidents started to speak up. Criticized for being as vulnerable to commercial interests as Web2 and not really decentralized, Web3 continues its development under an air of controversy. Then came Web5, proposed by Twitter co-founder Jack Dorsey and being developed by his company, Block.
+Just when Web3, which bases its infrastructure on blockchain technology, was gaining traction and major investments, dissidents started to speak up. Criticized for being as vulnerable to commercial interests as Web2 and not really decentralized, Web3 continues its development under an air of controversy. Then came [Web5](https://developer.tbd.website/projects/web5/), proposed by Twitter co-founder Jack Dorsey and being developed by his company, Block.
 
 If **Web4** could be considered the mobile-centric internet we use nowadays, **Web5 is the result of Web2 plus Web3**, its core principles being full decentralization and users keeping control of their data.
 
@@ -43,11 +43,11 @@ Globally unique permanent identifiers that work without a central authority and 
 
 ### Verifiable Credentials
 
-Information checked by the DIDs. Can be anything from passwords to IDs and bank statements. Fully ratified W3C standards work hand in hand with DIDs to ensure trustful interactions, in a way providing a digital stamp for the VIs if there are no irregularities.
+Information checked by the DIDs. Can be anything from passwords to IDs and bank statements. Fully ratified [W3C standards](https://www.w3.org/TR/vc-data-model/) work hand in hand with DIDs to ensure trustful interactions, in a way providing a digital stamp for the VIs if there are no irregularities.
 
 ### DWNs
 
-Nodes controlled by every Web5 user, forming a mesh datastore where everyone can sync to the same state. The benefits of decentralized nodes include security and compatibility, especially since personal data is stored in the user's own node. With DIDs and DWNs combined, it is possible to create an entire web of secure messaging, data storage, and credential sharing. Even if a company provides host nodes, users will still be able to encrypt their personal data. BlueSky is an interesting example as it's a sort of Twitter where the content is stored with users, not in the company's servers.
+Nodes controlled by every Web5 user, forming a mesh datastore where everyone can sync to the same state. The benefits of decentralized nodes include security and compatibility, especially since personal data is stored in the user's own node. With DIDs and DWNs combined, it is possible to create an entire web of secure messaging, data storage, and credential sharing. Even if a company provides host nodes, users will still be able to encrypt their personal data. [BlueSky](https://bsky.social) is an interesting example as it's a sort of Twitter where the content is stored with users, not in the company's servers.
 
 ### DWAs
 

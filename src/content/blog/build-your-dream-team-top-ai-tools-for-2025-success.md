@@ -51,7 +51,7 @@ Here's how to build a lean, AI-powered team that handles everything from marketi
 
 Use AI to map out business strategies, analyze markets, and surface insights you'd normally need a consultant (or ten) for.
 
-- **ChatGPT (with Advanced Data Analysis)**: Great for brainstorming, summarizing research, testing hypotheses, or building quick business models.
+- **[ChatGPT](https://openai.com/chatgpt/) (with Advanced Data Analysis)**: Great for brainstorming, summarizing research, testing hypotheses, or building quick business models.
 - **Lucidchart (with AI features)**: Auto-generate strategy maps, workflows, and org charts.
 - **Beautiful.AI**: Build smart, data-driven presentations that adjust automatically.
 
@@ -68,9 +68,9 @@ AI can cover content creation, ad copy, branding, and campaign analysis at scale
 
 Speed up development cycles, test product ideas, and build faster.
 
-- **Figma (with AI plugins like Genius or Magician)**: Design UI/UX elements fast with AI assistance.
+- **[Figma](https://www.figma.com/) (with AI plugins like Genius or Magician)**: Design UI/UX elements fast with AI assistance.
 - **Uizard**: Turn sketches or prompts into working web/app mockups.
-- **Qodo (formerly CodiumAI) / GitHub Copilot**: Write, review, and test code with AI copilots that reduce dev time significantly.
+- **Qodo (formerly CodiumAI) / [GitHub Copilot](https://github.com/features/copilot)**: Write, review, and test code with AI copilots that reduce dev time significantly.
 
 ## The Salesperson: Scalable, Smart, and Tireless
 
@@ -109,7 +109,7 @@ AI can keep your operations tight without hiring a full admin or finance team.
 
 Think of AI tools not as apps, but as hires. Give each one a job. Connect them with automation tools like:
 
-- **Zapier or Make**: Integrate all your AI apps and automate workflows across your "team."
+- **[Zapier](https://zapier.com/) or Make**: Integrate all your AI apps and automate workflows across your "team."
 - **Slack + AI bots**: Keep your AI "team" in the loop with updates, summaries, or alerts.
 
 ## Final Thoughts

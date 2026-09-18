@@ -29,7 +29,7 @@ In this guide, we specifically highlight centralized exchanges to provide users 
 
 ## Best Centralized Crypto Exchange Apps for 2024
 
-### Binance
+### [Binance](https://www.binance.com/)
 
 User-friendly interface and extensive cryptocurrency support, Binance is an ideal choice for both beginners and seasoned traders. The platform's commitment to security and innovation has solidified its position as one of the best crypto exchange apps globally.
 
@@ -37,15 +37,15 @@ User-friendly interface and extensive cryptocurrency support, Binance is an idea
 
 NDAX was built to simplify cryptocurrency trading. Beginners can quickly buy and sell 30+ digital assets on an intuitive platform, while experienced or professional traders can take advantage of advanced features and trading tools. Disclosure: [NDAX Canada](/our-work/ndax-canada) is a SpaceDev client; we built its frontend and mobile app.
 
-### Coinbase
+### [Coinbase](https://www.coinbase.com/)
 
 Focused on user accessibility and trust, Coinbase serves as a leading fiat-to-crypto onramp. It provides an excellent starting point for newcomers with a straightforward interface and a range of educational resources.
 
-### Gemini
+### [Gemini](https://www.gemini.com/)
 
 Known for its emphasis on regulatory compliance and security, Gemini caters to both individual and institutional investors. Its sleek design, user-friendly experience, and commitment to industry standards make it a standout choice.
 
-### Kraken
+### [Kraken](https://www.kraken.com/)
 
 With robust security measures and support for a wide range of cryptocurrencies, Kraken has been a favorite among traders for years. It offers advanced trading features for experienced users while maintaining a welcoming environment for beginners.
 

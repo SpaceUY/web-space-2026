@@ -15,7 +15,7 @@ Whether you were aware of it or not, chances are that you've interacted with art
 
 AI agents are redefining how we think about automation, autonomy, and interaction, but this shift isn't isolated to conventional tech. AI agents are fusing with decentralized systems like blockchain and web3 applications to reshape the way data, value, and decisions flow across networks. In these ecosystems, autonomous programs can act with minimal human intervention while maintaining transparency and trust.
 
-While AI agents are often hyped as part of the "next big thing," their roots go back decades, beginning with early rule-based programs like ELIZA. Today, frameworks such as LangChain, AutoGPT, and Eliza AI, supported by their integration with decentralized platforms, give this technology the power to unlock new business models, digital services, and even forms of governance. The bottom line is, AI will be all over the future.
+While AI agents are often hyped as part of the "next big thing," their roots go back decades, beginning with early rule-based programs like [ELIZA](https://en.wikipedia.org/wiki/ELIZA). Today, frameworks such as [LangChain](https://www.langchain.com/), [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT), and Eliza AI, supported by their integration with decentralized platforms, give this technology the power to unlock new business models, digital services, and even forms of governance. The bottom line is, AI will be all over the future.
 
 This article provides a basic overview of AI agents and how to implement them.
 
@@ -87,7 +87,7 @@ In the context of web3, AI agents can manifest as:
 
 ### Insights from the World Economic Forum Whitepaper
 
-According to the WEF's "Navigating the AI Frontier", the synergy between AI agents and web3 creates a foundation for next-gen digital economies. The report highlights that it can:
+According to the WEF's ["Navigating the AI Frontier"](https://www.weforum.org/publications/navigating-the-ai-frontier-a-primer-on-the-evolution-and-impact-of-ai-agents/), the synergy between AI agents and web3 creates a foundation for next-gen digital economies. The report highlights that it can:
 
 - Facilitate the growth of **economies** that involve automatic transactions, trades, and negotiations.
 

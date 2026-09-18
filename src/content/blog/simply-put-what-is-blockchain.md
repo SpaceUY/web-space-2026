@@ -35,7 +35,7 @@ In short, blockchain provides a transparent, democratic and cost-effective way t
 
 2. **Decentralized Storage**: The whole of a network's data is stored in every node! This provides greater security since there's no single holder of information and it is practically impossible to attack all the servers at the same time.
 
-3. **Reliability**: Reliability is a direct consequence of the aforementioned feature. For example, Bitcoin, the world's most popular cryptocurrency, has been hosting its service without significant interruptions since 2009. In fact, most of the problems that have affected it were related to piracy or malpractice, rather than safety issues.
+3. **Reliability**: Reliability is a direct consequence of the aforementioned feature. For example, Bitcoin, the world's most popular cryptocurrency, has been hosting its service without significant interruptions [since 2009](https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26). In fact, most of the problems that have affected it were related to piracy or malpractice, rather than safety issues.
 
 4. **Transparency**: Blockchain technology is almost entirely **open source**. This means that other users and developers can modify and improve it freely. In addition, altering data is very difficult, since any user can notice, report and correct suspicious behavior.
 
@@ -47,9 +47,9 @@ In short, blockchain provides a transparent, democratic and cost-effective way t
 
 Whether we know anything about blockchain or not, we have all heard the word bitcoin enough to associate it with innovation. However, there are many other platforms that are impacting the market and the lives of millions of crypto users nowadays:
 
-1. **Ethereum: Blockchain Platform and Cryptocurrency (ETH)**: Fully decentralized platform that effectively complies with smart contract rules.
+1. **[Ethereum](https://ethereum.org/en/smart-contracts/): Blockchain Platform and Cryptocurrency (ETH)**: Fully decentralized platform that effectively complies with smart contract rules.
 
-2. **Hyperledger Fabric**: Open source blockchain framework that provides versatile designs for users who want to develop software solutions using modular architecture. Known as "the network of networks", it allows companies to keep their data private.
+2. **[Hyperledger Fabric](https://www.hyperledger.org/projects/fabric)**: Open source blockchain framework that provides versatile designs for users who want to develop software solutions using modular architecture. It allows companies to keep their data private.
 
 3. **Cardano: Blockchain and Cryptocurrency Platform (ADA)**: State-of-the-art platform that is based on smart contracts.
 
@@ -59,7 +59,7 @@ Whether we know anything about blockchain or not, we have all heard the word bit
 
 6. **EOS**: This platform has many features similar to Ethereum and Bitcoin. EOS is dedicated to the development of DApps ("Decentralized Applications") and provides smart contracts, DApp hosting and decentralized storage for companies with scalability issues.
 
-7. **Corda**: Open source platform where developers can create authoritative solutions. All applications built on Corda are known as CorDApps and are highly scalable across sectors such as finance, insurance, energy, healthcare and more. Transaction and maintenance costs are reduced because all processes are optimized.
+7. **Corda**: Open source platform where developers can create authoritative solutions. All applications built on Corda are known as [CorDApps](https://docs.r3.com/en/platform/corda/4.12/community/cordapp-overview.html) and are highly scalable across sectors such as finance, insurance, energy, healthcare and more. Transaction and maintenance costs are reduced because all processes are optimized.
 
 ## Which Domains or Industries Can Blockchain Be Used In?
 

@@ -19,7 +19,7 @@ metadescription: "Tokenized real-world assets top $26.5B on public chains. How Z
 
 ## Reality Check
 
-Tokenized real-world assets have achieved meaningful scale, with roughly $26.5B in RWAs live on public chains as of mid-2025. Industry growth accelerated from $50B to $65B over six months, demonstrating institutional adoption focused on "finality guarantees, compliance gates, and operational uptime."
+Tokenized real-world assets have achieved meaningful scale, with roughly [$26.5B in RWAs live on public chains](https://app.rwa.xyz/) as of mid-2025. Industry growth accelerated from $50B to $65B over six months, demonstrating institutional adoption focused on "finality guarantees, compliance gates, and operational uptime."
 
 RWA builders face competing demands: delivering throughput and user experience while maintaining auditability and regulatory compliance. ZK rollups address this tension by executing transactions off-chain, generating validity proofs, and anchoring results on-chain. However, RWAs introduce unique constraints around off-chain truth sources, data availability commitments, and oracle dependencies that require explicit architectural choices.
 
@@ -47,7 +47,7 @@ Successful implementations compose seven pieces:
 
 4. **Data availability:** Ensures users can reconstruct state and exit if sequencers fail.
 
-5. **Compliance & identity layer:** Standards like ERC-3643 encode permissioned behavior.
+5. **Compliance & identity layer:** Standards like [ERC-3643](https://www.erc3643.org/) encode permissioned behavior.
 
 6. **Attestation layer:** Systems like Ethereum Attestation Service provide tamper-evident statements for off-chain facts.
 
@@ -57,7 +57,7 @@ Successful implementations compose seven pieces:
 
 DA design determines whether users retain genuine exit guarantees. Two primary paths exist:
 
-**Ethereum Blobs (EIP-4844):** Cheaper than calldata, blobs remain accessible for approximately 18 days before pruning. They're "inaccessible to the EVM" but forward-compatible with Ethereum's scaling roadmap. Teams must plan for this retention window and communicate recovery procedures clearly.
+**Ethereum Blobs ([EIP-4844](https://www.eip4844.com/)):** Cheaper than calldata, blobs remain accessible for approximately 18 days before pruning. They're "inaccessible to the EVM" but forward-compatible with Ethereum's scaling roadmap. Teams must plan for this retention window and communicate recovery procedures clearly.
 
 **External DA Layers:** Celestia specializes in DA sampling allowing light nodes to verify availability probabilistically. EigenDA leverages Ethereum restaking for high-throughput DA through actively validated services. Each presents distinct cost/throughput/assumption profiles.
 
@@ -109,7 +109,7 @@ Teams ship permissionless MVPs, then add KYC when partners demand it, creating U
 
 RWAs depending on price or status oracles face risks when staleness isn't a design priority. Slow feeds can halt rollups or enable settlement on stale data.
 
-**Fix:** Implement heartbeat-based staleness checks rejecting or penalizing stale reads. Maintain multiple feeds with medianization or fallback logic. Expose failure modes through metrics. "Chainlink's docs make heartbeats explicit per feed;" your implementation should verify timestamps and fail safely.
+**Fix:** Implement heartbeat-based staleness checks rejecting or penalizing stale reads. Maintain multiple feeds with medianization or fallback logic. Expose failure modes through metrics. "[Chainlink's docs](https://docs.chain.link/data-feeds) make heartbeats explicit per feed;" your implementation should verify timestamps and fail safely.
 
 ## Sizing UX and Safety
 
