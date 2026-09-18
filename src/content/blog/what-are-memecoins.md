@@ -19,7 +19,7 @@ Memecoins are the most divisive corner of crypto. To skeptics, they're proof the
 
 ## What is a memecoin, technically?
 
-A memecoin is a cryptocurrency whose value proposition is **not** primarily technological or financial; it's cultural. Dogecoin, Shiba Inu, Pepe, and the long tail of "fair launch" tokens fall into this bucket. From a smart-contract perspective, most memecoins are just standard ERC-20s (or SPL tokens, on Solana) with no special functionality.
+A memecoin is a cryptocurrency whose value proposition is **not** primarily technological or financial; it's cultural. [Dogecoin](https://dogecoin.com/), Shiba Inu, Pepe, and the long tail of "fair launch" tokens fall into this bucket. From a smart-contract perspective, most memecoins are just standard [ERC-20s](https://ethereum.org/developers/docs/standards/tokens/erc-20/) (or [SPL tokens](https://solana.com/docs/tokens), on Solana) with no special functionality.
 
 What makes them different is **everything else**: distribution, community, narrative, and the meta-game of attention.
 

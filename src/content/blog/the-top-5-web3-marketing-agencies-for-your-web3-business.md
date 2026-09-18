@@ -33,19 +33,19 @@ DM Collective is a LATAM-based collective of marketers who specialize in perform
 
 ## Coinpresso
 
-Coinpresso is a digital marketing agency that focuses on promoting crypto-related businesses. Their expert team combines web3 and digital marketing knowledge to create innovative marketing strategies.
+[Coinpresso](https://coinpresso.io/) is a digital marketing agency that focuses on promoting crypto-related businesses. Their expert team combines web3 and digital marketing knowledge to create innovative marketing strategies.
 
 **Services:** Web3 Marketing Agency, Crypto SEO, Crypto PR, Crypto App Search Optimisation, Content & Copywriting for Crypto, Crypto Google Ads, Crypto Social Media Marketing, Crypto CRO, Crypto Programmatic Advertising, Web Development for Crypto Projects, DeFi Staking, Platform Development, Blockchain & DApps Development, NFT Marketplace Development.
 
 ## Crowdcreate
 
-Crowdcreate is a growth marketing agency known for connecting projects with top influencers and investors. Crowdcreate offers NFT marketing and development solutions, VIP networking opportunities, and community management for blockchain brands.
+[Crowdcreate](https://crowdcreate.us/web3-marketing-agency/) is a growth marketing agency known for connecting projects with top influencers and investors. Crowdcreate offers NFT marketing and development solutions, VIP networking opportunities, and community management for blockchain brands.
 
 The company runs one of the largest networks of crypto founders, creators, and influencers. It is, therefore, particularly well-positioned to support brands looking to build digital communities and widen stakeholder exposure.
 
 ## Coinbound
 
-Coinbound is an agency specializing in marketing and growth for Web3 companies. They help their clients reach new audiences, build brand awareness, and drive user adoption through a variety of services.
+[Coinbound](https://coinbound.io/) is an agency specializing in marketing and growth for Web3 companies. They help their clients reach new audiences, build brand awareness, and drive user adoption through a variety of services.
 
 Coinbound's team of experienced professionals has a deep understanding of the crypto and blockchain space, which allows them to develop customized marketing strategies that are tailored to their clients' specific needs and goals. They have a proven track record of success, and have helped some of the leading companies in the industry achieve significant growth.
 

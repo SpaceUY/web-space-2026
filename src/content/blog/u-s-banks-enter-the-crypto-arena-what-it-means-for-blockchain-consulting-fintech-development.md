@@ -17,7 +17,7 @@ metatitle: "U.S. Banks Enter Crypto: What It Means for Fintech"
 
 The future of traditional banking is becoming increasingly intertwined with blockchain, and the latest move from U.S. regulators just confirmed it.
 
-In a game-changing shift, the Office of the Comptroller of the Currency (OCC) has released updated guidelines that **authorize national banks in the U.S. to offer cryptocurrency custody and trading services** on behalf of their clients. Banks can now **partner with third-party providers** for crypto-related operations like custody and execution, as long as they meet security and financial soundness standards.
+In a game-changing shift, the [Office of the Comptroller of the Currency (OCC) has released updated guidelines](https://www.occ.gov/news-issuances/news-releases/2025/nr-occ-2025-42.html) that **authorize national banks in the U.S. to offer cryptocurrency custody and trading services** on behalf of their clients. Banks can now **partner with third-party providers** for crypto-related operations like custody and execution, as long as they meet security and financial soundness standards.
 
 This marks a pivotal reversal from the previously restrictive policies that required case-by-case approvals for crypto activities. It signals a broader effort to **integrate blockchain assets into the core of the U.S. financial system.**
 

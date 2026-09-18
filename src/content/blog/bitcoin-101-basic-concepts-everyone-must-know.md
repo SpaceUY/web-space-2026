@@ -11,7 +11,7 @@ metatitle: "Bitcoin 101: Basic Concepts Everyone Must Know | SpaceDev"
 metadescription: "Bitcoin basics explained: how the world's first cryptocurrency works, why it matters, and the fundamental concepts everyone interested in crypto must know."
 ---
 
-Bitcoin, the world's first and most prominent cryptocurrency, has been making headlines for years. Back in April 2024, when this post was first published, the price of one Bitcoin was hovering around $71K, recovering strength from a retrace the week before. Prices have moved a lot since then, so treat any specific number here as a historical snapshot, not a live quote.
+Bitcoin, the world's first and most prominent cryptocurrency, has been making headlines for years. Back in April 2024, when this post was first published, the price of one Bitcoin [had just pulled back to around $65K](https://www.coindesk.com/markets/2024/04/02/first-mover-americas-bitcoin-drops-to-65k-to-start-the-month/), retracing from the all-time high near $73,500 it had set the month before. Prices have moved a lot since then, so treat any specific number here as a historical snapshot, not a live quote.
 
 While the volatile nature of cryptocurrency prices often grabs attention, understanding the fundamental concepts behind Bitcoin is crucial for anyone interested in this revolutionary technology.
 
@@ -33,7 +33,7 @@ A Bitcoin address is a unique string of characters that represents a destination
 
 ## Bitcoin Halving and Supply Management
 
-Bitcoin halving is an event that occurs approximately every four years, where the reward for mining new Bitcoin blocks is halved. This process is designed to control the supply of Bitcoin and ensure its long-term scarcity, contributing to its value proposition. The total supply of Bitcoin is capped at 21 million, with the final Bitcoin expected to be mined around the year 2140. The next one is set to happen on April 2024!
+Bitcoin halving is an event that occurs approximately every four years, where the reward for mining new Bitcoin blocks is halved. This process is designed to control the supply of Bitcoin and ensure its long-term scarcity, contributing to its value proposition. The total supply of Bitcoin is capped at 21 million, with the final Bitcoin expected to be mined around the year 2140. [The next one is set to happen on April 20, 2024](https://mempool.space/block/840000)!
 
 ## Security, Privacy, and the Pseudonymous Nature of Bitcoin
 

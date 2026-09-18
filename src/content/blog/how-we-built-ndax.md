@@ -23,7 +23,7 @@ NDAX's user interface emphasizes both sophistication and accessibility. The plat
 
 ### AlphaPoint Integration
 
-AlphaPoint, a white-label exchange platform, provided foundational components constructed with React. A primary challenge involved translating these React-based elements into Angular, the platform's primary framework.
+[AlphaPoint](https://alphapoint.com/product/alphapoint-exchange-software/), a white-label exchange platform, provided foundational components constructed with React. A primary challenge involved translating these React-based elements into Angular, the platform's primary framework.
 
 AlphaPoint communicates with frontends through RPC websockets generating excessive data. The solution involved implementing observables and RxJS utilities to "divide information into individual streams that the frontend could distill into things such as active trades, chart information, user holdings, and so on." This approach enhanced code readability while reducing overall complexity.
 
@@ -38,7 +38,7 @@ Missing functionalities within AlphaPoint's framework necessitated building prop
 
 ### Security Framework
 
-NDAX distinguishes itself through transparent commitment to security and customer protection. The exchange maintains registration with FINTRAC (Financial Transactions and Reports Analysis Centre of Canada) and Revenue Québec as a Money Service Business, complying with multiple anti-crime regulations.
+NDAX distinguishes itself through transparent commitment to security and customer protection. The exchange maintains registration with [FINTRAC](https://fintrac-canafe.canada.ca/msb-esm/msb-eng) (Financial Transactions and Reports Analysis Centre of Canada) and Revenu Québec as a Money Service Business, complying with multiple anti-crime regulations.
 
 Security implementation includes:
 

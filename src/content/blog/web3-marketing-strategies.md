@@ -11,7 +11,7 @@ cover: "/images/content/web3-marketing-strategies/cover.webp"
 metadescription: "Most Web3 marketing chases hype. Learn the strategies that compound: community, narrative, distribution, and product-led growth loops beyond bull markets."
 ---
 
-Most Web3 marketing playbooks were written for one specific market condition: a bull run. They optimize for a moment, not a movement. The teams that actually compound (Rarible, Aave, Optimism) built distribution that survived multiple cycles.
+Most Web3 marketing playbooks were written for one specific market condition: a bull run. They optimize for a moment, not a movement. The teams that actually compound ([Rarible](https://rarible.com), [Aave](https://aave.com), [Optimism](https://www.optimism.io)) built distribution that survived multiple cycles.
 
 ## The four pillars that survive a market cycle
 

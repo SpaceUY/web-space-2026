@@ -39,8 +39,8 @@ There's no universally right answer. Pick based on your regulatory posture and w
 
 Fintech adds constraints that pure-Web3 startups don't face:
 
-- **Travel Rule.** Transfers above thresholds need originator/beneficiary information.
-- **Sanctions screening.** Every counterparty must be checked against OFAC and equivalent lists.
+- **[Travel Rule](https://www.fatf-gafi.org/en/publications/Fatfrecommendations/update-Recommendation-16-payment-transparency-june-2025.html).** Transfers above thresholds need originator/beneficiary information.
+- **Sanctions screening.** Every counterparty must be checked against [OFAC](https://ofac.treasury.gov/sanctions-list-search-tool) and equivalent lists.
 - **Recordkeeping.** Auditors will ask for transaction histories that can be exported, not just queried on-chain.
 - **Customer recovery.** "Self-custody" is great until a retail customer loses their key. Plan for recoverable wallets, MPC, or qualified custody.
 

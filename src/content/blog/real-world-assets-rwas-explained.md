@@ -34,7 +34,7 @@ Real estate includes residential properties, commercial buildings, land, and rea
 - Smart contracts automate rent collection, profit distribution, and transfers.
 
 **Example:**
-- RealT: Allows investors to purchase tokenized shares of rental properties and receive rent payments in cryptocurrency.
+- [RealT](https://realt.co/): Allows investors to purchase tokenized shares of rental properties and receive rent payments in cryptocurrency.
 - RedSwan: Offers tokenized commercial real estate opportunities.
 
 **Challenges:**
@@ -55,8 +55,8 @@ Commodities include physical goods like:
 - Enables fractional ownership of commodities that were previously expensive to access.
 
 **Example:**
-- Tether Gold (XAUT): A token representing real gold stored in Switzerland.
-- Paxos Gold (PAXG): A gold-backed digital token that can be redeemed for physical gold.
+- [Tether Gold (XAUT)](https://gold.tether.to/): A token representing real gold stored in Switzerland.
+- [Paxos Gold (PAXG)](https://www.paxos.com/pax-gold): A gold-backed digital token that can be redeemed for physical gold.
 - [Aura](/our-work/aura): A gold-backed savings and investment app built by SpaceDev, powered by Tether's XAUT.
 
 **Challenges:**
@@ -75,7 +75,7 @@ These are traditional financial instruments that represent ownership in companie
 
 **Example:**
 - FTX & Binance Stock Tokens (before regulations shut them down): These platforms briefly offered tokenized versions of Tesla, Apple, and Amazon shares.
-- Ondo Finance: Specializes in tokenized US Treasury bonds.
+- [Ondo Finance](https://ondo.finance/): Specializes in tokenized US Treasury bonds.
 
 **Challenges:**
 - Regulatory concerns: Many governments do not permit tokenized stocks without compliance with securities laws.

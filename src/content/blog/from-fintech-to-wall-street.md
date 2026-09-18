@@ -18,7 +18,7 @@ metadescription: "Figure Technology Solutions' IPO filing signals a new era for 
 
 When a blockchain-native lender makes headlines on Wall Street, founders and investors should pay attention.
 
-This week, Figure Technology Solutions, a fintech co-founded by Mike Cagney (who also launched SoFi) revealed a 22% surge in revenue in its U.S. IPO filing. With $191 million in revenue and $29 million in profit for the first half of 2025, Figure is showing the market what happens when blockchain isn't just a buzzword but the foundation of a profitable business model.
+This week, Figure Technology Solutions, a fintech co-founded by Mike Cagney (who also launched SoFi) revealed a 22% surge in revenue in its [U.S. IPO filing](https://www.sec.gov/Archives/edgar/data/2064124/000162828025041443/figuretechnologysolutionsi.htm). With $191 million in revenue and $29 million in profit for the first half of 2025, Figure is showing the market what happens when blockchain isn't just a buzzword but the foundation of a profitable business model.
 
 ## Why This Matters for Entrepreneurs
 
@@ -26,7 +26,7 @@ The IPO isn't just another crypto story. It highlights three signals founders sh
 
 1. **Blockchain is moving into mainstream capital markets:** By putting historically illiquid assets (like home equity loans) on-chain, Figure is proving blockchain can transform not just payments, but the very infrastructure of lending, trading, and investing.
 
-2. **The regulatory climate is shifting:** With a crypto-friendly U.S. administration and the successful IPO of Circle, the stage is set for more digital-asset firms to go public. Entrepreneurs building in fintech, lending, or DeFi should see this as validation: the market and regulators are opening doors.
+2. **The regulatory climate is shifting:** With a crypto-friendly U.S. administration and the successful [IPO of Circle](https://www.circle.com/pressroom/circle-announces-pricing-of-upsized-initial-public-offering), the stage is set for more digital-asset firms to go public. Entrepreneurs building in fintech, lending, or DeFi should see this as validation: the market and regulators are opening doors.
 
 3. **Profitability is possible in blockchain-native businesses:** Many Web3 startups struggle to move beyond hype. Figure's numbers demonstrate that blockchain infrastructure can deliver real, sustainable revenue when tied to strong financial products.
 

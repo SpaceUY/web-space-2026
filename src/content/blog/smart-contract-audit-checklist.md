@@ -29,8 +29,8 @@ Most smart contract audits are slower than they need to be. Not because auditors
 
 ## Tooling
 
-- [ ] Slither runs cleanly (or every finding is annotated with a justification).
-- [ ] Echidna or Foundry fuzz tests covering key invariants.
+- [ ] [Slither](https://github.com/crytic/slither) runs cleanly (or every finding is annotated with a justification).
+- [ ] [Echidna](https://github.com/crytic/echidna) or [Foundry](https://getfoundry.sh/) fuzz tests covering key invariants.
 - [ ] A deployment script that mirrors what you'll run in production.
 - [ ] Verified contracts on the relevant block explorer (or a clear plan to verify post-audit).
 
@@ -38,7 +38,7 @@ Most smart contract audits are slower than they need to be. Not because auditors
 
 - [ ] An incident response plan: who pauses what, who calls whom.
 - [ ] Multi-sig procedures documented and rehearsed.
-- [ ] On-chain monitoring (OpenZeppelin Defender, Tenderly, etc.) configured for the test deployment.
+- [ ] On-chain monitoring ([OpenZeppelin Monitor](https://docs.openzeppelin.com/monitor), Tenderly, etc.) configured for the test deployment.
 - [ ] A list of dependencies (libraries, oracles, bridges) with their own audit status.
 
 ## Why this matters

@@ -15,15 +15,15 @@ The cryptoverse is surfing the ripples of Ethereum's latest upgrade! Known as De
 
 ## Sharding Technology
 
-One of Dencun's key features is its implementation of **sharding**, a technique that divides the Ethereum network into smaller, more manageable segments. Each "shard" operates independently, processing its own transactions and smart contracts. This parallel computing significantly increases the network's throughput, allowing for faster transaction times and improved overall performance.
+One of Dencun's key features is [**proto-danksharding**](https://ethereum.org/en/roadmap/dencun/), introduced through EIP-4844, a first step toward full sharding. It adds temporary "blob" data storage to Ethereum blocks so Layer 2 rollups can post their transaction data there instead of paying to store it permanently on the base layer. This significantly reduces costs for rollups, allowing for cheaper transactions and improved overall performance.
 
-## Consensus Mechanism Improvements
+## Consensus and Security Context
 
-Dencun also introduces improvements to Ethereum's consensus mechanism, transitioning from proof-of-work (PoW) to a hybrid model incorporating elements of proof-of-stake (PoS). This transition enhances the network's security while reducing its environmental impact. PoS mechanisms also incentivize active participation in network maintenance, fostering a more decentralized ecosystem.
+Dencun does not change Ethereum's consensus mechanism: the network had already completed its transition from proof-of-work (PoW) to [proof-of-stake (PoS)](https://ethereum.org/en/roadmap/merge/) with the Merge in September 2022. Dencun builds on that PoS foundation, using the same validator set to also confirm blob data, without adding new environmental costs or requiring changes to how validators participate in network maintenance.
 
 ## Broader Market Impact
 
-But Dencun's impact extends beyond technical upgrades as it encompasses the broader landscape of blockchain innovation and adoption. As highlighted in Forbes, Ethereum's evolution reflects a maturation of the cryptocurrency market, signaling increased interest and investment from institutional players. This influx of capital and talent means more long-term viability, as well as growth of Ethereum and decentralized finance (DeFi) applications built on its platform.
+But Dencun's impact extends beyond technical upgrades as it encompasses the broader landscape of blockchain innovation and adoption. As highlighted in [Forbes](https://www.forbes.com/sites/nataliakarayaneva/2024/03/19/what-is-ethereums-dencun-upgrade-and-how-does-it-help/), Ethereum's evolution reflects a maturation of the cryptocurrency market, signaling increased interest and investment from institutional players. This influx of capital and talent means more long-term viability, as well as growth of Ethereum and decentralized finance (DeFi) applications built on its platform.
 
 The recent fluctuations in Bitcoin and Ether prices following the upgrade's announcement serve as a stark reminder of the market's volatility. However, these fluctuations are often short-term reactions to news events and do not necessarily reflect the underlying fundamentals of Ethereum or broader crypto dynamics.
 

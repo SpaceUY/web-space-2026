@@ -19,7 +19,7 @@ metadescription: "Explore the best AI tools for NFT creation, from DALL-E to Art
 
 The intersection between art and the digital world has been irrevocably changed by the existence of Non-Fungible Tokens. NFTs are digital assets that represent real-world objects like illustrations, music, and videos, and are encoded with the same underlying technology as cryptocurrencies. In this landscape, where digital ownership and creativity are paramount for both users and investors, the fusion with Artificial Intelligence (AI) is unsurprising but nonetheless thrilling, opening up unprecedented avenues for creators. Now they can harness very sophisticated tools to generate unique, compelling artworks for the NFT marketplace.
 
-Unlike traditional digital items, NFTs are unique, or "non-fungible," making them irreplaceable and inherently valuable. The advent of notable collections such as CryptoPunks and Bored Ape Yacht Club has not only showcased the potential of NFTs but also set a new standard for digital collectibles, emphasizing the importance of uniqueness and originality.
+Unlike traditional digital items, NFTs are unique, or "non-fungible," making them irreplaceable and inherently valuable. The advent of notable collections such as [CryptoPunks](https://www.larvalabs.com/cryptopunks) and [Bored Ape Yacht Club](https://boredapeyachtclub.com/) has not only showcased the potential of NFTs but also set a new standard for digital collectibles, emphasizing the importance of uniqueness and originality.
 
 Creating an NFT requires more than being savvy of the underlying blockchain technology. It must stand out in a saturated market where everyone is using more or less the same methods and tools, so the artistry involved has to result in something exceptional and captivating. AI emerges as a powerful ally in this creative process, making the daunting task of crafting aesthetically pleasing artworks more accessible.
 
@@ -33,7 +33,7 @@ Platforms like Snowpixel App allow users to input thematic concepts, which are t
 
 ### 2. Uploading and Adding Art to IPFS
 
-The generated art is uploaded to the InterPlanetary File System (IPFS), a peer-to-peer protocol for storing and sharing data. This ensures that it remains accessible and tamper-proof.
+The generated art is uploaded to the [InterPlanetary File System (IPFS)](https://ipfs.tech/), a peer-to-peer protocol for storing and sharing data. This ensures that it remains accessible and tamper-proof.
 
 ### 3. Integrating Art with NFT Smart Contracts
 
@@ -49,7 +49,7 @@ Several AI-powered platforms have come to the fore when it comes to NFT generati
 
 ### DeepArt
 
-Renowned for its ability to transform photos into artworks mimicking the style of famous artists, DeepArt leverages deep learning algorithms to offer a unique blend of personal photography and classical art aesthetics.
+Renowned for its ability to transform photos into artworks mimicking the style of famous artists, [DeepArt](https://en.wikipedia.org/wiki/DeepArt) leveraged deep learning algorithms (based on the neural style transfer research by Gatys, Ecker, and Bethge) to offer a unique blend of personal photography and classical art aesthetics. The service went offline in 2022, so treat it as a reference point rather than a currently available tool.
 
 ### Artbreeder
 
@@ -61,7 +61,7 @@ Offering an extensive suite of AI tools, Runway ML caters to both novice and pro
 
 ### DALL·E 2 by OpenAI
 
-Known for its capacity to generate highly detailed and specific images from textual descriptions, DALL·E 2 allows for a high degree of creative freedom, enabling the crafting of NFTs that are both unique and aligned with the creator's vision.
+Known for its capacity to generate highly detailed and specific images from textual descriptions, [DALL·E 2](https://openai.com/index/dall-e-2/) allows for a high degree of creative freedom, enabling the crafting of NFTs that are both unique and aligned with the creator's vision.
 
 These platforms come with varying degrees of user control over the creative process, different pricing models, and unique artistic styles. Creators are encouraged to explore these tools to find the one that best suits their artistic vision and NFT goals.
 
@@ -97,7 +97,7 @@ The process can be an exciting journey into the intersection of technology and a
 
 ### Step 6: List and Promote
 
-**Listing:** Once minted, your NFT will be listed on the marketplace. Ensure all details are accurate and your artwork is presented in the best possible way. Beyond standard marketplaces, dedicated platforms like Gallery are built specifically to let collectors curate and showcase their NFT collections across multiple chains, giving your work a more contextual and community-driven home.
+**Listing:** Once minted, your NFT will be listed on the marketplace. Ensure all details are accurate and your artwork is presented in the best possible way. Beyond standard marketplaces, dedicated platforms like [Gallery](https://gallery.so/) are built specifically to let collectors curate and showcase their NFT collections across multiple chains, giving your work a more contextual and community-driven home.
 
 **Promotion:** Utilize social media, online communities, and any other platforms at your disposal to promote your NFT and attract potential buyers.
 

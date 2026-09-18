@@ -26,7 +26,7 @@ The focal point of crypto innovation is shifting, with LATAM becoming a key play
 
 ## Regional Drivers of Crypto Adoption
 
-The continent's social, political and geographical properties make it fertile ground for the adoption of new technologies. Economic instability and hyperinflation (in the case of Argentina and Venezuela, for example) have pushed citizens toward alternative financial solutions. The World Bank has indicated that LATAM countries receive billions in remittances annually, often through traditional banking channels that are costly and slow. Cryptocurrencies offer a faster, cheaper, and more secure method for transferring money, addressing a significant pain point for millions of people, especially if they have to send it across borders, as is the reality for many small businesses and families. Crypto circumvents restrictive capital controls.
+The continent's social, political and geographical properties make it fertile ground for the adoption of new technologies. Economic instability and hyperinflation (in the case of Argentina and Venezuela, for example) have pushed citizens toward alternative financial solutions. [The World Bank has indicated that LATAM countries receive billions in remittances annually](https://www.worldbank.org/en/news/press-release/2023/12/18/remittance-flows-grow-2023-slower-pace-migration-development-brief), often through traditional banking channels that are costly and slow. Cryptocurrencies offer a faster, cheaper, and more secure method for transferring money, addressing a significant pain point for millions of people, especially if they have to send it across borders, as is the reality for many small businesses and families. Crypto circumvents restrictive capital controls.
 
 ## Country-Specific Challenges
 
@@ -38,11 +38,11 @@ The continent's social, political and geographical properties make it fertile gr
 
 ## Adoption Patterns and DeFi Gap
 
-The region's financial challenges create opportunities for pioneering crypto applications. In the 2021 Chainalysis Global Crypto Adoption Index, four Latin American countries were among the top 20 ranked according to peer-to-peer exchange trade volumes and on-chain values received. On the flipside, even though Latin America represents one fifth of those 20 countries, the region doesn't score high in DeFi usage. This isn't unexpected considering that adoption is dictated by its ability to meet everyday needs. LATAM users' main concern lies in storing value, not in having access to DeFi applications.
+The region's financial challenges create opportunities for pioneering crypto applications. In the [2021 Chainalysis Global Crypto Adoption Index](https://www.chainalysis.com/blog/2021-global-crypto-adoption-index/), four Latin American countries were among the top 20 ranked according to peer-to-peer exchange trade volumes and on-chain values received. On the flipside, even though Latin America represents one fifth of those 20 countries, the region doesn't score high in DeFi usage. This isn't unexpected considering that adoption is dictated by its ability to meet everyday needs. LATAM users' main concern lies in storing value, not in having access to DeFi applications.
 
 ## Successful Regional Products
 
-One product that continues to thrive in the Latin American landscape is Mercado Pago, which was first created to complement the e-commerce platform MercadoLibre. Mercado Pago now offers various financial services, including payment processing, gateway services, mobile payments, and credit cards.
+One product that continues to thrive in the Latin American landscape is [Mercado Pago](https://www.mercadopago.com/), which was first created to complement the e-commerce platform MercadoLibre. Mercado Pago now offers various financial services, including payment processing, gateway services, mobile payments, and credit cards.
 
 In Brazil there's PicPay, another digital payments app, which has over 60 million users and deals with BRL 6.8 billion in monthly transactions, equivalent to approximately $1.3 billion US dollars.
 

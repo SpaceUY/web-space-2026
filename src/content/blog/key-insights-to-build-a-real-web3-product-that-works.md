@@ -50,7 +50,7 @@ In Web3, wallets are both the gatekeepers and the bottlenecks.
 
 ### Key considerations
 - Decide if your product needs non-custodial or custodial wallets.
-- Use wallet-based auth (like **Sign-In With Ethereum**), but have fallbacks.
+- Use wallet-based auth (like **[Sign-In With Ethereum](https://eips.ethereum.org/EIPS/eip-4361)**), but have fallbacks.
 - Don't force wallet connection up front unless absolutely necessary.
 
 ## 3. Choose the Right Chain (Not Just the Trendy One)
@@ -81,7 +81,7 @@ In Web3, your users can (and should) be your co-owners, evangelists, and contrib
 
 ### How to build one
 - Start early on platforms like **Discord**, **Lens**, or **Farcaster**.
-- Use governance tools like **Snapshot** or **Tally** to involve your users.
+- Use governance tools like **[Snapshot](https://docs.snapshot.box/)** or **Tally** to involve your users.
 - Reward participation meaningfully; think beyond airdrops.
 
 ## 6. Data is Public, Use It
@@ -90,7 +90,7 @@ Every transaction, wallet, and smart contract interaction is on-chain. That's a 
 
 ### Use tools like
 - **Dune Analytics** or **Flipside Crypto** for user behavior insights.
-- **The Graph** to query on-chain data efficiently.
+- **[The Graph](https://thegraph.com/)** to query on-chain data efficiently.
 - **Covalent** or **Alchemy** for API access to blockchain data.
 
 ## 7. MVP = Smart Contract + Frontend + Trust

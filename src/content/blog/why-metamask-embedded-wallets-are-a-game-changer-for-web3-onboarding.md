@@ -19,7 +19,7 @@ metadescription: "MetaMask Embedded Wallets remove seed phrases and extensions f
 
 At SpaceDev, we spend our days deep in the trenches with developers, helping teams bring ambitious Web3 ideas to life. And if there's one thing we've consistently seen, it's how crucial a smooth onboarding experience is for user retention.
 
-So when MetaMask announced **Embedded Wallets**, our ears perked up.
+So when MetaMask announced **[Embedded Wallets](https://metamask.io/news/metamask-embedded-wallets-frictionless-web3-onboarding-built-in)**, our ears perked up.
 
 We've had the chance to explore the new MetaMask Embedded Wallets SDK, and I have to say, it's one of the most developer- and user-friendly solutions we've seen to date. If you're building in Web3 and onboarding is still a friction point (and let's be honest, for most of us, it is), this is worth your attention.
 
@@ -33,7 +33,7 @@ This is the kind of frictionless UX we've been craving, one that blends Web2 fam
 
 ## Invisible, Yet Secure
 
-MetaMask's solution is powered by Web3Auth, meaning authentication is handled through:
+MetaMask's solution is powered by [Web3Auth](https://web3auth.io/docs/), meaning authentication is handled through:
 
 - Social logins
 - Email and mobile OTP
@@ -62,11 +62,11 @@ It's a robust system that gives peace of mind without adding overhead.
 
 ## A Toolkit That Grows With You
 
-Whether you're building your first dapp or scaling to millions, Embedded Wallets fit right into your stack. We've seen enterprise clients already making the switch: names like Fox.com, Animoca Brands, and LINE NEXT. And now, this tech is accessible to every developer in the MetaMask ecosystem.
+Whether you're building your first dapp or scaling to millions, Embedded Wallets fit right into your stack. We've seen enterprise clients already making the switch: names like [Fox.com, Animoca Brands, and LINE NEXT](https://metamask.io/news/metamask-embedded-wallets-frictionless-web3-onboarding-built-in). And now, this tech is accessible to every developer in the MetaMask ecosystem.
 
 ## Why This Matters and Who It Impacts
 
-If you're building dapps for gaming, DeFi, NFTs, or any consumer-facing product, this matters because the first few seconds of onboarding can make or break your user's journey. We've seen this firsthand working with projects like Blockus, a Web3 gaming platform backed by a16z that had to solve exactly this barrier before users could engage with NFTs and play-to-earn mechanics. Embedded Wallets reduce friction to near-zero, allowing your users to start engaging immediately without sacrificing decentralization or ownership.
+If you're building dapps for gaming, DeFi, NFTs, or any consumer-facing product, this matters because the first few seconds of onboarding can make or break your user's journey. We've seen this firsthand working with projects like [Blockus, a Web3 gaming platform backed by a16z](https://www.blockus.gg/blocks/all-in-one-web3-gaming-ecosystem-blockus-raises-4m-pre-seed-after-completing-a16z-incubator-program) that had to solve exactly this barrier before users could engage with NFTs and play-to-earn mechanics. Embedded Wallets reduce friction to near-zero, allowing your users to start engaging immediately without sacrificing decentralization or ownership.
 
 For developers, this means shorter dev cycles, fewer support tickets, and higher activation rates. For product teams, it means better retention and conversion. And for users? It simply works.
 

@@ -62,19 +62,19 @@ Aave's decentralized protocol enables staking AAVE tokens and supported assets i
 
 ### Lido
 
-Lido revolutionizes liquidity through liquid Ethereum staking. Users receive stETH tokens representing their stake while maintaining liquidity. This approach enables fresh yield generation and capital efficiency opportunities within decentralized finance ecosystems.
+Lido revolutionizes liquidity through liquid Ethereum staking. Users receive [stETH tokens](https://lido.fi/ethereum) representing their stake while maintaining liquidity. This approach enables fresh yield generation and capital efficiency opportunities within decentralized finance ecosystems.
 
 ### Coinbase
 
-Operating since 2012, Coinbase provides streamlined interfaces and robust security. Users stake selected cryptocurrencies for locked-asset rewards with automatic distributions. However, limited cryptocurrency options may restrict earning potential compared to alternatives.
+Operating [since 2012](https://en.wikipedia.org/wiki/Coinbase), Coinbase provides streamlined interfaces and robust security. Users stake selected cryptocurrencies for locked-asset rewards with automatic distributions. However, limited cryptocurrency options may restrict earning potential compared to alternatives.
 
 ### Binance
 
-Founded in 2017, Binance presents centralized and non-custodial options across diverse cryptocurrencies with competitive annual rates. Geographic limitations and variable returns present potential obstacles.
+[Founded in 2017](https://www.binance.com/en/about), Binance presents centralized and non-custodial options across diverse cryptocurrencies with competitive annual rates. Geographic limitations and variable returns present potential obstacles.
 
 ### Kraken
 
-Established in 2011, Kraken emphasizes on-chain staking leveraging proof-of-stake consensus for direct blockchain yields, minimizing counterparty risks. Technical requirements and lock-up periods may challenge accessibility.
+[Established in 2011](https://blog.kraken.com/news/kraken-is-born), Kraken emphasizes on-chain staking leveraging proof-of-stake consensus for direct blockchain yields, minimizing counterparty risks. Technical requirements and lock-up periods may challenge accessibility.
 
 ## Conclusion
 

@@ -56,7 +56,7 @@ This sprint is ideal when you're considering new features or exploring product e
 
 ## What Is a Design Sprint and When Should Teams Use It?
 
-A **Design Sprint** is "a five-day structured process that guides teams from problem definition to a validated prototype." Popularized by Google Ventures, it emphasizes user-centric solutions by rapidly iterating on design ideas and testing with real users.
+A **Design Sprint** is "a five-day structured process that guides teams from problem definition to a validated prototype." Popularized by [Google Ventures](https://www.gv.com/sprint/), it emphasizes user-centric solutions by rapidly iterating on design ideas and testing with real users.
 
 **Key Activities:**
 - Sketching solutions
