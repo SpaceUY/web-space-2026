@@ -48,6 +48,8 @@ Agravante confirmado en esta ronda: `src/pages/agentic-ai-development.astro:181-
 
 **Archivos:** `src/content/case-studies/blockus.md:51`, `src/content/case-studies/drata.md:43`, `src/content/case-studies/rarible.md:50`, `src/pages/agentic-ai-development.astro:181-186`.
 
+**Decisión del cliente (2026-09-18, misma sesión):** Vero decidió dejarlo abierto y no priorizarlo por ahora ("no le daré importancia"). Queda documentado tal cual está, sin fix de código en esta ronda. Sigue siendo un hallazgo real y válido, no se descarta ni se recalifica su severidad; solo se registra que no hay una acción en curso. Si una ronda futura lo reencuentra, no es un hallazgo nuevo: es este mismo, seguir citando R9-A1, no re-priorizarlo como si fuera una sorpresa.
+
 ---
 
 ### Severidad Media
