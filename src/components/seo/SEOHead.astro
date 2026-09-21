@@ -6,6 +6,8 @@ interface Props {
   ogImage?: string;
   ogType?: "website" | "article";
   noindex?: boolean;
+  /** Only meaningful together with noindex: whether crawlers should still follow links on the page. Defaults to true (noindex, nofollow) to keep existing pages' behavior unchanged. */
+  nofollow?: boolean;
   publishedTime?: string;
   authorName?: string;
   articleSection?: string;
@@ -18,6 +20,7 @@ const {
   ogImage = "/images/og-default.png",
   ogType = "website",
   noindex = false,
+  nofollow = true,
   publishedTime,
   authorName,
   articleSection,
@@ -31,7 +34,7 @@ const absoluteOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogIm
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+{noindex && <meta name="robots" content={`noindex, ${nofollow ? "nofollow" : "follow"}`} />}
 
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
