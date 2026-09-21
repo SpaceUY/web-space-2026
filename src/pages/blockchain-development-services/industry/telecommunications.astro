@@ -1,0 +1,268 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import { telecommunicationsData } from "../../../data/services";
+
+const services = [
+  { number: "01", title: "Wholesale Roaming and Interconnect Settlement", description: "Smart contract settlement for roaming and voice interconnect agreements: rated usage records, discount calculations, and automated reconciliation between operators, with threshold-based dispute resolution that shortens settlement cycles from months to days." },
+  { number: "02", title: "Telecom Fraud Prevention and Identity Verification", description: "Shared fraud registries and verifiable credentials that help operators and their partners detect SIM swap fraud, subscription fraud, and interconnect bypass. We integrate network APIs such as SIM Swap and Number Verification into wallets, fintech apps, and exchanges to block account takeovers." },
+  { number: "03", title: "Subscriber Wallets, Payments, and Stablecoin Services", description: "Embedded wallets, stablecoin payments, and cross-border transfers built into operator apps, with fiat on-ramps and a consumer experience that never exposes seed phrases or gas fees to the subscriber." },
+  { number: "04", title: "Tokenized Loyalty and Rewards Programs", description: "Loyalty points that subscribers can transfer, redeem across partner merchants, or convert into spendable value, reducing points liability and making rewards programs a reason to stay with the operator." },
+  { number: "05", title: "DePIN and Decentralized Network Integration", description: "Integrations with decentralized wireless networks for carrier offload, plus reward logic, coverage verification, and hotspot operator dashboards for companies building community-owned coverage in high-demand areas." },
+  { number: "06", title: "Validator Infrastructure and Enterprise Node Services", description: "Validator and node infrastructure for operators that want to monetize data center capacity and uptime expertise by securing public blockchains, with monitoring, key management, and staking operations." },
+];
+
+const valueChain = [
+  { segment: "Wholesale and roaming", problem: "Slow, dispute-heavy settlement between operators", application: "Shared ledger and smart contract settlement" },
+  { segment: "Fraud and security", problem: "SIM swap and identity fraud across partners", application: "Shared fraud signals, network API integration" },
+  { segment: "Consumer services", problem: "Low engagement with loyalty and payments", application: "Tokenized rewards, embedded wallets" },
+  { segment: "Network coverage", problem: "High cost of densification in busy areas", application: "DePIN carrier offload integration" },
+  { segment: "Enterprise and IoT", problem: "Device identity and data integrity at scale", application: "On-chain device identity and event anchoring" },
+  { segment: "Infrastructure", problem: "Underused data center and edge capacity", application: "Validator and node operations" },
+];
+
+const productionStatus = [
+  { title: "Live Today: Roaming Settlement on the GSMA eBusiness Network", description: "The GSMA's blockchain network, built on Hyperledger Fabric with operators including Deutsche Telekom, Orange, Telefónica, Verizon, and Vodafone involved in its development, supports roaming agreement negotiation and automated discount settlement between operators." },
+  { title: "Live Today: DePIN Carrier Offload", description: "Decentralized wireless networks now carry real subscriber traffic. Helium's community-deployed hotspots offload data for mobile carriers, and in September 2026 Helium launched HeliumOS, a carrier enablement platform aimed at MVNOs, ISPs, and operators." },
+  { title: "Live Today: Operators as Blockchain Validators", description: "Deutsche Telekom runs validator infrastructure on multiple public networks through its MMS subsidiary, and NTT DOCOMO GLOBAL joined a public network's validator set in 2026. For operators, this is a new infrastructure revenue line built on existing strengths." },
+  { title: "Still Early: Network Slicing Marketplaces and Spectrum Sharing", description: "Automated marketplaces for 5G network slices and dynamic spectrum sharing are technically promising but remain in research and pilot stages. We help operators evaluate them honestly before committing budget." },
+];
+
+const ossBss = [
+  { title: "OSS/BSS, Billing, and Rating Integration", description: "We connect the settlement layer to rating engines, billing platforms, and data clearing house outputs through APIs and event streams, so usage records flow on-chain without manual exports." },
+  { title: "GSMA Open Gateway and CAMARA Network APIs", description: "We integrate standardized network APIs, such as SIM Swap, Number Verification, and Device Location, into Web3 and fintech products, turning operator network intelligence into a fraud-prevention layer." },
+  { title: "Subscriber Data Privacy and Compliance", description: "Personal data and CPNI never go on-chain. We store hashes, proofs, and aggregated records on the ledger while subscriber data stays in your systems, aligned with GDPR, CPNI rules, and your internal data policies." },
+];
+
+const process = [
+  { number: "01", title: "Discovery Sprint", body: `We map your settlement, fraud, or subscriber workflows, identify where blockchain adds measurable value and where it does not, and define scope, architecture, and integrations. Our <a href="/product-discovery" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Product Discovery</a> service covers this phase.` },
+  { number: "02", title: "Build and Integration", body: "Milestone-based delivery with working demos, integration testing against real CDR, billing, or API data, and security reviews at every stage." },
+  { number: "03", title: "Launch and Scale", body: "Production deployment, monitoring, smart contract upgrades, and onboarding of new partners or operators as the network grows." },
+];
+
+const engagementModels = [
+  { title: "End-to-End Platform Delivery", body: "SpaceDev owns architecture, development, security review, and launch." },
+  { title: "Team Augmentation", body: `Blockchain engineers embedded in your digital or innovation team through <a href="/staff-augmentation" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">IT Staff Augmentation</a>.` },
+  { title: "Architecture and Advisory", body: "Technology selection, business case validation, and architecture design for telecom teams evaluating blockchain before committing to a build." },
+];
+
+const relatedServices = [
+  { title: "Smart Contract Development", description: "Settlement, loyalty, and reward logic for multi-party telecom agreements", href: "/blockchain-development-services/smart-contract-development" },
+  { title: "Decentralized Identity", description: "Verifiable credentials for subscriber and device identity", href: "/blockchain-development-services/decentralized-identity" },
+  { title: "Crypto Token Development", description: "Loyalty tokens and reward systems for subscriber programs", href: "/blockchain-development-services/crypto-token-development" },
+  { title: "BlockAudit: Blockchain Security", description: "Smart contract audits before production launch", href: "/blockaudit-smart-contract-and-blockchain-security" },
+];
+
+const I_BOLT    = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const I_GLOBE   = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5"/><line x1="2" y1="12" x2="22" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+const I_EYE     = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.5"/></svg>`;
+const I_SHIELD  = `<svg viewBox="0 0 24 24" fill="none" style="width:100%;height:100%"><path d="M12 2l7 3v5c0 5-3.5 9-7 10C8.5 19 5 15 5 10V5l7-3z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const whyUs = [
+  { icon: I_BOLT,   title: "Integration-First Architecture", description: "We design around your BSS, billing, and network API stack from day one, so the platform works inside real telecom operations rather than beside them." },
+  { icon: I_GLOBE,  title: "Consumer-Scale Web3 Experience", description: "We have shipped Web3 products used by tens of thousands of daily users with embedded wallets and social login, the level of simplicity telecom subscribers expect." },
+  { icon: I_EYE,    title: "Honest Use Case Assessment", description: "We tell you which telecom blockchain use cases are production-ready and which are still experimental, before you invest." },
+  { icon: I_SHIELD, title: "Security and Compliance Built In", body: `ISO 27001 and SOC 2 practices, privacy-by-design data architecture, and <a href="/blockaudit-smart-contract-and-blockchain-security" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">BlockAudit</a> reviews for every production smart contract.` },
+];
+---
+
+<ServicePageLayout data={telecommunicationsData}>
+  <div slot="pre-process">
+
+    <!-- Services -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Blockchain Development Services for Telecom Companies</h2>
+          <p class="text-sd-text-muted leading-relaxed">Full-cycle blockchain engineering across wholesale, fraud, subscriber, and network operations.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Value chain table -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Where Blockchain Creates Value Across the Telecom Value Chain</h2>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Telecom Segment</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Core Problem</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/3">Blockchain Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              {valueChain.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.segment}</td>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.problem}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.application}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {valueChain.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.segment}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Core problem:</span> {row.problem}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Application:</span> {row.application}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Production status -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Which Telecom Blockchain Use Cases Are Already in Production</h2>
+          <p class="text-sd-text-muted leading-relaxed">Most articles on blockchain in telecom still describe use cases that never shipped. Here is where the market actually stands.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {productionStatus.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- OSS/BSS integration -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Integrating Blockchain with OSS/BSS and Network APIs</h2>
+          <p class="text-sd-text-muted leading-relaxed">A telecom blockchain platform only works if it connects to the systems that already run the business.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
+          {ossBss.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Networks -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-3xl" data-animate>
+          <h2 class="section-title text-white mb-6">Blockchain Networks for Telecom Platforms</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            Network choice depends on who participates and what is being settled. Permissioned networks like Hyperledger Fabric and Besu fit inter-operator settlement, where participants are known and data is commercially sensitive. Public EVM chains such as Ethereum, Polygon, and Base suit subscriber wallets, loyalty tokens, and stablecoin payments that need open interoperability. Solana is the natural choice for DePIN integrations, since major decentralized wireless networks settle there. We evaluate trade-offs per project and often combine them.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery process -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Delivery Process for Telecom Blockchain Projects</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          {process.map((step) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <p class="text-3xl font-display text-sd-purple-300 mb-4">{step.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{step.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed" set:html={step.body} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Engagement models -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Engagement Models for Telecom Blockchain Development</h2>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {engagementModels.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed" set:html={item.body} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Blockchain Services for Telecom Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((item) => (
+            <a
+              href={item.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why SpaceDev -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Why Telecom Companies Choose SpaceDev for Blockchain Development</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {whyUs.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center p-3 mb-5" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                <Fragment set:html={item.icon} />
+              </div>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{item.title}</h3>
+              {item.body ? (
+                <p class="text-sm text-sd-text-muted leading-relaxed" set:html={item.body} />
+              ) : (
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

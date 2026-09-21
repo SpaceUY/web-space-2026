@@ -1,0 +1,284 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import { gamingData } from "../../../data/services";
+
+const services = [
+  { number: "01", title: "NFT Game Development and In-Game Asset Tokenization", description: "Smart contracts to mint, manage and transfer in-game items as NFTs, using ERC-721 for unique assets and ERC-1155 for semi-fungible items such as consumables, cosmetics and crafting materials. We add metadata, supply controls and royalty logic so every item has provable scarcity and generates value on secondary markets." },
+  { number: "02", title: "GameFi and Play-to-Earn Economy Development", description: "Token and reward systems designed around player retention rather than extraction: in-game currencies, reward pools, staking, points, daily missions and on-chain claims. We define sinks, faucets and supply rules during Discovery, because a game economy that inflates will lose players no matter how good the gameplay is." },
+  { number: "03", title: "Web3 Game Infrastructure and SDK Development", description: "APIs, SDKs and developer back offices that let studios add blockchain features to existing games without rebuilding their stack. The aim is to give game teams customizable tools to run their on-chain economy from one dashboard." },
+  { number: "04", title: "Embedded Wallets, Gasless Transactions and Player Onboarding", description: "Wallet abstraction for mainstream players: social login, email sign-up, automatic wallet creation and gas sponsorship, so no one needs a seed phrase or a native token to start playing. We pair this with fiat checkout through providers like Stripe and Coinflow, so in-game purchases feel like any other in-app payment." },
+  { number: "05", title: "NFT Marketplace Development for Games and Collectibles", description: "In-game and standalone marketplaces with listings, offers, peer-to-peer swaps, search and royalty enforcement. Built for high-value assets, including tokenized physical collectibles backed by insured vaulting partners." },
+  { number: "06", title: "Cross-Chain Bridges and Multichain Game Architecture", description: "Interoperability for game assets across EVM networks and Solana, with bridge functionality that lets items and activity move between chains while players keep a single, seamless experience." },
+  { number: "07", title: "Gaming Launchpads and Community Token Offerings", description: "Launchpad platforms for IDOs and INOs, with cross-chain smart contracts for participation, staking and treasury security, plus discovery and tracking tools for past, current and upcoming offerings." },
+  { number: "08", title: "Smart Contract Audits for Blockchain Games", description: "In-game assets carry real market value, so a contract bug is an economic exploit, not a glitch. Through BlockAudit, SpaceDev's security division, we review minting, marketplace and reward contracts before they reach mainnet." },
+];
+
+const valueChain = [
+  { segment: "Game studios and publishers", problem: "Players can't own or resell items, studios miss secondary revenue", application: "NFT game assets, royalty-enforced marketplaces" },
+  { segment: "Mobile and casual games", problem: "Wallet setup and gas fees kill onboarding", application: "Embedded wallets, gasless transactions, fiat checkout" },
+  { segment: "Esports and gaming hubs", problem: "Weak community ownership and monetization", application: "Launchpads, fan tokens, NFT passes" },
+  { segment: "Trading cards and collectibles", problem: "Illiquid physical assets, authentication, custody", application: "Vaulted tokenization, P2P swaps, gacha mechanics" },
+  { segment: "Sports and fan engagement", problem: "Low repeat engagement", application: "GameFi missions, NFT rewards, leaderboards" },
+  { segment: "Web3 game infrastructure providers", problem: "Studios won't adopt complex tooling", application: "APIs, SDKs, developer back offices" },
+];
+
+const projects = [
+  {
+    title: "Blockus: Web3 Game Infrastructure Backed by a16z crypto",
+    body: "For Blockus, SpaceDev built the NFT management API, instant wallet creation, gasless transactions, Stripe payments and the developer back office. Blockus is a Web3 gaming infrastructure platform backed by a16z crypto, Altos Ventures, Maple and CSS23. The MVP shipped in three months.",
+    href: "/our-work/blockus",
+    stats: null as null | { label: string; value: string }[],
+  },
+  {
+    title: "Collector Crypt: Multichain Tokenized Trading Cards",
+    body: "For Collector Crypt, we built smart contracts, a cross-chain bridge, peer-to-peer swaps and the Gacha mobile app. Collector Crypt tokenizes graded physical trading cards across Solana, Ethereum, Base, Monad and ApeChain.",
+    href: "/our-work/collector-crypt",
+    stats: [
+      { label: "Lifetime trading volume", value: "$1.6B+" },
+      { label: "Cards tokenized on-chain", value: "130K+" },
+      { label: "Daily active users", value: "40K" },
+    ],
+  },
+  {
+    title: "W3E: Esports Gaming Launchpad",
+    body: "For W3E, we built cross-chain IDO, staking and treasury contracts plus the launchpad frontend. The QA-verified MVP was delivered to staging in 5.5 months.",
+    href: "/our-work/w3e",
+    stats: null,
+  },
+  {
+    title: "FightFI: GameFi Fan Platform on Aptos",
+    body: "For FightFI, we built Aptos social login, OKX Wallet authentication, NFT rewards, real-time leaderboards and smart contracts for on-chain claims, delivered as a responsive PWA.",
+    href: "/our-work/fightfi",
+    stats: null,
+  },
+];
+
+const techStack = [
+  { layer: "Networks", items: "Ethereum, Base, Solana, Aptos, Monad, ApeChain" },
+  { layer: "Token standards", items: "ERC-721, ERC-1155, ERC-20" },
+  { layer: "Smart contract tooling", items: "Solidity, Hardhat, Gelato automation" },
+  { layer: "Wallets and onboarding", items: "Privy embedded wallets, social login, OKX Wallet, Auth0" },
+  { layer: "Payments", items: "Stripe, Coinflow, fiat and crypto checkout" },
+  { layer: "Apps and backend", items: "React, Next.js, React Native, Node.js, NestJS, PostgreSQL" },
+];
+
+const process = [
+  { number: "01", title: "Discovery Sprint", description: "Player journey, asset model, economy rules, chain selection and compliance requirements, defined before any code is written." },
+  { number: "02", title: "Build and QA", description: "Milestone-based delivery with playable builds, QA gates and contract security reviews." },
+  { number: "03", title: "Launch and Live Ops", description: "Monitoring, iteration, new features and multichain expansion as your player base grows." },
+];
+
+const relatedServices = [
+  { title: "Smart Contract Development", description: "asset, reward and marketplace logic", href: "/blockchain-development-services/smart-contract-development" },
+  { title: "dApp Development", description: "player apps, launchpads and admin tools", href: "/blockchain-development-services/dapp-development" },
+  { title: "Crypto Token Development", description: "in-game currencies and utility tokens", href: "/blockchain-development-services/crypto-token-development" },
+  { title: "Asset Tokenization", description: "physical collectibles brought on-chain", href: "/blockchain-development-services/asset-tokenization" },
+  { title: "Web3 Compliance", description: "token, launchpad and KYC considerations", href: "/blockchain-development-services/industry/compliance-web3" },
+];
+
+const whyUs = [
+  { title: "Gaming proof, not a generic Web3 pitch", body: `Gaming accounts for 15% of SpaceDev's verified client work on <a href="https://clutch.co/profile/spacedev" target="_blank" rel="noopener noreferrer" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Clutch</a>. It ranks among our top three industries, behind financial services and IT.` },
+  { title: "Player experience first", body: `Our gaming work consistently removes the same barriers: wallets, gas and crypto checkout. If players notice the blockchain, it isn't finished yet.` },
+  { title: "Security built into delivery", body: `Security review runs through every milestone, and BlockAudit is available in-house for independent smart contract audits before launch.` },
+  { title: "Long-term live operations partner", body: `Games keep evolving after launch. We stay on as an ongoing engineering partner, as we do with Collector Crypt and FightFI, shipping new features, new chains and new products.` },
+];
+---
+
+<ServicePageLayout data={gamingData}>
+  <div slot="pre-process">
+
+    <!-- Services -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Web3 Gaming Services we provide</h2>
+          <p class="text-sd-text-muted leading-relaxed">Full-cycle Web3 game development, from on-chain asset design to live operations.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Value chain table -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Where Blockchain Creates the Most Value Across the Gaming Industry</h2>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Gaming Segment</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Core Problem Blockchain Solves</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-1/3">Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              {valueChain.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.segment}</td>
+                  <td class="py-5 pr-8 text-sd-text-muted leading-relaxed align-top">{row.problem}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.application}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {valueChain.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.segment}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Core problem:</span> {row.problem}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Application:</span> {row.application}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects delivered -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Blockchain Gaming Projects We've Delivered</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {projects.map((p) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{p.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed mb-4">{p.body}</p>
+              {p.stats && (
+                <div class="grid grid-cols-3 gap-3 mb-4">
+                  {p.stats.map((s) => (
+                    <div class="rounded-xl bg-white/5 border border-white/10 p-3 text-center">
+                      <p class="text-lg font-display text-sd-purple-300 leading-tight">{s.value}</p>
+                      <p class="text-[11px] text-sd-text-muted leading-tight mt-1">{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <a href={p.href} class="text-sm font-medium text-sd-purple-300 hover:text-white hover:underline underline-offset-4 transition-colors">Read the case study</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech stack table -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Blockchain Technologies We Use for Game Development</h2>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-8 w-1/3">Layer</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 w-2/3">Technologies</th>
+              </tr>
+            </thead>
+            <tbody>
+              {techStack.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-8 font-display font-semibold text-white text-sm leading-snug align-top">{row.layer}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.items}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {techStack.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-2">{row.layer}</h3>
+              <p class="text-sm text-sd-text-muted">{row.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why SpaceDev -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Why SpaceDev for Blockchain Game Development</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {whyUs.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed" set:html={item.body} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery process -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">How We Deliver Blockchain Game Projects</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+          {process.map((step) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <p class="text-3xl font-display text-sd-purple-300 mb-4">{step.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{step.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{step.description}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-sm text-sd-text-muted max-w-2xl" data-animate>
+          Need senior Solidity or backend engineers for your in-house team instead? See
+          <a href="/staff-augmentation" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">IT Staff Augmentation</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Related services -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Blockchain Services for Gaming</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {relatedServices.map((item) => (
+            <a
+              href={item.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

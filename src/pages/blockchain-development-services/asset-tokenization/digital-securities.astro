@@ -1,0 +1,265 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import FeatureCard from "../../../components/ui/FeatureCard.astro";
+import { digitalSecuritiesData } from "../../../data/services";
+
+const platformComponents = [
+  { title: "Security token contracts", description: "ERC-3643 (T-REX) or ERC-1400 contracts with identity-bound transfers, freeze, forced transfer, and recovery functions." },
+  { title: "Offering-aware compliance engine", description: "Rules that enforce your issuance exemption: investor eligibility, holding periods, jurisdiction blocks, and per-investor caps." },
+  { title: "Investor onboarding and accreditation", description: "KYC/AML, accredited investor verification, wallet screening, and on-chain identity claims reusable across offerings." },
+  { title: "Ownership registry and transfer agent sync", description: "On-chain holder registry that reconciles with the official record kept by your registered transfer agent." },
+  { title: "Primary issuance workflows", description: "Subscriptions, stablecoin or fiat payments, allocation, and minting on settlement." },
+  { title: "Corporate actions and distributions", description: "Dividends, coupons, voting, splits, and redemptions executed on schedule and logged on-chain." },
+  { title: "Secondary market connectivity", description: "ATS integrations, permissioned liquidity pools, and OTC settlement with delivery-versus-payment." },
+  { title: "Issuer and compliance consoles", description: "Cap table management, investor communications, regulatory exports, and full audit trails." },
+];
+
+const models = [
+  { row: "Who issues the token", issuer: "The issuer or its agent", custodial: "An intermediary holding the underlying security", synthetic: "An intermediary issuing its own instrument" },
+  { row: "What the holder owns", issuer: "The security itself", custodial: "An entitlement to the underlying security", synthetic: "Price exposure only" },
+  { row: "Eligible for the SEC Innovation Exemption", issuer: "Yes, for listed US stocks", custodial: "Yes, for listed US stocks", synthetic: "No" },
+  { row: "Typical builder", issuer: "Companies, funds, transfer agents", custodial: "Broker-dealers, custodians, fintechs", synthetic: "Offshore and crypto-native platforms" },
+];
+
+const complianceLayers = [
+  { title: "Issuance Exemptions Enforced at the Contract Level", description: "Most digital securities are issued under Reg D, Reg A+, Reg CF, or Reg S, and each exemption brings its own rules: accredited-only access under 506(c), investment limits for non-accredited buyers under Reg A+, a one-year transfer restriction under Reg CF, US person blocking under Reg S. We implement these as offering-level rule sets, so several offerings can run on the same token infrastructure without manual overrides." },
+  { title: "Transfer Restrictions That Execute Automatically", description: "With ERC-3643, every transfer is checked against the holder's verified identity and the offering's rules before it executes. A non-compliant transfer simply fails, regardless of who initiates it." },
+  { title: "Freeze, Forced Transfer, and Recovery", description: "Regulated platforms must respond to lost wallets, court orders, and investor offboarding. We build these administrative controls with role-based permissions and a complete audit trail." },
+  { title: "A Clear Official Record of Ownership", description: "The token is not automatically the legal record. Depending on your structure, the official record lives on-chain, with a registered transfer agent, or in a synchronized model. We build the reconciliation layer that keeps both views consistent and flags discrepancies before they become compliance issues." },
+];
+
+const liquidityRoutes = [
+  { title: "ATS integrations", description: "For private placements and restricted securities." },
+  { title: "Permissioned liquidity pools", description: "For tokenized listed equities under the new exemption." },
+  { title: "OTC and bilateral settlement", description: "With atomic delivery-versus-payment for institutional trades." },
+];
+
+const techStack = [
+  { label: "Token Standards", items: "ERC-3643 (T-REX) with ONCHAINID, ERC-1400, SPL Token-2022 with transfer hooks" },
+  { label: "Networks", items: "Ethereum, Polygon, Avalanche, Base, Solana, permissioned EVM networks" },
+  { label: "Smart Contract Infrastructure", items: "Solidity, Rust (Anchor), Hardhat, Foundry, OpenZeppelin, upgradeable proxy patterns" },
+  { label: "KYC/AML and Identity", items: "Sumsub, Jumio, Onfido, accredited investor verification, Chainalysis or Elliptic wallet screening" },
+  { label: "Custody Integrations", items: "Fireblocks MPC, Anchorage, Copper, Gnosis Safe multi-sig" },
+  { label: "Payments and Settlement", items: "USDC and regulated stablecoins, fiat on-ramps, atomic DvP settlement" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Model and Pathway Scoping", description: "We define the tokenization model, issuance exemptions, record-keeping structure, and target trading venues with your legal counsel and transfer agent. Our Product Discovery service can run this as a standalone engagement." },
+  { number: "02", title: "Compliance Rule Design", description: "We translate each offering's legal requirements into documented rule sets your compliance team can review before any code ships." },
+  { number: "03", title: "Smart Contract and Identity Layer", description: "We build the security token contracts, the on-chain identity registry, and administrative controls for freezes, forced transfers, and recovery." },
+  { number: "04", title: "Registry and Integrations", description: "We connect the platform to your transfer agent, custodian, KYC providers, and payment rails, with reconciliation and exception handling." },
+  { number: "05", title: "Portals and Trading Connectivity", description: "We build issuer and investor portals, corporate actions tooling, and the ATS, liquidity pool, or OTC integrations your distribution plan requires." },
+  { number: "06", title: "Security Review and Pre-Launch Audit", description: "Every contract and integration goes through structured security review, with BlockAudit available for independent audits focused on compliance bypasses and privilege escalation." },
+];
+
+const engagementModels = [
+  { title: "End-to-End Platform Delivery", description: "One team owns architecture, contracts, integrations, and the product layer, from discovery to launch." },
+  { title: "Team Augmentation", description: "Senior smart contract and backend engineers join your in-house team through IT Staff Augmentation." },
+  { title: "Architecture and Pre-Audit Review", description: "For teams already building, we review token design, compliance logic, and upgrade paths before external audits." },
+];
+
+const relatedServices = [
+  { title: "Stock Tokenization", href: "/blockchain-development-services/asset-tokenization/stocks", description: "Equity issuance, cap tables, and corporate actions on-chain" },
+  { title: "Bond Tokenization", href: "/blockchain-development-services/asset-tokenization/bonds", description: "Coupon automation, maturity logic, and T+0 settlement" },
+  { title: "Smart Contract Development", href: "/blockchain-development-services/smart-contract-development", description: "Audited ERC-3643 and ERC-1400 security token contracts" },
+  { title: "Web3 Compliance Development", href: "/blockchain-development-services/industry/compliance-web3", description: "KYC/AML, transfer restrictions, and regulatory infrastructure" },
+];
+---
+
+<ServicePageLayout data={digitalSecuritiesData}>
+  <div slot="pre-process">
+
+    <!-- Platform components -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">What we deliver</p>
+          <h2 class="section-title text-white">What a Digital Securities Platform Requires, and What We Build</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {platformComponents.map((item, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Three tokenized security models -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Three Tokenized Security Models, and Which One Fits Your Platform</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            In January 2026, SEC staff published a Statement on Tokenized Securities that groups the market into three models. The model you choose determines your custody structure, investor rights, and where the tokens can legally trade, so it is the first decision we make with you.
+          </p>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6"></th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6">Issuer-Sponsored</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6">Third-Party Custodial</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4">Third-Party Synthetic</th>
+              </tr>
+            </thead>
+            <tbody>
+              {models.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-6 font-display font-semibold text-white text-sm leading-snug align-top">{row.row}</td>
+                  <td class="py-5 pr-6 text-sd-text-muted leading-relaxed align-top">{row.issuer}</td>
+                  <td class="py-5 pr-6 text-sd-text-muted leading-relaxed align-top">{row.custodial}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.synthetic}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {models.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.row}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Issuer-sponsored:</span> {row.issuer}</p>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Third-party custodial:</span> {row.custodial}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Third-party synthetic:</span> {row.synthetic}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-8 text-sm text-sd-text-muted border-l-2 border-sd-purple/50 pl-4" data-animate>
+          For US-facing products, issuer-sponsored and custodial models are the practical route, and they are the core of our digital securities work. Synthetic structures often qualify as security-based swaps, which limits who can buy them and where they can trade.
+        </p>
+      </div>
+    </section>
+
+    <!-- Compliance built into the token -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white">Compliance Built Into the Token, Not Bolted On</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {complianceLayers.map((t) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{t.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{t.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Secondary trading -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mb-10" data-animate>
+          <h2 class="section-title text-white mb-4">Secondary Trading for Digital Securities</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            On September 17, 2026, the SEC issued its Innovation Exemption, a five-year, conditional relief that lets Tokenized Securities Venues trade tokenized US-listed stocks through permissioned automated market makers and liquidity pools without registering as an exchange. Combined with existing ATS infrastructure, issuers now have more realistic liquidity routes than ever:
+          </p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3 max-w-4xl mb-10">
+          {liquidityRoutes.map((item, i) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-3">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-2 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-sm text-sd-text-muted max-w-3xl" data-animate>
+          Because the exemption is temporary and the rules are still evolving, we design the compliance layer so it can be updated without migrating your token contracts.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white">Digital Securities Tech Stack</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {techStack.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{row.label}</p>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{row.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery process -->
+    <section class="py-20 md:py-32 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <div class="md:sticky md:top-32" data-animate>
+            <h2 class="section-title text-white mb-6">How We Build Digital Securities Platforms</h2>
+          </div>
+          <ol class="flex flex-col gap-6">
+            {deliverySteps.map((step) => (
+              <li>
+                <FeatureCard number={step.number} title={step.title} description={step.description} tone="dark" />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engagement models -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Engagement Models</h2>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {engagementModels.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related services -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Digital Securities Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((item) => (
+            <a
+              href={item.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>
