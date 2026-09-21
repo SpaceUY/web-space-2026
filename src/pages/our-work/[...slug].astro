@@ -50,11 +50,14 @@ const csJsonLd = {
 };
 
 
+const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
+
 const meta: { label: string; value?: string | number }[] = [
   { label: "Industry",  value: entry.data.industry  },
   { label: "Category",  value: entry.data.category  },
   { label: "Duration",  value: entry.data.duration  },
   { label: "Year",      value: entry.data.year      },
+  { label: "Published", value: entry.data.publishedAt ? dateFmt.format(entry.data.publishedAt) : undefined },
 ].filter((m) => m.value !== undefined);
 
 const heroImage   = entry.data.heroImage;

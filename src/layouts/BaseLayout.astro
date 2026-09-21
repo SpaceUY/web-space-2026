@@ -14,6 +14,8 @@ interface Props {
   ogImage?: string;
   ogType?: "website" | "article";
   noindex?: boolean;
+  /** Only meaningful together with noindex: whether crawlers should still follow links on the page. Defaults to true (noindex, nofollow). */
+  nofollow?: boolean;
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
   publishedTime?: string;
   authorName?: string;
@@ -33,6 +35,7 @@ const {
   ogImage,
   ogType = "website",
   noindex = false,
+  nofollow = true,
   jsonLd,
   publishedTime,
   authorName,
@@ -128,6 +131,7 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
       ogImage={ogImage}
       ogType={ogType}
       noindex={noindex}
+      nofollow={nofollow}
       publishedTime={publishedTime}
       authorName={authorName}
       articleSection={articleSection}

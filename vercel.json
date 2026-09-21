@@ -112,6 +112,11 @@
       "permanent": true
     },
     {
+      "source": "/blockchain-development-services/blockchain-for-banks",
+      "destination": "/blockchain-development-services/industry/banking",
+      "permanent": true
+    },
+    {
       "source": "/meet-fede",
       "destination": "https://meetings.hubspot.com/federico-sendra",
       "permanent": false

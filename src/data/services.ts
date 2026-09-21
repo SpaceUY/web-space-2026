@@ -309,10 +309,10 @@ export const banksData: ServicePageData = {
 
 export const smartContractData: ServicePageData = {
   seo: {
-    title: "Smart Contract Development, Audit-Ready & Production-Grade",
-    description: "Audited, gas-optimized smart contracts on Ethereum, Aptos, Solana and other ecosystems. From token standards to complex DeFi protocols.",
+    title: "Smart Contract Development Services - Secure & Scalable",
+    description: "Build secure, scalable smart contracts with an experienced Web3 team. From architecture and development to testing, auditing and deployment",
   },
-  updatedAt: "2026-07-15",
+  updatedAt: "2026-09-21",
   eyebrow: "Sub-service · Blockchain",
   title: "Smart Contract Development",
   description: "Secure, gas-efficient smart contracts engineered to scale. We design, build, test, and audit production contracts for token issuers, DeFi protocols, marketplaces, and DAOs.",
