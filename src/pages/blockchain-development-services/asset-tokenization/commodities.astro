@@ -1,0 +1,252 @@
+---
+import ServicePageLayout from "../../../layouts/ServicePageLayout.astro";
+import FeatureCard from "../../../components/ui/FeatureCard.astro";
+import { commoditiesData } from "../../../data/services";
+
+const platformComponents = [
+  { title: "Asset-backed token contracts", description: "Minting and burning tied to confirmed deposits and releases, with transfer controls and circuit breakers." },
+  { title: "Vault and warehouse integration", description: "API connections to custodians, vaults, and warehouse operators for real-time inventory data." },
+  { title: "Proof of Reserves", description: "On-chain verification that circulating supply never exceeds verified physical holdings." },
+  { title: "Quality, grade, and provenance records", description: "Assay certificates, grading reports, serial numbers, and origin data linked to each lot or unit." },
+  { title: "Redemption and delivery workflows", description: "Physical delivery requests, cash settlement options, minimum lot handling, and logistics tracking." },
+  { title: "KYC/AML and access controls", description: "Investor verification, wallet screening, and jurisdictional restrictions on issuance and redemption." },
+  { title: "Pricing and oracle infrastructure", description: "Commodity price feeds, NAV calculations, and fee logic for storage, insurance, and redemption." },
+  { title: "Trading and marketplace layer", description: "Peer-to-peer swaps, marketplace listings, DEX liquidity, and cross-chain availability." },
+];
+
+const commodityTypes = [
+  { title: "Precious Metals", body: `Silver, platinum, and palladium follow the same vault-backed logic as gold, but with different lot sizes, storage costs, and price volatility that affect redemption design and fee structures. For gold-specific platforms, see our <a href="/blockchain-development-services/asset-tokenization/gold" class="text-sd-purple-300 hover:text-white hover:underline hover:underline-offset-4 transition-colors">Gold Tokenization</a> service.` },
+  { title: "Energy Commodities", body: "Crude oil, refined products, and LNG cargoes can be tokenized to fractionalize inventory, speed up trade settlement, or collateralize financing. These platforms depend on storage terminal data, inspection reports, and title transfer workflows rather than a single vault." },
+  { title: "Agricultural Commodities", body: "Coffee, cocoa, grain, and other soft commodities are typically tokenized through warehouse receipts, with quality certificates and origin data attached to each lot. Provenance is often as valuable to buyers as the commodity itself." },
+  { title: "Industrial and Battery Metals", body: "Copper, lithium, nickel, and cobalt increasingly require verifiable sourcing. Tokenization combines ownership transfer with a traceable chain of custody from mine or refinery to end buyer." },
+  { title: "Trade Finance and Inventory Financing", body: "Tokenized commodity inventory can serve as collateral for working capital lines, giving lenders real-time visibility into the goods backing their exposure instead of periodic manual audits." },
+];
+
+const custodyModels = [
+  { row: "What the token represents", allocated: "Specific, identified units (bars, lots, serial numbers)", unallocated: "A share of a pooled inventory", receipt: "Title to goods stored by a warehouse operator" },
+  { row: "Holder protection", allocated: "Highest, assets are segregated", unallocated: "Depends on the custodian's balance sheet", receipt: "Depends on the receipt's legal status" },
+  { row: "Platform complexity", allocated: "Unit-level registry and reconciliation", unallocated: "Aggregate reserve tracking", receipt: "Receipt issuance, endorsement, and cancellation logic" },
+  { row: "Best fit", allocated: "Precious metals, high-value lots", unallocated: "Retail savings and micro-investing", receipt: "Agricultural and energy commodities" },
+];
+
+const infraSections = [
+  { title: "Custody Integration and Reconciliation", description: "The platform needs a live connection between the physical inventory and the on-chain supply. We integrate with your custodian or warehouse systems, automate mint and burn events from deposit and release confirmations, and build a reconciliation layer that flags discrepancies before they reach the chain." },
+  { title: "Proof of Reserves Investors Can Verify", description: "Periodic PDF audits are no longer enough. We implement Chainlink Proof of Reserve or custom attestation feeds, plus contract logic that pauses minting automatically if verified reserves fall below circulating supply." },
+  { title: "Quality and Provenance Data", description: "A barrel of crude or a bag of coffee is only as valuable as its grade and origin. We attach inspection certificates, assays, and chain-of-custody records to each token or lot, stored on-chain as hashes with the source documents kept off-chain." },
+  { title: "Redemption and Physical Delivery", description: "Redemption is where most commodity platforms break. We build request flows, minimum lot aggregation, delivery scheduling, cash settlement alternatives, and exception handling for vault or logistics delays, so on-chain state always matches what happened in the physical world." },
+];
+
+const techStack = [
+  { label: "Token Standards", items: "ERC-20 with access controls, ERC-721 and ERC-1155 for unit-level and lot-level assets, ERC-3643 for regulated offerings, SPL Token-2022 on Solana" },
+  { label: "Networks", items: "Ethereum, Base, Polygon, Avalanche, BNB Chain, Solana" },
+  { label: "Smart Contract Infrastructure", items: "Solidity, Rust (Anchor), Hardhat, Foundry, OpenZeppelin, upgradeable proxy patterns" },
+  { label: "Reserves and Pricing", items: "Chainlink Proof of Reserve, Chainlink and Pyth commodity price feeds, custom custodian API adapters" },
+  { label: "KYC/AML and Identity", items: "Sumsub, Jumio, Onfido, wallet screening via Chainalysis or Elliptic" },
+  { label: "Payments and Cross-Chain", items: "USDC and fiat on-ramps, embedded wallets, cross-chain bridges via LayerZero or Wormhole" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Asset and Custody Scoping", description: "We define the commodity, custody model, vault or warehouse partners, redemption terms, and regulatory framework before any architecture decisions. Our Product Discovery service covers this as a standalone engagement." },
+  { number: "02", title: "Token and Contract Design", description: "We build issuance contracts with mint and burn logic tied to custody events, transfer controls, and reserve circuit breakers." },
+  { number: "03", title: "Custody, Reserves, and Data Integration", description: "We connect the platform to your custodians and data providers, implement Proof of Reserves, and attach quality and provenance records." },
+  { number: "04", title: "Onboarding and Compliance Controls", description: "We build investor onboarding, wallet screening, and jurisdictional access rules for issuance, trading, and redemption." },
+  { number: "05", title: "Product and Marketplace Layer", description: "We build investor apps, issuer consoles, redemption flows, and the marketplace or DEX integrations your distribution model needs." },
+  { number: "06", title: "Security Review and Audit", description: "Asset-backed tokens are high-value targets. Every contract goes through structured review, with BlockAudit available for independent audits focused on minting authorization bypasses and oracle manipulation." },
+];
+
+const relatedServices = [
+  { title: "Gold Tokenization", href: "/blockchain-development-services/asset-tokenization/gold", description: "Vault-backed gold tokens with Proof of Reserves and physical redemption" },
+  { title: "Carbon Credit Tokenization", href: "/blockchain-development-services/asset-tokenization/carbon-credits", description: "Registry-linked environmental commodities and retirement tracking" },
+  { title: "Blockchain for Supply Chain and Logistics", href: "/blockchain-development-services/industry/supply-chain-and-logistics", description: "Provenance and chain-of-custody infrastructure" },
+  { title: "Blockchain for Energy", href: "/blockchain-development-services/industry/energy", description: "Energy asset tokenization and data trust layers" },
+];
+---
+
+<ServicePageLayout data={commoditiesData}>
+  <div slot="pre-process">
+
+    <!-- Platform components -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">What we deliver</p>
+          <h2 class="section-title text-white">What a Commodity Tokenization Platform Requires, and What We Build</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {platformComponents.map((item, i) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{String(i + 1).padStart(2, "0")}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Commodities we tokenize -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white">Commodities We Tokenize</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {commodityTypes.map((t) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{t.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed" set:html={t.body} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Custody model comparison -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Choosing the Right Custody Model</h2>
+          <p class="text-sd-text-muted leading-relaxed">
+            How the physical asset is held determines what the token legally represents and what the platform has to build.
+          </p>
+        </div>
+
+        <div class="hidden md:block overflow-x-auto" data-animate>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6"></th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6">Allocated</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4 pr-6">Unallocated (Pooled)</th>
+                <th class="text-left text-xs font-ui uppercase tracking-widest text-sd-purple-300 pb-4">Warehouse Receipt</th>
+              </tr>
+            </thead>
+            <tbody>
+              {custodyModels.map((row, i) => (
+                <tr class={`border-b border-white/5 ${i % 2 !== 0 ? "bg-white/[0.02]" : ""}`}>
+                  <td class="py-5 pr-6 font-display font-semibold text-white text-sm leading-snug align-top">{row.row}</td>
+                  <td class="py-5 pr-6 text-sd-text-muted leading-relaxed align-top">{row.allocated}</td>
+                  <td class="py-5 pr-6 text-sd-text-muted leading-relaxed align-top">{row.unallocated}</td>
+                  <td class="py-5 text-sd-text-muted leading-relaxed align-top">{row.receipt}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col gap-4 md:hidden">
+          {custodyModels.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3">{row.row}</h3>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Allocated:</span> {row.allocated}</p>
+              <p class="text-sm text-sd-text-muted mb-1"><span class="text-sd-purple-300 font-medium">Unallocated (pooled):</span> {row.unallocated}</p>
+              <p class="text-sm text-sd-text-muted"><span class="text-sd-purple-300 font-medium">Warehouse receipt:</span> {row.receipt}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-8 text-sm text-sd-text-muted max-w-2xl" data-animate>
+          Most platforms combine models, for example pooled holdings for retail users with allocated redemption above a minimum size. We map this during scoping, together with your legal advisors and custody partners.
+        </p>
+      </div>
+    </section>
+
+    <!-- Infrastructure detail -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white">How Commodity Tokenization Works at the Infrastructure Level</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {infraSections.map((t) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{t.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{t.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Compliance -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-3xl" data-animate>
+          <h2 class="section-title text-white mb-6">Compliance for Tokenized Commodities</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4">
+            The regulatory treatment of a commodity token depends on its structure. A token that simply represents title to a stored commodity is generally treated differently from one that pools assets and promises returns, which may be a security. In the US, commodity markets fall under the CFTC, whose December 2025 staff guidance took a technology-neutral approach to tokenized assets used as collateral. In the EU, some commodity-referenced tokens fall under MiCA.
+          </p>
+          <p class="text-sd-text-muted leading-relaxed">
+            We build the compliance controls your legal team defines: KYC/AML onboarding, wallet screening, jurisdictional restrictions, transfer controls, and audit trails for every issuance and redemption event. We do not provide legal or regulatory advice.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white">Commodity Tokenization Tech Stack</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {techStack.map((row) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{row.label}</p>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{row.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery process -->
+    <section class="py-20 md:py-32 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-20 items-start">
+          <div class="md:sticky md:top-32" data-animate>
+            <h2 class="section-title text-white mb-6">How We Build Commodity Tokenization Platforms</h2>
+          </div>
+          <ol class="flex flex-col gap-6">
+            {deliverySteps.map((step) => (
+              <li>
+                <FeatureCard number={step.number} title={step.title} description={step.description} tone="dark" />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Commodity Tokenization Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((item) => (
+            <a
+              href={item.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

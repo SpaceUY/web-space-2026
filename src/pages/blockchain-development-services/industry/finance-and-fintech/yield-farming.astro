@@ -1,0 +1,273 @@
+---
+import ServicePageLayout from "../../../../layouts/ServicePageLayout.astro";
+import Button from "../../../../components/ui/Button.astro";
+import FeatureCard from "../../../../components/ui/FeatureCard.astro";
+import { yieldFarmingData } from "../../../../data/services";
+
+const requirements = [
+  { number: "01", title: "Liquidity mining and reward contracts", description: "Staking and LP reward distribution with precise per-block or per-second accounting, multipliers, and boosted rewards." },
+  { number: "02", title: "Yield vaults and auto-compounders", description: "ERC-4626 vaults that deploy deposits into strategies, harvest rewards, and compound automatically." },
+  { number: "03", title: "Strategy and protocol integrations", description: "Connections to lending markets, DEX liquidity pools, liquid staking, and tokenized treasury products." },
+  { number: "04", title: "Emission and incentive modeling", description: "Simulations of emission schedules, lockups, and reward curves before a single token is distributed." },
+  { number: "05", title: "Vesting, lockups, and vote-escrow", description: "Time-locked rewards and vote-escrow models that reward long-term liquidity providers over short-term farmers." },
+  { number: "06", title: "Oracle and pricing infrastructure", description: "Manipulation-resistant price feeds for TVL, APY calculations, and share pricing." },
+  { number: "07", title: "Risk and emergency controls", description: "Deposit caps, strategy limits, pausable harvesting, and withdrawal protections for abnormal market conditions." },
+  { number: "08", title: "User dashboards and analytics", description: "Real-time APY, position tracking, reward claiming, and transparent reporting on where yield actually comes from." },
+];
+
+const platformTypes = [
+  { title: "Liquidity Mining Programs", description: `Reward programs that incentivize liquidity on your DEX pools or protocol markets, with <strong class="text-white">emission schedules tied to measurable goals</strong> such as depth, volume, or retention instead of raw TVL.` },
+  { title: "Yield Aggregators and Auto-Compounding Vaults", description: "ERC-4626 vaults that route deposits across strategies, harvest and compound rewards, and rebalance automatically, with gas-efficient harvesting and transparent fee logic." },
+  { title: "Staking and Liquid Staking Platforms", description: "Single-asset staking, liquid staking tokens, and restaking integrations with configurable lock periods, slashing awareness, and reward distribution for protocol tokens and validators." },
+  { title: "Real-World Asset Yield Products", description: `Vaults and platforms that source yield from <strong class="text-white">tokenized treasuries, private credit, and on-chain fixed income</strong> rather than token emissions, with the compliance controls these assets require.` },
+  { title: "Bonding and Protocol-Owned Liquidity", description: "Bond-based mechanisms that let protocols acquire their own liquidity by selling tokens at a discount with vesting, reducing dependence on rented liquidity from farmers." },
+  { title: "Points and Incentive Campaigns", description: "Off-chain and on-chain points systems for launch campaigns and airdrops, with sybil resistance and clear conversion rules to avoid disputes when rewards go live." },
+];
+
+const incentiveDesign = [
+  { title: "Real Yield Versus Emission-Driven Yield", description: `Sustainable platforms pay rewards from real revenue such as trading fees, lending interest, or RWA income. We help you <strong class="text-white">separate what your protocol earns from what it subsidizes</strong>, and design the transition from one to the other.` },
+  { title: "Emission Schedules and Lockups", description: "We model emission curves, lockup multipliers, and vesting under different market scenarios, so you can see how long your incentive budget lasts and what happens to liquidity when it ends." },
+  { title: "Retention Over TVL", description: `TVL is easy to rent. We design reward structures that favor duration and loyalty, such as boosted rewards for longer locks and vote-escrow governance, so incentives reach the users you actually want to keep. Our guide to <a href="/blog/liquidity-pools-and-yield-farming-how-defi-incentive-mechanisms-work" class="underline hover:text-white">liquidity pools and yield farming</a> covers these mechanisms in depth.` },
+];
+
+const securityMechanics = [
+  { title: "Vault Share Inflation and Donation Attacks", description: `Naive ERC-4626 implementations let the first depositor manipulate share prices. We apply <strong class="text-white">virtual shares, minimum deposits, and seeded vaults</strong> to close this attack vector.` },
+  { title: "Reward Accounting Precision", description: "Rounding errors in reward math compound into real losses or locked funds over time. We test reward distribution with fuzzing and invariant testing across thousands of scenarios." },
+  { title: "Oracle and Flash Loan Manipulation", description: "Share pricing and strategy logic must not rely on spot prices that a flash loan can move. We use time-weighted and decentralized oracle feeds with sanity checks." },
+  { title: "Strategy and Dependency Risk", description: `Every integrated protocol adds risk. We build per-strategy caps, emergency exits, and monitoring so a failure in one integration does not drain the whole vault. Every release goes through structured review, with <a href="/blockaudit-smart-contract-and-blockchain-security" class="underline hover:text-white">BlockAudit</a> available for independent audits.` },
+];
+
+const techStack = [
+  { category: "Smart Contracts", items: "Solidity, Rust (Anchor), Foundry, Hardhat, OpenZeppelin, ERC-4626 and ERC-20 standards" },
+  { category: "Networks", items: "Ethereum, Arbitrum, Base, Polygon, BNB Chain, Avalanche, Solana" },
+  { category: "Protocol Integrations", items: "Aave, Compound, Uniswap v3 and v4, Curve, liquid staking protocols, tokenized treasury products" },
+  { category: "Oracles and Automation", items: "Chainlink price feeds and Automation, Pyth, Gelato for harvesting and compounding" },
+  { category: "Testing and Security", items: "Foundry fuzzing and invariant tests, Slither, formal review of reward and share math" },
+  { category: "Frontend and Data", items: "React, Next.js, wagmi, viem, The Graph or custom indexers for APY and position data" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Tokenomics and Incentive Discovery", description: `We define yield sources, reward budgets, emission schedules, and target user behavior. Our <a href="/product-discovery" class="underline hover:text-white">Product Discovery</a> service covers this as a standalone engagement.` },
+  { number: "02", title: "Economic Modeling and Simulation", description: "We simulate emissions, APYs, and liquidity behavior under bull, bear, and exit scenarios before writing contracts." },
+  { number: "03", title: "Contract and Vault Development", description: "We build reward contracts, vaults, and strategies with upgrade paths and emergency controls designed in from the start." },
+  { number: "04", title: "Integration and Oracle Layer", description: "We connect strategies to external protocols and set up oracle feeds and automated harvesting." },
+  { number: "05", title: "Testing and Security Review", description: "Unit, fuzz, and invariant testing, followed by internal review and independent auditing before mainnet." },
+  { number: "06", title: "Launch, Monitoring, and Tuning", description: "We launch with deposit caps, monitor strategy health and incentive performance, and adjust emissions as real data comes in." },
+];
+
+const engagementModels = [
+  { title: "End-to-End Platform Development", description: "One team owns tokenomics modeling, contracts, integrations, and the user dashboard." },
+  { title: "Team Augmentation", description: `Senior Solidity and Rust engineers join your protocol team through <a href="/staff-augmentation" class="underline hover:text-white">IT Staff Augmentation</a>.` },
+  { title: "Incentive and Security Review", description: "For live protocols, we review emission design, vault logic, and reward accounting before you scale incentives." },
+];
+
+const relatedServices = [
+  { title: "DeFi Development Services", description: "Protocols, DEXs, and financial infrastructure for Web3 fintech", href: "/blockchain-development-services/industry/finance-and-fintech" },
+  { title: "Stablecoin Development", description: "Stablecoin design, issuance, and compliance infrastructure", href: "/blockchain-development-services/industry/finance-and-fintech/stablecoins" },
+  { title: "Crypto Trading Bot Development", description: "Automated execution and strategy infrastructure", href: "/blockchain-development-services/industry/finance-and-fintech/trading-bots" },
+  { title: "Crypto Token Development", description: "Token contracts, vesting, and tokenomics for reward tokens", href: "/blockchain-development-services/crypto-token-development" },
+];
+---
+
+<ServicePageLayout data={{ ...yieldFarmingData, seo: yieldFarmingData.seo }}>
+  <div slot="pre-process">
+
+    <!-- ① Overview -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <h2 class="section-title text-white mb-6">Yield Farming Development Services for DeFi Protocols That Need Liquidity That Stays</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-8" set:html={`SpaceDev designs and builds yield farming platforms, liquidity mining programs, and yield vaults for DeFi protocols, fintech apps, and token issuers that need <strong class="text-white">liquidity that stays after the incentives slow down</strong>, not a forked farm that drains its treasury in three months. We cover the full stack: reward contracts, vault strategies, incentive modeling, security, and the dashboards your users farm from.`} />
+          <Button href="/our-work" variant="primary">See our work</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② What We Build -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">What a Yield Farming Platform Requires, and What We Build</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {requirements.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ Types of Platforms -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Types of Yield Farming Platforms We Develop</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+          {platformTypes.map((item) => (
+            <div class="flex flex-col gap-3" data-animate>
+              <h3 class="text-lg font-display font-semibold text-white leading-snug">{item.title}</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed" set:html={item.description} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ Designing Incentives -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-3xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Designing Incentives That Build Lasting Liquidity</h2>
+          <p class="text-sd-text-muted leading-relaxed">Most yield farms fail economically long before they fail technically. High emissions attract capital that leaves as soon as rewards drop, and the token price absorbs the selling pressure.</p>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {incentiveDesign.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed" set:html={item.description} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ Security for Vaults -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Security for Yield Vaults and Reward Contracts</h2>
+          <p class="text-sd-text-muted leading-relaxed">Yield contracts hold pooled user funds and interact with external protocols, which makes them some of the most attacked contracts in DeFi.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {securityMechanics.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed" set:html={item.description} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ Stablecoin Yield & US Regulation -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-3xl" data-animate>
+          <h2 class="section-title text-white mb-6">Stablecoin Yield and US Regulation</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-4" set:html={`Stablecoin yield is one of the most requested products, and one of the most regulated. The GENIUS Act, signed in July 2025, <strong class="text-white">prohibits payment stablecoin issuers from paying interest or yield to holders</strong>. A Senate compromise in the CLARITY Act that would have banned passive yield while allowing activity-based rewards did not advance in September 2026, so the rules for platform-paid rewards remain unsettled.`} />
+          <p class="text-sd-text-muted leading-relaxed">For US-facing products, this shapes the architecture: where yield comes from, who pays it, and whether rewards are tied to user activity. We design yield products with those constraints built in, following the framework your legal counsel defines. We do not provide legal or regulatory advice.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ Tech Stack -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Yield Farming Tech Stack</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {techStack.map((item) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{item.category}</p>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑧ Security & Audit -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div
+          class="relative overflow-hidden rounded-3xl px-10 py-12 md:px-16 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-8"
+          style="background: var(--sd-gradient-purple-dark);"
+          data-animate
+        >
+          <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 70% 50%, #7c3aed, transparent 60%);"></div>
+          <div class="relative max-w-xl">
+            <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">Independent Security Review</p>
+            <p class="text-2xl md:text-3xl lg:text-4xl text-white font-display leading-snug">BlockAudit: Blockchain Security</p>
+            <p class="text-sd-text-muted mt-3 leading-relaxed">Yield vaults and reward contracts hold pooled user funds. BlockAudit (SpaceDev's dedicated security division) provides full smart contract audits and pre-launch hardening before any yield platform reaches production.</p>
+          </div>
+          <a
+            href="/blockaudit-smart-contract-and-blockchain-security"
+            class="relative shrink-0 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3 text-sm text-white font-medium hover:bg-white/20 transition-colors backdrop-blur-sm"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑨ Delivery Process -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <h2 class="section-title text-white mb-4" data-animate>How We Build Yield Farming Platforms</h2>
+          </div>
+          <div class="flex flex-col gap-4">
+            {deliverySteps.map((s) => (
+              <FeatureCard number={s.number} title={s.title} description={s.description} tone="dark" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑩ Engagement Models -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Engagement Models</h2>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {engagementModels.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed" set:html={item.description} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑪ Related Services -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Yield Farming Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((item) => (
+            <a
+              href={item.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>

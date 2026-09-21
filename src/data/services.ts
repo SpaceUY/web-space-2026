@@ -1357,3 +1357,271 @@ export const agenticAiData: AgenticAiPageData = {
     { question: "What's the difference between a pod, staff augmentation, and project-based work?", answer: "A dedicated AI development pod is a full team we run for you. AI staff augmentation places offshore AI developers inside your team under your management. Project-based work delivers a fixed scope. Most enterprise AI transformation engagements start as a pod." },
   ],
 };
+
+/* ============================================================
+   TRADING BOTS
+   ============================================================ */
+export const tradingBotsData: ServicePageData = {
+  seo: {
+    title: "Crypto Trading Bot Development Services for DeFi & CEX",
+    description: "Custom crypto trading bot development: DeFi and CEX execution, Telegram and AI bots, automated stop-loss, backtesting, and risk controls. Built by SpaceDev.",
+  },
+  updatedAt: "2026-09-21",
+  eyebrow: "DeFi · Trading Bots",
+  title: "Crypto Trading Bot Development Services for Exchanges, Fintechs, and Trading Platforms",
+  description: "SpaceDev builds crypto trading bots and automated trading infrastructure for exchanges, fintech apps, DeFi platforms, and trading teams that need reliable execution, strict risk controls, and secure key management, not a template script with a strategy bolted on. We cover the full stack: strategy engines, on-chain and exchange execution, automated orders, backtesting, and the interfaces your users trade from.",
+  relatedTags: ["fintech", "defi"],
+  heroParticles: true,
+  primaryCta: { label: "Talk to Our Team", href: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar", external: true },
+  compactHeroTitle: true,
+
+  footerMarqueeTheme: "dark",
+
+  caseStudySlugs: ["byrrgis", "piggygpt"],
+
+  faqs: [
+    { question: "What is a crypto trading bot?", answer: "A crypto trading bot is software that executes trades automatically based on predefined rules, signals, or AI-assisted logic. It connects to centralized exchanges through APIs or to decentralized exchanges on-chain, and can run 24/7 with order types like stop-loss, take-profit, DCA, and grid trading." },
+    { question: "Can you build a bot that guarantees profits?", answer: "No, and no honest developer can. Profitability depends on your strategy and market conditions. We build the infrastructure that executes your strategy reliably and protects capital with risk controls. Be cautious of any provider that promises returns." },
+    { question: "What is the difference between a DeFi trading bot and a CEX trading bot?", answer: "A CEX bot trades through an exchange's API, and the exchange holds the funds. A DeFi bot signs transactions directly on-chain, so it must handle gas, slippage, MEV, and wallet security. Many platforms combine both to access the best liquidity." },
+    { question: "How do non-custodial trading bots work?", answer: "The user keeps their assets in their own wallet and grants the bot limited permissions, such as session keys restricted to certain tokens, amounts, and time periods. Automation services execute orders within those limits, so the platform never holds user funds." },
+    { question: "Are there regulatory considerations for trading bot platforms?", answer: "Yes. Platforms that trade customer funds, provide trading advice, or hold assets may face investment adviser, broker, or money transmission requirements, and market manipulation rules apply to all automated trading. We do not build wash trading, spoofing, or sandwich attack bots. Your legal counsel defines the compliance framework; we build the controls." },
+    { question: "How long does it take to build a crypto trading bot?", answer: "A single-strategy bot on one venue can be production-ready in a few weeks after discovery. Multi-chain platforms with advanced order types, mobile apps, and AI assistants take several months. We scope timelines precisely after a discovery sprint." },
+  ],
+
+  finalCta: {
+    title: "Build Your Crypto Trading Bot with SpaceDev",
+    description: "Automated trading rewards precision and punishes shortcuts. We build trading bots with the execution reliability, risk controls, and security your users and your capital depend on.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
+  },
+};
+
+/* ============================================================
+   YIELD FARMING
+   ============================================================ */
+export const yieldFarmingData: ServicePageData = {
+  seo: {
+    title: "Yield Farming Development Services: DeFi Vaults & Rewards",
+    description: "SpaceDev builds yield farming platforms: liquidity mining, ERC-4626 vaults, auto-compounders, staking, and RWA yield, with sustainable incentives and audits.",
+  },
+  updatedAt: "2026-09-21",
+  eyebrow: "DeFi · Yield Farming",
+  title: "Yield Farming Development Services for DeFi Protocols That Need Liquidity That Stays",
+  description: "SpaceDev designs and builds yield farming platforms, liquidity mining programs, and yield vaults for DeFi protocols, fintech apps, and token issuers that need liquidity that stays after the incentives slow down, not a forked farm that drains its treasury in three months. We cover the full stack: reward contracts, vault strategies, incentive modeling, security, and the dashboards your users farm from.",
+  relatedTags: ["fintech", "defi"],
+  heroParticles: true,
+  primaryCta: { label: "Talk to Our Team", href: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar", external: true },
+  compactHeroTitle: true,
+
+  footerMarqueeTheme: "dark",
+
+  caseStudySlugs: ["apebond", "bondi-finance"],
+
+  faqs: [
+    { question: "What is yield farming?", answer: "Yield farming is the practice of providing assets to DeFi protocols, such as liquidity pools, lending markets, or staking contracts, in exchange for rewards. Rewards can come from protocol revenue like trading fees and interest, or from token emissions the protocol distributes to attract liquidity." },
+    { question: "What is the difference between a yield farm and a yield aggregator?", answer: "A yield farm rewards users for providing liquidity to a specific protocol. A yield aggregator sits on top of multiple protocols, moving deposits between strategies and compounding rewards automatically to optimize returns for the user." },
+    { question: "Why do most yield farming programs lose their liquidity?", answer: "Because they rely on emissions rather than real revenue. When rewards drop, capital moves elsewhere and the reward token faces selling pressure. Sustainable programs combine lockups, vesting, and revenue-backed rewards, and plan the transition away from emissions from day one." },
+    { question: "Is ERC-4626 required for yield vaults?", answer: "It is not required, but it is the standard for tokenized vaults on EVM chains. ERC-4626 makes vaults composable with other protocols and wallets, and well-audited implementations help avoid common share-accounting vulnerabilities." },
+    { question: "Can we offer stablecoin yield to US users?", answer: "It depends on the structure. The GENIUS Act prohibits payment stablecoin issuers from paying yield to holders, and rules for rewards paid by other platforms are still being defined. Your legal counsel determines what is permissible; we build products that implement that framework." },
+    { question: "How long does it take to build a yield farming platform?", answer: "A liquidity mining program or single-strategy vault can launch within a few weeks after design and audit. Multi-strategy aggregators, vote-escrow systems, and RWA yield products take several months, mainly because economic modeling and independent audits cannot be rushed." },
+  ],
+
+  finalCta: {
+    title: "Build Your Yield Farming Platform with SpaceDev",
+    description: "Yield attracts users. Sound incentive design and secure vaults keep them. We build yield farming infrastructure that is economically sustainable and safe enough to hold your users' capital.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
+  },
+};
+
+/* ============================================================
+   LENDING PROTOCOLS
+   ============================================================ */
+export const lendingProtocolsData: ServicePageData = {
+  seo: {
+    title: "Lending Protocol Development: DeFi Money Markets & RWA",
+    description: "SpaceDev builds DeFi lending protocols: pooled and isolated markets, liquidation engines, oracle design, and RWA credit platforms, audited before mainnet.",
+  },
+  updatedAt: "2026-09-21",
+  eyebrow: "DeFi · Lending Protocols",
+  title: "DeFi Lending Protocol Development Services for Money Markets, Isolated Markets, and On-Chain Credit",
+  description: "SpaceDev designs and builds DeFi lending protocols and borrowing platforms for protocol teams, fintech companies, and credit funds that need risk parameters that hold up under stress, not a Compound fork with new branding. We cover the full stack: lending contracts, interest rate models, liquidation engines, oracle design, and the interfaces your lenders and borrowers use.",
+  relatedTags: ["fintech", "defi"],
+  heroParticles: true,
+  primaryCta: { label: "Talk to Our Team", href: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar", external: true },
+  compactHeroTitle: true,
+
+  footerMarqueeTheme: "dark",
+
+  caseStudySlugs: ["bondi-finance"],
+
+  faqs: [
+    { question: "What is a DeFi lending protocol?", answer: "A DeFi lending protocol is a set of smart contracts that lets users supply assets to earn interest and borrow against collateral without a bank or intermediary. Interest rates adjust automatically based on supply and demand, and undercollateralized positions are liquidated on-chain." },
+    { question: "What is the difference between pooled and isolated lending markets?", answer: "Pooled markets share liquidity across many assets, which gives depth but spreads risk: a problem with one collateral can affect all lenders. Isolated markets pair one collateral with one loan asset, so risk stays contained, at the cost of more fragmented liquidity." },
+    { question: "Should we fork an existing lending protocol?", answer: "Forking saves time but inherits the original design's assumptions and known attack vectors, and many forks have been exploited through changes their teams did not fully understand. Launching isolated markets on an audited primitive, or building custom contracts where you genuinely need different logic, is usually safer." },
+    { question: "How do liquidations work in DeFi lending?", answer: "When a borrower's collateral value falls below the liquidation threshold, anyone can repay part of the debt and receive the collateral at a discount. Well-designed engines use partial liquidations and keeper incentives so positions are closed before they turn into bad debt." },
+    { question: "Can real-world assets be used as collateral?", answer: "Yes. Tokenized treasuries, private credit, and other real-world assets are increasingly used as collateral, usually in permissioned markets with KYC requirements, specialized oracles, and legal agreements that make the collateral enforceable off-chain." },
+    { question: "How long does it take to build a lending protocol?", answer: "Launching isolated markets on an existing primitive can take weeks. A custom lending protocol typically takes several months, because economic simulation, liquidation testing, and independent audits cannot be compressed safely." },
+  ],
+
+  finalCta: {
+    title: "Build Your Lending Protocol with SpaceDev",
+    description: "Lending protocols are judged on their worst day, not their best. We build lending infrastructure with the risk design, liquidation reliability, and security to protect your lenders when markets turn.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
+  },
+};
+
+/* ============================================================
+   ASSET TOKENIZATION · DIGITAL SECURITIES
+   ============================================================ */
+export const digitalSecuritiesData: ServicePageData = {
+  seo: {
+    title: "Digital Securities & Security Token Development Services",
+    description: "SpaceDev builds digital securities platforms: security token issuance, Reg D and Reg A+ compliance, transfer agent integration, and secondary trading.",
+  },
+  eyebrow: "Sub-service · Asset Tokenization",
+  compactHeroTitle: true,
+  title: "Digital Securities Development Services for Security Token Platforms",
+  description: "SpaceDev designs and builds digital securities platforms for issuers, broker-dealers, transfer agents, and fintech companies that need compliant security token infrastructure in production, not a pilot. We cover the full stack: security token contracts, investor onboarding, ownership records that reconcile with your transfer agent, and the venues where your tokens trade.",
+  relatedTags: ["rwa", "tokenization"],
+  primaryCta: { label: "Get in touch", href: "/contact" },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  footerMarqueeTheme: "dark",
+
+  caseStudySlugs: ["bondi-finance", "apebond"],
+
+  faqs: [
+    { question: "What are digital securities?", answer: "Digital securities are traditional securities, such as shares, bonds, or fund interests, issued or represented as tokens on a blockchain. They carry the same legal rights as their conventional equivalents, and securities laws apply in full. What changes is how ownership is recorded, transferred, and settled." },
+    { question: "What is the difference between a security token and a crypto token?", answer: "A security token represents a regulated financial instrument, so transfers are limited to verified, eligible holders. A standard crypto token has no built-in eligibility controls. Standards like ERC-3643 add identity and compliance checks to every transfer." },
+    { question: "Is an STO the same as asset tokenization?", answer: "A security token offering (STO) is the primary sale of a digital security. Tokenization covers the full lifecycle: issuance, the ownership registry, corporate actions, and secondary trading. We build platforms for the full lifecycle, not only the offering." },
+    { question: "What does the SEC's Innovation Exemption mean for tokenized securities?", answer: "Issued on September 17, 2026, it gives qualifying Tokenized Securities Venues five years of conditional relief to trade tokenized US-listed stocks through permissioned liquidity pools without registering as an exchange. It covers issuer-sponsored and custodial tokens, excludes synthetic ones, and includes trading caps and transparency requirements." },
+    { question: "Do we need a registered transfer agent?", answer: "In most US issuer-sponsored structures, yes, and many teams use the blockchain as a synchronized record alongside the transfer agent's books. We build the integration either way. Your legal counsel defines the structure; we do not provide legal or regulatory advice." },
+    { question: "Should we build a custom platform or use a white-label solution?", answer: "White-label tools can take a single offering to market quickly. A custom platform makes sense when you run multiple exemptions or instruments, work with your own transfer agent and custodians, need control over fees and data, or plan to offer tokenization as a service to other issuers." },
+  ],
+
+  finalCta: {
+    title: "Build Your Digital Securities Platform with SpaceDev",
+    description: "The rules for on-chain capital markets are being written now, and platforms built on rigid assumptions will need rebuilding as they change. We build digital securities infrastructure that enforces today's requirements and adapts to what comes next.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
+  },
+};
+
+/* ============================================================
+   ASSET TOKENIZATION · COMMODITIES
+   ============================================================ */
+export const commoditiesData: ServicePageData = {
+  seo: {
+    title: "Commodity Tokenization Development Services & Platforms",
+    description: "SpaceDev builds commodity tokenization platforms: vault and warehouse integration, Proof of Reserves, redemption workflows, and compliant issuance.",
+  },
+  eyebrow: "Sub-service · Asset Tokenization",
+  compactHeroTitle: true,
+  title: "Commodity Tokenization Development Services for Platforms Backed by Real Physical Assets",
+  description: "SpaceDev designs and builds commodity tokenization platforms for traders, producers, vault operators, commodity funds, and fintech companies that need every token backed by a verifiable physical asset, not a price feed with a marketing layer on top. We cover the full stack: token issuance, vault and warehouse integration, Proof of Reserves, quality and provenance data, redemption logistics, and the markets where your tokens trade.",
+  relatedTags: ["rwa", "tokenization"],
+  primaryCta: { label: "Get in touch", href: "/contact" },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  footerMarqueeTheme: "dark",
+
+  caseStudySlugs: ["collector-crypt", "aura"],
+
+  faqs: [
+    { question: "What is commodity tokenization?", answer: "Commodity tokenization is the process of representing ownership of a physical commodity, such as metals, energy products, or agricultural goods, as digital tokens on a blockchain. Each token corresponds to a defined quantity held by a custodian or warehouse, and can be transferred, traded, or redeemed without moving the physical asset." },
+    { question: "Which commodities can be tokenized?", answer: "Any commodity with reliable custody, standardized grading, and verifiable inventory data can be tokenized. Precious metals are the most mature category. Energy, agricultural, and industrial metals are growing quickly, usually through warehouse receipts or inventory financing structures." },
+    { question: "How does a commodity-backed token stay fully backed?", answer: "Tokens are minted only when a deposit is confirmed in custody and burned when the commodity is released. Proof of Reserves feeds verify on-chain that circulating supply matches physical holdings, and smart contracts can pause minting automatically if they do not." },
+    { question: "Are tokenized commodities securities?", answer: "It depends on the structure. A token representing direct title to a stored commodity is generally treated as a commodity interest, while a token that pools assets or promises returns may be a security. Your legal counsel determines the classification; we build the controls that classification requires." },
+    { question: "Can token holders redeem for the physical commodity?", answer: "Yes, if the platform is designed for it. Physical redemption requires minimum lot sizes, delivery logistics, and custody release workflows. Many platforms also offer cash settlement for smaller holdings." },
+    { question: "Should we build our own platform or use an existing commodity token?", answer: "Integrating an existing token, as we did with XAUT for Aura, is faster when you need a consumer product on top of established backing. Building your own platform makes sense when you control the physical inventory, want your own custody and redemption terms, or need to tokenize a commodity that has no mature on-chain equivalent." },
+  ],
+
+  finalCta: {
+    title: "Build Your Commodity Tokenization Platform with SpaceDev",
+    description: "Tokenizing physical commodities is an operations problem as much as a blockchain one. We build the platforms that keep vaults, warehouses, and on-chain supply in sync, so your tokens are worth exactly what they claim to be.",
+    buttonLabel: "Talk to our team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
+  },
+};
+
+/* ============================================================
+   INDUSTRY · TELECOMMUNICATIONS
+   ============================================================ */
+export const telecommunicationsData: ServicePageData = {
+  seo: {
+    title: "Blockchain for Telecom: Development Services for Operators",
+    description: "Blockchain development for telecom: roaming settlement, fraud prevention, DePIN carrier offload, and subscriber wallets for MNOs and MVNOs. Talk to SpaceDev.",
+  },
+  eyebrow: "Industry · Telecommunications",
+  compactHeroTitle: true,
+  heroParticles: true,
+  title: "Blockchain Development for Telecom Operators, MVNOs, and Wholesale Carriers",
+  description: "SpaceDev builds blockchain infrastructure for mobile network operators, MVNOs, wholesale carriers, and connectivity platforms that need to settle faster between partners, fight fraud, and open new revenue lines without replacing their core network or BSS stack. From inter-operator settlement to subscriber wallets and decentralized coverage, we deliver production systems, not proofs of concept.",
+  relatedTags: ["web3-infrastructure"],
+  primaryCta: { label: "Discuss Your Telecom Project", href: "/contact" },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  footerMarqueeTheme: "dark",
+
+  caseStudySlugs: ["acme", "collector-crypt"],
+  caseStudiesTitle: "Web3 Capabilities Proven in Production",
+
+  faqs: [
+    { question: "How is blockchain used in the telecom industry?", answer: "The most mature uses are wholesale roaming and interconnect settlement between operators, fraud prevention, tokenized loyalty programs, subscriber payments and wallets, DePIN carrier offload, and validator node operations. Blockchain works as a shared record and settlement layer; it does not replace the physical network." },
+    { question: "Does blockchain replace our BSS or billing systems?", answer: "No. Blockchain sits on top of existing OSS/BSS and billing platforms, receiving usage and settlement data through integrations. Your rating, charging, and customer systems keep running as they do today." },
+    { question: "Is subscriber data stored on the blockchain?", answer: "It should not be. Well-designed telecom platforms keep personal data and CPNI off-chain and record only hashes, proofs, or aggregated settlement data on the ledger, which keeps the system compatible with GDPR and telecom privacy rules." },
+    { question: "What is DePIN carrier offload, and why does it matter for operators?", answer: "DePIN carrier offload lets mobile operators route subscriber data through community-deployed Wi-Fi hotspots on decentralized networks such as Helium. Operators add capacity in dense areas without building new sites, and pay only for the data actually carried." },
+    { question: "Which blockchain is best for telecom applications?", answer: "Permissioned networks like Hyperledger Fabric fit inter-operator settlement with known participants. Public EVM chains suit wallets, loyalty, and payments. Solana fits DePIN integrations. Many telecom platforms combine a permissioned settlement layer with a public chain for consumer-facing features." },
+    { question: "How long does a telecom blockchain project take?", answer: "A focused product, such as a tokenized loyalty program or a network API fraud integration, typically takes 10 to 16 weeks after discovery. Multi-operator settlement platforms take longer because onboarding partners and integrating billing systems drive the timeline. We scope every project after a discovery sprint." },
+  ],
+
+  finalCta: {
+    title: "Build Blockchain Infrastructure for Your Telecom Business",
+    description: "Whether you need faster settlement with roaming partners, stronger fraud defenses, a rewards program subscribers actually use, or a path into decentralized coverage, SpaceDev has the blockchain depth and integration experience to deliver it.",
+    buttonLabel: "Talk to Our Team",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/web-meetings-calendar",
+    external: true,
+  },
+};
+
+/* ============================================================
+   INDUSTRY · GAMING
+   ============================================================ */
+export const gamingData: ServicePageData = {
+  seo: {
+    title: "Blockchain Game Development Services for Game Studios",
+    description: "Blockchain game development services: NFT assets, GameFi economies, embedded wallets, gasless onboarding, and multichain marketplaces. Built by SpaceDev.",
+  },
+  eyebrow: "Industry · Gaming",
+  compactHeroTitle: true,
+  heroParticles: true,
+  title: "Blockchain Game Development Services for Studios and Gaming Brands",
+  description: "SpaceDev builds blockchain infrastructure for game studios, publishers, esports organizations and collectibles platforms that want true digital ownership without adding friction for players. From NFT game assets and GameFi economies to embedded wallets and multichain marketplaces, we deliver the Web3 layer that makes a game work at scale.",
+  relatedTags: ["nft-gaming"],
+  primaryCta: { label: "Discuss Your Game Project", href: "https://meetings.hubspot.com/federico-sendra/meet-space", external: true },
+  secondaryCta: { label: "See our work", href: "/our-work" },
+  footerMarqueeTheme: "dark",
+
+  caseStudySlugs: ["blockus", "collector-crypt", "w3e", "fightfi"],
+
+  faqs: [
+    { question: "What is blockchain game development?", answer: "Blockchain game development means building the on-chain layer of a game: smart contracts for items and currencies, wallet onboarding, marketplaces and payment flows. Most studios keep their existing game engine and connect it to this layer through APIs or an SDK." },
+    { question: "What is the difference between NFT games, GameFi and play-to-earn?", answer: `NFT games use tokens to represent owned in-game items. GameFi is the wider mix of game mechanics and financial features such as staking, rewards and in-game currencies. Play-to-earn is one GameFi model, where players earn tokens with market value. Many studios now favor "play-and-own" designs, because pure earning loops have struggled to retain players.` },
+    { question: "Do players need a crypto wallet to play a Web3 game?", answer: "No. Embedded wallets create one automatically when players sign up with email or a social account, and gas sponsorship removes the need to hold tokens. Players can then pay with a card through fiat checkout." },
+    { question: "Which blockchain is best for game development?", answer: "It depends on transaction volume, fees, the target audience and whether assets need to move across networks. EVM chains such as Base and Ethereum offer the widest tooling, while Solana and Aptos suit high-frequency, low-cost interactions. We make this decision during Discovery." },
+    { question: "Can you add blockchain features to an existing game?", answer: "Yes. Many studios start with a single feature, such as tradable skins or on-chain rewards, and integrate it without rebuilding the game." },
+    { question: "How long does it take to build a Web3 game MVP?", answer: "Our gaming MVPs have taken between three and six months, depending on scope. A Discovery Sprint gives you an accurate timeline and budget before you commit." },
+  ],
+
+  finalCta: {
+    title: "Ready to Build Your Web3 Game?",
+    description: "Whether you are a studio adding tradable assets, an esports brand launching a community platform or a collectibles company taking physical inventory on-chain, SpaceDev has shipped it before and can ship it for you.",
+    buttonLabel: "Start Your Blockchain Game Project",
+    buttonHref: "https://meetings.hubspot.com/federico-sendra/meet-space",
+    external: true,
+  },
+};

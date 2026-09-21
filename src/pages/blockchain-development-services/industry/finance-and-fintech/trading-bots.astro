@@ -1,0 +1,260 @@
+---
+import ServicePageLayout from "../../../../layouts/ServicePageLayout.astro";
+import Button from "../../../../components/ui/Button.astro";
+import FeatureCard from "../../../../components/ui/FeatureCard.astro";
+import { tradingBotsData } from "../../../../data/services";
+
+const requirements = [
+  { number: "01", title: "Strategy and signal engine", description: "Rule-based, indicator-driven, or AI-assisted logic, with parameters your team can tune without redeploying." },
+  { number: "02", title: "Exchange and DEX execution layer", description: "Order routing to centralized exchanges through their APIs and to DEXs and aggregators on-chain, with slippage and gas controls." },
+  { number: "03", title: "Automated order types", description: "Stop-loss, take-profit, trailing stops, DCA, and grid orders executed reliably, even when the user is offline." },
+  { number: "04", title: "Market data infrastructure", description: "Real-time prices, order books, and on-chain data feeds with failover between providers." },
+  { number: "05", title: "Backtesting and paper trading", description: "Historical simulation with realistic fees, slippage, and latency, plus paper trading before capital goes live." },
+  { number: "06", title: "Risk management layer", description: "Position limits, exposure caps, drawdown thresholds, and kill switches enforced outside the strategy logic." },
+  { number: "07", title: "Wallet and key security", description: "Non-custodial wallets, scoped session keys, and MPC or HSM-backed signing for custodial setups." },
+  { number: "08", title: "User interfaces and monitoring", description: "Web, mobile, or Telegram interfaces, plus dashboards, alerts, and audit logs for every automated action." },
+];
+
+const botTypes = [
+  { title: "DeFi Trading Bots and On-Chain Execution", description: `Bots that trade directly on DEXs and aggregators across EVM chains and Solana, with <strong class="text-white">cross-chain routing, gas optimization, and MEV-protected transaction submission</strong> through private RPC endpoints.` },
+  { title: "Centralized Exchange (CEX) Trading Bots", description: "Algorithmic trading systems connected to exchange APIs, with rate-limit handling, order state reconciliation, and resilient reconnection logic for 24/7 operation." },
+  { title: "Telegram Trading Bots", description: `Trading bots that let users buy, sell, and manage positions from a chat interface, with self-custodial wallets provisioned at sign-up and <strong class="text-white">confirmation flows that prevent costly mistakes</strong>.` },
+  { title: "AI Trading Assistants and Agents", description: "Conversational assistants and AI agents that explain market data, suggest actions, and execute trades within limits the user sets. The AI proposes; the risk layer decides what can actually be executed." },
+  { title: "Automated Order and Portfolio Bots", description: `Stop-loss, take-profit, DCA, grid, and rebalancing bots for retail platforms and wallets that want to offer <strong class="text-white">advanced order types without custody</strong> of user funds.` },
+  { title: "Arbitrage and Liquidity Bots", description: "CEX-to-DEX and cross-chain arbitrage systems, liquidation bots for lending protocols, and liquidity management for exchanges and token issuers, built with self-trade prevention and full audit trails." },
+];
+
+const custodyModels = [
+  { title: "Non-Custodial Bots with Scoped Permissions", description: `Users keep control of their assets. The bot acts through <strong class="text-white">session keys or smart account permissions (ERC-4337 and EIP-7702)</strong> limited to specific tokens, amounts, and time windows, and automation services execute orders only within those limits.` },
+  { title: "Custodial and Institutional Setups", description: "For trading desks and funds operating their own capital, we build execution infrastructure with MPC or HSM-based signing, role-based approvals, and withdrawal allowlists, so no single key or person can move funds." },
+];
+
+const riskControls = [
+  { title: "Kill Switches and Exposure Limits", description: "Every bot we build has hard limits that live outside the strategy code: maximum position size, daily loss thresholds, and a kill switch that halts trading instantly when something behaves unexpectedly." },
+  { title: "Token and Contract Risk Screening", description: `Before a trade executes, the bot can check the target token for honeypot patterns, suspicious ownership permissions, and liquidity risks, surfacing <strong class="text-white">automated risk signals</strong> instead of blind execution.` },
+  { title: "Backtesting Without False Confidence", description: "Most backtests look better than live results because they ignore fees, slippage, and data leakage. We model execution costs realistically and validate strategies in paper trading before real capital is at risk." },
+  { title: "Smart Contract Audits", description: `When bots rely on custom contracts for vaults, automation, or routing, those contracts go through structured review, with <a href="/blockaudit-smart-contract-and-blockchain-security" class="underline hover:text-white">BlockAudit</a> available for independent audits.` },
+];
+
+const techStack = [
+  { category: "Languages and Frameworks", items: "TypeScript, Node.js, Python, Rust, Solidity, React, React Native" },
+  { category: "DeFi Routing and Execution", items: "LI.FI, Jupiter, 1inch, Uniswap, private RPC and MEV protection services" },
+  { category: "Automation and Order Execution", items: "Gelato, Chainlink Automation, Safe modules, ERC-4337 smart accounts" },
+  { category: "Market Data", items: "Mobula, CoinGecko, exchange WebSocket feeds, Chainlink and Pyth price feeds" },
+  { category: "Infrastructure", items: "Redis, BullMQ, PostgreSQL, AWS or Azure, Alchemy and QuickNode RPC" },
+  { category: "Wallets and Onboarding", items: "Particle Network, Privy, embedded wallets, MPC signing with Fireblocks" },
+];
+
+const deliverySteps = [
+  { number: "01", title: "Strategy and Product Discovery", description: `We define the bot's role, target venues, custody model, order types, and risk limits. Our <a href="/product-discovery" class="underline hover:text-white">Product Discovery</a> service can run this as a standalone engagement.` },
+  { number: "02", title: "Architecture and Data Layer", description: "We design the execution architecture, select data providers with failover, and set up the infrastructure for low-latency, always-on operation." },
+  { number: "03", title: "Execution Engine and Integrations", description: "We build exchange and DEX connectors, order management, and automation for stop-loss, take-profit, and scheduled strategies." },
+  { number: "04", title: "Backtesting and Paper Trading", description: "We validate strategies against historical data with realistic costs, then run them in paper trading against live markets." },
+  { number: "05", title: "Interfaces and Monitoring", description: "We ship the web, mobile, or Telegram interface, plus operator dashboards, alerting, and audit logs." },
+  { number: "06", title: "Security Review and Controlled Launch", description: "We review keys, permissions, and contracts, then launch with conservative limits that scale as the system proves itself." },
+];
+
+const engagementModels = [
+  { title: "End-to-End Bot Development", description: "One team owns strategy engineering, execution, infrastructure, and interfaces, from discovery to launch." },
+  { title: "Team Augmentation", description: `Senior blockchain and backend engineers join your trading team through <a href="/staff-augmentation" class="underline hover:text-white">IT Staff Augmentation</a>.` },
+  { title: "Architecture and Security Review", description: "For teams with an existing bot, we review execution reliability, key management, and risk controls before you scale capital." },
+];
+
+const relatedServices = [
+  { title: "DeFi Development Services", description: "Protocols, DEXs, and financial infrastructure for Web3 fintech", href: "/blockchain-development-services/industry/finance-and-fintech" },
+  { title: "Stablecoin Development", description: "Stablecoin rails for trading, settlement, and payments", href: "/blockchain-development-services/industry/finance-and-fintech/stablecoins" },
+  { title: "Agentic AI Development", description: "AI agents that plan and execute tasks within defined guardrails", href: "/agentic-ai-development" },
+  { title: "White Label Crypto Exchange", description: "Exchange platforms with built-in trading automation", href: "/blockchain-development-services/white-label-crypto-exchanges" },
+];
+---
+
+<ServicePageLayout data={{ ...tradingBotsData, seo: tradingBotsData.seo }}>
+  <div slot="pre-process">
+
+    <!-- ① Overview -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-3xl mx-auto" data-animate>
+          <h2 class="section-title text-white mb-6">Crypto Trading Bot Development Services for Exchanges, Fintechs, and Trading Platforms</h2>
+          <p class="text-sd-text-muted leading-relaxed mb-8" set:html={`SpaceDev builds crypto trading bots and automated trading infrastructure for exchanges, fintech apps, DeFi platforms, and trading teams that need <strong class="text-white">reliable execution, strict risk controls, and secure key management</strong>, not a template script with a strategy bolted on. We cover the full stack: strategy engines, on-chain and exchange execution, automated orders, backtesting, and the interfaces your users trade from.`} />
+          <Button href="/our-work" variant="primary">See our work</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② What We Build -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">What a Production Crypto Trading Bot Requires, and What We Build</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {requirements.map((s) => (
+            <div class="group rounded-2xl p-7 bg-white/5 transition-colors duration-300 hover:bg-sd-purple/25" data-animate>
+              <p class="text-2xl font-display text-sd-purple-300 mb-4 group-hover:text-sd-purple-200 transition-colors duration-300">{s.number}</p>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{s.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ Types of Bots -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Types of Crypto Trading Bots We Develop</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+          {botTypes.map((item) => (
+            <div class="flex flex-col gap-3" data-animate>
+              <h3 class="text-lg font-display font-semibold text-white leading-snug">{item.title}</h3>
+              <p class="text-sd-text-muted text-sm leading-relaxed" set:html={item.description} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ Custody Architecture -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-3xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Non-Custodial and Custodial Trading Bot Architecture</h2>
+          <p class="text-sd-text-muted leading-relaxed">The custody model is the most important decision in a trading bot project, because it defines your security exposure and, often, your regulatory obligations.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {custodyModels.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed" set:html={item.description} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ Risk Controls -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-14" data-animate>
+          <h2 class="section-title text-white mb-4">Risk Controls and Security for Automated Trading</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {riskControls.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed" set:html={item.description} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ Tech Stack -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Crypto Trading Bot Tech Stack</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {techStack.map((item) => (
+            <div class="rounded-2xl p-6 bg-white/5 border border-white/10" data-animate>
+              <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">{item.category}</p>
+              <p class="text-sm text-sd-text-muted leading-relaxed">{item.items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ Security & Audit -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div
+          class="relative overflow-hidden rounded-3xl px-10 py-12 md:px-16 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-8"
+          style="background: var(--sd-gradient-purple-dark);"
+          data-animate
+        >
+          <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 70% 50%, #7c3aed, transparent 60%);"></div>
+          <div class="relative max-w-xl">
+            <p class="text-xs font-ui uppercase tracking-widest text-sd-purple-300 mb-3">Independent Security Review</p>
+            <p class="text-2xl md:text-3xl lg:text-4xl text-white font-display leading-snug">BlockAudit: Blockchain Security</p>
+            <p class="text-sd-text-muted mt-3 leading-relaxed">When a trading bot relies on custom contracts for vaults, automation, or routing, BlockAudit (SpaceDev's dedicated security division) provides full smart contract audits and pre-launch hardening before any bot reaches production.</p>
+          </div>
+          <a
+            href="/blockaudit-smart-contract-and-blockchain-security"
+            class="relative shrink-0 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3 text-sm text-white font-medium hover:bg-white/20 transition-colors backdrop-blur-sm"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑧ Delivery Process -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div class="md:sticky md:top-32">
+            <h2 class="section-title text-white mb-4" data-animate>How We Build Crypto Trading Bots</h2>
+          </div>
+          <div class="flex flex-col gap-4">
+            {deliverySteps.map((s) => (
+              <FeatureCard number={s.number} title={s.title} description={s.description} tone="dark" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑨ Engagement Models -->
+    <section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Engagement Models</h2>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {engagementModels.map((item) => (
+            <div class="rounded-2xl p-7 bg-white/5 border border-white/10 hover:border-sd-purple/60 transition-colors duration-300" data-animate>
+              <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
+              <p class="text-sm text-sd-text-muted leading-relaxed" set:html={item.description} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑩ Related Services -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related Services for Trading Bot Projects</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedServices.map((item) => (
+            <a
+              href={item.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-sd-dark-2 p-6 min-h-[140px] hover:bg-sd-purple/20 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</ServicePageLayout>
