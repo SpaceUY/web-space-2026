@@ -1,7 +1,14 @@
 ---
 import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
 import FeatureCard from "../../components/ui/FeatureCard.astro";
+import RelatedIndustries from "../../components/ui/RelatedIndustries.astro";
 import { whiteLabelExchangeData } from "../../data/services";
+
+const relatedIndustries = [
+  { name: "Finance & Fintech", href: "/blockchain-development-services/industry/finance-and-fintech" },
+  { name: "Banking",           href: "/blockchain-development-services/industry/banking" },
+  { name: "Web3 Compliance",   href: "/blockchain-development-services/industry/compliance-web3" },
+];
 
 const platformComponents = [
   { title: "Trading engine", description: "Order matching, spot and derivatives logic, real-time price feeds" },
@@ -65,6 +72,13 @@ const relatedServices = [
 ---
 
 <ServicePageLayout data={whiteLabelExchangeData}>
+  <div slot="post-offers">
+    <RelatedIndustries
+      title="Industries We Build Exchanges For"
+      description="White-label exchanges get built for very different buyers. These are the industries we see most."
+      items={relatedIndustries}
+    />
+  </div>
   <div slot="pre-process">
 
     <!-- Components -->
