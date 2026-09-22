@@ -5,15 +5,30 @@
 // 404s for any post that was ever removed or renamed -- a redirect chain
 // ending in a dead page instead of a clean signal that the content is gone.
 // This checks the real content collection at request time instead, so a
-// retired post can never again produce a broken redirect: it either sends
-// the visitor to the real post, or to /gone (410) if it truly doesn't exist.
+// retired post can never again produce a broken redirect.
+//
+// A live post still 308s to its real URL. A retired one gets its 410 HERE,
+// at the address that was actually requested, rather than a 308 to /gone.
+// That redirect was wrong on two counts. A 308 asserts the content moved
+// permanently to the target, and retired content did not move to /gone; it
+// stopped existing. And because every dead URL answered from one address,
+// every one of them reported as /gone in analytics and in logs, collapsing
+// N distinct broken URLs into a single row that cannot say which URL was
+// asked for. Answering in place is also what this site already does for
+// 404s, so the two error paths now behave the same way.
 export const prerender = false;
 
 import { getCollection } from "astro:content";
+import GoneScreen from "../../components/ui/GoneScreen.astro";
 
 const { slug } = Astro.params;
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 const match = slug && posts.some((p) => p.id === slug);
 
-return Astro.redirect(match ? `/blog/${slug}` : "/gone", 308);
+if (match) return Astro.redirect(`/blog/${slug}`, 308);
+
+Astro.response.status = 410;
+Astro.response.statusText = "Gone";
 ---
+
+<GoneScreen />

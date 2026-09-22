@@ -26,6 +26,17 @@ interface Props {
   breadcrumbs?: false | Array<{ label: string; href?: string }>;
   /** "dark" (default) = white text for dark heroes. "light" = dark text for light heroes */
   breadcrumbTone?: "dark" | "light";
+  /**
+   * Marks a page whose whole job is to report an error (404, 410). GA4 still
+   * loads: measuring error pages is how broken inbound links get found, and
+   * dropping them would hide the problem rather than fix it. What is skipped
+   * is the two scripts that treat a visit as a person worth following up:
+   * Apollo resolves the visit to a company and hands it to sales, and Clarity
+   * records the session for someone to watch. A dead URL being crawled is
+   * neither a lead nor a session worth replaying, so both were feeding noise
+   * into tools people act on.
+   */
+  errorPage?: boolean;
 }
 
 const {
@@ -44,6 +55,7 @@ const {
   footerMarqueeTheme,
   breadcrumbs: breadcrumbsProp,
   breadcrumbTone = "dark",
+  errorPage = false,
 } = Astro.props;
 
 // Custom items take priority; otherwise auto-generate from URL path
@@ -185,7 +197,9 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
          identifies a visit from the page and the IP, so it loses nothing by
          starting after load instead of competing with the hero for the main
          thread. Bounces shorter than the idle callback go unrecorded, and those
-         are not leads. */}
+         are not leads. Skipped on error pages: a crawler hitting a dead URL is
+         not a company visiting the site, and sales should not be handed one. */}
+    {!errorPage && (
     <script is:inline>
       (function () {
         function loadApollo() {
@@ -209,6 +223,7 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
         else window.addEventListener("load", whenIdle, { once: true });
       })();
     </script>
+    )}
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
@@ -227,7 +242,10 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
          with the hero for the main thread during the initial render. The queue
          stub stays inline so any clarity() call made before the script arrives is
          buffered, and the script itself is fetched on the first interaction or
-         once the page has loaded and the main thread is idle, whichever is first. */}
+         once the page has loaded and the main thread is idle, whichever is first.
+         Skipped on error pages: there is no journey to replay on a dead end, and
+         two-second recordings of an error screen only dilute the real sessions. */}
+    {!errorPage && (
     <script is:inline>
       (function (c, l, a, r, i) {
         c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -250,6 +268,7 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
         else c.addEventListener("load", whenIdle, { once: true });
       })(window, document, "clarity", "script", "y0nhczcekt");
     </script>
+    )}
   </head>
   <body class="min-h-screen flex flex-col bg-sd-dark text-white antialiased">
     <Header />
