@@ -37,7 +37,7 @@ Many investors and institutions prioritize capital preservation and dependable r
 
 Deploying Real World Assets on a blockchain requires orchestration between systems that exist inside and outside of chains.
 
-On the blockchain side, smart contracts manage token issuance, governance, and integrations with lending or trading protocols. Off-chain, legal entities handle asset custody, ownership records, regulatory compliance, and financial reporting.
+On the blockchain side, smart contracts manage token issuance, governance, and integrations with lending or trading protocols. Off-chain, legal entities handle asset custody, ownership records, regulatory compliance, and financial reporting. This split is what [asset tokenization](/blockchain-development-services/asset-tokenization) engineering actually involves: the on-chain and off-chain halves have to stay in sync.
 
 Legal agreements define what token holders are entitled to. Custodians ensure the assets backing those tokens are securely held. Data providers supply information such as interest accrual or net asset value. The strength of an RWA system comes down to how reliably these elements operate together.
 
@@ -55,7 +55,7 @@ Protocols like [Ondo Finance](https://ondo.finance/) offer similar access throug
 
 Protocols like [Goldfinch](https://www.goldfinch.finance/) and [Maple Finance](https://maple.finance/) operate in a similar space, facilitating undercollateralized or institutionally structured lending to companies and funds, with risk assessment handled through governance and off-chain due diligence.
 
-Platforms such as [RealT](https://realt.co/) tokenize residential rental properties, allowing token holders to receive a share of rental income paid out in stablecoins. Ownership is structured through legal entities that hold the property, while tokens represent economic rights to cash flows. On the fixed income side, startups like Bondi Finance are working to bring emerging market bonds on-chain, removing the capital minimums that have historically kept retail investors out of this asset class.
+Platforms such as [RealT](https://realt.co/) tokenize residential rental properties, allowing token holders to receive a share of rental income paid out in stablecoins. Ownership is structured through legal entities that hold the property, while tokens represent economic rights to cash flows. On the fixed income side, startups like [Bondi Finance](/our-work/bondi-finance) are working to bring emerging market [bond tokenization](/blockchain-development-services/asset-tokenization/bonds) on-chain, removing the capital minimums that have historically kept retail investors out of this asset class.
 
 Tokenized gold products, such as [PAX Gold](https://www.paxos.com/pax-gold) (PAXG), represent ownership of physical gold bars held in custody, allowing users to gain exposure to commodities while remaining within blockchain-based systems.
 
