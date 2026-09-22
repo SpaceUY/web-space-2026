@@ -64,7 +64,7 @@ Companies who follow these steps avoid costly delays and build better products, 
 
 ## Freelancer or Agency? Choose Based on Your Goals
 
-Hiring freelancers can work for one-off tasks, but building sustainable software products often requires more consistency and depth. That's where partnering with a trusted development agency brings major value.
+Hiring freelancers can work for one-off tasks, but building sustainable software products often requires more consistency and depth. That's where a [custom development team](/innovative-web-and-mobile-solutions) or an [IT staff augmentation](/staff-augmentation) engagement brings major value over a patchwork of freelancers.
 
 Working with SpaceDev means:
 - Access to vetted talent with proven experience

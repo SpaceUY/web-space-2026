@@ -43,6 +43,6 @@ Selecting the right blockchain protocol depends on your business goals. If you'r
 
 ## Ready to Leverage Blockchain for Your Business?
 
-At SpaceDev, we help companies navigate the complexities of blockchain technology. Whether you're exploring decentralized applications, building smart contracts, or selecting the right protocol, our expert team is here to guide you.
+At SpaceDev, our [blockchain development services](/blockchain-development-services) help companies navigate the complexities of blockchain technology. Whether you're exploring decentralized applications, building smart contracts, or evaluating [Layer 1 blockchain development](/blockchain-development-services/layer-1-blockchain-development) for your own protocol, our expert team is here to guide you.
 
 Let's talk about how blockchain can transform your business. Contact us today!
