@@ -23,7 +23,7 @@ Decentralized finance didn't invent new financial services. Lending, trading, de
 
 A smart contract is a program stored on a blockchain that executes automatically when predefined conditions are met. When conditions are true, the contract runs. When they're false, it doesn't. No intermediary required.
 
-The Ethereum Virtual Machine (EVM) made this deployable at scale in 2015, creating a standardized environment where contracts written in Solidity could be composed with other contracts to build complex financial applications. The trust problem it solves is fundamental: instead of trusting a counterparty or institution to enforce an agreement, the code is the counterparty. Its behavior is deterministic and auditable before anyone interacts with it.
+The Ethereum Virtual Machine (EVM) made this deployable at scale in 2015, creating a standardized environment where contracts written in Solidity could be composed with other contracts to build complex financial applications. The trust problem it solves is fundamental: instead of trusting a counterparty or institution to enforce an agreement, the code is the counterparty. Its behavior is deterministic and auditable before anyone interacts with it, which is the standard our own [smart contract development](/blockchain-development-services/smart-contract-development) work is built to.
 
 ## The Main Contract Types Powering DeFi
 
@@ -75,3 +75,5 @@ Professional security audits can prevent 80% of preventable smart contract vulne
 - Test coverage including unit, integration, and forked mainnet scenario tests
 - Audit scoped to cover not just core contracts but all oracle integrations and upgrade mechanisms
 - Governance architecture (timelocks, emergency pause, voting thresholds) defined before deployment, not after
+
+This is the same process behind [how we built ApeBond on Solana](/our-work/apebond), and the discipline we bring to every [blockchain development for DeFi platforms](/blockchain-development-services/industry/finance-and-fintech) engagement.

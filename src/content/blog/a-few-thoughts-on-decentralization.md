@@ -39,6 +39,6 @@ Historically, the [Byzantine Generals problem](https://lamport.azurewebsites.net
 
 Some propose "distribution" rather than "decentralization," implying genuine decision-making power division. Preventing scale-tilting entity formation, eliminating leader nodes, and reconceptualizing consensus mechanisms may prove transformative. Consider stock markets: daily closings require buyer-seller price agreement through stochastic processes: not validation-dependent answers but consensus-reaching mechanisms incorporating complex variables and calculating averages.
 
-These remain theoretical possibilities, though innovative structural modifications could enable blockchain to realize genuine potential, overcome scalability constraints, and substantially diminish intermediary requirements.
+These remain theoretical possibilities, though innovative structural modifications could enable blockchain to realize genuine potential, overcome scalability constraints, and substantially diminish intermediary requirements, which is exactly what much of our [Layer 1 development](/blockchain-development-services/layer-1-blockchain-development) work is about.
 
-Thanks for reading! For additional information regarding this transformative technology, contact us at **info@spacedev.io**
+Thanks for reading! For [blockchain development services](/blockchain-development-services) or additional information regarding this transformative technology, contact us at **info@spacedev.io**

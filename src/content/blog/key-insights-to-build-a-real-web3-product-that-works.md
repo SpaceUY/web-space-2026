@@ -115,6 +115,6 @@ Don't overbuild. Start simple. Launch early. Iterate fast.
 
 ## Final Take
 
-Web3 is not just tech, it's incentive design + community + ownership. Most products fail because they treat it like Web2 with tokens. If you want to build something real, start with value, not hype.
+Web3 is not just tech, it's incentive design + community + ownership. Most products fail because they treat it like Web2 with tokens. If you want to build something real, start with value, not hype, and validate it with a proper [product discovery](/product-discovery) phase before writing [dApp development](/blockchain-development-services/dapp-development) code. [W3E](/our-work/w3e) is a Web3 product built on exactly that sequence.
 
 Build slow. Launch smart. And remember: the blockchain remembers everything.

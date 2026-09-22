@@ -226,7 +226,7 @@ Adopting AI in 2025 doesn't require you to overhaul your entire business overnig
 3. Speed up product development.
 4. Scale with predictive and generative models.
 5. Embed AI into your culture.
-6. Trust a reliable partner who can help, because going it alone isn't always the smartest move.
+6. Trust a reliable partner who can help, because going it alone isn't always the smartest move. If you're at the stage of validating what to build before committing engineering time to it, that's exactly what [product discovery](/product-discovery) is for, and [agentic AI development](/agentic-ai-development) is what we build once the roadmap is clear. [AthleteAI](/our-work/athleteai) is one of those roadmaps shipped.
 
 Each stage builds on the last, creating a compounding effect that transforms not just your efficiency but your ability to innovate.
 

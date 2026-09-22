@@ -63,4 +63,6 @@ When exchanges hit performance ceilings, the instinct is often to throw hardware
 
 By measuring carefully, prioritizing high-leverage fixes, and rolling them out safely with feature flags and shadow traffic, double-digit latency improvements can be unlocked in a single week without touching a server.
 
+This is the same discipline behind [NDAX Canada](/our-work/ndax-canada), a licensed exchange running in production at scale, and it's the standard we bring to every [crypto exchange development](/blockchain-development-services/white-label-crypto-exchanges) engagement. If the gap is capacity rather than a full rebuild, [staff augmentation](/staff-augmentation) can embed that same team directly into yours for the sprint.
+
 Want to see what a tailored performance sprint could do for your exchange? Get in touch.

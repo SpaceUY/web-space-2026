@@ -25,7 +25,7 @@ This marks a pivotal reversal from the previously restrictive policies that requ
 
 As regulatory clarity improves, so does adoption. Banks moving into crypto won't just need infrastructure; they'll need **customized, secure, and scalable blockchain solutions** tailored to legacy systems. This is where **blockchain development services** become mission-critical.
 
-At SpaceDev, we've helped fintech clients and financial institutions integrate blockchain technologies into their products with zero friction and full compliance. From smart contract architecture to cross-platform wallet integration, **our experience building for highly regulated environments** gives clients the trust they need to launch fast and safely.
+At SpaceDev, we've helped fintech clients and financial institutions integrate blockchain technologies into their products with zero friction and full compliance. From smart contract architecture to cross-platform wallet integration, **our experience building for highly regulated environments** gives clients the trust they need to launch fast and safely. It's the core of our [blockchain development for banks](/blockchain-development-services/industry/banking) practice, and every product decision runs through [Web3 compliance](/blockchain-development-services/industry/compliance-web3) from day one.
 
 ## The Rise of Blockchain Consulting
 

@@ -11,7 +11,7 @@ metatitle: "Real-World Assets (RWAs): Types, Benefits, Examples"
 metadescription: "Real-world assets (RWAs) bring physical and financial assets on-chain. Learn how tokenization boosts liquidity, transparency, and access to markets."
 ---
 
-Real World Assets are physical or traditional financial assets that are increasingly being represented on blockchain networks. This tokenization process improves liquidity, accessibility, transparency, and efficiency in asset trading. Below is a detailed look at different types of RWAs and how they are being digitized and used in the modern financial ecosystem.
+Real World Assets are physical or traditional financial assets that are increasingly being represented on blockchain networks. This tokenization process improves liquidity, accessibility, transparency, and efficiency in asset trading, and it's the core of our own [asset tokenization services](/blockchain-development-services/asset-tokenization). Below is a detailed look at different types of RWAs and how they are being digitized and used in the modern financial ecosystem.
 
 ## RWA Types at a Glance
 
@@ -26,7 +26,7 @@ Real World Assets are physical or traditional financial assets that are increasi
 
 ## Real Estate RWAs: Tokenized Property and Land
 
-Real estate includes residential properties, commercial buildings, land, and real estate investment trusts (REITs). Traditionally, these assets have been illiquid, meaning they take a long time to sell and require significant capital.
+Real estate includes residential properties, commercial buildings, land, and real estate investment trusts (REITs). Traditionally, these assets have been illiquid, meaning they take a long time to sell and require significant capital, which is exactly what our [real estate tokenization](/blockchain-development-services/asset-tokenization/real-estate) work is built to solve.
 
 **How RWAs Improve It:**
 - Fractional ownership allows investors to buy small portions of a property rather than the whole asset.
@@ -88,6 +88,8 @@ Luxury assets include:
 - Fine art (paintings, sculptures)
 - Luxury watches (Rolex, Patek Philippe)
 - Rare collectibles (historical artifacts, rare baseball cards)
+
+[Tokenizing physical collectibles](/our-work/collector-crypt) outside of finance is a real example here: trading cards brought on-chain with verifiable authenticity and provenance.
 
 **How RWAs Improve It:**
 - Fractional ownership: Instead of one person buying a $10M painting, 10,000 people could each own a $1,000 share.

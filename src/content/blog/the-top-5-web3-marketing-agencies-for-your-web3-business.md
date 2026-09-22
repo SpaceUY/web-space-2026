@@ -59,6 +59,6 @@ Their approach to Web3 marketing includes deep insights into blockchain, crypto,
 
 In conclusion, as we witness the transformative power of Web3 in reshaping the online landscape, it becomes evident that Web3 marketing is not just a trend but the future of digital engagement.
 
-The departure from traditional, centralized models to decentralized, community-driven initiatives marks a significant shift in how businesses connect with their audiences. The contrast between Web2 and Web3 marketing highlights the necessity for businesses to adapt to the evolving industry dynamics.
+The departure from traditional, centralized models to decentralized, community-driven initiatives marks a significant shift in how businesses connect with their audiences. The contrast between Web2 and Web3 marketing highlights the necessity for businesses to adapt to the evolving industry dynamics, and it's worth being clear that marketing an existing product is a different job from [blockchain development services](/blockchain-development-services) that build it in the first place.
 
-For Web3 business owners navigating this rapidly evolving landscape, seeking the expertise of a dedicated Web3 marketing agency becomes crucial for effectively promoting services or products.
+For Web3 business owners navigating this rapidly evolving landscape, seeking the expertise of a dedicated Web3 marketing agency for promotion, or a [technical Web3 partner](/blockchain-development-services/blockchain-partner) for the product itself, becomes crucial for effectively promoting services or products.

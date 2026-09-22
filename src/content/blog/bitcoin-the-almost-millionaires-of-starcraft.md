@@ -31,4 +31,4 @@ It's highly unlikely that playing StarCraft: Brood War will make you a potential
 
 And while it's tempting to think those who took home 25 Bitcoins in 2011 are damning the universe right now, it's important to remember that they couldn't have predicted the future of "a historically volatile asset." They could have also sold them in 2013 when they were worth $100 each. They could have been the victims of a hack or lost them in a trade. There's not much sense in dwelling on what-ifs.
 
-But next time you get a hold of a ridiculous amount of crypto, we recommend seeking financial advice (and hey, we provide that service!).
+But next time you get a hold of a ridiculous amount of crypto, we recommend seeking financial advice. If it's esports prize pools you're thinking about, the more deliberate version of that story today is [blockchain for gaming](/blockchain-development-services/industry/gaming): tournament payouts, in-game economies, and play-to-earn models built with the same rigor as any other financial product, like [FightFi](/our-work/fightfi), a real GameFi platform we built end to end.

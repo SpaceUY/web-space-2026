@@ -70,4 +70,4 @@ If this sounds like the same operational discipline you already apply to your co
 
 ## Where SpaceDev fits
 
-We've shipped Web3 production systems for banks, fintechs, and asset managers. We're happy to share what worked, what didn't, and what we'd do differently. [Get in touch](/contact) if a 30-minute conversation would be useful.
+This is the core of our [blockchain development for fintech](/blockchain-development-services/industry/finance-and-fintech) practice: production-grade [dApp development](/blockchain-development-services/dapp-development) for institutions that need Web3 infrastructure to behave like the rest of their stack. [NDAX Canada](/our-work/ndax-canada) is what that migration looks like at scale, a licensed exchange we built end to end. We're happy to share what worked, what didn't, and what we'd do differently. [Get in touch](/contact) if a 30-minute conversation would be useful.

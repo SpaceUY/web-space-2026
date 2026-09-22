@@ -36,6 +36,6 @@ If you're building AI products or infrastructure today, you're no longer competi
 1. **Opportunity is massive.** Big tech's commitment to AI opens new markets, new user behaviors, and massive downstream innovation.
 2. **Speed matters more than ever.** If you're not moving fast, you're already behind.
 
-At SpaceDev, we help fast-growing companies and forward-thinking teams bring AI ideas to life, without waiting for Meta to build the future for them.
+At SpaceDev, our [agentic AI development](/agentic-ai-development) practice helps fast-growing companies and forward-thinking teams bring AI ideas to life, without waiting for Meta to build the future for them.
 
 Want to launch your AI product before Prometheus comes online? Let's talk.

@@ -94,7 +94,7 @@ The infrastructure that makes layer two reliable is the same class of work as pu
 
 ## Where smart contracts actually earn their place
 
-Smart contracts are the self-executing piece that turns a passive record into an active one, and this is where a lot of blockchain logistics pitches get vague. Concretely, a smart contract can release payment automatically once a delivery event and a condition, like a temperature reading staying within range for the whole cold-chain journey, are both confirmed on-chain. That's an escrow function that used to require a person reading a shipping document and a temperature log side by side and deciding whether to release funds.
+This is where [smart contract development](/blockchain-development-services/smart-contract-development) does the actual work: the self-executing piece that turns a passive record into an active one, and this is where a lot of blockchain logistics pitches get vague. Concretely, a smart contract can release payment automatically once a delivery event and a condition, like a temperature reading staying within range for the whole cold-chain journey, are both confirmed on-chain. That's an escrow function that used to require a person reading a shipping document and a temperature log side by side and deciding whether to release funds.
 
 ![Smart contract logic executing from a laptop screen](/images/content/blockchain-supply-chain-traceability-smartcontract.png)
 

@@ -31,13 +31,13 @@ It's not just about speed; it's a transformation in how work gets done.
 
 On June 10, Goldman Sachs released insight on ["Why digital asset adoption is accelerating."](https://www.goldmansachs.com/what-we-do/investment-banking/insights/articles/why-digital-asset-adoption-is-accelerating) They point to regulatory clarity, blockchain's ability to enhance transparency and risk management, and the rise of stablecoins. Platforms like [Aura](/our-work/aura), a SpaceDev-built app for gold-backed savings and investment, show how digital asset infrastructure can also power more accessible consumer investment experiences.
 
-Importantly, Goldman highlights a surging deal flow: [digital asset M&A volumes jumped from $1 billion in 2019 to $15.8 billion in 2024](https://www.goldmansachs.com/what-we-do/investment-banking/insights/articles/why-digital-asset-adoption-is-accelerating). That's a fifteenfold increase in just five years, proof that blockchain and digital assets are no longer experimental, they're gaining real traction in traditional financial markets.
+Importantly, Goldman highlights a surging deal flow: [digital asset M&A volumes jumped from $1 billion in 2019 to $15.8 billion in 2024](https://www.goldmansachs.com/what-we-do/investment-banking/insights/articles/why-digital-asset-adoption-is-accelerating). That's a fifteenfold increase in just five years, proof that blockchain and digital assets are no longer experimental, they're gaining real traction in traditional financial markets, which is exactly the shift behind our [blockchain for banks](/blockchain-development-services/industry/banking) work.
 
 ## AI Meets Blockchain: A Powerful Combo
 
 Imagine integrating AI tools like GS AI Assistant with secure blockchain networks. This synergy could streamline compliance, automate smart contract reviews, and improve decision-making across asset classes, all while maintaining auditability. Goldman's spin-out effort, [GS DAP®](https://www.goldmansachs.com/pressroom/press-releases/2024/announcement-18-nov-2024), aims to bring blockchain-powered interoperability to capital markets.
 
-This is where the future of finance gets exciting. AI boosts productivity, blockchain adds transparency and programmability, and digital assets open new avenues for investment and efficiency.
+This is where the future of finance gets exciting. AI boosts productivity, blockchain adds transparency and programmability, and digital assets open new avenues for investment and efficiency. It's also the same combination we build in our own [AI development](/agentic-ai-development) work, agents that act on-chain within defined guardrails rather than just generating text.
 
 ## Why It Matters (And What's Next)
 

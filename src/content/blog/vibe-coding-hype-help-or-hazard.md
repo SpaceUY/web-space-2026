@@ -67,6 +67,6 @@ Engineering leaders need to set clear guidelines: when to use AI, how to prompt 
 
 Vibe coding is the writing on the wall coming to life: a shift in how software is made due to the impact of AI. As such tools improve, programming will increasingly become a high-level, collaborative act, more about **design and oversight** than typing out logic by hand.
 
-But we're not there yet. For now, the smartest developers (junior or senior) are those who learn how to work **with** AI, not rely 100% on it. They understand the value of fundamentals, architectural thinking, and code quality, and use AI to accelerate, not discard, those disciplines.
+But we're not there yet. For now, the smartest developers (junior or senior) are those who learn how to work **with** AI, not rely 100% on it. They understand the value of fundamentals, architectural thinking, and code quality, and use AI to accelerate, not discard, those disciplines. That judgment is exactly what [senior engineering talent](/staff-augmentation) brings to a codebase that AI alone can't.
 
-The vibe is real. But the craft still matters.
+The vibe is real. But the craft still matters, and that's what our [custom software development](/innovative-web-and-mobile-solutions) practice is built around.

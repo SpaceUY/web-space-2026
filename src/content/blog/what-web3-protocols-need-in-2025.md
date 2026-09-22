@@ -189,6 +189,6 @@ AI-driven agents, PayFi stablecoin infrastructure, international identity/fiat r
 
 ## Conclusion
 
-Web3 protocols now demand more than just code. They need infrastructure partners who build trust at every level, from their uptime to their community impact. The best partners bring developers, security, scalability, and vision. They co-create, rather than just contract.
+Web3 protocols now demand more than just code. They need infrastructure partners who build trust at every level, from their uptime to their community impact. The best partners bring developers, security, scalability, and vision, whether that's [Layer 1 blockchain development](/blockchain-development-services/layer-1-blockchain-development) at the protocol layer or [dApp development](/blockchain-development-services/dapp-development) at the application layer. They co-create, rather than just contract. [W3E launchpad](/our-work/w3e) is one protocol built on that model.
 
 In an ecosystem where speed, integrity, and adoption grants you the edge, the right tech partner really makes a difference.

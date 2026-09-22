@@ -31,4 +31,4 @@ Across the Web3 products we've shipped at SpaceDev, three things consistently mo
 - A clear "first 5 minutes" experience that gives users one win quickly.
 - Community programs that reward sustained contribution, not airdrop farming.
 
-Marketing in Web3 isn't a different discipline. It's the same discipline applied to a market that punishes shortcuts faster.
+Marketing in Web3 isn't a different discipline. It's the same discipline applied to a market that punishes shortcuts faster, and it only works if the [Web3 product development](/blockchain-development-services/dapp-development) underneath it can actually hold up. If you need a [Web3 technology partner](/blockchain-development-services/blockchain-partner) for that half of the equation, that's what we do.

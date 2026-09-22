@@ -115,3 +115,5 @@ The blockchain community keeps growing with fresh events emerging worldwide. The
 - Notable speakers and industry judges
 - Location: TBD
 - Website: https://ethmiami.net/
+
+Most of what gets discussed at these events, from rollup scaling to base-layer trade-offs, is the same territory our [Ethereum and Layer 1 development](/blockchain-development-services/layer-1-blockchain-development) work operates in day to day.

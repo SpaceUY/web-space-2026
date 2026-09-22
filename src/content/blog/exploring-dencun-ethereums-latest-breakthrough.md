@@ -35,6 +35,6 @@ Additionally, there's the issue of having to properly navigate the regulatory la
 
 ## Conclusion
 
-In short, Dencun represents a significant step toward greater scalability, efficiency, and innovation. With its focus on optimizing bandwidth, enhancing security, and fostering decentralization, the upgrade lays the groundwork for more robust and resilient Ethereum-based solutions. Entrepreneurs and developers who embrace these changes will undoubtedly gain access to the latest in decentralized applications and digital assets, possibly gaining an edge on those who do not.
+In short, Dencun represents a significant step toward greater scalability, efficiency, and innovation. With its focus on optimizing bandwidth, enhancing security, and fostering decentralization, the upgrade lays the groundwork for more robust [Layer 1 and rollup development](/blockchain-development-services/layer-1-blockchain-development). Entrepreneurs and developers who embrace these changes, and update their [smart contract development](/blockchain-development-services/smart-contract-development) practices accordingly, will undoubtedly gain access to the latest in decentralized applications and digital assets, possibly gaining an edge on those who do not.
 
 As always, if you want to know more or need help finding your way through the complex maze of decentralized technologies and their implementation, check out our blog or contact us directly.

@@ -124,5 +124,6 @@ For long-term scalability, security, and specialized support, partnering with an
 - Invest in AI Blockchain-capable developers
 - Use blockchain consulting services for strategy and security
 - Embrace a blend of full-time, freelance, or consulting models
+- Evaluate where [asset tokenization](/blockchain-development-services/asset-tokenization) fits your own RWA strategy
 
-Now is the time to engage with blockchain development expertise and consulting services to build the future.
+Now is the time to engage with [blockchain development services](/blockchain-development-services) and consulting expertise to build the future.

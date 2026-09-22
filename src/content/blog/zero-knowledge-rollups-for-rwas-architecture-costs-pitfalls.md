@@ -124,6 +124,8 @@ Track:
 
 ## Architecture Options
 
+Choosing between these is [Layer 1 and rollup development](/blockchain-development-services/layer-1-blockchain-development) work, and the trade-offs are exactly what makes [asset tokenization infrastructure](/blockchain-development-services/asset-tokenization) hard to get right on the first attempt.
+
 **Option A: Minimalist Validity Rollup:** Sequencer and prover off-chain; on-chain verifier checks proofs; DA via blobs or calldata; off-chain attestations referenced in batch metadata. Simple to deploy but risks under-designed attestation and DA rationale.
 
 **Option B: Validity Rollup + Explicit DA + Oracle Anchoring:** Formalizes DA choice (blobs with clear retention or external DA layer) and oracle heartbeat/fallback rules. Improves user promises and incident response.

@@ -72,3 +72,5 @@ To further increase the efficiency of a WhatsApp bot, additional features can be
 - **CRM Integration:** Seamlessly connecting the bot with a CRM (such as [HubSpot](https://www.hubspot.com/), [Salesforce](https://www.salesforce.com/), or [Zoho](https://www.zoho.com/)) enables better customer tracking and follow-ups.
 - **Payment Processing:** Integrating with platforms like [Stripe](https://stripe.com/) or [MercadoPago](https://www.mercadopago.com/) allows customers to complete transactions directly within WhatsApp.
 - **Multi-language support:** Enabling the bot to handle inquiries in multiple languages can expand its reach and improve accessibility.
+
+Building this well is [AI agent development](/agentic-ai-development) work at the model and orchestration layer, and [custom app development](/innovative-web-and-mobile-solutions) work at the integration layer, database, CRM, and payment providers connected cleanly rather than bolted on.
