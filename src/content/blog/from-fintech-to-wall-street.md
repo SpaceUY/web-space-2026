@@ -24,7 +24,7 @@ This week, Figure Technology Solutions, a fintech co-founded by Mike Cagney (who
 
 The IPO isn't just another crypto story. It highlights three signals founders should keep on their radar:
 
-1. **Blockchain is moving into mainstream capital markets:** By putting historically illiquid assets (like home equity loans) on-chain, Figure is proving blockchain can transform not just payments, but the very infrastructure of lending, trading, and investing.
+1. **Blockchain is moving into mainstream capital markets:** By putting historically illiquid assets (like home equity loans) on-chain, Figure is proving blockchain can transform not just payments, but the very infrastructure of lending, trading, and investing, the same [blockchain for financial services](/blockchain-development-services/industry/finance-and-fintech) shift traditional institutions are now building for.
 
 2. **The regulatory climate is shifting:** With a crypto-friendly U.S. administration and the successful [IPO of Circle](https://www.circle.com/pressroom/circle-announces-pricing-of-upsized-initial-public-offering), the stage is set for more digital-asset firms to go public. Entrepreneurs building in fintech, lending, or DeFi should see this as validation: the market and regulators are opening doors.
 
@@ -41,6 +41,6 @@ For startups, this is a blueprint:
 
 ## What Comes Next
 
-Figure plans to list on Nasdaq under the ticker FIGR, backed by heavyweight underwriters like Goldman Sachs, Jefferies, and BofA Securities. Whether the IPO soars or stumbles, the message is clear: blockchain is no longer peripheral to Wall Street, it's becoming one of its pillars.
+Figure plans to list on Nasdaq under the ticker FIGR, backed by heavyweight underwriters like Goldman Sachs, Jefferies, and BofA Securities. Whether the IPO soars or stumbles, the message is clear: blockchain is no longer peripheral to Wall Street, it's becoming one of its pillars, and [blockchain infrastructure for banks](/blockchain-development-services/industry/banking) is how traditional institutions are catching up.
 
 For U.S. entrepreneurs, this is more than market news. It's a reminder: the next wave of disruption won't just be about building new digital assets, but about reimagining how the financial system itself operates.

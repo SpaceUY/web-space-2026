@@ -50,7 +50,7 @@ The firms worth shortlisting share a consistent set of traits. Evaluate each one
 | Code ownership and transparency | Full ownership transfers to you, clean documentation | Confirm in the contract, non-negotiable |
 | Post-launch support | Monitoring, incident response, maintenance | Ask what happens the week after go-live |
 
-Two of these deserve emphasis. **In-house security** matters because outsourcing every audit signals the team does not think in threat models day to day. A partner with a dedicated [smart contract and blockchain security](/blockaudit-smart-contract-and-blockchain-security) practice treats security as core, not a checkbox. And a **verifiable production track record** is the filter that quietly eliminates most of the market. Ask to see real deployments, the same way our [case studies](/our-work) show systems running in production rather than concept work.
+Two of these deserve emphasis. **In-house security** matters because outsourcing every audit signals the team does not think in threat models day to day. A partner with a dedicated [smart contract and blockchain security](/blockaudit-smart-contract-and-blockchain-security) practice treats security as core, not a checkbox. And a **verifiable production track record** is the filter that quietly eliminates most of the market. Ask to see real deployments, the same way our [case studies](/our-work) show systems running in production rather than concept work, like [NDAX Canada](/our-work/ndax-canada), a licensed exchange we built the frontend and mobile app for.
 
 ## Red flags that should end the conversation
 
@@ -101,7 +101,7 @@ The right model depends on how defined your project is and how much you want to 
 | Staff augmentation | Filling specific skill gaps in your team | You provide the process and oversight |
 | Full product partner | End-to-end delivery from idea to production | Higher trust required, choose the partner carefully |
 
-If your gap is specialized talent rather than a whole project, [staff augmentation](/staff-augmentation) adds blockchain engineers to your existing team without a permanent hire. If you need the whole thing built and supported, a full product partner across [blockchain development services](/blockchain-development-services) fits better.
+If your gap is specialized talent rather than a whole project, [staff augmentation](/staff-augmentation) adds blockchain engineers to your existing team without a permanent hire. If you need the whole thing built and supported, a [long-term blockchain partner](/blockchain-development-services/blockchain-partner) across the full scope of [blockchain development services](/blockchain-development-services) fits better.
 
 ## How to run the selection in practice
 

@@ -82,7 +82,7 @@ Ramps convert between fiat and stablecoins, and they are where most integration 
 
 ### 4. Build the payment flow and stablecoin API
 
-This is the part teams overestimate. A **stablecoin API** turns an instruction like "pay 10,000 USDC to vendor X" into a settled, auditable on-chain transaction. Whether you use a provider's API or your own layer, the flow must handle idempotency, retries, confirmation tracking, and failure states, the same discipline as any payments integration. Because value moves irreversibly, the smart contracts and integration code should be [audited](/blockaudit-smart-contract-and-blockchain-security) before they touch real funds.
+This is the part teams overestimate. A **stablecoin API** turns an instruction like "pay 10,000 USDC to vendor X" into a settled, auditable on-chain transaction. Whether you use a provider's API or your own layer, the flow must handle idempotency, retries, confirmation tracking, and failure states, the same discipline as any [dApp development](/blockchain-development-services/dapp-development) payments integration. Because value moves irreversibly, the smart contracts and integration code should be [audited](/blockaudit-smart-contract-and-blockchain-security) before they touch real funds.
 
 ### 5. Solve treasury and accounting
 

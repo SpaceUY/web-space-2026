@@ -13,7 +13,7 @@ metadescription: "How SpaceDev built NDAX, Canada's most prominent crypto exchan
 
 Frowning upon blockchain mentions may have become normalized, yet integrating this technology into established financial systems presents substantial obstacles. NDAX co-founder Hussein Hammoud envisioned a bank-backed cryptocurrency exchange meeting Canadian governmental standards, enabling citizens to convert digital assets into fiat currency. This ambitious goal required overcoming numerous technical and regulatory hurdles.
 
-While comprehensive collaboration details appear in the case study, this article explores NDAX's operational mechanics and how the development team delivered a successful, secure platform.
+While [the full NDAX case study](/our-work/ndax-canada) covers the collaboration end to end, this article explores NDAX's operational mechanics and how the development team delivered a successful, secure platform.
 
 ## Technically Speaking
 
@@ -83,4 +83,4 @@ NDAX applies consistent fees regardless of transaction amount or method, whether
 
 ## Conclusion
 
-White-label solutions can expedite cryptocurrency exchange development, yet particular product visions and contexts invariably introduce distinct challenges. Spanning regulatory compliance to technical implementation difficulties, NDAX represents a significant collaborative achievement and educational experience. SpaceDev's partnership successfully created a robust platform demonstrating how "FinTech and the tangible world empower each other."
+[Crypto exchange development](/blockchain-development-services/white-label-crypto-exchanges) built on white-label foundations can expedite the timeline, yet particular product visions and contexts invariably introduce distinct challenges. Spanning regulatory compliance to technical implementation difficulties, NDAX represents a significant collaborative achievement and educational experience. SpaceDev's partnership successfully created a robust platform demonstrating how "FinTech and the tangible world empower each other."

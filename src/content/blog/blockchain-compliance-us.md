@@ -86,7 +86,7 @@ This matters more for compliance than most technical overviews suggest, because 
 
 **Private blockchains** are run by a single organization that controls who can participate. Compliance is straightforward because access is centrally gated from the start, but you give up the openness and network effects that make public chains valuable for reaching outside users.
 
-**Consortium blockchains** sit between the two: a defined group of organizations, often banks or regulated institutions, jointly controls the network. This is the model most bank settlement networks use, since it keeps participants known and vetted while still allowing multiple institutions to transact directly.
+**Consortium blockchains** sit between the two: a defined group of organizations, often banks or regulated institutions, jointly controls the network. This is the model most [blockchain for regulated institutions](/blockchain-development-services/industry/banking) work uses, since it keeps participants known and vetted while still allowing multiple institutions to transact directly.
 
 **Hybrid blockchains** mix a private or consortium layer for sensitive, regulated activity with a public layer for settlement, transparency, or broader reach. A tokenized security might be issued and whitelisted on a permissioned layer while final settlement or price discovery happens on a public network.
 

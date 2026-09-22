@@ -59,4 +59,4 @@ The innovation variable is important – where white label crypto exchanges are 
 
 In conclusion, white label crypto exchanges help businesses jump ahead when making a foray into the financial blockchain industry, skipping the chaos that technical development might bring to a team unfamiliar with the technology. Furthermore, the potential exposure that comes with expert coaching could be very important for the long-term success of the product.
 
-**Take the first step towards your business goal and contact us at info@spacedev.io to speak with an expert!**
+This is exactly the work our [white label crypto exchange development](/blockchain-development-services/white-label-crypto-exchanges) practice does: [NDAX Canada](/our-work/ndax-canada) runs at licensed-exchange scale, and [Zenda](/our-work/zenda) is a second build in the same space. **Take the first step towards your business goal and contact us at info@spacedev.io to speak with an expert!**
