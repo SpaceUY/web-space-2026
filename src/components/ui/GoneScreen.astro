@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "./Button.astro";
+
+// The 410 screen, as a component rather than a page, because it has to render
+// at whichever URL was requested. It is rendered by src/pages/post/[...slug].astro
+// for a retired post, and by src/pages/gone.astro for the bare /gone address.
+//
+// Setting the 410 status is the caller's job, not this component's: a component
+// that quietly rewrote the response status would make the status of a page
+// impossible to read from the page itself.
+---
+
+<BaseLayout
+  title="410: Content removed | SpaceDev"
+  description="This content has been permanently removed and is no longer available."
+  noindex
+  breadcrumbs={false}
+  errorPage
+>
+  <section class="bg-sd-dark relative overflow-hidden min-h-screen -mt-[72px] flex items-center">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 62% 55%, rgba(103,58,228,0.18) 0%, transparent 65%);"></div>
+
+    <div class="relative mx-auto max-w-[900px] px-6 md:px-10 py-32 text-center" data-animate>
+      <p class="text-[8rem] md:text-[12rem] leading-none font-display text-white tracking-tight">410</p>
+      <h1 class="mt-2 text-3xl md:text-5xl text-white font-display">This content is gone</h1>
+      <p class="mt-6 text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
+        The article you're looking for was permanently removed. It won't come back at this address.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <Button href="/blog" variant="primary" size="lg">Browse the blog</Button>
+        <Button href="/" variant="outline-light" size="lg">Back to home</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
