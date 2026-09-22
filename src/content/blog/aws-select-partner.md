@@ -27,4 +27,4 @@ A surprisingly large amount of Web3 infrastructure runs on traditional cloud: RP
 
 Our partner status is public on the [AWS Partner Solutions Finder](https://partners.amazonaws.com/partners/0010h00001kLtZRAA0/SpaceDev), where we're also listed as an Authorized Commercial Reseller. SpaceDev's professional services are also [available in AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-tkuck454u2bxa), for teams that want to procure our work through their existing AWS billing.
 
-If you're planning a cloud migration, a new product launch, or a Web3 platform that needs serious uptime, [let's talk](/contact).
+If you're planning a cloud migration, a new product launch, or a Web3 platform that needs serious uptime, our [cloud and custom development](/innovative-web-and-mobile-solutions) team can help, [let's talk](/contact).

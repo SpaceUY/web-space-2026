@@ -62,7 +62,7 @@ The key technique is selective disclosure. A user can prove they are over 21 wit
 
 ![A single verified credential from one KYC check being reused to unlock onboarding across several separate platforms](/images/content/decentralized-identity/illustration-reusable-kyc.png)
 
-**Reusable KYC is the clearest commercial case for decentralized identity.** Instead of each platform running its own onboarding and storing the same documents, a user completes verification once with a trusted issuer, receives a verifiable credential, and reuses it across services.
+**Reusable KYC is the clearest commercial case for decentralized identity.** Instead of each platform running its own onboarding and storing the same documents, a user completes verification once with a trusted issuer, receives a verifiable credential, and reuses it across services, exactly the kind of [compliance and KYC on Web3](/blockchain-development-services/industry/compliance-web3) work this pattern is built to support.
 
 The payoff is concrete on both sides:
 

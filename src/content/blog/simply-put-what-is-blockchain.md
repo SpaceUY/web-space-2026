@@ -74,4 +74,4 @@ Whether we know anything about blockchain or not, we have all heard the word bit
 - Electoral processes, making it easier to prevent potential fraud
 - And much, much more!
 
-So, are you ready to venture into this wonderful world? If you have any questions about blockchain or how it might benefit your project, contact us today to speak with an expert.
+So, are you ready to venture into this wonderful world? If you have any questions about blockchain or how it might benefit your project, our [blockchain development services](/blockchain-development-services) cover the full build, or if you already know you want a long-term [blockchain technology partner](/blockchain-development-services/blockchain-partner), contact us today to speak with an expert.

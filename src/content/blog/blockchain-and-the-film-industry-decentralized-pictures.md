@@ -15,11 +15,11 @@ The intersection of technology and creativity has always been a passion of mine,
 
 ## A Mission to Democratize Film Financing
 
-DCP's mission is simple yet revolutionary: to democratize the world of film financing, making it accessible to a new generation of filmmakers and film enthusiasts worldwide. What sets DCP apart is its film fund and opportunity pool, which empowers anyone with internet access to pitch their film ideas. The decision on who gets the support lies not in a few industry gatekeepers but in the collective hands of the community.
+DCP's mission is simple yet revolutionary: to democratize the world of film financing, making it accessible to a new generation of filmmakers and film enthusiasts worldwide. What sets DCP apart is its film fund and opportunity pool, a curation and voting platform that is, at its core, [dApp development](/blockchain-development-services/dapp-development), which empowers anyone with internet access to pitch their film ideas. The decision on who gets the support lies not in a few industry gatekeepers but in the collective hands of the community.
 
 ## FILMCredits, Community Participation and Transparency
 
-By using Decentralized Pictures FILMCredits, also known as FILMCoins, DCP has created a curation platform and autonomous rewards system where every participant's contribution is valued and rewarded. This level of trust and transparency is unprecedented in the film industry and something I find incredibly inspiring. From pitching film concepts to reviewing and evaluating projects, the community's involvement is integral.
+By using Decentralized Pictures FILMCredits, also known as FILMCoins, an example of [token development](/blockchain-development-services/crypto-token-development) applied to a funding model, DCP has created a curation platform and autonomous rewards system where every participant's contribution is valued and rewarded. This level of trust and transparency is unprecedented in the film industry and something I find incredibly inspiring. From pitching film concepts to reviewing and evaluating projects, the community's involvement is integral.
 
 ## The Connection to American Zoetrope
 

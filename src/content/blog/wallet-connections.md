@@ -105,7 +105,7 @@ Wherever the Connect Wallet button has to be used, it can be imported and the co
 
 ## Conclusions
 
-The wallet is a critical component of the web3 ecosystem, allowing users to store, send and receive cryptocurrencies and other digital assets. While there are many approaches and technologies available for wallet connections in web3, these remain affected by security, usability and interoperability issues.
+The wallet is a critical component of the web3 ecosystem, allowing users to store, send and receive cryptocurrencies and other digital assets. While there are many approaches and technologies available for wallet connections in web3, these remain affected by security, usability and interoperability issues, the exact problem [dApp development](/blockchain-development-services/dapp-development) has to solve at the integration layer. [Blockus wallet integration](/our-work/blockus) is a production example of getting this right for a gaming audience.
 
 Emerging technologies can help address some of those challenges. One is RainbowKit, a decentralized key management solution for web3 wallets which provides a secure and user-friendly way to manage keys, including those used for decentralized finance (DeFi) applications. RainbowKit has matured into one of the standard wallet-connection toolkits for Ethereum, and it remains a valuable tool in the ongoing efforts to improve the security and usability of web3 wallets.
 
