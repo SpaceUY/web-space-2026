@@ -58,7 +58,7 @@ Blockchain-based timestamping and cryptographic hashing create immutable origina
 
 ## AI Agents on Blockchain: The Architecture That's Emerging
 
-The most significant development involves autonomous AI agents possessing on-chain economic presence. Smart account standards and account abstraction patterns associated with ERC-4337 and EIP-7702 facilitate controlled agent spending power.
+The most significant development involves autonomous AI agents possessing on-chain economic presence, the same territory our [agentic AI development](/agentic-ai-development) work operates in. Smart account standards and account abstraction patterns associated with ERC-4337 and EIP-7702 facilitate controlled agent spending power.
 
 An agent can now hold a wallet, evaluate conditions, execute a [smart contract in a DeFi protocol](/blog/the-role-of-smart-contracts-in-defi), and settle a payment, without a human approving each step.
 
@@ -82,4 +82,4 @@ The architectural implication reflects mutual necessity. A blockchain without AI
 
 ## Looking Ahead
 
-The convergence of blockchain, AI, and Web3 is moving from buzz to infrastructure. Teams building on this foundation presently will achieve structural advantages over organizations still evaluating approaches in 2027. Understanding [what Web3 protocols require from their technology partners](/blog/what-web3-protocols-need-in-2025) is essential context for anyone architecting at this intersection.
+The convergence of blockchain, AI, and Web3 is moving from buzz to infrastructure, and it's the foundation behind our own [blockchain development services](/blockchain-development-services). Teams building on this foundation presently will achieve structural advantages over organizations still evaluating approaches in 2027. Understanding [what Web3 protocols require from their technology partners](/blog/what-web3-protocols-need-in-2025) is essential context for anyone architecting at this intersection.

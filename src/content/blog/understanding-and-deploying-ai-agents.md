@@ -231,6 +231,6 @@ Developers can create agents that are not only technically sound but also resili
 
 ## Conclusion
 
-AI agents are here to stay, transforming industries from finance and logistics to entertainment. Their ability to autonomously perceive environments, make decisions, and act within both centralized and decentralized ecosystems marks a pivotal moment in changing how we build and interact digitally.
+AI agents are here to stay, transforming industries from finance and logistics to entertainment. Their ability to autonomously perceive environments, make decisions, and act within both centralized and decentralized ecosystems marks a pivotal moment in changing how we build and interact digitally, the core of our own [agentic AI development](/agentic-ai-development) work. [PiggyGPT](/our-work/piggygpt) is one production example: an AI agent applied directly to DeFi.
 
 As businesses, developers, and policymakers navigate this evolutionary leap, those who understand and responsibly harness the power of AI agents will be at the forefront of a new era, one where machines not only execute tasks but participate as autonomous entities in shaping our collective future.

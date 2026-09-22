@@ -13,14 +13,14 @@ metadescription: "AI is becoming the new lab assistant in drug discovery, and th
 
 Drug development has long relied on animal testing to evaluate a compound's safety. But the process is slow, expensive, and often doesn't translate well to human outcomes. Now, [the FDA is pushing for a pivot](https://www.fda.gov/news-events/press-announcements/fda-announces-plan-phase-out-animal-testing-requirement-monoclonal-antibodies-and-other-drugs). Within three to five years, animal studies could become the exception, not the rule.
 
-The agency laid out its vision in an April roadmap: computational models, AI-based platforms, and human cell simulations could replace many animal tests, particularly for monoclonal antibody drugs. The potential payoff? Faster timelines, cheaper development, and eventually, more affordable drugs.
+The agency laid out its vision in an April roadmap: computational models, AI-based platforms, and human cell simulations could replace many animal tests, particularly for monoclonal antibody drugs. The potential payoff? Faster timelines, cheaper development, and eventually, more affordable drugs. It's also a preview of what [blockchain and AI for healthcare](/blockchain-development-services/industry/healthcare) looks like once the data trail behind a clinical result has to be verifiable, not just fast.
 
 ## Who's Leading the Charge?
 
 Companies like **Certara**, **Schrodinger**, and **Recursion Pharmaceuticals** are already proving what's possible.
 
 - **Certara**, which supports drugmakers working on infectious disease therapies, is using AI to simulate how drugs are absorbed, distributed, and whether they could cause toxic side effects. "We're getting to the point where we don't actually need to do [animal testing] anymore," said Patrick Smith, president of drug development solutions at Certara.
-- **Recursion** accelerated a cancer drug candidate into clinical trials in just 18 months, less than half the industry's 42-month average, using its AI-driven discovery platform.
+- **Recursion** accelerated a cancer drug candidate into clinical trials in just 18 months, less than half the industry's 42-month average, using its AI-driven discovery platform, the kind of [AI development](/agentic-ai-development) work that turns a research pipeline into a production one.
 - **Schrodinger**, based in New York, merges AI with physics-based simulations to assess drug toxicology.
 
 Analysts at TD Cowen and Jefferies predict these approaches could eventually cut both costs and development times by more than 50%. That's a game-changer, considering it currently takes up to 15 years and $2 billion to bring a drug to market.

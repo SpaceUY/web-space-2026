@@ -45,6 +45,8 @@ The sector splits into Physical Resource Networks (PRN), like Hivemapper for geo
 | Sensors / geodata | Location data, telemetry | Hivemapper, WeatherXM, DIMO | Maps, autonomous systems, analytics |
 | Energy | Grid balancing, generation | Energy Web, Glow | Renewable credits, demand response |
 
+Two of these categories map directly onto industries we build for: wireless connectivity is the same demand-response and carrier-offload logic behind our [blockchain for telecommunications](/blockchain-development-services/industry/telecommunications) work, and the energy row is [blockchain for energy](/blockchain-development-services/industry/energy) applied to distributed generation instead of carbon markets.
+
 ## How Proof of Physical Work Operates
 
 The fundamental challenge DePIN protocols need to solve is verification: how do you know a hardware operator is actually providing the service they claim, without trusting a centralized auditor?

@@ -66,12 +66,12 @@ Whether you're building your first dapp or scaling to millions, Embedded Wallets
 
 ## Why This Matters and Who It Impacts
 
-If you're building dapps for gaming, DeFi, NFTs, or any consumer-facing product, this matters because the first few seconds of onboarding can make or break your user's journey. We've seen this firsthand working with projects like [Blockus, a Web3 gaming platform backed by a16z](https://www.blockus.gg/blocks/all-in-one-web3-gaming-ecosystem-blockus-raises-4m-pre-seed-after-completing-a16z-incubator-program) that had to solve exactly this barrier before users could engage with NFTs and play-to-earn mechanics. Embedded Wallets reduce friction to near-zero, allowing your users to start engaging immediately without sacrificing decentralization or ownership.
+If you're building dapps for [blockchain for gaming](/blockchain-development-services/industry/gaming), DeFi, NFTs, or any consumer-facing product, this matters because the first few seconds of onboarding can make or break your user's journey. We've seen this firsthand working with projects like [Blockus](/our-work/blockus), a Web3 gaming platform backed by a16z that had to solve exactly this barrier before users could engage with NFTs and play-to-earn mechanics. Embedded Wallets reduce friction to near-zero, allowing your users to start engaging immediately without sacrificing decentralization or ownership.
 
 For developers, this means shorter dev cycles, fewer support tickets, and higher activation rates. For product teams, it means better retention and conversion. And for users? It simply works.
 
 ## Looking to Integrate MetaMask Embedded Wallets?
 
-At SpaceDev, we specialize in building and scaling Web3 experiences from end to end. Whether you're starting from scratch or ready to optimize, our team can help you move faster and smarter.
+At SpaceDev, our [dApp development](/blockchain-development-services/dapp-development) practice specializes in building and scaling Web3 experiences from end to end. Whether you're starting from scratch or ready to optimize, our team can help you move faster and smarter.
 
 Let's build something users won't bounce from.
