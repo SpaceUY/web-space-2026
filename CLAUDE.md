@@ -30,7 +30,7 @@
 - `@media (prefers-reduced-motion: reduce)` aplicado
 
 **Layouts**
-- `src/layouts/BaseLayout.astro` — HTML shell con GTM (GTM-WKM5KGV, que carga GA4 por dentro), Clarity diferido, View Transitions, fuentes
+- `src/layouts/BaseLayout.astro` — HTML shell con GA4 directo (gtag.js), Clarity y Apollo diferidos, fuentes. Ver la sección **Tracking** más abajo, que es la fuente de verdad. **No hay GTM** (removido en septiembre 2026) y **no hay View Transitions**: el sitio no renderiza `<ClientRouter />` en ningún lado, así que `astro:page-load` y `astro:after-swap` no se disparan nunca y el código que dependa de ellos no corre
 - `src/layouts/ServicePageLayout.astro` — layout reutilizable para páginas de servicio
 
 **Componentes UI (`src/components/ui/`)**

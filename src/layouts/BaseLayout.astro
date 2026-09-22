@@ -270,7 +270,11 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
     <script>
       import { initScrollAnimations } from "../lib/animations";
       initScrollAnimations();
-      document.addEventListener("astro:page-load", initScrollAnimations);
+      /* One call is enough: every navigation on this site is a full page load,
+         so this module runs again from scratch each time. There used to be an
+         `astro:page-load` listener here as well, which only fires under
+         <ClientRouter />. This site has never rendered one, so that line could
+         not run. Re-add it together with the router, not before. */
     </script>
 
     {/* Funnel tracking.
