@@ -1,7 +1,14 @@
 ---
 import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
 import FeatureCard from "../../components/ui/FeatureCard.astro";
+import RelatedIndustries from "../../components/ui/RelatedIndustries.astro";
 import { daoDevelopmentData } from "../../data/services";
+
+const relatedIndustries = [
+  { name: "Finance & Fintech", href: "/blockchain-development-services/industry/finance-and-fintech" },
+  { name: "Real Estate",       href: "/blockchain-development-services/industry/real-estate" },
+  { name: "Energy",            href: "/blockchain-development-services/industry/energy" },
+];
 
 const daoComponents = [
   { title: "Governance smart contracts", description: "Proposal creation, quorum rules, voting mechanisms, execution logic" },
@@ -70,6 +77,13 @@ const relatedServices = [
 ---
 
 <ServicePageLayout data={daoDevelopmentData}>
+  <div slot="post-offers">
+    <RelatedIndustries
+      title="Industries We Build DAO Governance For"
+      description="On-chain governance shows up wherever multiple parties share ownership of something. These are the sectors that ask for it most."
+      items={relatedIndustries}
+    />
+  </div>
   <div slot="pre-process">
 
     <!-- Components -->

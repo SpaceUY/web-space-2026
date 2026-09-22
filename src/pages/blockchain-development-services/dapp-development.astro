@@ -1,7 +1,15 @@
 ---
 import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
 import Button from "../../components/ui/Button.astro";
+import RelatedIndustries from "../../components/ui/RelatedIndustries.astro";
 import { dappData } from "../../data/services";
+
+const relatedIndustries = [
+  { name: "Gaming",             href: "/blockchain-development-services/industry/gaming" },
+  { name: "Finance & Fintech",  href: "/blockchain-development-services/industry/finance-and-fintech" },
+  { name: "Healthcare",         href: "/blockchain-development-services/industry/healthcare" },
+  { name: "Real Estate",        href: "/blockchain-development-services/industry/real-estate" },
+];
 
 const services = [
   { number: "01", title: "Custom DApp Development",             description: "We build custom dApps from scratch, designed around your business model, tokenomics, and user flows. Never one-size-fits-all solutions." },
@@ -43,6 +51,13 @@ const industries = [
 </style>
 
 <ServicePageLayout data={{ ...dappData, seo: { title: "Custom dApp Development Services for Web3 & Enterprises", description: "Custom decentralized application development for Web3. SpaceDev designs, builds, and scales secure, production-ready dApps aligned with your business goals." } }}>
+  <div slot="post-offers">
+    <RelatedIndustries
+      title="Industries We Build dApps For"
+      description="A dApp looks very different depending on who it's for. These are the industries where ours ship most."
+      items={relatedIndustries}
+    />
+  </div>
   <div slot="pre-process">
 
     <!-- Overview CTA -->

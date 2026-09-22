@@ -2,7 +2,15 @@
 import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
 import Button from "../../components/ui/Button.astro";
 import FeatureCard from "../../components/ui/FeatureCard.astro";
+import RelatedIndustries from "../../components/ui/RelatedIndustries.astro";
 import { smartContractData } from "../../data/services";
+
+const relatedIndustries = [
+  { name: "Finance & Fintech",        href: "/blockchain-development-services/industry/finance-and-fintech" },
+  { name: "Gaming",                   href: "/blockchain-development-services/industry/gaming" },
+  { name: "Supply Chain & Logistics", href: "/blockchain-development-services/industry/supply-chain-and-logistics" },
+  { name: "Web3 Compliance",          href: "/blockchain-development-services/industry/compliance-web3" },
+];
 
 const services = [
   { number: "01", title: "Custom Smart Contract Development",    description: "We build contracts tailored to your tokenomics, business logic, and deployment requirements. Never copy-paste templates." },
@@ -51,6 +59,13 @@ const processSteps = [
 </style>
 
 <ServicePageLayout data={smartContractData}>
+  <div slot="post-offers">
+    <RelatedIndustries
+      title="Industries We Build Smart Contracts For"
+      description="Smart contract work looks different by sector. These are the industries where we ship it most."
+      items={relatedIndustries}
+    />
+  </div>
   <div slot="pre-process">
 
     <!-- Overview CTA -->

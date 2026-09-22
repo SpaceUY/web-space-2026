@@ -1,7 +1,15 @@
 ---
 import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
 import Button from "../../components/ui/Button.astro";
+import RelatedIndustries from "../../components/ui/RelatedIndustries.astro";
 import { tokenizationData } from "../../data/services";
+
+const relatedIndustries = [
+  { name: "Real Estate",       href: "/blockchain-development-services/industry/real-estate" },
+  { name: "Energy",            href: "/blockchain-development-services/industry/energy" },
+  { name: "Banking",           href: "/blockchain-development-services/industry/banking" },
+  { name: "Finance & Fintech", href: "/blockchain-development-services/industry/finance-and-fintech" },
+];
 
 const assets = [
   { label: "Real Estate", href: "/blockchain-development-services/asset-tokenization/real-estate" },
@@ -134,6 +142,13 @@ const engagementModels = [
 </style>
 
 <ServicePageLayout data={tokenizationData}>
+  <div slot="post-offers">
+    <RelatedIndustries
+      title="Industries We Tokenize Assets For"
+      description="What gets tokenized, and why, changes by sector. These are the industries where we build it most."
+      items={relatedIndustries}
+    />
+  </div>
   <div slot="pre-process">
 
     <!-- ① Overview CTA -->

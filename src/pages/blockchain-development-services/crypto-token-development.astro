@@ -1,7 +1,14 @@
 ---
 import ServicePageLayout from "../../layouts/ServicePageLayout.astro";
 import FeatureCard from "../../components/ui/FeatureCard.astro";
+import RelatedIndustries from "../../components/ui/RelatedIndustries.astro";
 import { cryptoTokenDevData } from "../../data/services";
+
+const relatedIndustries = [
+  { name: "Gaming",            href: "/blockchain-development-services/industry/gaming" },
+  { name: "Finance & Fintech", href: "/blockchain-development-services/industry/finance-and-fintech" },
+  { name: "Real Estate",       href: "/blockchain-development-services/industry/real-estate" },
+];
 
 const tokenServices = [
   { title: "Tokenomics design and modeling", description: "Supply structure, emission schedule, vesting, distribution, and incentive mechanics" },
@@ -57,6 +64,13 @@ const relatedServices = [
 ---
 
 <ServicePageLayout data={cryptoTokenDevData}>
+  <div slot="post-offers">
+    <RelatedIndustries
+      title="Industries We Build Tokens For"
+      description="Token design changes with what the token is actually for. These are the industries we design them in most."
+      items={relatedIndustries}
+    />
+  </div>
   <div slot="pre-process">
 
     <!-- Services -->

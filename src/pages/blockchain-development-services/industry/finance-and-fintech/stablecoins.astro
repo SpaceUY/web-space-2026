@@ -63,6 +63,16 @@ const relatedServices = [
   { title: "Asset Tokenization",              description: "Real-world assets that use stablecoins as their settlement currency.", href: "/blockchain-development-services/asset-tokenization" },
   { title: "BlockAudit: Blockchain Security", description: "Smart contract auditing before stablecoin production launch.", href: "/blockaudit-smart-contract-and-blockchain-security" },
 ];
+
+// Stablecoins is the one DeFi vertical page that didn't link to its three
+// siblings or back up to the parent industry page (they already cross-link
+// each other). This closes that gap so the four pages form a full mesh.
+const relatedDefiVerticals = [
+  { title: "DeFi Development Services",       description: "The broader fintech and DeFi practice stablecoin work sits within.", href: "/blockchain-development-services/industry/finance-and-fintech" },
+  { title: "Lending Protocol Development",    description: "Stablecoins as the collateral and unit of account in lending markets.", href: "/blockchain-development-services/industry/finance-and-fintech/lending-protocols" },
+  { title: "Yield Farming Development",       description: "Reward and incentive mechanics built around stable assets.", href: "/blockchain-development-services/industry/finance-and-fintech/yield-farming" },
+  { title: "Crypto Trading Bot Development",  description: "Automated strategies that depend on stable, predictable settlement.", href: "/blockchain-development-services/industry/finance-and-fintech/trading-bots" },
+];
 ---
 
 <ServicePageLayout data={{ ...stablecoinData, seo: { title: "Stablecoin Development Services & Solutions | SpaceDev", description: "Custom stablecoin development for fintech, DeFi, and enterprise: fiat-backed, crypto-collateralized, and hybrid infrastructure from design to launch." } }}>
@@ -272,6 +282,37 @@ const relatedServices = [
               <h3 class="text-base font-display font-semibold text-white mb-3 leading-snug">{item.title}</h3>
               <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑧b Related DeFi Verticals -->
+    <section class="py-20 md:py-28 border-t border-white/5" style="background: var(--sd-purple-deep);">
+      <div class="sd-container">
+        <div class="max-w-2xl mb-12" data-animate>
+          <h2 class="section-title text-white mb-4">Related DeFi Verticals</h2>
+          <p class="text-sd-text-muted leading-relaxed">Stablecoin infrastructure rarely stands alone. It's usually the settlement layer underneath one of these.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {relatedDefiVerticals.map((item) => (
+            <a
+              href={item.href}
+              class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-6 min-h-[140px] hover:bg-sd-purple/25 hover:border-sd-purple/40 transition-all duration-300"
+              data-animate
+            >
+              <div class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 group-hover:border-white/40 transition-colors shrink-0 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-display font-semibold text-white leading-snug mb-1 group-hover:underline underline-offset-4">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{item.description}</p>
+              </div>
+            </a>
           ))}
         </div>
       </div>

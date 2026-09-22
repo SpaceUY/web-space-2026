@@ -143,6 +143,8 @@ export const blockchainData: ServicePageData = {
       { number: "04", title: "Asset Tokenization", description: "Turn real-world assets into digital tokens, unlocking liquidity, fractional ownership, and new investment opportunities.", href: "/blockchain-development-services/asset-tokenization" },
       { number: "05", title: "Layer 1 Blockchain Development", description: "Fully customized, scalable networks ranging from Layer 1 protocols to private enterprise chains, secure and future-ready.", href: "/blockchain-development-services/layer-1-blockchain-development" },
       { number: "06", title: "DAO Development", description: "On-chain governance models for transparent decision-making, voting systems, and efficient treasury management.", href: "/blockchain-development-services/dao-development" },
+      { number: "07", title: "Crypto Token Development", description: "Custom tokenomics, utility, governance, and DeFi tokens: from ERC-20 issuance to full economic design and vesting logic.", href: "/blockchain-development-services/crypto-token-development" },
+      { number: "08", title: "White-Label Crypto Exchange", description: "Custom trading platforms with spot and derivatives trading, multi-chain support, and KYC/AML built in from day one.", href: "/blockchain-development-services/white-label-crypto-exchanges" },
     ],
   },
 

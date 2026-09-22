@@ -1,0 +1,45 @@
+---
+// Cross-links a blockchain service page down to the industry pages it is
+// most often built for. Data-driven and reused across service pages instead
+// of hand-copying the markup into each one: each caller passes its own
+// `items`, curated for that service.
+interface Industry {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  items: Industry[];
+}
+
+const {
+  title = "Where We Build This",
+  description = "This service shows up most often in these industries.",
+  items,
+} = Astro.props;
+---
+
+<section class="bg-sd-dark py-20 md:py-28 border-t border-white/5">
+  <div class="sd-container">
+    <div class="max-w-2xl mb-10" data-animate>
+      <h2 class="section-title text-white mb-4">{title}</h2>
+      <p class="text-sd-text-muted leading-relaxed">{description}</p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      {items.map((item) => (
+        <a
+          href={item.href}
+          class="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm text-white hover:bg-sd-purple/20 hover:border-sd-purple/50 transition-colors duration-300"
+          data-animate
+        >
+          {item.name}
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-white/50 group-hover:text-white transition-colors">
+            <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
