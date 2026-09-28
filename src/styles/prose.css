@@ -215,6 +215,29 @@
 }
 .sd-prose tr:last-child td { border-bottom: none; }
 
+/* ── Callouts ──────────────────────────────────────────────────────────────── */
+/* Analysis boxes that close a section. Same look as the Key takeaways aside. */
+.sd-callout {
+  border: 1px solid rgba(103, 58, 228, 0.2);
+  background: rgba(103, 58, 228, 0.04);
+  border-radius: 1rem;
+  padding: 1.5em 1.75em;
+  margin: 2em 0;
+}
+.sd-callout-title {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--sd-purple);
+  margin-bottom: 0.75em;
+}
+.sd-callout p { margin: 0; }
+.sd-callout p + p { margin-top: 0.75em; }
+
+/* ── Source lists ──────────────────────────────────────────────────────────── */
+.sd-sources li { font-size: 0.9375rem; }
+
 /* ─────────────────────────────────────────────────────────────────────────────
    Dark variant — use .sd-prose-dark when the prose sits on a dark background
 ────────────────────────────────────────────────────────────────────────────── */
