@@ -45,7 +45,7 @@ Read together, the data tells one story more clearly than any single number. Att
 
 ## How much crypto was stolen in hacks in 2025?
 
-<div class="sd-stat-grid"><div class="sd-stat"><div class="sd-stat-value">$2.87B</div><div class="sd-stat-label">Stolen in nearly 150 hacks and exploits</div><div class="sd-stat-source"><a href="https://www.trmlabs.com/reports-and-whitepapers/2026-crypto-crime-report">TRM Labs, 2025</a></div></div><div class="sd-stat"><div class="sd-stat-value">$3.35B</div><div class="sd-stat-label">Lost to hacks, scams and exploits, including phishing</div><div class="sd-stat-source"><a href="https://www.certik.com/blog/hack3d-the-web3-security-report-2025">CertiK, 2025</a></div></div><div class="sd-stat"><div class="sd-stat-value">$4B+</div><div class="sd-stat-label">Lost to Web3 incidents</div><div class="sd-stat-source"><a href="https://hacken.io/insights/2025-security-report/">Hacken, 2025</a></div></div></div>
+![Bar chart of 2025 crypto hack losses by tracker: TRM Labs $2.87B (hacks only), SlowMist $2.935B, CertiK $3.35B (including scams and phishing), Chainalysis over $3.4B (to early December), Immunefi $3.4B, Hacken over $4B](/images/content/smart-contract-security-statistics-2026/smart-contract-security-statistics-2026-01-2025-totals.png)
 
 Between $2.87 billion and more than $4 billion was stolen from the crypto ecosystem in 2025, depending on the tracker. The spread comes from what each firm counts: some track only hacks and exploits, others add scams, phishing and personal wallet thefts.
 
@@ -76,11 +76,9 @@ DeFi protocols, the part of the market built on smart contracts, look very diffe
 
 ## How much crypto has been stolen in 2026 so far?
 
-<div class="sd-stat-grid"><div class="sd-stat"><div class="sd-stat-value">207</div><div class="sd-stat-label">Hacks in H1 2026, the most TRM Labs has recorded in any six month period</div><div class="sd-stat-source"><a href="https://www.trmlabs.com/resources/blog/h1-2026-crypto-hacks-reach-record-high-as-losses-fall-below-usd-1-billion">TRM Labs, H1 2026</a></div></div><div class="sd-stat"><div class="sd-stat-value">$972M</div><div class="sd-stat-label">Stolen in H1 2026, less than half of H1 2025</div><div class="sd-stat-source"><a href="https://www.trmlabs.com/resources/blog/h1-2026-crypto-hacks-reach-record-high-as-losses-fall-below-usd-1-billion">TRM Labs, H1 2026</a></div></div><div class="sd-stat"><div class="sd-stat-value">+28%</div><div class="sd-stat-label">H1 2026 losses against H1 2025 once Bybit is excluded</div><div class="sd-stat-source"><a href="https://www.certik.com/skynet-report/certik-hack3d-h1-2026-report">CertiK, H1 2026</a></div></div></div>
+![Bar chart comparing the first halves of 2025 and 2026: hacks rose from 83 to 207 while value stolen fell from $2.3B to $972M, according to TRM Labs](/images/content/smart-contract-security-statistics-2026/smart-contract-security-statistics-2026-02-h1-comparison.png)
 
 [TRM Labs](https://www.trmlabs.com/resources/blog/h1-2026-crypto-hacks-reach-record-high-as-losses-fall-below-usd-1-billion) recorded $972 million stolen across 207 hacks in the first half of 2026. That is more than double the 83 hacks of H1 2025, but less than half of the $2.3 billion stolen in that period.
-
-![Bar chart comparing the first half of 2025 and 2026: hack count more than doubled while value stolen fell by more than half](/images/content/smart-contract-security-statistics-2026/smart-contract-security-statistics-2026-01-h1-comparison.png)
 
 | Period | Value stolen | Incidents | Source |
 |---|---|---|---|
@@ -119,7 +117,7 @@ Phishing changed shape. [CertiK](https://www.certik.com/skynet-report/certik-hac
 
 Bybit, at about $1.5 billion, remains the largest crypto theft on record. [Elliptic](https://www.elliptic.co/blog/bybit-hack-largest-in-history) notes it dwarfs the previous record, the $611 million stolen from Poly Network in 2021. Of the largest incidents since January 2025, only three were attacks on smart contract code or protocol logic: Cetus, Balancer and Tectonic.
 
-![Timeline of the largest crypto hacks from January 2025 to September 2026, highlighting the three attacks on smart contract code or protocol logic](/images/content/smart-contract-security-statistics-2026/smart-contract-security-statistics-2026-02-timeline.png)
+![Bar chart of the six largest crypto losses of 2025 and 2026, excluding Bitget while under investigation: Bybit $1.5B, Drift $295M, KelpDAO $292M and one individual $282M+ came from keys, access or social engineering, while Cetus $223M and Balancer $121.1M were contract code bugs](/images/content/smart-contract-security-statistics-2026/smart-contract-security-statistics-2026-03-largest-hacks.png)
 
 | Date | Target | Loss | What happened |
 |---|---|---|---|
@@ -161,11 +159,9 @@ The cost was finality, the guarantee that a confirmed transaction stays confirme
 
 ## Do most crypto hacks come from smart contract bugs?
 
-<div class="sd-stat-grid"><div class="sd-stat"><div class="sd-stat-value">76%</div><div class="sd-stat-label">Of 2025 stolen value came from infrastructure attacks, in 45 incidents</div><div class="sd-stat-source"><a href="https://www.trmlabs.com/reports-and-whitepapers/2026-crypto-crime-report">TRM Labs, 2025</a></div></div><div class="sd-stat"><div class="sd-stat-value">12.1%</div><div class="sd-stat-label">Came from code exploits, the most frequent category, in 52 incidents</div><div class="sd-stat-source"><a href="https://www.trmlabs.com/reports-and-whitepapers/2026-crypto-crime-report">TRM Labs, 2025</a></div></div><div class="sd-stat"><div class="sd-stat-value">89%</div><div class="sd-stat-label">Of DeFi protocol losses came from protocol logic exploits</div><div class="sd-stat-source"><a href="https://immunefi.com/blog/research/the-ecosystem-vulnerability-scoreboard-6-years-of-defi-loss-data/">Immunefi, 2025</a></div></div></div>
+![Bar chart of 2025 attack types from TRM Labs: code exploits were the most frequent with 52 incidents but 12.1% of value stolen, infrastructure attacks were 45 incidents and 76% of value, protocol attacks 25 incidents and 9.6%](/images/content/smart-contract-security-statistics-2026/smart-contract-security-statistics-2026-04-attack-types.png)
 
 No. Smart contract bugs are the most frequent type of attack, but compromised keys, signers and infrastructure cause most of the money lost. Five independent trackers show the same pattern.
-
-![Chart comparing share of incidents and share of value stolen by attack type in 2025: code exploits are the most frequent, infrastructure attacks cause most losses](/images/content/smart-contract-security-statistics-2026/smart-contract-security-statistics-2026-03-attack-types.png)
 
 [TRM Labs](https://www.trmlabs.com/reports-and-whitepapers/2026-crypto-crime-report) classifies every 2025 hack by attack type:
 
@@ -190,6 +186,8 @@ The pattern held into 2026. [CertiK](https://www.certik.com/skynet-report/certik
 Three other trackers reach the same conclusion from different data. In Q2 2026, smart contract bugs were 44 of 67 incidents but about 11% of losses ($87.7 million), while operational and infrastructure failures caused 88.3% of stolen value, $674,866,100 across 21 incidents ([Hacken](https://assets.hacken.io/q2-2026-security-report.pdf)). In H1 2026, smart contract exploits were 125 of the 207 incidents, while infrastructure and operational compromises caused about 76% of funds stolen from about 15% of incidents ([TRM Labs](https://www.trmlabs.com/resources/blog/h1-2026-crypto-hacks-reach-record-high-as-losses-fall-below-usd-1-billion)). And across 2025, "just 0.66% of TVL was lost to smart contract and blockchain bugs," about $790 million of the $3.4 billion total ([Immunefi](https://immunefi.com/blog/research/93-of-critical-crypto-vulns-are-disclosed-on-immunefi/)). [SlowMist](https://www.slowmist.com/report/2025-Blockchain-Security-and-AML-Annual-Report(EN).pdf) likewise found smart contract vulnerabilities to be the most common cause in 2025, with 56 incidents, ahead of account compromises, with 50. European regulators report that private key compromise accounts for "slightly above 50%" of crypto-asset thefts in DeFi ([EBA and ESMA](https://esma.europa.eu/sites/default/files/2025-01/ESMA75-453128700-1391_Joint_Report_on_recent_developments_in_crypto-assets__Art_142_MiCA_.pdf)).
 
 ### Why DeFi is the exception
+
+![Donut chart: 89% of DeFi protocol losses in 2025 came from protocol logic exploits, according to Immunefi](/images/content/smart-contract-security-statistics-2026/smart-contract-security-statistics-2026-05-defi-logic.png)
 
 For a DeFi protocol, the code is still the main risk. According to [Immunefi](https://immunefi.com/blog/research/the-ecosystem-vulnerability-scoreboard-6-years-of-defi-loss-data/), "89% of DeFi protocol losses came from protocol logic exploits" in 2025. The market-wide numbers are dominated by exchanges and custodians, which keep large balances behind keys and signers. A lending market, a DEX or a vault keeps its balances inside its own logic, so a flaw in that logic is a direct path to the funds.
 
@@ -234,7 +232,7 @@ OWASP's code-only total for 2025, $905.4 million, is close to Immunefi's code-on
 
 ## Do smart contract audits prevent exploits?
 
-<div class="sd-stat-grid"><div class="sd-stat"><div class="sd-stat-value">67.6%</div><div class="sd-stat-label">Of attack paths on audited protocols were outside every public audit scope</div><div class="sd-stat-source"><a href="https://arxiv.org/abs/2608.13792">ack3 dataset, H1 2026</a></div></div><div class="sd-stat"><div class="sd-stat-value">94.4%</div><div class="sd-stat-label">Of the losses on those protocols came through the unaudited paths</div><div class="sd-stat-source"><a href="https://arxiv.org/abs/2608.13792">ack3 dataset, H1 2026</a></div></div><div class="sd-stat"><div class="sd-stat-value">18</div><div class="sd-stat-label">Audits at Resolv Labs before a $25 million key compromise</div><div class="sd-stat-source"><a href="https://assets.hacken.io/assets/q1-2026-security-report.pdf">Hacken, Q1 2026</a></div></div></div>
+![Donut charts from the ack3 H1 2026 dataset: in 68 incidents with a known audit history, 67.6% of attack paths were outside every public audit scope and those paths accounted for 94.4% of losses](/images/content/smart-contract-security-statistics-2026/smart-contract-security-statistics-2026-06-audit-scope.png)
 
 Not on their own. Research published in 2025 and 2026 finds that what protects a protocol is the quality of the audit, what it covers, and whether it keeps up with the code.
 
@@ -270,7 +268,7 @@ Most of them. Across all known platforms, about 1,238 critical vulnerabilities h
 
 ## How much of the stolen crypto is linked to North Korea?
 
-<div class="sd-stat-grid"><div class="sd-stat"><div class="sd-stat-value">~1/3</div><div class="sd-stat-label">Of North Korea's foreign currency revenue in 2024 came from crypto heists</div><div class="sd-stat-source"><a href="https://msmt.info/view/save/2025/10/22/26294780-c396-407d-bb33-88afe988cd96-The_DPRK%E2%80%99s_Violation_and_Evasion_of_UN_Sanctions_through_Cyber_and_Information_Technology_Worker_Activities_(MSMT_2025_2).pdf">MSMT, 2025</a></div></div><div class="sd-stat"><div class="sd-stat-value">$1.92B</div><div class="sd-stat-label">Attributed to North Korea-linked actors in 2025</div><div class="sd-stat-source"><a href="https://www.trmlabs.com/reports-and-whitepapers/2026-crypto-crime-report">TRM Labs, 2025</a></div></div><div class="sd-stat"><div class="sd-stat-value">$6.75B</div><div class="sd-stat-label">Lower-bound estimate of all crypto stolen by North Korea to date</div><div class="sd-stat-source"><a href="https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2026/">Chainalysis</a></div></div></div>
+![Donut charts: North Korea accounted for 66% of H1 2026 crypto thefts (TRM Labs), 76% of 2025 service compromises (Chainalysis), and crypto heists were about one third of its 2024 foreign currency revenue (MSMT)](/images/content/smart-contract-security-statistics-2026/smart-contract-security-statistics-2026-07-north-korea.png)
 
 Most of it. [TRM Labs](https://www.trmlabs.com/reports-and-whitepapers/2026-crypto-crime-report) attributes $1.92 billion of 2025's $2.87 billion to North Korea-linked actors, and approximately $643 million, or about 66%, of H1 2026 thefts ([TRM Labs](https://www.trmlabs.com/resources/blog/h1-2026-crypto-hacks-reach-record-high-as-losses-fall-below-usd-1-billion)).
 
@@ -296,7 +294,7 @@ Bridges, once the biggest problem in DeFi, went "from 73% of all losses in 2022 
 
 ## How much stolen crypto is recovered?
 
-<div class="sd-stat-grid"><div class="sd-stat"><div class="sd-stat-value">13.2%</div><div class="sd-stat-label">Of 2025 losses were returned or frozen, nearly $387 million</div><div class="sd-stat-source"><a href="https://www.slowmist.com/report/2025-Blockchain-Security-and-AML-Annual-Report(EN).pdf">SlowMist, 2025</a></div></div><div class="sd-stat"><div class="sd-stat-value">61%</div><div class="sd-stat-label">Value lost by the median hacked token within six months</div><div class="sd-stat-source"><a href="https://immunefi.com/blog/research/what-an-onchain-hack-actually-costs-2024-2025-update/">Immunefi, 2024 to 2025</a></div></div></div>
+![Donut charts: only 13.2% of 2025 crypto hack losses were returned or frozen (SlowMist), and the median hacked token lost 61% of its value within six months (Immunefi)](/images/content/smart-contract-security-statistics-2026/smart-contract-security-statistics-2026-08-after-a-hack.png)
 
 Very little. [SlowMist](https://www.slowmist.com/report/2025-Blockchain-Security-and-AML-Annual-Report(EN).pdf) found only 18 incidents in 2025 where funds could still be recovered or frozen after the attack. In those cases, nearly $387 million was returned or frozen, "accounting for 13.2% of the total losses in 2025." [CertiK](https://www.certik.com/skynet-report/certik-hack3d-h1-2026-report) recorded $115,311,507 frozen or returned in H1 2026.
 
