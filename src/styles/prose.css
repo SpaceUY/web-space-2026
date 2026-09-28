@@ -215,6 +215,63 @@
 }
 .sd-prose tr:last-child td { border-bottom: none; }
 
+/* ── Stat cards ────────────────────────────────────────────────────────────── */
+/* Headline figures in data-heavy posts. Markup:
+   <div class="sd-stat-grid"><div class="sd-stat">
+     <div class="sd-stat-value">76%</div>
+     <div class="sd-stat-label">What the number measures</div>
+     <div class="sd-stat-source"><a href="...">Publisher, period</a></div>
+   </div></div> */
+.sd-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 2em 0;
+}
+.sd-stat {
+  border: 1px solid rgba(103, 58, 228, 0.2);
+  background: rgba(103, 58, 228, 0.04);
+  border-radius: 1rem;
+  padding: 1.25em 1.25em 1em;
+}
+.sd-stat-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--sd-purple);
+}
+.sd-stat-label { margin-top: 0.5em; font-size: 0.9375rem; line-height: 1.5; color: #1a1a1a; }
+.sd-stat-source { margin-top: 0.75em; font-size: 0.8125rem; line-height: 1.4; color: #858585; }
+.sd-stat-source a { color: inherit; }
+
+@media (max-width: 640px) {
+  .sd-stat-value { font-size: 1.625rem; }
+}
+
+/* ── Callouts ──────────────────────────────────────────────────────────────── */
+/* Analysis boxes that close a section. Same look as the Key takeaways aside. */
+.sd-callout {
+  border: 1px solid rgba(103, 58, 228, 0.2);
+  background: rgba(103, 58, 228, 0.04);
+  border-radius: 1rem;
+  padding: 1.5em 1.75em;
+  margin: 2em 0;
+}
+.sd-callout-title {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--sd-purple);
+  margin-bottom: 0.75em;
+}
+.sd-callout p { margin: 0; }
+.sd-callout p + p { margin-top: 0.75em; }
+
+/* ── Source lists ──────────────────────────────────────────────────────────── */
+.sd-sources li { font-size: 0.9375rem; }
+
 /* ─────────────────────────────────────────────────────────────────────────────
    Dark variant — use .sd-prose-dark when the prose sits on a dark background
 ────────────────────────────────────────────────────────────────────────────── */
