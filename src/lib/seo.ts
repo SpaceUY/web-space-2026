@@ -95,7 +95,7 @@ export const organizationRef = {
   "@type": "Organization",
   "@id": ENTITY_ID.organization,
   name: SITE.name,
-  url: SITE.url,
+  url: `${SITE.url}/`,
 } as const;
 
 const postalAddress = (office: (typeof offices)[number]) => ({
@@ -121,7 +121,7 @@ const organizationNode = {
   "@id": ENTITY_ID.organization,
   name: SITE.name,
   alternateName: ["SpaceDev.io", "Space Dev"],
-  url: SITE.url,
+  url: `${SITE.url}/`,
   logo: logoNode,
   image: { "@id": ENTITY_ID.logo },
   description: organizationDescription,
