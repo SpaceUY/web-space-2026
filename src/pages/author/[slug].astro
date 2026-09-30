@@ -5,7 +5,7 @@ import Badge from "../../components/ui/Badge.astro";
 import AuthorAvatar from "../../components/ui/AuthorAvatar.astro";
 import { authors } from "../../data/authors";
 import { mediaItems } from "../../data/media-items";
-import { SITE } from "../../lib/seo";
+import { SITE, personNode } from "../../lib/seo";
 
 export async function getStaticPaths() {
   return authors.map((author) => ({ params: { slug: author.slug }, props: { author } }));
@@ -42,15 +42,7 @@ const subjectOf = mediaMentions.map((item) => ({
 
 const personJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: author.name,
-  jobTitle: author.role,
-  description: author.bio,
-  url: `${SITE.url}/author/${author.slug}`,
-  worksFor: { "@type": "Organization", name: SITE.name, url: SITE.url },
-  ...(author.avatar && { image: `${SITE.url}${author.avatar}` }),
-  ...(author.knowsAbout && { knowsAbout: author.knowsAbout }),
-  ...(sameAsLinks.length > 0 && { sameAs: sameAsLinks }),
+  ...personNode(author),
   ...(subjectOf.length > 0 && { subjectOf }),
 };
 ---

@@ -33,7 +33,7 @@ const techIconMap: Record<string, { label: string; img: string }> = {
   golang:       { label: "Go",             img: "/images/icons/icon-golang.svg" },
   nextjs:       { label: "Next.js",        img: "/images/icons/icon-nextjs.svg" },
 };
-import { organizationJsonLd } from "../lib/seo";
+import { organizationRef, serviceId, SITE } from "../lib/seo";
 
 interface Props {
   data: ServicePageData;
@@ -51,14 +51,18 @@ const relatedPosts = data.relatedTags && data.relatedTags.length > 0
 
 const dateFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 
-const { "@context": _orgContext, ...providerJsonLd } = organizationJsonLd;
+// The Organization's offer catalog references this Service by @id, so the id
+// has to be derived from the page URL and match the path listed in lib/seo.ts.
+const servicePath = Astro.url.pathname.replace(/\/$/, "");
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": serviceId(servicePath),
   name: data.title,
+  url: `${SITE.url}${servicePath}`,
   description: data.description,
-  provider: providerJsonLd,
+  provider: organizationRef,
   areaServed: "Worldwide",
   ...(data.updatedAt && { dateModified: data.updatedAt }),
 };

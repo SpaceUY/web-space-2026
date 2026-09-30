@@ -5,7 +5,7 @@ import AuthorAvatar from "../../components/ui/AuthorAvatar.astro";
 import NewsletterForm from "../../components/ui/NewsletterForm.astro";
 import { getAuthor } from "../../data/authors";
 import { getBlogTag } from "../../data/blog-tags";
-import { SITE, organizationJsonLd } from "../../lib/seo";
+import { SITE, organizationRef, personId } from "../../lib/seo";
 import "../../styles/prose.css";
 
 export async function getStaticPaths() {
@@ -37,10 +37,6 @@ const pageTitle = post.data.metatitle ?? `${post.data.title} | SpaceDev Blog`;
 // metadescription: SEO override (140-160 chars), falls back to the post description
 const pageDescription = post.data.metadescription ?? post.data.description;
 
-// Article's publisher must not carry a nested @context — that belongs
-// at the root of the JSON-LD document, not on an embedded sub-entity.
-const { "@context": _organizationContext, ...publisherJsonLd } = organizationJsonLd;
-
 const wordCount = post.body
   ? post.body.replace(/```[\s\S]*?```/g, " ").split(/\s+/).filter(Boolean).length
   : undefined;
@@ -56,10 +52,11 @@ const articleJsonLd = {
   dateModified: (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
   author: {
     "@type": "Person",
+    ...(author && { "@id": personId(author.slug) }),
     name: author?.name ?? "SpaceDev",
     url: `${SITE.url}/author/${post.data.author}`,
   },
-  publisher: publisherJsonLd,
+  publisher: organizationRef,
   mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/${post.id}` },
   speakable: {
     "@type": "SpeakableSpecification",

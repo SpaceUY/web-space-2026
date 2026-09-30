@@ -5,7 +5,7 @@ import JsonLD from "../components/seo/JsonLD.astro";
 import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
-import { organizationJsonLd, SITE } from "../lib/seo";
+import { homeGraphJsonLd, organizationSlimJsonLd, SITE } from "../lib/seo";
 
 interface Props {
   title?: string;
@@ -57,6 +57,10 @@ const {
   breadcrumbTone = "dark",
   errorPage = false,
 } = Astro.props;
+
+// The homepage carries the full entity graph (Organization, founders, WebSite);
+// every other page carries the slim Organization node. See lib/seo.ts.
+const isHome = Astro.url.pathname === "/";
 
 // Custom items take priority; otherwise auto-generate from URL path
 // Small words that stay lowercase in an auto-generated breadcrumb label
@@ -149,7 +153,7 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
       articleSection={articleSection}
     />
 
-    <JsonLD data={organizationJsonLd} />
+    <JsonLD data={isHome ? homeGraphJsonLd(title) : organizationSlimJsonLd} />
     {jsonLd && <JsonLD data={jsonLd} />}
 
     {/* Measurement lives here, in the repo, on purpose.

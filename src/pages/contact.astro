@@ -1,18 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactForm from "../components/ui/ContactForm.astro";
-import { SITE } from "../lib/seo";
+import { SITE, organizationRef } from "../lib/seo";
 
 const contactJsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "Contact SpaceDev",
   url: `${SITE.url}/contact`,
-  mainEntity: {
-    "@type": "Organization",
-    name: SITE.name,
-    email: SITE.email,
-  },
+  mainEntity: organizationRef,
 };
 
 const breadcrumbJsonLd = {
