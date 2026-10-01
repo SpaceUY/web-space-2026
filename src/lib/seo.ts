@@ -60,6 +60,9 @@ const serviceCatalog = [
   { name: "IT Staff Augmentation", path: "/staff-augmentation" },
 ] as const;
 
+/** Short catalog label for a service page, or undefined when the page is not in the catalog. */
+export const catalogServiceName = (path: string) => serviceCatalog.find((service) => service.path === path)?.name;
+
 /** Topics with a clean Wikipedia article are linked as entities; the rest stay plain strings. */
 const knowsAbout = [
   { name: "Blockchain", sameAs: "https://en.wikipedia.org/wiki/Blockchain" },
