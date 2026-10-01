@@ -4,6 +4,8 @@ import { offices, stats } from "../data/site-content";
 export const SITE = {
   url: "https://spacedev.io",
   name: "SpaceDev",
+  legalName: "SpaceDev LLC",
+  slogan: "From idea to mainnet",
   defaultTitle: "SpaceDev | Web3 Development Services & Custom Software Solutions",
   defaultDescription:
     "SpaceDev is a blockchain development company offering web and mobile app development, and IT staff augmentation services for scalable growth.",
@@ -15,6 +17,7 @@ export const SITE = {
     instagram: "https://www.instagram.com/spacedev.io",
     github: "https://github.com/SpaceUY",
     clutch: "https://clutch.co/profile/spacedev",
+    goodfirms: "https://www.goodfirms.co/company/spacedev",
     crunchbase: "https://crunchbase.com/organization/spacedev",
     awsPartner: "https://partners.amazonaws.com/partners/0010h00001kLtZRAA0/SpaceDev",
     awsMarketplace: "https://aws.amazon.com/marketplace/pp/prodview-tkuck454u2bxa",
@@ -106,6 +109,7 @@ const postalAddress = (office: (typeof offices)[number]) => ({
   streetAddress: office.streetAddress,
   addressLocality: office.locality,
   ...("regionCode" in office && { addressRegion: office.regionCode }),
+  postalCode: office.postalCode,
   addressCountry: office.countryCode,
 });
 
@@ -123,7 +127,9 @@ const organizationNode = {
   "@type": "Organization",
   "@id": ENTITY_ID.organization,
   name: SITE.name,
+  legalName: SITE.legalName,
   alternateName: ["SpaceDev.io", "Space Dev"],
+  slogan: SITE.slogan,
   url: `${SITE.url}/`,
   logo: logoNode,
   image: { "@id": ENTITY_ID.logo },
@@ -175,6 +181,7 @@ const organizationNode = {
     SITE.social.instagram,
     SITE.social.github,
     SITE.social.clutch,
+    SITE.social.goodfirms,
     SITE.social.crunchbase,
     SITE.social.awsPartner,
     SITE.social.awsMarketplace,
