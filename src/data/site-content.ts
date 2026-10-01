@@ -59,11 +59,14 @@ export const values = [
   { title: "We are human", description: "No space-faring member of ours is going to be stranded. Everyone has a say and is given ample room to grow. We're just humans navigating the stars." },
 ] as const;
 
+// The first entry is the headquarters; seo.ts relies on that order for the
+// Organization's main address. The structured fields feed schema.org
+// PostalAddress, `address` is the display string used by the footer and cards.
 export const offices = [
-  { country: "United States", flag: "🇺🇸", address: "25 SW 9th Street, 4th Floor, Miami, FL", region: "Miami, USA" },
-  { country: "Uruguay", flag: "🇺🇾", address: "Cornelio Cantera 2857, Montevideo", region: "Montevideo, Uruguay" },
-  { country: "Argentina", flag: "🇦🇷", address: "El Salvador 5707 Palermo Hollywood, CABA", region: "Buenos Aires, Argentina" },
-  { country: "Colombia", flag: "🇨🇴", address: "Carrera 30 # 7AA - 207 Medellín", region: "Medellín, Colombia" },
+  { country: "United States", flag: "🇺🇸", address: "25 SW 9th Street, 4th Floor, Miami, FL", region: "Miami, USA", streetAddress: "25 SW 9th Street, 4th Floor", locality: "Miami", regionCode: "FL", postalCode: "33130", countryCode: "US" },
+  { country: "Uruguay", flag: "🇺🇾", address: "Cornelio Cantera 2857, Montevideo", region: "Montevideo, Uruguay", streetAddress: "Cornelio Cantera 2857", locality: "Montevideo", postalCode: "11600", countryCode: "UY" },
+  { country: "Argentina", flag: "🇦🇷", address: "El Salvador 5707 Palermo Hollywood, CABA", region: "Buenos Aires, Argentina", streetAddress: "El Salvador 5707, Palermo Hollywood", locality: "Buenos Aires", postalCode: "C1414BQG", countryCode: "AR" },
+  { country: "Colombia", flag: "🇨🇴", address: "Carrera 30 # 7AA - 207 Medellín", region: "Medellín, Colombia", streetAddress: "Carrera 30 # 7AA - 207", locality: "Medellín", postalCode: "050021", countryCode: "CO" },
 ] as const;
 
 export interface Stat {

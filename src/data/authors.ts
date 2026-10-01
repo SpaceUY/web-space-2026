@@ -16,6 +16,10 @@ export interface Author {
   social?: { linkedin?: string; twitter?: string; github?: string; hashnode?: string; medium?: string };
   /** Expertise topics, used for the Person schema's knowsAbout field */
   knowsAbout?: string[];
+  /** Company founders get a Person node in the homepage's Organization graph */
+  founder?: boolean;
+  /** Public recognitions, emitted as the Person schema's award field */
+  awards?: string[];
 }
 
 export const authors: Author[] = [
@@ -23,6 +27,7 @@ export const authors: Author[] = [
     slug: "federico-sendra",
     name: "Federico Sendra",
     role: "CEO & Co-founder",
+    founder: true,
     bio: "Federico co-founded SpaceDev to bring startup agility to enterprise-grade engineering. He's spent the last decade helping Web2 and Web3 teams ship products that perform, from MVPs to multi-year platforms.",
     initials: "FS",
     avatarGradient: "from-sd-purple-300 to-sd-purple",
@@ -46,6 +51,8 @@ export const authors: Author[] = [
     slug: "juan-manuel-sobral",
     name: "Juan Manuel Sobral",
     role: "CTO & Co-founder",
+    founder: true,
+    awards: ["Recognized among the 25 leaders transforming technology in Uruguay (Experis, 2024)"],
     bio: "Juan Manuel leads the technical vision at SpaceDev with deep expertise in smart contracts, decentralized protocols, and scalable backend systems. He's a frequent speaker on blockchain at conferences across the Americas.",
     initials: "JM",
     avatarGradient: "from-sd-green to-sd-purple-300",

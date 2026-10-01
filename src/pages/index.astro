@@ -7,7 +7,6 @@ import AuthorAvatar from "../components/ui/AuthorAvatar.astro";
 import { homeFaqs } from "../data/site-content";
 import { featuredCaseStudies } from "../data/case-studies";
 import { getAuthor } from "../data/authors";
-import { websiteJsonLd } from "../lib/seo";
 import { getCollection } from "astro:content";
 
 const recentPosts = (await getCollection("blog"))
@@ -80,7 +79,6 @@ const industries = [
 <BaseLayout
   title="SpaceDev | Blockchain Development Company & Web3 Experts"
   description="Blockchain development company building Web3, web, and mobile products, with nearshore IT staff augmentation from LATAM. Let's build your product."
-  jsonLd={websiteJsonLd}
 >
   <!-- HERO (dark) -->
   <!-- Stops short of the full viewport so the next section peeks and invites scrolling
