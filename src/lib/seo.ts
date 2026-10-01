@@ -148,7 +148,6 @@ const organizationNode = {
     email: SITE.email,
     url: SITE.bookCallUrl,
     availableLanguage: ["English", "Spanish"],
-    areaServed: "US",
   },
   knowsAbout: knowsAbout.map((topic) =>
     typeof topic === "string" ? topic : { "@type": "Thing", name: topic.name, sameAs: topic.sameAs },
