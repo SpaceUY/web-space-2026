@@ -18,6 +18,8 @@ export interface Author {
   knowsAbout?: string[];
   /** Company founders get a Person node in the homepage's Organization graph */
   founder?: boolean;
+  /** Public recognitions, emitted as the Person schema's award field */
+  awards?: string[];
 }
 
 export const authors: Author[] = [
@@ -50,6 +52,7 @@ export const authors: Author[] = [
     name: "Juan Manuel Sobral",
     role: "CTO & Co-founder",
     founder: true,
+    awards: ["Recognized among the 25 leaders transforming technology in Uruguay (Experis, 2024)"],
     bio: "Juan Manuel leads the technical vision at SpaceDev with deep expertise in smart contracts, decentralized protocols, and scalable backend systems. He's a frequent speaker on blockchain at conferences across the Americas.",
     initials: "JM",
     avatarGradient: "from-sd-green to-sd-purple-300",

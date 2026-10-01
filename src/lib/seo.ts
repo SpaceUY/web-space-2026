@@ -202,6 +202,7 @@ export function personNode(author: Author) {
     worksFor: { "@id": ENTITY_ID.organization },
     ...(author.avatar && { image: `${SITE.url}${author.avatar}` }),
     ...(author.knowsAbout && { knowsAbout: author.knowsAbout }),
+    ...(author.awards?.length && { award: author.awards }),
     ...(sameAs.length > 0 && { sameAs }),
   };
 }
