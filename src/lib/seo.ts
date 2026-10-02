@@ -85,7 +85,7 @@ const organizationDescription =
 // Disambiguates from the unrelated, defunct 1990s-2000s aerospace company
 // of the same name (acquired by Sierra Nevada Corporation), which currently
 // has no distinct Wikidata entry of its own.
-const disambiguatingDescription =
+export const disambiguatingDescription =
   "SpaceDev is a software development and blockchain consulting company founded in 2017, with offices in Miami, Montevideo, Buenos Aires and Medellín. Not to be confused with the historical aerospace company SpaceDev Inc., acquired by Sierra Nevada Corporation.";
 
 const logoNode = {
@@ -115,6 +115,22 @@ const postalAddress = (office: (typeof offices)[number]) => ({
 
 const [headquarters] = offices;
 const teamSize = stats.find((stat) => /team members/i.test(stat.label))?.value;
+
+// sameAs is the supported way to point Google at third-party profiles
+// (including Clutch) without claiming the ratings as our own markup. Shared by
+// the full and the slim Organization so a crawler that reads a single page
+// still gets the same profiles as one that reads the homepage.
+const organizationSameAs = [
+  SITE.social.linkedin,
+  SITE.social.twitter,
+  SITE.social.instagram,
+  SITE.social.github,
+  SITE.social.clutch,
+  SITE.social.goodfirms,
+  SITE.social.crunchbase,
+  SITE.social.awsPartner,
+  SITE.social.awsMarketplace,
+];
 
 // NOTE: no aggregateRating on purpose. A rating an organization publishes
 // about itself is a "self-serving review" under Google's rules: pages using
@@ -173,19 +189,7 @@ const organizationNode = {
       itemOffered: { "@type": "Service", "@id": serviceId(service.path), name: service.name },
     })),
   },
-  // sameAs is the supported way to point Google at third-party profiles
-  // (including Clutch) without claiming the ratings as our own markup.
-  sameAs: [
-    SITE.social.linkedin,
-    SITE.social.twitter,
-    SITE.social.instagram,
-    SITE.social.github,
-    SITE.social.clutch,
-    SITE.social.goodfirms,
-    SITE.social.crunchbase,
-    SITE.social.awsPartner,
-    SITE.social.awsMarketplace,
-  ],
+  sameAs: organizationSameAs,
 };
 
 /** Person node shared by the homepage graph (founders) and the /author pages. */
@@ -246,4 +250,5 @@ export const organizationSlimJsonLd = {
   "@context": "https://schema.org",
   ...organizationRef,
   logo: logoNode,
+  sameAs: organizationSameAs,
 };
