@@ -10,6 +10,14 @@ const positions = [
   { title: "Blockchain Developer", mode: "100% Remote", href: "https://spacedev.peopleforce.io/careers/v/65974-blockchain-developer", posted: "2026-06-16", validThrough: "2026-12-16" },
 ];
 
+// Not a real vacancy: kept out of `positions` so it does not generate a JobPosting in the JSON-LD.
+const talentPool = {
+  title: "Join our Talent Pool",
+  detail: "Software Engineers, Uruguay",
+  href: "https://spacedev.peopleforce.io/careers/v/191616-join-our-talent-pool-at-spacedev-software-engineers-uruguay",
+  cta: "Join the talent pool",
+};
+
 const benefits = [
   { title: "Flexible vacation time", description: "You decide when it's time for a break! At Space, we offer flexible vacation scheduling to ensure a perfect work-life balance." },
   { title: "Monetary perks", description: "Space offers training and access to international certifications, promoting ongoing learning for our talent." },
@@ -160,6 +168,23 @@ const jobPostingsJsonLd = {
             </div>
           </article>
         ))}
+        <article
+          class="flex flex-col justify-between gap-6 bg-[#f5f5f5] rounded-2xl p-6 md:p-8"
+          data-animate
+        >
+          <div>
+            <h3 class="text-lg text-sd-text-dark font-display font-semibold leading-snug mb-2">{talentPool.title}</h3>
+            <p class="text-sm text-sd-text-gray">
+              <span class="inline-flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-sd-purple inline-block shrink-0" aria-hidden="true"></span>
+                {talentPool.detail}
+              </span>
+            </p>
+          </div>
+          <div>
+            <Button href={talentPool.href} variant="dark" external>{talentPool.cta}</Button>
+          </div>
+        </article>
       </div>
       <div class="mt-12 text-center" data-animate>
         <Button href="https://spacedev.peopleforce.io/careers" variant="primary" size="lg" external>Explore Our Job Openings!</Button>
