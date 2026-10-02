@@ -85,7 +85,7 @@ const organizationDescription =
 // Disambiguates from the unrelated, defunct 1990s-2000s aerospace company
 // of the same name (acquired by Sierra Nevada Corporation), which currently
 // has no distinct Wikidata entry of its own.
-const disambiguatingDescription =
+export const disambiguatingDescription =
   "SpaceDev is a software development and blockchain consulting company founded in 2017, with offices in Miami, Montevideo, Buenos Aires and Medellín. Not to be confused with the historical aerospace company SpaceDev Inc., acquired by Sierra Nevada Corporation.";
 
 const logoNode = {

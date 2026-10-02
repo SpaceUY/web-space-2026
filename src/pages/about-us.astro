@@ -4,6 +4,7 @@ import AnimatedCounter from "../components/ui/AnimatedCounter.astro";
 import AuthorAvatar from "../components/ui/AuthorAvatar.astro";
 import { getCollection } from "astro:content";
 import { getAuthor } from "../data/authors";
+import { disambiguatingDescription } from "../lib/seo";
 
 const allPosts = await getCollection("blog");
 const latestPosts = allPosts
@@ -215,6 +216,7 @@ const howWeWork = [
         <AnimatedCounter value={9}   suffix="+" label="Years in the market" />
       </div>
       <p class="mt-8 text-center text-xs text-white/40" data-animate>4 offices, Miami, Montevideo, Buenos Aires and Medellín, plus a remote engineering team based in Mexico.</p>
+      <p class="mt-3 mx-auto max-w-2xl text-center text-xs text-white/40" data-animate>{disambiguatingDescription}</p>
     </div>
   </section>
 
