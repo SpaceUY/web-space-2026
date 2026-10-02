@@ -135,7 +135,7 @@ Ethereum moved to a twice-yearly upgrade cadence, a deliberate shift from large 
 
 - **Fusaka**, activated December 2025.
 - **Glamsterdam**, [on track for Q4 2026](https://everstake.one/resources/blog/ethereum-glamsterdam-upgrade-explained). Focus: enshrined proposer-builder separation to break the concentration of block production, block-level access lists for parallel execution, and repricing state storage to slow database growth.
-- **Hegotá**, H2 2026, possibly slipping to Q4 2026 or Q1 2027. The headliner is already selected: **FOCIL (EIP-7805)**, per the Ethereum Foundation's Checkpoint #9 in April 2026. Account abstraction is committed in the minor feature set. Verkle Trees and 2D PeerDAS remain under discussion.
+- **Hegotá**, [targeting 2027](https://www.digitaltoday.co.kr/en/view/93891/ethereum-glamsterdam-delayed-follow-up-upgrade-recalibrated). The headliner is already selected: **FOCIL (EIP-7805)**, per the Ethereum Foundation's Checkpoint #9 in April 2026. Account abstraction is committed in the minor feature set. Verkle Trees and 2D PeerDAS remain under discussion.
 - **Beyond**, ZK-EVM verification at L1, allowing Ethereum to verify its own execution via ZK proofs. [No confirmed activation date](https://decrypt.co/resources/whats-on-ethereum-roadmap-glamsterdam-hegota-beyond).
 
 One framing worth getting right, because almost nobody does: **FOCIL is simultaneously a censorship-resistance feature and a privacy feature.** Ethereum is not adding privacy as a product. It is making neutrality impossible to violate at the protocol level, and privacy is a consequence of that. Understanding which of those two things you are buying changes how you evaluate the roadmap.
