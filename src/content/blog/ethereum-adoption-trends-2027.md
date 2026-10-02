@@ -61,7 +61,7 @@ The Ethereum Foundation has organised around this. It launched a Privacy Cluster
 
 ## The side that already won: Canton and permissioned privacy
 
-![Illustration of a closed network of connected nodes, representing permissioned privacy on Canton](/images/content/ethereum-adoption-trends-2027/ethereum-adoption-trends-2027-01-canton.png)
+![An open hand holding a glowing Ethereum logo panel, surrounded by dozens of smaller floating panels with the same logo against a dark night-time city](/images/content/ethereum-adoption-trends-2027/ethereum-adoption-trends-2027-01-canton.png)
 
 Here is the part that most Ethereum-focused coverage leaves out, and it is uncomfortable.
 
@@ -93,7 +93,7 @@ There is a convergence worth naming: public chains adding confidentiality and in
 
 ## Ethereum's three-step privacy plan
 
-![Illustration of three layers of a privacy plan stacked on top of each other](/images/content/ethereum-adoption-trends-2027/ethereum-adoption-trends-2027-02-privacy-plan.png)
+![A glowing translucent cube holding an Ethereum logo above a glowing platform, over a neon-lit city at night with trading screens and laptop keyboard in the foreground](/images/content/ethereum-adoption-trends-2027/ethereum-adoption-trends-2027-02-privacy-plan.png)
 
 In May 2026, Vitalik Buterin published a near-term plan to make privacy native to Ethereum rather than bolted on through third-party tools. [It has three parts](https://www.coindesk.com/tech/2026/05/20/vitalik-buterin-outlines-ethereum-s-privacy-measures-here-is-what-it-means-for-the-network-and-eth).
 
@@ -142,7 +142,7 @@ One framing worth getting right, because almost nobody does: **FOCIL is simultan
 
 ## The Ethereum tokenization data, with its caveats
 
-![Illustration of stacked layers of different sizes, representing diverging estimates of the tokenized asset market](/images/content/ethereum-adoption-trends-2027/ethereum-adoption-trends-2027-03-tokenization.png)
+![An Ethereum logo floating above six stacked glowing blue layers, with a gold coin resting on a dark reflective surface below](/images/content/ethereum-adoption-trends-2027/ethereum-adoption-trends-2027-03-tokenization.png)
 
 Ethereum's tokenization position depends heavily on how you count, and the honest answer is that credible sources disagree substantially.
 
