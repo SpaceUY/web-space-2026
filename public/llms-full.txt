@@ -2,6 +2,8 @@
 
 > Blockchain development company offering Web3 engineering, traditional software development, IT staff augmentation, and blockchain security auditing. Founded in 2017; 70+ team members across USA, Uruguay, Argentina, Colombia and Mexico; 200+ projects delivered; 50+ five-star Clutch reviews. This file is the extended companion to https://spacedev.io/llms.txt
 
+> SpaceDev (spacedev.io) is a software development and blockchain consulting company founded in 2017, with offices in Miami, Montevideo, Buenos Aires and Medellín. Not to be confused with the historical aerospace company SpaceDev Inc., acquired by Sierra Nevada Corporation.
+
 ## Core services in detail
 
 ### Blockchain Development Services (https://spacedev.io/blockchain-development-services)
@@ -10,8 +12,7 @@ End-to-end blockchain development from concept to mainnet: DeFi platforms, dApps
 Specializations:
 - Smart Contract Development (https://spacedev.io/blockchain-development-services/smart-contract-development)
 - dApp Development (https://spacedev.io/blockchain-development-services/dapp-development)
-- Asset Tokenization (https://spacedev.io/blockchain-development-services/asset-tokenization) including Real Estate (https://spacedev.io/blockchain-development-services/asset-tokenization/real-estate), Stocks (https://spacedev.io/blockchain-development-services/asset-tokenization/stocks), Gold (https://spacedev.io/blockchain-development-services/asset-tokenization/gold), Bonds (https://spacedev.io/blockchain-development-services/asset-tokenization/bonds), and Carbon Credits (https://spacedev.io/blockchain-development-services/asset-tokenization/carbon-credits)
-- Blockchain for Banks (https://spacedev.io/blockchain-development-services/blockchain-for-banks)
+- Asset Tokenization (https://spacedev.io/blockchain-development-services/asset-tokenization) including Real Estate (https://spacedev.io/blockchain-development-services/asset-tokenization/real-estate), Stocks (https://spacedev.io/blockchain-development-services/asset-tokenization/stocks), Gold (https://spacedev.io/blockchain-development-services/asset-tokenization/gold), Bonds (https://spacedev.io/blockchain-development-services/asset-tokenization/bonds), Carbon Credits (https://spacedev.io/blockchain-development-services/asset-tokenization/carbon-credits), Commodities: vault and warehouse integration, Proof of Reserves, redemption workflows (https://spacedev.io/blockchain-development-services/asset-tokenization/commodities), and Digital Securities: security token issuance, Reg D and Reg A+ compliance, transfer agent integration, secondary trading (https://spacedev.io/blockchain-development-services/asset-tokenization/digital-securities)
 - White-Label Blockchain Partner for agencies (https://spacedev.io/blockchain-development-services/blockchain-partner)
 - White Label Crypto Exchange Development: CEX, DEX and hybrid trading platforms (https://spacedev.io/blockchain-development-services/white-label-crypto-exchanges)
 - Crypto Token Development: tokenomics, utility, governance, security and DeFi tokens (https://spacedev.io/blockchain-development-services/crypto-token-development)
@@ -20,11 +21,22 @@ Specializations:
 - Layer 1 Blockchain Development with Cosmos SDK, Substrate, EVM chains, Avalanche subnets (https://spacedev.io/blockchain-development-services/layer-1-blockchain-development)
 
 Industry solutions:
+- Banking: compliant blockchain and tokenization solutions for banks, fintechs and asset managers, covering programmable money, settlement and digital asset custody (https://spacedev.io/blockchain-development-services/industry/banking)
 - Finance & Fintech: DeFi protocols, smart contracts, tokenized financial infrastructure (https://spacedev.io/blockchain-development-services/industry/finance-and-fintech)
 - Stablecoin Development: fiat-backed, crypto-collateralized and hybrid (https://spacedev.io/blockchain-development-services/industry/finance-and-fintech/stablecoins)
+- Lending Protocols: pooled and isolated markets, liquidation engines, oracle design and RWA credit platforms (https://spacedev.io/blockchain-development-services/industry/finance-and-fintech/lending-protocols)
+- Yield Farming: liquidity mining, ERC-4626 vaults, auto-compounders, staking and RWA yield (https://spacedev.io/blockchain-development-services/industry/finance-and-fintech/yield-farming)
+- Trading Bots: DeFi and CEX execution, Telegram and AI bots, automated stop-loss, backtesting and risk controls (https://spacedev.io/blockchain-development-services/industry/finance-and-fintech/trading-bots)
+- Web3 Compliance: on-chain KYC/AML, transfer restriction engines, decentralized identity and regulatory-ready smart contracts (https://spacedev.io/blockchain-development-services/industry/compliance-web3)
+- Gaming: NFT assets, GameFi economies, embedded wallets, gasless onboarding and multichain marketplaces (https://spacedev.io/blockchain-development-services/industry/gaming)
+- Real Estate: smart contracts, tokenization platforms, property registries and DeFi mortgage solutions (https://spacedev.io/blockchain-development-services/industry/real-estate)
+- Telecommunications: roaming settlement, fraud prevention, DePIN carrier offload and subscriber wallets for MNOs and MVNOs (https://spacedev.io/blockchain-development-services/industry/telecommunications)
 - Healthcare: HIPAA-aligned records, claims automation, pharma tracking (https://spacedev.io/blockchain-development-services/industry/healthcare)
 - Energy: trading platforms, REC tokenization, carbon credits (https://spacedev.io/blockchain-development-services/industry/energy)
 - Supply Chain & Logistics: traceability, freight payment automation, provenance (https://spacedev.io/blockchain-development-services/industry/supply-chain-and-logistics)
+
+### Agentic AI Development (https://spacedev.io/agentic-ai-development)
+Dedicated AI engineering pods for enterprise teams, plus AI transformation consulting: LLM integration, agentic AI and RAG pipelines, with offshore talent aligned to US time zones.
 
 ### Web & Mobile Solutions (https://spacedev.io/innovative-web-and-mobile-solutions)
 Custom software, web and mobile app development engineered for scale. Stack: TypeScript, React, Next.js, Node.js, Python, Go, React Native, Flutter, PostgreSQL, Redis, AWS, GCP, Vercel. Ships both React Native and native iOS/Android.
@@ -49,7 +61,7 @@ Smart contract and blockchain security auditing: static and manual analysis, for
 
 **What are your rates?** Time & materials, fixed-scope, and dedicated-team pricing. Most staff augmentation engagements land in the $60–120/hr range; project pricing depends on scope.
 
-**What services do you offer?** Five core services: Blockchain Development, Web & Mobile Development, IT Staff Augmentation, Product Discovery, and BlockAudit (smart contract security).
+**What services do you offer?** Core services: Blockchain Development, Agentic AI Development, Web & Mobile Development, IT Staff Augmentation, Product Discovery, and BlockAudit (smart contract security).
 
 **What is an MVP?** The smallest version of your product that delivers real value to a real user: a shippable product designed to learn from market feedback as fast and cheaply as possible.
 
@@ -76,7 +88,11 @@ Smart contract and blockchain security auditing: static and manual analysis, for
 - Genba (https://spacedev.io/our-work/genba): Factory palletizing automation platform built in two months after a discovery sprint.
 - iAffirm (https://spacedev.io/our-work/iaffirm): AI mental wellness web app with personalized affirmations and guided meditations.
 - Ubicuity (https://spacedev.io/our-work/ubicuity): Figma-like visual designer and React Native app for interactive digital spaces.
-- Mostaza, NGA, Glowy Music, Twispi, Byrrgis: additional Web2/Web3 product engineering case studies.
+- Mostaza (https://spacedev.io/our-work/mostaza): Colombian fintech bridging traditional finance and Web3; a discovery sprint to define the MVP, then full product development including a USDT wallet and a virtual card.
+- NGA (https://spacedev.io/our-work/nga): EdTech platform built with the Acton School of Business: React Native app, website and real-time sync backend serving 26 interactive courses.
+- Glowy Music (https://spacedev.io/our-work/glowy-music): Mobile platform connecting fans with artists, events, producers and managers; SpaceDev built the MVP app and the backoffice admin panel.
+- Twispi (https://spacedev.io/our-work/twispi): HR and financial wellness platform for the workforce in Mexico, giving employees access to benefits and employers an analytics dashboard.
+- Byrrgis (https://spacedev.io/our-work/byrrgis): Non-custodial Web3 broker for one-click cross-chain token trading, built from product discovery to production, including the cross-chain swap engine.
 
 ## Recognition & media (https://spacedev.io/spacedev-in-the-media)
 
@@ -91,6 +107,8 @@ Smart contract and blockchain security auditing: static and manual analysis, for
 
 - Email: info@spacedev.io · Careers: people@spacedev.io
 - Offices: 25 SW 9th St, Miami FL (USA) · Cornelio Cantera 2857, Montevideo (Uruguay) · El Salvador 5707, Buenos Aires (Argentina) · Carrera 30 # 7AA-207, Medellín (Colombia)
+- Contact page: https://spacedev.io/contact
 - Book a call: https://meetings.hubspot.com/federico-sendra/meet-space
+- Resources: Digital Library (https://spacedev.io/digital-library) · Newsletter (https://spacedev.io/newsletter)
 - Social: https://x.com/SpaceDevUy · https://www.linkedin.com/company/spacedev-io/ · https://www.instagram.com/spacedev.io · https://clutch.co/profile/spacedev
 - Blog RSS: https://spacedev.io/rss.xml
