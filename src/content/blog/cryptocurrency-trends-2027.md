@@ -41,7 +41,7 @@ Four trends define cryptocurrency going into 2027, and they are not the ones tha
 
 Underneath all four sits the same layer: **stablecoins**. They are the settlement asset for tokenised collateral, the cash leg for institutional trades, the rail for agent payments, and the object of nearly every regulatory framework passed since 2025. If you want to understand where crypto is going in 2027, the stablecoin data is where to look.
 
-![Placeholder alt text, replace once the image is added](/images/content/cryptocurrency-trends-2027/cryptocurrency-trends-2027-01-stablecoin-layer.png)
+![Seven translucent glass panels stacked vertically against a black background, each reflecting blue sky and clouds, with a silver coin floating above it](/images/content/cryptocurrency-trends-2027/cryptocurrency-trends-2027-01-stablecoin-layer.png)
 
 **Market snapshot, figures as of 28 August 2026.** Prices and supply totals below are dated on purpose. Re-check before quoting.
 
@@ -131,7 +131,7 @@ The second is **yield-bearing stablecoins** structured as securities, operating 
 
 This is the question we are asked most often, and it has no universal answer, only trade-offs that resolve differently depending on what you are building.
 
-![Placeholder alt text, replace once the image is added](/images/content/cryptocurrency-trends-2027/cryptocurrency-trends-2027-02-payment-chains.png)
+![An isometric dark scene with a glowing platform at the center topped by a metallic Ethereum logo under a cloud, surrounded by laptops, monitors and server racks with green code glowing](/images/content/cryptocurrency-trends-2027/cryptocurrency-trends-2027-02-payment-chains.png)
 
 **The case for purpose-built payment chains** rests on four arguments, all legitimate:
 
@@ -179,7 +179,7 @@ Seventy-three million dollars is not a revolution. It is a coherent use case wit
 
 The dollar-volume picture and the adoption picture point in opposite directions, and most English-language coverage reports only the first.
 
-![Placeholder alt text, replace once the image is added](/images/content/cryptocurrency-trends-2027/cryptocurrency-trends-2027-03-latin-america.png)
+![A large copper-coloured Bitcoin coin resting on the night-time Earth, glowing with orange city lights, with floating image panels and the Milky Way above](/images/content/cryptocurrency-trends-2027/cryptocurrency-trends-2027-03-latin-america.png)
 
 By absolute flow, North America leads with roughly $633 billion in 2024, followed by Asia-Pacific at about $519 billion. By intensity relative to GDP the ranking inverts completely: Latin America and the Caribbean process 7.7% of regional GDP through stablecoin rails, Africa and the Middle East 6.7%, and North America under 1% (IMF via 51 Insights). North America was the net exporter, with roughly $54 billion flowing out to meet emerging-market dollar demand.
 
