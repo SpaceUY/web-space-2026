@@ -1,10 +1,198 @@
 # GEO Audit Report: SpaceDev
 
-**Última actualización:** 2026-09-18 (Ronda 9), ver resumen ejecutivo actual justo debajo. El resto del documento, a partir de "Historial de auditorías anteriores", queda como archivo de las Rondas 1-8 (útil para ver qué se investigó y descartó, para no repetirlo).
+**Última actualización:** 2026-10-07 (Ronda 10), ver resumen ejecutivo actual justo debajo. El resto del documento, a partir de "Historial de auditorías anteriores", queda como archivo de las Rondas 1-9 (útil para ver qué se investigó y descartó, para no repetirlo).
 
 ---
 
-## RONDA 9 (2026-09-18): resumen ejecutivo actual
+## RONDA 10 (2026-10-07): resumen ejecutivo actual
+
+**Metodología de esta ronda:** 5 subagentes en paralelo (AI Citability + Brand Authority, Platform Optimization, Technical, Content E-E-A-T, Schema), cada uno con la regla de anclaje explícita y la lista de hallazgos con decisión tomada para no re-descubrirlos. Baseline: 82/100 (2026-09-18), tomado de `~/.geo-prospects/audits/spacedev.io-2026-09-18.json`. Las rondas informales del 2026-10-01 y 2026-10-02 dieron 83 pero no se registraron por decisión del cliente, así que no son baseline.
+
+Cobertura: las 168 URLs del sitemap verificadas por status, 479 enlaces internos y assets de 25 páginas, 111 bloques JSON-LD de 37 URLs, los 7 crawlers de IA probados con su user-agent real, 5 búsquedas en vivo y reverificación de los hallazgos abiertos de la Ronda 9. Se auditó todo lo mergeado desde el 09-18 (PRs #150, #151 y #152). **El post `/blog/cryptocurrency-trends-2027` (PR #153) se mergeó el mismo día a las 10:20, con la auditoría ya en curso: no entra en el score**, pero los problemas que se le detectaron en la rama ahora están en producción (ver R10-M10).
+
+### Overall GEO Score: 84/100 (Good), sube desde 82/100 (2026-09-18)
+
+| Categoría | Score 09-18 | Score hoy (10-07) | Por qué cambió |
+|---|---|---|---|
+| AI Citability | 81/100 | **84/100** | +2: R9-M3 resuelto, el blog pasó de 27/69 a 68/72 posts con al menos una fuente externa (commit `add351f`, mergeado después del cierre de la Ronda 9). +2: 3 posts nuevos de alto nivel con FAQPage, tablas y `speakable` (`smart-contract-security-statistics-2026` con 54 fuentes, `defi-protocol-trends-2027`, `ethereum-adoption-trends-2027`). -1: la cifra principal del post de Ethereum está atribuida a una fuente que no la dice (R10-M3). |
+| Brand Authority | 76/100 | **79/100** | +4: existe una entidad propia de SpaceDev en Wikidata (Q141611703, creada el 2026-10-01 por un tercero, no por alguien de SpaceDev), con `P1889 different from` recíproco hacia la aeroespacial Q908317, más entidades de los dos fundadores. Era la acción estratégica #1 de la Ronda 9. -1: esa entidad contradice al sitio en sede y país, y convive con un registro oficial de Uruguay XXI desactualizado (R10-M1). |
+| Content E-E-A-T | 75/100 | **78/100** | +4: mismo R9-M3 (Trustworthiness), 3 posts firmados por el CTO con citas propias y caveats de metodología, desambiguación visible en /about-us. -1: atribuciones incorrectas en el post de Ethereum (R10-M3). R9-A1 sigue igual y ya estaba descontado. |
+| Technical GEO | 95/100 | **95/100** | Se repite. 3 mejoras verificadas (URLs retiradas en 410 sin salto, header `Link rel="describedby"` hacia `/llms.txt`, 168/168 en 200) contra 2 hallazgos nuevos (imágenes del cuerpo sin lazy, meta descriptions largas). El neto da 95,15. |
+| Schema & Structured Data | 98/100 | **98/100** | Se repite. +2 por R9-M1 resuelto (el Article de Hedera ya tiene `citation`, `isBasedOn`, `dateModified` y `description`), -2 por dos hallazgos medios nuevos (R10-M4 JobPosting, R10-M5 `author` en case studies). Cero errores de sintaxis. |
+| Platform Optimization | 72/100 | **74/100** | +2 por Wikidata y por las fuentes en el blog. Readiness: Google AI Overviews 69→71, ChatGPT 70→73, Perplexity 62→64, Google Gemini 39→43 (primera vez que se mueve desde la Ronda 3), Bing Copilot 59→60. |
+| **Overall GEO Score** | **82/100** | **83,85 → 84/100** | |
+
+**Rating: Good (75-89).** Las cuatro subas tienen detrás el mismo par de causas verificadas (fuentes en el blog y entidad en Wikidata). El hallazgo que encabeza la ronda no baja el score, pero conviene atenderlo antes de que lo haga: los datos de la empresa no coinciden entre las fuentes que leen Google y los LLMs.
+
+---
+
+## Hallazgos nuevos (Ronda 10)
+
+### Severidad Media
+
+#### R10-M1. Los datos de la entidad no coinciden entre Wikidata, el sitio y los directorios
+
+**Estado actual:**
+
+- **Wikidata Q141611703:** sede (P159) Montevideo, país (P17) Uruguay, descripción "Uruguayan software development company". Le faltan Medellín en P937 (lugares de trabajo), `legalName` e identificadores (LinkedIn P4264, X P2002, GitHub P2037, Crunchbase P2088). Las entidades de los fundadores no tienen empleador (P108).
+- **Sitio (JSON-LD), Clutch y TechReviewer:** sede en Miami, SpaceDev LLC.
+- **GoodFirms (snippet de búsqueda, el perfil da 403):** "headquartered in Montevideo... over 40 engineers".
+- **Catálogo oficial de Uruguay XXI** (`uruguayxxi.gub.uy/es/catalogo-comprador/spacedev-1/`, dominio .gub.uy y referenciado desde Wikidata): fundada en 2015, 10 a 50 empleados, web `spacedev.uy`, redes viejas (`@space.uy`, `linkedin.com/company/spacedev-uy`).
+
+La entidad la creó un usuario de Wikidata ("CBSD2026") que, según confirmó el cliente, no es de SpaceDev. Es una señal de tercero, y por eso vale más, pero también significa que nadie de la empresa controla su contenido.
+
+**Por qué importa:** Google y Gemini concilian nombre, sede y tamaño entre fuentes para armar el Knowledge Graph. Hoy hay dos sedes, dos tamaños de equipo y dos años de fundación. Un dato de .gub.uy referenciado desde Wikidata pesa mucho como fuente.
+
+**Estado deseado:**
+
+- Decidir cuál es la sede canónica (el schema dice Miami).
+- Corregir Wikidata: P159, agregar Estados Unidos a P17, Medellín a P937, `legalName` SpaceDev LLC e identificadores, con referencias de terceros (blog de Hedera, Clutch) para bajar el riesgo de borrado por notabilidad. Si lo edita alguien de SpaceDev, la pauta de Wikidata pide declarar el conflicto de interés en su página de usuario.
+- Pedir la actualización a Uruguay XXI (2017, 70+, spacedev.io, perfiles actuales) y a GoodFirms (70+).
+
+**Veredicto: NECESARIO.** Todo se hace fuera del repo.
+
+#### R10-M2. La entidad de Wikidata existe pero el sitio no la enlaza
+
+**Estado actual:** `organizationSameAs` (`src/lib/seo.ts:123-133`) tiene 9 URLs y ninguna es Wikidata. Lo mismo el `sameAs` de cada Person (`seo.ts:197-203`, `src/data/authors.ts`). Además, el comentario de `seo.ts:14-24` dice que la aeroespacial no tiene Wikidata, pero tiene (Q908317).
+
+**Por qué importa:** `sameAs` hacia Wikidata es lo que cierra el lazo entre el sitio y la entidad. Es la palanca más barata sobre Gemini y ChatGPT.
+
+**Estado deseado:** agregar `https://www.wikidata.org/wiki/Q141611703` a `organizationSameAs`, un campo `wikidata` en `authors.ts` para Federico Sendra (Q141611739) y Juan Manuel Sobral (Q141611760) que se sume a su `sameAs`, y corregir el comentario.
+
+**Veredicto: NECESARIO**, bajo esfuerzo. Conviene hacerlo después de R10-M1 o junto con él, para no enlazar una entidad con datos contradictorios.
+
+#### R10-M3. Post de Ethereum: cifras atribuidas a fuentes que no las dicen
+
+**Estado actual:** en `src/content/blog/ethereum-adoption-trends-2027.md`:
+
+- Línea 38: "close to 58% of the market according to Token Terminal" linkea a `institutions.ethereum.org`, que no menciona a Token Terminal ni el 58% (hoy dice 36% y $162B). El dato real es 57,8%, publicado por Cointelegraph el 16/6/2026.
+- Línea 149: atribuye a esa misma página "40%" y "$171 billion". Es una página dinámica y la cifra ya quedó desfasada.
+- Líneas 3, 13 y 38: "most / the majority" de los RWA tokenizados, mientras el propio post (147-151) dice que las estimaciones van de 33% a 58% y pide no elegir la más favorable.
+- Línea 114: el link de dextools (`/news/ethereum-foundation-kohaku-sdk-privacy-wallets-2026`) da 404.
+
+**Por qué importa:** es el post más reciente del blog y la cifra está en el primer párrafo, que es lo que un LLM extrae. Una atribución que no se sostiene al hacer click resta confianza a todo el post.
+
+**Estado deseado:** linkear a la fuente real con "as of June 2026", cambiar "majority" por "the largest share (33% to 58% depending on methodology)", agregar "as of October 2026" a las cifras de la Ethereum Foundation y reemplazar dextools por `thedefiant.io/news/blockchains/ethereum-foundation-kohaku-sdk-privacy-wallet-integration-bb4t52`.
+
+**Veredicto: NECESARIO**, 4 cambios en un archivo.
+
+#### R10-M4. JobPosting de /careers con un salario que no se ve en la página
+
+**Estado actual:** `src/pages/careers.astro:61-65` declara `baseSalary` USD 3000-5000 por mes, igual para los 5 puestos. Ese rango no aparece en `/careers` ni en las fichas de PeopleForce. La `description` es una frase genérica (línea 52) y el JobPosting está en una página de listado, no en la ficha de cada puesto. Los `validThrough` vencen entre el 14/11 y el 16/12/2026.
+
+**Por qué importa:** Google pide que lo marcado en JobPosting sea visible en la página. Un salario declarado solo en el schema es el único riesgo de política de Google que tiene hoy el structured data del sitio.
+
+**Estado deseado:** sacar `baseSalary`, o mostrarlo en la página si es real. Lo más limpio es quitar el JobPosting del listado, porque las fichas viven en peopleforce.io. Si se deja, agendar la renovación de `validThrough`.
+
+**Veredicto: NECESARIO** (sacar `baseSalary`); el resto, OPCIONAL.
+
+#### R10-M5. En los case studies, el schema declara al cliente como autor de la página
+
+**Estado actual:** `src/pages/our-work/[...slug].astro:48` emite `author: { "@type": "Organization", name: <cliente> }` junto a `creator: #organization`, en las 24 páginas.
+
+**Estado deseado:** borrar `author` y modelar al cliente como `about` o `mentions`.
+
+**Veredicto: NECESARIO**, una línea.
+
+#### R10-M6. Tres páginas de servicio core sin ninguna prueba de clientes
+
+**Estado actual:** `/staff-augmentation`, `/product-discovery` y `/blockaudit-smart-contract-and-blockchain-security` no enlazan ningún case study ni nombran clientes. `staffAugData` (`src/data/services.ts:766`), `productDiscoveryData` (`:843`) y `blockAuditData` (`:872`) no tienen `caseStudySlugs`. Drata (más de 4 años con un equipo integrado) es el caso natural de staff augmentation.
+
+**Estado deseado:** agregar `caseStudySlugs`. Qué case studies van lo decide el dev, según el checklist de CLAUDE.md (tope de 4).
+
+**Veredicto: NECESARIO** para staff augmentation; OPCIONAL para las otras dos.
+
+#### R10-M7. 13 de 24 case studies sin ningún resultado medible
+
+**Estado actual:** acme, athleteai, blockchain-for-energy, apebond, gallery, bondi-finance, mostaza, genba, fightfi, glowy-music, iaffirm, w3e y ubicuity no tienen `metrics` y la sección "Results" no tiene ninguna cifra. Para comparar, NDAX muestra 50 a 200 registros por mes y 80% de verificaciones completadas.
+
+**Estado deseado:** pedir 1 o 2 KPIs reales a cada cliente. Nunca inventarlos.
+
+**Veredicto: OPCIONAL**, depende de los clientes.
+
+#### R10-M8. Imágenes del cuerpo de los posts sin `loading="lazy"` y en PNG pesado
+
+**Estado actual:** el plugin `src/lib/rehype-image-dimensions.mjs:29-30` agrega `width` y `height` (el CLS está bien) pero no `loading` ni `decoding`. En `/blog/ethereum-adoption-trends-2027` son 3 PNG de 1344×896 que suman 2,1 MB, todos bajo el fold. Pasa en todos los posts.
+
+**Estado deseado:** agregar `loading="lazy"` y `decoding="async"` en el plugin (una línea que arregla todo el blog) y convertir las ilustraciones a WebP.
+
+**Veredicto: NECESARIO** (la línea del plugin); WebP, OPCIONAL.
+
+#### R10-M9. llms.txt y llms-full.txt no listan ningún post del blog
+
+**Estado actual:** solo hay un link genérico a `/blog` (`public/llms.txt:64`). Los posts más citables del sitio no son descubribles desde esos archivos.
+
+**Estado deseado:** una sección "## Research & data" con 4 a 6 posts insignia y su dato principal en una línea cada uno.
+
+**Veredicto: OPCIONAL**, bajo esfuerzo.
+
+#### R10-M10. El post de cripto (PR #153) salió a producción con los mismos problemas
+
+**Estado actual:** `/blog/cryptocurrency-trends-2027` responde 200 desde el merge de hoy. Lo revisado en la rama, antes del merge:
+
+- No tiene `metadescription`, así que usa un `description` de unos 190 caracteres.
+- 4 PNG de 507 a 810 KB (cerca de 2,4 MB en total).
+- "51 Insights" citado en las líneas 52, 86, 146 y 160 con link solo a la home de `fiftyone.xyz`.
+
+**Estado deseado:** `metadescription` de 140 a 158 caracteres, deep link al reporte exacto de 51 Insights. Las imágenes se resuelven con R10-M8.
+
+**Veredicto: OPCIONAL.** No entra en el score de esta ronda; se revisa en vivo en la próxima.
+
+---
+
+### Severidad Baja
+
+- **R9-M2 sigue vivo:** "50 perfect 5-star ratings" en la home (verificado en el HTML en vivo) y "50+ perfect 5-star ratings on Clutch" en `public/llms.txt:42`.
+- **Meta descriptions de más de 160 caracteres:** `defi-protocol-trends-2027.md:11` (222) y `ethereum-adoption-trends-2027.md:11` (219).
+- **4 posts sin ninguna fuente externa:** `blockchain-for-banks`, `decentralized-identity`, `how-to-choose-blockchain-development-company` y `hypothetical-sprint-cutting-exchange-latency-by-40-in-7-days`. Tienen afirmaciones fáciles de linkear (Kinexys, W3C DID Core, el estudio de latencia de 2023).
+- **Link muerto (500)** en `from-web3-to-web5...md:22`: TBD dio de baja Web5.
+- **"51 Insights, Money Movement 2.0" sin deep link** ahora también en `ethereum-adoption-trends-2027.md:72`, además de `blockchain-use-cases.md:79,193`.
+- **`smart-contract-security-statistics-2026` promete "updated quarterly"** (línea 3) sin mecanismo. Los reportes Q3 de Hacken, CertiK y TRM salen en octubre y noviembre.
+- **`Content-Signal` solo en el grupo `*` de robots.txt** (`public/robots.txt:1-3`): por RFC 9309, los bots con grupo propio no lo heredan. Fix: repetirlo en cada grupo.
+- **llms.txt y llms-full.txt con dos blockquotes seguidos** (líneas 3 y 5): la spec espera uno solo de resumen.
+- **Detalles de schema:**
+  - Nodos Organization sin `@id` en `spacedev-in-the-media/[slug].astro:59-60` y `careers.astro:56`.
+  - `isPartOf` sin `#website` en `our-work.astro:15` y `blog/index.astro:35`.
+  - El crumb "Industry" apunta al stub noindex `/blockchain-development-services/industry` (`BaseLayout.astro:74-81`).
+  - Mismo Service con dos `name` distintos (`seo.ts:189`).
+  - Doble BreadcrumbList en `/blog/tag/*` (noindex).
+  - `serviceType: "Agentic AI development company"` (`services.ts:1268`).
+  - Article de Clutch sin `sourceUrl`.
+- **Redirects de 2 saltos con barra final:** `/about/` va a `/about` y después a `/about-us`; lo mismo con `/post/<slug>/`. Fix opcional en `vercel.json` con `{/}?`.
+- **Copy de /careers:** el perk "Monetary perks" (`careers.astro:23`) describe capacitación y certificaciones.
+- **"12+ yrs Web3" de JM Sobral** (`about-us.astro:57`): no es verificable desde su página de autor. Confirmar con JM.
+- **2 archivos públicos con espacios en el nombre** (`IMG_6732 (1).webp`, `Data Build Tool.png`): responden 200. Si se renombran, el 301 va en `vercel.json` en el mismo commit.
+
+### Info / reconfirmado sin cambios esta ronda
+
+- **R9-A1 (testimonios de Clutch no verificables):** sigue igual, con el badge "Verified review on Clutch" en `/agentic-ai-development`. Decisión del cliente del 2026-09-18: abierto, sin priorizar. No mueve el score.
+- **R9-M4 (Real Estate Tokenization sin FAQ):** sin cambios.
+- **R9-M5 (búsquedas no-branded):** 0 de 4 queries en una medición ("best blockchain development company", "smart contract audit company Latin America", "nearshore staff augmentation Uruguay", "tokenization development company"). En otra medición SpaceDev aparece nombrado dentro de una lista para "best blockchain development company for smart contracts", vía datos de Clutch, pero los resultados varían demasiado para mover el score. Solo aparece primero en "blockchain development company Uruguay", vía GoodFirms y Clutch UY.
+- **Gemini:** Wikipedia sigue resolviendo "SpaceDev" a la aeroespacial. Con la entidad nueva en Wikidata, la colisión queda parcialmente atacada.
+- **CSP con 2 dominios muertos de HubSpot** (`vercel.json:51`) y **marquee del hero con 16 imágenes eager:** siguen esperando el ok.
+- **39 posts viejos de Framer en 404:** se dejan.
+- **HSTS pide `preload` pero el dominio no está enviado** (hstspreload.org devuelve "unknown"). Cumple los requisitos.
+- **Core Web Vitals sin medir:** la API pública de PageSpeed devolvió 429 (cuota agotada). Lo de performance sale del análisis estático del HTML.
+- **CLAUDE.md del proyecto** sigue listando `linkedin.com/company/spacedev-uy`.
+
+## Confirmado sin problema esta ronda
+
+- **168/168 URLs del sitemap en 200**, cero redirects. Coincide 1 a 1 con el repo (72 posts, 24 case studies). Las páginas fuera del sitemap están excluidas a propósito.
+- **479 enlaces internos y assets** de 25 páginas, todos en 200.
+- **Los 7 crawlers de IA** (GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, Bingbot) reciben 200 y el mismo HTML con su user-agent real. SSR completo: 3657 palabras en el HTML crudo del post nuevo.
+- **sameAs en la Organization reducida (PR #152):** idéntico en las 32 páginas internas revisadas.
+- **llms.txt y llms-full.txt** sincronizados con el sitio (24 = 24 = 24), la desambiguación contra SpaceDev Inc. viva en los dos y en `/about-us`.
+- **Cifras consistentes** entre home, about, our-work, llms.txt y JSON-LD: 2017, 70+ personas, 200+ proyectos.
+- **URLs retiradas en 410** en la misma URL (PR #143) y redirects de `blockchain-for-banks` en un solo salto.
+- **Ningún archivo de `public/` se movió** desde el 09-18, así que no hay URLs de assets rotas nuevas.
+- **20 FAQPage** que coinciden pregunta por pregunta con el texto visible, sin duplicados. Sin `aggregateRating` ni `Review`.
+- **Terceros:** solo gtag.js async, más Clarity y Apollo diferidos. Cero GTM, cero HotJar.
+
+---
+
+## Historial de auditorías anteriores (Rondas 1-9)
+
+## RONDA 9 (2026-09-18)
 
 **Metodología de esta ronda:** 5 subagentes en paralelo (AI Citability + Brand Authority, Technical, Schema, Content E-E-A-T, Platform Optimization), cada uno con regla de anclaje explícita. Primera corrida se cortó a mitad de camino por un rate limit de la cuenta (spend limit, HTTP 429); se relanzó completa en Sonnet 5 con presupuesto acotado por agente (sin sub-agentes anidados, verificaciones priorizadas). Baseline: 82/100 (2026-09-14, post-implementación del mismo día), tomado de `~/.geo-prospects/audits/spacedev.io-2026-09-14.json`.
 
