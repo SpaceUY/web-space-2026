@@ -39,6 +39,10 @@ const manualLastmod = {
 export default defineConfig({
   site: 'https://spacedev.io',
   trailingSlash: 'never',
+  // Astro 7 defaults to 'jsx', which drops the line break between text and an
+  // inline element on the next line ("story?<a>Book a call</a>"). `true` is
+  // the Astro 6 lossless behavior every page was written against.
+  compressHTML: true,
   vite: {
     plugins: [tailwindcss()],
   },
