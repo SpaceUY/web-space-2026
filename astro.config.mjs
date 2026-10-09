@@ -4,6 +4,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 import { rehypeImageDimensions } from './src/lib/rehype-image-dimensions.mjs';
 
 /**
@@ -38,11 +39,17 @@ const manualLastmod = {
 export default defineConfig({
   site: 'https://spacedev.io',
   trailingSlash: 'never',
+  // Astro 7 defaults to 'jsx', which drops the line break between text and an
+  // inline element on the next line ("story?<a>Book a call</a>"). `true` is
+  // the Astro 6 lossless behavior every page was written against.
+  compressHTML: true,
   vite: {
     plugins: [tailwindcss()],
   },
   markdown: {
-    rehypePlugins: [rehypeImageDimensions],
+    // Astro 7 defaults to Sätteri; keep the unified (remark/rehype) pipeline
+    // the blog and case studies were written against.
+    processor: unified({ rehypePlugins: [rehypeImageDimensions] }),
   },
   adapter: vercel(),
   integrations: [sitemap({
