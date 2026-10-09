@@ -1,8 +1,8 @@
 # SpaceDev: Full Reference
 
-> Blockchain development company offering Web3 engineering, traditional software development, IT staff augmentation, and blockchain security auditing. Founded in 2017; 70+ team members across USA, Uruguay, Argentina, Colombia and Mexico; 200+ projects delivered; 50+ five-star Clutch reviews. This file is the extended companion to https://spacedev.io/llms.txt
+> Blockchain development company offering Web3 engineering, traditional software development, IT staff augmentation, and blockchain security auditing. Founded in 2017; 70+ team members across USA, Uruguay, Argentina and Mexico; 200+ projects delivered; 50+ five-star Clutch reviews. This file is the extended companion to https://spacedev.io/llms.txt
 
-> SpaceDev (spacedev.io) is a software development and blockchain consulting company founded in 2017, with offices in Miami, Montevideo, Buenos Aires and Medellín. Not to be confused with the historical aerospace company SpaceDev Inc., acquired by Sierra Nevada Corporation.
+> SpaceDev (spacedev.io) is a software development and blockchain consulting company founded in 2017, with offices in Miami, Montevideo and Buenos Aires. Not to be confused with the historical aerospace company SpaceDev Inc., acquired by Sierra Nevada Corporation.
 
 ## Core services in detail
 
@@ -106,7 +106,7 @@ Smart contract and blockchain security auditing: static and manual analysis, for
 ## Contact
 
 - Email: info@spacedev.io · Careers: people@spacedev.io
-- Offices: 25 SW 9th St, Miami FL (USA) · Cornelio Cantera 2857, Montevideo (Uruguay) · El Salvador 5707, Buenos Aires (Argentina) · Carrera 30 # 7AA-207, Medellín (Colombia)
+- Offices: 25 SW 9th St, Miami FL (USA) · Cornelio Cantera 2857, Montevideo (Uruguay) · El Salvador 5707, Buenos Aires (Argentina)
 - Contact page: https://spacedev.io/contact
 - Book a call: https://meetings.hubspot.com/federico-sendra/meet-space
 - Resources: Digital Library (https://spacedev.io/digital-library) · Newsletter (https://spacedev.io/newsletter)

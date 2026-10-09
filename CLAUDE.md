@@ -363,7 +363,7 @@ Eventos actuales: `generate_lead` (contacto y agentic), `newsletter_signup`, `bo
 ## DATOS DE LA EMPRESA
 
 - **Email**: info@spacedev.io | **Teléfono**: +1 754-249-6595
-- **Oficinas**: Miami FL (25 SW 9th St, 4th Floor) | Montevideo (Cornelio Cantera 2857) | Buenos Aires (El Salvador 5707) | Medellín (Carrera 30 # 7AA-207)
+- **Oficinas**: Miami FL (25 SW 9th St, 4th Floor) | Montevideo (Cornelio Cantera 2857) | Buenos Aires (El Salvador 5707)
 - **Equipo**: +70 personas | **Proyectos**: +160 | **Años**: 7 | **Ratings**: +40 (5★ en Clutch)
 - **CEO**: Federico Sendra | **COO**: Diego Priliac | **CTO**: Juan Manuel Sobral | **Head of People**: Grecia Tardáguila
 
