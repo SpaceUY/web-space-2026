@@ -4,6 +4,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 import { rehypeImageDimensions } from './src/lib/rehype-image-dimensions.mjs';
 
 /**
@@ -42,7 +43,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   markdown: {
-    rehypePlugins: [rehypeImageDimensions],
+    // Astro 7 defaults to Sätteri; keep the unified (remark/rehype) pipeline
+    // the blog and case studies were written against.
+    processor: unified({ rehypePlugins: [rehypeImageDimensions] }),
   },
   adapter: vercel(),
   integrations: [sitemap({
