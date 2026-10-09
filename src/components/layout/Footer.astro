@@ -1,5 +1,6 @@
 ---
 import { SITE } from "../../lib/seo";
+import { offices } from "../../data/site-content";
 
 interface Props {
   marqueeText?: string;
@@ -7,13 +8,6 @@ interface Props {
 }
 
 const { marqueeText = "Product Development that Sparks Innovation", marqueeTheme = "light" } = Astro.props;
-
-const hubs = [
-  { country: "United States", address: "25 SW 9th Street, 4th Floor, Miami, FL" },
-  { country: "Uruguay",       address: "Cornelio Cantera 2857, Montevideo" },
-  { country: "Argentina",     address: "El Salvador 5707 Palermo Hollywood, CABA" },
-  { country: "Colombia",      address: "Carrera 30 # 7AA - 207 Medellín" },
-];
 
 const expertise = [
   { label: "Advanced Blockchain Development",  href: "/blockchain-development-services" },
@@ -84,7 +78,7 @@ const about = [
       <div>
         <h3 class="font-body font-normal text-white mb-6" style="font-size:18px;line-height:1.3">Our Hubs</h3>
         <ul class="space-y-5">
-          {hubs.map((h) => (
+          {offices.map((h) => (
             <li>
               <p class="font-body font-normal text-white" style="font-size:15px;line-height:1.4">
                 {h.country} - {h.address}
