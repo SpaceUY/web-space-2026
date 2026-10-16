@@ -323,16 +323,9 @@
   border-radius: 0;
 }
 
-/* Navbar mega panel: the page behind softens instead of being covered. */
-:root[data-brand="v2"] body > main,
-:root[data-brand="v2"] body > footer,
-:root[data-brand="v2"] body > .v2-only > footer {
-  transition: filter 0.4s var(--v2-ease);
-}
-:root[data-brand="v2"] body.v2-nav-open > main,
-:root[data-brand="v2"] body.v2-nav-open footer {
-  filter: blur(6px);
-}
+/* Navbar mega panel: the page behind is only dimmed by the header's own
+   scrim. Blurring <main> repainted the whole page on every open, which
+   stutters on slower machines. */
 
 @media (prefers-reduced-motion: reduce) {
   :root[data-brand="v2"] *,

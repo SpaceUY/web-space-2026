@@ -268,7 +268,10 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
         planet.x = box.left - frame.left + planet.r;
         planet.y = box.top - frame.top + planet.r;
       }
-      const count = Math.min(420, Math.round((width * height) / 4200));
+      /* About 220 stars on a desktop hero and 70 on a phone: enough for the
+         field to read, half the work of the first version. */
+      const density = width < 1000 ? 5200 : 6000;
+      const count = Math.min(240, Math.round((width * height) / density));
       stars = Array.from({ length: count }, () => {
         const depth = Math.random() ** 1.6;
         return {
