@@ -1,7 +1,8 @@
 ---
 /**
- * Brand v2 services: one wide card per service, its copy on the left and its
- * own orbital scene on the right (canvas 2D, see src/lib/v2/orbits.ts), so a
+ * Brand v2 services: one wide card per service on the SpaceDev gradient, its
+ * copy on the left and its own dot scene on the right, in the language of
+ * the hero sphere (canvas 2D, see src/lib/v2/serviceScenes.ts), so a
  * service and its animation always arrive together. On desktop the cards
  * stack as you scroll: each one sticks a little lower than the last and the
  * next slides up over it, which is the hand-off from one service to the
@@ -9,7 +10,7 @@
  */
 import V2Button from "../V2Button.astro";
 import V2Arrow from "../V2Arrow.astro";
-import { homeServices, homeServiceOrbits } from "../../../data/home";
+import { homeServices, homeServiceScenes } from "../../../data/home";
 ---
 
 <section class="v2-section v2-container services" id="services">
@@ -29,7 +30,7 @@ import { homeServices, homeServiceOrbits } from "../../../data/home";
           <a href={service.href} class="v2-link inline-flex items-center gap-2 mt-8">Explore <V2Arrow size={12} /></a>
         </div>
         <div class="services__visual">
-          <canvas class="services__canvas" data-orbit={homeServiceOrbits[service.href]} aria-hidden="true"></canvas>
+          <canvas class="services__canvas" data-scene={homeServiceScenes[service.href]} aria-hidden="true"></canvas>
         </div>
       </article>
     ))}
@@ -42,12 +43,11 @@ import { homeServices, homeServiceOrbits } from "../../../data/home";
 </section>
 
 <script>
-  import { OrbitScene, type OrbitId } from "../../../lib/v2/orbits";
+  import { ServiceScene, type ServiceSceneId } from "../../../lib/v2/serviceScenes";
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  document.querySelectorAll<HTMLCanvasElement>("canvas[data-orbit]").forEach((canvas) => {
-    const scene = new OrbitScene(canvas, [canvas.dataset.orbit as OrbitId], reduced);
-    scene.show(0);
+  document.querySelectorAll<HTMLCanvasElement>("canvas[data-scene]").forEach((canvas) => {
+    const scene = new ServiceScene(canvas, canvas.dataset.scene as ServiceSceneId, reduced);
     new IntersectionObserver(([entry]) => (entry.isIntersecting ? scene.start() : scene.stop())).observe(canvas);
   });
 </script>
@@ -63,21 +63,24 @@ import { homeServices, homeServiceOrbits } from "../../../data/home";
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     min-height: 440px;
-    background: #ffffff;
-    border: 1px solid var(--v2-line);
-    box-shadow: 0 -12px 32px -24px rgba(20, 19, 19, 0.25);
+    color: #ffffff;
+    background:
+      radial-gradient(60% 80% at 78% 60%, rgba(142, 110, 236, 0.28) 0%, transparent 70%),
+      linear-gradient(135deg, #141313 0%, #2c2a2f 40%, #3b2b5c 75%, #503498 100%);
+    box-shadow: 0 -16px 40px -24px rgba(20, 19, 19, 0.45);
   }
+  .services__card :global(.v2-body) { color: rgba(255, 255, 255, 0.72); }
+  .services__card :global(.v2-link) { color: #ffffff; }
+  .services__card :global(.v2-link:hover) { color: var(--v2-lilac); }
   .services__copy {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: clamp(28px, 3.5vw, 56px);
-    border-right: 1px solid var(--v2-line);
   }
   .services__visual {
     position: relative;
     min-height: 100%;
-    background: var(--v2-canvas);
   }
   .services__canvas {
     position: absolute;
@@ -95,6 +98,6 @@ import { homeServices, homeServiceOrbits } from "../../../data/home";
       box-shadow: none;
     }
     .services__visual { order: -1; height: 260px; min-height: 0; }
-    .services__copy { border-right: 0; border-top: 1px solid var(--v2-line); }
+    .services__copy { padding-top: 8px; }
   }
 </style>

@@ -64,9 +64,11 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     <div class="v2-container hero__content">
       <h1 class="hero__title">
         <span class="v2-display-xl hero__headline">
-          <span class="hero__line" data-v2-line>Finally: Your <span class="hero__rotator" data-v2-slot><span class="hero__rotator-track" data-v2-rotator>{[...rotatorWords, rotatorWords[0]].map((word, index) => (
+          Finally: Your<br />
+          <span class="hero__rotator"><span class="hero__rotator-track" data-v2-rotator>{[...rotatorWords, rotatorWords[0]].map((word, index) => (
             <span aria-hidden={index > 0 ? "true" : undefined}>{word}</span>
-          ))}</span></span></span><br />Tech Partner.
+          ))}</span></span><br />
+          Tech Partner.
         </span>
         <span class="hero__kicker">Blockchain Development Company & Web3 Software Partner</span>
       </h1>
@@ -107,53 +109,25 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
 <script>
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Rotating word, same timing and easing as the live home. The slot keeps
-     the width of the longest word, so a short word would leave the centred
-     first line visibly off centre; the line is nudged back to centre with a
-     transform (never a width change, so nothing reflows and there is no
-     layout shift), moving in step with the word. */
+  /* Rotating word, same timing and easing as the live home. It sits on its
+     own centred line, so the words are centred in their slot and nothing
+     else on the line can move when they change. */
   const track = document.querySelector<HTMLElement>("[data-v2-rotator]");
-  const slot = document.querySelector<HTMLElement>("[data-v2-slot]");
-  const line = document.querySelector<HTMLElement>("[data-v2-line]");
-  if (track && slot && line) {
-    const words = Array.from(track.children) as HTMLElement[];
-    let widths: number[] = [];
+  if (track && !reduced) {
+    const slides = track.children.length - 1;
     let index = 0;
-    const measure = () => {
-      widths = words.map((word) => word.getBoundingClientRect().width);
-    };
-    const centre = (animate: boolean) => {
-      const gap = slot.getBoundingClientRect().width - (widths[index] ?? 0);
-      line.style.transition = animate ? "transform 0.42s cubic-bezier(0.2, 0.7, 0.3, 1)" : "none";
-      line.style.transform = `translateX(${(gap / 2).toFixed(1)}px)`;
-    };
-    measure();
-    centre(false);
-    document.fonts?.ready.then(() => {
-      measure();
-      centre(false);
-    });
-    window.addEventListener("resize", () => {
-      measure();
-      centre(false);
-    });
-
-    if (!reduced) {
-      const slides = words.length - 1;
-      window.setInterval(() => {
-        index += 1;
-        track.classList.add("is-animating");
-        track.style.transform = `translateY(-${index * 1.05}em)`;
-        centre(true);
-        if (index === slides) {
-          window.setTimeout(() => {
-            track.classList.remove("is-animating");
-            index = 0;
-            track.style.transform = "translateY(0)";
-          }, 430);
-        }
-      }, 2400);
-    }
+    window.setInterval(() => {
+      index += 1;
+      track.classList.add("is-animating");
+      track.style.transform = `translateY(-${index * 1.05}em)`;
+      if (index === slides) {
+        window.setTimeout(() => {
+          track.classList.remove("is-animating");
+          index = 0;
+          track.style.transform = "translateY(0)";
+        }, 430);
+      }
+    }, 2400);
   }
 
   /* Variant picker (lab only). */
@@ -617,7 +591,7 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: clamp(130px, 15vh, 180px);
+    padding-top: clamp(120px, 14vh, 170px);
   }
   .hero__title { margin: 0; }
 
@@ -632,8 +606,8 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
   .hero__rotator-track {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
     will-change: transform;
   }
   .hero__rotator-track > span {
@@ -646,16 +620,13 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
 
   .hero__headline {
     display: block;
-    font-size: clamp(34px, 4vw, 58px) !important;
+    font-size: clamp(34px, 3.8vw, 54px) !important;
     line-height: 1.08 !important;
   }
-  .hero__line {
-    display: inline-block;
-    will-change: transform;
-  }
+
   .hero__kicker {
     display: block;
-    margin-top: 18px;
+    margin-top: 22px;
     font-family: var(--font-body);
     font-size: clamp(14px, 0.95vw, 16px);
     font-weight: 400;
@@ -663,9 +634,10 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     color: rgba(255, 255, 255, 0.66);
   }
   .hero__lead {
-    max-width: 56ch;
-    margin-top: 18px;
-    font-size: clamp(15px, 1.05vw, 17px);
+    max-width: 50ch;
+    margin-top: 26px;
+    font-size: clamp(14px, 0.95vw, 15px);
+    line-height: 1.65;
     color: rgba(255, 255, 255, 0.72);
   }
   .hero__lead strong { color: #ffffff; font-weight: 700; }
@@ -675,7 +647,7 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     align-items: center;
     justify-content: center;
     gap: 24px;
-    margin-top: 28px;
+    margin-top: 34px;
   }
 
   /* ── Variants ─────────────────────────────────── */

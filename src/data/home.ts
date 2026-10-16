@@ -3,7 +3,7 @@
  * render the same copy, links and logos from one place.
  */
 
-import type { OrbitId } from "../lib/v2/orbits";
+import type { ServiceSceneId } from "../lib/v2/serviceScenes";
 
 export interface HomeService { title: string; href: string; desc: string }
 export interface HomeReason { n: string; title: string; desc: string }
@@ -158,8 +158,8 @@ export const homeCommunities: HomeLogo[] = [
   { src: "/images/content/fz7h8Vi22wz1sBL99ZxGS44Kw.png",  alt: "Uruguay Technology",         href: "https://uruguaytechnology.uy/en/", w: 590, h: 248 },
 ];
 
-/** Brand v2: orbital scene shown for each core service, keyed by the service link. */
-export const homeServiceOrbits: Record<string, OrbitId> = {
+/** Brand v2: dot scene shown for each core service, keyed by the service link. */
+export const homeServiceScenes: Record<string, ServiceSceneId> = {
   "/blockchain-development-services": "chain",
   "/innovative-web-and-mobile-solutions": "devices",
   "/staff-augmentation": "team",
