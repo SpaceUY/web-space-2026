@@ -66,7 +66,6 @@ const panes = [
   const params = new URLSearchParams(location.search);
   let route = params.get("ruta") || "/";
   let viewport = params.get("ancho") === "mobile" ? "mobile" : "desktop";
-  let syncing = false;
 
   function viewportWidth(): number {
     const button = viewportButtons.find((candidate) => candidate.dataset.viewport === viewport);
@@ -108,18 +107,32 @@ const panes = [
     persist();
   }
 
+  /* Scroll sync. The side under the pointer leads and the other follows by
+     proportion (both pages have different heights, so pixels would drift),
+     with an instant jump: the site sets scroll-behavior: smooth, and a
+     smooth follower kept firing its own scroll events back at the leader. */
+  let leader: HTMLIFrameElement | null = null;
+
   function mirrorScroll(source: HTMLIFrameElement): void {
-    if (!syncInput.checked || syncing) return;
-    const sourceWindow = source.contentWindow;
-    if (!sourceWindow) return;
-    syncing = true;
+    if (!syncInput.checked || source !== leader) return;
+    const from = source.contentDocument?.scrollingElement;
+    if (!from) return;
+    const range = from.scrollHeight - from.clientHeight;
+    const ratio = range > 0 ? from.scrollTop / range : 0;
     frames
       .filter((frame) => frame !== source)
-      .forEach((frame) => frame.contentWindow?.scrollTo(0, sourceWindow.scrollY));
-    requestAnimationFrame(() => {
-      syncing = false;
-    });
+      .forEach((frame) => {
+        const to = frame.contentDocument?.scrollingElement;
+        if (!to) return;
+        to.scrollTo({ top: ratio * (to.scrollHeight - to.clientHeight), behavior: "instant" });
+      });
   }
+
+  stages.forEach((stage, index) => {
+    stage.addEventListener("pointerenter", () => {
+      leader = frames[index];
+    });
+  });
 
   frames.forEach((frame) => {
     frame.addEventListener("load", () => {
@@ -127,6 +140,12 @@ const panes = [
          version (both are same-origin, so the comparator can set it). */
       frame.contentDocument?.documentElement.setAttribute("data-brand", frame.dataset.version ?? "v2");
       frame.contentWindow?.addEventListener("scroll", () => mirrorScroll(frame), { passive: true });
+      frame.contentWindow?.addEventListener("pointerdown", () => {
+        leader = frame;
+      });
+      frame.contentWindow?.addEventListener("wheel", () => {
+        leader = frame;
+      }, { passive: true });
     });
   });
 
