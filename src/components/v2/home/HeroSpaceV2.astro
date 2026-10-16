@@ -64,9 +64,9 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     <div class="v2-container hero__content">
       <h1 class="hero__title">
         <span class="v2-display-xl hero__headline">
-          Finally: Your <span class="hero__rotator"><span class="hero__rotator-track" data-v2-rotator>{[...rotatorWords, rotatorWords[0]].map((word, index) => (
+          <span class="hero__line" data-v2-line>Finally: Your <span class="hero__rotator" data-v2-slot><span class="hero__rotator-track" data-v2-rotator>{[...rotatorWords, rotatorWords[0]].map((word, index) => (
             <span aria-hidden={index > 0 ? "true" : undefined}>{word}</span>
-          ))}</span></span><br />Tech Partner.
+          ))}</span></span></span><br />Tech Partner.
         </span>
         <span class="hero__kicker">Blockchain Development Company & Web3 Software Partner</span>
       </h1>
@@ -107,23 +107,53 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
 <script>
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Rotating word, same timing and easing as the live home. */
+  /* Rotating word, same timing and easing as the live home. The slot keeps
+     the width of the longest word, so a short word would leave the centred
+     first line visibly off centre; the line is nudged back to centre with a
+     transform (never a width change, so nothing reflows and there is no
+     layout shift), moving in step with the word. */
   const track = document.querySelector<HTMLElement>("[data-v2-rotator]");
-  if (track && !reduced) {
-    const slides = track.children.length - 1;
+  const slot = document.querySelector<HTMLElement>("[data-v2-slot]");
+  const line = document.querySelector<HTMLElement>("[data-v2-line]");
+  if (track && slot && line) {
+    const words = Array.from(track.children) as HTMLElement[];
+    let widths: number[] = [];
     let index = 0;
-    window.setInterval(() => {
-      index += 1;
-      track.classList.add("is-animating");
-      track.style.transform = `translateY(-${index * 1.05}em)`;
-      if (index === slides) {
-        window.setTimeout(() => {
-          track.classList.remove("is-animating");
-          index = 0;
-          track.style.transform = "translateY(0)";
-        }, 430);
-      }
-    }, 2400);
+    const measure = () => {
+      widths = words.map((word) => word.getBoundingClientRect().width);
+    };
+    const centre = (animate: boolean) => {
+      const gap = slot.getBoundingClientRect().width - (widths[index] ?? 0);
+      line.style.transition = animate ? "transform 0.42s cubic-bezier(0.2, 0.7, 0.3, 1)" : "none";
+      line.style.transform = `translateX(${(gap / 2).toFixed(1)}px)`;
+    };
+    measure();
+    centre(false);
+    document.fonts?.ready.then(() => {
+      measure();
+      centre(false);
+    });
+    window.addEventListener("resize", () => {
+      measure();
+      centre(false);
+    });
+
+    if (!reduced) {
+      const slides = words.length - 1;
+      window.setInterval(() => {
+        index += 1;
+        track.classList.add("is-animating");
+        track.style.transform = `translateY(-${index * 1.05}em)`;
+        centre(true);
+        if (index === slides) {
+          window.setTimeout(() => {
+            track.classList.remove("is-animating");
+            index = 0;
+            track.style.transform = "translateY(0)";
+          }, 430);
+        }
+      }, 2400);
+    }
   }
 
   /* Variant picker (lab only). */
@@ -241,7 +271,11 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     else requestAnimationFrame(loop);
   }
 
-  /* Variant D: the top of a sphere in rings of dots, turning slowly. */
+  /* Variant D: the top of a sphere in rings of dots, turning slowly. Every
+     few seconds a band of light travels out from the pole across the rings,
+     and now and then a handful of dots light up and join into a short
+     constellation before fading. Both are part of the sphere, so they turn
+     with it. */
   const dotsCanvas = document.querySelector<HTMLCanvasElement>("[data-v2-hero-dots]");
   const dotsContext = dotsCanvas?.getContext("2d");
   if (dotsCanvas && dotsContext && hero) {
@@ -250,6 +284,10 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     let height = 0;
     let visible = true;
     let rings: Array<{ theta: number; count: number }> = [];
+    interface Constellation { start: number; dots: Array<[number, number]> }
+    let constellation: Constellation | null = null;
+    let nextConstellation = performance.now() + 1800;
+
     const fit = () => {
       const ratio = Math.min(2, window.devicePixelRatio || 1);
       width = dotsCanvas.clientWidth;
@@ -265,44 +303,101 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
         return { theta, count: Math.max(8, Math.round(Math.sin(theta) * widest)) };
       });
     };
+
     const drawDots = (now: number) => {
       const g = dotsContext;
       const t = reduced ? 3 : now / 1000;
       g.clearRect(0, 0, width, height);
       const radius = Math.max(width * 0.62, 560);
-      const pitch = 0.42;
+      const pitch = 0.46;
       const cosPitch = Math.cos(pitch);
       const sinPitch = Math.sin(pitch);
       const distance = radius * 3;
       const horizon = radius / 3;
       const poleScale = distance / (distance - radius * sinPitch);
       const cx = width / 2;
-      const cy = height * 0.74 + radius * cosPitch * poleScale;
+      const cy = height * 0.66 + radius * cosPitch * poleScale;
       const spin = t * 0.12;
-      for (const ring of rings) {
-        const sinTheta = Math.sin(ring.theta);
-        const cosTheta = Math.cos(ring.theta);
+      const wave = reduced ? -1 : ((t % 7) / 7) * 1.6 - 0.1;
+
+      const project = (ringIndex: number, k: number) => {
+        const ring = rings[ringIndex];
+        const phi = (k / ring.count) * TAU + spin;
+        const x = radius * Math.sin(ring.theta) * Math.cos(phi);
+        const y = radius * Math.cos(ring.theta);
+        const z = radius * Math.sin(ring.theta) * Math.sin(phi);
+        const y2 = y * cosPitch - z * sinPitch;
+        const z2 = y * sinPitch + z * cosPitch;
+        const scale = distance / (distance - z2);
+        return { x: cx + x * scale, y: cy - y2 * scale, z2, scale, phi };
+      };
+
+      rings.forEach((ring, ringIndex) => {
+        const glow = wave < 0 ? 0 : Math.exp(-(((ring.theta - wave) / 0.07) ** 2));
         for (let k = 0; k < ring.count; k += 1) {
-          const phi = (k / ring.count) * TAU + spin;
-          const x = radius * sinTheta * Math.cos(phi);
-          const y = radius * cosTheta;
-          const z = radius * sinTheta * Math.sin(phi);
-          const y2 = y * cosPitch - z * sinPitch;
-          const z2 = y * sinPitch + z * cosPitch;
-          if (z2 < horizon) continue;
-          const scale = distance / (distance - z2);
-          const sx = cx + x * scale;
-          const sy = cy - y2 * scale;
-          if (sy < 0 || sy > height || sx < -4 || sx > width + 4) continue;
-          const facing = (z2 - horizon) / (radius - horizon);
-          const arms = 0.5 + 0.5 * Math.cos(4 * (phi - spin) + 9 * ring.theta);
-          const alpha = (0.28 + 0.72 * arms) * (0.35 + 0.65 * facing);
-          const size = 1.1 * scale;
+          const dot = project(ringIndex, k);
+          if (dot.z2 < horizon) continue;
+          if (dot.y < 0 || dot.y > height || dot.x < -4 || dot.x > width + 4) continue;
+          const facing = (dot.z2 - horizon) / (radius - horizon);
+          const arms = 0.5 + 0.5 * Math.cos(4 * (dot.phi - spin) + 9 * ring.theta);
+          const alpha = Math.min(1, (0.32 + 0.68 * arms) * (0.4 + 0.6 * facing) + glow * 0.8);
+          const size = (1.15 + glow * 0.9) * dot.scale;
           g.fillStyle = `rgba(228, 219, 255, ${alpha.toFixed(3)})`;
-          g.fillRect(sx - size / 2, sy - size / 2, size, size);
+          g.fillRect(dot.x - size / 2, dot.y - size / 2, size, size);
+        }
+      });
+
+      if (reduced) return;
+      if (!constellation && now > nextConstellation) {
+        const first = Math.floor(rings.length * (0.25 + Math.random() * 0.35));
+        const target = Math.PI / 2 + (Math.random() - 0.5) * 1.6 - spin;
+        const length = 5 + Math.floor(Math.random() * 3);
+        const dots: Array<[number, number]> = [];
+        for (let j = 0; j < length; j += 1) {
+          const ringIndex = Math.min(rings.length - 1, first + j * 2 + Math.floor(Math.random() * 2));
+          const count = rings[ringIndex].count;
+          const drift = (Math.random() - 0.5) * 0.18;
+          const k = Math.round(((((target + drift) % TAU) + TAU) % TAU) / TAU * count) % count;
+          dots.push([ringIndex, k]);
+        }
+        constellation = { start: now, dots };
+      }
+      if (constellation) {
+        const age = (now - constellation.start) / 1000;
+        const life = 2.6;
+        if (age > life) {
+          constellation = null;
+          nextConstellation = now + 2200 + Math.random() * 2600;
+        } else {
+          const fade = Math.min(1, age / 0.5) * Math.min(1, (life - age) / 0.7);
+          const points = constellation.dots.map(([ringIndex, k]) => project(ringIndex, k));
+          const drawn = Math.min(points.length, 1 + age / 0.18);
+          g.save();
+          g.strokeStyle = `rgba(228, 219, 255, ${(0.55 * fade).toFixed(3)})`;
+          g.lineWidth = 1;
+          g.beginPath();
+          points.forEach((point, i) => {
+            if (i >= drawn) return;
+            if (i === 0) g.moveTo(point.x, point.y);
+            else g.lineTo(point.x, point.y);
+          });
+          g.stroke();
+          points.forEach((point, i) => {
+            if (i >= drawn) return;
+            const halo = g.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
+            halo.addColorStop(0, `rgba(255, 255, 255, ${(0.9 * fade).toFixed(3)})`);
+            halo.addColorStop(0.25, `rgba(200, 181, 255, ${(0.45 * fade).toFixed(3)})`);
+            halo.addColorStop(1, "rgba(200, 181, 255, 0)");
+            g.fillStyle = halo;
+            g.beginPath();
+            g.arc(point.x, point.y, 12, 0, TAU);
+            g.fill();
+          });
+          g.restore();
         }
       }
     };
+
     const loop = (now: number) => {
       if (visible && !document.hidden && hero.dataset.variant === "d") drawDots(now);
       if (!reduced) requestAnimationFrame(loop);
@@ -522,7 +617,7 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: clamp(150px, 18vh, 210px);
+    padding-top: clamp(130px, 15vh, 180px);
   }
   .hero__title { margin: 0; }
 
@@ -549,19 +644,28 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     transition: transform 0.42s cubic-bezier(0.2, 0.7, 0.3, 1);
   }
 
-  .hero__headline { display: block; }
+  .hero__headline {
+    display: block;
+    font-size: clamp(34px, 4vw, 58px) !important;
+    line-height: 1.08 !important;
+  }
+  .hero__line {
+    display: inline-block;
+    will-change: transform;
+  }
   .hero__kicker {
     display: block;
-    margin-top: 22px;
+    margin-top: 18px;
     font-family: var(--font-body);
-    font-size: clamp(15px, 1.05vw, 17px);
+    font-size: clamp(14px, 0.95vw, 16px);
     font-weight: 400;
     letter-spacing: 0;
     color: rgba(255, 255, 255, 0.66);
   }
   .hero__lead {
-    max-width: 58ch;
-    margin-top: 22px;
+    max-width: 56ch;
+    margin-top: 18px;
+    font-size: clamp(15px, 1.05vw, 17px);
     color: rgba(255, 255, 255, 0.72);
   }
   .hero__lead strong { color: #ffffff; font-weight: 700; }
@@ -571,7 +675,7 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     align-items: center;
     justify-content: center;
     gap: 24px;
-    margin-top: 34px;
+    margin-top: 28px;
   }
 
   /* ── Variants ─────────────────────────────────── */
@@ -653,8 +757,8 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
   .hero[data-variant="d"] .hero__stars { display: none; }
   .hero[data-variant="d"] .hero__stage {
     background:
-      radial-gradient(40% 30% at 50% 78%, rgba(91, 55, 198, 0.28) 0%, transparent 70%),
-      #0c0b0e;
+      radial-gradient(45% 35% at 50% 80%, rgba(200, 181, 255, 0.22) 0%, transparent 70%),
+      linear-gradient(180deg, #0f0e12 0%, #141313 28%, #2c2a2f 52%, #3b2b5c 74%, #503498 100%);
   }
   .hero[data-variant="d"] .hero__dots {
     display: block;
