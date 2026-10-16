@@ -182,7 +182,7 @@
   margin-inline: auto;
   padding-inline: var(--v2-gutter);
 }
-.v2-section { padding-block: clamp(80px, 11vw, 168px); }
+.v2-section { padding-block: clamp(72px, 8vw, 128px); }
 .v2-section--tight { padding-block: clamp(56px, 7vw, 104px); }
 
 /* A stage is a full-bleed block with its own background (hero, dark bands,

@@ -1,0 +1,179 @@
+---
+/**
+ * Brand v2 services: the copy scrolls on the left while one sticky canvas on
+ * the right rebuilds itself, particle by particle, into the shape of the
+ * service being read (Three.js, see src/lib/v2/particleMorph.ts). The
+ * service in focus is at full ink and the others recede, so the motion
+ * follows the reading instead of competing with it. Three.js is only
+ * fetched when the section gets close to the viewport.
+ */
+import V2Button from "../V2Button.astro";
+import V2Arrow from "../V2Arrow.astro";
+import { homeServices, homeServiceShapes } from "../../../data/home";
+
+const shapes = homeServices.map((service) => homeServiceShapes[service.href]);
+---
+
+<section class="v2-section v2-container services" id="services">
+  <div class="v2-head">
+    <h2 class="v2-display-l">Our Web2 and Web3 Development Services</h2>
+    <p class="v2-lead">
+      We build the infrastructure that decentralized products run on. Whether you need a full-stack dApp, a custom blockchain protocol, or a secure smart contract system, our teams work across EVM-compatible chains (Ethereum and networks that share its Ethereum Virtual Machine), Solana, and Layer 2 networks.
+    </p>
+  </div>
+
+  <div class="services__grid">
+    <div class="services__list">
+      {homeServices.map((service, index) => (
+        <article class="services__item" data-service-item={index}>
+          <h3 class="v2-display-m">{service.title}</h3>
+          <p class="v2-body mt-4">{service.desc}</p>
+          <a href={service.href} class="v2-link inline-flex items-center gap-2 mt-6">Explore <V2Arrow size={12} /></a>
+        </article>
+      ))}
+    </div>
+
+    <div class="services__stage">
+      <div class="services__sticky">
+        <canvas class="services__canvas" data-services-canvas data-shapes={shapes.join(",")} aria-hidden="true"></canvas>
+        <ol class="services__progress" aria-hidden="true">
+          {homeServices.map((_, index) => <li data-service-dot={index}></li>)}
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="v2-actions">
+    <p class="v2-body">Reach out and we'll find the right services, tailored just for you.</p>
+    <V2Button href="/contact">Get in touch</V2Button>
+  </div>
+</section>
+
+<script>
+  import type { ShapeId } from "../../../lib/v2/particleShapes";
+
+  const canvas = document.querySelector<HTMLCanvasElement>("[data-services-canvas]");
+  const items = Array.from(document.querySelectorAll<HTMLElement>("[data-service-item]"));
+  const dots = Array.from(document.querySelectorAll<HTMLElement>("[data-service-dot]"));
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  let active = 0;
+  let morph: { show(index: number): void; start(): void; stop(): void } | null = null;
+
+  const setActive = (index: number) => {
+    active = index;
+    items.forEach((item, i) => item.toggleAttribute("data-active", i === index));
+    dots.forEach((dot, i) => dot.toggleAttribute("data-active", i === index));
+    morph?.show(index);
+  };
+  setActive(0);
+
+  /* The item crossing the middle of the viewport is the one being read. */
+  const readingObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(Number((entry.target as HTMLElement).dataset.serviceItem));
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+  items.forEach((item) => readingObserver.observe(item));
+
+  if (canvas) {
+    const shapes = (canvas.dataset.shapes ?? "").split(",") as ShapeId[];
+    let loading = false;
+
+    /* Load Three.js only when the section is near, and run the loop only
+       while the canvas is on screen. */
+    const visibility = new IntersectionObserver(
+      async ([entry]) => {
+        if (entry.isIntersecting && !morph && !loading) {
+          loading = true;
+          try {
+            const { ParticleMorph } = await import("../../../lib/v2/particleMorph");
+            morph = new ParticleMorph(canvas, { shapes, reducedMotion: reduced });
+            morph.show(active);
+          } catch {
+            canvas.hidden = true;
+            return;
+          }
+        }
+        if (!morph) return;
+        if (entry.isIntersecting && !reduced) morph.start();
+        else morph.stop();
+      },
+      { rootMargin: "300px 0px" }
+    );
+    visibility.observe(canvas);
+  }
+</script>
+
+<style>
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 32px;
+  }
+  .services__list { grid-column: 1 / span 5; }
+  .services__item {
+    min-height: 62vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 48px;
+    border-top: 1px solid var(--v2-line);
+    opacity: 0.32;
+    transition: opacity 0.5s var(--v2-ease);
+  }
+  .services__item:first-child { border-top: 0; }
+  .services__item[data-active] { opacity: 1; }
+
+  .services__stage { grid-column: 7 / span 6; }
+  .services__sticky {
+    position: sticky;
+    top: calc(50vh - min(42vw, 600px) / 2 + 28px);
+    aspect-ratio: 1;
+    max-height: 600px;
+    background:
+      radial-gradient(60% 60% at 50% 50%, rgba(91, 55, 198, 0.28) 0%, transparent 70%),
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 40px 40px,
+      #141313;
+    overflow: hidden;
+  }
+  .services__canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+  }
+  .services__progress {
+    position: absolute;
+    left: 24px;
+    bottom: 22px;
+    display: flex;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .services__progress li {
+    width: 18px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.22);
+    transition: background-color 0.4s var(--v2-ease), width 0.4s var(--v2-ease);
+  }
+  .services__progress li[data-active] {
+    width: 36px;
+    background: var(--v2-lilac);
+  }
+
+  @media (max-width: 999px) {
+    .services__grid { grid-template-columns: 1fr; gap: 0; }
+    .services__list,
+    .services__stage { grid-column: auto; }
+    .services__stage { order: -1; position: sticky; top: 72px; z-index: 1; }
+    .services__sticky { position: relative; top: auto; aspect-ratio: auto; height: 38vh; }
+    .services__item { min-height: 55vh; }
+  }
+</style>

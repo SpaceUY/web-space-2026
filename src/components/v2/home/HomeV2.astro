@@ -5,11 +5,11 @@
  * instead of boxes, and motion only where it helps reading or exploring
  * (scroll-filled statement, sticky service index, navbar panel).
  */
-import V2Label from "../V2Label.astro";
 import V2Button from "../V2Button.astro";
 import V2Arrow from "../V2Arrow.astro";
 import V2ScrollFill from "../V2ScrollFill.astro";
 import HeroSpaceV2 from "./HeroSpaceV2.astro";
+import ServicesV2 from "./ServicesV2.astro";
 import AuthorAvatar from "../../ui/AuthorAvatar.astro";
 import { homeFaqs } from "../../../data/site-content";
 import { featuredCaseStudies } from "../../../data/case-studies";
@@ -20,8 +20,6 @@ import {
   homeEngagementModels,
   homeIndustries,
   homeReasons,
-  homeServiceArt,
-  homeServices,
   homeTakeaways,
   homeTestimonials,
 } from "../../../data/home";
@@ -64,52 +62,16 @@ const pad = (value: number) => String(value).padStart(2, "0");
     />
   </section>
 
-  <!-- 02 SERVICES: sticky index on the left, one panel per service on the right (Joby) -->
-  <section class="v2-section v2-container v2-services" id="services">
-    <div class="v2-services__index">
-      <div class="v2-services__sticky">
-        <V2Label index="02">Services</V2Label>
-        <h2 class="v2-display-l mt-6">Our Web2 and Web3 Development Services</h2>
-        <p class="v2-body mt-6 max-w-[46ch]">
-          We build the infrastructure that decentralized products run on. Whether you need a full-stack dApp, a custom blockchain protocol, or a secure smart contract system, our teams work across EVM-compatible chains (Ethereum and networks that share its Ethereum Virtual Machine), Solana, and Layer 2 networks.
-        </p>
-        <ol class="v2-services__nav" aria-label="Services">
-          {homeServices.map((service, index) => (
-            <li>
-              <a href={`#service-${index + 1}`} class="v2-services__nav-item" data-service-link={index}>
-                <span class="v2-services__nav-n">{pad(index + 1)}</span>
-                <span>{service.title}</span>
-              </a>
-            </li>
-          ))}
-        </ol>
-        <p class="v2-body mt-10">Reach out and we'll find the right services, tailored just for you.</p>
-        <div class="mt-5"><V2Button href="/contact">Get in touch</V2Button></div>
-      </div>
-    </div>
-    <div class="v2-services__panels">
-      {homeServices.map((service, index) => (
-        <article class="v2-services__panel" id={`service-${index + 1}`} data-service-panel={index}>
-          <a href={service.href} class="v2-services__figure" tabindex="-1" aria-hidden="true">
-            <img src={homeServiceArt[service.href]} alt="" loading="lazy" decoding="async" class="v2-services__art" />
-            <span class="v2-services__figure-n">{pad(index + 1)} / {pad(homeServices.length)}</span>
-          </a>
-          <h3 class="v2-display-m mt-8">{service.title}</h3>
-          <p class="v2-body mt-4 max-w-[52ch]">{service.desc}</p>
-          <a href={service.href} class="v2-link inline-flex items-center gap-2 mt-6">Explore <V2Arrow size={12} /></a>
-        </article>
-      ))}
-    </div>
-  </section>
+  <!-- SERVICES: particles that rebuild into each service (Three.js) -->
+  <ServicesV2 />
 
   <!-- 03 WHY SPACEDEV -->
   <section class="v2-section v2-container" id="why">
-    <div class="v2-split">
+    <div class="v2-head">
       <div>
-        <V2Label index="03">Why SpaceDev</V2Label>
-        <h2 class="v2-display-l mt-6 max-w-[18ch]">Why Partner with a Blockchain Development Company Like SpaceDev</h2>
+        <h2 class="v2-display-l">Why Partner with a Blockchain Development Company Like SpaceDev</h2>
       </div>
-      <p class="v2-lead v2-split__aside">
+      <p class="v2-lead">
         There are many development agencies. Fewer have deep blockchain engineering depth. Even fewer combine that with Web2 product experience, a security practice, and a track record across 200+ projects in DeFi, NFT infrastructure, fintech, and enterprise blockchain.
       </p>
     </div>
@@ -122,19 +84,19 @@ const pad = (value: number) => String(value).padStart(2, "0");
         </div>
       ))}
     </div>
-    <div class="mt-12"><V2Button href="/contact">Partner with us</V2Button></div>
+    <div class="v2-actions"><V2Button href="/contact">Partner with us</V2Button></div>
   </section>
 
   <!-- 04 INDUSTRIES: an index, not a card wall -->
   <section class="v2-section v2-container" id="industries">
-    <V2Label index="04">Industries</V2Label>
-    <h2 class="v2-display-l mt-6 max-w-[20ch]">Blockchain Development for Fintech, DeFi & Web3 Startups</h2>
-    <ul class="v2-index mt-14">
-      {homeIndustries.map((industry, index) => {
+    <div class="v2-head">
+      <h2 class="v2-display-l">Blockchain Development for Fintech, DeFi & Web3 Startups</h2>
+    </div>
+    <ul class="v2-index">
+      {homeIndustries.map((industry) => {
         const summary = industry.desc.split("\n")[0];
         const inner = (
           <>
-            <span class="v2-index__n">{pad(index + 1)}</span>
             <span class="v2-index__name">{industry.name}</span>
             <span class="v2-index__desc">{summary}</span>
             <span class="v2-index__arrow">{industry.linked !== false && <V2Arrow />}</span>
@@ -155,12 +117,11 @@ const pad = (value: number) => String(value).padStart(2, "0");
 
   <!-- 05 WORK -->
   <section class="v2-section v2-container" id="work">
-    <div class="v2-split">
+    <div class="v2-head">
       <div>
-        <V2Label index="05">Work</V2Label>
-        <h2 class="v2-display-l mt-6 max-w-[16ch]">Web3 and Web2 Development Case Studies</h2>
+        <h2 class="v2-display-l">Web3 and Web2 Development Case Studies</h2>
       </div>
-      <p class="v2-lead v2-split__aside">
+      <p class="v2-lead">
         Every product tells a story: one of collaboration, innovation, and measurable results. SpaceDev not only delivers projects; we support businesses' growth with the kind of technology that earns trust, scales with users, and stands the test of time.
       </p>
     </div>
@@ -178,7 +139,7 @@ const pad = (value: number) => String(value).padStart(2, "0");
         </a>
       ))}
     </div>
-    <div class="mt-12 flex flex-wrap items-center gap-x-8 gap-y-5">
+    <div class="v2-actions">
       <V2Button href="/our-work">See all work</V2Button>
       <p class="v2-body">
         Eager to create your own success story? <a href={MEETING_URL} target="_blank" rel="noopener noreferrer" class="v2-link">Book a call</a>.
@@ -190,8 +151,9 @@ const pad = (value: number) => String(value).padStart(2, "0");
   <section class="v2-engage" id="engagement" data-nav-theme="dark">
     <div class="v2-stage v2-stage--dark v2-on-dark">
       <div class="v2-container v2-section">
-        <V2Label index="06">Engagement</V2Label>
-        <h2 class="v2-display-l mt-6 max-w-[18ch]">There are two ways to work with us.<br />Pick what suits you!</h2>
+        <div class="v2-head">
+          <h2 class="v2-display-l">There are two ways to work with us.<br />Pick what suits you!</h2>
+        </div>
         <div class="v2-engage__models">
           {homeEngagementModels.map((model) => (
             <div class="v2-engage__model">
@@ -220,16 +182,15 @@ const pad = (value: number) => String(value).padStart(2, "0");
 
   <!-- 07 TESTIMONIALS: hairline columns -->
   <section class="v2-section v2-container" id="clients">
-    <div class="v2-split">
+    <div class="v2-head">
       <div>
-        <V2Label index="07">Clients</V2Label>
-        <h2 class="v2-display-l mt-6 max-w-[18ch]">Over <span class="v2-accent">50 perfect 5-star ratings</span> from happy customers</h2>
+        <h2 class="v2-display-l">Over <span class="v2-accent">50 perfect 5-star ratings</span> from happy customers</h2>
       </div>
-      <p class="v2-lead v2-split__aside">
+      <p class="v2-lead">
         Clients choose SpaceDev for reliability, communication, and technical depth, and stay for the results. Every partnership reflects our belief that success is built on trust, collaboration, and a shared vision.
       </p>
     </div>
-    <div class="v2-columns mt-16">
+    <div class="v2-columns">
       {homeTestimonials.map((review) => (
         <a href={review.href} target="_blank" rel="noopener noreferrer" class="v2-columns__item v2-quote">
           <div class="v2-quote__head">
@@ -245,26 +206,25 @@ const pad = (value: number) => String(value).padStart(2, "0");
         </a>
       ))}
     </div>
-    <a href="https://clutch.co/profile/spacedev" target="_blank" rel="noopener noreferrer" class="v2-link inline-flex items-center gap-2 mt-10">See our Clutch profile <V2Arrow size={12} diagonal /></a>
+    <div class="v2-actions"><a href="https://clutch.co/profile/spacedev" target="_blank" rel="noopener noreferrer" class="v2-link inline-flex items-center gap-2">See our Clutch profile <V2Arrow size={12} diagonal /></a></div>
   </section>
 
   <!-- 08 RECOGNITION -->
   <section class="v2-section--tight v2-container" id="recognition">
-    <div class="v2-split">
+    <div class="v2-head">
       <div>
-        <V2Label index="08">Recognition</V2Label>
-        <h2 class="v2-display-m mt-6">Highly reviewed by</h2>
+        <h2 class="v2-display-m">Highly reviewed by</h2>
       </div>
-      <p class="v2-body v2-split__aside">AWS lists us as a Partner and Marketplace seller, Forbes named us to its Technology Council, and Clutch, GoodFirms, and Upwork have each recognized us among the top blockchain development companies.</p>
+      <p class="v2-body">AWS lists us as a Partner and Marketplace seller, Forbes named us to its Technology Council, and Clutch, GoodFirms, and Upwork have each recognized us among the top blockchain development companies.</p>
     </div>
-    <div class="v2-tiles v2-tiles--awards mt-12">
+    <div class="v2-tiles v2-tiles--awards">
       {homeAwards.map((badge) => (
         <a href={badge.href} target="_blank" rel="noopener noreferrer" class="v2-tiles__tile">
           <img src={badge.src} alt={badge.alt} loading="lazy" width={badge.w} height={badge.h} class:list={["v2-tiles__img", { "v2-tiles__img--compact": badge.compact }]} />
         </a>
       ))}
     </div>
-    <h2 class="v2-label mt-20">We support</h2>
+    <h2 class="v2-display-s v2-subhead">We support</h2>
     <div class="v2-tiles v2-tiles--community mt-6">
       {homeCommunities.map((community) => (
         <a href={community.href} target="_blank" rel="noopener noreferrer" class="v2-tiles__tile">
@@ -277,8 +237,7 @@ const pad = (value: number) => String(value).padStart(2, "0");
   <!-- 09 FAQ -->
   <section class="v2-section v2-container v2-faq" id="faq">
     <div class="v2-faq__head">
-      <V2Label index="09">FAQ</V2Label>
-      <h2 class="v2-display-l mt-6">Frequently Asked Questions</h2>
+      <h2 class="v2-display-l">Frequently Asked Questions</h2>
     </div>
     <div class="v2-faq__list">
       {homeFaqs.map((faq) => (
@@ -295,14 +254,10 @@ const pad = (value: number) => String(value).padStart(2, "0");
 
   <!-- 10 BLOG: hairline columns, date first (Joby news) -->
   <section class="v2-section v2-container" id="blog">
-    <div class="flex flex-wrap items-end justify-between gap-6">
-      <div>
-        <V2Label index="10">Blog</V2Label>
-        <h2 class="v2-display-m mt-6 max-w-[22ch]">Check out some related articles from our blog!</h2>
-      </div>
-      <V2Button href="/blog" size="sm">View all posts</V2Button>
+    <div class="v2-head">
+      <h2 class="v2-display-m">Check out some related articles from our blog!</h2>
     </div>
-    <div class="v2-columns v2-columns--3 mt-14">
+    <div class="v2-columns v2-columns--3">
       {recentPosts.map((post) => {
         const author = getAuthor(post.data.author);
         return (
@@ -327,14 +282,14 @@ const pad = (value: number) => String(value).padStart(2, "0");
         );
       })}
     </div>
+    <div class="v2-actions"><V2Button href="/blog">View all posts</V2Button></div>
   </section>
 
   <!-- 11 FINAL CTA: apertura stage -->
   <section class="v2-final" id="next-step" data-nav-theme="dark">
     <div class="v2-stage v2-stage--apertura v2-on-dark v2-final__stage">
       <div class="v2-container v2-final__content">
-        <V2Label index="11">Next step</V2Label>
-        <h2 class="v2-display-xl mt-6 max-w-[14ch]">Ready to build the future with SpaceDev?</h2>
+        <h2 class="v2-display-xl">Ready to build the future with SpaceDev?</h2>
         <div class="v2-final__copy">
           <p class="v2-lead">Your next big idea deserves a partner who understands both innovation and execution.</p>
           <p class="v2-lead">SpaceDev combines web3 development services, blockchain expertise, and global engineering talent to help you move from vision to reality with speed and precision.</p>
@@ -347,28 +302,6 @@ const pad = (value: number) => String(value).padStart(2, "0");
   </section>
 </div>
 
-<script>
-  /* Sticky service index: the panel crossing the middle of the viewport is
-     the active one (Joby). */
-  const links = Array.from(document.querySelectorAll<HTMLElement>("[data-service-link]"));
-  const panels = Array.from(document.querySelectorAll<HTMLElement>("[data-service-panel]"));
-  if (links.length && panels.length) {
-    const setActive = (active: string) => {
-      links.forEach((link) => link.toggleAttribute("data-active", link.dataset.serviceLink === active));
-      panels.forEach((panel) => panel.toggleAttribute("data-active", panel.dataset.servicePanel === active));
-    };
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive((entry.target as HTMLElement).dataset.servicePanel ?? "0");
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px" }
-    );
-    panels.forEach((panel) => observer.observe(panel));
-    setActive("0");
-  }
-</script>
 
 <style>
   /* ── Takeaways ───────────────────────────────────── */
@@ -393,79 +326,30 @@ const pad = (value: number) => String(value).padStart(2, "0");
   .v2-statement { max-width: 20ch; }
   .v2-accent { color: var(--v2-violet-mid); }
 
-  /* ── Asymmetric title + aside (Joby) ─────────────── */
-  .v2-split {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 32px;
-    align-items: end;
-  }
-  .v2-split > :first-child { grid-column: 1 / span 7; }
-  .v2-split__aside { grid-column: 9 / span 4; }
-
-  /* ── Services ───────────────────────────────────── */
-  .v2-services {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 32px;
-  }
-  .v2-services__index { grid-column: 1 / span 5; }
-  .v2-services__sticky { position: sticky; top: 112px; }
-  .v2-services__panels { grid-column: 7 / span 6; display: grid; gap: clamp(88px, 10vw, 140px); }
-  .v2-services__nav {
-    list-style: none;
-    margin: 40px 0 0;
-    padding: 0;
-    border-top: 1px solid var(--v2-line);
-  }
-  .v2-services__nav-item {
+  /* ── Section heads: centred, generous measure ─── */
+  .v2-head {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 18px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--v2-line);
-    font-family: "Open Sans", Arial, sans-serif;
-    font-weight: 600;
-    font-size: 17px;
-    color: var(--v2-ink-3);
-    transition: color 0.35s var(--v2-ease), padding 0.45s var(--v2-ease);
+    gap: 20px;
+    max-width: 920px;
+    margin: 0 auto clamp(40px, 5vw, 64px);
+    text-align: center;
   }
-  .v2-services__nav-n { font-size: 12px; letter-spacing: 0.1em; font-variant-numeric: tabular-nums; }
-  .v2-services__nav-item:hover { color: var(--v2-ink-2); }
-  .v2-services__nav-item[data-active] { color: var(--v2-ink); padding-left: 10px; }
-  .v2-services__nav-item[data-active] .v2-services__nav-n { color: var(--v2-violet-mid); }
-  .v2-services__figure {
-    position: relative;
-    display: block;
-    aspect-ratio: 4 / 3;
-    border-radius: 0;
-    overflow: hidden;
-    background: var(--sd-brand-apertura);
-  }
-  .v2-services__art {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 78%;
-    height: auto;
-    transform: translate(-50%, 6%) scale(0.96);
-    transition: transform 1.1s var(--v2-ease);
-  }
-  .v2-services__panel[data-active] .v2-services__art { transform: translate(-50%, 0) scale(1); }
-  .v2-services__figure-n {
-    position: absolute;
-    top: 18px;
-    left: 20px;
-    font-family: "Open Sans", Arial, sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    color: rgba(255, 255, 255, 0.78);
+  .v2-head h2 { max-width: 24ch; }
+  .v2-head p { max-width: 62ch; }
+  .v2-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px 32px;
+    margin-top: clamp(40px, 4vw, 56px);
   }
 
   /* ── Reasons ─────────────────────────────────────── */
   .v2-reasons {
-    margin-top: 64px;
+    margin-top: 0;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 32px;
@@ -487,7 +371,7 @@ const pad = (value: number) => String(value).padStart(2, "0");
   .v2-index { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--v2-ink); }
   .v2-index__row {
     display: grid;
-    grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.5fr) 40px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) 40px;
     gap: 24px;
     align-items: center;
     padding: 24px 12px;
@@ -504,7 +388,7 @@ const pad = (value: number) => String(value).padStart(2, "0");
 
   /* ── Work ───────────────────────────────────────── */
   .v2-work {
-    margin-top: 56px;
+    margin-top: 0;
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-auto-flow: dense;
@@ -531,7 +415,7 @@ const pad = (value: number) => String(value).padStart(2, "0");
 
   /* ── Engagement ─────────────────────────────────── */
   .v2-engage__models {
-    margin-top: 64px;
+    margin-top: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
@@ -619,6 +503,7 @@ const pad = (value: number) => String(value).padStart(2, "0");
   .v2-post .v2-label { gap: 8px; }
 
   /* ── Logo tiles ─────────────────────────────────── */
+  .v2-subhead { margin: clamp(56px, 6vw, 88px) 0 24px; text-align: center; }
   .v2-tiles {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -715,22 +600,14 @@ const pad = (value: number) => String(value).padStart(2, "0");
 
   /* ── Below 1000px: single column, assets in flow ── */
   @media (max-width: 999px) {
-    .v2-split,
-    .v2-services,
     .v2-faq { grid-template-columns: 1fr; }
-    .v2-split > :first-child,
-    .v2-split__aside,
-    .v2-services__index,
-    .v2-services__panels,
     .v2-faq__head,
     .v2-faq__list { grid-column: auto; }
     .v2-takeaways__list { grid-template-columns: 1fr 1fr; }
     .v2-takeaways__item:nth-child(3) { padding-left: 0; border-left: 0; }
-    .v2-services__sticky,
     .v2-faq__head { position: static; }
-    .v2-services__nav { display: none; }
     .v2-reasons { grid-template-columns: 1fr; }
-    .v2-index__row { grid-template-columns: 40px 1fr 24px; }
+    .v2-index__row { grid-template-columns: 1fr 24px; }
     .v2-index__desc { display: none; }
     .v2-work { grid-template-columns: 1fr; }
     .v2-work__card,
@@ -741,7 +618,8 @@ const pad = (value: number) => String(value).padStart(2, "0");
     .v2-columns,
     .v2-columns--3 { grid-template-columns: 1fr; }
     .v2-columns__item + .v2-columns__item { padding-left: 0; border-left: 0; border-top: 1px solid var(--v2-line); }
-    .v2-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .v2-subhead { margin: clamp(56px, 6vw, 88px) 0 24px; text-align: center; }
+  .v2-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .v2-tiles--community { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .v2-tiles__tile { height: 112px; }
     .v2-final__art { position: relative; display: block; width: 90%; margin-left: auto; }
