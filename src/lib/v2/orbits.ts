@@ -239,7 +239,8 @@ export class OrbitScene {
   private switchedAt = 0;
   private running = false;
   private raf = 0;
-  private size = 0;
+  private width = 0;
+  private height = 0;
 
   constructor(private canvas: HTMLCanvasElement, private ids: OrbitId[], private reduced = false) {
     this.g = canvas.getContext("2d")!;
@@ -276,27 +277,28 @@ export class OrbitScene {
 
   private resize = (): void => {
     const ratio = Math.min(2, window.devicePixelRatio || 1);
-    this.size = this.canvas.clientWidth;
-    this.canvas.width = Math.round(this.size * ratio);
-    this.canvas.height = Math.round(this.size * ratio);
+    this.width = this.canvas.clientWidth;
+    this.height = this.canvas.clientHeight || this.width;
+    this.canvas.width = Math.round(this.width * ratio);
+    this.canvas.height = Math.round(this.height * ratio);
     this.g.setTransform(ratio, 0, 0, ratio, 0, 0);
     this.paint(performance.now());
   };
 
   private paint(now: number): void {
-    const { g, size } = this;
-    if (!size) return;
+    const { g, width, height } = this;
+    if (!width || !height) return;
     const t = this.reduced ? 4 : now / 1000;
     const since = this.reduced ? 10 : (now - this.switchedAt) / 1000;
     const fade = easeOut(since / 0.5);
-    g.clearRect(0, 0, size, size);
-    const r = size * 0.34;
+    g.clearRect(0, 0, width, height);
+    const r = Math.min(width * 0.36, height * 0.62);
     const scene = (index: number, alpha: number) => {
       const id = this.ids[index];
       if (!id || alpha <= 0) return;
       g.save();
       g.globalAlpha = alpha;
-      g.translate(size / 2, size / 2);
+      g.translate(width / 2, height / 2);
       SCENES[id].draw({ g, t, r });
       g.restore();
     };
@@ -310,7 +312,7 @@ export class OrbitScene {
       g.fillStyle = TEXT;
       g.font = '600 11px "Open Sans", Arial, sans-serif';
       g.letterSpacing = "1.5px";
-      g.fillText(SCENES[id].telemetry(t), 4, size - 8);
+      g.fillText(SCENES[id].telemetry(t), 20, height - 18);
       g.restore();
     }
   }
