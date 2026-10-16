@@ -16,6 +16,8 @@ export interface BrandLabItem {
   /** Real routes where the piece can be seen (first one opens in the comparator). */
   routes: string[];
   note?: string;
+  /** True when the piece has its full v2 design, not only the new colours and type. */
+  redesigned?: boolean;
 }
 
 export interface BrandLabGroup {
@@ -97,7 +99,7 @@ export const brandLabGroups: BrandLabGroup[] = [
     title: "Header, footer y navegación",
     description: "Lo que aparece en todas las páginas.",
     items: [
-      { id: "header", name: "Header y mega menú (estilo Voiceflow)", status: "en-revision", routes: ["/", "/innovative-web-and-mobile-solutions"] },
+      { id: "header", name: "Header y mega menú (estilo Voiceflow)", status: "en-revision", redesigned: true, routes: ["/", "/innovative-web-and-mobile-solutions"] },
       { id: "mobile-menu", name: "Menú mobile", status: "pendiente", routes: ["/"] },
       { id: "footer", name: "Footer (marquee claro y oscuro)", status: "pendiente", routes: ["/", "/blockchain-development-services"] },
       { id: "breadcrumbs", name: "Breadcrumbs", status: "pendiente", routes: ["/blockchain-development-services/smart-contract-development", "/innovative-web-and-mobile-solutions"] },
@@ -185,7 +187,7 @@ export const brandLabGroups: BrandLabGroup[] = [
     title: "Páginas únicas",
     description: "Páginas con diseño propio, sección por sección.",
     items: [
-      { id: "home", name: "Home (piloto v2: Integrated Bio, Joby, Voiceflow)", status: "en-revision", routes: ["/"], note: "El marquee de logos de clientes no se toca sin hablarlo: sus SVG traen fondo FAFAFA." },
+      { id: "home", name: "Home (piloto v2: Integrated Bio, Joby, Voiceflow)", status: "en-revision", redesigned: true, routes: ["/"], note: "El marquee de logos de clientes no se toca sin hablarlo: sus SVG traen fondo FAFAFA." },
       { id: "about", name: "About us", status: "pendiente", routes: ["/about-us"] },
       { id: "agentic", name: "Agentic AI development", status: "pendiente", routes: ["/agentic-ai-development"] },
       { id: "our-work", name: "Our work", status: "pendiente", routes: ["/our-work"] },

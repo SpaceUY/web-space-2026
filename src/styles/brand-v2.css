@@ -163,7 +163,6 @@
   --v2-lilac-light: #e4dbff;
   --v2-dark: #2c2a2f;
   --v2-gutter: clamp(20px, 4vw, 56px);
-  --v2-radius-stage: clamp(16px, 2vw, 28px);
   --v2-ease: cubic-bezier(0.22, 1, 0.36, 1);
   interpolate-size: allow-keywords;
 }
@@ -186,11 +185,9 @@
 .v2-section { padding-block: clamp(80px, 11vw, 168px); }
 .v2-section--tight { padding-block: clamp(56px, 7vw, 104px); }
 
-/* A stage is a large rounded block inset from the viewport edge, the way
-   Integrated Bio and Voiceflow frame their heroes. */
+/* A stage is a full-bleed block with its own background (hero, dark bands,
+   closing call to action). Square edges: v2 does not round blocks. */
 .v2-stage {
-  margin-inline: 12px;
-  border-radius: var(--v2-radius-stage);
   overflow: hidden;
   position: relative;
   isolation: isolate;
@@ -282,7 +279,7 @@
   align-items: center;
   justify-content: center;
   height: 48px;
-  border-radius: 10px;
+  border-radius: 0;
   transition: background-color 0.3s var(--v2-ease), color 0.3s var(--v2-ease);
 }
 .v2-btn__label { padding-inline: 20px; background: var(--v2-ink); color: #ffffff; }
@@ -296,7 +293,7 @@
 .v2-btn--light:hover .v2-btn__label { background: var(--v2-lilac-light); }
 .v2-btn--light:hover .v2-btn__chip { background: #ffffff; }
 .v2-btn--sm .v2-btn__label,
-.v2-btn--sm .v2-btn__chip { height: 40px; border-radius: 8px; }
+.v2-btn--sm .v2-btn__chip { height: 40px; }
 .v2-btn--sm .v2-btn__chip { width: 40px; }
 
 .v2-link {
@@ -318,6 +315,12 @@
   outline: 2px solid var(--v2-violet-mid);
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+/* Square buttons across the site in v2, including the live components that
+   have not been redesigned yet (Button, inline CTAs, form submits). */
+:root[data-brand="v2"] :is(a, button, input[type="submit"]):is(.rounded-full, .rounded-xl, .rounded-lg, .rounded-md) {
+  border-radius: 0;
 }
 
 /* Navbar mega panel: the page behind softens instead of being covered. */

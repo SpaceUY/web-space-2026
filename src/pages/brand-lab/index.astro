@@ -23,6 +23,8 @@ const staticRoutes = Object.keys(pageFiles)
 const coveredRoutes = new Set(allItems.flatMap((item) => item.routes));
 const unassigned = staticRoutes.filter((route) => !coveredRoutes.has(route)).sort();
 
+const redesigned = allItems.filter((item) => item.redesigned);
+
 const compareHref = (route: string) => `/brand-lab/comparar?ruta=${encodeURIComponent(route)}`;
 ---
 
@@ -34,6 +36,19 @@ const compareHref = (route: string) => `/brand-lab/comparar?ruta=${encodeURIComp
       Experimento. Esta rama no se publica: el build se corta si intenta ir a producción, el sitio sale sin indexar,
       sin analytics y los formularios no se envían.
     </p>
+
+    <section class="lab-redesigned mb-8 max-w-3xl">
+      <h2 class="lab-title text-lg mb-2">Con diseño nuevo completo</h2>
+      <p class="mb-3">El resto del sitio, por ahora, solo cambia colores y tipografía: en el comparador esas páginas se ven casi iguales.</p>
+      <ul class="flex flex-wrap gap-x-6 gap-y-2">
+        {redesigned.map((item) => (
+          <li>
+            {item.name}{" "}
+            {item.routes[0] && <a class="lab-link" href={compareHref(item.routes[0])}>comparar</a>}
+          </li>
+        ))}
+      </ul>
+    </section>
 
     <div class="flex flex-wrap gap-3 mb-10">
       {statusCounts.map(({ status, label, count }) => (
@@ -66,6 +81,7 @@ const compareHref = (route: string) => `/brand-lab/comparar?ruta=${encodeURIComp
               <tr>
                 <td>
                   {item.name}
+                  {item.redesigned && <span class="lab-new">Diseño nuevo</span>}
                   {item.note && <p class="lab-muted text-sm mt-1">{item.note}</p>}
                 </td>
                 <td><span class={`lab-status lab-status--${item.status}`}>{brandLabStatusLabels[item.status]}</span></td>
@@ -90,6 +106,20 @@ const compareHref = (route: string) => `/brand-lab/comparar?ruta=${encodeURIComp
 </BrandLabLayout>
 
 <style>
+  .lab-redesigned {
+    border: 1px solid #5b37c6;
+    background: #ffffff;
+    padding: 16px 20px;
+  }
+  .lab-new {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 3px 8px;
+    background: #5b37c6;
+    color: #ffffff;
+    font: 600 11px/1.2 "Open Sans", Arial, sans-serif;
+    vertical-align: middle;
+  }
   .lab-table {
     width: 100%;
     border-collapse: collapse;

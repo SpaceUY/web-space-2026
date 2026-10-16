@@ -8,15 +8,13 @@
  * is repainted by CSS each frame. It pauses when off screen or in a
  * background tab, and stands still with reduced motion.
  *
- * The headline keeps the live copy. The rotating word is an inline grid of
- * all its words in one cell, so the line never changes width (no reflow, no
- * jumping centre) and the h1 never repaints new text (it is the LCP element).
+ * The headline is the live copy without the rotating word: swapping
+ * "Flexible / Reliable / Fast" inside the title read as noise, not meaning.
  */
 import V2Button from "../V2Button.astro";
 import { clientLogosWhite } from "../../../data/home";
 
 const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
-const rotatorWords = ["Flexible", "Reliable", "Fast"];
 ---
 
 <section class="hero" data-nav-theme="dark">
@@ -28,9 +26,7 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     <div class="v2-container hero__content">
       <h1 class="hero__title">
         <span class="v2-display-xl hero__headline">
-          Finally: Your <span class="hero__rotator" data-v2-rotator>{rotatorWords.map((word, index) => (
-            <span class:list={["hero__word", { "is-current": index === 0 }]} aria-hidden={index > 0 ? "true" : undefined}>{word}</span>
-          ))}</span><br />Tech Partner.
+          Finally: Your Flexible<br />Tech Partner.
         </span>
         <span class="hero__kicker">Blockchain Development Company & Web3 Software Partner</span>
       </h1>
@@ -70,21 +66,6 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
 
 <script>
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  /* Rotating word: the current word slides up and out, the next one in. */
-  const rotator = document.querySelector<HTMLElement>("[data-v2-rotator]");
-  if (rotator && !reduced) {
-    const words = Array.from(rotator.children) as HTMLElement[];
-    let current = 0;
-    window.setInterval(() => {
-      const leaving = words[current];
-      current = (current + 1) % words.length;
-      words.forEach((word) => word.classList.remove("is-leaving"));
-      leaving.classList.remove("is-current");
-      leaving.classList.add("is-leaving");
-      words[current].classList.add("is-current");
-    }, 2800);
-  }
 
   /* Star field */
   const canvas = document.querySelector<HTMLCanvasElement>("[data-v2-stars]");
@@ -225,7 +206,9 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
 <style>
   .hero { padding-top: 0; }
   .hero__stage {
-    min-height: clamp(680px, calc(100svh - 84px), 980px);
+    margin-inline: 0;
+    border-radius: 0;
+    min-height: clamp(680px, calc(100svh - 72px), 980px);
     display: flex;
     flex-direction: column;
     background: linear-gradient(180deg, #0f0e12 0%, #141313 30%, #2c2a2f 58%, #3b2b5c 78%, #503498 100%);
@@ -306,23 +289,6 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     gap: 24px;
     margin-top: 34px;
   }
-
-  .hero__rotator {
-    display: inline-grid;
-    overflow: hidden;
-    vertical-align: bottom;
-    padding-bottom: 0.1em;
-    margin-bottom: -0.1em;
-    color: var(--v2-lilac);
-  }
-  .hero__word {
-    grid-area: 1 / 1;
-    transform: translateY(105%);
-    opacity: 0;
-    transition: transform 0.7s var(--v2-ease), opacity 0.5s var(--v2-ease);
-  }
-  .hero__word.is-current { transform: none; opacity: 1; }
-  .hero__word.is-leaving { transform: translateY(-105%); opacity: 0; }
 
   .hero__logos {
     display: flex;

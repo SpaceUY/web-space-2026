@@ -243,11 +243,24 @@ const menuIds = Object.keys(menus) as NavMenuId[];
     color: var(--v2-ink);
     font-family: "Open Sans", Arial, sans-serif;
   }
-  .v2-nav[data-theme="dark"]:not([data-open]) {
+  .v2-nav[data-scrolled][data-theme="dark"]:not([data-open]) {
     --v2-nav-muted: rgba(255, 255, 255, 0.72);
     --v2-nav-strong: #ffffff;
     color: #ffffff;
   }
+
+  /* At the top the bar is solid and light, like Voiceflow's. Once the page
+     moves it dissolves and each group floats on its own veil. */
+  .v2-nav::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--v2-canvas);
+    border-bottom: 1px solid var(--v2-line);
+    transition: opacity 0.35s var(--v2-ease);
+  }
+  .v2-nav[data-scrolled]::after { opacity: 0; }
 
   .v2-nav__scrim {
     position: fixed;
@@ -276,7 +289,7 @@ const menuIds = Object.keys(menus) as NavMenuId[];
     display: flex;
     align-items: center;
     height: 48px;
-    border-radius: 12px;
+    border-radius: 0;
   }
   .v2-nav__group::before {
     content: "";
@@ -293,7 +306,7 @@ const menuIds = Object.keys(menus) as NavMenuId[];
   }
   .v2-nav[data-scrolled] .v2-nav__group::before,
   .v2-nav[data-open] .v2-nav__group::before { opacity: 1; }
-  .v2-nav[data-theme="dark"]:not([data-open]) .v2-nav__group::before {
+  .v2-nav[data-scrolled][data-theme="dark"]:not([data-open]) .v2-nav__group::before {
     background: rgba(20, 19, 19, 0.42);
     border-color: rgba(255, 255, 255, 0.08);
   }
@@ -302,8 +315,8 @@ const menuIds = Object.keys(menus) as NavMenuId[];
   .v2-nav__logo { padding-inline: 14px; }
   .v2-nav__logo-img { height: 26px; width: auto; }
   .v2-nav__logo-img--on-dark { display: none; }
-  .v2-nav[data-theme="dark"]:not([data-open]) .v2-nav__logo-img--on-dark { display: block; }
-  .v2-nav[data-theme="dark"]:not([data-open]) .v2-nav__logo-img--on-light { display: none; }
+  .v2-nav[data-scrolled][data-theme="dark"]:not([data-open]) .v2-nav__logo-img--on-dark { display: block; }
+  .v2-nav[data-scrolled][data-theme="dark"]:not([data-open]) .v2-nav__logo-img--on-light { display: none; }
 
   .v2-nav__links {
     padding-inline: 6px;
@@ -315,7 +328,7 @@ const menuIds = Object.keys(menus) as NavMenuId[];
     gap: 6px;
     height: 36px;
     padding-inline: 12px;
-    border-radius: 8px;
+    border-radius: 0;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0;
@@ -324,7 +337,6 @@ const menuIds = Object.keys(menus) as NavMenuId[];
   }
   .v2-nav__link:hover,
   .v2-nav__link[aria-expanded="true"] { color: var(--v2-nav-strong); }
-  /* Hovering one entry quiets the others, so the eye lands where the pointer is. */
   .v2-nav__chevron { transition: transform 0.35s var(--v2-ease); }
   .v2-nav__link[aria-expanded="true"] .v2-nav__chevron { transform: rotate(180deg); }
 
@@ -338,8 +350,8 @@ const menuIds = Object.keys(menus) as NavMenuId[];
     display: inline-flex;
     align-items: center;
     height: 36px;
-    padding-inline: 14px;
-    border-radius: 8px;
+    padding-inline: 16px;
+    border-radius: 0;
     background: var(--v2-violet-mid);
     color: #ffffff;
     font-size: 14px;
@@ -367,7 +379,7 @@ const menuIds = Object.keys(menus) as NavMenuId[];
     position: relative;
     height: 0;
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: 0;
     background: #ffffff;
     color: var(--v2-ink);
     box-shadow: 0 30px 60px -20px rgba(20, 19, 19, 0.25), 0 0 0 1px rgba(20, 19, 19, 0.05);
@@ -455,7 +467,7 @@ const menuIds = Object.keys(menus) as NavMenuId[];
     gap: 8px;
     min-height: 280px;
     padding: 22px;
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
     color: #ffffff;
     background: var(--sd-brand-apertura);
@@ -487,7 +499,7 @@ const menuIds = Object.keys(menus) as NavMenuId[];
     height: 36px;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 0;
     background: rgba(255, 255, 255, 0.16);
     backdrop-filter: blur(8px);
   }
