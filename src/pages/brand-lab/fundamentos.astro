@@ -1,0 +1,145 @@
+---
+/**
+ * Brand foundations, drawn from the live tokens: every swatch and sample here
+ * reads the same CSS variables the site uses, so switching v1/v2 (or opening
+ * this page in the comparator) shows exactly what changes site-wide.
+ */
+import BrandLabLayout from "../../layouts/BrandLabLayout.astro";
+
+const swatchGroups = [
+  {
+    title: "Fondos",
+    tokens: ["sd-dark", "sd-dark-2", "sd-purple-deep", "sd-purple-mid", "sd-dark-hero", "sd-light", "sd-light-2"],
+  },
+  {
+    title: "Acentos",
+    tokens: ["sd-purple", "sd-purple-2", "sd-purple-3", "sd-cyan", "sd-green"],
+  },
+  {
+    title: "Escala violeta",
+    tokens: ["sd-purple-100", "sd-purple-200", "sd-purple-300", "sd-purple-400", "sd-purple-500", "sd-purple-600"],
+  },
+  {
+    title: "Texto y líneas",
+    tokens: ["sd-text-dark", "sd-text-gray", "sd-text-muted", "sd-text-secondary", "sd-gray-border"],
+  },
+];
+
+const gradients = [
+  { token: "sd-gradient-hero", use: "Heroes de servicio, legales, autores, tags" },
+  { token: "sd-gradient-deep", use: "Bandas y CTA" },
+  { token: "sd-gradient-purple-dark", use: "Mid CTA de servicio, cajas de staff augmentation" },
+  { token: "sd-gradient-radial", use: "Brillos" },
+  { token: "sd-brand-apertura", use: "Solo v2: portadas (apertura de la marca)" },
+  { token: "sd-brand-cierre", use: "Solo v2: cierres (degradado invertido)" },
+];
+
+const headings: Array<{ tag: "h1" | "h2" | "h3" | "h4"; className: string; text: string }> = [
+  { tag: "h1", className: "text-5xl", text: "Blockchain development that ships" },
+  { tag: "h2", className: "text-4xl", text: "Why teams choose SpaceDev" },
+  { tag: "h3", className: "text-2xl", text: "Smart contract audits" },
+  { tag: "h4", className: "text-xl", text: "Discovery in two weeks" },
+];
+
+const figures = [
+  { value: "+70", label: "Team members" },
+  { value: "+160", label: "Projects" },
+  { value: "7", label: "Years" },
+];
+---
+
+<BrandLabLayout title="Fundamentos" toggle>
+  <div class="bg-sd-light text-sd-text-dark font-body">
+    <div class="lab-wrap">
+      <p class="lab-muted text-sm mb-2"><a class="lab-link" href="/brand-lab">Brand Lab</a> / Fase 2</p>
+      <h1 class="text-5xl mb-3">Fundamentos</h1>
+      <p class="text-sd-text-gray mb-12 max-w-2xl">
+        Colores, degradados y tipografía tal como los lee el sitio. Cambiá entre Actual y Nueva con el interruptor de abajo a la
+        izquierda, o abrí esta página en el comparador.
+      </p>
+
+      <h2 class="text-3xl mb-6">Color</h2>
+      {swatchGroups.map((group) => (
+        <section class="mb-10">
+          <h3 class="font-ui text-xs uppercase tracking-widest text-sd-text-gray mb-3">{group.title}</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+            {group.tokens.map((token) => (
+              <figure class="m-0">
+                <div class="h-20 rounded-lg border border-sd-gray-border" style={`background: var(--${token})`}></div>
+                <figcaption class="mt-2 text-xs">
+                  <code>--{token}</code>
+                  <span class="block text-sd-text-gray" data-token-value={token}></span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <h2 class="text-3xl mb-6 mt-16">Degradados</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+        {gradients.map((gradient) => (
+          <figure class="m-0">
+            <div class="h-40 rounded-lg border border-sd-gray-border" style={`background: var(--${gradient.token}, repeating-linear-gradient(45deg, #e1e1e1 0 8px, #f9f9f9 8px 16px))`}></div>
+            <figcaption class="mt-2 text-xs">
+              <code>--{gradient.token}</code>
+              <span class="block text-sd-text-gray">{gradient.use}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <h2 class="text-3xl mb-6">Tipografía sobre claro</h2>
+      <div class="flex flex-col gap-5 mb-10">
+        {headings.map((heading) => {
+          const Tag = heading.tag;
+          return <Tag class={heading.className}>{heading.text}</Tag>;
+        })}
+        <p class="font-ui text-xs uppercase tracking-widest text-sd-purple">Etiqueta (font-ui)</p>
+        <p class="max-w-2xl leading-relaxed">
+          Cuerpo de texto. SpaceDev designs and builds blockchain, AI and web products for teams that need to ship. This paragraph
+          shows the body face at reading size, with a <a class="text-sd-purple underline" href="#">link inside it</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-sd-purple-deep text-white">
+      <div class="lab-wrap">
+        <h2 class="text-3xl mb-6">Tipografía sobre oscuro</h2>
+        <div class="grid grid-cols-3 gap-6 mb-8 max-w-2xl">
+          {figures.map((figure) => (
+            <div>
+              <p class="font-display text-5xl text-sd-purple-200">{figure.value}</p>
+              <p class="font-ui text-xs uppercase tracking-widest text-sd-text-muted mt-2">{figure.label}</p>
+            </div>
+          ))}
+        </div>
+        <p class="max-w-2xl text-sd-text-secondary leading-relaxed">
+          Texto secundario sobre fondo oscuro, como en los bloques alternados de las páginas de servicio.
+        </p>
+      </div>
+    </div>
+
+    <div style="background: var(--sd-gradient-hero)" class="text-white">
+      <div class="lab-wrap">
+        <p class="font-ui text-xs uppercase tracking-widest text-sd-purple-200 mb-3">Hero</p>
+        <h2 class="text-5xl mb-4 max-w-3xl">Hero de servicio con el degradado actual del token</h2>
+        <p class="max-w-2xl text-sd-text-secondary">Así queda un hero de ServicePageLayout sin cambiar su estructura.</p>
+      </div>
+    </div>
+  </div>
+</BrandLabLayout>
+
+<script>
+  /* Print the resolved value under each swatch, and refresh it when the
+     toggle flips data-brand. */
+  const root = document.documentElement;
+  function paintValues(): void {
+    const styles = getComputedStyle(root);
+    document.querySelectorAll<HTMLElement>("[data-token-value]").forEach((element) => {
+      element.textContent = styles.getPropertyValue(`--${element.dataset.tokenValue}`).trim();
+    });
+  }
+  new MutationObserver(paintValues).observe(root, { attributes: true, attributeFilter: ["data-brand"] });
+  paintValues();
+</script>

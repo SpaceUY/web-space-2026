@@ -1,0 +1,132 @@
+/* ============================================================
+   BRAND V2 (experiment, see src/lib/brand-lab.ts)
+
+   The SpaceDev brand system (skill spacedev-brand) applied as a layer on
+   top of global.css. Nothing here changes v1: every rule is scoped to
+   html[data-brand="v2"], which the lab toggle switches on and off.
+
+   Token overrides are unlayered on purpose. Tailwind v4 emits its theme
+   variables inside @layer theme, and an unlayered declaration beats any
+   layered one, so overriding the variable recolors every utility that
+   reads it (bg-sd-*, text-sd-*, font-display...) without touching markup.
+
+   Brand palette (references/marca.md):
+     3B1B99 violeta principal   5B37C6 violeta medio   8E6EEC acento
+     C8B5FF lila                E4DBFF lila claro
+     141313 texto   787472 texto secundario   E1E1E1 líneas   F9F9F9 fondo alterno
+   Gradient stops measured from the brand's apertura background:
+     2C2A2F (top) 3B2B5C 503498 8B85DB A3A6F5 (bottom)
+   Greens and cyan are not part of the brand pieces: mapped to violets.
+   ============================================================ */
+
+:root[data-brand="v2"] {
+  /* ── Brand-only tokens (new in v2) ─────────────────────────── */
+  --sd-brand-violet:        #3b1b99;
+  --sd-brand-violet-mid:    #5b37c6;
+  --sd-brand-accent:        #8e6eec;
+  --sd-brand-lilac:         #c8b5ff;
+  --sd-brand-lilac-light:   #e4dbff;
+  --sd-brand-text:          #141313;
+  --sd-brand-text-2:        #787472;
+  --sd-brand-line:          #e1e1e1;
+  --sd-brand-surface:       #f9f9f9;
+  --sd-brand-apertura: linear-gradient(180deg, #2c2a2f 0%, #3b2b5c 25%, #503498 50%, #8b85db 75%, #a3a6f5 100%);
+  --sd-brand-cierre:   linear-gradient(180deg, #a3a6f5 0%, #8b85db 25%, #503498 50%, #3b2b5c 75%, #2c2a2f 100%);
+
+  /* ── global.css :root tokens ───────────────────────────────── */
+  --sd-dark:         #141313;
+  --sd-dark-2:       #1f1d21;
+  --sd-dark-hero:    #2c2a2f;
+  --sd-purple-deep:  #2c2a2f;
+  --sd-purple-mid:   #3b2b5c;
+  --sd-light:        #f9f9f9;
+  --sd-light-2:      #f9f9f9;
+  --sd-light-3:      #f9f9f9;
+  --sd-light-4:      #f9f9f9;
+  --sd-gray-border:  #e1e1e1;
+  --sd-gray-border2: #e1e1e1;
+  --sd-purple:       #5b37c6;
+  --sd-purple-2:     #3b1b99;
+  --sd-purple-3:     #8e6eec;
+  --sd-cyan:         #8e6eec;
+  --sd-green:        #c8b5ff;
+  --sd-text-secondary: #e1e1e1;
+  --sd-text-muted:     #a5a09c;
+  --sd-text-dark:      #141313;
+  --sd-text-gray:      #787472;
+
+  /* Heroes carry text, so they use the dark-to-violet half of the apertura
+     gradient: the lilac bottom is too light under white type. Full apertura
+     and cierre stay available above for covers and closing bands. */
+  --sd-gradient-hero:        linear-gradient(180deg, #2c2a2f 0%, #3b2b5c 45%, #503498 100%);
+  --sd-gradient-deep:        linear-gradient(135deg, #5b37c6 0%, #2c2a2f 100%);
+  --sd-gradient-radial:      radial-gradient(circle, #a3a6f5 11%, #503498 37%, #3b2b5c 68%, #2c2a2f 86%);
+  --sd-gradient-purple-dark: linear-gradient(135deg, #503498 0%, #3b2b5c 60%, #2c2a2f 100%);
+
+  --sd-green-100: #e4dbff;
+  --sd-green-200: #c8b5ff;
+  --sd-green-300: #ac93f2;
+  --sd-green-400: #8e6eec;
+  --sd-green-500: #5b37c6;
+  --sd-green-600: #3b1b99;
+
+  --sd-shadow-glow-sm: 0 0 12px 0 rgba(91, 55, 198, 0.35);
+  --sd-shadow-glow-md: 0 0 24px 0 rgba(91, 55, 198, 0.4);
+  --sd-shadow-glow-lg: 0 0 48px 0 rgba(91, 55, 198, 0.45);
+
+  /* ── Tailwind @theme tokens ────────────────────────────────── */
+  --color-sd-dark:         #141313;
+  --color-sd-dark-2:       #1f1d21;
+  --color-sd-purple-deep:  #2c2a2f;
+  --color-sd-purple-mid:   #3b2b5c;
+  --color-sd-light:        #f9f9f9;
+  --color-sd-light-2:      #f9f9f9;
+  --color-sd-light-3:      #f9f9f9;
+  --color-sd-light-4:      #f9f9f9;
+  --color-sd-gray-border:  #e1e1e1;
+  --color-sd-gray-border2: #e1e1e1;
+  --color-sd-purple:       #5b37c6;
+  --color-sd-purple-2:     #3b1b99;
+  --color-sd-purple-3:     #8e6eec;
+  --color-sd-cyan:         #8e6eec;
+  --color-sd-green:        #c8b5ff;
+  --color-sd-text-secondary: #e1e1e1;
+  --color-sd-text-muted:     #a5a09c;
+  --color-sd-text-dark:      #141313;
+  --color-sd-text-gray:      #787472;
+
+  --color-sd-green-100: #e4dbff;
+  --color-sd-green-200: #c8b5ff;
+  --color-sd-green-300: #ac93f2;
+  --color-sd-green-400: #8e6eec;
+  --color-sd-green-500: #5b37c6;
+  --color-sd-green-600: #3b1b99;
+
+  --shadow-sd-glow-sm: 0 0 12px 0 rgba(91, 55, 198, 0.35);
+  --shadow-sd-glow-md: 0 0 24px 0 rgba(91, 55, 198, 0.4);
+  --shadow-sd-glow-lg: 0 0 48px 0 rgba(91, 55, 198, 0.45);
+
+  /* ── Type: Open Sans SemiBold for titles and labels, Arial for body.
+     Arial is not on Android, hence the fallbacks. ──────────────── */
+  --font-display: "Open Sans", Arial, sans-serif;
+  --font-ui:      "Open Sans", Arial, sans-serif;
+  --font-blog:    "Open Sans", Arial, sans-serif;
+  --font-body:    Arial, "Helvetica Neue", Helvetica, "Liberation Sans", sans-serif;
+}
+
+/* Brand rule: everything set in the display face (titles, figures, labels)
+   is SemiBold. Unlayered so it wins over font-light / font-medium utilities
+   that were tuned for Saira. */
+:root[data-brand="v2"] :is(h1, h2, h3, h4, h5, h6, .font-display, .font-ui) {
+  font-weight: 600;
+}
+:root[data-brand="v2"] :is(h1, h2, h3, h4, h5, h6, .font-display) {
+  letter-spacing: -0.01em;
+}
+:root[data-brand="v2"] .font-ui {
+  letter-spacing: 0.08em;
+}
+:root[data-brand="v2"] ::selection {
+  background: #e4dbff;
+  color: #141313;
+}

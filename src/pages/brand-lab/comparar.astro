@@ -1,0 +1,224 @@
+---
+/**
+ * Side-by-side comparator: the same real page twice, once with ?brand=v1 and
+ * once with ?brand=v2, each in an iframe rendered at a true viewport width
+ * (1440 or 390) and scaled down to fit its half of the screen. Scrolling one
+ * scrolls the other, so the same section is always facing itself.
+ */
+import BrandLabLayout from "../../layouts/BrandLabLayout.astro";
+import { brandLabGroups } from "../../data/brand-lab";
+
+const routes = [...new Set(brandLabGroups.flatMap((group) => group.items.flatMap((item) => item.routes)))].sort();
+
+const viewports = [
+  { id: "desktop", label: "Escritorio 1440", width: 1440 },
+  { id: "mobile", label: "Mobile 390", width: 390 },
+];
+
+const panes = [
+  { version: "v1", label: "Actual" },
+  { version: "v2", label: "Nueva" },
+];
+---
+
+<BrandLabLayout title="Comparador" bare>
+  <div class="cmp">
+    <header class="cmp-bar">
+      <a class="lab-link" href="/brand-lab">Brand Lab</a>
+      <label class="cmp-field">
+        <span class="lab-muted">Página</span>
+        <input class="cmp-input" list="cmp-routes" id="cmp-route" value="/" spellcheck="false" />
+        <datalist id="cmp-routes">
+          {routes.map((route) => <option value={route} />)}
+        </datalist>
+      </label>
+      <div class="cmp-seg" role="group" aria-label="Ancho">
+        {viewports.map((viewport) => (
+          <button type="button" data-viewport={viewport.id} data-width={viewport.width}>{viewport.label}</button>
+        ))}
+      </div>
+      <label class="cmp-field">
+        <input type="checkbox" id="cmp-sync" checked />
+        <span>Scroll sincronizado</span>
+      </label>
+    </header>
+
+    <div class="cmp-panes">
+      {panes.map((pane) => (
+        <section class="cmp-pane">
+          <p class="cmp-pane__label">{pane.label}</p>
+          <div class="cmp-stage" data-stage>
+            <iframe data-version={pane.version} title={`${pane.label}`} loading="eager"></iframe>
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</BrandLabLayout>
+
+<script>
+  const routeInput = document.getElementById("cmp-route") as HTMLInputElement;
+  const syncInput = document.getElementById("cmp-sync") as HTMLInputElement;
+  const frames = Array.from(document.querySelectorAll<HTMLIFrameElement>("iframe[data-version]"));
+  const stages = Array.from(document.querySelectorAll<HTMLElement>("[data-stage]"));
+  const viewportButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-viewport]"));
+
+  const params = new URLSearchParams(location.search);
+  let route = params.get("ruta") || "/";
+  let viewport = params.get("ancho") === "mobile" ? "mobile" : "desktop";
+  let syncing = false;
+
+  function viewportWidth(): number {
+    const button = viewportButtons.find((candidate) => candidate.dataset.viewport === viewport);
+    return Number(button?.dataset.width ?? 1440);
+  }
+
+  function frameUrl(version: string): string {
+    const url = new URL(route.startsWith("/") ? route : `/${route}`, location.origin);
+    url.searchParams.set("brand", version);
+    return url.pathname + url.search + url.hash;
+  }
+
+  function layout(): void {
+    const width = viewportWidth();
+    stages.forEach((stage, index) => {
+      const frame = frames[index];
+      const scale = Math.min(1, stage.clientWidth / width);
+      frame.style.width = `${width}px`;
+      frame.style.height = `${stage.clientHeight / scale}px`;
+      frame.style.transform = `scale(${scale})`;
+    });
+    viewportButtons.forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.viewport === viewport));
+    });
+  }
+
+  function persist(): void {
+    const url = new URL(location.href);
+    url.searchParams.set("ruta", route);
+    url.searchParams.set("ancho", viewport);
+    history.replaceState(null, "", url);
+  }
+
+  function load(): void {
+    routeInput.value = route;
+    frames.forEach((frame) => {
+      frame.src = frameUrl(frame.dataset.version ?? "v2");
+    });
+    persist();
+  }
+
+  function mirrorScroll(source: HTMLIFrameElement): void {
+    if (!syncInput.checked || syncing) return;
+    const sourceWindow = source.contentWindow;
+    if (!sourceWindow) return;
+    syncing = true;
+    frames
+      .filter((frame) => frame !== source)
+      .forEach((frame) => frame.contentWindow?.scrollTo(0, sourceWindow.scrollY));
+    requestAnimationFrame(() => {
+      syncing = false;
+    });
+  }
+
+  frames.forEach((frame) => {
+    frame.addEventListener("load", () => {
+      frame.contentWindow?.addEventListener("scroll", () => mirrorScroll(frame), { passive: true });
+    });
+  });
+
+  routeInput.addEventListener("change", () => {
+    route = routeInput.value.trim() || "/";
+    load();
+  });
+
+  viewportButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      viewport = button.dataset.viewport ?? "desktop";
+      layout();
+      persist();
+    });
+  });
+
+  window.addEventListener("resize", layout);
+  layout();
+  load();
+</script>
+
+<style>
+  .cmp {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .cmp-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+    padding: 10px 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #e1e1e1;
+    font-size: 14px;
+  }
+  .cmp-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cmp-input {
+    width: min(520px, 60vw);
+    padding: 6px 10px;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    font: 14px/1.4 ui-monospace, Menlo, monospace;
+  }
+  .cmp-seg {
+    display: flex;
+    gap: 4px;
+  }
+  .cmp-seg button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: #787472;
+    border: 1px solid #e1e1e1;
+  }
+  .cmp-seg button[aria-pressed="true"] {
+    background: #5b37c6;
+    border-color: #5b37c6;
+    color: #ffffff;
+  }
+  .cmp-panes {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 8px;
+    min-height: 0;
+  }
+  .cmp-pane {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .cmp-pane__label {
+    font: 600 13px/1 "Open Sans", Arial, sans-serif;
+    color: #3b1b99;
+    margin: 0 0 6px;
+  }
+  .cmp-stage {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    background: #ffffff;
+  }
+  .cmp-stage iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+    transform-origin: 0 0;
+  }
+</style>

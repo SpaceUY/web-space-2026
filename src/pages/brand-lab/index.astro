@@ -1,0 +1,133 @@
+---
+import BrandLabLayout from "../../layouts/BrandLabLayout.astro";
+import {
+  brandLabGroups,
+  brandLabStatusLabels,
+  type BrandLabStatus,
+} from "../../data/brand-lab";
+
+const allItems = brandLabGroups.flatMap((group) => group.items);
+const statusOrder = Object.keys(brandLabStatusLabels) as BrandLabStatus[];
+const statusCounts = statusOrder.map((status) => ({
+  status,
+  label: brandLabStatusLabels[status],
+  count: allItems.filter((item) => item.status === status).length,
+}));
+
+// Completeness check: every static page must be covered by some item.
+// Dynamic routes ([slug]) are covered by their template items.
+const pageFiles = import.meta.glob("/src/pages/**/*.astro");
+const staticRoutes = Object.keys(pageFiles)
+  .filter((path) => !path.includes("[") && !path.includes("/brand-lab"))
+  .map((path) => path.replace("/src/pages", "").replace(/\/index\.astro$/, "").replace(/\.astro$/, "") || "/");
+const coveredRoutes = new Set(allItems.flatMap((item) => item.routes));
+const unassigned = staticRoutes.filter((route) => !coveredRoutes.has(route)).sort();
+
+const compareHref = (route: string) => `/brand-lab/comparar?ruta=${encodeURIComponent(route)}`;
+---
+
+<BrandLabLayout title="Índice">
+  <div class="lab-wrap">
+    <p class="lab-muted text-sm mb-2">feat/brand-v2</p>
+    <h1 class="lab-title text-4xl mb-4">Brand Lab</h1>
+    <p class="lab-warning mb-8 max-w-3xl">
+      Experimento. Esta rama no se publica: el build se corta si intenta ir a producción, el sitio sale sin indexar,
+      sin analytics y los formularios no se envían.
+    </p>
+
+    <div class="flex flex-wrap gap-3 mb-10">
+      {statusCounts.map(({ status, label, count }) => (
+        <span class={`lab-status lab-status--${status}`}>{label}: {count}</span>
+      ))}
+      <a class="lab-link self-center ml-2" href="/brand-lab/comparar?ruta=%2F">Abrir el comparador</a>
+    </div>
+
+    {unassigned.length > 0 && (
+      <section class="lab-warning mb-10">
+        <h2 class="lab-title text-lg mb-2">Sin asignar ({unassigned.length})</h2>
+        <p class="mb-2">Páginas que ningún ítem del inventario cubre. Hay que sumarlas a src/data/brand-lab.ts.</p>
+        <ul class="list-disc pl-5">
+          {unassigned.map((route) => <li><code>{route}</code></li>)}
+        </ul>
+      </section>
+    )}
+
+    {brandLabGroups.map((group) => (
+      <section class="mb-12" id={group.id}>
+        <p class="lab-muted text-xs uppercase tracking-widest mb-1">Fase {group.phase}</p>
+        <h2 class="lab-title text-2xl mb-1">{group.title}</h2>
+        <p class="lab-muted mb-4">{group.description}</p>
+        <table class="lab-table">
+          <thead>
+            <tr><th>Pieza</th><th>Estado</th><th>Dónde se ve</th></tr>
+          </thead>
+          <tbody>
+            {group.items.map((item) => (
+              <tr>
+                <td>
+                  {item.name}
+                  {item.note && <p class="lab-muted text-sm mt-1">{item.note}</p>}
+                </td>
+                <td><span class={`lab-status lab-status--${item.status}`}>{brandLabStatusLabels[item.status]}</span></td>
+                <td>
+                  <ul class="flex flex-col gap-1">
+                    {item.routes.map((route) => (
+                      <li class="flex flex-wrap gap-x-3">
+                        <code class="text-sm">{route}</code>
+                        <a class="lab-link text-sm" href={compareHref(route)}>comparar</a>
+                        <a class="lab-link text-sm" href={route} target="_blank" rel="noopener">abrir</a>
+                      </li>
+                    ))}
+                  </ul>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    ))}
+  </div>
+</BrandLabLayout>
+
+<style>
+  .lab-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .lab-table th {
+    text-align: left;
+    font: 600 13px/1.4 "Open Sans", Arial, sans-serif;
+    color: #ffffff;
+    background: #3b1b99;
+    padding: 10px 14px;
+  }
+  .lab-table td {
+    vertical-align: top;
+    padding: 12px 14px;
+    border-top: 1px solid #e1e1e1;
+  }
+  .lab-table tr:nth-child(even) td {
+    background: #f9f9f9;
+  }
+  .lab-status {
+    display: inline-block;
+    white-space: nowrap;
+    font: 600 12px/1 "Open Sans", Arial, sans-serif;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #e1e1e1;
+    color: #141313;
+  }
+  .lab-status--en-revision { background: #e4dbff; color: #3b1b99; }
+  .lab-status--con-cambios { background: #c8b5ff; color: #141313; }
+  .lab-status--aprobada { background: #5b37c6; color: #ffffff; }
+  .lab-status--descartada { background: #ffffff; color: #787472; border: 1px solid #e1e1e1; }
+  @media (max-width: 999px) {
+    .lab-table thead { display: none; }
+    .lab-table, .lab-table tbody, .lab-table tr, .lab-table td { display: block; width: 100%; }
+  }
+</style>

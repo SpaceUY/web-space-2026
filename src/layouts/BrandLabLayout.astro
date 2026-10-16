@@ -1,0 +1,77 @@
+---
+/**
+ * Shell for the /brand-lab pages. Standalone on purpose: the lab's own chrome
+ * (index, comparator) uses fixed colors so it reads the same in both
+ * versions, while pages that demo the brand (fundamentos) turn on the toggle
+ * and read the site tokens like any other page.
+ */
+import "../styles/global.css";
+import "../styles/brand-v2.css";
+import { BRAND_DEFAULT } from "../lib/brand-lab";
+import BrandInit from "../components/brand-lab/BrandInit.astro";
+import BrandToggle from "../components/brand-lab/BrandToggle.astro";
+
+interface Props {
+  title: string;
+  /** Show the v1/v2 switch (pages that demo tokens). */
+  toggle?: boolean;
+  /** Full-height app layout without page padding (comparator). */
+  bare?: boolean;
+}
+
+const { title, toggle = false, bare = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" data-brand={BRAND_DEFAULT}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <BrandInit />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} · Brand Lab</title>
+    <link rel="icon" type="image/png" href="/images/logo/favicon.png" />
+  </head>
+  <body class:list={["lab-body", { "lab-body--bare": bare }]}>
+    <slot />
+    {toggle && <BrandToggle />}
+  </body>
+</html>
+
+<style is:global>
+  .lab-body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f9f9f9;
+    color: #141313;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+  .lab-body--bare {
+    height: 100vh;
+    overflow: hidden;
+  }
+  .lab-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 96px;
+  }
+  .lab-title {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: 600;
+    color: #3b1b99;
+    letter-spacing: -0.01em;
+  }
+  .lab-muted {
+    color: #787472;
+  }
+  .lab-link {
+    color: #5b37c6;
+    text-decoration: underline;
+  }
+  .lab-warning {
+    border-left: 4px solid #5b37c6;
+    background: #e4dbff;
+    padding: 12px 16px;
+    border-radius: 6px;
+  }
+</style>
