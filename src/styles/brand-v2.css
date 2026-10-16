@@ -130,3 +130,206 @@
   background: #e4dbff;
   color: #141313;
 }
+
+/* ============================================================
+   STRUCTURAL SWITCH
+   Pieces with a different structure in v2 render both versions:
+   <div class="v1-only"> and <div class="v2-only">. display: contents
+   keeps the wrapper out of layout, so sticky headers and grids behave
+   exactly as if the wrapper were not there.
+   ============================================================ */
+.v1-only,
+.v2-only { display: contents; }
+:root[data-brand="v2"] .v1-only,
+:root:not([data-brand="v2"]) .v2-only { display: none; }
+
+/* ============================================================
+   V2 DESIGN SYSTEM
+   References: Integrated Bio (minimal type, numbered labels, scroll-filled
+   statements), Joby (asymmetric grid, captions with a rule, hairline
+   columns), Voiceflow (navbar veils and mega panel).
+   ============================================================ */
+:root[data-brand="v2"] {
+  --v2-ink: #141313;
+  --v2-ink-2: #787472;
+  --v2-ink-3: #b9b4b0;
+  --v2-line: #e1e1e1;
+  --v2-canvas: #f9f9f9;
+  --v2-panel: #ffffff;
+  --v2-violet: #3b1b99;
+  --v2-violet-mid: #5b37c6;
+  --v2-accent: #8e6eec;
+  --v2-lilac: #c8b5ff;
+  --v2-lilac-light: #e4dbff;
+  --v2-dark: #2c2a2f;
+  --v2-gutter: clamp(20px, 4vw, 56px);
+  --v2-radius-stage: clamp(16px, 2vw, 28px);
+  --v2-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  interpolate-size: allow-keywords;
+}
+
+.v2-page {
+  background: var(--v2-canvas);
+  color: var(--v2-ink);
+  font-family: var(--font-body);
+}
+.v2-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--v2-gutter);
+}
+.v2-section { padding-block: clamp(80px, 11vw, 168px); }
+.v2-section--tight { padding-block: clamp(56px, 7vw, 104px); }
+
+/* A stage is a large rounded block inset from the viewport edge, the way
+   Integrated Bio and Voiceflow frame their heroes. */
+.v2-stage {
+  margin-inline: 12px;
+  border-radius: var(--v2-radius-stage);
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+}
+.v2-stage--apertura { background: var(--sd-brand-apertura); color: #ffffff; }
+.v2-stage--hero { background: linear-gradient(180deg, #2c2a2f 0%, #3b2b5c 38%, #503498 72%, #8b85db 100%); color: #ffffff; }
+.v2-stage--dark { background: linear-gradient(160deg, #3b2b5c 0%, #2c2a2f 55%, #1f1d21 100%); color: #ffffff; }
+
+/* Numbered section label: "02  Services" */
+.v2-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v2-ink-2);
+}
+.v2-label__index {
+  font-variant-numeric: tabular-nums;
+  color: var(--v2-violet-mid);
+}
+.v2-label__index::after {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  margin-left: 14px;
+  vertical-align: middle;
+  background: currentColor;
+  opacity: 0.5;
+}
+.v2-on-dark .v2-label { color: rgba(255, 255, 255, 0.62); }
+.v2-on-dark .v2-label__index { color: var(--v2-lilac); }
+
+.v2-display-xl,
+.v2-display-l,
+.v2-display-m,
+.v2-display-s {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 600;
+  margin: 0;
+  text-wrap: balance;
+}
+:root[data-brand="v2"] .v2-display-xl { font-size: clamp(44px, 7.4vw, 116px); line-height: 0.98; letter-spacing: -0.045em; }
+:root[data-brand="v2"] .v2-display-l  { font-size: clamp(34px, 4.8vw, 76px);  line-height: 1.02; letter-spacing: -0.038em; }
+:root[data-brand="v2"] .v2-display-m  { font-size: clamp(26px, 2.8vw, 44px);  line-height: 1.08; letter-spacing: -0.028em; }
+:root[data-brand="v2"] .v2-display-s  { font-size: clamp(20px, 1.6vw, 24px);  line-height: 1.2;  letter-spacing: -0.015em; }
+
+.v2-lead {
+  font-size: clamp(17px, 1.35vw, 21px);
+  line-height: 1.5;
+  color: var(--v2-ink-2);
+  text-wrap: pretty;
+}
+.v2-on-dark .v2-lead { color: rgba(255, 255, 255, 0.74); }
+.v2-body { font-size: 16px; line-height: 1.6; color: var(--v2-ink-2); }
+.v2-on-dark .v2-body { color: rgba(255, 255, 255, 0.7); }
+
+/* Caption with a short vertical rule (Joby). */
+.v2-caption {
+  border-left: 1px solid currentColor;
+  padding-left: 18px;
+}
+
+/* Buttons: a label plus a separate square arrow chip (Integrated Bio).
+   The arrow slides on hover, nothing else moves. */
+.v2-btn {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 4px;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.v2-btn__label,
+.v2-btn__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  border-radius: 10px;
+  transition: background-color 0.3s var(--v2-ease), color 0.3s var(--v2-ease);
+}
+.v2-btn__label { padding-inline: 20px; background: var(--v2-ink); color: #ffffff; }
+.v2-btn__chip { width: 48px; background: var(--v2-violet-mid); color: #ffffff; overflow: hidden; }
+.v2-btn__chip svg { transition: transform 0.45s var(--v2-ease); }
+.v2-btn:hover .v2-btn__label { background: #000000; }
+.v2-btn:hover .v2-btn__chip { background: var(--v2-violet); }
+.v2-btn:hover .v2-btn__chip svg { transform: translateX(3px); }
+.v2-btn--light .v2-btn__label { background: #ffffff; color: var(--v2-ink); }
+.v2-btn--light .v2-btn__chip { background: var(--v2-lilac); color: var(--v2-ink); }
+.v2-btn--light:hover .v2-btn__label { background: var(--v2-lilac-light); }
+.v2-btn--light:hover .v2-btn__chip { background: #ffffff; }
+.v2-btn--sm .v2-btn__label,
+.v2-btn--sm .v2-btn__chip { height: 40px; border-radius: 8px; }
+.v2-btn--sm .v2-btn__chip { width: 40px; }
+
+.v2-link {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 600;
+  color: var(--v2-ink);
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 100% 1px;
+  padding-bottom: 2px;
+  transition: background-size 0.4s var(--v2-ease), color 0.3s;
+}
+.v2-link:hover { background-size: 0% 1px; background-position: 100% 100%; color: var(--v2-violet-mid); }
+.v2-on-dark .v2-link { color: #ffffff; }
+
+.v2-rule { border: 0; border-top: 1px solid var(--v2-line); margin: 0; }
+.v2-on-dark .v2-rule { border-top-color: rgba(255, 255, 255, 0.16); }
+
+:root[data-brand="v2"] :focus-visible {
+  outline: 2px solid var(--v2-violet-mid);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Navbar mega panel: the page behind softens instead of being covered. */
+:root[data-brand="v2"] body > main,
+:root[data-brand="v2"] body > footer,
+:root[data-brand="v2"] body > .v2-only > footer {
+  transition: filter 0.4s var(--v2-ease);
+}
+:root[data-brand="v2"] body.v2-nav-open > main,
+:root[data-brand="v2"] body.v2-nav-open footer {
+  filter: blur(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-brand="v2"] *,
+  :root[data-brand="v2"] *::before,
+  :root[data-brand="v2"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

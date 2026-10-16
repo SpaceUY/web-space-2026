@@ -1,0 +1,13 @@
+---
+/** Numbered section label: index, short rule, then the label ("02  Services"). */
+interface Props {
+  index?: string;
+  class?: string;
+}
+const { index, class: className = "" } = Astro.props;
+---
+
+<p class:list={["v2-label", className]}>
+  {index && <span class="v2-label__index">{index}</span>}
+  <span><slot /></span>
+</p>

@@ -10,6 +10,7 @@ import { homeGraphJsonLd, organizationSlimJsonLd, SITE } from "../lib/seo";
 import { BRAND_DEFAULT, BRAND_LAB } from "../lib/brand-lab";
 import BrandInit from "../components/brand-lab/BrandInit.astro";
 import BrandToggle from "../components/brand-lab/BrandToggle.astro";
+import HeaderV2 from "../components/v2/HeaderV2.astro";
 
 interface Props {
   title?: string;
@@ -283,7 +284,14 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
     )}
   </head>
   <body class="min-h-screen flex flex-col bg-sd-dark text-white antialiased">
-    <Header />
+    {BRAND_LAB ? (
+      <>
+        <div class="v1-only"><Header /></div>
+        <div class="v2-only"><HeaderV2 /></div>
+      </>
+    ) : (
+      <Header />
+    )}
 
     <main id="main-content" class="flex-1 relative">
       {showAutoBreadcrumbs && (

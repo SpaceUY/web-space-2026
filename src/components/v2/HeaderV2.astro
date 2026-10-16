@@ -1,0 +1,486 @@
+---
+/**
+ * Brand v2 header, modelled on Voiceflow's navbar:
+ * - transparent over the page at the top; once scrolled, the logo, the links
+ *   and the CTA each sit on their own frosted "veil" (light or dark, picked
+ *   from whatever is behind the bar, so it never needs per-page config);
+ * - hovering an entry with a menu opens one wide panel under the bar whose
+ *   height glides between menus while the page behind softens with a blur.
+ * Below 1000px it shows the logo and a menu button that opens the existing
+ * mobile menu.
+ */
+import {
+  aboutNavItems,
+  blockchainNavItems,
+  industryNavItems,
+  navFeatures,
+  navTopItems,
+  otherExpertiseNavItems,
+  type NavItem,
+  type NavMenuId,
+} from "../../data/navigation";
+import V2Arrow from "./V2Arrow.astro";
+import V2Button from "./V2Button.astro";
+
+interface MenuColumn {
+  title: string;
+  href?: string;
+  items: NavItem[];
+  twoColumns?: boolean;
+}
+
+const menus: Record<NavMenuId, MenuColumn[]> = {
+  expertise: [
+    { title: "Blockchain Development", href: "/blockchain-development-services", items: blockchainNavItems },
+    { title: "Services", items: otherExpertiseNavItems },
+  ],
+  industries: [{ title: "Industries", items: industryNavItems, twoColumns: true }],
+  about: [{ title: "About", items: aboutNavItems }],
+};
+const menuIds = Object.keys(menus) as NavMenuId[];
+---
+
+<header class="v2-nav" data-v2-nav data-theme="dark">
+  <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
+  <div class="v2-nav__scrim" aria-hidden="true"></div>
+
+  <div class="v2-nav__bar v2-container">
+    <a href="/" class="v2-nav__group v2-nav__logo" aria-label="SpaceDev home">
+      <img src="/images/brand/v2/logo-blanco.webp" alt="" width="345" height="96" class="v2-nav__logo-img v2-nav__logo-img--on-dark" />
+      <img src="/images/brand/v2/logo-violeta.webp" alt="" width="345" height="96" class="v2-nav__logo-img v2-nav__logo-img--on-light" />
+    </a>
+
+    <nav class="v2-nav__group v2-nav__links" aria-label="Primary">
+      {navTopItems.map((item) =>
+        item.menu ? (
+          <button type="button" class="v2-nav__link" data-menu-trigger={item.menu} aria-expanded="false" aria-controls={`v2-menu-${item.menu}`}>
+            {item.label}
+            <svg class="v2-nav__chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </button>
+        ) : (
+          <a href={item.href} class="v2-nav__link" data-menu-plain>{item.label}</a>
+        )
+      )}
+    </nav>
+
+    <div class="v2-nav__cta">
+      <V2Button href="/contact" size="sm">Get in touch</V2Button>
+    </div>
+
+    <button type="button" class="v2-nav__group v2-nav__burger" data-v2-burger aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 7h16M3 15h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+    </button>
+  </div>
+
+  <div class="v2-nav__panel v2-container">
+    <div class="v2-nav__card" data-panel-card>
+      {menuIds.map((id) => {
+        const feature = navFeatures[id];
+        return (
+          <div class="v2-nav__menu" id={`v2-menu-${id}`} data-menu={id}>
+            <div class="v2-nav__cols">
+              {menus[id].map((column) => (
+                <div class:list={["v2-nav__col", { "v2-nav__col--wide": column.twoColumns }]}>
+                  <p class="v2-label v2-nav__col-title">
+                    {column.href ? <a href={column.href} class="v2-nav__col-link">{column.title} <V2Arrow size={11} /></a> : column.title}
+                  </p>
+                  <ul class:list={["v2-nav__list", { "v2-nav__list--two": column.twoColumns }]}>
+                    {column.items.map((entry) => (
+                      <li>
+                        <a href={entry.href} class="v2-nav__item">
+                          <span>{entry.label}</span>
+                          <V2Arrow size={12} />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <a
+              href={feature.href}
+              class="v2-nav__feature"
+              {...(feature.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            >
+              <img src={feature.image} alt="" loading="lazy" decoding="async" class="v2-nav__feature-img" />
+              <span class="v2-label v2-nav__feature-eyebrow">{feature.eyebrow}</span>
+              <span class="v2-nav__feature-title">{feature.title}</span>
+              <span class="v2-nav__feature-arrow"><V2Arrow diagonal={feature.external} /></span>
+            </a>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>("[data-v2-nav]");
+  const card = header?.querySelector<HTMLElement>("[data-panel-card]");
+
+  if (header && card) {
+    const root = document.documentElement;
+    const triggers = Array.from(header.querySelectorAll<HTMLButtonElement>("[data-menu-trigger]"));
+    const menus = Array.from(header.querySelectorAll<HTMLElement>("[data-menu]"));
+    const plainLinks = Array.from(header.querySelectorAll<HTMLElement>("[data-menu-plain]"));
+    const isActive = () => root.getAttribute("data-brand") === "v2";
+    let openId: string | null = null;
+    let closeTimer = 0;
+
+    function open(id: string): void {
+      window.clearTimeout(closeTimer);
+      if (openId === id) return;
+      openId = id;
+      header!.dataset.open = id;
+      menus.forEach((menu) => menu.toggleAttribute("data-active", menu.dataset.menu === id));
+      triggers.forEach((trigger) => trigger.setAttribute("aria-expanded", String(trigger.dataset.menuTrigger === id)));
+      const active = menus.find((menu) => menu.dataset.menu === id);
+      if (active) card!.style.height = `${active.offsetHeight}px`;
+      document.body.classList.add("v2-nav-open");
+    }
+
+    function close(): void {
+      window.clearTimeout(closeTimer);
+      if (!openId) return;
+      openId = null;
+      delete header!.dataset.open;
+      triggers.forEach((trigger) => trigger.setAttribute("aria-expanded", "false"));
+      document.body.classList.remove("v2-nav-open");
+    }
+
+    const scheduleClose = () => {
+      window.clearTimeout(closeTimer);
+      closeTimer = window.setTimeout(close, 140);
+    };
+
+    triggers.forEach((trigger) => {
+      const id = trigger.dataset.menuTrigger ?? "";
+      trigger.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse") open(id);
+      });
+      trigger.addEventListener("click", () => (openId === id ? close() : open(id)));
+    });
+    plainLinks.forEach((link) => link.addEventListener("pointerenter", scheduleClose));
+    header.addEventListener("pointerleave", scheduleClose);
+    card.addEventListener("pointerenter", () => window.clearTimeout(closeTimer));
+    header.addEventListener("focusout", (event) => {
+      const next = event.relatedTarget as Node | null;
+      if (!next || !header.contains(next)) close();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !openId) return;
+      const trigger = triggers.find((candidate) => candidate.dataset.menuTrigger === openId);
+      close();
+      trigger?.focus();
+    });
+
+    /* Veils appear once the page moves, and their tone follows what is
+       behind the bar: the first ancestor under its centre with a background
+       colour decides, and sections can force it with data-nav-theme. */
+    function themeBehindBar(): "dark" | "light" {
+      const stack = document.elementsFromPoint(window.innerWidth / 2, 36);
+      const target = stack.find((element) => !header!.contains(element));
+      let node: Element | null = target ?? null;
+      while (node && node !== root) {
+        const forced = node.getAttribute("data-nav-theme");
+        if (forced === "dark" || forced === "light") return forced;
+        const color = getComputedStyle(node).backgroundColor;
+        const match = color.match(/rgba?\(([^)]+)\)/);
+        if (match) {
+          const [r, g, b, a = "1"] = match[1].split(",").map((part) => part.trim());
+          if (Number(a) > 0.5) {
+            const luminance = (0.2126 * Number(r) + 0.7152 * Number(g) + 0.0722 * Number(b)) / 255;
+            return luminance < 0.55 ? "dark" : "light";
+          }
+        }
+        node = node.parentElement;
+      }
+      return "dark";
+    }
+
+    let ticking = false;
+    function update(): void {
+      ticking = false;
+      if (!isActive()) return;
+      header!.toggleAttribute("data-scrolled", window.scrollY > 24);
+      header!.dataset.theme = themeBehindBar();
+    }
+    const requestUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    new MutationObserver(requestUpdate).observe(root, { attributes: true, attributeFilter: ["data-brand"] });
+    update();
+
+    /* Mobile: reuse the existing full-screen menu. Its close button is wired
+       by the v1 header script. */
+    const burger = header.querySelector<HTMLButtonElement>("[data-v2-burger]");
+    const mobileMenu = document.getElementById("mobile-menu");
+    burger?.addEventListener("click", () => {
+      if (!mobileMenu) return;
+      mobileMenu.style.display = "block";
+      requestAnimationFrame(() => {
+        mobileMenu.style.opacity = "1";
+      });
+      burger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    });
+  }
+</script>
+
+<style>
+  .v2-nav {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    height: 72px;
+    color: #ffffff;
+    font-family: "Open Sans", Arial, sans-serif;
+  }
+  .v2-nav[data-theme="light"],
+  .v2-nav[data-open] {
+    color: var(--v2-ink);
+  }
+
+  .v2-nav__scrim {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: rgba(20, 19, 19, 0.18);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s var(--v2-ease);
+  }
+  .v2-nav[data-open] .v2-nav__scrim { opacity: 1; }
+
+  .v2-nav__bar {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  /* Frosted veil behind each group, Voiceflow style. */
+  .v2-nav__group {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    border-radius: 12px;
+  }
+  .v2-nav__group::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: rgba(249, 249, 249, 0.74);
+    border: 1px solid rgba(20, 19, 19, 0.06);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    opacity: 0;
+    transition: opacity 0.35s var(--v2-ease), background-color 0.35s var(--v2-ease);
+  }
+  .v2-nav[data-scrolled] .v2-nav__group::before,
+  .v2-nav[data-open] .v2-nav__group::before { opacity: 1; }
+  .v2-nav[data-theme="dark"]:not([data-open]) .v2-nav__group::before {
+    background: rgba(20, 19, 19, 0.42);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  .v2-nav[data-open] .v2-nav__group::before { background: #ffffff; }
+
+  .v2-nav__logo { padding-inline: 14px; }
+  .v2-nav__logo-img { height: 26px; width: auto; }
+  .v2-nav__logo-img--on-light { display: none; }
+  .v2-nav[data-theme="light"] .v2-nav__logo-img--on-dark,
+  .v2-nav[data-open] .v2-nav__logo-img--on-dark { display: none; }
+  .v2-nav[data-theme="light"] .v2-nav__logo-img--on-light,
+  .v2-nav[data-open] .v2-nav__logo-img--on-light { display: block; }
+
+  .v2-nav__links {
+    padding-inline: 6px;
+    gap: 2px;
+  }
+  .v2-nav__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding-inline: 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: inherit;
+    transition: opacity 0.25s var(--v2-ease);
+  }
+  /* Hovering one entry quiets the others, so the eye lands where the pointer is. */
+  .v2-nav__links:hover .v2-nav__link:not(:hover):not([aria-expanded="true"]) { opacity: 0.5; }
+  .v2-nav__chevron { transition: transform 0.35s var(--v2-ease); }
+  .v2-nav__link[aria-expanded="true"] .v2-nav__chevron { transform: rotate(180deg); }
+
+  .v2-nav[data-theme="dark"]:not([data-open]) .v2-nav__cta :global(.v2-btn__label) {
+    background: #ffffff;
+    color: var(--v2-ink);
+  }
+  .v2-nav[data-theme="dark"]:not([data-open]) .v2-nav__cta :global(.v2-btn__chip) {
+    background: var(--v2-lilac);
+    color: var(--v2-ink);
+  }
+
+  .v2-nav__burger {
+    display: none;
+    width: 48px;
+    justify-content: center;
+    color: inherit;
+  }
+
+  /* Mega panel */
+  .v2-nav__panel {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
+  .v2-nav__card {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #ffffff;
+    color: var(--v2-ink);
+    box-shadow: 0 30px 60px -20px rgba(20, 19, 19, 0.25), 0 0 0 1px rgba(20, 19, 19, 0.05);
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      height 0.45s var(--v2-ease),
+      opacity 0.25s var(--v2-ease),
+      transform 0.45s var(--v2-ease);
+  }
+  .v2-nav[data-open] .v2-nav__card {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .v2-nav__menu {
+    position: absolute;
+    inset: 0 0 auto 0;
+    display: grid;
+    grid-template-columns: 1fr minmax(260px, 30%);
+    gap: 32px;
+    padding: 32px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.3s var(--v2-ease), transform 0.4s var(--v2-ease), visibility 0s linear 0.3s;
+  }
+  .v2-nav__menu[data-active] {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0.06s, 0.06s, 0s;
+  }
+  .v2-nav__cols {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+  .v2-nav__col--wide { grid-column: span 2; }
+  .v2-nav__col-title { margin-bottom: 14px; }
+  .v2-nav__col-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--v2-violet-mid);
+  }
+  .v2-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    border-top: 1px solid var(--v2-line);
+  }
+  .v2-nav__list--two {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
+  .v2-nav__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--v2-line);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--v2-ink);
+    transition: color 0.25s var(--v2-ease), padding 0.35s var(--v2-ease);
+  }
+  .v2-nav__item :global(svg) {
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.25s var(--v2-ease), transform 0.35s var(--v2-ease);
+    color: var(--v2-violet-mid);
+  }
+  .v2-nav__item:hover { color: var(--v2-violet-mid); padding-left: 6px; }
+  .v2-nav__item:hover :global(svg) { opacity: 1; transform: none; }
+
+  .v2-nav__feature {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 8px;
+    min-height: 280px;
+    padding: 22px;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #ffffff;
+    background: var(--sd-brand-apertura);
+  }
+  .v2-nav__feature-img {
+    position: absolute;
+    top: 10px;
+    right: -6%;
+    width: 78%;
+    height: auto;
+    transition: transform 0.8s var(--v2-ease);
+  }
+  .v2-nav__feature:hover .v2-nav__feature-img { transform: translateY(-6px) scale(1.03); }
+  .v2-nav__feature-eyebrow { position: relative; color: rgba(255, 255, 255, 0.75); }
+  .v2-nav__feature-title {
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    max-width: 22ch;
+  }
+  .v2-nav__feature-arrow {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(8px);
+  }
+
+  @media (max-width: 999px) {
+    .v2-nav__links,
+    .v2-nav__cta,
+    .v2-nav__panel { display: none; }
+    .v2-nav__burger { display: flex; }
+  }
+</style>

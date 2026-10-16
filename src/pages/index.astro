@@ -19,6 +19,8 @@ import {
 import { featuredCaseStudies } from "../data/case-studies";
 import { getAuthor } from "../data/authors";
 import { getCollection } from "astro:content";
+import { BRAND_LAB } from "../lib/brand-lab";
+import HomeV2 from "../components/v2/home/HomeV2.astro";
 
 const recentPosts = (await getCollection("blog"))
   .filter((p) => !p.data.draft)
@@ -41,6 +43,7 @@ const accentByCategory: Record<string, string> = {
   title="SpaceDev | Blockchain Development Company & Web3 Experts"
   description="Blockchain development company building Web3, web, and mobile products, with nearshore IT staff augmentation from LATAM. Let's build your product."
 >
+  <div class="v1-only">
   <!-- HERO (dark) -->
   <!-- Stops short of the full viewport so the next section peeks and invites scrolling
        (NN/g: avoid full-screen hero content). Bottom-aligned on mobile to avoid dead
@@ -546,6 +549,12 @@ const accentByCategory: Record<string, string> = {
     </div>
   </section>
 
+  </div>
+  {BRAND_LAB && (
+    <div class="v2-only">
+      <HomeV2 recentPosts={recentPosts} />
+    </div>
+  )}
 </BaseLayout>
 
 

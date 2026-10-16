@@ -1,0 +1,67 @@
+---
+/**
+ * Statement that fills in word by word as it scrolls through the viewport
+ * (Integrated Bio, Joby). It paces the reading instead of decorating it:
+ * the text is always there and legible in a light tone, and the scroll only
+ * darkens the words already passed. With reduced motion it renders fully dark.
+ */
+interface Props {
+  text: string;
+  as?: "p" | "h2" | "blockquote";
+  class?: string;
+}
+
+const { text, as: Tag = "p", class: className = "" } = Astro.props;
+const words = text.split(/\s+/).filter(Boolean);
+---
+
+<Tag class:list={["v2-fill", className]} data-v2-fill>
+  {words.map((word, index) => (
+    <span class="v2-fill__word" data-i={index}>{word}{index < words.length - 1 ? " " : ""}</span>
+  ))}
+</Tag>
+
+<script>
+  const blocks = Array.from(document.querySelectorAll<HTMLElement>("[data-v2-fill]"));
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function paint(): void {
+    const viewport = window.innerHeight;
+    blocks.forEach((block) => {
+      const words = block.querySelectorAll<HTMLElement>(".v2-fill__word");
+      if (reduced) {
+        words.forEach((word) => word.classList.add("is-lit"));
+        return;
+      }
+      const rect = block.getBoundingClientRect();
+      const start = viewport * 0.85;
+      const distance = rect.height + viewport * 0.35;
+      const progress = Math.min(1, Math.max(0, (start - rect.top) / distance));
+      const lit = Math.round(progress * words.length);
+      words.forEach((word, index) => word.classList.toggle("is-lit", index < lit));
+    });
+  }
+
+  let queued = false;
+  const request = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      paint();
+    });
+  };
+  window.addEventListener("scroll", request, { passive: true });
+  window.addEventListener("resize", request);
+  paint();
+</script>
+
+<style>
+  .v2-fill__word {
+    color: var(--v2-fill-off, #c9c4c0);
+    transition: color 0.35s var(--v2-ease, ease);
+  }
+  .v2-fill__word.is-lit {
+    color: var(--v2-fill-on, #141313);
+  }
+</style>
