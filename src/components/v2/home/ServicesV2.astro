@@ -71,7 +71,7 @@ const scenes = homeServices.map((service) => homeServiceOrbits[service.href]);
         if (entry.isIntersecting) setActive(Number((entry.target as HTMLElement).dataset.serviceItem));
       });
     },
-    { rootMargin: "-45% 0px -50% 0px" }
+    { rootMargin: "-40% 0px -55% 0px" }
   );
   items.forEach((item) => readingObserver.observe(item));
 
@@ -89,11 +89,11 @@ const scenes = homeServices.map((service) => homeServiceOrbits[service.href]);
   }
   .services__list { grid-column: 1 / span 5; }
   .services__item {
-    min-height: 62vh;
+    min-height: 44vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-block: 48px;
+    padding-block: 36px;
     border-top: 1px solid var(--v2-line);
     opacity: 0.32;
     transition: opacity 0.5s var(--v2-ease);
@@ -140,6 +140,6 @@ const scenes = homeServices.map((service) => homeServiceOrbits[service.href]);
     .services__stage { grid-column: auto; }
     .services__stage { order: -1; position: sticky; top: 64px; z-index: 1; background: var(--v2-canvas); }
     .services__sticky { position: relative; top: auto; width: min(100%, 40vh); margin-inline: auto; }
-    .services__item { min-height: 55vh; }
+    .services__item { min-height: 46vh; }
   }
 </style>

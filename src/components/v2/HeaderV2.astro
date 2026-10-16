@@ -1,8 +1,9 @@
 ---
 /**
  * Brand v2 header, after Voiceflow's navbar:
- * - at the top, a light full-width bar: logo left, links centred, actions
- *   right, sitting on the page itself;
+ * - at the top, a transparent full-width bar: logo left, links centred,
+ *   actions right, lying on whatever the page starts with (white text over
+ *   a dark hero, dark text over a light one, picked from what is behind);
  * - once the page scrolls, the whole bar condenses into one narrower,
  *   centred, frosted bar that floats over the content;
  * - hovering an entry with a menu opens one wide panel under the bar, its
@@ -41,14 +42,15 @@ const menuIds = Object.keys(menus) as NavMenuId[];
 const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
 ---
 
-<header class="v2-nav" data-v2-nav>
+<header class="v2-nav" data-v2-nav data-theme="dark">
   <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
   <div class="v2-nav__scrim" aria-hidden="true"></div>
 
   <div class="v2-nav__frame">
     <div class="v2-nav__bar">
       <a href="/" class="v2-nav__logo" aria-label="SpaceDev home">
-        <img src="/images/brand/v2/logo-violeta.webp" alt="" width="345" height="96" class="v2-nav__logo-img" />
+        <img src="/images/brand/v2/logo-violeta.webp" alt="" width="345" height="96" class="v2-nav__logo-img v2-nav__logo-img--on-light" />
+        <img src="/images/brand/v2/logo-blanco.webp" alt="" width="345" height="96" class="v2-nav__logo-img v2-nav__logo-img--on-dark" />
       </a>
 
       <nav class="v2-nav__links" aria-label="Primary">
@@ -174,16 +176,39 @@ const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
       trigger?.focus();
     });
 
+    /* Tone of whatever sits behind the bar: the first ancestor under its
+       centre with an opaque background decides; sections can force it with
+       data-nav-theme. Only matters at the top, before the bar turns to glass. */
+    const themeBehind = (): "dark" | "light" => {
+      const stack = document.elementsFromPoint(window.innerWidth / 2, 36);
+      let node: Element | null = stack.find((element) => !header!.contains(element)) ?? null;
+      while (node && node !== document.documentElement) {
+        const forced = node.getAttribute("data-nav-theme");
+        if (forced === "dark" || forced === "light") return forced;
+        const match = getComputedStyle(node).backgroundColor.match(/rgba?\(([^)]+)\)/);
+        if (match) {
+          const [r, g, b, a = "1"] = match[1].split(",").map((part) => part.trim());
+          if (Number(a) > 0.5) return (0.2126 * Number(r) + 0.7152 * Number(g) + 0.0722 * Number(b)) / 255 < 0.55 ? "dark" : "light";
+        }
+        node = node.parentElement;
+      }
+      return "light";
+    };
+
     let ticking = false;
     const update = () => {
       ticking = false;
+      if (document.documentElement.getAttribute("data-brand") !== "v2") return;
       header!.toggleAttribute("data-scrolled", window.scrollY > 24);
+      header!.dataset.theme = themeBehind();
     };
     window.addEventListener("scroll", () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(update);
     }, { passive: true });
+    window.addEventListener("resize", update);
+    new MutationObserver(update).observe(document.documentElement, { attributes: true, attributeFilter: ["data-brand"] });
     update();
 
     /* Mobile: reuse the existing full-screen menu. Its close button is wired
@@ -217,17 +242,8 @@ const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
     --bar-width: 1120px;
     --bar-height: 56px;
   }
-
-  /* At the top the header is the page: solid canvas behind the bar. */
-  .v2-nav::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: var(--v2-canvas);
-    transition: opacity 0.35s var(--v2-ease);
-  }
-  .v2-nav[data-scrolled]::before { opacity: 0; }
+  /* Over a dark hero, before the bar turns to glass: light text and logo. */
+  .v2-nav[data-theme="dark"]:not([data-scrolled]):not([data-open]) { color: #ffffff; }
 
   .v2-nav__scrim {
     position: fixed;
@@ -279,6 +295,9 @@ const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
 
   .v2-nav__logo { justify-self: start; display: inline-flex; }
   .v2-nav__logo-img { height: 26px; width: auto; transition: height 0.45s var(--v2-ease); }
+  .v2-nav__logo-img--on-dark { display: none; }
+  .v2-nav[data-theme="dark"]:not([data-scrolled]):not([data-open]) .v2-nav__logo-img--on-dark { display: block; }
+  .v2-nav[data-theme="dark"]:not([data-scrolled]):not([data-open]) .v2-nav__logo-img--on-light { display: none; }
   .v2-nav[data-scrolled] .v2-nav__logo-img { height: 22px; }
 
   .v2-nav__links { display: flex; align-items: center; gap: 4px; }
@@ -295,6 +314,8 @@ const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
   }
   .v2-nav__link:hover,
   .v2-nav__link[aria-expanded="true"] { color: var(--v2-ink); }
+  .v2-nav[data-theme="dark"]:not([data-scrolled]):not([data-open]) .v2-nav__link { color: rgba(255, 255, 255, 0.72); }
+  .v2-nav[data-theme="dark"]:not([data-scrolled]):not([data-open]) .v2-nav__link:hover { color: #ffffff; }
   .v2-nav__chevron { transition: transform 0.35s var(--v2-ease); }
   .v2-nav__link[aria-expanded="true"] .v2-nav__chevron { transform: rotate(180deg); }
 
