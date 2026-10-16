@@ -1,351 +1,235 @@
 /**
- * Orbital scenes for the brand v2 services (canvas 2D, no library). Each
- * service has one object at its centre that says what it is (a chain of
- * blocks, a browser and a phone, a crew, a radar, a shield) set inside a
- * tilted orbital system. Things in orbit leave a short trail and shrink and
- * fade on the far side, which gives the flat drawing its depth. A new scene
- * draws itself in quickly while the previous one fades out.
+ * Orbital scenes for the brand v2 services (canvas 2D, no library), in a
+ * restrained line style: 1px orbits in violet, fainter on the far side and
+ * stronger on the near side, small nodes, and one accent node per scene that
+ * leaves a thin comet tail. Nothing is filled except the nodes. Each service
+ * is told by composition alone:
+ * - chain:   blocks on one orbit, linked edge to edge;
+ * - devices: two orbits whose nodes move in step, joined by a live link;
+ * - team:    a crew in formation and one more closing in from outside;
+ * - radar:   rings, a sweep and signals that ping as it passes;
+ * - shield:  a segmented ring a scanner verifies piece by piece.
+ * Switching service cross-fades the old scene into the new one.
  */
 
 export type OrbitId = "chain" | "devices" | "team" | "radar" | "shield";
 
-const C = {
-  orbit: "rgba(91, 55, 198, 0.22)",
-  line: "rgba(91, 55, 198, 0.55)",
-  strong: "#5b37c6",
-  deep: "#3b1b99",
-  accent: "#8e6eec",
-  lilac: "#c8b5ff",
-  pale: "#e4dbff",
-  text: "#787472",
-};
-
 const TAU = Math.PI * 2;
-const easeOut = (x: number) => 1 - (1 - Math.min(1, Math.max(0, x))) ** 3;
+const SQUASH = 0.4;
+const ink = (alpha: number) => `rgba(91, 55, 198, ${alpha})`;
+const ACCENT = "#8e6eec";
+const CORE = "#3b1b99";
+const TEXT = "#787472";
+
+type Point = [number, number, number];
 
 interface Frame {
   g: CanvasRenderingContext2D;
   t: number;
   r: number;
-  /** 0..1 while the scene draws itself in. */
-  draw: number;
 }
 
-type Point = [number, number];
+const easeOut = (x: number) => 1 - (1 - Math.min(1, Math.max(0, x))) ** 3;
 
-/** Point on a tilted ellipse, plus depth (-1 far side, 1 near side). */
-function onOrbit(rx: number, ry: number, angle: number): { p: Point; depth: number } {
-  return { p: [Math.cos(angle) * rx, Math.sin(angle) * ry], depth: Math.sin(angle) };
-}
-
-function ring(f: Frame, rx: number, ry: number, dashed = false, delay = 0): void {
-  const { g } = f;
-  const progress = easeOut((f.draw - delay) / (1 - delay || 1));
-  if (progress <= 0) return;
-  g.save();
-  g.strokeStyle = C.orbit;
+/** Orbit drawn in short segments, fainter behind and stronger in front. */
+function orbit(g: CanvasRenderingContext2D, rx: number, ry: number): void {
+  const steps = 96;
   g.lineWidth = 1;
-  g.setLineDash(dashed ? [2, 5] : []);
-  g.beginPath();
-  g.ellipse(0, 0, rx, ry, 0, Math.PI / 2, Math.PI / 2 + TAU * progress);
-  g.stroke();
-  g.restore();
-}
-
-/** Fading trail behind something in orbit. */
-function trail(g: CanvasRenderingContext2D, at: (t: number) => Point, t: number, color: string, size = 2): void {
-  for (let i = 8; i >= 1; i -= 1) {
-    const [x, y] = at(t - i * 0.045);
-    g.globalAlpha = (1 - i / 9) * 0.35;
-    g.fillStyle = color;
+  for (let i = 0; i < steps; i += 1) {
+    const a0 = (i / steps) * TAU;
+    const a1 = ((i + 1) / steps) * TAU;
+    const depth = (Math.sin((a0 + a1) / 2) + 1) / 2;
+    g.strokeStyle = ink(0.1 + 0.35 * depth);
     g.beginPath();
-    g.arc(x, y, size * (1 - i / 12), 0, TAU);
-    g.fill();
+    g.moveTo(Math.cos(a0) * rx, Math.sin(a0) * ry);
+    g.lineTo(Math.cos(a1) * rx, Math.sin(a1) * ry);
+    g.stroke();
   }
-  g.globalAlpha = 1;
 }
 
-/** Small isometric cube; `s` is its edge, shaded by face. */
-function cube(g: CanvasRenderingContext2D, [x, y]: Point, s: number, alpha: number): void {
-  const h = s * 0.5;
-  g.globalAlpha = alpha;
-  g.fillStyle = C.pale;
-  g.beginPath();
-  g.moveTo(x, y - s);
-  g.lineTo(x + s * 0.87, y - h);
-  g.lineTo(x, y);
-  g.lineTo(x - s * 0.87, y - h);
-  g.closePath();
-  g.fill();
-  g.fillStyle = C.accent;
-  g.beginPath();
-  g.moveTo(x - s * 0.87, y - h);
-  g.lineTo(x, y);
-  g.lineTo(x, y + s);
-  g.lineTo(x - s * 0.87, y + h);
-  g.closePath();
-  g.fill();
-  g.fillStyle = C.strong;
-  g.beginPath();
-  g.moveTo(x + s * 0.87, y - h);
-  g.lineTo(x, y);
-  g.lineTo(x, y + s);
-  g.lineTo(x + s * 0.87, y + h);
-  g.closePath();
-  g.fill();
-  g.globalAlpha = 1;
+/** Position on an orbit plus its depth (0 far side, 1 near side). */
+function at(rx: number, ry: number, angle: number): Point {
+  return [Math.cos(angle) * rx, Math.sin(angle) * ry, (Math.sin(angle) + 1) / 2];
 }
 
-/* ── Blockchain: blocks riding an orbit, each linked to the next ───────── */
-function chain(f: Frame): void {
-  const { g, r, t, draw } = f;
-  const rx = r * 0.95;
-  const ry = r * 0.38;
-  ring(f, rx, ry);
-  ring(f, r * 1.12, r * 0.47, true, 0.2);
-  const count = 8;
-  const spin = t * 0.28;
-  const blocks = Array.from({ length: count }, (_, i) => onOrbit(rx, ry, spin + (i / count) * TAU));
-  const shown = Math.ceil(count * easeOut(draw));
-  g.strokeStyle = C.line;
-  g.lineWidth = 1.2;
+/** Thin comet tail behind something travelling along an orbit. */
+function tail(g: CanvasRenderingContext2D, rx: number, ry: number, angle: number, length: number): void {
+  const steps = 24;
+  for (let i = 0; i < steps; i += 1) {
+    const b0 = angle - (length * i) / steps;
+    const b1 = angle - (length * (i + 1)) / steps;
+    g.strokeStyle = ink(0.55 * (1 - i / steps));
+    g.lineWidth = 1.5 * (1 - i / steps) + 0.3;
+    g.beginPath();
+    g.moveTo(Math.cos(b0) * rx, Math.sin(b0) * ry);
+    g.lineTo(Math.cos(b1) * rx, Math.sin(b1) * ry);
+    g.stroke();
+  }
+}
+
+function node(g: CanvasRenderingContext2D, [x, y, depth]: Point, radius: number, accent = false): void {
+  g.fillStyle = accent ? ACCENT : ink(0.35 + 0.65 * depth);
   g.beginPath();
-  for (let i = 0; i < shown; i += 1) {
-    const a = blocks[i].p;
-    const b = blocks[(i + 1) % count].p;
+  g.arc(x, y, radius * (0.7 + 0.5 * depth), 0, TAU);
+  g.fill();
+  if (!accent) return;
+  const halo = g.createRadialGradient(x, y, 0, x, y, 14);
+  halo.addColorStop(0, "rgba(142, 110, 236, 0.35)");
+  halo.addColorStop(1, "rgba(142, 110, 236, 0)");
+  g.fillStyle = halo;
+  g.beginPath();
+  g.arc(x, y, 14, 0, TAU);
+  g.fill();
+}
+
+function core(g: CanvasRenderingContext2D, t: number): void {
+  g.fillStyle = CORE;
+  g.beginPath();
+  g.arc(0, 0, 3.5, 0, TAU);
+  g.fill();
+  g.strokeStyle = ink(0.18);
+  g.lineWidth = 1;
+  g.beginPath();
+  g.arc(0, 0, 10 + 2 * Math.sin(t * 1.5), 0, TAU);
+  g.stroke();
+}
+
+function chain({ g, t, r }: Frame): void {
+  const rx = r;
+  const ry = r * SQUASH;
+  orbit(g, rx, ry);
+  core(g, t);
+  const count = 7;
+  const spin = t * 0.25;
+  const blocks = Array.from({ length: count }, (_, i) => at(rx, ry, spin + (i / count) * TAU));
+  g.lineWidth = 1;
+  blocks.forEach((a, i) => {
+    const b = blocks[(i + 1) % count];
+    g.strokeStyle = ink(0.15 + 0.35 * ((a[2] + b[2]) / 2));
+    g.beginPath();
     g.moveTo(a[0], a[1]);
     g.lineTo(b[0], b[1]);
-  }
-  g.stroke();
-  blocks
-    .slice(0, shown)
-    .map((block, i) => ({ ...block, i }))
-    .sort((a, b) => a.depth - b.depth)
-    .forEach(({ p, depth }) => cube(g, p, r * (0.075 + 0.03 * depth), 0.55 + 0.45 * (depth + 1) / 2));
+    g.stroke();
+  });
+  blocks.forEach(([x, y, depth]) => {
+    const size = 4 + 3 * depth;
+    g.fillStyle = ink(0.35 + 0.65 * depth);
+    g.fillRect(x - size / 2, y - size / 2, size, size);
+  });
 }
 
-/* ── Web and mobile: a browser at the centre, a phone orbiting it ──────── */
-function devices(f: Frame): void {
-  const { g, r, t, draw } = f;
-  const rx = r * 1.05;
-  const ry = r * 0.42;
-  ring(f, rx, ry, true);
-  const phoneAt = (time: number): Point => onOrbit(rx, ry, time * 0.5 + 1).p;
-  const phone = onOrbit(rx, ry, t * 0.5 + 1);
-  const drawPhone = () => {
-    trail(g, phoneAt, t, C.accent, 2.4);
-    const scale = 0.8 + 0.25 * (phone.depth + 1) / 2;
-    const w = r * 0.16 * scale;
-    const h = r * 0.3 * scale;
-    const [x, y] = phone.p;
-    g.fillStyle = C.strong;
-    g.fillRect(x - w / 2, y - h / 2, w, h);
-    g.fillStyle = C.pale;
-    g.fillRect(x - w / 2 + 2, y - h / 2 + 4, w - 4, h - 10);
-  };
-  if (phone.depth < 0) drawPhone();
-
-  const w = r * 1.0;
-  const h = r * 0.66;
-  const reveal = easeOut(draw);
-  g.save();
-  g.fillStyle = "#ffffff";
-  g.strokeStyle = C.strong;
-  g.lineWidth = 1.4;
-  g.globalAlpha = reveal;
-  g.fillRect(-w / 2, -h / 2, w, h);
-  g.strokeRect(-w / 2, -h / 2, w, h);
-  g.fillStyle = C.strong;
-  g.fillRect(-w / 2, -h / 2, w, h * 0.12);
-  [0, 1, 2].forEach((i) => {
-    g.fillStyle = C.pale;
-    g.beginPath();
-    g.arc(-w / 2 + 10 + i * 9, -h / 2 + h * 0.06, 2.2, 0, TAU);
-    g.fill();
-  });
-  const rows: Array<[number, number, number, string]> = [
-    [0.18, 0.62, 0.1, C.pale],
-    [0.34, 0.4, 0.05, C.lilac],
-    [0.46, 0.55, 0.05, C.lilac],
-    [0.62, 0.26, 0.2, C.pale],
-  ];
-  rows.forEach(([top, width, height, color], i) => {
-    const grow = easeOut(draw * 1.6 - i * 0.15);
-    g.fillStyle = color;
-    g.fillRect(-w / 2 + w * 0.08, -h / 2 + h * top, w * width * grow, h * height);
-  });
-  g.fillStyle = C.accent;
-  g.fillRect(w * 0.08, -h / 2 + h * 0.62, w * 0.34 * easeOut(draw * 1.6 - 0.6), h * 0.2);
-  g.restore();
-
-  if (phone.depth >= 0) drawPhone();
-  g.strokeStyle = C.line;
+function devices({ g, t, r }: Frame): void {
+  const inner = r * 0.55;
+  const outer = r * 1.05;
+  orbit(g, inner, inner * SQUASH);
+  orbit(g, outer, outer * SQUASH);
+  core(g, t);
+  const angle = t * 0.45;
+  const a = at(inner, inner * SQUASH, angle);
+  const b = at(outer, outer * SQUASH, angle);
+  g.strokeStyle = ink(0.35);
+  g.lineWidth = 1;
   g.setLineDash([2, 4]);
-  g.lineDashOffset = -t * 16;
+  g.lineDashOffset = -t * 14;
   g.beginPath();
-  g.moveTo(phone.p[0], phone.p[1]);
-  g.lineTo(phone.p[0] * 0.45, phone.p[1] * 0.45);
+  g.moveTo(a[0], a[1]);
+  g.lineTo(b[0], b[1]);
   g.stroke();
   g.setLineDash([]);
+  tail(g, inner, inner * SQUASH, angle, 0.9);
+  tail(g, outer, outer * SQUASH, angle, 0.9);
+  node(g, a, 3.5);
+  node(g, b, 4, true);
 }
 
-/* ── Staff augmentation: a crew in formation, one more joining ─────────── */
-function person(g: CanvasRenderingContext2D, [x, y]: Point, s: number, color: string, alpha = 1): void {
-  g.globalAlpha = alpha;
-  g.fillStyle = color;
-  g.beginPath();
-  g.arc(x, y - s * 0.55, s * 0.32, 0, TAU);
-  g.fill();
-  g.beginPath();
-  g.ellipse(x, y + s * 0.35, s * 0.55, s * 0.42, 0, Math.PI, TAU);
-  g.fill();
-  g.globalAlpha = 1;
+function team({ g, t, r }: Frame): void {
+  const crewOrbit = r * 0.8;
+  const outer = r * 1.12;
+  orbit(g, crewOrbit, crewOrbit * SQUASH);
+  orbit(g, outer, outer * SQUASH);
+  core(g, t);
+  const angle = t * 0.3;
+  for (let k = 0; k < 5; k += 1) node(g, at(crewOrbit, crewOrbit * SQUASH, angle + k * 0.22), 3.2);
+  const phase = (t * 0.18) % 1;
+  const radius = r * (1.12 - 0.32 * Math.min(1, phase * 1.3));
+  const joining = angle + 1.35 + phase * 0.6;
+  tail(g, radius, radius * SQUASH, joining, 0.7);
+  node(g, at(radius, radius * SQUASH, joining), 4, true);
 }
 
-function team(f: Frame): void {
-  const { g, r, t, draw } = f;
-  const rx = r * 0.82;
-  const ry = r * 0.34;
-  ring(f, rx, ry);
-  ring(f, r * 1.12, r * 0.48, true, 0.2);
-  const spin = t * 0.22;
-  const crew = Array.from({ length: 6 }, (_, i) => onOrbit(rx, ry, spin + (i / 6) * TAU));
-  const shown = Math.ceil(crew.length * easeOut(draw));
-  g.strokeStyle = C.orbit;
-  g.lineWidth = 1;
-  g.beginPath();
-  crew.slice(0, shown).forEach(({ p }) => {
-    g.moveTo(0, 0);
-    g.lineTo(p[0], p[1]);
-  });
-  g.stroke();
-  person(g, [0, 4], r * 0.16, C.deep);
-  const joinPhase = (t * 0.25) % 1;
-  const joinAt = (time: number): Point => {
-    const phase = (time * 0.25) % 1;
-    const radius = 1.12 - 0.3 * easeOut(phase * 1.4);
-    return onOrbit(r * radius, r * radius * 0.43, spin + 0.55 + phase * 1.2).p;
-  };
-  trail(g, joinAt, t, C.accent, 2.2);
-  crew
-    .slice(0, shown)
-    .sort((a, b) => a.depth - b.depth)
-    .forEach(({ p, depth }) => person(g, p, r * (0.1 + 0.03 * depth), C.strong, 0.55 + 0.45 * (depth + 1) / 2));
-  person(g, joinAt(t), r * 0.1, C.accent, joinPhase < 0.85 ? 1 : (1 - joinPhase) / 0.15);
-}
-
-/* ── Product discovery: a radar sweeping its rings, signals pinging ────── */
-function radar(f: Frame): void {
-  const { g, r, t, draw } = f;
-  const squash = 0.46;
-  [0.36, 0.68, 1.0].forEach((k, i) => ring(f, r * k, r * k * squash, i === 2, i * 0.12));
-  const sweep = (t * 0.85) % TAU;
-  const reveal = easeOut(draw);
+function radar({ g, t, r }: Frame): void {
+  [0.38, 0.7, 1.02].forEach((k) => orbit(g, r * k, r * k * SQUASH));
+  core(g, t);
+  const sweep = (t * 0.8) % TAU;
   g.save();
-  g.globalAlpha = reveal;
-  g.scale(1, squash);
-  const wedge = g.createRadialGradient(0, 0, 0, 0, 0, r);
-  wedge.addColorStop(0, "rgba(142, 110, 236, 0.32)");
+  g.scale(1, SQUASH);
+  const wedge = g.createRadialGradient(0, 0, 0, 0, 0, r * 1.02);
+  wedge.addColorStop(0, "rgba(142, 110, 236, 0.22)");
   wedge.addColorStop(1, "rgba(142, 110, 236, 0)");
   g.fillStyle = wedge;
   g.beginPath();
   g.moveTo(0, 0);
-  g.arc(0, 0, r, sweep - 0.9, sweep);
+  g.arc(0, 0, r * 1.02, sweep - 0.8, sweep);
   g.closePath();
   g.fill();
-  g.strokeStyle = C.strong;
-  g.lineWidth = 1.4;
+  g.strokeStyle = ink(0.6);
+  g.lineWidth = 1;
   g.beginPath();
   g.moveTo(0, 0);
-  g.lineTo(Math.cos(sweep) * r, Math.sin(sweep) * r);
+  g.lineTo(Math.cos(sweep) * r * 1.02, Math.sin(sweep) * r * 1.02);
   g.stroke();
   g.restore();
-  g.fillStyle = C.deep;
-  g.beginPath();
-  g.arc(0, 0, 4, 0, TAU);
-  g.fill();
-  const signals: Array<[number, number]> = [[0.68, 0.6], [0.36, 2.3], [1.0, 3.7], [0.68, 5.0], [1.0, 1.3]];
+  const signals: Array<[number, number]> = [[0.7, 0.6], [0.38, 2.3], [1.02, 3.7], [0.7, 5.0]];
   signals.forEach(([k, angle]) => {
-    const since = ((sweep - angle) % TAU + TAU) % TAU;
-    const glow = Math.max(0, 1 - since / 2.4);
+    const since = (((sweep - angle) % TAU) + TAU) % TAU;
+    const glow = Math.max(0, 1 - since / 2.2);
     const x = Math.cos(angle) * r * k;
-    const y = Math.sin(angle) * r * k * squash;
-    g.globalAlpha = reveal;
-    g.fillStyle = glow > 0.02 ? C.strong : C.lilac;
+    const y = Math.sin(angle) * r * k * SQUASH;
+    g.fillStyle = ink(0.25 + 0.75 * glow);
     g.beginPath();
-    g.arc(x, y, 3 + glow * 2, 0, TAU);
+    g.arc(x, y, 2.5 + glow * 1.5, 0, TAU);
     g.fill();
     if (glow > 0.02) {
-      g.strokeStyle = C.accent;
-      g.globalAlpha = reveal * glow;
+      const ping = 4 + (1 - glow) * 16;
+      g.strokeStyle = ink(0.5 * glow);
       g.beginPath();
-      g.ellipse(x, y, 6 + (1 - glow) * 18, (6 + (1 - glow) * 18) * squash, 0, 0, TAU);
+      g.ellipse(x, y, ping, ping * SQUASH, 0, 0, TAU);
       g.stroke();
     }
   });
-  g.globalAlpha = 1;
 }
 
-/* ── BlockAudit: a shield, a scanner circling it, a check once it passes ─ */
-function shield(f: Frame): void {
-  const { g, r, t, draw } = f;
-  const rx = r * 0.95;
-  const ry = r * 0.4;
-  const cycle = (t * 0.3) % 1;
-  const scanAt = (time: number): Point => onOrbit(rx, ry, ((time * 0.3) % 1) * TAU - Math.PI / 2).p;
-  const scanner = onOrbit(rx, ry, cycle * TAU - Math.PI / 2);
-  ring(f, rx, ry);
-  ring(f, r * 1.12, r * 0.47, true, 0.2);
-  const drawScanner = () => {
-    trail(g, scanAt, t, C.accent, 2.6);
-    g.fillStyle = C.strong;
-    g.fillRect(scanner.p[0] - 4, scanner.p[1] - 4, 8, 8);
-  };
-  if (scanner.depth < 0) drawScanner();
-
-  const s = r * 0.42;
-  const path = new Path2D();
-  path.moveTo(0, -s);
-  path.quadraticCurveTo(s * 0.55, -s * 0.78, s * 0.85, -s * 0.82);
-  path.quadraticCurveTo(s * 0.88, s * 0.35, 0, s);
-  path.quadraticCurveTo(-s * 0.88, s * 0.35, -s * 0.85, -s * 0.82);
-  path.quadraticCurveTo(-s * 0.55, -s * 0.78, 0, -s);
-  const reveal = easeOut(draw);
-  g.save();
-  g.globalAlpha = reveal;
-  g.fillStyle = C.pale;
-  g.fill(path);
-  g.strokeStyle = C.strong;
-  g.lineWidth = 1.6;
-  g.stroke(path);
-  const verified = cycle > 0.55 ? easeOut((cycle - 0.55) / 0.2) : 0;
-  if (verified > 0) {
-    g.strokeStyle = C.deep;
-    g.lineWidth = 3;
-    g.lineCap = "round";
-    g.lineJoin = "round";
+function shield({ g, t, r }: Frame): void {
+  const rx = r;
+  const ry = r * SQUASH;
+  const segments = 28;
+  const cycle = (t * 0.12) % 1.25;
+  const done = Math.min(1, cycle);
+  core(g, t);
+  for (let i = 0; i < segments; i += 1) {
+    const a0 = (i / segments) * TAU - Math.PI / 2 + 0.04;
+    const a1 = a0 + TAU / segments - 0.08;
+    const depth = (Math.sin((a0 + a1) / 2) + 1) / 2;
+    const lit = i / segments < done;
+    g.strokeStyle = lit ? ink(0.45 + 0.5 * depth) : ink(0.1 + 0.2 * depth);
+    g.lineWidth = lit ? 2 : 1;
     g.beginPath();
-    const points: Point[] = [[-s * 0.32, 0], [-s * 0.06, s * 0.26], [s * 0.36, -s * 0.24]];
-    g.moveTo(points[0][0], points[0][1]);
-    const firstLeg = Math.min(1, verified * 2);
-    g.lineTo(points[0][0] + (points[1][0] - points[0][0]) * firstLeg, points[0][1] + (points[1][1] - points[0][1]) * firstLeg);
-    if (verified > 0.5) {
-      const secondLeg = (verified - 0.5) * 2;
-      g.lineTo(points[1][0] + (points[2][0] - points[1][0]) * secondLeg, points[1][1] + (points[2][1] - points[1][1]) * secondLeg);
-    }
+    g.ellipse(0, 0, rx, ry, 0, a0, a1);
     g.stroke();
   }
-  g.restore();
-
-  if (scanner.depth >= 0) drawScanner();
+  if (cycle < 1) {
+    const angle = done * TAU - Math.PI / 2;
+    tail(g, rx, ry, angle, 0.6);
+    node(g, at(rx, ry, angle), 4, true);
+  }
 }
 
-const SCENES: Record<OrbitId, { draw: (f: Frame) => void; telemetry: (t: number) => string }> = {
-  chain: { draw: chain, telemetry: () => "BLOCKS 8  /  CHAIN LINKED" },
+const SCENES: Record<OrbitId, { draw: (frame: Frame) => void; telemetry: (t: number) => string }> = {
+  chain: { draw: chain, telemetry: () => "BLOCKS 7  /  LINKED" },
   devices: { draw: devices, telemetry: () => "WEB + MOBILE  /  IN SYNC" },
-  team: { draw: team, telemetry: () => "CREW 6 + 1  /  JOINING" },
-  radar: { draw: radar, telemetry: (t) => `SCAN ${String(Math.floor((((t * 0.85) % TAU) / TAU) * 360)).padStart(3, "0")}°  /  5 SIGNALS` },
-  shield: { draw: shield, telemetry: (t) => (((t * 0.3) % 1) > 0.55 ? "AUDIT  /  VERIFIED" : "AUDIT  /  SCANNING") },
+  team: { draw: team, telemetry: () => "CREW 5 + 1  /  JOINING" },
+  radar: { draw: radar, telemetry: () => "SCAN  /  4 SIGNALS" },
+  shield: { draw: shield, telemetry: (t) => ((t * 0.12) % 1.25 < 1 ? "AUDIT  /  SCANNING" : "AUDIT  /  VERIFIED") },
 };
 
 export class OrbitScene {
@@ -404,27 +288,26 @@ export class OrbitScene {
     if (!size) return;
     const t = this.reduced ? 4 : now / 1000;
     const since = this.reduced ? 10 : (now - this.switchedAt) / 1000;
-    const fade = Math.min(1, since / 0.35);
+    const fade = easeOut(since / 0.5);
     g.clearRect(0, 0, size, size);
-    const r = size * 0.38;
-    const scene = (index: number, alpha: number, draw: number, scale: number) => {
+    const r = size * 0.34;
+    const scene = (index: number, alpha: number) => {
       const id = this.ids[index];
       if (!id || alpha <= 0) return;
       g.save();
       g.globalAlpha = alpha;
-      g.translate(size / 2, size / 2 - size * 0.02);
-      g.scale(scale, scale);
-      SCENES[id].draw({ g, t, r, draw });
+      g.translate(size / 2, size / 2);
+      SCENES[id].draw({ g, t, r });
       g.restore();
     };
-    if (this.previous >= 0 && fade < 1) scene(this.previous, 1 - fade, 1, 1 + fade * 0.04);
-    scene(this.current, fade, Math.min(1, since / 0.8), 0.96 + 0.04 * easeOut(fade));
+    if (this.previous >= 0 && fade < 1) scene(this.previous, 1 - fade);
+    scene(this.current, fade);
 
     const id = this.ids[this.current];
     if (id) {
       g.save();
       g.globalAlpha = fade;
-      g.fillStyle = C.text;
+      g.fillStyle = TEXT;
       g.font = '600 11px "Open Sans", Arial, sans-serif';
       g.letterSpacing = "1.5px";
       g.fillText(SCENES[id].telemetry(t), 4, size - 8);
