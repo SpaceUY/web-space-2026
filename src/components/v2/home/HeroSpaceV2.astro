@@ -6,9 +6,9 @@
  * - B "Orbit": a large orbital system on the right, in the same thin-line
  *   language as the services, drawn on its own canvas;
  * - C "Eclipse": a dark disc with a lit rim and a slowly turning corona;
- * - E "Light waves" (default): a dark planet at the bottom with a lit rim
- *   and fans of fine light lines sweeping around it and rippling slowly,
- *   after the "IRIS" piece by Marcel Giannoccaro;
+ * - E "Light waves" (default): a dark planet at the bottom wrapped by fans
+ *   of fine light threads that sweep across its horizon, peel into the sky
+ *   and carry running light, after the "IRIS" piece by Marcel Giannoccaro;
  * - D "Dot sphere": the top of a sphere drawn in rings of dots,
  *   seen from slightly above, turning slowly; brighter spiral arms are
  *   part of the sphere so the rotation reads.
@@ -68,9 +68,9 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     <div class="v2-container hero__content">
       <h1 class="hero__title">
         <span class="v2-display-xl hero__headline">
-          <span class="hero__line" data-v2-line>Finally: Your <span class="hero__rotator" data-v2-slot><span class="hero__rotator-track" data-v2-rotator>{[...rotatorWords, rotatorWords[0]].map((word, index) => (
-            <span aria-hidden={index > 0 ? "true" : undefined}>{word}</span>
-          ))}</span></span></span><br />
+          Finally: Your <span class="hero__rotator" data-v2-rotator>{rotatorWords.map((word, index) => (
+            <span class:list={["hero__word", { "is-current": index === 0 }]} aria-hidden={index > 0 ? "true" : undefined}>{word}</span>
+          ))}</span><br />
           Tech Partner.
         </span>
         <span class="hero__kicker">Blockchain Development Company & Web3 Software Partner</span>
@@ -112,51 +112,29 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
 <script>
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Rotating word, same timing and easing as the live home, inline on the
-     first line. The slot keeps the width of the longest word, so the line
-     is nudged back to centre with a transform as each word arrives: the
-     whole line glides with the word, nothing reflows and nothing jumps.
-     Widths are measured once the brand font has loaded. */
-  const track = document.querySelector<HTMLElement>("[data-v2-rotator]");
-  const slot = document.querySelector<HTMLElement>("[data-v2-slot]");
-  const line = document.querySelector<HTMLElement>("[data-v2-line]");
-  if (track && slot && line) {
-    const words = Array.from(track.children) as HTMLElement[];
-    const slides = words.length - 1;
-    let widths: number[] = [];
+  /* Rotating word, swapped sideways: the current word slides out to the
+     left and the next one slides in from the right. All words share one
+     grid cell as wide as the longest, so the rest of the title never moves.
+     A word that has left is put back on the right with no transition, ready
+     for its next turn. */
+  const rotator = document.querySelector<HTMLElement>("[data-v2-rotator]");
+  if (rotator && !reduced) {
+    const words = Array.from(rotator.children) as HTMLElement[];
     let index = 0;
-    const measure = () => {
-      widths = words.map((word) => word.getBoundingClientRect().width);
-    };
-    const centre = (animate: boolean) => {
-      const offset = (slot.getBoundingClientRect().width - (widths[index] ?? 0)) / 2;
-      line.style.transition = animate ? "transform 0.42s cubic-bezier(0.2, 0.7, 0.3, 1)" : "none";
-      line.style.transform = `translateX(${offset.toFixed(1)}px)`;
-    };
-    const settle = () => {
-      measure();
-      centre(false);
-    };
-    settle();
-    document.fonts?.ready.then(settle);
-    window.addEventListener("resize", settle);
-
-    if (!reduced) {
-      window.setInterval(() => {
-        index += 1;
-        track.classList.add("is-animating");
-        track.style.transform = `translateY(-${index * 1.3}em)`;
-        centre(true);
-        if (index === slides) {
-          window.setTimeout(() => {
-            track.classList.remove("is-animating");
-            index = 0;
-            track.style.transform = "translateY(0)";
-            centre(false);
-          }, 430);
-        }
-      }, 2400);
-    }
+    window.setInterval(() => {
+      const leaving = words[index];
+      index = (index + 1) % words.length;
+      const entering = words[index];
+      leaving.classList.remove("is-current");
+      leaving.classList.add("is-leaving");
+      entering.classList.add("is-current");
+      window.setTimeout(() => {
+        leaving.style.transition = "none";
+        leaving.classList.remove("is-leaving");
+        void leaving.offsetWidth;
+        leaving.style.transition = "";
+      }, 650);
+    }, 2400);
   }
 
   /* Variant picker (lab only). */
@@ -418,10 +396,12 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     else requestAnimationFrame(loop);
   }
 
-  /* Variant E: fans of fine light lines sweeping around a dark planet. The
-     lines are cubic curves whose middle control points ripple slowly; they
-     are drawn additively so crossings glow, then the planet is drawn over
-     them so they seem to pass behind it, and its rim is lit last. */
+  /* Variant E: light wrapping a planet. Two fans of fine threads hug the
+     planet's rim and peel away into the sky at both ends. Each fan sweeps
+     back and forth across the horizon, every thread breathes on its own
+     phase, and bright dashes of light keep running along the threads, so
+     the wave is always visibly moving. Threads are drawn additively, the
+     planet goes over them, and its rim is lit where the light is. */
   const wavesCanvas = document.querySelector<HTMLCanvasElement>("[data-v2-hero-waves]");
   const wavesContext = wavesCanvas?.getContext("2d");
   if (wavesCanvas && wavesContext && hero) {
@@ -437,23 +417,46 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
       wavesCanvas.height = Math.round(height * ratio);
       wavesContext.setTransform(ratio, 0, 0, ratio, 0, 0);
     };
-    const fan = (
-      g: CanvasRenderingContext2D,
-      t: number,
-      count: number,
-      color: string,
-      shape: (u: number, t: number) => [number, number, number, number, number, number, number, number]
-    ) => {
-      g.strokeStyle = color;
-      g.lineWidth = 1;
-      for (let i = 0; i < count; i += 1) {
-        const [x0, y0, x1, y1, x2, y2, x3, y3] = shape(i / (count - 1), t);
+
+    interface Fan {
+      centre: number;
+      span: number;
+      threads: number;
+      spacing: number;
+      lift: number;
+      flow: number;
+      tone: string;
+    }
+
+    const drawFan = (g: CanvasRenderingContext2D, fan: Fan, t: number, cx: number, cy: number, radius: number) => {
+      const steps = 72;
+      for (let i = 0; i < fan.threads; i += 1) {
+        const offset = 3 + i * fan.spacing * (1 + i * 0.015);
+        const breathe = 1 + 0.18 * Math.sin(t * 0.8 + i * 0.21);
         g.beginPath();
-        g.moveTo(x0, y0);
-        g.bezierCurveTo(x1, y1, x2, y2, x3, y3);
+        for (let k = 0; k <= steps; k += 1) {
+          const s = k / steps;
+          const angle = fan.centre + (s - 0.5) * fan.span;
+          const edge = Math.abs(s - 0.5) * 2;
+          const peel = edge ** 2.4 * fan.lift * (0.4 + i / fan.threads) * breathe;
+          const r = radius + offset + peel;
+          const x = cx + Math.cos(angle) * r;
+          const y = cy + Math.sin(angle) * r - peel * 0.35;
+          if (k === 0) g.moveTo(x, y);
+          else g.lineTo(x, y);
+        }
+        g.setLineDash([]);
+        g.strokeStyle = `rgba(${fan.tone}, ${(0.09 + 0.05 * (1 - i / fan.threads)).toFixed(3)})`;
+        g.lineWidth = 1;
+        g.stroke();
+        g.setLineDash([70, 260]);
+        g.lineDashOffset = -(t * fan.flow) - i * 9;
+        g.strokeStyle = `rgba(${fan.tone}, 0.5)`;
         g.stroke();
       }
+      g.setLineDash([]);
     };
+
     const drawWaves = (now: number) => {
       const g = wavesContext;
       const t = reduced ? 2 : now / 1000;
@@ -463,22 +466,14 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
       const small = w < 1000;
       const radius = Math.max(w * 0.46, 380);
       const cx = w / 2;
-      const top = h * (small ? 0.84 : 0.8);
+      const top = h * (small ? 0.86 : 0.82);
       const cy = top + radius;
+      const sweepA = -Math.PI / 2 + Math.sin(t * 0.28) * 0.5;
+      const sweepB = -Math.PI / 2 + Math.sin(t * 0.28 + Math.PI) * 0.42;
 
       g.globalCompositeOperation = "lighter";
-      fan(g, t, small ? 34 : 56, "rgba(228, 219, 255, 0.16)", (u, time) => [
-        -w * 0.05, h * (0.82 + 0.3 * u),
-        w * 0.3, top - h * (0.02 + 0.09 * u) + Math.sin(time * 0.7 + u * 4) * h * 0.02,
-        w * 0.68, top - h * (0.05 + 0.1 * u) + Math.sin(time * 0.6 + u * 5 + 2) * h * 0.025,
-        w * 1.05, h * (0.34 + 0.3 * u),
-      ]);
-      fan(g, t, small ? 26 : 42, "rgba(200, 181, 255, 0.13)", (u, time) => [
-        w * 1.05, h * (0.86 + 0.25 * u),
-        w * 0.7, top - h * (0.01 + 0.08 * u) + Math.sin(time * 0.55 + u * 3.5 + 1) * h * 0.02,
-        w * 0.3, top - h * (0.04 + 0.09 * u) + Math.sin(time * 0.5 + u * 4.5 + 3) * h * 0.025,
-        -w * 0.05, h * (0.4 + 0.28 * u),
-      ]);
+      drawFan(g, { centre: sweepA, span: 2.1, threads: small ? 28 : 46, spacing: small ? 3 : 4, lift: h * 0.55, flow: 140, tone: "228, 219, 255" }, t, cx, cy, radius);
+      drawFan(g, { centre: sweepB, span: 1.8, threads: small ? 20 : 34, spacing: small ? 3.4 : 4.6, lift: h * 0.42, flow: 110, tone: "200, 181, 255" }, t, cx, cy, radius);
       g.globalCompositeOperation = "source-over";
 
       const body = g.createRadialGradient(cx, top + radius * 0.25, radius * 0.1, cx, cy, radius);
@@ -491,32 +486,32 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
       g.fill();
 
       g.save();
-      g.shadowColor = "rgba(228, 219, 255, 0.95)";
-      g.shadowBlur = 36;
-      g.strokeStyle = "rgba(255, 255, 255, 0.85)";
-      g.lineWidth = 1.6;
+      g.shadowColor = "rgba(228, 219, 255, 0.9)";
+      g.shadowBlur = 30;
+      g.strokeStyle = "rgba(255, 255, 255, 0.7)";
+      g.lineWidth = 1.4;
       g.beginPath();
-      g.arc(cx, cy, radius, Math.PI * 1.08, Math.PI * 1.92);
+      g.arc(cx, cy, radius, Math.PI * 1.06, Math.PI * 1.94);
       g.stroke();
       g.restore();
 
-      const sweep = -Math.PI / 2 + (reduced ? 0 : Math.sin(t * 0.35) * 0.32);
-      const spread = 0.12;
-      const highlight = g.createConicGradient(sweep - spread, cx, cy);
+      const spread = 0.22;
+      const highlight = g.createConicGradient(sweepA - spread, cx, cy);
       highlight.addColorStop(0, "rgba(255, 255, 255, 0)");
       highlight.addColorStop(spread / TAU, "rgba(255, 255, 255, 1)");
       highlight.addColorStop((spread * 2) / TAU, "rgba(255, 255, 255, 0)");
       highlight.addColorStop(1, "rgba(255, 255, 255, 0)");
       g.save();
       g.strokeStyle = highlight;
-      g.lineWidth = 2.5;
+      g.lineWidth = 3;
       g.shadowColor = "rgba(255, 255, 255, 1)";
-      g.shadowBlur = 24;
+      g.shadowBlur = 28;
       g.beginPath();
-      g.arc(cx, cy, radius, sweep - spread, sweep + spread);
+      g.arc(cx, cy, radius, sweepA - spread, sweepA + spread);
       g.stroke();
       g.restore();
     };
+
     const loop = (now: number) => {
       if (visible && !document.hidden && hero.dataset.variant === "e") drawWaves(now);
       if (!reduced) requestAnimationFrame(loop);
@@ -736,19 +731,17 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: clamp(120px, 14vh, 170px);
+    padding-top: clamp(170px, 24vh, 270px);
   }
   .hero__title { margin: 0; }
 
-  /* The slot is taller than the line (1.3em) so no ascender or descender
-     is ever clipped; the negative margins keep the line box and the
-     baseline exactly where the rest of the line has them. */
-  .hero__line {
-    display: inline-block;
-    will-change: transform;
-  }
+  /* One grid cell for all the words, as wide as the longest. It is taller
+     than the line (1.3em) so no ascender or descender is clipped, and the
+     negative margins keep the line box and baseline where the rest of the
+     line has them. The words only move sideways inside it. */
   .hero__rotator {
-    display: inline-block;
+    display: inline-grid;
+    justify-items: start;
     overflow: hidden;
     vertical-align: top;
     height: 1.3em;
@@ -756,21 +749,15 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     line-height: 1.3;
     color: var(--v2-lilac);
   }
-  .hero__rotator-track {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    will-change: transform;
-  }
-  .hero__rotator-track > span {
-    height: 1.3em;
-    line-height: 1.3;
+  .hero__word {
+    grid-area: 1 / 1;
     white-space: nowrap;
+    transform: translateX(60%);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
   }
-  .hero__rotator-track.is-animating {
-    transition: transform 0.42s cubic-bezier(0.2, 0.7, 0.3, 1);
-  }
+  .hero__word.is-current { transform: none; opacity: 1; }
+  .hero__word.is-leaving { transform: translateX(-60%); opacity: 0; }
 
   .hero__headline {
     display: block;
