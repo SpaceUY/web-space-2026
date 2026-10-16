@@ -6,7 +6,10 @@
  * - B "Orbit": a large orbital system on the right, in the same thin-line
  *   language as the services, drawn on its own canvas;
  * - C "Eclipse": a dark disc with a lit rim and a slowly turning corona;
- * - D "Dot sphere" (default): the top of a sphere drawn in rings of dots,
+ * - E "Light waves" (default): a dark planet at the bottom with a lit rim
+ *   and fans of fine light lines sweeping around it and rippling slowly,
+ *   after the "IRIS" piece by Marcel Giannoccaro;
+ * - D "Dot sphere": the top of a sphere drawn in rings of dots,
  *   seen from slightly above, turning slowly; brighter spiral arms are
  *   part of the sphere so the rotation reads.
  * Copy and layout are shared and centred in all four.
@@ -33,15 +36,15 @@ const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
 const rotatorWords = ["Flexible", "Reliable", "Fast"];
 ---
 
-<section class="hero" data-nav-theme="dark" data-variant="d" data-v2-hero>
+<section class="hero" data-nav-theme="dark" data-variant="e" data-v2-hero>
   <script is:inline>
     (function () {
       var hero = document.currentScript.parentElement;
       var fromUrl = new URLSearchParams(location.search).get("hero");
       var stored = null;
       try { stored = sessionStorage.getItem("sd-hero-variant"); } catch (error) { stored = null; }
-      var ok = function (value) { return value === "a" || value === "b" || value === "c" || value === "d"; };
-      hero.setAttribute("data-variant", ok(fromUrl) ? fromUrl : ok(stored) ? stored : "d");
+      var ok = function (value) { return ["a", "b", "c", "d", "e"].indexOf(value) !== -1; };
+      hero.setAttribute("data-variant", ok(fromUrl) ? fromUrl : ok(stored) ? stored : "e");
     })();
   </script>
   <div class="v2-stage hero__stage v2-on-dark">
@@ -50,13 +53,14 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     <div class="hero__planet" aria-hidden="true" data-v2-planet></div>
     <canvas class="hero__orbits" data-v2-hero-orbits aria-hidden="true"></canvas>
     <canvas class="hero__dots" data-v2-hero-dots aria-hidden="true"></canvas>
+    <canvas class="hero__waves" data-v2-hero-waves aria-hidden="true"></canvas>
     <div class="hero__eclipse" aria-hidden="true">
       <span class="hero__corona"></span>
       <span class="hero__disc"></span>
     </div>
 
     <div class="hero__picker" role="group" aria-label="Variante del hero (Brand Lab)">
-      {["a", "b", "c", "d"].map((variant) => (
+      {["a", "b", "c", "d", "e"].map((variant) => (
         <button type="button" data-hero-pick={variant}>{variant.toUpperCase()}</button>
       ))}
     </div>
@@ -64,10 +68,9 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     <div class="v2-container hero__content">
       <h1 class="hero__title">
         <span class="v2-display-xl hero__headline">
-          Finally: Your<br />
-          <span class="hero__rotator"><span class="hero__rotator-track" data-v2-rotator>{[...rotatorWords, rotatorWords[0]].map((word, index) => (
+          <span class="hero__line" data-v2-line>Finally: Your <span class="hero__rotator" data-v2-slot><span class="hero__rotator-track" data-v2-rotator>{[...rotatorWords, rotatorWords[0]].map((word, index) => (
             <span aria-hidden={index > 0 ? "true" : undefined}>{word}</span>
-          ))}</span></span><br />
+          ))}</span></span></span><br />
           Tech Partner.
         </span>
         <span class="hero__kicker">Blockchain Development Company & Web3 Software Partner</span>
@@ -109,25 +112,51 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
 <script>
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Rotating word, same timing and easing as the live home. It sits on its
-     own centred line, so the words are centred in their slot and nothing
-     else on the line can move when they change. */
+  /* Rotating word, same timing and easing as the live home, inline on the
+     first line. The slot keeps the width of the longest word, so the line
+     is nudged back to centre with a transform as each word arrives: the
+     whole line glides with the word, nothing reflows and nothing jumps.
+     Widths are measured once the brand font has loaded. */
   const track = document.querySelector<HTMLElement>("[data-v2-rotator]");
-  if (track && !reduced) {
-    const slides = track.children.length - 1;
+  const slot = document.querySelector<HTMLElement>("[data-v2-slot]");
+  const line = document.querySelector<HTMLElement>("[data-v2-line]");
+  if (track && slot && line) {
+    const words = Array.from(track.children) as HTMLElement[];
+    const slides = words.length - 1;
+    let widths: number[] = [];
     let index = 0;
-    window.setInterval(() => {
-      index += 1;
-      track.classList.add("is-animating");
-      track.style.transform = `translateY(-${index * 1.05}em)`;
-      if (index === slides) {
-        window.setTimeout(() => {
-          track.classList.remove("is-animating");
-          index = 0;
-          track.style.transform = "translateY(0)";
-        }, 430);
-      }
-    }, 2400);
+    const measure = () => {
+      widths = words.map((word) => word.getBoundingClientRect().width);
+    };
+    const centre = (animate: boolean) => {
+      const offset = (slot.getBoundingClientRect().width - (widths[index] ?? 0)) / 2;
+      line.style.transition = animate ? "transform 0.42s cubic-bezier(0.2, 0.7, 0.3, 1)" : "none";
+      line.style.transform = `translateX(${offset.toFixed(1)}px)`;
+    };
+    const settle = () => {
+      measure();
+      centre(false);
+    };
+    settle();
+    document.fonts?.ready.then(settle);
+    window.addEventListener("resize", settle);
+
+    if (!reduced) {
+      window.setInterval(() => {
+        index += 1;
+        track.classList.add("is-animating");
+        track.style.transform = `translateY(-${index * 1.3}em)`;
+        centre(true);
+        if (index === slides) {
+          window.setTimeout(() => {
+            track.classList.remove("is-animating");
+            index = 0;
+            track.style.transform = "translateY(0)";
+            centre(false);
+          }, 430);
+        }
+      }, 2400);
+    }
   }
 
   /* Variant picker (lab only). */
@@ -389,6 +418,122 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     else requestAnimationFrame(loop);
   }
 
+  /* Variant E: fans of fine light lines sweeping around a dark planet. The
+     lines are cubic curves whose middle control points ripple slowly; they
+     are drawn additively so crossings glow, then the planet is drawn over
+     them so they seem to pass behind it, and its rim is lit last. */
+  const wavesCanvas = document.querySelector<HTMLCanvasElement>("[data-v2-hero-waves]");
+  const wavesContext = wavesCanvas?.getContext("2d");
+  if (wavesCanvas && wavesContext && hero) {
+    const TAU = Math.PI * 2;
+    let width = 0;
+    let height = 0;
+    let visible = true;
+    const fit = () => {
+      const ratio = Math.min(2, window.devicePixelRatio || 1);
+      width = wavesCanvas.clientWidth;
+      height = wavesCanvas.clientHeight;
+      wavesCanvas.width = Math.round(width * ratio);
+      wavesCanvas.height = Math.round(height * ratio);
+      wavesContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+    };
+    const fan = (
+      g: CanvasRenderingContext2D,
+      t: number,
+      count: number,
+      color: string,
+      shape: (u: number, t: number) => [number, number, number, number, number, number, number, number]
+    ) => {
+      g.strokeStyle = color;
+      g.lineWidth = 1;
+      for (let i = 0; i < count; i += 1) {
+        const [x0, y0, x1, y1, x2, y2, x3, y3] = shape(i / (count - 1), t);
+        g.beginPath();
+        g.moveTo(x0, y0);
+        g.bezierCurveTo(x1, y1, x2, y2, x3, y3);
+        g.stroke();
+      }
+    };
+    const drawWaves = (now: number) => {
+      const g = wavesContext;
+      const t = reduced ? 2 : now / 1000;
+      const w = width;
+      const h = height;
+      g.clearRect(0, 0, w, h);
+      const small = w < 1000;
+      const radius = Math.max(w * 0.46, 380);
+      const cx = w / 2;
+      const top = h * (small ? 0.84 : 0.8);
+      const cy = top + radius;
+
+      g.globalCompositeOperation = "lighter";
+      fan(g, t, small ? 34 : 56, "rgba(228, 219, 255, 0.16)", (u, time) => [
+        -w * 0.05, h * (0.82 + 0.3 * u),
+        w * 0.3, top - h * (0.02 + 0.09 * u) + Math.sin(time * 0.7 + u * 4) * h * 0.02,
+        w * 0.68, top - h * (0.05 + 0.1 * u) + Math.sin(time * 0.6 + u * 5 + 2) * h * 0.025,
+        w * 1.05, h * (0.34 + 0.3 * u),
+      ]);
+      fan(g, t, small ? 26 : 42, "rgba(200, 181, 255, 0.13)", (u, time) => [
+        w * 1.05, h * (0.86 + 0.25 * u),
+        w * 0.7, top - h * (0.01 + 0.08 * u) + Math.sin(time * 0.55 + u * 3.5 + 1) * h * 0.02,
+        w * 0.3, top - h * (0.04 + 0.09 * u) + Math.sin(time * 0.5 + u * 4.5 + 3) * h * 0.025,
+        -w * 0.05, h * (0.4 + 0.28 * u),
+      ]);
+      g.globalCompositeOperation = "source-over";
+
+      const body = g.createRadialGradient(cx, top + radius * 0.25, radius * 0.1, cx, cy, radius);
+      body.addColorStop(0, "#2c2a2f");
+      body.addColorStop(0.5, "#141313");
+      body.addColorStop(1, "#0c0b0e");
+      g.fillStyle = body;
+      g.beginPath();
+      g.arc(cx, cy, radius, 0, TAU);
+      g.fill();
+
+      g.save();
+      g.shadowColor = "rgba(228, 219, 255, 0.95)";
+      g.shadowBlur = 36;
+      g.strokeStyle = "rgba(255, 255, 255, 0.85)";
+      g.lineWidth = 1.6;
+      g.beginPath();
+      g.arc(cx, cy, radius, Math.PI * 1.08, Math.PI * 1.92);
+      g.stroke();
+      g.restore();
+
+      const sweep = -Math.PI / 2 + (reduced ? 0 : Math.sin(t * 0.35) * 0.32);
+      const spread = 0.12;
+      const highlight = g.createConicGradient(sweep - spread, cx, cy);
+      highlight.addColorStop(0, "rgba(255, 255, 255, 0)");
+      highlight.addColorStop(spread / TAU, "rgba(255, 255, 255, 1)");
+      highlight.addColorStop((spread * 2) / TAU, "rgba(255, 255, 255, 0)");
+      highlight.addColorStop(1, "rgba(255, 255, 255, 0)");
+      g.save();
+      g.strokeStyle = highlight;
+      g.lineWidth = 2.5;
+      g.shadowColor = "rgba(255, 255, 255, 1)";
+      g.shadowBlur = 24;
+      g.beginPath();
+      g.arc(cx, cy, radius, sweep - spread, sweep + spread);
+      g.stroke();
+      g.restore();
+    };
+    const loop = (now: number) => {
+      if (visible && !document.hidden && hero.dataset.variant === "e") drawWaves(now);
+      if (!reduced) requestAnimationFrame(loop);
+    };
+    fit();
+    window.addEventListener("resize", fit);
+    window.addEventListener("v2-hero-variant", () => {
+      fit();
+      drawWaves(performance.now());
+    });
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+    }).observe(wavesCanvas);
+    if (reduced) drawWaves(performance.now());
+    else requestAnimationFrame(loop);
+  }
+
   /* Star field */
   const canvas = document.querySelector<HTMLCanvasElement>("[data-v2-stars]");
   const context = canvas?.getContext("2d");
@@ -508,7 +653,7 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     }
 
     function loop(now: number): void {
-      if (visible && !document.hidden && hero?.dataset.variant !== "d") draw(now);
+      if (visible && !document.hidden && hero?.dataset.variant !== "d" && hero?.dataset.variant !== "e") draw(now);
       if (!reduced) requestAnimationFrame(loop);
     }
 
@@ -540,7 +685,7 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     min-height: clamp(720px, 100svh, 1000px);
     display: flex;
     flex-direction: column;
-    background: linear-gradient(180deg, #0f0e12 0%, #141313 30%, #2c2a2f 58%, #3b2b5c 78%, #503498 100%);
+    background: var(--sd-brand-apertura);
   }
   .hero__stars {
     position: absolute;
@@ -595,24 +740,33 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
   }
   .hero__title { margin: 0; }
 
+  /* The slot is taller than the line (1.3em) so no ascender or descender
+     is ever clipped; the negative margins keep the line box and the
+     baseline exactly where the rest of the line has them. */
+  .hero__line {
+    display: inline-block;
+    will-change: transform;
+  }
   .hero__rotator {
     display: inline-block;
     overflow: hidden;
-    vertical-align: bottom;
-    height: 1.05em;
-    line-height: 1.05;
+    vertical-align: top;
+    height: 1.3em;
+    margin-block: -0.11em;
+    line-height: 1.3;
     color: var(--v2-lilac);
   }
   .hero__rotator-track {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     will-change: transform;
   }
   .hero__rotator-track > span {
-    height: 1.05em;
-    line-height: 1.05;
+    height: 1.3em;
+    line-height: 1.3;
+    white-space: nowrap;
   }
   .hero__rotator-track.is-animating {
     transition: transform 0.42s cubic-bezier(0.2, 0.7, 0.3, 1);
@@ -626,16 +780,16 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
 
   .hero__kicker {
     display: block;
-    margin-top: 22px;
-    font-family: var(--font-body);
-    font-size: clamp(14px, 0.95vw, 16px);
-    font-weight: 400;
+    margin-top: 24px;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: clamp(15px, 1.1vw, 18px);
+    font-weight: 600;
     letter-spacing: 0;
-    color: rgba(255, 255, 255, 0.66);
+    color: var(--v2-lilac);
   }
   .hero__lead {
-    max-width: 50ch;
-    margin-top: 26px;
+    max-width: 68ch;
+    margin-top: 18px;
     font-size: clamp(14px, 0.95vw, 15px);
     line-height: 1.65;
     color: rgba(255, 255, 255, 0.72);
@@ -657,10 +811,6 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
   .hero[data-variant="b"] .hero__glow,
   .hero[data-variant="c"] .hero__planet,
   .hero[data-variant="c"] .hero__glow { display: none; }
-  .hero[data-variant="b"] .hero__stage,
-  .hero[data-variant="c"] .hero__stage {
-    background: linear-gradient(180deg, #0f0e12 0%, #141313 55%, #1c1730 100%);
-  }
   .hero[data-variant="b"] .hero__title,
   .hero[data-variant="b"] .hero__lead,
   .hero[data-variant="c"] .hero__title,
@@ -723,15 +873,23 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     to { transform: rotate(360deg); }
   }
 
+  .hero__waves { display: none; }
+  .hero[data-variant="e"] .hero__planet,
+  .hero[data-variant="e"] .hero__glow,
+  .hero[data-variant="e"] .hero__stars { display: none; }
+  .hero[data-variant="e"] .hero__waves {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
   .hero__dots { display: none; }
   .hero[data-variant="d"] .hero__planet,
   .hero[data-variant="d"] .hero__glow,
   .hero[data-variant="d"] .hero__stars { display: none; }
-  .hero[data-variant="d"] .hero__stage {
-    background:
-      radial-gradient(45% 35% at 50% 80%, rgba(200, 181, 255, 0.22) 0%, transparent 70%),
-      linear-gradient(180deg, #0f0e12 0%, #141313 28%, #2c2a2f 52%, #3b2b5c 74%, #503498 100%);
-  }
   .hero[data-variant="d"] .hero__dots {
     display: block;
     position: absolute;
