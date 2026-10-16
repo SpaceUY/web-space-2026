@@ -26,6 +26,16 @@ function contentDates(dir) {
   return map;
 }
 
+// feat/brand-v2 is an experiment (see src/lib/brand-lab.ts). Vercel only sets
+// VERCEL_ENV=production when building the production branch, so if this code
+// ever lands there the build fails and the last good deploy stays live.
+if (process.env.VERCEL_ENV === 'production') {
+  throw new Error(
+    'feat/brand-v2 is an experiment and must never deploy to production. ' +
+      'Remove this guard only after an explicit decision to ship the new brand.'
+  );
+}
+
 const blogDates = contentDates('./src/content/blog');
 const caseDates = contentDates('./src/content/case-studies');
 
@@ -71,6 +81,7 @@ export default defineConfig({
       ];
       if (excluded.includes(path)) return false;
       if (path.includes("/post/")) return false;
+      if (path.startsWith("/brand-lab")) return false;
       if (path.includes("/blog/tag")) return false;
       return true;
     },

@@ -1,11 +1,15 @@
 ---
 import "../styles/global.css";
+import "../styles/brand-v2.css";
 import SEOHead from "../components/seo/SEOHead.astro";
 import JsonLD from "../components/seo/JsonLD.astro";
 import Breadcrumbs from "../components/seo/Breadcrumbs.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import { homeGraphJsonLd, organizationSlimJsonLd, SITE } from "../lib/seo";
+import { BRAND_DEFAULT, BRAND_LAB } from "../lib/brand-lab";
+import BrandInit from "../components/brand-lab/BrandInit.astro";
+import BrandToggle from "../components/brand-lab/BrandToggle.astro";
 
 interface Props {
   title?: string;
@@ -114,10 +118,11 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-brand={BRAND_LAB ? BRAND_DEFAULT : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    {BRAND_LAB && <BrandInit />}
     <meta name="generator" content={Astro.generator} />
 
     <meta name="theme-color" content="#191429" />
@@ -146,7 +151,7 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
       canonical={canonical}
       ogImage={ogImage}
       ogType={ogType}
-      noindex={noindex}
+      noindex={noindex || BRAND_LAB}
       nofollow={nofollow}
       publishedTime={publishedTime}
       authorName={authorName}
@@ -173,8 +178,11 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
          argues for, since the duplicate GA4 load and the dead triggers both
          came from changes nobody could see. */}
 
+    {/* The brand lab never loads the GA4 library: preview visits must not land
+         in production analytics. gtag() and sdTrack() below still exist, they
+         only queue into a dataLayer nobody reads. */}
     <!-- Google Analytics 4 -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-J43N5T0K82"></script>
+    {!BRAND_LAB && <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-J43N5T0K82"></script>}
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
@@ -203,7 +211,7 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
          thread. Bounces shorter than the idle callback go unrecorded, and those
          are not leads. Skipped on error pages: a crawler hitting a dead URL is
          not a company visiting the site, and sales should not be handed one. */}
-    {!errorPage && (
+    {!errorPage && !BRAND_LAB && (
     <script is:inline>
       (function () {
         function loadApollo() {
@@ -249,7 +257,7 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
          once the page has loaded and the main thread is idle, whichever is first.
          Skipped on error pages: there is no journey to replay on a dead end, and
          two-second recordings of an error screen only dilute the real sessions. */}
-    {!errorPage && (
+    {!errorPage && !BRAND_LAB && (
     <script is:inline>
       (function (c, l, a, r, i) {
         c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -289,6 +297,8 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
     </main>
 
     <Footer marqueeText={footerMarquee} marqueeTheme={footerMarqueeTheme} />
+
+    {BRAND_LAB && <BrandToggle />}
 
     <script>
       import { initScrollAnimations } from "../lib/animations";

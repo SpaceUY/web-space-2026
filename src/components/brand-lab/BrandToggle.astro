@@ -1,0 +1,87 @@
+---
+/**
+ * Floating switch between the live look (v1) and the brand experiment (v2),
+ * plus the guard that keeps the experiment from sending real form data:
+ * every form on the site posts to HubSpot or Brevo from a submit listener,
+ * and a capture listener on document stops the event before it gets there.
+ */
+import { BRAND_STORAGE_KEY } from "../../lib/brand-lab";
+
+const options = [
+  { version: "v1", label: "Actual" },
+  { version: "v2", label: "Nueva" },
+];
+---
+
+<div class="brand-toggle" role="group" aria-label="Versión de marca">
+  {options.map((option) => (
+    <button type="button" class="brand-toggle__option" data-brand-option={option.version}>
+      {option.label}
+    </button>
+  ))}
+  <a class="brand-toggle__link" href="/brand-lab">Brand Lab</a>
+</div>
+
+<script is:inline define:vars={{ storageKey: BRAND_STORAGE_KEY }}>
+  var root = document.documentElement;
+  var buttons = document.querySelectorAll("[data-brand-option]");
+
+  function paint() {
+    var current = root.getAttribute("data-brand");
+    buttons.forEach(function (button) {
+      button.setAttribute("aria-pressed", String(button.getAttribute("data-brand-option") === current));
+    });
+  }
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      var version = button.getAttribute("data-brand-option");
+      root.setAttribute("data-brand", version);
+      try { localStorage.setItem(storageKey, version); } catch (error) { /* private mode: the switch still works for this page */ }
+      var url = new URL(location.href);
+      url.searchParams.delete("brand");
+      history.replaceState(null, "", url);
+      paint();
+    });
+  });
+  paint();
+
+  document.addEventListener("submit", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    alert("Preview del experimento de marca: los formularios no se envían.");
+  }, true);
+</script>
+
+<style>
+  .brand-toggle {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    font: 600 13px/1 "Open Sans", Arial, sans-serif;
+    color: #141313;
+  }
+  :global(html[data-brand-embed]) .brand-toggle { display: none; }
+  .brand-toggle__option {
+    padding: 8px 12px;
+    border-radius: 7px;
+    color: #787472;
+  }
+  .brand-toggle__option[aria-pressed="true"] {
+    background: #5b37c6;
+    color: #ffffff;
+  }
+  .brand-toggle__link {
+    padding: 8px 10px;
+    color: #5b37c6;
+    text-decoration: underline;
+  }
+</style>
