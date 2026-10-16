@@ -320,18 +320,18 @@ const pad = (value: number) => String(value).padStart(2, "0");
   .v2-takeaways__item + .v2-takeaways__item { padding-left: 24px; border-left: 1px solid var(--v2-line); }
   .v2-takeaways__item strong { color: var(--v2-ink); font-weight: 700; }
 
-  .v2-statement { max-width: 20ch; margin-inline: auto; text-align: center; }
+  .v2-statement { max-width: 22ch; }
   .v2-accent { color: var(--v2-violet-mid); }
 
-  /* ── Section heads: centred, generous measure ─── */
+  /* ── Section heads: left, on the same vertical line as everything ─── */
   .v2-head {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
     max-width: 920px;
-    margin: 0 auto clamp(40px, 5vw, 64px);
-    text-align: center;
+    margin: 0 0 clamp(40px, 5vw, 64px);
+    text-align: left;
   }
   .v2-head h2 { max-width: 24ch; }
   .v2-head p { max-width: 62ch; }
@@ -339,7 +339,7 @@ const pad = (value: number) => String(value).padStart(2, "0");
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 16px 32px;
     margin-top: clamp(40px, 4vw, 56px);
   }
@@ -489,7 +489,7 @@ const pad = (value: number) => String(value).padStart(2, "0");
   .v2-post .v2-label { gap: 8px; }
 
   /* ── Logo tiles ─────────────────────────────────── */
-  .v2-subhead { margin: clamp(56px, 6vw, 88px) 0 24px; text-align: center; }
+  .v2-subhead { margin: clamp(56px, 6vw, 88px) 0 24px; }
   .v2-tiles {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -604,7 +604,6 @@ const pad = (value: number) => String(value).padStart(2, "0");
     .v2-columns,
     .v2-columns--3 { grid-template-columns: 1fr; }
     .v2-columns__item + .v2-columns__item { padding-left: 0; border-left: 0; border-top: 1px solid var(--v2-line); }
-    .v2-subhead { margin: clamp(56px, 6vw, 88px) 0 24px; text-align: center; }
   .v2-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .v2-tiles--community { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .v2-tiles__tile { height: 112px; }

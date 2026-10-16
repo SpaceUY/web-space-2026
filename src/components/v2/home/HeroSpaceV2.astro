@@ -1,6 +1,14 @@
 ---
 /**
- * Brand v2 home hero: a planet horizon at the bottom of a dark stage, its
+ * Brand v2 home hero, in three variants to compare (lab only, picked with
+ * ?hero=a|b|c or the A/B/C control in the corner, remembered per tab):
+ * - A "Horizon": the planet horizon described below;
+ * - B "Orbit": a large orbital system on the right, in the same thin-line
+ *   language as the services, drawn on its own canvas;
+ * - C "Eclipse": a dark disc with a lit rim and a slowly turning corona.
+ * Copy and layout are shared and left-aligned in all three.
+ *
+ * Variant A: a planet horizon at the bottom of a dark stage, its
  * atmosphere breathing and a highlight gliding along the rim, under a field
  * of stars that drift and answer the pointer with a little parallax. The
  * planet and its glow are CSS; stars and the rim highlight share one canvas
@@ -22,11 +30,32 @@ const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
 const rotatorWords = ["Flexible", "Reliable", "Fast"];
 ---
 
-<section class="hero" data-nav-theme="dark">
+<section class="hero" data-nav-theme="dark" data-variant="a" data-v2-hero>
+  <script is:inline>
+    (function () {
+      var hero = document.currentScript.parentElement;
+      var fromUrl = new URLSearchParams(location.search).get("hero");
+      var stored = null;
+      try { stored = sessionStorage.getItem("sd-hero-variant"); } catch (error) { stored = null; }
+      var ok = function (value) { return value === "a" || value === "b" || value === "c"; };
+      hero.setAttribute("data-variant", ok(fromUrl) ? fromUrl : ok(stored) ? stored : "a");
+    })();
+  </script>
   <div class="v2-stage hero__stage v2-on-dark">
     <canvas class="hero__stars" data-v2-stars aria-hidden="true"></canvas>
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="hero__planet" aria-hidden="true" data-v2-planet></div>
+    <canvas class="hero__orbits" data-v2-hero-orbits aria-hidden="true"></canvas>
+    <div class="hero__eclipse" aria-hidden="true">
+      <span class="hero__corona"></span>
+      <span class="hero__disc"></span>
+    </div>
+
+    <div class="hero__picker" role="group" aria-label="Variante del hero (Brand Lab)">
+      {["a", "b", "c"].map((variant) => (
+        <button type="button" data-hero-pick={variant}>{variant.toUpperCase()}</button>
+      ))}
+    </div>
 
     <div class="v2-container hero__content">
       <h1 class="hero__title">
@@ -91,6 +120,121 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
         }, 430);
       }
     }, 2400);
+  }
+
+  /* Variant picker (lab only). */
+  const hero = document.querySelector<HTMLElement>("[data-v2-hero]");
+  const pickers = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-hero-pick]"));
+  const paintPicker = () => pickers.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.heroPick === hero?.dataset.variant)));
+  pickers.forEach((button) =>
+    button.addEventListener("click", () => {
+      if (!hero) return;
+      hero.dataset.variant = button.dataset.heroPick ?? "a";
+      try { sessionStorage.setItem("sd-hero-variant", hero.dataset.variant); } catch { /* the choice still applies to this page */ }
+      const url = new URL(location.href);
+      url.searchParams.set("hero", hero.dataset.variant);
+      history.replaceState(null, "", url);
+      paintPicker();
+      window.dispatchEvent(new Event("v2-hero-variant"));
+    })
+  );
+  paintPicker();
+
+  /* Variant B: orbital system in thin light lines on the dark stage. */
+  const orbitCanvas = document.querySelector<HTMLCanvasElement>("[data-v2-hero-orbits]");
+  const orbitContext = orbitCanvas?.getContext("2d");
+  if (orbitCanvas && orbitContext && hero) {
+    const TAU = Math.PI * 2;
+    let width = 0;
+    let height = 0;
+    let visible = true;
+    const fit = () => {
+      const ratio = Math.min(2, window.devicePixelRatio || 1);
+      width = orbitCanvas.clientWidth;
+      height = orbitCanvas.clientHeight;
+      orbitCanvas.width = Math.round(width * ratio);
+      orbitCanvas.height = Math.round(height * ratio);
+      orbitContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+    };
+    const orbits = [
+      { rx: 0.62, ry: 0.2, tilt: -0.32, speed: 0.22, nodes: 3 },
+      { rx: 0.9, ry: 0.3, tilt: 0.18, speed: -0.14, nodes: 2 },
+      { rx: 1.18, ry: 0.42, tilt: -0.08, speed: 0.09, nodes: 4 },
+    ];
+    const drawOrbits = (now: number) => {
+      const g = orbitContext;
+      const t = reduced ? 6 : now / 1000;
+      g.clearRect(0, 0, width, height);
+      const r = Math.min(width * 0.42, height * 0.62);
+      g.save();
+      g.translate(width * 0.55, height * 0.5);
+      const core = g.createRadialGradient(0, 0, 0, 0, 0, r * 0.35);
+      core.addColorStop(0, "rgba(200, 181, 255, 0.55)");
+      core.addColorStop(0.25, "rgba(142, 110, 236, 0.22)");
+      core.addColorStop(1, "rgba(91, 55, 198, 0)");
+      g.fillStyle = core;
+      g.beginPath();
+      g.arc(0, 0, r * 0.35, 0, TAU);
+      g.fill();
+      g.fillStyle = "#e4dbff";
+      g.beginPath();
+      g.arc(0, 0, 3.5, 0, TAU);
+      g.fill();
+      orbits.forEach((orbit) => {
+        const rx = r * orbit.rx;
+        const ry = r * orbit.ry;
+        g.save();
+        g.rotate(orbit.tilt);
+        const steps = 120;
+        g.lineWidth = 1;
+        for (let i = 0; i < steps; i += 1) {
+          const a0 = (i / steps) * TAU;
+          const a1 = ((i + 1) / steps) * TAU;
+          const depth = (Math.sin((a0 + a1) / 2) + 1) / 2;
+          g.strokeStyle = `rgba(228, 219, 255, ${0.06 + 0.22 * depth})`;
+          g.beginPath();
+          g.moveTo(Math.cos(a0) * rx, Math.sin(a0) * ry);
+          g.lineTo(Math.cos(a1) * rx, Math.sin(a1) * ry);
+          g.stroke();
+        }
+        for (let n = 0; n < orbit.nodes; n += 1) {
+          const angle = t * orbit.speed + (n / orbit.nodes) * TAU + orbit.rx;
+          const direction = Math.sign(orbit.speed) || 1;
+          for (let i = 0; i < 20; i += 1) {
+            const b0 = angle - direction * 0.035 * i;
+            const b1 = angle - direction * 0.035 * (i + 1);
+            g.strokeStyle = `rgba(200, 181, 255, ${0.5 * (1 - i / 20)})`;
+            g.lineWidth = 1.4 * (1 - i / 20) + 0.2;
+            g.beginPath();
+            g.moveTo(Math.cos(b0) * rx, Math.sin(b0) * ry);
+            g.lineTo(Math.cos(b1) * rx, Math.sin(b1) * ry);
+            g.stroke();
+          }
+          const depth = (Math.sin(angle) + 1) / 2;
+          g.fillStyle = n === 0 ? "#ffffff" : `rgba(200, 181, 255, ${0.45 + 0.55 * depth})`;
+          g.beginPath();
+          g.arc(Math.cos(angle) * rx, Math.sin(angle) * ry, (n === 0 ? 3.2 : 2.4) * (0.75 + 0.5 * depth), 0, TAU);
+          g.fill();
+        }
+        g.restore();
+      });
+      g.restore();
+    };
+    const loop = (now: number) => {
+      if (visible && !document.hidden && hero.dataset.variant === "b") drawOrbits(now);
+      if (!reduced) requestAnimationFrame(loop);
+    };
+    fit();
+    window.addEventListener("resize", fit);
+    window.addEventListener("v2-hero-variant", () => {
+      fit();
+      drawOrbits(performance.now());
+    });
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+    }).observe(orbitCanvas);
+    if (reduced) drawOrbits(performance.now());
+    else requestAnimationFrame(loop);
   }
 
   /* Star field */
@@ -215,6 +359,7 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
 
     resize();
     window.addEventListener("resize", resize);
+    window.addEventListener("v2-hero-variant", resize);
     canvas.parentElement?.addEventListener("pointermove", (event) => {
       const rect = canvas.getBoundingClientRect();
       pointer.tx = (event.clientX - rect.left) / rect.width;
@@ -289,8 +434,8 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     padding-top: clamp(150px, 18vh, 210px);
   }
   .hero__title { margin: 0; }
@@ -338,10 +483,104 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 24px;
     margin-top: 34px;
   }
+
+  /* ── Variants ─────────────────────────────────── */
+  .hero__orbits,
+  .hero__eclipse { display: none; }
+  .hero[data-variant="b"] .hero__planet,
+  .hero[data-variant="b"] .hero__glow,
+  .hero[data-variant="c"] .hero__planet,
+  .hero[data-variant="c"] .hero__glow { display: none; }
+  .hero[data-variant="b"] .hero__stage,
+  .hero[data-variant="c"] .hero__stage {
+    background: linear-gradient(180deg, #0f0e12 0%, #141313 55%, #1c1730 100%);
+  }
+  .hero[data-variant="b"] .hero__title,
+  .hero[data-variant="b"] .hero__lead,
+  .hero[data-variant="c"] .hero__title,
+  .hero[data-variant="c"] .hero__lead { max-width: min(640px, 52vw); }
+
+  .hero[data-variant="b"] .hero__orbits {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 38%;
+    width: 62%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .hero[data-variant="c"] .hero__eclipse {
+    display: block;
+    position: absolute;
+    right: -6vw;
+    top: 48%;
+    width: min(48vw, 720px);
+    aspect-ratio: 1;
+    transform: translateY(-50%);
+    z-index: -1;
+  }
+  .hero__disc {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 42% 40%, #1a1720 0%, #0c0b0e 62%);
+    box-shadow:
+      0 0 0 1px rgba(228, 219, 255, 0.6),
+      0 0 36px 4px rgba(200, 181, 255, 0.35),
+      0 0 140px 30px rgba(91, 55, 198, 0.35);
+  }
+  .hero__corona {
+    position: absolute;
+    inset: -16%;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      rgba(200, 181, 255, 0) 0deg,
+      rgba(200, 181, 255, 0.55) 24deg,
+      rgba(200, 181, 255, 0) 60deg,
+      rgba(142, 110, 236, 0.45) 130deg,
+      rgba(142, 110, 236, 0) 170deg,
+      rgba(228, 219, 255, 0.5) 235deg,
+      rgba(228, 219, 255, 0) 275deg,
+      rgba(142, 110, 236, 0.4) 320deg,
+      rgba(200, 181, 255, 0) 360deg
+    );
+    -webkit-mask: radial-gradient(closest-side, transparent 72%, #000 76%, transparent 100%);
+    mask: radial-gradient(closest-side, transparent 72%, #000 76%, transparent 100%);
+    filter: blur(14px);
+    will-change: transform;
+    animation: hero-corona 70s linear infinite;
+  }
+  @keyframes hero-corona {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Lab-only control to switch variants */
+  .hero__picker {
+    position: absolute;
+    top: 92px;
+    right: var(--v2-gutter);
+    z-index: 2;
+    display: flex;
+    gap: 2px;
+    padding: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .hero__picker button {
+    min-width: 30px;
+    height: 26px;
+    font: 600 12px/1 "Open Sans", Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .hero__picker button[aria-pressed="true"] { background: #ffffff; color: var(--v2-ink); }
+  :global(html[data-brand-embed]) .hero__picker { display: none; }
 
   .hero__logos {
     display: flex;
@@ -358,11 +597,18 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
 
   @media (max-width: 999px) {
     .hero__planet { top: 80%; width: 320vw; }
+    .hero[data-variant="b"] .hero__orbits { left: 0; width: 100%; opacity: 0.55; }
+    .hero[data-variant="c"] .hero__eclipse { width: 80vw; right: -30vw; top: 30%; opacity: 0.7; }
+    .hero[data-variant="b"] .hero__title,
+    .hero[data-variant="b"] .hero__lead,
+    .hero[data-variant="c"] .hero__title,
+    .hero[data-variant="c"] .hero__lead { max-width: none; }
     .hero__logos { flex-direction: column; align-items: flex-start; gap: 16px; }
     .hero__marquee { width: 100%; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero__glow { animation: none; }
+    .hero__glow,
+    .hero__corona { animation: none; }
   }
 </style>
