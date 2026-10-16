@@ -5,8 +5,11 @@
  * - A "Horizon": the planet horizon described below;
  * - B "Orbit": a large orbital system on the right, in the same thin-line
  *   language as the services, drawn on its own canvas;
- * - C "Eclipse": a dark disc with a lit rim and a slowly turning corona.
- * Copy and layout are shared and left-aligned in all three.
+ * - C "Eclipse": a dark disc with a lit rim and a slowly turning corona;
+ * - D "Dot sphere" (default): the top of a sphere drawn in rings of dots,
+ *   seen from slightly above, turning slowly; brighter spiral arms are
+ *   part of the sphere so the rotation reads.
+ * Copy and layout are shared and centred in all four.
  *
  * Variant A: a planet horizon at the bottom of a dark stage, its
  * atmosphere breathing and a highlight gliding along the rim, under a field
@@ -30,15 +33,15 @@ const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
 const rotatorWords = ["Flexible", "Reliable", "Fast"];
 ---
 
-<section class="hero" data-nav-theme="dark" data-variant="a" data-v2-hero>
+<section class="hero" data-nav-theme="dark" data-variant="d" data-v2-hero>
   <script is:inline>
     (function () {
       var hero = document.currentScript.parentElement;
       var fromUrl = new URLSearchParams(location.search).get("hero");
       var stored = null;
       try { stored = sessionStorage.getItem("sd-hero-variant"); } catch (error) { stored = null; }
-      var ok = function (value) { return value === "a" || value === "b" || value === "c"; };
-      hero.setAttribute("data-variant", ok(fromUrl) ? fromUrl : ok(stored) ? stored : "a");
+      var ok = function (value) { return value === "a" || value === "b" || value === "c" || value === "d"; };
+      hero.setAttribute("data-variant", ok(fromUrl) ? fromUrl : ok(stored) ? stored : "d");
     })();
   </script>
   <div class="v2-stage hero__stage v2-on-dark">
@@ -46,13 +49,14 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="hero__planet" aria-hidden="true" data-v2-planet></div>
     <canvas class="hero__orbits" data-v2-hero-orbits aria-hidden="true"></canvas>
+    <canvas class="hero__dots" data-v2-hero-dots aria-hidden="true"></canvas>
     <div class="hero__eclipse" aria-hidden="true">
       <span class="hero__corona"></span>
       <span class="hero__disc"></span>
     </div>
 
     <div class="hero__picker" role="group" aria-label="Variante del hero (Brand Lab)">
-      {["a", "b", "c"].map((variant) => (
+      {["a", "b", "c", "d"].map((variant) => (
         <button type="button" data-hero-pick={variant}>{variant.toUpperCase()}</button>
       ))}
     </div>
@@ -237,6 +241,85 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     else requestAnimationFrame(loop);
   }
 
+  /* Variant D: the top of a sphere in rings of dots, turning slowly. */
+  const dotsCanvas = document.querySelector<HTMLCanvasElement>("[data-v2-hero-dots]");
+  const dotsContext = dotsCanvas?.getContext("2d");
+  if (dotsCanvas && dotsContext && hero) {
+    const TAU = Math.PI * 2;
+    let width = 0;
+    let height = 0;
+    let visible = true;
+    let rings: Array<{ theta: number; count: number }> = [];
+    const fit = () => {
+      const ratio = Math.min(2, window.devicePixelRatio || 1);
+      width = dotsCanvas.clientWidth;
+      height = dotsCanvas.clientHeight;
+      dotsCanvas.width = Math.round(width * ratio);
+      dotsCanvas.height = Math.round(height * ratio);
+      dotsContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+      const small = width < 1000;
+      const ringCount = small ? 38 : 54;
+      const widest = small ? 130 : 210;
+      rings = Array.from({ length: ringCount }, (_, i) => {
+        const theta = 1.32 * ((i + 1) / ringCount) ** 1.12;
+        return { theta, count: Math.max(8, Math.round(Math.sin(theta) * widest)) };
+      });
+    };
+    const drawDots = (now: number) => {
+      const g = dotsContext;
+      const t = reduced ? 3 : now / 1000;
+      g.clearRect(0, 0, width, height);
+      const radius = Math.max(width * 0.62, 560);
+      const pitch = 0.42;
+      const cosPitch = Math.cos(pitch);
+      const sinPitch = Math.sin(pitch);
+      const distance = radius * 3;
+      const horizon = radius / 3;
+      const poleScale = distance / (distance - radius * sinPitch);
+      const cx = width / 2;
+      const cy = height * 0.74 + radius * cosPitch * poleScale;
+      const spin = t * 0.12;
+      for (const ring of rings) {
+        const sinTheta = Math.sin(ring.theta);
+        const cosTheta = Math.cos(ring.theta);
+        for (let k = 0; k < ring.count; k += 1) {
+          const phi = (k / ring.count) * TAU + spin;
+          const x = radius * sinTheta * Math.cos(phi);
+          const y = radius * cosTheta;
+          const z = radius * sinTheta * Math.sin(phi);
+          const y2 = y * cosPitch - z * sinPitch;
+          const z2 = y * sinPitch + z * cosPitch;
+          if (z2 < horizon) continue;
+          const scale = distance / (distance - z2);
+          const sx = cx + x * scale;
+          const sy = cy - y2 * scale;
+          if (sy < 0 || sy > height || sx < -4 || sx > width + 4) continue;
+          const facing = (z2 - horizon) / (radius - horizon);
+          const arms = 0.5 + 0.5 * Math.cos(4 * (phi - spin) + 9 * ring.theta);
+          const alpha = (0.28 + 0.72 * arms) * (0.35 + 0.65 * facing);
+          const size = 1.1 * scale;
+          g.fillStyle = `rgba(228, 219, 255, ${alpha.toFixed(3)})`;
+          g.fillRect(sx - size / 2, sy - size / 2, size, size);
+        }
+      }
+    };
+    const loop = (now: number) => {
+      if (visible && !document.hidden && hero.dataset.variant === "d") drawDots(now);
+      if (!reduced) requestAnimationFrame(loop);
+    };
+    fit();
+    window.addEventListener("resize", fit);
+    window.addEventListener("v2-hero-variant", () => {
+      fit();
+      drawDots(performance.now());
+    });
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+    }).observe(dotsCanvas);
+    if (reduced) drawDots(performance.now());
+    else requestAnimationFrame(loop);
+  }
+
   /* Star field */
   const canvas = document.querySelector<HTMLCanvasElement>("[data-v2-stars]");
   const context = canvas?.getContext("2d");
@@ -356,7 +439,7 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     }
 
     function loop(now: number): void {
-      if (visible && !document.hidden) draw(now);
+      if (visible && !document.hidden && hero?.dataset.variant !== "d") draw(now);
       if (!reduced) requestAnimationFrame(loop);
     }
 
@@ -437,8 +520,8 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
     padding-top: clamp(150px, 18vh, 210px);
   }
   .hero__title { margin: 0; }
@@ -486,7 +569,7 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 24px;
     margin-top: 34px;
   }
@@ -562,6 +645,24 @@ const rotatorWords = ["Flexible", "Reliable", "Fast"];
   }
   @keyframes hero-corona {
     to { transform: rotate(360deg); }
+  }
+
+  .hero__dots { display: none; }
+  .hero[data-variant="d"] .hero__planet,
+  .hero[data-variant="d"] .hero__glow,
+  .hero[data-variant="d"] .hero__stars { display: none; }
+  .hero[data-variant="d"] .hero__stage {
+    background:
+      radial-gradient(40% 30% at 50% 78%, rgba(91, 55, 198, 0.28) 0%, transparent 70%),
+      #0c0b0e;
+  }
+  .hero[data-variant="d"] .hero__dots {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
   }
 
   /* Lab-only control to switch variants */

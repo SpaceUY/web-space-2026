@@ -1,11 +1,11 @@
 ---
 /**
  * Brand v2 header, after Voiceflow's navbar:
- * - one bar that never changes size or position: logo left, links centred,
- *   actions right, always in light text;
- * - at the top of a page that starts dark it is transparent; once the page
- *   scrolls (or on a page that starts light) a dark frosted glass fades in
- *   behind it, and that is the only thing that changes;
+ * - logo left, links centred, actions right, always in light text;
+ * - at the top of a page that starts dark it is transparent and full width;
+ *   once the page scrolls (or on a page that starts light) it condenses
+ *   into a narrower bar floating on dark frosted glass, slowly, with no
+ *   change of colour;
  * - hovering an entry with a menu opens one wide dark panel under the bar,
  *   its height gliding between menus while the page behind softens.
  * Below 1000px it shows the logo and a menu button that opens the existing
@@ -246,31 +246,49 @@ const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
   }
   .v2-nav[data-open] .v2-nav__scrim { opacity: 1; }
 
-  /* Dark frosted glass behind the bar: the only thing that changes. */
-  .v2-nav::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: rgba(20, 19, 19, 0.66);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(18px) saturate(1.4);
-    -webkit-backdrop-filter: blur(18px) saturate(1.4);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  /* At the top the bar is transparent and as wide as the page. Once the
+     page scrolls it condenses, Voiceflow style, into a narrower bar that
+     floats a little off the top on dark frosted glass. Text and logo never
+     change colour; only width, offset and the glass move, slowly. */
+  .v2-nav__frame {
+    padding-inline: var(--v2-gutter);
+    padding-top: 0;
+    transition: padding-top 0.6s var(--v2-ease);
   }
-  .v2-nav[data-glass]::before,
-  .v2-nav[data-open]::before { opacity: 1; }
-
-  .v2-nav__frame { padding-inline: var(--v2-gutter); }
+  .v2-nav[data-glass] .v2-nav__frame { padding-top: 10px; }
   .v2-nav__bar {
+    position: relative;
     max-width: 1440px;
     height: 72px;
     margin-inline: auto;
+    padding-inline: 0;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 16px;
+    border: 1px solid transparent;
+    background-color: rgba(20, 19, 19, 0);
+    transition:
+      max-width 0.7s var(--v2-ease),
+      height 0.6s var(--v2-ease),
+      padding 0.6s var(--v2-ease),
+      background-color 0.5s ease,
+      border-color 0.5s ease,
+      box-shadow 0.5s ease;
+  }
+  .v2-nav[data-glass] .v2-nav__bar {
+    max-width: 1120px;
+    height: 60px;
+    padding-inline: 20px 10px;
+  }
+  /* Opening a menu never moves the bar: it only puts the glass behind it. */
+  .v2-nav[data-glass] .v2-nav__bar,
+  .v2-nav[data-open] .v2-nav__bar {
+    background-color: rgba(20, 19, 19, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
   }
 
   .v2-nav__logo { justify-self: start; display: inline-flex; }
@@ -325,9 +343,11 @@ const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
   .v2-nav__panel {
     position: relative;
     max-width: 1440px;
-    margin: 0 auto;
+    margin: 8px auto 0;
     pointer-events: none;
+    transition: max-width 0.7s var(--v2-ease);
   }
+  .v2-nav[data-glass] .v2-nav__panel { max-width: 1120px; }
   .v2-nav__card {
     position: relative;
     height: 0;
