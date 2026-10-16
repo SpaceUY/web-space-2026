@@ -1,0 +1,349 @@
+---
+/**
+ * Brand v2 home hero: a planet horizon at the bottom of a dark stage, its
+ * atmosphere breathing and a highlight gliding along the rim, under a field
+ * of stars that drift and answer the pointer with a little parallax. The
+ * planet and its glow are CSS; stars and the rim highlight share one canvas
+ * drawn over the planet (stars inside the disc are skipped), so nothing large
+ * is repainted by CSS each frame. It pauses when off screen or in a
+ * background tab, and stands still with reduced motion.
+ *
+ * The headline keeps the live copy. The rotating word is an inline grid of
+ * all its words in one cell, so the line never changes width (no reflow, no
+ * jumping centre) and the h1 never repaints new text (it is the LCP element).
+ */
+import V2Button from "../V2Button.astro";
+import { clientLogosWhite } from "../../../data/home";
+
+const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
+const rotatorWords = ["Flexible", "Reliable", "Fast"];
+---
+
+<section class="hero" data-nav-theme="dark">
+  <div class="v2-stage hero__stage v2-on-dark">
+    <canvas class="hero__stars" data-v2-stars aria-hidden="true"></canvas>
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__planet" aria-hidden="true" data-v2-planet></div>
+
+    <div class="v2-container hero__content">
+      <h1 class="hero__title">
+        <span class="v2-display-xl hero__headline">
+          Finally: Your <span class="hero__rotator" data-v2-rotator>{rotatorWords.map((word, index) => (
+            <span class:list={["hero__word", { "is-current": index === 0 }]} aria-hidden={index > 0 ? "true" : undefined}>{word}</span>
+          ))}</span><br />Tech Partner.
+        </span>
+        <span class="hero__kicker">Blockchain Development Company & Web3 Software Partner</span>
+      </h1>
+      <p class="v2-lead hero__lead">
+        SpaceDev builds custom <strong>Web3</strong> and <strong>blockchain</strong> solutions, from <strong>dApps</strong> and <strong>smart contracts</strong> to <strong>DeFi</strong> and token infrastructure, for startups, fintechs and enterprises that need a technical partner with real depth.
+      </p>
+      <div class="hero__actions">
+        <V2Button href="/contact" tone="light">Get in touch</V2Button>
+        <a href={MEETING_URL} target="_blank" rel="noopener noreferrer" class="v2-link">Book a call</a>
+      </div>
+    </div>
+
+    <div class="v2-container hero__logos">
+      <p class="v2-label">Trusted by</p>
+      <div class="sd-marquee-wrapper hero__marquee">
+        <div class="sd-marquee">
+          {[0, 1].map((copy) => (
+            <div class="sd-marquee-set" aria-hidden={copy === 1 ? "true" : undefined}>
+              {clientLogosWhite.map((logo) => (
+                <img
+                  src={logo.src}
+                  alt={copy === 0 ? logo.alt : ""}
+                  loading="lazy"
+                  width={Math.round(22 * (logo.scale ?? 1) * logo.ratio)}
+                  height={Math.round(22 * (logo.scale ?? 1))}
+                  style={`height:${22 * (logo.scale ?? 1)}px`}
+                  class="w-auto shrink-0 object-contain"
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Rotating word: the current word slides up and out, the next one in. */
+  const rotator = document.querySelector<HTMLElement>("[data-v2-rotator]");
+  if (rotator && !reduced) {
+    const words = Array.from(rotator.children) as HTMLElement[];
+    let current = 0;
+    window.setInterval(() => {
+      const leaving = words[current];
+      current = (current + 1) % words.length;
+      words.forEach((word) => word.classList.remove("is-leaving"));
+      leaving.classList.remove("is-current");
+      leaving.classList.add("is-leaving");
+      words[current].classList.add("is-current");
+    }, 2800);
+  }
+
+  /* Star field */
+  const canvas = document.querySelector<HTMLCanvasElement>("[data-v2-stars]");
+  const context = canvas?.getContext("2d");
+  if (canvas && context) {
+    interface Star { x: number; y: number; depth: number; size: number; phase: number; speed: number }
+    interface Streak { x: number; y: number; life: number }
+    let width = 0;
+    let height = 0;
+    let stars: Star[] = [];
+    let streak: Streak | null = null;
+    let nextStreak = performance.now() + 4000;
+    const pointer = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
+    let visible = true;
+    let last = performance.now();
+    const planetElement = document.querySelector<HTMLElement>("[data-v2-planet]");
+    const planet = { x: 0, y: 0, r: 0 };
+
+    function resize(): void {
+      const ratio = Math.min(2, window.devicePixelRatio || 1);
+      width = canvas!.clientWidth;
+      height = canvas!.clientHeight;
+      canvas!.width = Math.round(width * ratio);
+      canvas!.height = Math.round(height * ratio);
+      context!.setTransform(ratio, 0, 0, ratio, 0, 0);
+      if (planetElement) {
+        const box = planetElement.getBoundingClientRect();
+        const frame = canvas!.getBoundingClientRect();
+        planet.r = box.width / 2;
+        planet.x = box.left - frame.left + planet.r;
+        planet.y = box.top - frame.top + planet.r;
+      }
+      const count = Math.min(420, Math.round((width * height) / 4200));
+      stars = Array.from({ length: count }, () => {
+        const depth = Math.random() ** 1.6;
+        return {
+          x: Math.random() * width,
+          y: Math.random() * height,
+          depth,
+          size: 0.4 + depth * 1.3,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.4 + Math.random() * 1.2,
+        };
+      });
+    }
+
+    function draw(now: number): void {
+      const delta = Math.min(64, now - last);
+      last = now;
+      pointer.x += (pointer.tx - pointer.x) * 0.05;
+      pointer.y += (pointer.ty - pointer.y) * 0.05;
+      context!.clearRect(0, 0, width, height);
+      for (const star of stars) {
+        if (!reduced) star.x += star.depth * 0.012 * delta;
+        if (star.x > width + 4) star.x = -4;
+        const offsetX = (pointer.x - 0.5) * star.depth * -28;
+        const offsetY = (pointer.y - 0.5) * star.depth * -16;
+        if (planet.r && Math.hypot(star.x + offsetX - planet.x, star.y + offsetY - planet.y) < planet.r + 2) continue;
+        const twinkle = reduced ? 1 : 0.65 + 0.35 * Math.sin(now * 0.001 * star.speed + star.phase);
+        context!.globalAlpha = (0.25 + 0.75 * star.depth) * twinkle;
+        context!.fillStyle = star.depth > 0.7 ? "#e4dbff" : "#ffffff";
+        context!.beginPath();
+        context!.arc(star.x + offsetX, star.y + offsetY, star.size, 0, Math.PI * 2);
+        context!.fill();
+      }
+      if (planet.r) drawRim(now);
+      if (!reduced) {
+        if (!streak && now > nextStreak) {
+          streak = { x: width * (0.15 + Math.random() * 0.6), y: height * (0.05 + Math.random() * 0.25), life: 0 };
+        }
+        if (streak) {
+          streak.life += delta / 1000;
+          const travel = streak.life * 520;
+          const headX = streak.x + travel;
+          const headY = streak.y + travel * 0.32;
+          const gradient = context!.createLinearGradient(headX - 140, headY - 45, headX, headY);
+          gradient.addColorStop(0, "rgba(228, 219, 255, 0)");
+          gradient.addColorStop(1, "rgba(228, 219, 255, 0.9)");
+          context!.globalAlpha = Math.max(0, 1 - streak.life / 0.9);
+          context!.strokeStyle = gradient;
+          context!.lineWidth = 1.2;
+          context!.beginPath();
+          context!.moveTo(headX - 140, headY - 45);
+          context!.lineTo(headX, headY);
+          context!.stroke();
+          if (streak.life > 0.9) {
+            streak = null;
+            nextStreak = now + 6000 + Math.random() * 6000;
+          }
+        }
+      }
+      context!.globalAlpha = 1;
+    }
+
+    /* Highlight gliding along the horizon, back and forth around the top. */
+    function drawRim(now: number): void {
+      const swing = reduced ? 0 : Math.sin((now / 11000) * Math.PI) * 0.32;
+      const angle = -Math.PI / 2 + swing;
+      const spread = 0.09;
+      const glow = context!.createConicGradient(angle - spread, planet.x, planet.y);
+      glow.addColorStop(0, "rgba(200, 181, 255, 0)");
+      glow.addColorStop(spread / (Math.PI * 2), "rgba(255, 255, 255, 0.95)");
+      glow.addColorStop((spread * 2) / (Math.PI * 2), "rgba(200, 181, 255, 0)");
+      glow.addColorStop(1, "rgba(200, 181, 255, 0)");
+      context!.save();
+      context!.globalAlpha = 1;
+      context!.strokeStyle = glow;
+      context!.lineWidth = 2;
+      context!.shadowColor = "rgba(200, 181, 255, 0.95)";
+      context!.shadowBlur = 16;
+      context!.beginPath();
+      context!.arc(planet.x, planet.y, planet.r, angle - spread, angle + spread);
+      context!.stroke();
+      context!.restore();
+    }
+
+    function loop(now: number): void {
+      if (visible && !document.hidden) draw(now);
+      if (!reduced) requestAnimationFrame(loop);
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+    canvas.parentElement?.addEventListener("pointermove", (event) => {
+      const rect = canvas.getBoundingClientRect();
+      pointer.tx = (event.clientX - rect.left) / rect.width;
+      pointer.ty = (event.clientY - rect.top) / rect.height;
+    });
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      last = performance.now();
+    }).observe(canvas);
+    if (reduced) draw(performance.now());
+    else requestAnimationFrame(loop);
+  }
+</script>
+
+<style>
+  .hero { padding-top: 0; }
+  .hero__stage {
+    min-height: clamp(680px, calc(100svh - 84px), 980px);
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #0f0e12 0%, #141313 30%, #2c2a2f 58%, #3b2b5c 78%, #503498 100%);
+  }
+  .hero__stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  /* Light pooling above the horizon. */
+  .hero__glow {
+    position: absolute;
+    left: 50%;
+    bottom: 18%;
+    width: 120%;
+    height: 60%;
+    transform: translateX(-50%);
+    z-index: -3;
+    background: radial-gradient(50% 50% at 50% 100%, rgba(142, 110, 236, 0.55) 0%, rgba(91, 55, 198, 0.22) 45%, transparent 75%);
+    animation: hero-breathe 8s ease-in-out infinite alternate;
+  }
+
+  /* The planet: a huge disc whose top edge is the horizon. */
+  .hero__planet {
+    position: absolute;
+    left: 50%;
+    top: 74%;
+    width: max(2200px, 170vw);
+    aspect-ratio: 1;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    z-index: -2;
+    background: radial-gradient(60% 8% at 50% 0%, #2c2a2f 0%, #141313 60%, #0c0b0e 100%), #0c0b0e;
+    box-shadow:
+      0 -1px 0 0 rgba(228, 219, 255, 0.7),
+      0 -10px 40px 0 rgba(200, 181, 255, 0.45),
+      0 -40px 140px 10px rgba(142, 110, 236, 0.4);
+  }
+  @keyframes hero-breathe {
+    from { opacity: 0.7; transform: translateX(-50%) scaleY(0.94); }
+    to { opacity: 1; transform: translateX(-50%) scaleY(1.04); }
+  }
+
+  .hero__content {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: clamp(88px, 11vh, 140px);
+  }
+  .hero__title { margin: 0; }
+  .hero__headline { display: block; }
+  .hero__kicker {
+    display: block;
+    margin-top: 22px;
+    font-family: var(--font-body);
+    font-size: clamp(15px, 1.2vw, 18px);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.66);
+  }
+  .hero__lead {
+    max-width: 58ch;
+    margin-top: 22px;
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .hero__lead strong { color: #ffffff; font-weight: 700; }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 34px;
+  }
+
+  .hero__rotator {
+    display: inline-grid;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 0.1em;
+    margin-bottom: -0.1em;
+    color: var(--v2-lilac);
+  }
+  .hero__word {
+    grid-area: 1 / 1;
+    transform: translateY(105%);
+    opacity: 0;
+    transition: transform 0.7s var(--v2-ease), opacity 0.5s var(--v2-ease);
+  }
+  .hero__word.is-current { transform: none; opacity: 1; }
+  .hero__word.is-leaving { transform: translateY(-105%); opacity: 0; }
+
+  .hero__logos {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding-block: 28px 30px;
+  }
+  .hero__logos .v2-label { flex-shrink: 0; }
+  .hero__marquee { flex: 1; min-width: 0; }
+  .hero__marquee img { opacity: 0.6; }
+  .hero__marquee .sd-marquee,
+  .hero__marquee .sd-marquee-set { gap: 3rem; }
+  .hero__marquee .sd-marquee { animation-duration: 44s; }
+
+  @media (max-width: 999px) {
+    .hero__planet { top: 80%; width: 320vw; }
+    .hero__logos { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .hero__marquee { width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__glow { animation: none; }
+  }
+</style>

@@ -168,6 +168,10 @@
   interpolate-size: allow-keywords;
 }
 
+/* The v2 home starts on the light canvas, so the light navbar sits on it
+   the way Voiceflow's does. Scoped to v2 and to pages with the v2 home. */
+:root[data-brand="v2"] body:has(.v2-home) { background: var(--v2-canvas); }
+
 .v2-page {
   background: var(--v2-canvas);
   color: var(--v2-ink);
@@ -234,10 +238,13 @@
   margin: 0;
   text-wrap: balance;
 }
-:root[data-brand="v2"] .v2-display-xl { font-size: clamp(44px, 7.4vw, 116px); line-height: 0.98; letter-spacing: -0.045em; }
-:root[data-brand="v2"] .v2-display-l  { font-size: clamp(34px, 4.8vw, 76px);  line-height: 1.02; letter-spacing: -0.038em; }
-:root[data-brand="v2"] .v2-display-m  { font-size: clamp(26px, 2.8vw, 44px);  line-height: 1.08; letter-spacing: -0.028em; }
-:root[data-brand="v2"] .v2-display-s  { font-size: clamp(20px, 1.6vw, 24px);  line-height: 1.2;  letter-spacing: -0.015em; }
+/* Open Sans has wide default spacing; past about -0.03em its letters start
+   to touch at display sizes, so the tracking stays gentler than in the
+   references (which use tighter grotesks). */
+:root[data-brand="v2"] .v2-display-xl { font-size: clamp(42px, 6.4vw, 100px); line-height: 1.04; letter-spacing: -0.03em; }
+:root[data-brand="v2"] .v2-display-l  { font-size: clamp(32px, 4.2vw, 64px);  line-height: 1.08; letter-spacing: -0.025em; }
+:root[data-brand="v2"] .v2-display-m  { font-size: clamp(24px, 2.6vw, 40px);  line-height: 1.14; letter-spacing: -0.02em; }
+:root[data-brand="v2"] .v2-display-s  { font-size: clamp(19px, 1.5vw, 22px);  line-height: 1.28; letter-spacing: -0.01em; }
 
 .v2-lead {
   font-size: clamp(17px, 1.35vw, 21px);

@@ -1,6 +1,7 @@
 ---
 /**
  * Brand v2 header, modelled on Voiceflow's navbar:
+ * - a light bar with the logo left, the links centred and the actions right;
  * - transparent over the page at the top; once scrolled, the logo, the links
  *   and the CTA each sit on their own frosted "veil" (light or dark, picked
  *   from whatever is behind the bar, so it never needs per-page config);
@@ -20,7 +21,6 @@ import {
   type NavMenuId,
 } from "../../data/navigation";
 import V2Arrow from "./V2Arrow.astro";
-import V2Button from "./V2Button.astro";
 
 interface MenuColumn {
   title: string;
@@ -40,7 +40,7 @@ const menus: Record<NavMenuId, MenuColumn[]> = {
 const menuIds = Object.keys(menus) as NavMenuId[];
 ---
 
-<header class="v2-nav" data-v2-nav data-theme="dark">
+<header class="v2-nav" data-v2-nav data-theme="light">
   <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
   <div class="v2-nav__scrim" aria-hidden="true"></div>
 
@@ -64,7 +64,8 @@ const menuIds = Object.keys(menus) as NavMenuId[];
     </nav>
 
     <div class="v2-nav__cta">
-      <V2Button href="/contact" size="sm">Get in touch</V2Button>
+      <a href="https://meetings.hubspot.com/federico-sendra/meet-space" target="_blank" rel="noopener noreferrer" class="v2-nav__link v2-nav__secondary">Book a call</a>
+      <a href="/contact" class="v2-nav__button">Get in touch</a>
     </div>
 
     <button type="button" class="v2-nav__group v2-nav__burger" data-v2-burger aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
@@ -195,7 +196,7 @@ const menuIds = Object.keys(menus) as NavMenuId[];
         }
         node = node.parentElement;
       }
-      return "dark";
+      return "light";
     }
 
     let ticking = false;
@@ -233,16 +234,19 @@ const menuIds = Object.keys(menus) as NavMenuId[];
 
 <style>
   .v2-nav {
+    --v2-nav-muted: #5f5b58;
+    --v2-nav-strong: var(--v2-ink);
     position: sticky;
     top: 0;
     z-index: 60;
     height: 72px;
-    color: #ffffff;
+    color: var(--v2-ink);
     font-family: "Open Sans", Arial, sans-serif;
   }
-  .v2-nav[data-theme="light"],
-  .v2-nav[data-open] {
-    color: var(--v2-ink);
+  .v2-nav[data-theme="dark"]:not([data-open]) {
+    --v2-nav-muted: rgba(255, 255, 255, 0.72);
+    --v2-nav-strong: #ffffff;
+    color: #ffffff;
   }
 
   .v2-nav__scrim {
@@ -258,11 +262,12 @@ const menuIds = Object.keys(menus) as NavMenuId[];
 
   .v2-nav__bar {
     height: 72px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
     gap: 16px;
   }
+  .v2-nav__logo { justify-self: start; }
 
   /* Frosted veil behind each group, Voiceflow style. */
   .v2-nav__group {
@@ -296,11 +301,9 @@ const menuIds = Object.keys(menus) as NavMenuId[];
 
   .v2-nav__logo { padding-inline: 14px; }
   .v2-nav__logo-img { height: 26px; width: auto; }
-  .v2-nav__logo-img--on-light { display: none; }
-  .v2-nav[data-theme="light"] .v2-nav__logo-img--on-dark,
-  .v2-nav[data-open] .v2-nav__logo-img--on-dark { display: none; }
-  .v2-nav[data-theme="light"] .v2-nav__logo-img--on-light,
-  .v2-nav[data-open] .v2-nav__logo-img--on-light { display: block; }
+  .v2-nav__logo-img--on-dark { display: none; }
+  .v2-nav[data-theme="dark"]:not([data-open]) .v2-nav__logo-img--on-dark { display: block; }
+  .v2-nav[data-theme="dark"]:not([data-open]) .v2-nav__logo-img--on-light { display: none; }
 
   .v2-nav__links {
     padding-inline: 6px;
@@ -311,27 +314,39 @@ const menuIds = Object.keys(menus) as NavMenuId[];
     align-items: center;
     gap: 6px;
     height: 36px;
-    padding-inline: 14px;
+    padding-inline: 12px;
     border-radius: 8px;
     font-size: 14px;
-    font-weight: 600;
-    letter-spacing: -0.005em;
-    color: inherit;
-    transition: opacity 0.25s var(--v2-ease);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--v2-nav-muted);
+    transition: color 0.2s var(--v2-ease), opacity 0.25s var(--v2-ease);
   }
+  .v2-nav__link:hover,
+  .v2-nav__link[aria-expanded="true"] { color: var(--v2-nav-strong); }
   /* Hovering one entry quiets the others, so the eye lands where the pointer is. */
-  .v2-nav__links:hover .v2-nav__link:not(:hover):not([aria-expanded="true"]) { opacity: 0.5; }
   .v2-nav__chevron { transition: transform 0.35s var(--v2-ease); }
   .v2-nav__link[aria-expanded="true"] .v2-nav__chevron { transform: rotate(180deg); }
 
-  .v2-nav[data-theme="dark"]:not([data-open]) .v2-nav__cta :global(.v2-btn__label) {
-    background: #ffffff;
-    color: var(--v2-ink);
+  .v2-nav__cta {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .v2-nav[data-theme="dark"]:not([data-open]) .v2-nav__cta :global(.v2-btn__chip) {
-    background: var(--v2-lilac);
-    color: var(--v2-ink);
+  .v2-nav__button {
+    display: inline-flex;
+    align-items: center;
+    height: 36px;
+    padding-inline: 14px;
+    border-radius: 8px;
+    background: var(--v2-violet-mid);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s var(--v2-ease);
   }
+  .v2-nav__button:hover { background: var(--v2-violet); }
 
   .v2-nav__burger {
     display: none;
@@ -481,6 +496,7 @@ const menuIds = Object.keys(menus) as NavMenuId[];
     .v2-nav__links,
     .v2-nav__cta,
     .v2-nav__panel { display: none; }
-    .v2-nav__burger { display: flex; }
+    .v2-nav__bar { grid-template-columns: 1fr auto; }
+    .v2-nav__burger { display: flex; justify-self: end; }
   }
 </style>
