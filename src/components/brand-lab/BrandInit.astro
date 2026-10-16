@@ -1,9 +1,11 @@
 ---
 /**
  * Sets data-brand on <html> before first paint, so the page never flashes the
- * other version. Order: ?brand= in the URL, then the viewer's last choice,
- * then BRAND_DEFAULT. Pages rendered inside the lab comparator (an iframe)
- * get data-brand-embed, which hides the floating toggle there.
+ * other version. Order: ?brand= in the URL, then this tab's last choice,
+ * then BRAND_DEFAULT. The choice is per tab (sessionStorage), so two tabs
+ * side by side can show different versions without overwriting each other.
+ * Pages rendered inside the lab comparator (an iframe) get data-brand-embed,
+ * which hides the floating toggle there.
  */
 import { BRAND_DEFAULT, BRAND_STORAGE_KEY } from "../../lib/brand-lab";
 ---
@@ -13,7 +15,7 @@ import { BRAND_DEFAULT, BRAND_STORAGE_KEY } from "../../lib/brand-lab";
   var isVersion = function (value) { return value === "v1" || value === "v2"; };
   var fromUrl = new URLSearchParams(location.search).get("brand");
   var stored = null;
-  try { stored = localStorage.getItem(storageKey); } catch (error) { stored = null; }
+  try { stored = sessionStorage.getItem(storageKey); } catch (error) { stored = null; }
   root.setAttribute("data-brand", isVersion(fromUrl) ? fromUrl : isVersion(stored) ? stored : fallback);
   if (window.self !== window.top) root.setAttribute("data-brand-embed", "");
 </script>

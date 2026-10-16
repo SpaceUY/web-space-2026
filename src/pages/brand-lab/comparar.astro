@@ -123,6 +123,9 @@ const panes = [
 
   frames.forEach((frame) => {
     frame.addEventListener("load", () => {
+      /* Belt and braces: whatever the page decided, each side shows its own
+         version (both are same-origin, so the comparator can set it). */
+      frame.contentDocument?.documentElement.setAttribute("data-brand", frame.dataset.version ?? "v2");
       frame.contentWindow?.addEventListener("scroll", () => mirrorScroll(frame), { passive: true });
     });
   });

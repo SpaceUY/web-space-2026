@@ -37,9 +37,9 @@ const options = [
     button.addEventListener("click", function () {
       var version = button.getAttribute("data-brand-option");
       root.setAttribute("data-brand", version);
-      try { localStorage.setItem(storageKey, version); } catch (error) { /* private mode: the switch still works for this page */ }
+      try { sessionStorage.setItem(storageKey, version); } catch (error) { /* private mode: the switch still works for this page */ }
       var url = new URL(location.href);
-      url.searchParams.delete("brand");
+      url.searchParams.set("brand", version);
       history.replaceState(null, "", url);
       paint();
     });
