@@ -8,19 +8,18 @@
  * is repainted by CSS each frame. It pauses when off screen or in a
  * background tab, and stands still with reduced motion.
  *
- * The headline keeps the live rotating word, typed like a terminal: the
- * word writes itself letter by letter behind a blinking caret, holds, is
- * deleted and the next one is typed. All three words ship in the HTML,
- * stacked in one grid cell (so the line keeps the width of the longest),
- * and are revealed with clip-path, so the h1 (the LCP element) never gets
- * new text painted into it. Only the first word is exposed to assistive
- * tech, so the heading reads "Finally: Your Flexible Tech Partner."
+ * The headline keeps the live rotating word with the same animation as the
+ * live home: the word slides up and the next one takes its place. All
+ * slides ship in the HTML and only the track moves (transform), so the h1
+ * (the LCP element) never repaints new text; the last slide repeats the
+ * first so the loop snaps back without a visible rewind. Only the first
+ * slide is exposed to assistive tech.
  */
 import V2Button from "../V2Button.astro";
 import { clientLogosWhite } from "../../../data/home";
 
 const MEETING_URL = "https://meetings.hubspot.com/federico-sendra/meet-space";
-const typedWords = ["Flexible", "Reliable", "Fast"];
+const rotatorWords = ["Flexible", "Reliable", "Fast"];
 ---
 
 <section class="hero" data-nav-theme="dark">
@@ -32,9 +31,9 @@ const typedWords = ["Flexible", "Reliable", "Fast"];
     <div class="v2-container hero__content">
       <h1 class="hero__title">
         <span class="v2-display-xl hero__headline">
-          Finally: Your <span class="hero__type" data-v2-type><span class="hero__type-words">{typedWords.map((word, index) => (
-            <span class:list={["hero__type-word", { "is-current": index === 0 }]} aria-hidden={index > 0 ? "true" : undefined}>{word}</span>
-          ))}</span><span class="hero__caret" aria-hidden="true"></span></span><br />Tech Partner.
+          Finally: Your <span class="hero__rotator"><span class="hero__rotator-track" data-v2-rotator>{[...rotatorWords, rotatorWords[0]].map((word, index) => (
+            <span aria-hidden={index > 0 ? "true" : undefined}>{word}</span>
+          ))}</span></span><br />Tech Partner.
         </span>
         <span class="hero__kicker">Blockchain Development Company & Web3 Software Partner</span>
       </h1>
@@ -75,56 +74,23 @@ const typedWords = ["Flexible", "Reliable", "Fast"];
 <script>
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Typed word: type, hold, delete, next. Only clip-path and a transform
-     change; the text itself never does. */
-  const typed = document.querySelector<HTMLElement>("[data-v2-type]");
-  if (typed && !reduced) {
-    const words = Array.from(typed.querySelectorAll<HTMLElement>(".hero__type-word"));
-    const caret = typed.querySelector<HTMLElement>(".hero__caret");
-    const TYPE_MS = 90;
-    const DELETE_MS = 45;
-    const HOLD_MS = 2200;
-    const GAP_MS = 260;
+  /* Rotating word, same timing and easing as the live home. */
+  const track = document.querySelector<HTMLElement>("[data-v2-rotator]");
+  if (track && !reduced) {
+    const slides = track.children.length - 1;
     let index = 0;
-
-    const reveal = (word: HTMLElement, letters: number) => {
-      const total = word.textContent?.length ?? 1;
-      const share = letters / total;
-      word.style.clipPath = `inset(0 ${(1 - share) * 100}% 0 0)`;
-      if (caret) caret.style.transform = `translateX(${word.offsetWidth * share}px)`;
-    };
-
-    const run = (word: HTMLElement, from: number, to: number, step: number, done: () => void) => {
-      let letters = from;
-      const tick = () => {
-        reveal(word, letters);
-        if (letters === to) return done();
-        letters += from < to ? 1 : -1;
-        window.setTimeout(tick, step);
-      };
-      tick();
-    };
-
-    const cycle = () => {
-      const word = words[index];
-      const length = word.textContent?.length ?? 0;
-      typed.dataset.state = "holding";
-      window.setTimeout(() => {
-        typed.dataset.state = "typing";
-        run(word, length, 0, DELETE_MS, () => {
-          word.classList.remove("is-current");
-          index = (index + 1) % words.length;
-          const next = words[index];
-          next.classList.add("is-current");
-          window.setTimeout(() => {
-            run(next, 0, next.textContent?.length ?? 0, TYPE_MS, cycle);
-          }, GAP_MS);
-        });
-      }, HOLD_MS);
-    };
-
-    reveal(words[0], words[0].textContent?.length ?? 0);
-    cycle();
+    window.setInterval(() => {
+      index += 1;
+      track.classList.add("is-animating");
+      track.style.transform = `translateY(-${index * 1.05}em)`;
+      if (index === slides) {
+        window.setTimeout(() => {
+          track.classList.remove("is-animating");
+          index = 0;
+          track.style.transform = "translateY(0)";
+        }, 430);
+      }
+    }, 2400);
   }
 
   /* Star field */
@@ -327,55 +293,25 @@ const typedWords = ["Flexible", "Reliable", "Fast"];
   }
   .hero__title { margin: 0; }
 
-  .hero__type {
-    position: relative;
-    display: inline-grid;
-    justify-items: start;
+  .hero__rotator {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    height: 1.05em;
+    line-height: 1.05;
     color: var(--v2-lilac);
   }
-  .hero__type-words { display: grid; }
-  .hero__type-word {
-    grid-area: 1 / 1;
-    clip-path: inset(0 100% 0 0);
-    visibility: hidden;
-  }
-  .hero__type-word.is-current { visibility: visible; clip-path: none; }
-  .hero__caret {
-    position: absolute;
-    left: 0.04em;
-    top: 0.16em;
-    bottom: 0.08em;
-    width: 0.055em;
-    background: var(--v2-lilac);
-    transform: translateX(var(--caret-x, 0));
-  }
-  .hero__type[data-state="holding"] .hero__caret { animation: hero-caret 1s steps(1) infinite; }
-  @keyframes hero-caret {
-    50% { opacity: 0; }
-  }
-  .hero__headline { display: block; }
-  .hero__kicker {
-    display: block;
-    margin-top: 22px;
-    font-family: var(--font-body);
-    font-size: clamp(15px, 1.2vw, 18px);
-    font-weight: 400;
-    letter-spacing: 0;
-    color: rgba(255, 255, 255, 0.66);
-  }
-  .hero__lead {
-    max-width: 58ch;
-    margin-top: 22px;
-    color: rgba(255, 255, 255, 0.72);
-  }
-  .hero__lead strong { color: #ffffff; font-weight: 700; }
-  .hero__actions {
+  .hero__rotator-track {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    margin-top: 34px;
+    flex-direction: column;
+    will-change: transform;
+  }
+  .hero__rotator-track > span {
+    height: 1.05em;
+    line-height: 1.05;
+  }
+  .hero__rotator-track.is-animating {
+    transition: transform 0.42s cubic-bezier(0.2, 0.7, 0.3, 1);
   }
 
   .hero__logos {
