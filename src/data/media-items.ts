@@ -36,6 +36,54 @@ export function getMentionedAuthors(item: MediaItem): Author[] {
 
 export const mediaItems: MediaItem[] = [
   {
+    slug: "spacedev-wins-the-hedera-scaffold-hbar-template-bounty",
+    title: "SpaceDev Wins the Hedera Scaffold HBAR Template Bounty",
+    date: new Date("2026-10-19"),
+    location: "Remote",
+    tags: ["Blockchain", "Recognition", "Open Source"],
+    highlight: "One of five winning templates: m-of-n governance built from Hedera's native threshold keys and Schedule Service",
+    seoTitle: "SpaceDev Wins the Hedera Scaffold HBAR Template Bounty",
+    seoDescription:
+      "Hedera named SpaceDev's Hedera Governed Operations one of five winners of the Scaffold HBAR Template Bounty: multi-sig governance with no multisig contract.",
+    sourceUrl: "https://hedera.com/blog/meet-the-scaffold-hbar-template-bounty-winners/",
+    image: "/images/content/spacedev-hedera-template-bounty.png",
+    body: `*Hedera Governed Operations, our open-source template for council-approved operations, is one of the five winners of the Scaffold HBAR Template Bounty.*
+
+On October 19, Hedera [announced the winners of the Scaffold HBAR Template Bounty](https://hedera.com/blog/meet-the-scaffold-hbar-template-bounty-winners/), and SpaceDev is on the list with **Hedera Governed Operations**.
+
+Scaffold HBAR is Hedera's toolkit for starting a new dApp from a working template instead of a blank repository. Each template can be installed with a single command and adapted to a new product. As Hedera points out, the winning templates are educational starting points: they run on testnet and are not audited.
+
+**The Problem: Sensitive Operations Nobody Should Run Alone**
+
+Every team that runs something on-chain eventually has operations that no single key should be able to execute. Moving treasury funds, upgrading a contract, pausing a token or changing who has authority over any of those things should require several people to agree.
+
+On EVM networks the usual answer is a multisig contract such as Safe, which is also live on Hedera's EVM. Hedera, however, has native primitives that can do the same job without deploying a contract at all, and that path had no reference implementation. In the two weeks to September 28, the whole Hedera mainnet created about 7.4 scheduled transactions a day, and none of them was governance.
+
+**How Hedera Governed Operations Works**
+
+The template builds multi-sig governance entirely from what Hedera already provides:
+
+- **The quorum is account state.** The council is an account with a threshold key (for example, 2 of 4), so there is no multisig contract to deploy, audit or upgrade.
+- **Each proposal is a scheduled transaction.** The Hedera Schedule Service holds it in consensus state until enough council members have signed, and the network executes it the moment the threshold is met. Nobody has to press "execute".
+- **Five operations ship ready to use:** contract upgrades, treasury swaps on SaucerSwap, HTS token administration, treasury transfers and council rotation.
+- **Members sign from their own wallets.** Approvals happen over WalletConnect, asynchronously, hours or days apart, and every proposal is decoded into a plain sentence read directly from the Mirror Node.
+- **An optional co-signing agent.** It holds one seat on the council, checks each proposal against a written policy and a release manifest published on the Hedera Consensus Service, and publishes every decision, refusals included. Because it is just one of the keys, it can never act alone.
+
+**Proven on Testnet, Not Just Described**
+
+Every claim in the repository is backed by a transaction anyone can open on HashScan: the threshold-key council account, proposals executed by the network once signed, a treasury swap on SaucerSwap, a council rotation that seated the agent and an agent co-signature that ran a payment. All six contracts are source-verified on Sourcify.
+
+The repository also documents the traps we hit along the way and where the code handles each one. A scheduled contract call, for example, pays its entire gas limit whether it uses it or not, so each operation type ships with a measured limit instead of a generous guess. And a scheduled transaction that executed did not necessarily succeed, so the app reads the actual result before calling a proposal done.
+
+**Try It**
+
+The template is open source at [github.com/SpaceUY/hedera-governed-operations](https://github.com/SpaceUY/hedera-governed-operations), and any team can start a new project from it with Scaffold HBAR's create command, passing SpaceUY/hedera-governed-operations as the template.
+
+**Building on Hedera**
+
+The bounty adds to SpaceDev's track record on the network. In September, Hedera [named SpaceDev a Community Partner](https://spacedev.io/spacedev-in-the-media/spacedev-becomes-a-hedera-community-partner) after the [Blockchain for Energy](https://spacedev.io/our-work/blockchain-for-energy) tokenization platform we built on Hedera, and in 2025 our team [took 2nd place at the Hedera AI x Hackathon](https://spacedev.io/spacedev-in-the-media/hedera-ai-x-hackathon). Templates like this one are how we turn what we learn in production into something the rest of the ecosystem can reuse.`,
+  },
+  {
     slug: "spacedev-becomes-a-hedera-community-partner",
     title: "SpaceDev Becomes a Hedera Community Partner",
     date: new Date("2026-09-04"),

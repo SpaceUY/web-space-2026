@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SyndicationRow from "../components/ui/SyndicationRow.astro";
 import { SITE } from "../lib/seo";
-import { mediaItems, type MediaItem } from "../data/media-items";
+import { mediaItems } from "../data/media-items";
 
 const SEO_TITLE = "SpaceDev in the Media | Forbes, Academic Publications & Interviews";
 const SEO_DESC = "SpaceDev's Federico Sendra and Juan Manuel Sobral featured in Forbes Tech Council, Frontiers in Blockchain, CriptoNoticias, Medium and video interviews. Press coverage and publications.";
@@ -52,9 +52,8 @@ type OutletName = keyof typeof outlets;
 interface ContentItem {
   title: string;
   /**
-   * Real date, not a display string: the highlights row merges these with the
-   * media items below and sorts both by date, so the two lists need comparable
-   * values. Only month and year are ever rendered. Where the outlet's URL
+   * Real date, not a display string: the coverage list is sorted by it, newest
+   * first. Only month and year are ever rendered. Where the outlet's URL
    * carries the exact day it is used; for the rest the day is the 1st and
    * carries no meaning.
    */
@@ -65,7 +64,7 @@ interface ContentItem {
   quote?: string;
   source: OutletName;
   tag: string;
-  /** Only used by the two featured hero cards (contentItems[0] and [1]) */
+  /** Cover for the item's card in the coverage list; optional, the card renders without it */
   image?: string;
   /**
    * Outlets that republished this same piece. Rendered as a link row under the
@@ -88,6 +87,16 @@ interface VideoItem {
 }
 
 const contentItems: ContentItem[] = [
+  {
+    title: "Meet the Scaffold HBAR Template Bounty Winners",
+    date: new Date("2026-10-19"),
+    url: "https://hedera.com/blog/meet-the-scaffold-hbar-template-bounty-winners/",
+    authors: ["Hedera"],
+    description: "Hedera announces the five winners of its Scaffold HBAR Template Bounty, including SpaceDev's Hedera Governed Operations, a council-approval template built on native multisig and scheduled transactions.",
+    source: "Hedera",
+    tag: "Blockchain",
+    image: "/images/content/hedera-scaffold-hbar-bounty-winners-oct2026.jpg",
+  },
   {
     title: "SpaceDev is now a Community Partner in the Hedera Council",
     date: new Date("2026-09-04"),
@@ -297,11 +306,10 @@ const asSeenIn = [
 /**
  * HIGHLIGHTS
  *
- * The top row is the newest of everything this page holds, drawn from BOTH
- * pools: outlet coverage (contentItems) and SpaceDev's own write-ups
- * (mediaItems). It used to be the 2 newest outlet pieces only, which meant a
- * milestone we published ourselves landed at the very bottom of the page no
- * matter how recent it was.
+ * The top row is SpaceDev's own write-ups (mediaItems) only. Outlet coverage
+ * of the same news lives in "Coverage & Publications" below: when an outlet
+ * and SpaceDev publish the same milestone, mixing both pools put the outlet's
+ * card right next to ours and the row showed one story twice.
  *
  * Nothing here is hand-picked. An item qualifies by being recent and having a
  * cover image, so publishing anything newer rotates the row on its own, and
@@ -310,72 +318,20 @@ const asSeenIn = [
  */
 const HIGHLIGHT_COUNT = 3;
 
-interface Highlight {
-  title: string;
-  href: string;
-  /** External links open in a new tab; our own pages stay in this one. */
-  external: boolean;
-  image: string;
-  date: Date;
-  /** Byline for coverage. Our own pieces have none: the logo above already says it. */
-  meta: string;
-  blurb: string;
-  isQuote: boolean;
-  /** Absent on our own items, which carry a SpaceDev chip instead of a logo. */
-  outlet?: Outlet;
-  accent: string;
-  syndication: { label: string; url: string }[];
-}
-
 /** Card-ready pickups for SyndicationRow, with each label resolved from the registry. */
 const syndicationLinks = (item: ContentItem) =>
   item.syndication?.map((pickup) => ({ label: outlets[pickup.outlet].label, url: pickup.url })) ?? [];
 
 const SPACEDEV_ACCENT = "#673ae4";
 
-const coverageHighlight = (item: ContentItem): Highlight => ({
-  title: item.title,
-  href: item.url,
-  external: true,
-  image: item.image!,
-  date: item.date,
-  meta: item.authors?.[0] ?? "",
-  blurb: item.quote ?? item.description,
-  isQuote: Boolean(item.quote),
-  outlet: outlets[item.source],
-  accent: outlets[item.source].color,
-  syndication: syndicationLinks(item),
-});
-
-const ownHighlight = (item: MediaItem): Highlight => ({
-  title: item.title,
-  href: `/spacedev-in-the-media/${item.slug}`,
-  external: false,
-  image: item.image,
-  date: item.date,
-  meta: "",
-  blurb: item.highlight,
-  isQuote: false,
-  accent: SPACEDEV_ACCENT,
-  syndication: [],
-});
-
-const highlights = [
-  ...contentItems.filter((item) => item.image).map(coverageHighlight),
-  ...mediaItems.filter((item) => item.image).map(ownHighlight),
-]
-  // Same date, our own piece first: when an outlet and SpaceDev publish the same
-  // news on the same day, the version on this site should lead the row.
-  .sort((a, b) => b.date.getTime() - a.date.getTime() || Number(a.external) - Number(b.external))
+const highlights = mediaItems
+  .filter((item) => item.image)
+  .sort((a, b) => b.date.getTime() - a.date.getTime())
   .slice(0, HIGHLIGHT_COUNT);
 
-const isHighlighted = (href: string) => highlights.some((h) => h.href === href);
+const coverage = [...contentItems].sort((a, b) => b.date.getTime() - a.date.getTime());
 
-const coverage = contentItems
-  .filter((item) => !isHighlighted(item.url))
-  .sort((a, b) => b.date.getTime() - a.date.getTime());
-
-const ownItems = mediaItems.filter((item) => !isHighlighted(`/spacedev-in-the-media/${item.slug}`));
+const ownItems = mediaItems.filter((item) => !highlights.includes(item));
 
 const monthFmt = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", timeZone: "UTC" });
 
@@ -443,10 +399,10 @@ const videoJsonLd = videoItems.map((v) => ({
   <section class="py-20 md:py-28" style="background: #fafafa;">
     <div class="sd-container">
 
-      <!-- HIGHLIGHTS — newest of everything, outlet coverage and our own posts mixed -->
+      <!-- HIGHLIGHTS: our own newest posts; outlet coverage is listed below -->
       <div class="mb-10" data-animate>
         <h2 class="font-display text-2xl md:text-3xl" style="color: #141414;">Highlights</h2>
-        <p class="mt-2 text-sm" style="color: #858585;">The latest from SpaceDev and the outlets covering us.</p>
+        <p class="mt-2 text-sm" style="color: #858585;">The latest milestones from SpaceDev.</p>
       </div>
 
       <!--
@@ -469,43 +425,16 @@ const videoJsonLd = videoItems.map((v) => ({
             </div>
             <div class="flex flex-col justify-between gap-4 p-7 flex-1">
               <div>
-                {/*
-                  Only outlet pieces get a logo row. Our own posts carry no badge:
-                  their cover already shows the SpaceDev logo, and repeating it here
-                  reads as the same mark twice on one card.
-                */}
-                {item.outlet && (
-                  <div class="mb-4">
-                    <img src={item.outlet.logo} alt={item.outlet.label} class="h-8 object-contain max-w-[160px]" />
-                  </div>
-                )}
                 <h3 class="font-display text-xl leading-snug mb-3" style="color: #141414;">
-                  <a
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noopener noreferrer" : undefined}
-                    class="after:absolute after:inset-0"
-                  >{item.title}</a>
+                  <a href={`/spacedev-in-the-media/${item.slug}`} class="after:absolute after:inset-0">{item.title}</a>
                 </h3>
-                {item.isQuote ? (
-                  <blockquote class="border-l-2 pl-3" style={`border-color: ${item.accent};`}>
-                    <p class="text-sm italic leading-relaxed" style="color: #4e5052;">"{item.blurb}"</p>
-                  </blockquote>
-                ) : (
-                  <p class="text-sm leading-relaxed" style="color: #858585;">{item.blurb}</p>
-                )}
+                <p class="text-sm leading-relaxed" style="color: #858585;">{item.highlight}</p>
               </div>
-              <div>
-                <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
-                  <div>
-                    {item.meta && <p class="text-sm font-medium mb-0.5" style="color: #141414;">{item.meta}</p>}
-                    <p class="text-xs" style="color: #aaaaaa;">{monthFmt.format(item.date)}</p>
-                  </div>
-                  <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${item.accent};`}>
-                    {item.external ? "Read ↗" : "Read →"}
-                  </span>
-                </div>
-                <SyndicationRow items={item.syndication} color={item.accent} />
+              <div class="flex items-center justify-between pt-4" style="border-top: 1px solid #f0f0f0;">
+                <p class="text-xs" style="color: #aaaaaa;">{monthFmt.format(item.date)}</p>
+                <span class="text-sm font-ui opacity-0 group-hover:opacity-100 transition-opacity" style={`color: ${SPACEDEV_ACCENT};`}>
+                  Read →
+                </span>
               </div>
             </div>
           </article>
