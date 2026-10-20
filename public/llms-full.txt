@@ -111,5 +111,5 @@ Smart contract and blockchain security auditing: static and manual analysis, for
 - Contact page: https://spacedev.io/contact
 - Book a call: https://meetings.hubspot.com/federico-sendra/meet-space
 - Resources: Digital Library (https://spacedev.io/digital-library) · Newsletter (https://spacedev.io/newsletter)
-- Social: https://x.com/SpaceDevUy · https://www.linkedin.com/company/spacedev-io/ · https://www.instagram.com/spacedev.io · https://clutch.co/profile/spacedev
+- Social: https://x.com/SpaceDevUy · https://www.linkedin.com/company/spacedev-io/ · https://www.instagram.com/spacedev.io · https://www.youtube.com/channel/UC3RID6lo6K2uOiPeTwRA6fw · https://clutch.co/profile/spacedev
 - Blog RSS: https://spacedev.io/rss.xml

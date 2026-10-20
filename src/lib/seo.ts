@@ -1,5 +1,6 @@
 import { authors, type Author } from "../data/authors";
 import { offices, stats } from "../data/site-content";
+import { youtubeThumbnailUrl, youtubeWatchUrl, type Video } from "../data/videos";
 
 export const SITE = {
   url: "https://spacedev.io",
@@ -16,6 +17,8 @@ export const SITE = {
     linkedin: "https://www.linkedin.com/company/spacedev-io/",
     instagram: "https://www.instagram.com/spacedev.io",
     github: "https://github.com/SpaceUY",
+    // The channel-ID URL, not the @handle one: the ID never changes, the handle can.
+    youtube: "https://www.youtube.com/channel/UC3RID6lo6K2uOiPeTwRA6fw",
     clutch: "https://clutch.co/profile/spacedev",
     goodfirms: "https://www.goodfirms.co/company/spacedev",
     crunchbase: "https://crunchbase.com/organization/spacedev",
@@ -125,6 +128,7 @@ const organizationSameAs = [
   SITE.social.twitter,
   SITE.social.instagram,
   SITE.social.github,
+  SITE.social.youtube,
   SITE.social.clutch,
   SITE.social.goodfirms,
   SITE.social.crunchbase,
@@ -252,3 +256,43 @@ export const organizationSlimJsonLd = {
   logo: logoNode,
   sameAs: organizationSameAs,
 };
+
+/**
+ * VideoObject for a video on our own channel. Each chapter becomes a Clip so
+ * Google can show key moments; a clip ends where the next one starts, and the
+ * last one at the end of the video.
+ */
+export function videoObjectJsonLd(video: Video) {
+  const durationSeconds = isoDurationToSeconds(video.duration);
+  const watchUrl = youtubeWatchUrl(video.youtubeId);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: video.title,
+    description: video.description,
+    thumbnailUrl: [youtubeThumbnailUrl(video.youtubeId), youtubeThumbnailUrl(video.youtubeId, "hqdefault")],
+    uploadDate: video.uploadDate,
+    duration: video.duration,
+    embedUrl: `https://www.youtube.com/embed/${video.youtubeId}`,
+    contentUrl: watchUrl,
+    inLanguage: "en-US",
+    publisher: organizationRef,
+    ...(video.chapters.length > 0 && {
+      hasPart: video.chapters.map((chapter, index) => ({
+        "@type": "Clip",
+        name: chapter.title,
+        startOffset: chapter.start,
+        endOffset: video.chapters[index + 1]?.start ?? durationSeconds,
+        url: `${watchUrl}&t=${chapter.start}`,
+      })),
+    }),
+  };
+}
+
+function isoDurationToSeconds(duration: string): number {
+  const match = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(duration);
+  if (!match) throw new Error(`Invalid ISO 8601 video duration: ${duration}`);
+  const [, hours = "0", minutes = "0", seconds = "0"] = match;
+  return Number(hours) * 3600 + Number(minutes) * 60 + Number(seconds);
+}
