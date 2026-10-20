@@ -262,6 +262,8 @@ export const organizationSlimJsonLd = {
  * Google can show key moments; a clip ends where the next one starts, and the
  * last one at the end of the video.
  */
+export const videoId = (youtubeId: string) => `${SITE.url}/#video-${youtubeId}`;
+
 export function videoObjectJsonLd(video: Video) {
   const durationSeconds = isoDurationToSeconds(video.duration);
   const watchUrl = youtubeWatchUrl(video.youtubeId);
@@ -269,6 +271,7 @@ export function videoObjectJsonLd(video: Video) {
   return {
     "@context": "https://schema.org",
     "@type": "VideoObject",
+    "@id": videoId(video.youtubeId),
     name: video.title,
     description: video.description,
     thumbnailUrl: [youtubeThumbnailUrl(video.youtubeId), youtubeThumbnailUrl(video.youtubeId, "hqdefault")],
