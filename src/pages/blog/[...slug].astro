@@ -3,9 +3,11 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AuthorAvatar from "../../components/ui/AuthorAvatar.astro";
 import NewsletterForm from "../../components/ui/NewsletterForm.astro";
+import LiteYouTube from "../../components/ui/LiteYouTube.astro";
 import { getAuthor } from "../../data/authors";
 import { getBlogTag } from "../../data/blog-tags";
-import { SITE, organizationRef, personId } from "../../lib/seo";
+import { SITE, organizationRef, personId, videoId, videoObjectJsonLd } from "../../lib/seo";
+import { getVideoForPost, youtubeWatchUrl } from "../../data/videos";
 import "../../styles/prose.css";
 
 export async function getStaticPaths() {
@@ -29,6 +31,7 @@ const relatedPosts = allPosts
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
   .slice(0, 3);
 
+const video = getVideoForPost(post.id);
 const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 4);
 let currentTocParent: string | null = null;
 
@@ -58,6 +61,8 @@ const articleJsonLd = {
   },
   publisher: organizationRef,
   mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/${post.id}` },
+  // Ties the article to the video version embedded above it.
+  ...(video && { video: { "@id": videoId(video.youtubeId) } }),
   speakable: {
     "@type": "SpeakableSpecification",
     cssSelector: ["#article-title", "#article-summary", ...(post.data.takeaways?.length ? ["#key-takeaways"] : [])],
@@ -99,7 +104,7 @@ const breadcrumbJsonLd = {
   publishedTime={post.data.publishedAt.toISOString()}
   authorName={author?.name}
   articleSection={post.data.category}
-  jsonLd={[articleJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])]}
+  jsonLd={[articleJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : []), ...(video ? [videoObjectJsonLd(video)] : [])]}
   breadcrumbs={false}
 >
 
@@ -199,6 +204,16 @@ const breadcrumbJsonLd = {
             ))}
           </ul>
         </aside>
+      )}
+
+      {video && (
+        <figure class="mb-10">
+          <LiteYouTube youtubeId={video.youtubeId} title={video.title} />
+          <figcaption class="mt-3 text-sm text-sd-text-gray font-body">
+            Prefer to watch? {video.title} on{" "}
+            <a href={youtubeWatchUrl(video.youtubeId)} target="_blank" rel="noopener noreferrer" class="text-sd-purple hover:underline">SpaceDev's YouTube channel</a>.
+          </figcaption>
+        </figure>
       )}
 
       <article class="sd-prose">
