@@ -59,3 +59,7 @@ export const youtubeWatchUrl = (youtubeId: string) => `https://www.youtube.com/w
 
 export const youtubeThumbnailUrl = (youtubeId: string, quality: "maxresdefault" | "hqdefault" = "maxresdefault") =>
   `https://i.ytimg.com/vi/${youtubeId}/${quality}.jpg`;
+
+/** Same frame as the maxres JPG at about a third of the weight. */
+export const youtubeThumbnailWebpUrl = (youtubeId: string) =>
+  `https://i.ytimg.com/vi_webp/${youtubeId}/maxresdefault.webp`;

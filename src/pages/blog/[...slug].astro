@@ -75,6 +75,14 @@ const articleJsonLd = {
   }),
 };
 
+// The video is made by SpaceDev, not by the post's author: it credits the
+// company and points back at the article it is based on.
+const videoJsonLd = video && {
+  ...videoObjectJsonLd(video),
+  author: organizationRef,
+  isBasedOn: `${SITE.url}/blog/${post.id}`,
+};
+
 const faqJsonLd = post.data.faqs.length > 0 && {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -104,7 +112,7 @@ const breadcrumbJsonLd = {
   publishedTime={post.data.publishedAt.toISOString()}
   authorName={author?.name}
   articleSection={post.data.category}
-  jsonLd={[articleJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : []), ...(video ? [videoObjectJsonLd(video)] : [])]}
+  jsonLd={[articleJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : []), ...(videoJsonLd ? [videoJsonLd] : [])]}
   breadcrumbs={false}
 >
 
@@ -208,7 +216,7 @@ const breadcrumbJsonLd = {
 
       {video && (
         <figure class="mb-10">
-          <LiteYouTube youtubeId={video.youtubeId} title={video.title} />
+          <LiteYouTube youtubeId={video.youtubeId} title={video.title} priority />
           <figcaption class="mt-3 text-sm text-sd-text-gray font-body">
             Prefer to watch? {video.title} on{" "}
             <a href={youtubeWatchUrl(video.youtubeId)} target="_blank" rel="noopener noreferrer" class="text-sd-purple hover:underline">SpaceDev's YouTube channel</a>.
