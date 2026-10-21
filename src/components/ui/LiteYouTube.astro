@@ -1,5 +1,5 @@
 ---
-import { youtubeThumbnailUrl } from "../../data/videos";
+import { youtubeThumbnailUrl, youtubeThumbnailWebpUrl } from "../../data/videos";
 
 /**
  * YouTube embed that loads nothing from YouTube until someone presses play.
@@ -12,15 +12,19 @@ import { youtubeThumbnailUrl } from "../../data/videos";
 interface Props {
   youtubeId: string;
   title: string;
-  /** Eager-load the thumbnail when the player sits above the fold. */
-  eager?: boolean;
+  /**
+   * Set when the player sits above the fold: the thumbnail is then the page's
+   * LCP element, so it loads eagerly at high priority instead of lazily.
+   */
+  priority?: boolean;
   class?: string;
 }
 
-const { youtubeId, title, eager = false, class: className = "" } = Astro.props;
+const { youtubeId, title, priority = false, class: className = "" } = Astro.props;
 const fallbackThumbnail = youtubeThumbnailUrl(youtubeId, "hqdefault");
 ---
 
+{priority && <link rel="preconnect" href="https://i.ytimg.com" />}
 <div class={`relative aspect-video overflow-hidden rounded-2xl bg-sd-dark ${className}`}>
   <button
     type="button"
@@ -29,16 +33,21 @@ const fallbackThumbnail = youtubeThumbnailUrl(youtubeId, "hqdefault");
     data-title={title}
     aria-label={`Play video: ${title}`}
   >
-    <img
-      src={youtubeThumbnailUrl(youtubeId)}
-      onerror={`this.onerror=null;this.src='${fallbackThumbnail}'`}
-      alt=""
-      width="1280"
-      height="720"
-      loading={eager ? "eager" : "lazy"}
-      decoding="async"
-      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-    />
+    <picture class="block h-full w-full">
+      <source type="image/webp" srcset={youtubeThumbnailWebpUrl(youtubeId)} />
+      <!-- If the webp or maxres frame is missing, drop the <source> so the hq JPG actually loads. -->
+      <img
+        src={youtubeThumbnailUrl(youtubeId)}
+        onerror={`this.onerror=null;this.previousElementSibling?.remove();this.src='${fallbackThumbnail}'`}
+        alt=""
+        width="1280"
+        height="720"
+        loading={priority ? "eager" : "lazy"}
+        fetchpriority={priority ? "high" : "auto"}
+        decoding="async"
+        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+      />
+    </picture>
     <span
       class="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white transition-colors duration-200 group-hover:bg-red-600"
       aria-hidden="true"
