@@ -1280,10 +1280,10 @@ export const agenticAiData: AgenticAiPageData = {
   ],
 
   stats: [
-    { value: 8, suffix: "", label: "Years building software" },
+    { value: 9, suffix: "+", label: "Years building software" },
     { value: 200, suffix: "+", label: "Products shipped" },
-    { value: 70, suffix: "+", label: "Engineers on staff" },
-    { value: 5, suffix: "", label: "Countries, US-aligned hours" },
+    { value: 70, suffix: "+", label: "Team members" },
+    { value: 4, suffix: "", label: "Countries, US-aligned hours" },
   ],
 
   offers: [
