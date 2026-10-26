@@ -192,6 +192,13 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
         params = params || {};
         window.dataLayer.push(Object.assign({ event: event }, params));
         gtag('event', event, params);
+
+        /* ChatGPT Ads only receives the two conversions that mean a possible
+           client: a lead form sent and a meeting booked. Newsletter sign-ups and
+           CTA clicks stay in GA4 only, so the ads dashboard counts leads, not
+           interest. The names on the right are OpenAI's standard events. */
+        var openAiEvent = { generate_lead: "lead_created", meeting_booked: "appointment_scheduled" }[event];
+        if (openAiEvent && window.oaiq) window.oaiq("measure", openAiEvent, { type: "customer_action" });
       };
     </script>
 
@@ -271,6 +278,41 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
         if (l.readyState === "complete") whenIdle();
         else c.addEventListener("load", whenIdle, { once: true });
       })(window, document, "clarity", "script", "y0nhczcekt");
+    </script>
+    )}
+
+    {/* ChatGPT Ads measurement pixel (OpenAI), deferred.
+         It tells Ads Manager which ad brought a lead or a booked meeting; the
+         events come from sdTrack above. The queue stub and init stay inline so a
+         conversion sent before the SDK arrives is buffered, not lost. The SDK is
+         fetched right away only when the visit comes from an ad click (the URL
+         carries OpenAI's oppref click id, which the SDK must read before the
+         visitor moves to another page). Every other visit gets it after load,
+         when the main thread is idle, like Apollo. Skipped on error pages for the
+         same reason as Clarity and Apollo. */}
+    {!errorPage && (
+    <script is:inline>
+      (function (w, d, u) {
+        if (w.oaiq) return;
+        var q = function () { q.q.push(arguments); };
+        q.q = [];
+        w.oaiq = q;
+        function load() {
+          if (q.__loaded) return;
+          q.__loaded = 1;
+          var js = d.createElement("script");
+          js.async = true;
+          js.src = u;
+          d.head.appendChild(js);
+        }
+        if (/[?&]oppref=/.test(w.location.search)) load();
+        else if (d.readyState === "complete") setTimeout(load, 1500);
+        else w.addEventListener("load", function () {
+          if ("requestIdleCallback" in w) w.requestIdleCallback(load, { timeout: 3000 });
+          else setTimeout(load, 1500);
+        }, { once: true });
+        w.oaiq("init", { pixelId: "7vh8UrgLJ8oS8vp4RZDce7" });
+      })(window, document, "https://bzrcdn.openai.com/sdk/oaiq.min.js");
     </script>
     )}
   </head>
