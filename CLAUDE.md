@@ -340,10 +340,11 @@ Toda la medición vive en `BaseLayout.astro`, a la vista. **No hay Tag Manager**
 - GA4: `G-J43N5T0K82`, cargado con gtag.js directo
 - Clarity: `y0nhczcekt` — diferido hasta el load o la primera interacción
 - Apollo (ventas, identifica empresas que visitan): appId `66350bcafd19fc01c7bf1761` — diferido hasta el load
+- Píxel de ChatGPT Ads (OpenAI): pixelId `7vh8UrgLJ8oS8vp4RZDce7`, diferido hasta el load salvo en visitas desde un anuncio (URL con `oppref`), donde carga enseguida para leer el id del clic. Sus dominios (`bzrcdn.openai.com`, `bzr.openai.com`) están en la CSP de `vercel.json`, y la política de privacidad lo nombra junto con sus cookies `__oppref` y `__obref`
 
 **Todo evento de conversión se manda con `window.sdTrack(event, params)`**, definido en `BaseLayout`. Es global y no un módulo a propósito: los formularios viven en seis páginas distintas, y que varias importen el mismo módulo hace que Astro emita un chunk compartido que agrega un viaje de red (ver commit `4731879`).
 
-Eventos actuales: `generate_lead` (contacto y agentic), `newsletter_signup`, `book_call_click`.
+Eventos actuales: `generate_lead` (contacto y agentic), `meeting_booked` (calendario de HubSpot embebido), `newsletter_signup`, `book_call_click`, `cta_click`. Todos van a GA4. Al píxel de OpenAI solo van los dos que son un posible cliente: `generate_lead` como `lead_created` y `meeting_booked` como `appointment_scheduled`. En Ads Manager (ads.openai.com → Conversiones) cada uno tiene su evento de conversión creado; no vincularlos a una campaña hasta que estén llegando eventos reales.
 
 **Removidos en septiembre 2026, no volver a agregarlos sin releer esto:**
 
