@@ -67,7 +67,7 @@ The blockchain community keeps growing with fresh events emerging worldwide. The
 - Website: https://www.ethwarsaw.dev/
 
 **🇮🇹 Ethereum Napul (Napul ETH): Sep 12, 2024**
-- Southern Italy's largest web3 event
+- Southern Italy's largest Web3 event
 - Tracks: education, art/NFT, law, DeFi, gaming
 - Cultural experiences and networking
 - Location: Monumental Complex of Santa Maria la Nova, Naples

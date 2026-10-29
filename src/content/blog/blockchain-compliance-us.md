@@ -151,7 +151,7 @@ None of this changes what's already law. It does mean the implementing rules due
 
 ![A compliance lock embedded directly inside a blockchain node](/images/content/blockchain-compliance-by-design.png)
 
-The most reliable way to pass web3 regulatory compliance is to enforce it in code, not in a policy document. On a blockchain, the controls can live at the protocol level:
+The most reliable way to pass Web3 regulatory compliance is to enforce it in code, not in a policy document. On a blockchain, the controls can live at the protocol level:
 
 - **Permissioned token standards** (such as ERC-3643) that block transfers to non-whitelisted wallets.
 - **On-chain KYC and identity** so eligibility is checked before a wallet can hold or trade. Reusable decentralized identity makes this cheaper across products.

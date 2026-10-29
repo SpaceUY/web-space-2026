@@ -255,11 +255,11 @@ SpaceDev not only contributed three speakers to the conference but also co-organ
 
 SpaceDev's CTO, Juan Manuel Sobral, shared the stage with Franco Mangone and Gonzalo Bustos, also from SpaceDev. Franco delivered scaling insights with "ZK in a Nutshell", while Gonzalo spoke about the platform's latest through "The Gem of Pectra". Juan Manuel presented "Blockchain: Shaping the Future Landscape of Ethereum Wallets", making that three talks packed with top info.
 
-Juan Manuel was also one of the judges for the hackathon, which brought together 20+ web3 projects and over $20K in prizes, one being an entry into an incubation program by [Innovation Smart District](https://www.linkedin.com/company/innovationsmartdistrict/).
+Juan Manuel was also one of the judges for the hackathon, which brought together 20+ Web3 projects and over $20K in prizes, one being an entry into an incubation program by [Innovation Smart District](https://www.linkedin.com/company/innovationsmartdistrict/).
 
 [img:/images/content/XbN6RzxtOdIaz6v7jx3KTqcj5m8.webp]
 
-Witnessing the energy across all the events held throughout the week was deeply motivational for everyone in attendance. It's undeniable that Latin America has come a long way and is now a strong web3 hub.
+Witnessing the energy across all the events held throughout the week was deeply motivational for everyone in attendance. It's undeniable that Latin America has come a long way and is now a strong Web3 hub.
 
 SpaceDev would like to thank [Steven Clarke-Martin](https://www.linkedin.com/in/stevenclarkemartin/) for the invitation to be part of ETH Canal, and all who made the event not only possible but so impactful. More pioneers like them are needed leading these initiatives across LATAM, creating spaces where innovation, collaboration, and vision come together.
 
@@ -325,7 +325,7 @@ At SpaceDev, we remain committed to education and building secure, reliable bloc
     highlight: "CEO Federico Sendra keynote speaker",
     seoTitle: "SpaceDev CEO Keynotes Blockchain Talk at Google DevFest",
     seoDescription:
-      "SpaceDev CEO Federico Sendra delivered The Blockchain Revolution keynote at Google DevFest Montevideo, covering trust, security, and real web3 use cases.",
+      "SpaceDev CEO Federico Sendra delivered The Blockchain Revolution keynote at Google DevFest Montevideo, covering trust, security, and real Web3 use cases.",
     image: "/images/content/QViIAM5GOjsnPVrrLM0WSr5juU.webp",
     body: `On Saturday, November 16, SpaceDev CEO and co-founder Federico Sendra participated in the renowned Google DevFest event. Google DevFests are annual tech conferences organized by Google Developer Groups (GDG) communities around the globe. These gatherings provide a platform for local developers to connect, learn, and build using Google's tools and technologies.
 
@@ -346,7 +346,7 @@ With this in mind, they invited Federico to take the stage and deliver his talk 
 
 [img:/images/content/QfeAWvguBLgF10CGvD4eKNp90fQ.webp]
 
-It was an unmissable opportunity to connect with people who may not have had much information about what decentralized technologies mean for society and its evolution. By bridging this gap, new builders are inspired to join the web3 ecosystem.
+It was an unmissable opportunity to connect with people who may not have had much information about what decentralized technologies mean for society and its evolution. By bridging this gap, new builders are inspired to join the Web3 ecosystem.
 
 [img:/images/content/cKrHLaDsHAml2XzQvv93tHipLA.webp]`,
   },
@@ -394,7 +394,7 @@ The participation of Santiago Garcia da Rosa and Juan Manuel Sobral in ProductTa
     tags: ["Ethereum", "Hackathon"],
     highlight: "20 teams from 12 countries, with Vitalik Buterin as surprise guest",
     seoDescription:
-      "SpaceDev co-mentored Ethereum Uruguay's first Buildathon, where 20 teams from 12 countries built web3 projects and Vitalik Buterin made a surprise visit.",
+      "SpaceDev co-mentored Ethereum Uruguay's first Buildathon, where 20 teams from 12 countries built Web3 projects and Vitalik Buterin made a surprise visit.",
     image: "/images/content/64v7ic0nCR8AHLwB1CKVleMXbw.webp",
     body: `The much-anticipated Ethereum Uruguay Buildathon was a resounding success for the community despite being the first of its kind in the country's history. Held on August 15-16 as part of the larger Ethereum Conference, the event brought together both enthusiasts and experts from blockchain and crypto who soon found themselves in an environment filled with creativity, learning, and collaboration.
 
@@ -408,7 +408,7 @@ The organizers expected ten teams, but ended up with twenty from twelve differen
 
 In addition to awarding USD 6,000 in prizes, not including bounties and grants from sponsors like Arbitrum, The Graph, Scroll, Push, INTMAX, and Kleros, the Buildathon offered participants the opportunity to network with industry professionals.
 
-The pitching at the very end gave way to the last of the presentations from the long and prestigious list of international speakers. None other than Vitalik Buterin, co-founder of Ethereum, joined as a last-minute guest to show his support and recognition of the growing web3 movement in the country.
+The pitching at the very end gave way to the last of the presentations from the long and prestigious list of international speakers. None other than Vitalik Buterin, co-founder of Ethereum, joined as a last-minute guest to show his support and recognition of the growing Web3 movement in the country.
 
 [img:/images/content/vLJ2wT7c3rOrZ4QwxW1VeSOTiH8.webp]
 
@@ -453,7 +453,7 @@ The book (in Spanish) can be downloaded after filling out a short form [here](ht
     image: "/images/content/0dgnwv0B9TDVgsLtDKiG4WSq1xY.webp",
     body: `SpaceDev participated in the second edition of the Bitcoin Energy Summit, which took place in Miami on April 22-23, 2024.
 
-This prominent event in the web3 universe, which attracted over 1,000 attendees, 120 speakers, 300 companies, and even members of the U.S. government, aimed to connect and address a highly relevant topic: how to use renewable energy to produce crypto.
+This prominent event in the Web3 universe, which attracted over 1,000 attendees, 120 speakers, 300 companies, and even members of the U.S. government, aimed to connect and address a highly relevant topic: how to use renewable energy to produce crypto.
 
 Congressman Byron Donalds drew attention with his statement, "We are the new gold rush", referencing historical periods of intense migration toward areas and industries with great enrichment potential.
 
@@ -523,13 +523,13 @@ SpaceDev's involvement in events like CUTI Business Forum reflects the company's
     slug: "blockchain-summit-latam-2023",
     title: "Blockchain Summit LATAM 2023 (Colombia)",
     date: new Date("2023-10-04"),
-    location: "Agora Convention Center, Bogota, Colombia",
+    location: "Agora Convention Center, Bogotá, Colombia",
     tags: ["Blockchain", "Conference", "RWA"],
     highlight: "CTO on RWA panel at the 7th edition of Blockchain Summit LATAM",
     seoDescription:
-      "SpaceDev CTO Juan Manuel Sobral joined a panel on real-world assets at the Blockchain Summit LATAM 2023 in Bogota, Colombia, discussing tokenization and digital art.",
+      "SpaceDev CTO Juan Manuel Sobral joined a panel on real-world assets at the Blockchain Summit LATAM 2023 in Bogotá, Colombia, discussing tokenization and digital art.",
     image: "/images/content/blockchain-summit-latam-colombia-2023.png",
-    body: `The 7th edition of Blockchain Summit LATAM took place October 4-6, 2023 at the Agora Convention Center in Bogota, Colombia. The event brought together over 2,000 in-person attendees, 5,000+ virtual participants, and 130+ speakers to discuss financial services, banking, government, tokenization, gaming, DeFi, NFTs, metaverse, and Web3.
+    body: `The 7th edition of Blockchain Summit LATAM took place October 4-6, 2023 at the Agora Convention Center in Bogotá, Colombia. The event brought together over 2,000 in-person attendees, 5,000+ virtual participants, and 130+ speakers to discuss financial services, banking, government, tokenization, gaming, DeFi, NFTs, metaverse, and Web3.
 
 SpaceDev's CTO, Juan Manuel Sobral, took the stage in a panel on Real-World Asset (RWA) use cases, moderated by Pamela Gonzalez Perilli (Lead Blockchain Developer, Web3 Pro). He was joined by Valentin Jaremtchuk (co-CEO, WIN Investments) and Fedor Bogorodskiy (CEO, Streampay).
 
@@ -543,13 +543,13 @@ Blockchain Summit LATAM is one of the most important regional blockchain confere
     date: new Date("2023-09-02"),
     location: "Montevideo, Uruguay",
     tags: ["Blockchain", "Interview"],
-    highlight: "CEO Federico Sendra interviewed by Empresarios de Aca",
+    highlight: "CEO Federico Sendra interviewed by Empresarios de Acá",
     seoTitle: "Federico Sendra on Why Blockchain Matters for Businesses",
     seoDescription:
-      "SpaceDev CEO Federico Sendra explains why blockchain technology matters for businesses in an interview with YouTube channel Empresarios de Aca.",
+      "SpaceDev CEO Federico Sendra explains why blockchain technology matters for businesses in an interview with YouTube channel Empresarios de Acá.",
     image: "/images/content/federico-sendra-interview-2023.png",
     youtubeId: "jm0DN38MeGo",
-    body: `Federico Sendra, CEO and co-founder of SpaceDev, was interviewed by Tatiana Cortazza, host of the YouTube channel "Empresarios de Aca," on September 2, 2023.
+    body: `Federico Sendra, CEO and co-founder of SpaceDev, was interviewed by Tatiana Cortazza, host of the YouTube channel "Empresarios de Acá," on September 2, 2023.
 
 The topic: why blockchain technology is important for businesses.
 

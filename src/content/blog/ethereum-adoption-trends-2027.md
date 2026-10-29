@@ -15,12 +15,12 @@ takeaways:
   - "The permissioned side is winning today. Canton is in production with 30+ institutions and Broadridge above $4 trillion in monthly Treasury repo. Ethereum's privacy plan is credible and, as of the last data check, none of it is live on mainnet."
   - "Tokenization share estimates diverge roughly twofold. Any single confident percentage is a claim about methodology as much as about market share."
   - "The decisive signal for 2027 is whether the shared bank deposit network selects a public chain, an L2, or a permissioned ledger."
-  - "What breaks in institutional blockchain projects is operational, not cryptographic. Key management, not maths."
+  - "What breaks in institutional blockchain projects is operational, not cryptographic. Key management, not math."
 faqs:
   - question: "Is Ethereum adding privacy?"
     answer: "Yes, but nothing has shipped to mainnet. The near-term plan has three parts: account abstraction combined with FOCIL, keyed nonces (EIP-8250), and access-layer work including the Kohaku toolkit. FOCIL is the selected headliner for the Hegotá upgrade."
   - question: "What is Kohaku?"
-    answer: "An Ethereum Foundation open-source toolkit for building privacy-focused wallets. Its SDK shipped on 25 May 2026 at v0.0.1-alpha.21, integrating Railgun, Tornado Cash and Privacy Pools at the wallet layer with EIP-4337 relaying operational."
+    answer: "An Ethereum Foundation open-source toolkit for building privacy-focused wallets. Its SDK shipped on May 25, 2026 at v0.0.1-alpha.21, integrating Railgun, Tornado Cash and Privacy Pools at the wallet layer with EIP-4337 relaying operational."
   - question: "What is FOCIL?"
     answer: "Fork-choice enforced inclusion lists (EIP-7805). A committee of validators proposes transactions that block builders must include; if a proposer filters them, the network rejects the block. It is both a censorship-resistance and a privacy mechanism."
   - question: "When is the Glamsterdam upgrade?"
@@ -35,7 +35,7 @@ faqs:
 
 ## Where Ethereum adoption actually stands going into 2027
 
-Strong, because Ethereum hosts the majority of tokenized real-world assets, [close to 58% of the market according to Token Terminal](https://institutions.ethereum.org/), carries roughly $171 billion in stablecoin TVL across mainnet and its L2s, and gained a dedicated institutional nonprofit in July 2026. BlackRock's BUIDL began trading on Uniswap in February 2026, the first time a regulated institutional product listed on a decentralised exchange.
+Strong, because Ethereum hosts the majority of tokenized real-world assets, [close to 58% of the market according to Token Terminal](https://institutions.ethereum.org/), carries roughly $171 billion in stablecoin TVL across mainnet and its L2s, and gained a dedicated institutional nonprofit in July 2026. BlackRock's BUIDL began trading on Uniswap in February 2026, the first time a regulated institutional product listed on a decentralized exchange.
 
 Strange, because the single largest capital flow in institutional blockchain is not happening on Ethereum at all. It is happening on **Canton**, a permissioned network built for privacy, where Broadridge scaled from $2 trillion to over $4 trillion in monthly Treasury repo financing.
 
@@ -57,7 +57,7 @@ But the framing most coverage uses, confidentiality as a competitive concern, un
 
 **That reframing matters for how you scope a build.** If privacy is a competitive concern, it is a product feature you can defer. If it is an attack surface, it is a security requirement, and it belongs in the threat model from day one. In practice that means it is scoped alongside [smart contract and blockchain security](https://spacedev.io/blockaudit-smart-contract-and-blockchain-security), not after it.
 
-The Ethereum Foundation has organised around this. It launched a Privacy Cluster in October 2025 with 47 researchers, engineers and cryptographers led by Igor Barinov, and rebranded its Privacy & Scaling Explorations team to Privacy Stewards of Ethereum, a shift from research to shipping. EF co-director Tomasz Stańczak has described [a roughly 50-person privacy team operating outside the core protocol group](https://unchainedcrypto.com/vitalik-buterin-outlines-ethereums-near-term-privacy-roadmap-aa-focil-keyed-nonces-and-kohaku/), with its own roadmap for institutional privacy standards, and has said plainly that the feedback from institutions is that privacy is a must. a16z has called privacy the most important moat of 2026.
+The Ethereum Foundation has organized around this. It launched a Privacy Cluster in October 2025 with 47 researchers, engineers and cryptographers led by Igor Barinov, and rebranded its Privacy & Scaling Explorations team to Privacy Stewards of Ethereum, a shift from research to shipping. EF co-director Tomasz Stańczak has described [a roughly 50-person privacy team operating outside the core protocol group](https://unchainedcrypto.com/vitalik-buterin-outlines-ethereums-near-term-privacy-roadmap-aa-focil-keyed-nonces-and-kohaku/), with its own roadmap for institutional privacy standards, and has said plainly that the feedback from institutions is that privacy is a must. a16z has called privacy the most important moat of 2026.
 
 ## The side that already won: Canton and permissioned privacy
 
@@ -71,7 +71,7 @@ Canton Network was purpose-built for regulated capital markets, with sub-transac
 
 Goldman Sachs built GS DAP on the same stack. Canton-connected platforms, led by GS DAP, accounted for roughly 57.5% of the approximately $8 billion in global digital bonds issued since 2022 (via 51 Insights, *Money Movement 2.0*). In December 2025 the DTCC announced it would tokenize US Treasury securities on Canton.
 
-Compare that to the public-chain privacy stack, and the contrast is stark. [Aztec, the Ethereum L2 offering fully private smart contracts, launched its alpha mainnet in early 2026 and runs at roughly one transaction per second](https://blog.chainsafe.io/2026-guide-to-blockchain-privacy/) as of August 2026. Solana's confidential transfers launched in early 2025, were shut down to patch bugs, and only came back online in June 2026. Cardano's Midnight sidechain launched a federated mainnet on 31 March 2026.
+Compare that to the public-chain privacy stack, and the contrast is stark. [Aztec, the Ethereum L2 offering fully private smart contracts, launched its alpha mainnet in early 2026 and runs at roughly one transaction per second](https://blog.chainsafe.io/2026-guide-to-blockchain-privacy/) as of August 2026. Solana's confidential transfers launched in early 2025, were shut down to patch bugs, and only came back online in June 2026. Cardano's Midnight sidechain launched a federated mainnet on March 31, 2026.
 
 **The correct version of the "privacy is unsolved" thesis is therefore narrower and more useful:** privacy for institutions is solved and adopted, inside walled gardens. Privacy on open, permissionless networks is not. That is the actual race.
 
@@ -83,7 +83,7 @@ Five approaches, with genuinely different compliance implications. This table is
 |---|---|---|---|
 | Permissioned, sub-transaction privacy | Canton | Only entitled parties see data; auditors added explicitly | **Production. 30+ institutions. Broadridge at $4T+/month** |
 | Confidential extensions on a public L1 | Solana Confidential Transfers | Hides amounts, not identities | Relaunched June 2026 after bug fixes |
-| ZK shielded pool | Zcash | Viewing keys let auditors decrypt | Ironwood upgrade activated 28 July 2026 |
+| ZK shielded pool | Zcash | Viewing keys let auditors decrypt | Ironwood upgrade activated July 28, 2026 |
 | Private smart contracts | Aztec (Ethereum L2) | Local computation, only a proof is published; no auditor key | Alpha mainnet, roughly 1 tps |
 | Privacy at the wallet layer | Kohaku (Ethereum) | Integrates Railgun, Tornado Cash, Privacy Pools | SDK alpha, May 2026 |
 
@@ -109,9 +109,9 @@ Buterin's underlying argument is that privacy is a precondition for ETH having g
 
 ## Kohaku, concretely
 
-Kohaku was introduced at Devconnect in Buenos Aires in November 2025 as [a modular framework of primitives for building privacy-focused wallets without centralised intermediaries](https://www.theblock.co/post/379149/vitalik-buterin-unveils-kohaku-privacy-focused-framework-ethereum).
+Kohaku was introduced at Devconnect in Buenos Aires in November 2025 as [a modular framework of primitives for building privacy-focused wallets without centralized intermediaries](https://www.theblock.co/post/379149/vitalik-buterin-unveils-kohaku-privacy-focused-framework-ethereum).
 
-The SDK shipped on 25 May 2026 at version v0.0.1-alpha.21. It [integrates Railgun, Tornado Cash and Privacy Pools directly at the wallet layer, with EIP-4337 mempool relaying operational through the Railgun integration](https://www.dextools.io/news/ethereum-foundation-kohaku-sdk-privacy-wallets-2026). Ambire and a browser extension built with breadcoop are preparing implementations.
+The SDK shipped on May 25, 2026 at version v0.0.1-alpha.21. It [integrates Railgun, Tornado Cash and Privacy Pools directly at the wallet layer, with EIP-4337 mempool relaying operational through the Railgun integration](https://www.dextools.io/news/ethereum-foundation-kohaku-sdk-privacy-wallets-2026). Ambire and a browser extension built with breadcoop are preparing implementations.
 
 A related piece: [per-dapp addresses](https://news.bitcoin.com/vitalik-kohaku-per-dapp-address-ethereum-privacy/), breaking the norm of one persistent global address per user. Today, a single address lets anyone query every token you hold, every protocol you have used and every transaction you have made. Buterin has called that norm one that has to break.
 
@@ -119,7 +119,7 @@ A related piece: [per-dapp addresses](https://news.bitcoin.com/vitalik-kohaku-pe
 
 ## The contradiction nobody resolves
 
-Here is the tension at the centre of this, and we are not going to pretend it resolves cleanly.
+Here is the tension at the center of this, and we are not going to pretend it resolves cleanly.
 
 Kohaku integrates Tornado Cash, a sanctioned mixer. Aztec has no auditor key by design. Meanwhile the institutions Ethereum wants require both privacy *and* the ability to demonstrate compliance to a regulator on demand.
 
@@ -158,11 +158,11 @@ What is less ambiguous:
 
 If you are building in this category, the practical mechanics are in [asset tokenization development](https://spacedev.io/blockchain-development-services/asset-tokenization) and in [how to launch an RWA protocol](https://spacedev.io/blog/how-to-launch-an-rwa-protocol). We have shipped both a fixed-income variant, [Bondi Finance](https://spacedev.io/our-work/bondi-finance), and a commodity-backed consumer variant, [Aura](https://spacedev.io/our-work/aura).
 
-**Institutional representation.** [Ethereum Institutional launched on 1 July 2026](https://www.coindesk.com/tech/2026/07/01/ethereum-gets-a-new-nonprofit-focused-on-institutional-adoption) as an independent nonprofit led by David Walsh, Marius Smith and Matthew Dawson, positioned as a single entry point for banks, asset managers, custodians and government organisations evaluating Ethereum. The Foundation is narrowing to core protocol stewardship while EthLabs takes on ecosystem R&D.
+**Institutional representation.** [Ethereum Institutional launched on July 1, 2026](https://www.coindesk.com/tech/2026/07/01/ethereum-gets-a-new-nonprofit-focused-on-institutional-adoption) as an independent nonprofit led by David Walsh, Marius Smith and Matthew Dawson, positioned as a single entry point for banks, asset managers, custodians and government organizations evaluating Ethereum. The Foundation is narrowing to core protocol stewardship while EthLabs takes on ecosystem R&D.
 
 ## What actually breaks: the operational layer
 
-If you take one practical thing from this article, take this. The risks that materialise in institutional blockchain projects are rarely cryptographic. They are operational.
+If you take one practical thing from this article, take this. The risks that materialize in institutional blockchain projects are rarely cryptographic. They are operational.
 
 > "Most wallet compromises aren't cryptographic failures. They're operational ones."
 >
@@ -203,7 +203,7 @@ Yes, but nothing has shipped to mainnet. The near-term plan has three parts: acc
 
 ### What is Kohaku?
 
-An Ethereum Foundation open-source toolkit for building privacy-focused wallets. Its SDK shipped on 25 May 2026 at v0.0.1-alpha.21, integrating Railgun, Tornado Cash and Privacy Pools at the wallet layer with EIP-4337 relaying operational.
+An Ethereum Foundation open-source toolkit for building privacy-focused wallets. Its SDK shipped on May 25, 2026 at v0.0.1-alpha.21, integrating Railgun, Tornado Cash and Privacy Pools at the wallet layer with EIP-4337 relaying operational.
 
 ### What is FOCIL?
 

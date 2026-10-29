@@ -34,14 +34,14 @@ faqs:
   - question: "Do smart contract audits prevent hacks?"
     answer: "Not on their own. A Wharton working paper found that audits on average do not reduce the likelihood of future breaches, but audits by top-tier auditors and bug bounty programs are associated with fewer breaches and lower losses. Most exploits of audited protocols target code or systems the audit never covered."
   - question: "What was the largest crypto hack ever?"
-    answer: "The Bybit hack of 21 February 2025, in which about $1.5 billion in virtual assets was stolen. The FBI attributed it to North Korea. Elliptic called it the largest crypto theft of all time, far above the $611 million taken from Poly Network in 2021."
+    answer: "The Bybit hack of February 21, 2025, in which about $1.5 billion in virtual assets was stolen. The FBI attributed it to North Korea. Elliptic called it the largest crypto theft of all time, far above the $611 million taken from Poly Network in 2021."
 ---
 
-This page tracks smart contract and crypto security statistics for 2025 and 2026 from the organisations that produce them: blockchain analytics firms, Web3 security firms, government agencies and academic researchers. Every figure links to its original source, and the complete source list is at the end of the page.
+This page tracks smart contract and crypto security statistics for 2025 and 2026 from the organizations that produce them: blockchain analytics firms, Web3 security firms, government agencies and academic researchers. Every figure links to its original source, and the complete source list is at the end of the page.
 
 Read together, the data tells one story more clearly than any single number. Attacks on smart contract code are more frequent than ever, but most of the money now leaves through everything around the code: signing keys, admin permissions, front-ends, bridge verifiers and the people who operate them. A protocol that treats security as a one-time code review is protecting the smaller part of its risk.
 
-**Data as of 28 September 2026.** We update this page every quarter. Trackers measure different things, so the same period can have very different totals. Each number is labelled with who counted it and what they included.
+**Data as of September 28, 2026.** We update this page every quarter. Trackers measure different things, so the same period can have very different totals. Each number is labeled with who counted it and what they included.
 
 ## How much crypto was stolen in hacks in 2025?
 
@@ -70,7 +70,7 @@ The largest of those events was Bybit. The February 2025 breach alone was $1.46 
 
 Thefts from individuals moved in the opposite direction to their count. [Chainalysis](https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2026/) counted 158,000 personal wallet compromises in 2025, nearly triple the 54,000 of 2022, affecting at least 80,000 unique victims. Yet the value stolen from individuals fell from $1.5 billion in 2024 to $713 million.
 
-DeFi protocols, the part of the market built on smart contracts, look very different from the headline. [Immunefi](https://immunefi.com/blog/research/the-ecosystem-vulnerability-scoreboard-6-years-of-defi-loss-data/) puts 2025 DeFi protocol losses at $680 million, far below the 2022 peak of $2.62 billion, with the median loss per incident down from $6 million in 2022 to $1.5 million. [SlowMist](https://www.slowmist.com/report/2025-Blockchain-Security-and-AML-Annual-Report(EN).pdf) arrives at a similar figure from a different dataset: 126 DeFi incidents with around $649 million in losses, down from 339 incidents and about $1.029 billion in 2024. Centralised exchanges suffered only 22 incidents, but lost $1.809 billion.
+DeFi protocols, the part of the market built on smart contracts, look very different from the headline. [Immunefi](https://immunefi.com/blog/research/the-ecosystem-vulnerability-scoreboard-6-years-of-defi-loss-data/) puts 2025 DeFi protocol losses at $680 million, far below the 2022 peak of $2.62 billion, with the median loss per incident down from $6 million in 2022 to $1.5 million. [SlowMist](https://www.slowmist.com/report/2025-Blockchain-Security-and-AML-Annual-Report(EN).pdf) arrives at a similar figure from a different dataset: 126 DeFi incidents with around $649 million in losses, down from 339 incidents and about $1.029 billion in 2024. Centralized exchanges suffered only 22 incidents, but lost $1.809 billion.
 
 <div class="sd-callout"><div class="sd-callout-title">What this means</div><p>Annual totals are a poor guide to the risk facing any single protocol. When one incident accounts for about half of a year's losses, a rise or fall mostly reflects whether a Bybit-scale event happened.</p><p>The more useful signals are the median and the split by target. Both point the same way: DeFi code losses are well below their 2022 peak, while a small number of operational failures at large custodians drive the totals.</p></div>
 
@@ -123,7 +123,7 @@ Bybit, at about $1.5 billion, remains the largest crypto theft on record. [Ellip
 |---|---|---|---|
 | 23 Jan 2025 | Phemex (exchange) | ~$73 million across sixteen blockchains | Unusual activity in its hot wallet, detected by [Phemex](https://phemex.com/announcements/phemex-hot-wallet-security-incident-update-and-timeline). Loss estimate from [Halborn](https://www.halborn.com/blog/post/explained-the-phemex-hack-january-2025) |
 | 21 Feb 2025 | Bybit (exchange) | ~$1.5 billion | Front-end manipulation of Safe{Wallet}, [attributed by the FBI](https://www.ic3.gov/psa/2025/psa250226) to North Korea |
-| 22 May 2025 | Cetus (Sui) | ~$223 million | **Code bug.** A flawed overflow guard in `checked_shlw()`, in an open source library Cetus depended on ([BlockSec](https://blocksec.com/blog/cetus-incident-one-unchecked-shift-drains-223m-largest)). About $162 million was frozen on Sui ([Cyfrin](https://www.cyfrin.io/blog/inside-the-223m-cetus-exploit-root-cause-and-impact-analysis)) |
+| May 22, 2025 | Cetus (Sui) | ~$223 million | **Code bug.** A flawed overflow guard in `checked_shlw()`, in an open source library Cetus depended on ([BlockSec](https://blocksec.com/blog/cetus-incident-one-unchecked-shift-drains-223m-largest)). About $162 million was frozen on Sui ([Cyfrin](https://www.cyfrin.io/blog/inside-the-223m-cetus-exploit-root-cause-and-impact-analysis)) |
 | 18 Jun 2025 | Nobitex (exchange, Iran) | Over $90 million | Claimed by a pro-Israel group, which burned the funds rather than taking them ([Elliptic](https://www.elliptic.co/insights/iranian-crypto-exchange-nobitex-hacked-pro-israel-group/)) |
 | 3 Nov 2025 | Balancer V2 | $121.1 million in total losses | **Code bug.** Incorrect rounding in the "exact out" swap path for Stable Pools. $45.7 million was protected or recovered ([Balancer](https://medium.com/balancer-protocol/nov-3-exploit-post-mortem-51dcbeb6b020)) |
 | 10 Jan 2026 | An individual | Over $282 million in LTC and BTC | Hardware wallet social engineering scam ([ZachXBT](https://x.com/zachxbt/status/2012212936735912351), [Hacken](https://assets.hacken.io/assets/q1-2026-security-report.pdf)) |
@@ -133,7 +133,7 @@ Bybit, at about $1.5 billion, remains the largest crypto theft on record. [Ellip
 | 18 Apr 2026 | KelpDAO (rsETH bridge) | 116,500 rsETH, ~$292 million | Compromise of the bridge's verification layer, root cause disputed ([LayerZero](https://layerzero.network/blog/layerzero-labs-kelpdao-incident-report), [Kelp](https://x.com/KelpDAO/status/2051755467328913637)) |
 | 30 Jul 2026 | Coldcard (hardware wallets) | ~$70.2 million (1,082.65 BTC) | A firmware bug that weakened seed generation ([Coinkite](https://blog.coinkite.com/coldcard-mk3-seed-generation-warning/), [Galaxy Research](https://x.com/glxyresearch/status/2083181683067506899)) |
 | 30 Aug 2026 | Tectonic (Cronos) | ~$120.4 million borrowed | **Protocol logic.** Collateral price manipulated against thin liquidity, then reversed by a chain restoration ([Cronos](https://x.com/CronosNetwork/status/2097131718948094299)) |
-| 24 Sep 2026 | Bitget (exchange) | Over $350 million | Unauthorised transfers from hot wallets. Elliptic calls a North Korean link "highly likely" ([Elliptic](https://www.elliptic.co/insights/bitget-attack-pushes-suspected-north-korea-crypto-heists-over-1-billion-in-2026/)). Still under investigation |
+| 24 Sep 2026 | Bitget (exchange) | Over $350 million | Unauthorized transfers from hot wallets. Elliptic calls a North Korean link "highly likely" ([Elliptic](https://www.elliptic.co/insights/bitget-attack-pushes-suspected-north-korea-crypto-heists-over-1-billion-in-2026/)). Still under investigation |
 
 ### Four patterns behind the biggest losses
 
@@ -147,7 +147,7 @@ Bybit, at about $1.5 billion, remains the largest crypto theft on record. [Ellip
 
 ### When a blockchain rewinds: the Tectonic incident
 
-According to the [Cronos post-mortem](https://x.com/CronosNetwork/status/2097131718948094299), on 30 August 2026 an attacker pushed the price of the TONIC token up against thin DEX liquidity, then borrowed $120.4 million across nine markets in a single transaction against the inflated collateral.
+According to the [Cronos post-mortem](https://x.com/CronosNetwork/status/2097131718948094299), on August 30, 2026 an attacker pushed the price of the TONIC token up against thin DEX liquidity, then borrowed $120.4 million across nine markets in a single transaction against the inflated collateral.
 
 Validators halted the network at 14:32:47 UTC and restored the chain to block 90,896,188, the last block before the attack. The restoration reversed approximately $111.2 million. About $9.19 million, roughly 7.6% of the affected funds, left the network before the halt and has not been recovered.
 
@@ -197,7 +197,7 @@ Deployed contracts do not get safer with age. [CertiK](https://www.certik.com/sk
 
 For a technical look at how these bugs arise, see our guide to [smart contract security vulnerabilities and how to prevent them](https://spacedev.io/blog/smart-contract-security-how-vulnerabilities-happen-and-how-to-prevent-them).
 
-<div class="sd-callout"><div class="sd-callout-title">What this means</div><p>Two statements are true at once. Across the whole market, keys, signers and infrastructure account for most of the money stolen, because that is where centralised custodians hold large balances. Inside a DeFi protocol, the contract logic is the vault, and logic exploits cause almost all losses.</p><p>A security plan has to cover both: the code, and the operational layer that can change it, upgrade it or sign on its behalf.</p></div>
+<div class="sd-callout"><div class="sd-callout-title">What this means</div><p>Two statements are true at once. Across the whole market, keys, signers and infrastructure account for most of the money stolen, because that is where centralized custodians hold large balances. Inside a DeFi protocol, the contract logic is the vault, and logic exploits cause almost all losses.</p><p>A security plan has to cover both: the code, and the operational layer that can change it, upgrade it or sign on its behalf.</p></div>
 
 ## What are the most common smart contract vulnerabilities in 2026?
 
@@ -226,7 +226,7 @@ The two new categories reflect where recent exploits have come from. Arithmetic 
 
 ### How the ranking is built
 
-The ranking is not a list of losses. OWASP's [methodology](https://scs.owasp.org/sctop10/methodology/) is based mainly on a practitioner survey, ordered by mean rank, and incident data is used to validate the order. For 2026 that data covers 122 unique protocols exploited in 2025, totalling $905.4 million, counting smart contract vectors only and excluding phishing, exchange infrastructure breaches, rug pulls and private key compromise ([OWASP data sources](https://scs.owasp.org/sctop10/data-sources/)). The 2025 edition was built on 149 incidents from 2024, documenting over $1.42 billion in losses ([OWASP](https://owasp.org/www-project-smart-contract-top-10/)).
+The ranking is not a list of losses. OWASP's [methodology](https://scs.owasp.org/sctop10/methodology/) is based mainly on a practitioner survey, ordered by mean rank, and incident data is used to validate the order. For 2026 that data covers 122 unique protocols exploited in 2025, totaling $905.4 million, counting smart contract vectors only and excluding phishing, exchange infrastructure breaches, rug pulls and private key compromise ([OWASP data sources](https://scs.owasp.org/sctop10/data-sources/)). The 2025 edition was built on 149 incidents from 2024, documenting over $1.42 billion in losses ([OWASP](https://owasp.org/www-project-smart-contract-top-10/)).
 
 OWASP's code-only total for 2025, $905.4 million, is close to Immunefi's code-only estimate of about $790 million. Both are well below a third of the headline totals at the top of this page.
 
@@ -300,17 +300,17 @@ Very little. [SlowMist](https://www.slowmist.com/report/2025-Blockchain-Security
 
 ### Who can stop the money
 
-The largest recoveries of the period depended on someone with the power to intervene. At Tectonic, validators restored the chain and reversed about $111.2 million ([Cronos](https://x.com/CronosNetwork/status/2097131718948094299)). After Cetus, about $162 million was frozen on Sui ([Cyfrin](https://www.cyfrin.io/blog/inside-the-223m-cetus-exploit-root-cause-and-impact-analysis)), and validators representing 90.9% of stake voted "yes" in an onchain community vote to recover those funds ([Sui Foundation](https://blog.sui.io/cetus-incident-response-onchain-community-vote/)). After KelpDAO, the Arbitrum Security Council froze 30,766 ETH ([Chainalysis](https://www.chainalysis.com/blog/kelpdao-bridge-exploit-april-2026/)). After Drift, three transfers through Circle's CCTP were frozen, totalling approximately 3.36 million USDC ([Drift](https://www.drift.trade/updates/recovery-plan-for-affected-users)), and Tether was proposed to contribute up to $127.5 million to a user recovery pool ([Drift](https://www.drift.trade/updates/incident-recovery-update-april-16-2026-now)).
+The largest recoveries of the period depended on someone with the power to intervene. At Tectonic, validators restored the chain and reversed about $111.2 million ([Cronos](https://x.com/CronosNetwork/status/2097131718948094299)). After Cetus, about $162 million was frozen on Sui ([Cyfrin](https://www.cyfrin.io/blog/inside-the-223m-cetus-exploit-root-cause-and-impact-analysis)), and validators representing 90.9% of stake voted "yes" in an onchain community vote to recover those funds ([Sui Foundation](https://blog.sui.io/cetus-incident-response-onchain-community-vote/)). After KelpDAO, the Arbitrum Security Council froze 30,766 ETH ([Chainalysis](https://www.chainalysis.com/blog/kelpdao-bridge-exploit-april-2026/)). After Drift, three transfers through Circle's CCTP were frozen, totaling approximately 3.36 million USDC ([Drift](https://www.drift.trade/updates/recovery-plan-for-affected-users)), and Tether was proposed to contribute up to $127.5 million to a user recovery pool ([Drift](https://www.drift.trade/updates/incident-recovery-update-april-16-2026-now)).
 
 ### Exploits are prosecuted as crimes
 
-US prosecutors charge DeFi exploits as fraud and computer hacking. One defendant is charged with stealing approximately $65 million from KyberSwap and Indexed Finance, including $48.8 million from 77 KyberSwap liquidity pools on six public blockchains ([US Attorney, EDNY](https://www.justice.gov/usao-edny/pr/canadian-national-charged-stealing-approximately-65-million-cryptocurrency-two-defi)). In the Uranium Finance case, prosecutors allege an exploit across 26 separate liquidity pools obtained approximately $53.3 million, and law enforcement seized cryptocurrency worth approximately $31 million on 24 February 2025 ([US Attorney, SDNY](https://www.justice.gov/usao-sdny/pr/maryland-man-charged-defrauding-crypto-exchange-over-50-million-hacks)). Both cases are allegations. Separately, the FBI seized more than $15 million in USDT tied to North Korean heists ([Department of Justice](https://www.justice.gov/opa/pr/justice-department-announces-nationwide-actions-combat-illicit-north-korean-government)).
+US prosecutors charge DeFi exploits as fraud and computer hacking. One defendant is charged with stealing approximately $65 million from KyberSwap and Indexed Finance, including $48.8 million from 77 KyberSwap liquidity pools on six public blockchains ([US Attorney, EDNY](https://www.justice.gov/usao-edny/pr/canadian-national-charged-stealing-approximately-65-million-cryptocurrency-two-defi)). In the Uranium Finance case, prosecutors allege an exploit across 26 separate liquidity pools obtained approximately $53.3 million, and law enforcement seized cryptocurrency worth approximately $31 million on February 24, 2025 ([US Attorney, SDNY](https://www.justice.gov/usao-sdny/pr/maryland-man-charged-defrauding-crypto-exchange-over-50-million-hacks)). Both cases are allegations. Separately, the FBI seized more than $15 million in USDT tied to North Korean heists ([Department of Justice](https://www.justice.gov/opa/pr/justice-department-announces-nationwide-actions-combat-illicit-north-korean-government)).
 
 ### The damage outlasts the hack
 
 A hack keeps costing long after the funds leave. According to [Immunefi](https://immunefi.com/blog/research/what-an-onchain-hack-actually-costs-2024-2025-update/), "The median hacked token loses 61% of its value within six months," up from 53% in the 2021 to 2023 period, and 83.9% of hacked tokens were still in sustained price suppression six months after the exploit. The median hack in the same 2024 and 2025 data stole $2.2 million.
 
-<div class="sd-callout"><div class="sd-callout-title">What this means</div><p>Recovery depends on centralised levers: validators, security councils, stablecoin issuers. That power saved hundreds of millions in this period, but it is also a point of trust, and the Tectonic restoration showed what using it can cost a chain.</p><p>For a protocol, the realistic assumption is that stolen funds will not come back, and that the token will keep paying for the incident for months.</p></div>
+<div class="sd-callout"><div class="sd-callout-title">What this means</div><p>Recovery depends on centralized levers: validators, security councils, stablecoin issuers. That power saved hundreds of millions in this period, but it is also a point of trust, and the Tectonic restoration showed what using it can cost a chain.</p><p>For a protocol, the realistic assumption is that stolen funds will not come back, and that the token will keep paying for the incident for months.</p></div>
 
 ## How big are crypto bug bounty payouts?
 
@@ -366,7 +366,7 @@ Not on their own. A Wharton working paper found that audits on average do not re
 
 ### What was the largest crypto hack ever?
 
-The Bybit hack of 21 February 2025, in which about $1.5 billion in virtual assets was stolen. The FBI attributed it to North Korea. Elliptic called it the largest crypto theft of all time, far above the $611 million taken from Poly Network in 2021.
+The Bybit hack of February 21, 2025, in which about $1.5 billion in virtual assets was stolen. The FBI attributed it to North Korea. Elliptic called it the largest crypto theft of all time, far above the $611 million taken from Poly Network in 2021.
 
 ## Securing a protocol beyond the audit
 
@@ -376,55 +376,55 @@ SpaceDev has been shipping blockchain systems since 2018. Through [BlockAudit](h
 
 ## Sources
 
-All sources were accessed on 28 September 2026. Dates are publication dates as shown by each publisher.
+All sources were accessed on September 28, 2026. Dates are publication dates as shown by each publisher.
 
 <div class="sd-sources">
 
 ### Blockchain analytics firms
 
-- Chainalysis, "[North Korea Drives Record $2 Billion Crypto Theft Year, Pushing All-Time Total to $6.75 Billion](https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2026/)," 18 December 2025.
-- Chainalysis, "[2025 Crypto Crime Mid-year Update](https://www.chainalysis.com/blog/2025-crypto-crime-mid-year-update/)," 17 July 2025.
-- Chainalysis, "[The Drift Protocol Hack: How Privileged Access Led to a $285 Million Loss](https://www.chainalysis.com/blog/lessons-from-the-drift-hack/)," 9 April 2026.
-- Chainalysis, "[Inside the KelpDAO Bridge Exploit](https://www.chainalysis.com/blog/kelpdao-bridge-exploit-april-2026/)," 23 April 2026.
-- TRM Labs, "[2026 Crypto Crime Report](https://www.trmlabs.com/reports-and-whitepapers/2026-crypto-crime-report)," 28 January 2026.
-- TRM Labs, "[H1 2026 Crypto Hacks Reach Record High as Losses Fall Below USD 1 Billion](https://www.trmlabs.com/resources/blog/h1-2026-crypto-hacks-reach-record-high-as-losses-fall-below-usd-1-billion)," 1 July 2026.
-- TRM Labs, "[North Korea and the Industrialization of Cryptocurrency Theft](https://www.trmlabs.com/resources/blog/north-korea-and-the-industrialization-of-cryptocurrency-theft)," 18 December 2025.
-- Elliptic, "[North Korea's crypto hackers have stolen over $2 billion in 2025](https://www.elliptic.co/insights/north-korea-linked-hackers-have-already-stolen-over-2-billion-in-2025/)," 6 October 2025.
-- Elliptic, "[The largest theft in history: following the money trail from the Bybit Hack](https://www.elliptic.co/blog/bybit-hack-largest-in-history)," 23 February 2025.
-- Elliptic, "[Bybit exploit 12 months on: the DPRK threat continues](https://www.elliptic.co/insights/bybit-exploit-12-months-on-the-dprk-threat-continues/)," 16 February 2026.
-- Elliptic, "[Iranian crypto exchange Nobitex hacked for over $90 million by pro-Israel group](https://www.elliptic.co/insights/iranian-crypto-exchange-nobitex-hacked-pro-israel-group/)," 18 June 2025.
-- Elliptic, "[Bitget attack pushes suspected North Korea crypto heists over $1 billion in 2026](https://www.elliptic.co/insights/bitget-attack-pushes-suspected-north-korea-crypto-heists-over-1-billion-in-2026/)," 25 September 2026.
+- Chainalysis, "[North Korea Drives Record $2 Billion Crypto Theft Year, Pushing All-Time Total to $6.75 Billion](https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2026/)," December 18, 2025.
+- Chainalysis, "[2025 Crypto Crime Mid-year Update](https://www.chainalysis.com/blog/2025-crypto-crime-mid-year-update/)," July 17, 2025.
+- Chainalysis, "[The Drift Protocol Hack: How Privileged Access Led to a $285 Million Loss](https://www.chainalysis.com/blog/lessons-from-the-drift-hack/)," April 9, 2026.
+- Chainalysis, "[Inside the KelpDAO Bridge Exploit](https://www.chainalysis.com/blog/kelpdao-bridge-exploit-april-2026/)," April 23, 2026.
+- TRM Labs, "[2026 Crypto Crime Report](https://www.trmlabs.com/reports-and-whitepapers/2026-crypto-crime-report)," January 28, 2026.
+- TRM Labs, "[H1 2026 Crypto Hacks Reach Record High as Losses Fall Below USD 1 Billion](https://www.trmlabs.com/resources/blog/h1-2026-crypto-hacks-reach-record-high-as-losses-fall-below-usd-1-billion)," July 1, 2026.
+- TRM Labs, "[North Korea and the Industrialization of Cryptocurrency Theft](https://www.trmlabs.com/resources/blog/north-korea-and-the-industrialization-of-cryptocurrency-theft)," December 18, 2025.
+- Elliptic, "[North Korea's crypto hackers have stolen over $2 billion in 2025](https://www.elliptic.co/insights/north-korea-linked-hackers-have-already-stolen-over-2-billion-in-2025/)," October 6, 2025.
+- Elliptic, "[The largest theft in history: following the money trail from the Bybit Hack](https://www.elliptic.co/blog/bybit-hack-largest-in-history)," February 23, 2025.
+- Elliptic, "[Bybit exploit 12 months on: the DPRK threat continues](https://www.elliptic.co/insights/bybit-exploit-12-months-on-the-dprk-threat-continues/)," February 16, 2026.
+- Elliptic, "[Iranian crypto exchange Nobitex hacked for over $90 million by pro-Israel group](https://www.elliptic.co/insights/iranian-crypto-exchange-nobitex-hacked-pro-israel-group/)," June 18, 2025.
+- Elliptic, "[Bitget attack pushes suspected North Korea crypto heists over $1 billion in 2026](https://www.elliptic.co/insights/bitget-attack-pushes-suspected-north-korea-crypto-heists-over-1-billion-in-2026/)," September 25, 2026.
 
 ### Web3 security firms
 
-- CertiK, "[Hack3d: The Web3 Security Report 2025](https://www.certik.com/blog/hack3d-the-web3-security-report-2025)," 23 December 2025.
-- CertiK, "[Hack3D: H1 2026 Report](https://www.certik.com/skynet-report/certik-hack3d-h1-2026-report)," 6 July 2026.
-- Immunefi, "[93% of Critical Crypto Vulns Are Disclosed on Immunefi](https://immunefi.com/blog/research/93-of-critical-crypto-vulns-are-disclosed-on-immunefi/)," 20 February 2026.
-- Immunefi, "[What an Onchain Hack Actually Costs: 2024-2025 Update](https://immunefi.com/blog/research/what-an-onchain-hack-actually-costs-2024-2025-update/)," 25 March 2026.
-- Immunefi, "[Nearly Every Long-Running Bug Bounty Program on Immunefi Has Found a Critical Bug](https://immunefi.com/blog/research/nearly-every-long-running-bug-bounty-program-on-immunefi-has-found-a-critical-bug/)," 20 April 2026.
-- Immunefi, "[The Ecosystem Vulnerability Scoreboard: 6 Years of DeFi Loss Data](https://immunefi.com/blog/research/the-ecosystem-vulnerability-scoreboard-6-years-of-defi-loss-data/)," 27 April 2026.
+- CertiK, "[Hack3d: The Web3 Security Report 2025](https://www.certik.com/blog/hack3d-the-web3-security-report-2025)," December 23, 2025.
+- CertiK, "[Hack3D: H1 2026 Report](https://www.certik.com/skynet-report/certik-hack3d-h1-2026-report)," July 6, 2026.
+- Immunefi, "[93% of Critical Crypto Vulns Are Disclosed on Immunefi](https://immunefi.com/blog/research/93-of-critical-crypto-vulns-are-disclosed-on-immunefi/)," February 20, 2026.
+- Immunefi, "[What an Onchain Hack Actually Costs: 2024-2025 Update](https://immunefi.com/blog/research/what-an-onchain-hack-actually-costs-2024-2025-update/)," March 25, 2026.
+- Immunefi, "[Nearly Every Long-Running Bug Bounty Program on Immunefi Has Found a Critical Bug](https://immunefi.com/blog/research/nearly-every-long-running-bug-bounty-program-on-immunefi-has-found-a-critical-bug/)," April 20, 2026.
+- Immunefi, "[The Ecosystem Vulnerability Scoreboard: 6 Years of DeFi Loss Data](https://immunefi.com/blog/research/the-ecosystem-vulnerability-scoreboard-6-years-of-defi-loss-data/)," April 27, 2026.
 - Immunefi, "[June 2026 Immunefi Ecosystem Update](https://docs.immunefi.foundation/june-2026-immunefi-ecosystem-update/)."
-- Hacken, "[Yearly Security Report 2025](https://hacken.io/insights/2025-security-report/)," updated 9 September 2026.
+- Hacken, "[Yearly Security Report 2025](https://hacken.io/insights/2025-security-report/)," updated September 9, 2026.
 - Hacken, "[Q1 2026 Security & Compliance Report](https://assets.hacken.io/assets/q1-2026-security-report.pdf)."
 - Hacken, "[Q2 2026 Security & Compliance Report](https://assets.hacken.io/q2-2026-security-report.pdf)."
 - SlowMist, "[2025 Blockchain Security and AML Annual Report](https://www.slowmist.com/report/2025-Blockchain-Security-and-AML-Annual-Report(EN).pdf)."
-- BlockSec, "[Cetus Incident: One Unchecked Shift Drains $223M in the Largest DeFi Hack of 2025](https://blocksec.com/blog/cetus-incident-one-unchecked-shift-drains-223m-largest)," 9 February 2026.
+- BlockSec, "[Cetus Incident: One Unchecked Shift Drains $223M in the Largest DeFi Hack of 2025](https://blocksec.com/blog/cetus-incident-one-unchecked-shift-drains-223m-largest)," February 9, 2026.
 - Cyfrin, "[Inside The $223M Cetus Exploit: Root Cause And Impact Analysis](https://www.cyfrin.io/blog/inside-the-223m-cetus-exploit-root-cause-and-impact-analysis)."
-- Halborn, "[Explained: The Phemex Hack (January 2025)](https://www.halborn.com/blog/post/explained-the-phemex-hack-january-2025)," 27 January 2025.
+- Halborn, "[Explained: The Phemex Hack (January 2025)](https://www.halborn.com/blog/post/explained-the-phemex-hack-january-2025)," January 27, 2025.
 - OWASP, "[OWASP Smart Contract Top 10: 2026](https://scs.owasp.org/sctop10/)," with its [methodology](https://scs.owasp.org/sctop10/methodology/) and [data sources](https://scs.owasp.org/sctop10/data-sources/).
 - OWASP, "[OWASP Smart Contract Top 10](https://owasp.org/www-project-smart-contract-top-10/)" (2025 edition).
 
 ### Government and regulators
 
-- FBI Internet Crime Complaint Center, "[North Korea Responsible for $1.5 Billion Bybit Hack](https://www.ic3.gov/psa/2025/psa250226)," I-022625-PSA, 26 February 2025.
+- FBI Internet Crime Complaint Center, "[North Korea Responsible for $1.5 Billion Bybit Hack](https://www.ic3.gov/psa/2025/psa250226)," I-022625-PSA, February 26, 2025.
 - FBI Internet Crime Complaint Center, "[2025 IC3 Annual Report](https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf)."
-- Multilateral Sanctions Monitoring Team, "[The DPRK's Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities](https://msmt.info/view/save/2025/10/22/26294780-c396-407d-bb33-88afe988cd96-The_DPRK%E2%80%99s_Violation_and_Evasion_of_UN_Sanctions_through_Cyber_and_Information_Technology_Worker_Activities_(MSMT_2025_2).pdf)," MSMT/2025/2, 22 October 2025.
-- US Department of State, "[The Democratic People's Republic of Korea's Violations and Evasions of UN Sanctions through Cyber and IT Worker Activities](https://www.state.gov/releases/office-of-the-spokesperson/2026/01/the-democratic-peoples-republic-of-koreas-violations-and-evasions-of-un-sanctions-through-cyber-and-it-worker-activities/)," 12 January 2026.
-- US Department of the Treasury, "[Treasury Sanctions DPRK Bankers and Institutions Involved in Laundering Cybercrime Proceeds and IT Worker Funds](https://home.treasury.gov/news/press-releases/sb0302)," 4 November 2025.
-- US Department of Justice, "[Justice Department Announces Nationwide Actions to Combat Illicit North Korean Government Revenue Generation](https://www.justice.gov/opa/pr/justice-department-announces-nationwide-actions-combat-illicit-north-korean-government)," 14 November 2025.
-- US Attorney's Office, Eastern District of New York, "[Canadian National Charged With Stealing Approximately $65 Million in Cryptocurrency From Two DeFi Protocols](https://www.justice.gov/usao-edny/pr/canadian-national-charged-stealing-approximately-65-million-cryptocurrency-two-defi)," 3 February 2025.
-- US Attorney's Office, Southern District of New York, "[Maryland Man Charged With Defrauding Crypto Exchange Of Over $50 Million In Hacks](https://www.justice.gov/usao-sdny/pr/maryland-man-charged-defrauding-crypto-exchange-over-50-million-hacks)," 30 March 2026.
-- European Banking Authority and European Securities and Markets Authority, "[Joint Report: Recent developments in crypto-assets (Article 142 of MiCAR)](https://esma.europa.eu/sites/default/files/2025-01/ESMA75-453128700-1391_Joint_Report_on_recent_developments_in_crypto-assets__Art_142_MiCA_.pdf)," 16 January 2025.
+- Multilateral Sanctions Monitoring Team, "[The DPRK's Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities](https://msmt.info/view/save/2025/10/22/26294780-c396-407d-bb33-88afe988cd96-The_DPRK%E2%80%99s_Violation_and_Evasion_of_UN_Sanctions_through_Cyber_and_Information_Technology_Worker_Activities_(MSMT_2025_2).pdf)," MSMT/2025/2, October 22, 2025.
+- US Department of State, "[The Democratic People's Republic of Korea's Violations and Evasions of UN Sanctions through Cyber and IT Worker Activities](https://www.state.gov/releases/office-of-the-spokesperson/2026/01/the-democratic-peoples-republic-of-koreas-violations-and-evasions-of-un-sanctions-through-cyber-and-it-worker-activities/)," January 12, 2026.
+- US Department of the Treasury, "[Treasury Sanctions DPRK Bankers and Institutions Involved in Laundering Cybercrime Proceeds and IT Worker Funds](https://home.treasury.gov/news/press-releases/sb0302)," November 4, 2025.
+- US Department of Justice, "[Justice Department Announces Nationwide Actions to Combat Illicit North Korean Government Revenue Generation](https://www.justice.gov/opa/pr/justice-department-announces-nationwide-actions-combat-illicit-north-korean-government)," November 14, 2025.
+- US Attorney's Office, Eastern District of New York, "[Canadian National Charged With Stealing Approximately $65 Million in Cryptocurrency From Two DeFi Protocols](https://www.justice.gov/usao-edny/pr/canadian-national-charged-stealing-approximately-65-million-cryptocurrency-two-defi)," February 3, 2025.
+- US Attorney's Office, Southern District of New York, "[Maryland Man Charged With Defrauding Crypto Exchange Of Over $50 Million In Hacks](https://www.justice.gov/usao-sdny/pr/maryland-man-charged-defrauding-crypto-exchange-over-50-million-hacks)," March 30, 2026.
+- European Banking Authority and European Securities and Markets Authority, "[Joint Report: Recent developments in crypto-assets (Article 142 of MiCAR)](https://esma.europa.eu/sites/default/files/2025-01/ESMA75-453128700-1391_Joint_Report_on_recent_developments_in_crypto-assets__Art_142_MiCA_.pdf)," January 16, 2025.
 
 ### Academic research
 
@@ -434,17 +434,17 @@ All sources were accessed on 28 September 2026. Dates are publication dates as s
 
 ### Incident reports from affected projects
 
-- Phemex, "[Phemex Hot Wallet Security Incident Update and Timeline](https://phemex.com/announcements/phemex-hot-wallet-security-incident-update-and-timeline)," 26 January 2025.
-- Cetus, "[Cetus Relaunch Incoming: Recovery Plan and the Road Ahead](https://medium.com/@CetusProtocol/cetus-relaunch-incoming-recovery-plan-and-the-road-ahead-9fc0f8bd5c41)," 7 June 2025.
-- Sui Foundation, "[Response to the Cetus Incident: Onchain Community Vote](https://blog.sui.io/cetus-incident-response-onchain-community-vote/)," 27 May 2025.
-- Balancer, "[Nov 3 Exploit Post-Mortem](https://medium.com/balancer-protocol/nov-3-exploit-post-mortem-51dcbeb6b020)," 18 November 2025.
-- Drift, "[Incident Recovery Update: April 16, 2026](https://www.drift.trade/updates/incident-recovery-update-april-16-2026-now)," 16 April 2026.
-- Drift, "[Recovery Plan for Affected Users](https://www.drift.trade/updates/recovery-plan-for-affected-users)," 5 May 2026.
-- LayerZero, "[LayerZero Labs KelpDAO Incident Report](https://layerzero.network/blog/layerzero-labs-kelpdao-incident-report)," 20 May 2026.
-- Kelp, [statement on X](https://x.com/KelpDAO/status/2051755467328913637), 5 May 2026.
-- Coinkite, "[Coldcard Security Advisory](https://blog.coinkite.com/coldcard-mk3-seed-generation-warning/)," 30 July 2026.
-- Galaxy Research, [analysis on X](https://x.com/glxyresearch/status/2083181683067506899), 31 July 2026.
-- ZachXBT, [investigation on X](https://x.com/zachxbt/status/2012212936735912351), 16 January 2026.
+- Phemex, "[Phemex Hot Wallet Security Incident Update and Timeline](https://phemex.com/announcements/phemex-hot-wallet-security-incident-update-and-timeline)," January 26, 2025.
+- Cetus, "[Cetus Relaunch Incoming: Recovery Plan and the Road Ahead](https://medium.com/@CetusProtocol/cetus-relaunch-incoming-recovery-plan-and-the-road-ahead-9fc0f8bd5c41)," June 7, 2025.
+- Sui Foundation, "[Response to the Cetus Incident: Onchain Community Vote](https://blog.sui.io/cetus-incident-response-onchain-community-vote/)," May 27, 2025.
+- Balancer, "[Nov 3 Exploit Post-Mortem](https://medium.com/balancer-protocol/nov-3-exploit-post-mortem-51dcbeb6b020)," November 18, 2025.
+- Drift, "[Incident Recovery Update: April 16, 2026](https://www.drift.trade/updates/incident-recovery-update-april-16-2026-now)," April 16, 2026.
+- Drift, "[Recovery Plan for Affected Users](https://www.drift.trade/updates/recovery-plan-for-affected-users)," May 5, 2026.
+- LayerZero, "[LayerZero Labs KelpDAO Incident Report](https://layerzero.network/blog/layerzero-labs-kelpdao-incident-report)," May 20, 2026.
+- Kelp, [statement on X](https://x.com/KelpDAO/status/2051755467328913637), May 5, 2026.
+- Coinkite, "[Coldcard Security Advisory](https://blog.coinkite.com/coldcard-mk3-seed-generation-warning/)," July 30, 2026.
+- Galaxy Research, [analysis on X](https://x.com/glxyresearch/status/2083181683067506899), July 31, 2026.
+- ZachXBT, [investigation on X](https://x.com/zachxbt/status/2012212936735912351), January 16, 2026.
 - Cronos, "[Cronos Network Incident Post-Mortem](https://x.com/CronosNetwork/status/2097131718948094299)."
 
 </div>

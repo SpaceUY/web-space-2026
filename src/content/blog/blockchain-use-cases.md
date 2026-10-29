@@ -1,6 +1,6 @@
 ---
 title: "Blockchain Use Cases: What Actually Shipped"
-description: "Most blockchain use case lists describe a market that never arrived. This one is organised around what reached production, with the projects behind each category and an honest account of what still hasn't shipped."
+description: "Most blockchain use case lists describe a market that never arrived. This one is organized around what reached production, with the projects behind each category and an honest account of what still hasn't shipped."
 publishedAt: 2026-09-16
 author: juan-manuel-sobral
 category: "Blockchain Trends"
@@ -38,7 +38,7 @@ Search for blockchain use cases and you will find roughly the same ten categorie
 
 That list has barely changed since 2018. Some of it now works at real scale. Some has been promised for eight years and has quietly failed, repeatedly, with well-funded consortia behind it.
 
-We have shipped blockchain systems since 2018, and the pattern we see is that the categories generating real production volume are not the ones dominating the lists. So this article is organised differently. **Every use case below is one we have delivered, with the project attached.** At the end we cover the ones that haven't shipped, including one we think genuinely should have.
+We have shipped blockchain systems since 2018, and the pattern we see is that the categories generating real production volume are not the ones dominating the lists. So this article is organized differently. **Every use case below is one we have delivered, with the project attached.** At the end we cover the ones that haven't shipped, including one we think genuinely should have.
 
 > "The technology is rarely the problem. Most pilots fail because nobody defined the user's problem precisely enough."
 >
@@ -162,11 +162,11 @@ There is a cost most teams miss when they adopt this:
 
 ## 10. Verifiable credentials for contractors and workforce
 
-**The problem.** In industrial settings, an uncertified contractor on site is not an administrative issue. It is a safety and liability event. Yet certification records, meaning safety training, licences, insurance and competency sign-offs, sit in each contractor's own filing system, and every operator re-verifies the same worker independently, usually by email and PDF.
+**The problem.** In industrial settings, an uncertified contractor on site is not an administrative issue. It is a safety and liability event. Yet certification records, meaning safety training, licenses, insurance and competency sign-offs, sit in each contractor's own filing system, and every operator re-verifies the same worker independently, usually by email and PDF.
 
 **What blockchain changes.** A credential becomes a cryptographically signed claim issued once by whoever is entitled to issue it, held by the worker or the contracting firm, and verifiable instantly by any operator without contacting the issuer. Verification becomes a mathematical check rather than a phone call.
 
-**Why this version works when universal digital identity doesn't.** The scope is bounded. A single operator and its contractor pool get value immediately; no national identity framework, no cross-industry standard, and no government participation is required. **That is the difference between a credentialing system that ships and a digital identity programme that pilots forever.**
+**Why this version works when universal digital identity doesn't.** The scope is bounded. A single operator and its contractor pool get value immediately; no national identity framework, no cross-industry standard, and no government participation is required. **That is the difference between a credentialing system that ships and a digital identity program that pilots forever.**
 
 **Project:** B4E Credentialing, part of the [B4E platform](/our-work/blockchain-for-energy), verifying contractors and workforce for the energy industry. Related service: [decentralized identity](/blockchain-development-services/decentralized-identity).
 
@@ -259,7 +259,7 @@ A genuine shared-record problem between parties who don't trust each other's dat
 
 ## Scoping your own use case
 
-If you recognise your problem in one of the ten categories above, the useful next conversation is about question two and question three, not about architecture.
+If you recognize your problem in one of the ten categories above, the useful next conversation is about question two and question three, not about architecture.
 
 SpaceDev has been building blockchain systems since 2018 across energy, fintech, gaming, real estate and regulated exchange infrastructure. Start with [blockchain development services](/blockchain-development-services), see the full portfolio in [our work](/our-work), or [talk to our team](/contact) about whether your use case passes the four questions.
 
