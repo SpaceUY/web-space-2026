@@ -125,7 +125,7 @@ export const blockchainData: ServicePageData = {
   compactHeroTitle: true,
   title: "Blockchain Development Services Built for Real Business Outcomes",
   description:
-    "SpaceDev is a custom blockchain development company that takes products from concept to mainnet. We combine web3 engineering, product strategy, and embedded security so your blockchain investment actually delivers.",
+    "SpaceDev is a custom blockchain development company that takes products from concept to mainnet. We combine Web3 engineering, product strategy, and embedded security so your blockchain investment actually delivers.",
   relatedTags: ["layer1"],
   primaryCta: { label: "Get in touch", href: "/contact" },
   secondaryCta: { label: "See case studies", href: "/our-work" },
@@ -134,7 +134,7 @@ export const blockchainData: ServicePageData = {
     eyebrow: "What we build",
     title: "Our Blockchain Development Solutions",
     description:
-      "A memorable product starts with a vision and ends with something that creates impact. Our blockchain engineers, designers, and consultants work together to build systems that are transparent, efficient, secure, and for real business outcomes.",
+      "A memorable product starts with a vision and ends with something that creates impact. Our blockchain engineers, designers, and consultants work together to build systems that are transparent, efficient, secure, and built for real business outcomes.",
     style: "cards",
     items: [
       { number: "01", title: "Smart Contract Development", description: "Audited, gas-optimized contracts on Ethereum, Aptos, Solana and other major ecosystems, designed for security and longevity.", href: "/blockchain-development-services/smart-contract-development" },
@@ -144,7 +144,7 @@ export const blockchainData: ServicePageData = {
       { number: "05", title: "Layer 1 Blockchain Development", description: "Fully customized, scalable networks ranging from Layer 1 protocols to private enterprise chains, secure and future-ready.", href: "/blockchain-development-services/layer-1-blockchain-development" },
       { number: "06", title: "DAO Development", description: "On-chain governance models for transparent decision-making, voting systems, and efficient treasury management.", href: "/blockchain-development-services/dao-development" },
       { number: "07", title: "Crypto Token Development", description: "Custom tokenomics, utility, governance, and DeFi tokens: from ERC-20 issuance to full economic design and vesting logic.", href: "/blockchain-development-services/crypto-token-development" },
-      { number: "08", title: "White-Label Crypto Exchange", description: "Custom trading platforms with spot and derivatives trading, multi-chain support, and KYC/AML built in from day one.", href: "/blockchain-development-services/white-label-crypto-exchanges" },
+      { number: "08", title: "White Label Crypto Exchange", description: "Custom trading platforms with spot and derivatives trading, multi-chain support, and KYC/AML built in from day one.", href: "/blockchain-development-services/white-label-crypto-exchanges" },
     ],
   },
 
@@ -249,7 +249,7 @@ export const dappData: ServicePageData = {
     title: "Why choose SpaceDev as your DApp development company?",
     description: "We don't just deliver code: we help you build production-grade decentralized products.",
     items: [
-      { title: "Web2 + Web3 expertise", description: "Proven expertise combining solid web2 engineering with advanced web3 and blockchain capabilities." },
+      { title: "Web2 + Web3 expertise", description: "Proven expertise combining solid Web2 engineering with advanced Web3 and blockchain capabilities." },
       { title: "End-to-end delivery", description: "Strategy, development, security, and scaling, all under one roof." },
       { title: "Flexible engagement", description: "Project-based or staff augmentation models to fit your team and timeline." },
       { title: "US market experience", description: "Extensive experience working with startups and enterprises in the US market." },
@@ -459,7 +459,7 @@ export const defiFinanceData: ServicePageData = {
   updatedAt: "2026-07-15",
   eyebrow: "Industry · Finance and Fintech",
   title: "DeFi Development Services for the Next Generation of Decentralized Finance",
-  description: "SpaceDev builds production-grade DeFi applications, smart contract systems, and tokenized financial infrastructure for startups and enterprises ready to operate at the frontier of web3 finance. From protocol architecture to post-launch security, we cover the full DeFi development lifecycle.",
+  description: "SpaceDev builds production-grade DeFi applications, smart contract systems, and tokenized financial infrastructure for startups and enterprises ready to operate at the frontier of Web3 finance. From protocol architecture to post-launch security, we cover the full DeFi development lifecycle.",
   relatedTags: ["defi"],
   heroParticles: true,
   primaryCta: { label: "Start Your DeFi Project", href: "/contact" },
@@ -810,7 +810,7 @@ export const staffAugData: ServicePageData = {
     description: "Businesses partner with SpaceDev when they need reliable talent, seamless collaboration, and results that create impact.",
     items: [
       { title: "Fast Turnaround", description: "Expand your team within days instead of months; our network of vetted developers ensures no delay in project delivery." },
-      { title: "Proven IT Talent", description: "Each professional we recommend has deep expertise across web3, blockchain, AI, cloud, and full-stack development." },
+      { title: "Proven IT Talent", description: "Each professional we recommend has deep expertise across Web3, blockchain, AI, cloud, and full-stack development." },
       { title: "Transparent Model", description: "No hidden charges or unclear terms. Pricing and engagement models are straightforward, keeping you confident at every stage." },
       { title: "Seamless Integration", description: "Our engineers and designers adapt to your tools, processes, and team culture; collaboration stays consistent." },
       { title: "Flexible Engagements", description: "Choose full-time, part-time, or hourly models. Scaling resources is as simple as adjusting a schedule." },

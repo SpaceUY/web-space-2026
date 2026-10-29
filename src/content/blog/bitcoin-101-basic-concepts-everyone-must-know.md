@@ -29,7 +29,7 @@ Bitcoin mining is the process by which new Bitcoins are created and transactions
 
 ## Bitcoin Addresses and Transaction Confirmations
 
-A Bitcoin address is a unique string of characters that represents a destination for Bitcoin transactions, similar to a virtual mailbox. Addresses are essential for sending and receiving Bitcoins securely. Once a transaction is broadcasted to the network, it is validated by miners and added to the blockchain. The more confirmations (blocks added after a transaction) a transaction has, the more secure and irreversible it becomes.
+A Bitcoin address is a unique string of characters that represents a destination for Bitcoin transactions, similar to a virtual mailbox. Addresses are essential for sending and receiving Bitcoins securely. Once a transaction is broadcast to the network, it is validated by miners and added to the blockchain. The more confirmations (blocks added after a transaction) a transaction has, the more secure and irreversible it becomes.
 
 ## Bitcoin Halving and Supply Management
 

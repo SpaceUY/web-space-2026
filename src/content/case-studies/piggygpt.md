@@ -17,7 +17,7 @@ techStack:
   - TypeScript
   - Material UI
   - Prisma
-  - Wondergraph
+  - WunderGraph
 publishedAt: 2025-02-15
 heroImage: "/images/case-studies/piggygpt/piggygpt_.png"
 summary: "PiggyGPT is an AI-driven trading platform built to make decentralized finance accessible to retail traders in the EVM ecosystem. SpaceDev contributed to defining the product, integrating cross-chain swap capabilities, and building the AI assistant layer that lets users trade, get insights, and manage wallets directly from Telegram, without needing to understand the underlying infrastructure."
@@ -69,4 +69,4 @@ A tokenomics model was designed to sustain the reward and airdrop system long-te
 
 ## Tech Stack
 
-The frontend is built with React, TypeScript, and Material UI, with Prisma handling data access and Wondergraph supporting data querying needs. The AI layer runs on ChatGPT for the conversational assistant and elizaOS for the multi-platform agent. V0 by Vercel enabled rapid prototyping during the UI iteration phase. The stack was chosen to balance development speed with the reliability that financial applications require.
+The frontend is built with React, TypeScript, and Material UI, with Prisma handling data access and WunderGraph supporting data querying needs. The AI layer runs on ChatGPT for the conversational assistant and elizaOS for the multi-platform agent. V0 by Vercel enabled rapid prototyping during the UI iteration phase. The stack was chosen to balance development speed with the reliability that financial applications require.

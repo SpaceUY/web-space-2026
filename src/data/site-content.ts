@@ -42,7 +42,7 @@ export const whySpacedev = [
 
 export const industries = [
   { name: "Finance & Fintech", description: "DeFi platforms, payment gateways, tokenized assets, and digital wallets that simplify complexity and drive financial innovation." },
-  { name: "Gaming & NFTs", description: "NFT ecosystems, web3 gaming platforms, and play-to-earn models with secure smart contracts and scalable infrastructure." },
+  { name: "Gaming & NFTs", description: "NFT ecosystems, Web3 gaming platforms, and play-to-earn models with secure smart contracts and scalable infrastructure." },
   { name: "Healthcare & Life Sciences", description: "Data integrity, secure patient identity management, and traceable medical supply chains with compliance and interoperability at the core." },
   { name: "Supply Chain & Logistics", description: "Solutions that bring real-time visibility, tracking, and trust to global logistics with end-to-end automation." },
   { name: "Real Estate", description: "Property tokenization, digital deeds, and on-chain rental marketplaces that bring liquidity and transparency to real estate." },
@@ -84,7 +84,7 @@ export const stats: Stat[] = [
 
 export const homeFaqs = [
   { question: "What do your development services include?", answer: "Our development services cover everything from smart contract design and dApp development to NFT, DeFi, and DAO platforms. We believe in helping businesses create scalable, secure, and user-friendly products powered by blockchain technology." },
-  { question: "How is SpaceDev different from other software development companies?", answer: "We blend web2 expertise with deep blockchain knowledge to deliver practical, market-ready solutions. Our distributed team model and agile processes ensure faster delivery, transparency, and real collaboration." },
+  { question: "How is SpaceDev different from other software development companies?", answer: "We blend Web2 expertise with deep blockchain knowledge to deliver practical, market-ready solutions. Our distributed team model and agile processes ensure faster delivery, transparency, and real collaboration." },
   { question: "Can SpaceDev help with blockchain audits and security?", answer: "Yes. Through our BlockAudit division, we perform detailed smart contract audits, penetration testing, and blockchain vulnerability assessments to protect your systems from security risks." },
   { question: "How does your IT staff augmentation service work?", answer: "We provide skilled engineers and developers who integrate directly with your existing teams. You maintain full control of your project while gaining the flexibility to scale quickly and efficiently." },
   { question: "What industries do you work with?", answer: "We serve clients across fintech, gaming, healthcare, logistics, real estate, and more. Our custom software development and blockchain solutions are tailored to match each industry's unique challenges and growth goals." },

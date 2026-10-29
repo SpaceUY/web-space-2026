@@ -1,7 +1,7 @@
 ---
 metatitle: "Wallet Connections in Web3: How They Work"
 title: "Wallet Connections"
-description: "As web3 ecosystems continue to grow and evolve, digital wallets have become indispensable to interact with decentralized applications (dApps). This article explores wallet types, web3 libraries, and SDKs for seamless connection."
+description: "As Web3 ecosystems continue to grow and evolve, digital wallets have become indispensable to interact with decentralized applications (dApps). This article explores wallet types, Web3 libraries, and SDKs for seamless connection."
 publishedAt: 2023-06-06
 author: juan-manuel-sobral
 category: "Blockchain Trends"
@@ -9,25 +9,25 @@ tags: ["blockchain-basics", "web3-infrastructure"]
 readTime: 9
 cover: "/images/content/wallet-connections/cover.webp"
 takeaways:
-  - Digital wallets are essential infrastructure for web3 ecosystems, enabling secure asset management and dApp interaction
+  - Digital wallets are essential infrastructure for Web3 ecosystems, enabling secure asset management and dApp interaction
   - Multiple wallet connection approaches exist (browser extensions, mobile wallets, JavaScript libraries)
   - Five primary non-custodial wallet types serve different security and convenience needs
   - SDKs like RainbowKit, Torus, and Web3Modal streamline wallet integration with improved user experience
   - RainbowKit offers developers rapid dApp development through simplified wallet connection setup
-metadescription: "Digital wallets are essential to interact with dApps in Web3. Explore wallet types, web3 libraries, and SDKs for seamless wallet connection integration."
+metadescription: "Digital wallets are essential to interact with dApps in Web3. Explore wallet types, Web3 libraries, and SDKs for seamless wallet connection integration."
 ---
 
 ## Summary
 
-As web3 ecosystems continue to grow and evolve, digital wallets have become indispensable to interact with decentralized applications (dApps) and manage assets on the blockchain. Current solutions for web3 wallet connections, however, are often impractical – users might end up switching between various wallet types and browsers, which can be confusing and inconvenient.
+As Web3 ecosystems continue to grow and evolve, digital wallets have become indispensable to interact with decentralized applications (dApps) and manage assets on the blockchain. Current solutions for Web3 wallet connections, however, are often impractical – users might end up switching between various wallet types and browsers, which can be confusing and inconvenient.
 
 This article aims to address some of the aforementioned challenges by proposing a new approach, one that leverages the advantages of browser extensions and mobile wallets. The combination of these two technologies can provide a more secure and user-friendly solution across various dApps and web3-enabled platforms.
 
 ## Introduction
 
-The emergence of web3 has led to the creation of digital assets that require secure storage and management. One of the most critical components of that ecosystem is therefore the wallet, which also allows users to send and receive crypto assets.
+The emergence of Web3 has led to the creation of digital assets that require secure storage and management. One of the most critical components of that ecosystem is therefore the wallet, which also allows users to send and receive crypto assets.
 
-Wallet connections in web3 are characterized by different approaches and technologies. One of the most popular are browser extensions, which connect users' wallets directly to websites and dApps. Another approach involves mobile wallets, which can be connected to dApps through QR codes. There are also web3.js and ethers.js libraries, which provide JavaScript APIs for interacting with web3-enabled wallets.
+Wallet connections in Web3 are characterized by different approaches and technologies. One of the most popular are browser extensions, which connect users' wallets directly to websites and dApps. Another approach involves mobile wallets, which can be connected to dApps through QR codes. There are also web3.js and ethers.js libraries, which provide JavaScript APIs for interacting with web3-enabled wallets.
 
 Even with the variety of wallet connectors available, significant challenges and limitations remain. What's more, there is a need for further research and development in areas such as wallet key management and recovery, as well as user education and awareness.
 
@@ -55,9 +55,9 @@ Each type has its strengths and weaknesses. Users should carefully consider thei
 
 ## Web3 Libraries
 
-Web3 libraries are programming libraries focused on web3 development. They are collections of non-volatile resources that developers can use for consistent and more user-friendly coding of scripts that in some way interact with blockchain networks. These resources might include configuration and support data, documentation, message templates, pre-written code and subroutines, classes, values or type specifications, and more.
+Web3 libraries are programming libraries focused on Web3 development. They are collections of non-volatile resources that developers can use for consistent and more user-friendly coding of scripts that in some way interact with blockchain networks. These resources might include configuration and support data, documentation, message templates, pre-written code and subroutines, classes, values or type specifications, and more.
 
-Ethereum remains the leading programmable blockchain and, therefore, the heart of web3 development. Plus, many other blockchains follow Ethereum's lead by being EVM-compatible. This also means they can use the same development tools. As such, most web3 libraries are Ethereum-oriented. However, a web3 library can target any other blockchain network (private or public) and any programming language.
+Ethereum remains the leading programmable blockchain and, therefore, the heart of Web3 development. Plus, many other blockchains follow Ethereum's lead by being EVM-compatible. This also means they can use the same development tools. As such, most Web3 libraries are Ethereum-oriented. However, a Web3 library can target any other blockchain network (private or public) and any programming language.
 
 Wallets may be connected to a blockchain using JavaScript libraries, which provide developers with the necessary tools to perform transactions such as sending or receiving digital assets, interacting with smart contracts and accessing blockchain data. Other popular libraries that developers use to interact with blockchains are:
 
@@ -81,7 +81,7 @@ When users visit a dApp that has integrated any of these SDKs, they will general
 
 ## Using RainbowKit
 
-As mentioned before, a user-friendly and secure wallet connector library with a UI can be very useful. Benefits include faster development times, improved user experience and increased security. Combined with a web3 boilerplate, RainbowKit offers easy code integration, strong security features and compatibility with different blockchain networks. The library should give developers the necessary elements for a secure and seamless user experience.
+As mentioned before, a user-friendly and secure wallet connector library with a UI can be very useful. Benefits include faster development times, improved user experience and increased security. Combined with a Web3 boilerplate, RainbowKit offers easy code integration, strong security features and compatibility with different blockchain networks. The library should give developers the necessary elements for a secure and seamless user experience.
 
 First, the groundwork for a new dApp can be laid in the following way:
 
@@ -105,9 +105,9 @@ Wherever the Connect Wallet button has to be used, it can be imported and the co
 
 ## Conclusions
 
-The wallet is a critical component of the web3 ecosystem, allowing users to store, send and receive cryptocurrencies and other digital assets. While there are many approaches and technologies available for wallet connections in web3, these remain affected by security, usability and interoperability issues, the exact problem [dApp development](/blockchain-development-services/dapp-development) has to solve at the integration layer. [Blockus wallet integration](/our-work/blockus) is a production example of getting this right for a gaming audience.
+The wallet is a critical component of the Web3 ecosystem, allowing users to store, send and receive cryptocurrencies and other digital assets. While there are many approaches and technologies available for wallet connections in Web3, these remain affected by security, usability and interoperability issues, the exact problem [dApp development](/blockchain-development-services/dapp-development) has to solve at the integration layer. [Blockus wallet integration](/our-work/blockus) is a production example of getting this right for a gaming audience.
 
-Emerging technologies can help address some of those challenges. One is RainbowKit, a decentralized key management solution for web3 wallets which provides a secure and user-friendly way to manage keys, including those used for decentralized finance (DeFi) applications. RainbowKit has matured into one of the standard wallet-connection toolkits for Ethereum, and it remains a valuable tool in the ongoing efforts to improve the security and usability of web3 wallets.
+Emerging technologies can help address some of those challenges. One is RainbowKit, a decentralized key management solution for Web3 wallets which provides a secure and user-friendly way to manage keys, including those used for decentralized finance (DeFi) applications. RainbowKit has matured into one of the standard wallet-connection toolkits for Ethereum, and it remains a valuable tool in the ongoing efforts to improve the security and usability of Web3 wallets.
 
 ## References
 

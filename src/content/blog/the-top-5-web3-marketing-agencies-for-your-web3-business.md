@@ -21,7 +21,7 @@ Web2 marketing primarily relies on traditional digital marketing strategies with
 
 In contrast, Web3 marketing involves community-driven initiatives, token incentives, and an educational approach to foster a more participatory and user-centric marketing environment, where users have greater control over their data and contributions to the network.
 
-So, if you are a Web3 business owner, you'll probably need the assistance of an expert Web3 marketing agency to successfully promote your service or product and reach your desired audiences in a rapidly evolving industry. Selecting the ideal web3 marketing agency for your brand or crypto project requires careful consideration.
+So, if you are a Web3 business owner, you'll probably need the assistance of an expert Web3 marketing agency to successfully promote your service or product and reach your desired audiences in a rapidly evolving industry. Selecting the ideal Web3 marketing agency for your brand or crypto project requires careful consideration.
 
 Here's a concise list of the **Top Web3 Marketing Agencies for 2024** to help you make the right choice:
 
@@ -33,7 +33,7 @@ DM Collective is a LATAM-based collective of marketers who specialize in perform
 
 ## Coinpresso
 
-[Coinpresso](https://coinpresso.io/) is a digital marketing agency that focuses on promoting crypto-related businesses. Their expert team combines web3 and digital marketing knowledge to create innovative marketing strategies.
+[Coinpresso](https://coinpresso.io/) is a digital marketing agency that focuses on promoting crypto-related businesses. Their expert team combines Web3 and digital marketing knowledge to create innovative marketing strategies.
 
 **Services:** Web3 Marketing Agency, Crypto SEO, Crypto PR, Crypto App Search Optimisation, Content & Copywriting for Crypto, Crypto Google Ads, Crypto Social Media Marketing, Crypto CRO, Crypto Programmatic Advertising, Web Development for Crypto Projects, DeFi Staking, Platform Development, Blockchain & DApps Development, NFT Marketplace Development.
 
