@@ -31,7 +31,7 @@ faqs:
 
 Most coverage of US Web3 in 2027 is waiting for a single law to pass and unlock everything. That framing is now wrong. The comprehensive market-structure bill stalled, yet the practical rules that businesses actually build against are arriving anyway, through a stablecoin law that takes effect in January and through SEC and CFTC rulemaking. For a founder, CFO, or head of innovation, the real question is not when Congress acts, but which opportunities the rules already on the table open up, and how to be positioned before competitors are.
 
-![US regulatory map for Web3 heading into 2027](/images/content/web3-business-opportunities-us-2027/1-regulatory-map.png)
+![A robed figure holding glowing scales of justice, a luminous globe at the center, symbolizing US regulation balancing the Web3 market](/images/content/web3-business-opportunities-us-2027/1-regulatory-map.png)
 
 ## The US regulatory picture heading into 2027
 
@@ -73,7 +73,7 @@ With a federal licensing regime live and the market past $320 billion, stablecoi
 
 This is the opportunity the yield ban creates. Because issuers can no longer pay yield on a plain stablecoin, demand for yield moves to **tokenized money market funds, tokenized Treasuries, and other regulated real-world assets**. Regulatory clarity is already accelerating RWA adoption, with tokenized Treasury products and institutional funds live. For builders, this means demand for compliant tokenization infrastructure, from [tokenized bonds](https://spacedev.io/blog/tokenized-bonds) to broader [asset tokenization](https://spacedev.io/blockchain-development-services/asset-tokenization) platforms, where the token carries eligibility and transfer rules at the protocol level.
 
-![Yield moving from stablecoins to tokenized money market funds and real-world assets](/images/content/web3-business-opportunities-us-2027/2-tokenized-yield.png)
+![Streams of glowing data panels radiating from a city skyscraper at night, representing financial assets moving on-chain](/images/content/web3-business-opportunities-us-2027/2-tokenized-yield.png)
 
 ### Tokenized deposits and bank rails
 
@@ -107,7 +107,7 @@ The window is the quarters between now and the GENIUS effective date. A practica
 3. **Build compliant by design.** Bake KYC, transfer rules, and reporting into the architecture rather than bolting them on later.
 4. **Choose a partner that has shipped regulated systems**, since in a compliance-heavy build the track record matters more than the pitch. Our guide to [choosing a blockchain development company](https://spacedev.io/blog/how-to-choose-blockchain-development-company) sets out the criteria.
 
-![Four steps to position a Web3 product before the GENIUS Act effective date](/images/content/web3-business-opportunities-us-2027/3-positioning-steps.png)
+![A person climbing a glowing blue staircase above a city at night, representing the steps to position a Web3 product before 2027](/images/content/web3-business-opportunities-us-2027/3-positioning-steps.png)
 
 ## Frequently asked questions
 
