@@ -1,7 +1,7 @@
 ---
 title: "Blockchain Applications in Intellectual Property: What It Can and Cannot Do"
 description: "Blockchain does not create or replace legal rights, but it is strong IP evidence and automation infrastructure. The use cases that work today (timestamping, licensing and royalties, anti-counterfeiting, tokenized IP and AI content provenance) and where the hard limits are."
-publishedAt: 2026-10-29
+publishedAt: 2026-11-03
 author: juan-manuel-sobral
 category: "Blockchain Trends"
 tags: ["smart-contracts", "tokenization", "enterprise", "blockchain"]
