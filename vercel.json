@@ -93,32 +93,32 @@
     {
       "source": "/images/icons/iso%20logo.png",
       "destination": "/images/icons/iso-logo.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/sitemap.xml",
       "destination": "/sitemap-index.xml",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/our-work/nomei",
       "destination": "/our-work",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/case-study/nomei",
       "destination": "/our-work",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/case-study/:slug*",
       "destination": "/our-work/:slug*",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/blockchain-development-services/blockchain-for-banks",
       "destination": "/blockchain-development-services/industry/banking",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/meet-fede",
@@ -153,332 +153,332 @@
     {
       "source": "/:path+/",
       "destination": "/:path+",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/post/marketing-web-3",
       "destination": "/blog/web3-marketing-strategies",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/post/real-world-assets-\\(rwas\\)-explained",
       "destination": "/blog/real-world-assets-rwas-explained",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/post/real-world-assets-%28rwas%29-explained",
       "destination": "/blog/real-world-assets-rwas-explained",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/post/save-time-with-a-smart-contract-audit-checklist",
       "destination": "/blog/smart-contract-audit-checklist",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/post/simply-put-what-are-memecoins",
       "destination": "/blog/what-are-memecoins",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/post/web2-web3-migration-guide-for-fintech-the-first-90-days",
       "destination": "/blog/web2-to-web3-fintech",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/post/we%E2%80%99re-now-an-aws-partner",
       "destination": "/blog/aws-select-partner",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/post/we’re-now-an-aws-partner",
       "destination": "/blog/aws-select-partner",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/post/we're-now-an-aws-partner",
       "destination": "/blog/aws-select-partner",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/blockchain-and-web-3",
       "destination": "/blockchain-development-services",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/dapp-development",
       "destination": "/blockchain-development-services/dapp-development",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/blockchain-for-banks",
       "destination": "/blockchain-development-services/industry/banking",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/case-study-deprecated/:slug*",
       "destination": "/our-work/:slug*",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/case-study-old/:slug*",
       "destination": "/our-work/:slug*",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/home",
       "destination": "/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/blog-old",
       "destination": "/blog",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/product-discovery-deprecated",
       "destination": "/product-discovery",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/events-calendar-2026",
       "destination": "/events-calendar",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/events-calendar-2",
       "destination": "/events-calendar",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/about",
       "destination": "/about-us",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/about-us/es",
       "destination": "/about-us",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/our-hubs",
       "destination": "/about-us",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/contacto",
       "destination": "/contact",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/privacy",
       "destination": "/privacy-policy",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/terms",
       "destination": "/terms-and-conditions",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/jobs",
       "destination": "/careers",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/careers/jobs",
       "destination": "/careers",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/work",
       "destination": "/our-work",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/our-work/blockbound",
       "destination": "/our-work",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/our-work/flexio",
       "destination": "/our-work",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/services",
       "destination": "/blockchain-development-services",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/what-we-do",
       "destination": "/blockchain-development-services",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/blockchain-and-web-3-0",
       "destination": "/blockchain-development-services",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/development-services/industry",
       "destination": "/blockchain-development-services",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/blockchain-development-services/blockchain-for-defi-finance",
       "destination": "/blockchain-development-services/industry/finance-and-fintech",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/discovery-sprint",
       "destination": "/product-discovery",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/web-and-mobile-development",
       "destination": "/innovative-web-and-mobile-solutions",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/clutch-2026-top-blockchain.png",
       "destination": "/images/badges/clutch-top-blockchain-2026.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/clutch-2026-top-blockchain-latam.png",
       "destination": "/images/badges/clutch-top-blockchain-latam-2026.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/clutch-2026-top-ethereum.png",
       "destination": "/images/badges/clutch-top-ethereum-2026.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/2kwBmFhPTlXfy8RM1iE5tRfmPfM.png",
       "destination": "/images/content/ai-is-reshaping-drug-discovery-and-the-fda-is-onboard/cover.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/3fuM3Z1MSowq1AA5jeBRovzFEFk.webp",
       "destination": "/images/content/bitcoin-the-almost-millionaires-of-starcraft/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/44cWuGIUHol9zdssx9kSFMjtBs.png",
       "destination": "/images/content/how-real-world-assets-are-reshaping-decentralized-finance/cover.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/50nXesZNFn34Yd4LegrcrmDpVic.webp",
       "destination": "/images/content/upgrading-customer-service-with-a-whatsapp-bot/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/551gfTZfH8x4VlokOkb2lOOl4.webp",
       "destination": "/images/content/goldman-sachs-bets-big-on-ai-and-blockchain/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/5SIjYNrqoXVAQqwdwdO9upLD84.webp",
       "destination": "/images/content/vibe-coding-hype-help-or-hazard/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/Blockchain_Compliance_in_the_US.png",
       "destination": "/images/content/blockchain-compliance-us/cover.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/DmHKXFBCvlA7Y9zmzYpBfOzzko.webp",
       "destination": "/images/content/blockchain-ai-convergence-a-powerful-synergy/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/FbmwPbUfDAa0q00EdQ3JbNrTpE.png",
       "destination": "/images/content/from-web3-to-web5-or-how-i-learned-to-stop-worrying-and-embrace-true-decentralization/cover.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/HnBRzRZKIvGkGHIfxiQev0lU2o0.webp",
       "destination": "/images/content/how-to-hire-remote-software-developers-a-smart-guide-for-growing-teams/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/J8qCLvFdZOivyDaLs0dELBR2r0.webp",
       "destination": "/images/content/u-s-banks-enter-the-crypto-arena-what-it-means-for-blockchain-consulting-fintech-development/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/JeQLv4bNGrE9UXUBQ7qTuS80hV4.webp",
       "destination": "/images/content/simply-put-what-is-blockchain/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/RVMvAqis5lvyDbQre8vqzsh7BT8.webp",
       "destination": "/images/content/why-metamask-embedded-wallets-are-a-game-changer-for-web3-onboarding/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/Sa5MlGeDLNgcFDmCL7kH7Q3TBgA.webp",
       "destination": "/images/content/what-web3-protocols-need-in-2025/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/W9x6IOdCW0t4rCATB3Ze7voDiLI.png",
       "destination": "/images/content/white-label-crypto-exchange-solutions/cover.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/ZYFCVOnAOkZaVXWFJg9sEbfiVzs.png",
       "destination": "/images/content/a-few-thoughts-on-decentralization/cover.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/bVD0R0iXQ8QzvTTXdhaxjxRR8.webp",
       "destination": "/images/content/the-role-of-smart-contracts-in-defi/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/blockchain-supply-chain-traceability-cover.png",
       "destination": "/images/content/blockchain-supply-chain-traceability/cover.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/blockchain-trends-2026-cover.png",
       "destination": "/images/content/blockchain-trends-2026/cover.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/enterprise-blockchain-cover.png",
       "destination": "/images/content/enterprise-blockchain-solutions-roi-use-cases-types/cover.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/hSDllB1d1JjC9oNH7hkkChHjq8.webp",
       "destination": "/images/content/wallet-connections/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/k9VyKGh5tqD9B5xLFRFXoVDVm44.webp",
       "destination": "/images/content/how-we-built-ndax/cover.webp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/layer-1-blockchain-cover.png",
       "destination": "/images/content/what-is-layer-1-blockchain/cover.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/rwa-protocol-cover.png",
       "destination": "/images/content/how-to-launch-an-rwa-protocol/cover.png",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/images/content/tokenized-bonds-cover.png",
       "destination": "/images/content/tokenized-bonds/cover.png",
-      "permanent": true
+      "statusCode": 301
     }
   ]
 }

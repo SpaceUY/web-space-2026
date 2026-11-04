@@ -7,7 +7,7 @@
 // This checks the real content collection at request time instead, so a
 // retired post can never again produce a broken redirect.
 //
-// A live post still 308s to its real URL. A retired one gets its 410 HERE,
+// A live post 301s to its real URL (Bing only counts 301 as a move). A retired one gets its 410 HERE,
 // at the address that was actually requested, rather than a 308 to /gone.
 // That redirect was wrong on two counts. A 308 asserts the content moved
 // permanently to the target, and retired content did not move to /gone; it
@@ -25,7 +25,7 @@ const { slug } = Astro.params;
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 const match = slug && posts.some((p) => p.id === slug);
 
-if (match) return Astro.redirect(`/blog/${slug}`, 308);
+if (match) return Astro.redirect(`/blog/${slug}`, 301);
 
 Astro.response.status = 410;
 Astro.response.statusText = "Gone";
