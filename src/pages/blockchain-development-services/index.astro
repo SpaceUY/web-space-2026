@@ -26,9 +26,9 @@ const industries = [
   { name: "Healthcare and Life Sciences",   slug: "healthcare",                     icon: I_HEART,      desc: "Data integrity, patient identity management, and traceable supply chains. Compliance-first." },
   { name: "Supply Chain and Logistics",     slug: "supply-chain-and-logistics",     icon: I_TRUCK,      desc: "Real-time visibility, traceability, and trust across global logistics networks." },
   { name: "Real Estate and PropTech",       slug: "real-estate-and-proptech",       icon: I_HOUSE,      desc: "Tokenized property, automated contracts, and secure ownership records for modern real estate.",                   href: "/blockchain-development-services/industry/real-estate" },
-  { name: "Education and EdTech",           slug: "education-and-edtech",           icon: I_GRADUATION, desc: "Decentralized certification and blockchain credentials that enhance authenticity and accessibility.",             href: "/coming-soon" },
+  { name: "Education and EdTech",           slug: "education-and-edtech",           icon: I_GRADUATION, desc: "Decentralized certification and blockchain credentials that enhance authenticity and accessibility.",             href: null },
   { name: "Energy",                         slug: "energy",                         icon: I_ENERGY,     desc: "Data integrity, joint venture automation, and operational visibility for energy companies." },
-  { name: "Startups and Emerging Ventures", slug: "startups-and-emerging-ventures", icon: I_ROCKET,     desc: "Product Discovery, MVP development, and rapid prototyping for founders entering Web3.",                         href: "/coming-soon" },
+  { name: "Startups and Emerging Ventures", slug: "startups-and-emerging-ventures", icon: I_ROCKET,     desc: "Product Discovery, MVP development, and rapid prototyping for founders entering Web3.",                         href: "/product-discovery" },
 ];
 ---
 
@@ -115,15 +115,20 @@ const industries = [
           <p class="text-sd-text-muted leading-relaxed">SpaceDev delivers blockchain app development across the sectors where traceability, automation, and decentralized trust create the most measurable business value.</p>
         </div>
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {industries.map(ind => (
-            <a href={ind.href ?? `/blockchain-development-services/industry/${ind.slug}`} class="group block bg-white/5 rounded-2xl p-7 border border-white/10 hover:border-sd-purple/60 hover:bg-sd-purple/10 transition-colors duration-300" data-animate>
-              <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
-                <Fragment set:html={ind.icon} />
-              </div>
-              <h3 class="text-base font-display font-semibold text-white mb-2 group-hover:text-sd-purple-300 transition-colors duration-300">{ind.name}</h3>
-              <p class="text-sm text-sd-text-muted leading-relaxed">{ind.desc}</p>
-            </a>
-          ))}
+          {industries.map(ind => {
+            const href = ind.href === undefined ? `/blockchain-development-services/industry/${ind.slug}` : ind.href;
+            const Tag = href ? "a" : "div";
+            const hoverClasses = href ? "hover:border-sd-purple/60 hover:bg-sd-purple/10" : "";
+            return (
+              <Tag href={href ?? undefined} class={`group block bg-white/5 rounded-2xl p-7 border border-white/10 ${hoverClasses} transition-colors duration-300`} data-animate>
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-3" style="background: linear-gradient(135deg, #4a397c 17%, #191429 105%)">
+                  <Fragment set:html={ind.icon} />
+                </div>
+                <h3 class={`text-base font-display font-semibold text-white mb-2 ${href ? "group-hover:text-sd-purple-300" : ""} transition-colors duration-300`}>{ind.name}</h3>
+                <p class="text-sm text-sd-text-muted leading-relaxed">{ind.desc}</p>
+              </Tag>
+            );
+          })}
         </div>
       </div>
     </section>
