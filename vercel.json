@@ -121,6 +121,11 @@
       "statusCode": 301
     },
     {
+      "source": "/blockaudit",
+      "destination": "/blockaudit-smart-contract-and-blockchain-security",
+      "statusCode": 301
+    },
+    {
       "source": "/meet-fede",
       "destination": "https://meetings.hubspot.com/federico-sendra",
       "permanent": false
