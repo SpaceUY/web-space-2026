@@ -15,14 +15,16 @@ const helpOptions = [
   "Other",
 ];
 
+// `value` must match the HubSpot option value; `label` is what the visitor sees.
 const sourceOptions = [
-  "Google",
-  "Linkedin",
-  "Email",
-  "Clutch",
-  "Upwork",
-  "Referral",
-  "Other",
+  { value: "Google", label: "Google" },
+  { value: "Linkedin", label: "Linkedin" },
+  { value: "Email", label: "Email" },
+  { value: "Clutch", label: "Clutch" },
+  { value: "Upwork", label: "Upwork" },
+  { value: "Referral", label: "Referral" },
+  { value: "AI", label: "ChatGPT / AI search (Claude, Perplexity, etc.)" },
+  { value: "Other", label: "Other" },
 ];
 ---
 
@@ -59,7 +61,7 @@ const sourceOptions = [
       <div class="select-wrap">
         <select id="cf-source" name="how_did_you_find_us_" required>
           <option value="" disabled selected>Please select</option>
-          {sourceOptions.map(o => <option value={o}>{o}</option>)}
+          {sourceOptions.map(o => <option value={o.value}>{o.label}</option>)}
         </select>
         <svg class="select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
           <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
