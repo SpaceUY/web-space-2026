@@ -90,7 +90,7 @@ const faqs = [
         <div data-animate>
           <p class="text-xs font-ui uppercase tracking-[0.2em] text-sd-purple-200 mb-5">Ciberseguridad para Uruguay</p>
           <h1 class="text-3xl md:text-5xl lg:text-[3.4rem] leading-[1.05] text-white font-display">
-            Los ataques ya son automáticos. <span class="text-sd-green">¿Su defensa también?</span>
+            Los ataques ya son automáticos. <span class="text-sd-purple-300">¿Su defensa también?</span>
           </h1>
           <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
             Herramientas de AI como ARTEX ejecutan un ciberataque completo casi sin intervención humana. En 48 horas le mostramos qué verían en su organización.
@@ -98,7 +98,7 @@ const faqs = [
           <ul class="mt-7 space-y-2.5">
             {["Sin costo y sin compromiso", "Solo información pública: no tocamos sus sistemas", "Una página, con los 3 hallazgos principales"].map((t) => (
               <li class="flex items-start gap-2.5 text-sm md:text-base text-white leading-snug">
-                <span class="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-sd-green"></span>
+                <span class="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-sd-purple-300"></span>
                 {t}
               </li>
             ))}
@@ -130,7 +130,7 @@ const faqs = [
       <div class="grid gap-6 md:grid-cols-3">
         {facts.map((f) => (
           <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-7" data-animate>
-            <p class="font-display text-4xl md:text-5xl text-sd-green leading-none">{f.figure}</p>
+            <p class="font-display text-4xl md:text-5xl text-white leading-none">{f.figure}</p>
             <p class="mt-4 text-sm text-sd-text-muted leading-relaxed">{f.text}</p>
             <a href={f.href} target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-xs text-sd-purple-200 underline underline-offset-4 hover:text-white">Fuente: {f.source}</a>
           </div>
@@ -140,21 +140,22 @@ const faqs = [
   </section>
 
   <!-- ============ CÓMO FUNCIONA ============ -->
-  <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
+  <section class="bg-sd-light border-y border-sd-gray-border py-20 md:py-28">
     <div class="sd-container">
       <SectionHeading
         eyebrow="Cómo funciona"
         title="Tres pasos. Usted decide en cada uno si sigue"
+        tone="dark"
         level="h2"
         class="mb-14"
       />
       <div class="grid gap-6 md:grid-cols-3">
         {steps.map((s, i) => (
-          <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-7" data-animate>
-            <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-sd-purple/15 text-sd-purple-300 font-display mb-5">{String(i + 1).padStart(2, "0")}</span>
-            <p class="text-xs font-ui uppercase tracking-[0.15em] text-sd-green mb-2">{s.tag}</p>
-            <h3 class="font-display text-xl text-white mb-3">{s.title}</h3>
-            <p class="text-sm text-sd-text-muted leading-relaxed">{s.text}</p>
+          <div class="rounded-2xl bg-sd-light-2 p-7 transition-colors duration-300 hover:bg-sd-purple/15" data-animate>
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-sd-purple/15 text-sd-purple font-display mb-5">{String(i + 1).padStart(2, "0")}</span>
+            <p class="text-xs font-ui uppercase tracking-[0.15em] text-sd-purple mb-2">{s.tag}</p>
+            <h3 class="font-display text-xl text-sd-text-dark mb-3">{s.title}</h3>
+            <p class="text-sm text-sd-text-gray leading-relaxed">{s.text}</p>
           </div>
         ))}
       </div>
