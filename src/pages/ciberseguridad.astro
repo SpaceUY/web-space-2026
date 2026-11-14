@@ -13,14 +13,18 @@ import ExposureCheckForm from "../components/ui/ExposureCheckForm.astro";
 
 const title = "Chequeo de exposición a ataques con AI | SpaceDev";
 const description =
-  "Herramientas de AI como ARTEX ejecutan un ciberataque completo casi sin intervención humana. En 48 horas le mostramos qué expone su organización. Sin costo.";
+  "En 48 horas le mostramos lo que un atacante con AI ya puede ver de su organización. Una página, sin costo y sin tocar sus sistemas.";
+
+const DECREE_SOURCE =
+  "https://www.busqueda.com.uy/tecnologia/solo-10-244-organismos-publicos-cumplen-el-decreto-ciberseguridad-impulsado-hackeos-al-estado-n5414567";
+const OSTORLAB = "https://blog.ostorlab.co/artex-ai-pentest-framework-threat.html";
 
 const facts = [
   {
     figure: "200+",
     text: "organizaciones en 14 países atacadas con ARTEX en una sola campaña, en octubre de 2026.",
     source: "Ostorlab",
-    href: "https://blog.ostorlab.co/artex-ai-pentest-framework-threat.html",
+    href: OSTORLAB,
   },
   {
     figure: "Sin MFA",
@@ -29,10 +33,33 @@ const facts = [
     href: "https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web/",
   },
   {
-    figure: "10 de 244",
-    text: "organismos públicos uruguayos habían reportado cumplir el Decreto 275/025 a junio de 2026.",
-    source: "Agesic, publicado por Búsqueda",
-    href: "https://www.busqueda.com.uy/tecnologia/solo-10-244-organismos-publicos-cumplen-el-decreto-ciberseguridad-impulsado-hackeos-al-estado-n5414567",
+    figure: "12.000+",
+    text: "copias de ARTEX siguen circulando, aunque su autor lo retiró en octubre de 2026.",
+    source: "Ostorlab",
+    href: OSTORLAB,
+  },
+];
+
+// Sample of the one-page report. Every value here is invented and the card is
+// labelled as an example on the page; never swap in a real organization's data.
+const sampleFindings = [
+  {
+    risk: "Alto",
+    title: "Acceso remoto sin señales de doble factor",
+    text: "2 pantallas de inicio de sesión visibles desde internet.",
+    action: "Exigir doble factor o cerrar el acceso.",
+  },
+  {
+    risk: "Medio",
+    title: "Correo sin protección contra suplantación",
+    text: "El dominio no tiene DMARC activo.",
+    action: "Publicar la política y monitorear.",
+  },
+  {
+    risk: "Medio",
+    title: "Sistemas en desuso todavía visibles",
+    text: "14 subdominios activos, 3 sin uso aparente.",
+    action: "Darlos de baja o restringirlos.",
   },
 ];
 
@@ -88,30 +115,84 @@ const faqs = [
     <div class="relative sd-container pt-32 pb-14 md:pt-40 md:pb-20">
       <div class="grid md:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-12 items-center">
         <div data-animate>
-          <p class="text-xs font-ui uppercase tracking-[0.2em] text-sd-purple-200 mb-5">Ciberseguridad para Uruguay</p>
+          <p class="text-xs font-ui uppercase tracking-[0.2em] text-sd-purple-200 mb-5">Chequeo de exposición sin costo</p>
           <h1 class="text-3xl md:text-5xl lg:text-[3.4rem] leading-[1.05] text-white font-display">
-            Los ataques ya son automáticos. <span class="text-sd-purple-300">¿Su defensa también?</span>
+            Vea <span class="text-sd-purple-300">en 48 horas</span> lo que un atacante con AI ya puede ver de su organización
           </h1>
           <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
-            Herramientas de AI como ARTEX ejecutan un ciberataque completo casi sin intervención humana. En 48 horas le mostramos qué verían en su organización.
+            Herramientas como ARTEX ejecutan un ciberataque completo casi sin intervención humana. Le enviamos una página con los 3 hallazgos principales, sin tocar sus sistemas.
           </p>
-          <ul class="mt-7 space-y-2.5">
-            {["Sin costo y sin compromiso", "Solo información pública: no tocamos sus sistemas", "Una página, con los 3 hallazgos principales"].map((t) => (
-              <li class="flex items-start gap-2.5 text-sm md:text-base text-white leading-snug">
-                <span class="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-sd-purple-300"></span>
+          <div class="mt-9 max-w-xl flex flex-col md:flex-row md:items-center gap-3 md:gap-6 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-5">
+            <p class="font-display text-4xl md:text-5xl text-white leading-none whitespace-nowrap">10 de 244</p>
+            <p class="text-sm text-sd-text-muted leading-relaxed">
+              organismos públicos habían reportado cumplir el Decreto 275/025 a junio de 2026.
+              <span class="text-white">¿El suyo está entre ellos?</span>
+              <a href={DECREE_SOURCE} target="_blank" rel="noopener noreferrer" class="block mt-1 text-xs text-sd-purple-200 underline underline-offset-4 hover:text-white">Fuente: Agesic, publicado por Búsqueda</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 md:p-8 shadow-2xl shadow-black/30 scroll-mt-28" data-animate id="chequeo">
+          <h2 class="font-display text-xl md:text-2xl text-sd-text-dark mb-1">Pida su chequeo</h2>
+          <p class="text-sm text-sd-text-gray mb-6">Sin costo. Respuesta en 48 horas hábiles.</p>
+          <ExposureCheckForm />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUÉ RECIBE (ejemplo del informe) ============ -->
+  <section class="bg-sd-light border-b border-sd-gray-border py-20 md:py-28">
+    <div class="sd-container">
+      <div class="grid md:grid-cols-[0.85fr_1.15fr] gap-12 md:gap-16 items-center">
+        <div data-animate>
+          <p class="text-xs font-ui uppercase tracking-[0.2em] text-sd-purple mb-4">Qué recibe</p>
+          <h2 class="font-display text-2xl md:text-4xl text-sd-text-dark leading-tight">Una página que su jerarca puede leer en dos minutos</h2>
+          <p class="mt-5 text-sd-text-gray leading-relaxed">
+            Tres hallazgos ordenados por riesgo, cada uno con la acción para cerrarlo. Sin jerga y sin venta: si después quiere seguir, lo decide usted.
+          </p>
+          <ul class="mt-6 space-y-2.5">
+            {["Solo información pública: no tocamos sus sistemas", "Se envía únicamente a quien lo pide", "Sin costo y sin compromiso"].map((t) => (
+              <li class="flex items-start gap-2.5 text-sm text-sd-text-dark leading-snug">
+                <span class="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-sd-purple"></span>
                 {t}
               </li>
             ))}
           </ul>
-          <p class="mt-9 max-w-xl rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-sm text-sd-text-muted leading-relaxed">
-            <span class="text-white">Noviembre de 2026:</span> medio mundo se quedó sin correo y Estados Unidos dejó todos sus vuelos en tierra. Sea cual sea la causa, quedó claro cuánto depende todo de sistemas que pueden caerse.
-          </p>
+          <div class="mt-8">
+            <Button href="#chequeo" variant="primary" size="lg">Quiero el mío</Button>
+          </div>
         </div>
 
-        <div class="rounded-3xl bg-white p-6 md:p-8 shadow-2xl shadow-black/30 scroll-mt-28" data-animate id="chequeo">
-          <h2 class="font-display text-xl md:text-2xl text-sd-text-dark mb-1">Chequeo de exposición</h2>
-          <p class="text-sm text-sd-text-gray mb-6">Respuesta en 48 horas hábiles.</p>
-          <ExposureCheckForm />
+        <!-- Report mock: invented data, labelled as an example -->
+        <div class="relative" data-animate>
+          <span class="absolute -top-3 left-6 z-10 rounded-full bg-sd-dark text-white text-[11px] font-ui uppercase tracking-widest px-3 py-1">Ejemplo con datos ficticios</span>
+          <div class="rounded-2xl bg-white border border-sd-gray-border shadow-xl shadow-black/5 p-6 md:p-9">
+            <div class="flex flex-wrap items-baseline justify-between gap-2 pb-5 border-b border-sd-gray-border">
+              <p class="font-display text-lg text-sd-text-dark">Chequeo de exposición</p>
+              <p class="text-xs text-sd-text-gray">Organismo Ejemplo · ejemplo.gub.uy</p>
+            </div>
+            <p class="mt-5 text-sm text-sd-text-dark leading-relaxed">
+              <span class="font-medium">En una frase:</span> un atacante automatizado encontraría hoy dos puertas de entrada sin doble factor.
+            </p>
+            <ol class="mt-5 space-y-3">
+              {sampleFindings.map((f, i) => (
+                <li class="rounded-xl bg-sd-light-2 p-4 flex gap-4">
+                  <span class="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-sd-purple/15 text-sd-purple font-display text-sm">{i + 1}</span>
+                  <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <p class="text-sm font-medium text-sd-text-dark">{f.title}</p>
+                      <span class={`text-[10px] font-ui uppercase tracking-widest rounded-full px-2 py-0.5 ${f.risk === "Alto" ? "bg-sd-purple text-white" : "border border-sd-text-dark/20 text-sd-text-gray"}`}>Riesgo {f.risk.toLowerCase()}</span>
+                    </div>
+                    <p class="mt-1 text-xs text-sd-text-gray leading-relaxed">{f.text} <span class="text-sd-text-dark">Qué hacer: {f.action}</span></p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p class="mt-5 text-xs text-sd-text-gray leading-relaxed">
+              <span class="font-medium text-sd-text-dark">Lo que está bien:</span> certificados vigentes en todos los sitios principales.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -123,7 +204,7 @@ const faqs = [
       <SectionHeading
         eyebrow="Qué cambió"
         title="Atacar dejó de requerir un equipo y semanas de trabajo"
-        description="Hoy alcanza con una herramienta gratuita que prueba, falla y vuelve a probar, día y noche."
+        description="En noviembre de 2026 medio mundo se quedó sin correo y Estados Unidos dejó sus vuelos en tierra. Sea cual sea la causa, mostró cuánto depende todo de sistemas que pueden caerse. Mientras tanto, atacar se volvió gratis y automático."
         level="h2"
         class="mb-14"
       />
@@ -196,11 +277,27 @@ const faqs = [
       <h2 class="font-display text-2xl md:text-4xl text-white leading-snug max-w-3xl mx-auto">Sepa qué expone su organización antes que un bot</h2>
       <p class="mt-4 text-sd-text-muted">Una página, en 48 horas, sin costo.</p>
       <div class="mt-8">
-        <Button href="#chequeo" variant="secondary" size="lg">Pedir chequeo</Button>
+        <Button href="#chequeo" variant="secondary" size="lg">Pedir chequeo sin costo</Button>
       </div>
       <p class="mt-10 text-xs text-sd-text-muted/70 max-w-2xl mx-auto leading-relaxed">
         Las cifras citadas enlazan a su fuente. Los incidentes de noviembre de 2026 se mencionan como contexto; sus causas no fueron atribuidas a ataques.
       </p>
     </div>
   </section>
+
+  <!-- Mobile only: fixed bar to the form, hidden while the form is on screen -->
+  <div id="cta-fijo" class="md:hidden fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-sd-dark/95 backdrop-blur px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] transition-transform duration-300 translate-y-full">
+    <a href="#chequeo" class="flex items-center justify-center w-full rounded-full bg-sd-purple text-white text-sm font-medium py-3.5">Pedir chequeo sin costo</a>
+  </div>
 </BaseLayout>
+
+<script>
+  const bar = document.getElementById("cta-fijo");
+  const form = document.getElementById("chequeo");
+  if (bar && form && "IntersectionObserver" in window) {
+    new IntersectionObserver(
+      ([entry]) => bar.classList.toggle("translate-y-full", entry.isIntersecting),
+      { threshold: 0.15 }
+    ).observe(form);
+  }
+</script>

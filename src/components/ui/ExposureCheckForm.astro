@@ -3,7 +3,7 @@
  * Lead form for the Spanish cybersecurity landing (/ciberseguridad).
  * Posts to the shared HubSpot contact form, same as AgenticLeadForm. That form
  * only defines firstname, company_or_linkedin_profile, email and message, so
- * the job title, the domain to review and the authorization checkbox travel
+ * the domain to review and the authorization checkbox travel
  * inside `message` instead of as their own fields.
  * Fires `generate_lead` through window.sdTrack (see BaseLayout).
  */
@@ -18,15 +18,9 @@ const ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${PO
 ---
 
 <form class={`exposure-form ${className}`} data-endpoint={ENDPOINT} novalidate>
-  <div class="exf-row">
-    <div class="exf-field">
-      <label for="exf-nombre">Nombre y apellido <span class="exf-req">*</span></label>
-      <input id="exf-nombre" name="firstname" type="text" autocomplete="name" required />
-    </div>
-    <div class="exf-field">
-      <label for="exf-cargo">Cargo <span class="exf-req">*</span></label>
-      <input id="exf-cargo" name="cargo" type="text" autocomplete="organization-title" required />
-    </div>
+  <div class="exf-field">
+    <label for="exf-nombre">Nombre y apellido <span class="exf-req">*</span></label>
+    <input id="exf-nombre" name="firstname" type="text" autocomplete="name" required />
   </div>
   <div class="exf-field">
     <label for="exf-org">Organismo o empresa <span class="exf-req">*</span></label>
@@ -64,8 +58,6 @@ const ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${PO
 
 <style>
   .exposure-form { display: flex; flex-direction: column; gap: 0.9rem; }
-  .exf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
-  @media (max-width: 520px) { .exf-row { grid-template-columns: 1fr; } }
   .exf-field { display: flex; flex-direction: column; gap: 0.4rem; }
   .exposure-form label { font-size: 12px; font-family: var(--font-body, sans-serif); color: #4e5052; }
   .exf-req { color: #673ae4; }
@@ -111,7 +103,7 @@ const ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${PO
     const errorEl = form.querySelector<HTMLElement>(".exf-error");
     const success = form.querySelector<HTMLElement>(".exf-success");
     const parts = Array.from(
-      form.querySelectorAll<HTMLElement>(".exf-row, .exf-field, .exf-check, .exf-error, .exf-submit, .exf-fineprint")
+      form.querySelectorAll<HTMLElement>(".exf-field, .exf-check, .exf-error, .exf-submit, .exf-fineprint")
     );
 
     form.addEventListener("submit", async (e) => {
@@ -131,7 +123,6 @@ const ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${PO
         .join(" ");
       const message = [
         "Pedido de chequeo de exposición (landing /ciberseguridad)",
-        `Cargo: ${get("cargo")}`,
         `Dominio a revisar: ${get("dominio")}`,
         "Confirma autoridad para pedir la revisión: sí",
         origin ? `Origen: ${origin}` : "",
