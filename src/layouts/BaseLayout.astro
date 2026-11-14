@@ -37,6 +37,8 @@ interface Props {
    * into tools people act on.
    */
   errorPage?: boolean;
+  /** Page language for <html lang> and og:locale. Defaults to English; the Spanish campaign landings pass "es". */
+  lang?: "en" | "es";
 }
 
 const {
@@ -56,6 +58,7 @@ const {
   breadcrumbs: breadcrumbsProp,
   breadcrumbTone = "dark",
   errorPage = false,
+  lang = "en",
 } = Astro.props;
 
 // The homepage carries the full entity graph (Organization, founders, WebSite);
@@ -114,7 +117,7 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -148,6 +151,7 @@ const showAutoBreadcrumbs = autoCrumbs.length > 1;
       ogType={ogType}
       noindex={noindex}
       nofollow={nofollow}
+      locale={lang === "es" ? "es_UY" : "en_US"}
       publishedTime={publishedTime}
       authorName={authorName}
       articleSection={articleSection}

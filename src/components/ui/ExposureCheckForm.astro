@@ -1,0 +1,163 @@
+---
+/**
+ * Lead form for the Spanish cybersecurity landing (/ciberseguridad).
+ * Posts to the shared HubSpot contact form, same as AgenticLeadForm. That form
+ * only defines firstname, company_or_linkedin_profile, email and message, so
+ * the domain to review and the authorization checkbox travel
+ * inside `message` instead of as their own fields.
+ * Fires `generate_lead` through window.sdTrack (see BaseLayout).
+ */
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+
+const PORTAL_ID = "22632737";
+const FORM_ID = "acdc5149-7c32-48f4-9137-ab4212538377";
+const ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
+---
+
+<form class={`exposure-form ${className}`} data-endpoint={ENDPOINT} novalidate>
+  <div class="exf-field">
+    <label for="exf-nombre">Nombre y apellido <span class="exf-req">*</span></label>
+    <input id="exf-nombre" name="firstname" type="text" autocomplete="name" required />
+  </div>
+  <div class="exf-field">
+    <label for="exf-org">Organismo o empresa <span class="exf-req">*</span></label>
+    <input id="exf-org" name="company_or_linkedin_profile" type="text" autocomplete="organization" required />
+  </div>
+  <div class="exf-field">
+    <label for="exf-mail">Mail institucional <span class="exf-req">*</span></label>
+    <input id="exf-mail" name="email" type="email" autocomplete="email" required />
+  </div>
+  <div class="exf-field">
+    <label for="exf-dominio">Dominio a revisar <span class="exf-req">*</span></label>
+    <input id="exf-dominio" name="dominio" type="text" inputmode="url" required placeholder="ejemplo.gub.uy" />
+  </div>
+  <label class="exf-check">
+    <input name="autoriza" type="checkbox" required />
+    <span>Confirmo que tengo autoridad para pedir esta revisión en nombre de la organización.</span>
+  </label>
+
+  <p class="exf-error" aria-live="polite" hidden>No pudimos enviar el pedido. Intente de nuevo o escriba a info@spacedev.io.</p>
+
+  <button type="submit" class="exf-submit">
+    <span class="exf-label">Quiero mi chequeo</span>
+  </button>
+  <p class="exf-fineprint">Usamos sus datos solo para enviarle el resultado.</p>
+
+  <div class="exf-success" hidden>
+    <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 20l6 6 10-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h3>Pedido recibido.</h3>
+    <p>En 48 horas hábiles le enviamos el resultado a su mail.</p>
+  </div>
+</form>
+
+<style>
+  .exposure-form { display: flex; flex-direction: column; gap: 0.9rem; }
+  .exf-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .exposure-form label { font-size: 12px; font-family: var(--font-body, sans-serif); color: #4e5052; }
+  .exf-req { color: #673ae4; }
+  .exposure-form input[type="text"],
+  .exposure-form input[type="email"] {
+    font-family: var(--font-body, sans-serif); font-size: 14px; border-radius: 10px;
+    padding: 0.7rem 0.85rem; outline: none; width: 100%;
+    background: #fff; border: 1px solid #e8e8e8; color: #141414;
+    transition: border-color 0.2s;
+  }
+  .exposure-form input::placeholder { color: #aaa; }
+  .exposure-form input[type="text"]:focus,
+  .exposure-form input[type="email"]:focus { border-color: #673ae4; }
+  .exf-check { display: flex; gap: 0.6rem; align-items: flex-start; cursor: pointer; }
+  .exf-check input { margin-top: 2px; width: 16px; height: 16px; flex: none; accent-color: #673ae4; }
+  .exf-check span { font-size: 12px; line-height: 1.45; color: #4e5052; }
+  .exf-submit {
+    margin-top: 0.25rem; width: 100%; padding: 0.9rem 1rem; border-radius: 9999px;
+    background: #673ae4; color: #fff; font-size: 15px; font-weight: 500;
+    font-family: var(--font-body, sans-serif); border: none; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .exf-submit:hover { background: #4a397c; }
+  .exf-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .exf-fineprint { font-size: 12px; text-align: center; color: #858585; }
+  .exf-error {
+    font-size: 13px; color: #b91c1c; padding: 0.6rem 0.85rem;
+    background: rgba(248,113,113,0.08); border-radius: 8px; border: 1px solid rgba(248,113,113,0.3);
+  }
+  .exf-success {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    gap: 0.6rem; padding: 1.5rem 1rem; color: #673ae4;
+  }
+  .exf-success h3 { font-size: 1.15rem; font-family: var(--font-display, sans-serif); color: #141414; }
+  .exf-success p { font-size: 13px; color: #4e5052; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>("form.exposure-form").forEach((form) => {
+    const endpoint = form.dataset.endpoint ?? "";
+    const submit = form.querySelector<HTMLButtonElement>(".exf-submit");
+    const label = form.querySelector<HTMLElement>(".exf-label");
+    const errorEl = form.querySelector<HTMLElement>(".exf-error");
+    const success = form.querySelector<HTMLElement>(".exf-success");
+    const parts = Array.from(
+      form.querySelectorAll<HTMLElement>(".exf-field, .exf-check, .exf-error, .exf-submit, .exf-fineprint")
+    );
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      if (submit) submit.disabled = true;
+      if (label) label.textContent = "Enviando…";
+      if (errorEl) errorEl.hidden = true;
+
+      const data = new FormData(form);
+      const get = (k: string) => String(data.get(k) ?? "").trim();
+      const utm = new URLSearchParams(window.location.search);
+      const origin = ["utm_source", "utm_medium", "utm_campaign", "utm_content"]
+        .map((k) => (utm.get(k) ? `${k}=${utm.get(k)}` : ""))
+        .filter(Boolean)
+        .join(" ");
+      const message = [
+        "Pedido de chequeo de exposición (landing /ciberseguridad)",
+        `Dominio a revisar: ${get("dominio")}`,
+        "Confirma autoridad para pedir la revisión: sí",
+        origin ? `Origen: ${origin}` : "",
+      ].filter(Boolean).join("\n");
+
+      const fields = [
+        { name: "firstname", value: get("firstname") },
+        { name: "company_or_linkedin_profile", value: get("company_or_linkedin_profile") },
+        { name: "email", value: get("email") },
+        { name: "message", value: message },
+        // Required by the shared HubSpot form; sent as fixed defaults.
+        { name: "what_do_you_need_help_with_", value: "Build a product" },
+        { name: "how_did_you_find_us_", value: "Other" },
+      ];
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fields,
+            context: { pageUri: window.location.href, pageName: document.title },
+          }),
+        });
+        if (!res.ok) throw new Error();
+
+        (window as any).sdTrack?.("generate_lead", { form_location: "ciberseguridad-landing" });
+
+        parts.forEach((el) => (el.hidden = true));
+        if (success) success.hidden = false;
+      } catch {
+        if (errorEl) errorEl.hidden = false;
+        if (submit) submit.disabled = false;
+        if (label) label.textContent = "Quiero mi chequeo";
+      }
+    });
+  });
+</script>

@@ -11,6 +11,8 @@ interface Props {
   publishedTime?: string;
   authorName?: string;
   articleSection?: string;
+  /** og:locale value. Defaults to en_US. */
+  locale?: string;
 }
 
 const {
@@ -24,6 +26,7 @@ const {
   publishedTime,
   authorName,
   articleSection,
+  locale = "en_US",
 } = Astro.props;
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://spacedev.io";
@@ -42,7 +45,7 @@ const absoluteOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogIm
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:type" content={ogType} />
 <meta property="og:site_name" content="SpaceDev" />
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content={locale} />
 {ogType === "article" && publishedTime && <meta property="article:published_time" content={publishedTime} />}
 {ogType === "article" && authorName && <meta property="article:author" content={authorName} />}
 {ogType === "article" && articleSection && <meta property="article:section" content={articleSection} />}
