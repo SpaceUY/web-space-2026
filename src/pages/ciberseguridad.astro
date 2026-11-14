@@ -1,0 +1,205 @@
+---
+/**
+ * Spanish campaign landing: cybersecurity against automated AI attacks (Uruguay).
+ * Reached only from ads and direct links: noindex, excluded from the sitemap
+ * (astro.config.mjs) and not linked from Header, Footer or llms.txt.
+ * Figures cite their source inline; update or remove them if the source changes.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import FAQ from "../components/ui/FAQ.astro";
+import ExposureCheckForm from "../components/ui/ExposureCheckForm.astro";
+
+const title = "Chequeo de exposición a ataques con AI | SpaceDev";
+const description =
+  "Herramientas de AI como ARTEX ejecutan un ciberataque completo casi sin intervención humana. En 48 horas le mostramos qué expone su organización. Sin costo.";
+
+const facts = [
+  {
+    figure: "200+",
+    text: "organizaciones en 14 países atacadas con ARTEX en una sola campaña, en octubre de 2026.",
+    source: "Ostorlab",
+    href: "https://blog.ostorlab.co/artex-ai-pentest-framework-threat.html",
+  },
+  {
+    figure: "Sin MFA",
+    text: "No necesita fallas sofisticadas. Entra por contraseñas débiles y accesos sin doble factor.",
+    source: "TechCrunch",
+    href: "https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web/",
+  },
+  {
+    figure: "10 de 244",
+    text: "organismos públicos uruguayos habían reportado cumplir el Decreto 275/025 a junio de 2026.",
+    source: "Agesic, publicado por Búsqueda",
+    href: "https://www.busqueda.com.uy/tecnologia/solo-10-244-organismos-publicos-cumplen-el-decreto-ciberseguridad-impulsado-hackeos-al-estado-n5414567",
+  },
+];
+
+const steps = [
+  {
+    tag: "48 horas, sin costo",
+    title: "Chequeo de exposición",
+    text: "Revisamos lo que su organización muestra hoy en internet y le enviamos los 3 hallazgos principales.",
+  },
+  {
+    tag: "10 días hábiles, precio fijo",
+    title: "Simulacro de ataque autónomo",
+    text: "Agentes de AI atacan los sistemas que usted autorice, supervisados por nuestro equipo. Recibe el inventario de sistemas expuestos, las brechas y un informe alineado al Decreto 275/025.",
+  },
+  {
+    tag: "30 días",
+    title: "Plan de cierre",
+    text: "Nuestros ingenieros corrigen lo encontrado y repetimos el simulacro para comprobarlo.",
+  },
+];
+
+const reasons = [
+  { title: "Equipo de seguridad propio", text: "Especialistas en Uruguay, en su horario y en su idioma." },
+  { title: "AI del lado de la defensa", text: "Probamos a la velocidad del atacante, no una vez por año." },
+  { title: "Más de 70 ingenieros para ejecutar", text: "El informe no queda en un cajón: lo cerramos con usted." },
+];
+
+const faqs = [
+  {
+    question: "¿Tocan sistemas en producción?",
+    answer:
+      "El chequeo sin costo no toca nada: usa solo información pública. El simulacro se hace con una autorización firmada, con alcance y horarios acordados.",
+  },
+  {
+    question: "¿Quién ve los resultados?",
+    answer: "Solo la persona que su organización designe. El informe es suyo.",
+  },
+  {
+    question: "¿Cómo contrata un organismo público?",
+    answer: "Coordinamos con su área de compras el procedimiento que corresponda.",
+  },
+  {
+    question: "¿Garantizan que no nos van a atacar?",
+    answer: "No, y nadie puede. Garantizamos que va a saber qué encontraría un atacante y cómo cerrarlo.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description} lang="es" noindex breadcrumbs={false}>
+  <!-- ============ HERO ============ -->
+  <section class="relative overflow-hidden" style="background: var(--sd-gradient-hero);">
+    <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 18% 28%, var(--sd-purple), transparent 50%), radial-gradient(circle at 85% 70%, var(--sd-purple-300), transparent 42%);"></div>
+    <div class="relative sd-container pt-32 pb-14 md:pt-40 md:pb-20">
+      <div class="grid md:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-12 items-center">
+        <div data-animate>
+          <p class="text-xs font-ui uppercase tracking-[0.2em] text-sd-purple-200 mb-5">Ciberseguridad para Uruguay</p>
+          <h1 class="text-3xl md:text-5xl lg:text-[3.4rem] leading-[1.05] text-white font-display">
+            Los ataques ya son automáticos. <span class="text-sd-green">¿Su defensa también?</span>
+          </h1>
+          <p class="mt-6 text-lg md:text-xl text-sd-text-muted max-w-2xl leading-relaxed">
+            Herramientas de AI como ARTEX ejecutan un ciberataque completo casi sin intervención humana. En 48 horas le mostramos qué verían en su organización.
+          </p>
+          <ul class="mt-7 space-y-2.5">
+            {["Sin costo y sin compromiso", "Solo información pública: no tocamos sus sistemas", "Una página, con los 3 hallazgos principales"].map((t) => (
+              <li class="flex items-start gap-2.5 text-sm md:text-base text-white leading-snug">
+                <span class="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-sd-green"></span>
+                {t}
+              </li>
+            ))}
+          </ul>
+          <p class="mt-9 max-w-xl rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-sm text-sd-text-muted leading-relaxed">
+            <span class="text-white">Noviembre de 2026:</span> medio mundo se quedó sin correo y Estados Unidos dejó todos sus vuelos en tierra. Sea cual sea la causa, quedó claro cuánto depende todo de sistemas que pueden caerse.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 md:p-8 shadow-2xl shadow-black/30 scroll-mt-28" data-animate id="chequeo">
+          <h2 class="font-display text-xl md:text-2xl text-sd-text-dark mb-1">Chequeo de exposición</h2>
+          <p class="text-sm text-sd-text-gray mb-6">Respuesta en 48 horas hábiles.</p>
+          <ExposureCheckForm />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUÉ CAMBIÓ ============ -->
+  <section class="bg-sd-dark py-20 md:py-28">
+    <div class="sd-container">
+      <SectionHeading
+        eyebrow="Qué cambió"
+        title="Atacar dejó de requerir un equipo y semanas de trabajo"
+        description="Hoy alcanza con una herramienta gratuita que prueba, falla y vuelve a probar, día y noche."
+        level="h2"
+        class="mb-14"
+      />
+      <div class="grid gap-6 md:grid-cols-3">
+        {facts.map((f) => (
+          <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-7" data-animate>
+            <p class="font-display text-4xl md:text-5xl text-sd-green leading-none">{f.figure}</p>
+            <p class="mt-4 text-sm text-sd-text-muted leading-relaxed">{f.text}</p>
+            <a href={f.href} target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-xs text-sd-purple-200 underline underline-offset-4 hover:text-white">Fuente: {f.source}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CÓMO FUNCIONA ============ -->
+  <section class="py-20 md:py-28" style="background: var(--sd-purple-deep);">
+    <div class="sd-container">
+      <SectionHeading
+        eyebrow="Cómo funciona"
+        title="Tres pasos. Usted decide en cada uno si sigue"
+        level="h2"
+        class="mb-14"
+      />
+      <div class="grid gap-6 md:grid-cols-3">
+        {steps.map((s, i) => (
+          <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-7" data-animate>
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-sd-purple/15 text-sd-purple-300 font-display mb-5">{String(i + 1).padStart(2, "0")}</span>
+            <p class="text-xs font-ui uppercase tracking-[0.15em] text-sd-green mb-2">{s.tag}</p>
+            <h3 class="font-display text-xl text-white mb-3">{s.title}</h3>
+            <p class="text-sm text-sd-text-muted leading-relaxed">{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POR QUÉ SPACEDEV ============ -->
+  <section class="bg-sd-dark py-20 md:py-28">
+    <div class="sd-container">
+      <SectionHeading
+        eyebrow="Por qué SpaceDev"
+        title="Una empresa uruguaya, con equipo propio para encontrar el problema y para arreglarlo"
+        level="h2"
+        class="mb-14"
+      />
+      <div class="grid gap-6 md:grid-cols-3">
+        {reasons.map((r) => (
+          <div class="rounded-2xl border border-white/10 bg-sd-dark-2 p-7" data-animate>
+            <h3 class="font-display text-xl text-white mb-3">{r.title}</h3>
+            <p class="text-sm text-sd-text-muted leading-relaxed">{r.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="bg-sd-dark pb-20 md:pb-28">
+    <div class="sd-container max-w-3xl">
+      <SectionHeading title="Preguntas frecuentes" level="h2" class="mb-8" />
+      <FAQ items={faqs} withJsonLd={false} />
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="py-20 md:py-24 text-center" style="background: var(--sd-gradient-hero);">
+    <div class="sd-container">
+      <h2 class="font-display text-2xl md:text-4xl text-white leading-snug max-w-3xl mx-auto">Sepa qué expone su organización antes que un bot</h2>
+      <p class="mt-4 text-sd-text-muted">Una página, en 48 horas, sin costo.</p>
+      <div class="mt-8">
+        <Button href="#chequeo" variant="secondary" size="lg">Pedir chequeo</Button>
+      </div>
+      <p class="mt-10 text-xs text-sd-text-muted/70 max-w-2xl mx-auto leading-relaxed">
+        Las cifras citadas enlazan a su fuente. Los incidentes de noviembre de 2026 se mencionan como contexto; sus causas no fueron atribuidas a ataques.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

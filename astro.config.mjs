@@ -67,6 +67,8 @@ export default defineConfig({
         "/legal/whatsapp-terms",
         "/coming-soon",
         "/ui-kit",
+        // Campaign landing reached only from ads and direct links (noindex).
+        "/ciberseguridad",
         "/blockchain-development-services/industry",
       ];
       if (excluded.includes(path)) return false;
